@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html ng-app>	
+
+	<head>
+		<title>@ViewBag.Title</title>
+		<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+		@{
+			Bundles.Reference("~/Scripts/jquery-1.7.2.js");
+//			Bundles.Reference("~/Scripts/angular-1.0.0rc6.js");
+		}
+	
+		@Bundles.RenderScripts()
+		<script src="@Url.Content("~/Scripts/angular-1.0.0rc6.js")" ng:autobind></script>
+
+	</head>
+
+	<body>
+		@RenderBody()
+	</body>
+</html>
+
+
