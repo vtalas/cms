@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using cms.Models;
 
 namespace cms
 {
@@ -21,6 +22,16 @@ namespace cms
 		{
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+			routes.MapRoute(
+				"client", // Route name
+				"client/{application}/{action}/{id}", // URL with parameters
+				new { controller = "Client", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+			);
+			routes.MapRoute(
+				"clientApi", // Route name
+				"clientapi/{application}/{action}/{id}", // URL with parameters
+				new { controller = "ClientApi", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+			);
 			routes.MapRoute(
 				"Default", // Route name
 				"{controller}/{action}/{id}", // URL with parameters

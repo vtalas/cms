@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+
+	Bundles.Reference("~/Scripts/home/sd.js");
+	Bundles.Reference("~/Scripts/showdown.js");
+
+	}
+
+<h2>markdown</h2>
+
+<div ng-controller="sd">
+	
+	<div>
+		<textarea ng-model="data.header" cols="10" rows="2"></textarea>
+	</div>
+	<div>
+		<textarea ng-model="data.text"></textarea>
+	</div>
+
+	<div >
+		{{headerHtml() }}
+		
+		{{thumb() }}
+		
+		{{textHtml() }}
+	</div>
+
+</div>

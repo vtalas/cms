@@ -13,6 +13,10 @@ namespace cms.Controllers
         {
             return View();
         }
+		public ActionResult sd()
+        {
+            return View();
+        }
 
     }
 }

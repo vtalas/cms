@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "index";
+	Layout = "_Layout.cshtml";
+}
+
+
+<h2>client test1 index</h2>
+<a href="/clientapi/test1/ContentElement" class="test" >XXXX</a>
+
+<script>
+	$(document).ready(function () {
+		$(".test").click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				type: "post",
+				url: $(this).attr("href")
+			});
+		});
+	})
+</script>
