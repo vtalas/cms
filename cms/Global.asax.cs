@@ -23,6 +23,11 @@ namespace cms
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
+				"admin", // Route name
+				"admin/{application}/{controller}/{action}/{id}", // URL with parameters
+				new { controller = "admin", action = "Index", application="aaa", id = UrlParameter.Optional } // Parameter defaults
+			);
+			routes.MapRoute(
 				"client", // Route name
 				"client/{application}/{action}/{id}", // URL with parameters
 				new { controller = "Client", action = "Index", id = UrlParameter.Optional } // Parameter defaults
