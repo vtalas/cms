@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace cms.Controllers
 {
-    public class ClientApiController : ClientControllerBase
+    public class ClientApiController : ApiControllerBase
     {
         public JsonResult Test()
         {

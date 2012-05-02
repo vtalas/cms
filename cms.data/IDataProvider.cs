@@ -25,8 +25,14 @@ namespace cms.data
 			}
 		}
 
-		public abstract JObject Applications();
+		public abstract IEnumerable<ApplicationSetting> Applications();
+		public abstract ApplicationSetting GetApplication(int id);
+		public abstract ApplicationSetting DeleteApplication(int id);
+		public abstract ApplicationSetting Add(ApplicationSetting newitem);
+
 		public abstract IEnumerable<Grid> Grids();
-		public abstract Grid Grid(int id);
+		public abstract Grid GetGrid(int id);
+		public abstract Grid DeleteGrid(int id);
+		public abstract Grid Add(Grid newitem);
 	}
 }

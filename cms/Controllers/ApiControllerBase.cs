@@ -1,24 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
-using cms.data;
-using cms.data.EF;
-using cms.data.Files;
 
 namespace cms.Controllers
 {
-
-	public class AdminControllerBase : Controller
+	public class ApiControllerBase : Controller
 	{
-
 		public string ViewPath(string view)
 		{
 			return string.Format("{0}/{1}", Application, view);
 		}
-		public string Application { get; private set; }
+		public string Application { get;  private set; }
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
 			base.Initialize(requestContext);
@@ -42,31 +33,4 @@ namespace cms.Controllers
 			}
 		}
 	}
-
-	public class AdminController : AdminControllerBase
-    {
-		private JsonDataProvider aaa { get; set; }
-
-		public AdminController()
-		{
-			aaa = new JsonDataFiles("xxx");
-		}
-
-		public ActionResult Index()
-		{
-			if (!string.IsNullOrEmpty(Application))
-			{
-				return RedirectToAction("Show");
-			}
-
-			var applications = aaa.Applications();
-			return View(applications);
-        }
-		
-		public ActionResult Show()
-		{
-			return View();
-        }
-
-    }
 }

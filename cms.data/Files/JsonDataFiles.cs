@@ -1,17 +1,38 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Linq;
 using cms.data.Models;
 
 namespace cms.data.Files
 {
 	public class JsonDataFiles : JsonDataProvider
 	{
+		List<ApplicationSetting> apps  = new List<ApplicationSetting>()
+		                                 	{
+		                                 		new ApplicationSetting(){Id = 1, Name = "xxxxx"},
+		                                 		new ApplicationSetting(){Id = 2, Name = "xxxxxxxx"}
+		                                 	}; 
+
 		public JsonDataFiles(string application) : base(application)
 		{
 		}
 
-		public override JObject Applications()
+		public override ApplicationSetting GetApplication(int id)
+		{
+			return apps.Single(x => x.Id == id);
+		}
+
+		public override IEnumerable<ApplicationSetting> Applications()
+		{
+			return apps;
+		}
+
+
+		public override ApplicationSetting DeleteApplication(int id)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public override ApplicationSetting Add(ApplicationSetting newitem)
 		{
 			throw new System.NotImplementedException();
 		}
@@ -21,7 +42,7 @@ namespace cms.data.Files
 			throw new System.NotImplementedException();
 		}
 
-		public override Grid Grid(int id)
+		public override Grid GetGrid(int id)
 		{
 			var gridElems = new List<GridElement>()
 			                	{
@@ -40,6 +61,16 @@ namespace cms.data.Files
 			           	};
 
 			return grid;
+		}
+
+		public override Grid DeleteGrid(int id)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public override Grid Add(Grid newitem)
+		{
+			throw new System.NotImplementedException();
 		}
 	}
 }

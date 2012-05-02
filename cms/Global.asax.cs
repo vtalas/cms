@@ -24,8 +24,13 @@ namespace cms
 
 			routes.MapRoute(
 				"admin", // Route name
-				"admin/{application}/{controller}/{action}/{id}", // URL with parameters
-				new { controller = "admin", action = "Index", application="aaa", id = UrlParameter.Optional } // Parameter defaults
+				"admin/{application}/{action}/{id}", // URL with parameters
+				new { controller = "admin", action = "Index", application="", id = UrlParameter.Optional } // Parameter defaults
+			);
+			routes.MapRoute(
+				"adminapi", // Route name
+				"adminapi/{application}/{action}/{id}", // URL with parameters
+				new { controller = "adminapi", action = "error", application="", id = UrlParameter.Optional } // Parameter defaults
 			);
 			routes.MapRoute(
 				"client", // Route name

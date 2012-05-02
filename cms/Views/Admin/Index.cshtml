@@ -1,6 +1,13 @@
 ﻿@{
     ViewBag.Title = "Index";
+		
 }
+@model IEnumerable<cms.data.Models.ApplicationSetting>
 
-<h2>Admin</h2>
+<h2>.</h2>
 
+
+@foreach(var item in Model)
+{
+	<div>@item.Name</div>	
+}

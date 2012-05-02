@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Show";
+	Layout = "_Layout.cshtml";
+	
+	Bundles.Reference("~/Scripts/Admin/Show.js");
+}
+
+
+<div ng-controller="show">
+	
+	<div>
+		<textarea ng-model="data.header" cols="10" rows="2"></textarea>
+	</div>
+	<div>
+		<textarea ng-model="data.text"></textarea>
+	</div>
+
+	<div >
+		{{headerHtml() }}
+		
+		{{thumb() }}
+		
+		{{textHtml() }}
+	</div>
+
+</div>
+
