@@ -4,16 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using cms.data;
+using cms.data.Files;
 
 namespace cms.Controllers
 {
     public class AdminApiController : ApiControllerBase
     {
-        public ActionResult Index()
+
+        public ActionResult Applications()
         {
-			return new JSONNetResult(e);
+        	var applications = db.Applications();
+			return new JSONNetResult(applications);
 		}
+
         public ActionResult Error()
         {
         	var e = new JObject()
