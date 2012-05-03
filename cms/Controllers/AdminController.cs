@@ -19,10 +19,6 @@ namespace cms.Controllers
 
 		public ActionResult Index()
 		{
-			if (!string.IsNullOrEmpty(Application))
-			{
-				return RedirectToAction("Show");
-			}
 
 			var applications = db.Applications();
 
