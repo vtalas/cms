@@ -51,10 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF\DropAndCreate.cs" />
     <Compile Include="EF\EfDataProvider.cs" />
+    <Compile Include="EF\JsonDataEf.cs" />
     <Compile Include="Files\JsonDataFiles.cs" />
+    <Compile Include="GridElementExt.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="EF\EfContext.cs" />
+    <Compile Include="JsonDataProvider.cs" />
     <Compile Include="Models\ApplicationSetting.cs" />
     <Compile Include="Models\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

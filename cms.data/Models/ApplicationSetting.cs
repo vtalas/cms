@@ -24,7 +24,7 @@ namespace cms.data.Models
 		//public StatusWrapper Status { get; set; }
 
 		public virtual ApplicationSetting ApplicationSettings { get; set; }
-		public virtual ICollection<GridElement> GridElems { get; set; }
+		public virtual ICollection<GridElement> GridElements { get; set; }
 	}
 
 	public class GridElement : IEntity

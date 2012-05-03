@@ -1,20 +1,24 @@
 ﻿@{
-    ViewBag.Title = "Index";
+	Layout = "_Layout.cshtml";
+	ViewBag.Title = "Index";
 	Bundles.Reference("~/Scripts/Admin/Index.js");
+		
 }
 
-<div ng-controller="index">
-	<ul>
-		<li ng-repeat="item in data">
-			<a href="/admin/{{item.Name}}/Show">{{item.Name}}</a>
-		</li>
-	</ul>
+<div ng-app>
+	<div ng-controller="index">
+		<ul>
+			<li ng-repeat="item in data">
+				<a href="/admin/{{item.Name}}/grids">{{item.Name}}</a>
+			</li>
+		</ul>
 	
-	<form ng-submit="add()">
-		<input type="text" ng-model="newitem"  size="30"
-			placeholder="pridat dalsi">
-		<input  type="submit" value="pridat">
-	</form>
-	<span>{{data.length}} total </span>
+		<form ng-submit="add()">
+			<input type="text" ng-model="newitem"  size="30"
+				placeholder="pridat dalsi">
+			<input  type="submit" value="pridat">
+		</form>
+		<span>{{data.length}} total </span>
+	</div>
 </div>
 

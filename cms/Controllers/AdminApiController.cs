@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.data;
 using cms.data.Files;
+using cms.data.Models;
 
 namespace cms.Controllers
 {
@@ -19,21 +20,45 @@ namespace cms.Controllers
         	var applications = db.Applications();
 			return new JSONNetResult(applications);
 		}
-
-        public ActionResult Error()
+        public ActionResult ApplicationAdd(ApplicationSetting data)
         {
-        	var e = new JObject()
+        	var a = db.Add(data);		
+			return new JSONNetResult(a);
+		}
+
+        public ActionResult Show()
+        {
+			var g = db.GetGrid(1);
+        	var grid = g;
+
+			return new JSONNetResult(grid);
+		}
+
+		public ActionResult Grids()
+        {
+			var g = db.Grids();
+			return new JSONNetResult(g);
+		}
+
+		public ActionResult GetGrid(int id)
+        {
+			var g = db.GetGrid(id);
+			return new JSONNetResult(g);
+		}
+
+
+
+		public ActionResult Error()
+		{
+			var e = new JObject()
         	        	{
         	        		{"error", true},
         	        		{"message", "Not Fount"}
         	        	};
 			return new JSONNetResult(e);
 
-        }
-        public ActionResult Show()
-        {
-        	return View();
-        }
+		}
+
 
     }
 }

@@ -3,14 +3,24 @@
 	Layout = "_Layout.cshtml";
 	
 	Bundles.Reference("~/Scripts/Admin/Show.js");
-}
+	var ApplicationName = "xxxxxxxx";
+		
+	}
 
+<h2>@ApplicationName</h2>
 
-<div ng-controller="show">
+<div ng-app>
+
+	<div ng-controller="show" class="show" 
+		 data-application-name="@ApplicationName">
+		
+		<div ng-repeat="line in data.GridElements">
+			<div>
+				<button ng-click="edit()">Edit</button>
+				{{line.Content}}
+			</div>
+		</div>
 	
-	<div>
-		<textarea ng-model="data.header" cols="10" rows="2"></textarea>
+
 	</div>
-
 </div>
-

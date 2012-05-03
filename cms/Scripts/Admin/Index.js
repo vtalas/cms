@@ -1,21 +1,28 @@
-///<reference path="../angular-1.0.0rc6.js"/>
-
+///<reference path="../angular-1.0.0rc7.js"/>
 
 
 function index($scope, $http) {
 	var self = this;
 
-	$http({ method: 'POST', url: '/adminApi/aaa/Applications' })
+	$http({ method: 'POST', url: '/adminApi/null/Applications' })
 		.success(function (data, status, headers, config) {
 			$scope.data = data;
+			console.log(data);
 		})
 		.error(function (data, status, headers, config) {
 		});
 
-
-
 		$scope.add = function () {
-			$scope.data.push({ Name: $scope.newitem, Id: 0 });
+			var newitem = { Name: $scope.newitem };
+			$scope.data.push(newitem);
+
+			$http({ method: 'POST', url: '/adminApi/null/ApplicationAdd', data: newitem })
+				.success(function (data, status, headers, config) {
+				
+				})
+				.error(function (data, status, headers, config) {
+				
+				});
 			$scope.newitem = '';
 		};
 
