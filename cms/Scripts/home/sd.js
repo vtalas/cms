@@ -1,5 +1,5 @@
 ///<reference path="../showdown.js"/>
-///<reference path="../angular-1.0.0rc6.js"/>
+///<reference path="../angular-1.0.0rc7.js"/>
 
 
 function sd($scope, $http) {

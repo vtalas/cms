@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationSettingtestsEF.cs" />
+    <Compile Include="EF\JsonDataEfTest.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

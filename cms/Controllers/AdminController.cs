@@ -13,11 +13,8 @@ namespace cms.Controllers
 {
 	public class AdminController : ApiControllerBase
     {
-		private JsonDataProvider db { get; set; }
-
 		public AdminController()
 		{
-			db = new JsonDataFiles("xxx");
 		}
 
 		public ActionResult Index()
@@ -35,6 +32,16 @@ namespace cms.Controllers
 		public ActionResult Show()
 		{
 			return View();
+        }
+
+		public ActionResult Grids()
+		{
+			return View();
+        }
+		public ActionResult Template(string id)
+		{
+			var templateName = id;
+			return View(templateName);
         }
 
     }

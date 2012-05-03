@@ -27,7 +27,7 @@ namespace cms.data.Files
 		}
 
 
-		public override ApplicationSetting DeleteApplication(int id)
+		public override void DeleteApplication(int id)
 		{
 			throw new System.NotImplementedException();
 		}
@@ -57,13 +57,13 @@ namespace cms.data.Files
 			var grid = new Grid()
 			           	{
 
-			           		GridElems = gridElems
+			           		GridElements = gridElems
 			           	};
 
 			return grid;
 		}
 
-		public override Grid DeleteGrid(int id)
+		public override void DeleteGrid(int id)
 		{
 			throw new System.NotImplementedException();
 		}

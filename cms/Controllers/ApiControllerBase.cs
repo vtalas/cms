@@ -2,6 +2,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.data;
+using cms.data.EF;
 using cms.data.Files;
 
 namespace cms.Controllers
@@ -16,13 +17,19 @@ namespace cms.Controllers
 		}
 		public string Application { get;  private set; }
 
+		protected override void OnActionExecuted(ActionExecutedContext filterContext)
+		{
+			base.OnActionExecuted(filterContext);
+			ViewBag.Application = Application;
+		}
+
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
 			base.Initialize(requestContext);
 			var a = this.RouteData;
 			Application = a.Values["application"].ToString();
 
-			db = new JsonDataFiles("sasd");
+			db = new JsonDataEf(Application);
 
 		}
 		public class JSONNetResult : ActionResult
@@ -37,7 +44,12 @@ namespace cms.Controllers
 			{
 				var response = context.HttpContext.Response;
 				response.ContentType = "application/json";
-				response.Write(JsonConvert.SerializeObject(_data, Formatting.None));
+				var settings = new JsonSerializerSettings()
+				               	{
+				               		ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+				               	};
+				
+				response.Write(JsonConvert.SerializeObject(_data, Formatting.Indented,settings));
 			}
 		}
 	}
