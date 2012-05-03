@@ -37,7 +37,7 @@ namespace cms.Controllers
 		public ActionResult Template(string id)
 		{
 			var templateName = id;
-			return View(templateName);
+			return View("template/"+templateName);
         }
 
     }

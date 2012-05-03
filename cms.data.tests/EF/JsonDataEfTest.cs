@@ -11,17 +11,20 @@ namespace cms.data.tests.EF
 	[TestFixture]
 	public class JsonDataEfTest
 	{
-		private JsonDataEf db { get; set; }
-
-
+		private JsonDataEf repo { get; set; }
+		
 		private IList<ApplicationSetting> AplicationSettings()
 		{
-			return db.Applications().ToList();
+			return repo.Applications().ToList();
 		}
 
 		private IList<Grid> Grids()
 		{
-			return db.Grids().ToList();
+			return repo.Grids().ToList();
+		}
+		private Grid Grid()
+		{
+			return repo.Grids().Single(x => x.Id == 1);
 		}
 			
 		[SetUp]
@@ -29,13 +32,13 @@ namespace cms.data.tests.EF
 		{
 			var context = new EfContext();
 			Database.SetInitializer(new DropAndCreate());
-			db = new JsonDataEf("aaa", context);
+			repo = new JsonDataEf("aaa", context);
 		}
 
 		[Test]
 		public void Applications_test()
 		{
-			var list = db.Applications();
+			var list = repo.Applications();
 
 			foreach (var item in list)
 			{
@@ -46,7 +49,6 @@ namespace cms.data.tests.EF
 			Assert.IsTrue(list.Any());
 		}
 
-
 		[Test]
 		public void Application_add_test()
 		{
@@ -54,10 +56,31 @@ namespace cms.data.tests.EF
 			        	{
 			        		Name = "xxx",
 			        	};
-			var newitem = db.Add(a);
+			var newitem = repo.Add(a);
 			Console.WriteLine(newitem.Name);
 
-			Assert.IsNotNull(db.GetApplication(newitem.Id));
+			Assert.IsNotNull(repo.GetApplication(newitem.Id));
+
+		}
+		
+		[Test]
+		public void AddGridElement()
+		{
+			var grid = repo.GetGrid(1);
+
+			var gridelem = new GridElement()
+			{
+				Content = "XXX",
+				Line = 0,
+				Position = 0,
+				Width = 12,
+				Type = "text",
+			};
+			gridelem.Grid.Add(grid);
+			var newgridelem = repo.Add(gridelem);
+
+			Console.WriteLine(newgridelem.Grid.Count);
+			Console.WriteLine(repo.GetGrid(1).GridElements.Count);
 
 		}
 

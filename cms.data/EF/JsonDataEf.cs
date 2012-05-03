@@ -78,5 +78,11 @@ namespace cms.data.EF
 			db.SaveChanges();
 			return newitem;
 		}
+		public override GridElement Add(GridElement newitem)
+		{
+			db.GridElements.Add(newitem);
+			db.SaveChanges();
+			return newitem;
+		}
 	}
 }

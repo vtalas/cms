@@ -49,9 +49,26 @@ function EditCtrl($scope, $http, $routeParams) {
 
 		});
 
-	$scope.edit = function (parameters) {
-		console.log(parameters);
-	};
+		$scope.add = function (parameters) {
+			var newitem = { Width: 12, Content: $scope.newName };
+			$scope.data.GridElements.push(newitem);
+
+			$http({
+				method: 'POST',
+				url: '/adminApi/null/AddGridElement',
+				data: {
+					data: newitem,
+					gridId: $scope.data.Id
+				}
+			}).success(function(data, status, headers, config) {
+
+			});
+
+			$scope.newName = '';
+
+
+			console.log($scope.newName);
+		};
 
 }
 

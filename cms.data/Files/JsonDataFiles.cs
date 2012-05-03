@@ -32,6 +32,11 @@ namespace cms.data.Files
 			throw new System.NotImplementedException();
 		}
 
+		public override GridElement Add(GridElement gridElement)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public override ApplicationSetting Add(ApplicationSetting newitem)
 		{
 			throw new System.NotImplementedException();

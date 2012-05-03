@@ -34,7 +34,8 @@ namespace cms.data.EF
 
 			var grids = new Grid()
 			            	{
-			            		Link = "gridSelementama",
+			            		Id = 1,
+								Link = "gridSelementama",
 			            		Name = "test page",
 			            		GridElements = new List<GridElement>()
 			            		               	{
@@ -51,7 +52,8 @@ namespace cms.data.EF
 			context.Grids.Add(grids);
 			context.Grids.Add(new Grid
 			                  	{
-			                  		Link = "sdakjs",
+			                  		Id = 2,
+									Link = "sdakjs",
 			                  		Name = "grid Bez elementu"
 			                  	});
 

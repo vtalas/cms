@@ -15,6 +15,7 @@ namespace cms.data.Models
 		{
 			//GridType = DomainModels.GridType.Content;
 			//Status = DomainModels.Status.Private;
+			GridElements = new List<GridElement>();
 		}
 		public int Id { get; set; }
 		public string Name { get; set; }
@@ -32,6 +33,7 @@ namespace cms.data.Models
 		public GridElement()
 		{
 			//Status = DomainModels.Status.Private;
+			Grid = new List<Grid>();
 		}
 
 		public int Id { get; set; }

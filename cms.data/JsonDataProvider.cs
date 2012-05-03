@@ -20,12 +20,13 @@ namespace cms.data
 		public abstract IEnumerable<ApplicationSetting> Applications();
 		public abstract ApplicationSetting GetApplication(int id);
 		public abstract void DeleteApplication(int id);
-		public abstract ApplicationSetting Add(ApplicationSetting newitem);
+		public abstract GridElement Add(GridElement gridElement);
 
 		public abstract IEnumerable<Grid> Grids();
 		public abstract Grid GetGrid(int id);
 		public abstract void DeleteGrid(int id);
 		public abstract Grid Add(Grid newitem);
+		public abstract ApplicationSetting Add(ApplicationSetting newitem);
 	}
 }
 

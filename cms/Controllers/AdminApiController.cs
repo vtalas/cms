@@ -20,18 +20,18 @@ namespace cms.Controllers
         	var applications = db.Applications();
 			return new JSONNetResult(applications);
 		}
-        public ActionResult ApplicationAdd(ApplicationSetting data)
+        public ActionResult AddApplication(ApplicationSetting data)
         {
         	var a = db.Add(data);		
 			return new JSONNetResult(a);
 		}
-
-        public ActionResult Show()
+        public ActionResult AddGridElement(GridElement data, int gridId)
         {
-			var g = db.GetGrid(1);
-        	var grid = g;
-
-			return new JSONNetResult(grid);
+        	var grid = db.GetGrid(gridId);
+        	data.Grid.Add(grid);
+			
+			var newitem = db.Add(data);
+			return new JSONNetResult(newitem);
 		}
 
 		public ActionResult Grids()
@@ -45,8 +45,6 @@ namespace cms.Controllers
 			var g = db.GetGrid(id);
 			return new JSONNetResult(g);
 		}
-
-
 
 		public ActionResult Error()
 		{

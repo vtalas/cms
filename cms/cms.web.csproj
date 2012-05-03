@@ -174,7 +174,6 @@
     <Content Include="Scripts\Admin\Index.js" />
     <Content Include="Scripts\angular-1.0.0rc7.js" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\Admin\Show.js" />
     <Content Include="Scripts\home\sd.js" />
     <Content Include="Scripts\home\index.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
@@ -227,22 +226,19 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Show.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Admin\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Grids.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\list.cshtml" />
+    <Content Include="Views\Admin\template\list.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\new.cshtml" />
+    <Content Include="Views\Admin\template\new.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\edit.cshtml" />
+    <Content Include="Views\Admin\template\edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Node\package.json" />
