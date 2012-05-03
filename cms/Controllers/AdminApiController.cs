@@ -33,9 +33,16 @@ namespace cms.Controllers
 
 			return new JSONNetResult(grid);
 		}
-        public ActionResult Grids()
+
+		public ActionResult Grids()
         {
 			var g = db.Grids();
+			return new JSONNetResult(g);
+		}
+
+		public ActionResult GetGrid(int id)
+        {
+			var g = db.GetGrid(id);
 			return new JSONNetResult(g);
 		}
 
