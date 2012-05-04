@@ -2,15 +2,38 @@
 
 var module = angular.module("gridsmodule", []);
 
-module.config(function ($routeProvider) {
+module.config(function($routeProvider) {
 	$routeProvider
-      .when('/list', { controller: GridListController, template: 'template/list' })
-      .when('/edit/:Id', { controller: EditCtrl, template: 'template/edit' })
-      .when('/new', { controller: CreateCtrl, template: 'template/new' })
-      .otherwise({ redirectTo: '/list' });
+		.when('/list', { controller: GridListController, template: 'template/list' })
+		.when('/gridpage/:Id', { controller: GridPageCtrl, template: 'template/gridpage' })
+		.when('/gridpage/:Id/edit/:GridElementId', { controller: EditCtrl, template: 'template/edit' })
+		.when('/new', { controller: CreateCtrl, template: 'template/new' })
+		.otherwise({ redirectTo: '/list' });
 });
 
-//console.log(module,"module");
+module.directive("gridelement", function ($templateCache) {
+	var elementType = "aaaa";
+
+	if (!$templateCache.get(elementType)) {
+		$.ajax({
+			url: 'template/' + elementType,
+			async:false, //kvuli tomuto tu neni $http
+			success: function (data) {
+				$templateCache.put(elementType, data);
+			}
+		});
+	}
+	var template = $templateCache.get(elementType);
+
+	return {
+		restrict: 'E',
+		scope: {},
+		controller: elementType,
+		template: template,
+		replace: true
+	};
+});
+
 appName = function() {
 	var e = angular.element(".gridsmodule"); ;
 	return e.data("application-name");
@@ -18,7 +41,7 @@ appName = function() {
 
 function GridListController($scope, $http) {
 	var self = this;
-	
+	//console.log($element);
 	$http({ method: 'POST', url: '/adminApi/'+appName()+'/grids' })
 		.success(function (data, status, headers, config) {
 			$scope.data = data;
@@ -35,14 +58,13 @@ function GridListController($scope, $http) {
 
 }
 
-function EditCtrl($scope, $http, $routeParams) {
+function GridPageCtrl($scope, $http, $routeParams) {
 	$scope.data = { };
-	console.log($scope);
 	
 	$http({ method: 'POST', url: '/adminApi/' + appName() + '/GetGrid/' + $routeParams.Id })
 		.success(function (data, status, headers, config) {
 			$scope.data = data;
-			console.log(data, "edit");
+			//console.log(data, "edit");
 		})
 		
 		.error(function (data, status, headers, config) {
@@ -74,5 +96,13 @@ function EditCtrl($scope, $http, $routeParams) {
 
 function CreateCtrl($scope) {
 	
+}
+function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templateCache) {
+	console.log($route)
+	console.log($routeParams)
+	console.log($location)
+	console.log($scope)
+	console.log($log)
+	console.log($templateCache)
 }
 

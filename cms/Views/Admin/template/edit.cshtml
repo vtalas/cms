@@ -1,9 +1,9 @@
-﻿<h2><a href="#list">Edit</a></h2>
-
+﻿<h2><a href="#gridpage/{{data.Id}}">Edit</a></h2>
+{{data}}
 <h2>{{data.Name}}</h2>
 <div ng-repeat="item in data.GridElements">
-	{{item.Content}}	
 </div>
 	
 <input type="text" ng-model="newName"/>
-<button ng-click="add()">pridat</button>
+
+

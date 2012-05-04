@@ -1,0 +1,14 @@
+﻿<h2>{{data.Name}}</h2>
+<div ng-repeat="item in data.GridElements">
+	
+	<div style="border:1px solid red">
+		<a href="#/gridpage/{{data.Id}}/edit/{{item.Id}}" target="_blank">edit (nová stránka) </a>
+		{{item.Content}}
+	
+	<gridelement></gridelement>
+	
+	</div>
+</div>
+	
+<input type="text" ng-model="newName"/>
+<button ng-click="add()">pridat</button>
