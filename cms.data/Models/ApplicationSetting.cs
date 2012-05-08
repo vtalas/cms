@@ -34,6 +34,8 @@ namespace cms.data.Models
 		{
 			//Status = DomainModels.Status.Private;
 			Grid = new List<Grid>();
+			Type = "text";
+
 		}
 
 		public int Id { get; set; }

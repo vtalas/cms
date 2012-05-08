@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using cms.data.Models;
 
@@ -71,6 +72,25 @@ namespace cms.data.EF
 			db.Grids.Remove(delete);
 			db.SaveChanges();
 		}
+		public override void DeleteGridElement(int id)
+		{
+			var delete = GetGridElement(id);
+			db.GridElements.Remove(delete);
+			db.SaveChanges();
+		}
+
+		public override GridElement GetGridElement(int id)
+		{
+			return db.GridElements.Single(x => x.Id == id);
+		}
+
+		public override GridElement Update(GridElement item)
+		{
+			db.Entry(item).State = EntityState.Modified;
+			//db.GridElements.Attach(item);
+			db.SaveChanges();
+			return item;
+		}
 
 		public override Grid Add(Grid newitem)
 		{
@@ -84,5 +104,6 @@ namespace cms.data.EF
 			db.SaveChanges();
 			return newitem;
 		}
+
 	}
 }

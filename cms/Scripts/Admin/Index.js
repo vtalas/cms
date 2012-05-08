@@ -1,4 +1,4 @@
-///<reference path="../angular-1.0.0rc7.js"/>
+///<reference path="../angular-1.0.0rc8.js"/>
 
 
 function index($scope, $http) {

@@ -9,7 +9,8 @@
 	<div ng-controller="index">
 		<ul>
 			<li ng-repeat="item in data">
-				<a href="/admin/{{item.Name}}/grids">{{item.Name}}</a>
+				<a href="/admin/{{item.Name}}/grids">{{item.Name}}</a> |
+				<a href="/client/{{item.Name}}">Preview</a>
 			</li>
 		</ul>
 	

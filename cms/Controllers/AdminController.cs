@@ -37,7 +37,12 @@ namespace cms.Controllers
 		public ActionResult Template(string id)
 		{
 			var templateName = id;
-			return View("template/"+templateName);
+			return View("template/" + templateName);
+        }
+		public ActionResult GridElementTmpl(string id)
+		{
+			var templateName = id;
+			return View("_GridElementTmpl/" + templateName);
         }
 
     }

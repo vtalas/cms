@@ -1,8 +1,19 @@
-///<reference path="../angular-1.0.0rc7.js"/>
+///<reference path="../angular-1.0.0rc8.js"/>
+
 
 var module = angular.module("gridsmodule", []);
-
-module.config(function($routeProvider) {
+module.config(function ($routeProvider, $provide) {
+	$provide.factory('appSettings', function () {
+		var e = angular.element(".gridsmodule"); ;
+		var settings = {
+			Name: e.data("application-name")
+		};
+		return settings;
+	});
+	$provide.factory('$gridApi', function () {
+		
+		return null;
+	});
 	$routeProvider
 		.when('/list', { controller: GridListController, template: 'template/list' })
 		.when('/gridpage/:Id', { controller: GridPageCtrl, template: 'template/gridpage' })
@@ -10,58 +21,61 @@ module.config(function($routeProvider) {
 		.when('/new', { controller: CreateCtrl, template: 'template/new' })
 		.otherwise({ redirectTo: '/list' });
 });
+module.run(function ($route) {
+});
 
-module.directive("gridelement", function ($templateCache) {
-	var elementType = "aaaa";
-
-	if (!$templateCache.get(elementType)) {
-		$.ajax({
-			url: 'template/' + elementType,
-			async:false, //kvuli tomuto tu neni $http
-			success: function (data) {
-				$templateCache.put(elementType, data);
-			}
-		});
-	}
-	var template = $templateCache.get(elementType);
-
-	return {
-		restrict: 'E',
-		scope: {},
-		controller: elementType,
-		template: template,
-		replace: true
+module.directive("gridelement", function factory($templateCache, $compile, $rootScope) {
+	var template = function (type) {
+		var elementType = type ? type : "textEdit";
+		if (!$templateCache.get(elementType)) {
+			$.ajax({
+				url: 'GridElementTmpl/' + elementType+"Edit",
+				async: false, //kvuli tomuto tu neni $http
+				success: function (data) {
+					$templateCache.put(elementType, data);
+				}
+			});
+		}
+		return $templateCache.get(elementType);
 	};
+
+	var directiveDefinitionObject = {
+		scope: {},
+		link: function (scope, iElement, tAttrs, transclude) {
+			var item = scope.$parent.item;
+			var type = item.Type;
+			
+			var sablona = template(type);
+			var compiled = $compile(sablona);
+			iElement.html(compiled	(scope.$parent));
+		}
+	};
+
+
+	return directiveDefinitionObject;
 });
 
 appName = function() {
-	var e = angular.element(".gridsmodule"); ;
-	return e.data("application-name");
 };
 
-function GridListController($scope, $http) {
+function GridListController($scope, $http,  $rootScope, appSettings, $gridApi) {
 	var self = this;
-	//console.log($element);
-	$http({ method: 'POST', url: '/adminApi/'+appName()+'/grids' })
-		.success(function (data, status, headers, config) {
+	$scope.data = { };
+	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/grids' })
+		.success(function(data, status, headers, config) {
 			$scope.data = data;
-			console.log(data, "GridListController");
-		})
-
-		.error(function (data, status, headers, config) {
-
+			//console.log(data, "GridListController");
 		});
 
-		$scope.edit = function (parameters) {
-			console.log(parameters);
-		};
+
 
 }
 
-function GridPageCtrl($scope, $http, $routeParams) {
-	$scope.data = { };
-	
-	$http({ method: 'POST', url: '/adminApi/' + appName() + '/GetGrid/' + $routeParams.Id })
+function GridPageCtrl($scope, $http, $routeParams, appSettings) {
+	$scope.data = {};
+	var self = this;
+
+	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGrid/' + $routeParams.Id })
 		.success(function (data, status, headers, config) {
 			$scope.data = data;
 			//console.log(data, "edit");
@@ -71,8 +85,8 @@ function GridPageCtrl($scope, $http, $routeParams) {
 
 		});
 
-		$scope.add = function (parameters) {
-			var newitem = { Width: 12, Content: $scope.newName };
+		$scope.add = function () {
+			var newitem = { Width: 12, Type: $scope.newName };
 			$scope.data.GridElements.push(newitem);
 
 			$http({
@@ -85,24 +99,45 @@ function GridPageCtrl($scope, $http, $routeParams) {
 			}).success(function(data, status, headers, config) {
 
 			});
-
 			$scope.newName = '';
-
-
-			console.log($scope.newName);
 		};
+		$scope.remove = function (item) {
+			var index = $scope.data.GridElements.indexOf(item);
+			if (index != -1) $scope.data.GridElements.splice(index, 1);
+
+			$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/DeleteGridElement', data: item })
+				.success(function (data, status, headers, config) {
+					console.log("deleted");
+				});
+			};
+
+			$scope.edit = function (item, $element) {
+				console.log(item.Type, $element, "par");
+				item.Edit = 1;
+			}
+	;
 
 }
 
 function CreateCtrl($scope) {
 	
 }
-function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templateCache) {
-	console.log($route)
-	console.log($routeParams)
-	console.log($location)
-	console.log($scope)
-	console.log($log)
-	console.log($templateCache)
+function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
+	$scope.data = {};
+	console.log($routeParams);
+
+	$scope.sablona = "GridElementTmpl/novinka";
+
+	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGridElement/' + $routeParams.GridElementId })
+		.success(function (data, status, headers, config) {
+			$scope.data = data;
+			console.log(data, "edit");
+		})
+
+		.error(function (data, status, headers, config) {
+
+		});
+
+
 }
 

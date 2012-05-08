@@ -42,6 +42,21 @@ namespace cms.data.Files
 			throw new System.NotImplementedException();
 		}
 
+		public override void DeleteGridElement(int id)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public override GridElement GetGridElement(int id)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public override GridElement Update(GridElement item)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public override IEnumerable<Grid> Grids()
 		{
 			throw new System.NotImplementedException();

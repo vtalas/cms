@@ -1,7 +1,8 @@
 ﻿<p>...............................................</p>
 	<div ng-repeat="line in data">
 		<div>
-			<a href="#/gridpage/{{line.Id}}"> {{line.Name}}</a>
+			<a href="#/gridpage/{{line.Id}}"> {{line.Name}}</a> 
+			<button ng-click="remove()">Smazat</button>
 		</div>
 
 	</div>

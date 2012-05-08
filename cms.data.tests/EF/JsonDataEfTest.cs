@@ -83,6 +83,40 @@ namespace cms.data.tests.EF
 			Console.WriteLine(repo.GetGrid(1).GridElements.Count);
 
 		}
+		[Test]
+		public void UpdateGridElement()
+		{
+			var a = new GridElement
+			        	{
+			        		Content = "oldcontent",
+			        		Width = 12,
+			        		Line = 0,
+			        		Skin = "xxx"
+			        	};
+			var newitem = repo.Add(a);
+
+			Assert.True(newitem.Id !=0);
+
+			newitem.Line = 1;
+			newitem.Content = "newcontent";
+			newitem.Width  = 0;
+
+			repo.Update(newitem);
+
+			var updated = repo.GetGridElement(newitem.Id);
+
+			Console.WriteLine(updated.Id);
+			Console.WriteLine(updated.Line);
+			Console.WriteLine(updated.Width);
+			Console.WriteLine(updated.Content);
+
+
+
+
+
+
+
+		}
 
 	}
 }

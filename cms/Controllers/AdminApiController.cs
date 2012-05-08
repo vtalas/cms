@@ -33,19 +33,32 @@ namespace cms.Controllers
 			var newitem = db.Add(data);
 			return new JSONNetResult(newitem);
 		}
-
+        public ActionResult DeleteGridElement(GridElement data)
+        {
+			db.DeleteGridElement(data.Id); 
+			return new JSONNetResult(null);
+		}
 		public ActionResult Grids()
         {
 			var g = db.Grids();
 			return new JSONNetResult(g);
 		}
-
 		public ActionResult GetGrid(int id)
         {
 			var g = db.GetGrid(id);
 			return new JSONNetResult(g);
 		}
-
+		
+		public ActionResult UpdateGridElement(GridElement item)
+		{
+			var g = db.Update(item);
+			return new JSONNetResult(g);
+		}
+		public ActionResult GetGridElement(int id)
+        {
+			var g = db.GetGridElement(id);
+			return new JSONNetResult(g);
+		}
 		public ActionResult Error()
 		{
 			var e = new JObject()

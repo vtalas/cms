@@ -1,15 +1,17 @@
 ﻿@{
     ViewBag.Title = "grids";
 	Layout = "_Layout.cshtml";
-	
+
+	Bundles.Reference("~/Scripts/showdown.js");
 	Bundles.Reference("~/Scripts/Admin/Grids.js");
-	Bundles.Reference("~/Scripts/Admin/xxx.js");
+	Bundles.Reference("~/Scripts/_GridElementScripts/text.js");
+	Bundles.Reference("~/Scripts/_GridElementScripts/novinka.js");
+	
 	var ApplicationName = ViewBag.Application;
 	}
 
 <h2>@ApplicationName</h2>
 @Html.ActionLink("back","index","admin")
-
 
 
 <div ng-app="gridsmodule"

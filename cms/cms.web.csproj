@@ -169,12 +169,11 @@
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Node\readme.txt" />
-    <Content Include="Scripts\Admin\xxx.js" />
+    <Content Include="Scripts\_GridElementScripts\text.js" />
     <Content Include="Scripts\Admin\Grids.js" />
     <Content Include="Scripts\Admin\Index.js" />
     <Content Include="Scripts\angular-1.0.0rc7.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\home\sd.js" />
+    <Content Include="Scripts\_GridElementScripts\novinka.js" />
     <Content Include="Scripts\home\index.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\showdown.js" />
@@ -206,9 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\sd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\index.cshtml" />
@@ -243,7 +239,10 @@
   <ItemGroup>
     <None Include="Node\package.json" />
     <Content Include="Views\Admin\template\edit.cshtml" />
-    <Content Include="Views\Admin\template\aaaa.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\text.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\novinka.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\novinkaEdit.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\textEdit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -262,7 +261,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63848</DevelopmentServerPort>
+          <DevelopmentServerPort>62364</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/cms</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -1,0 +1,46 @@
+///<reference path="../showdown.js"/>
+///<reference path="../jquery-1.7.2.js"/>
+///<reference path="../angular-1.0.0rc8.js"/>
+
+function novinka($scope, $http,appSettings) {
+	$scope.data = $scope.$parent.item;
+	
+	
+	$scope.data.Content = angular.fromJson($scope.data.Content) || {header:"",text:""};
+	
+	//console.log("nka", $scope.data.Content, appSettings);
+	//$scope.data.Content.header = $scope.$parent.item.Content.header || "AA";
+	//$scope.data.Content.text = $scope.$parent.item.Content.text || "XXX";
+	
+	var converter = new Showdown.converter();
+	var self = this;
+	var toHtml = function (markdown) {
+		return converter.makeHtml(markdown);
+	};
+
+	$scope.headerHtml = function () {
+		return toHtml($scope.data.Content.header);
+	};
+
+	$scope.textHtml = function () {
+		return toHtml($scope.data.Content.text);
+	};
+
+	$scope.thumb = function () {
+		return $scope.data.thumb;
+	};
+
+	$scope.save = function () {
+		var data = jQuery.extend(true, {}, $scope.data);
+		
+		if(angular.isObject(data.Content))
+			data.Content = JSON.stringify(data.Content);
+		
+		$http({
+			method: 'POST',
+			url: '/adminApi/' + appSettings.Name + '/UpdateGridElement/' + $scope.data.Id,
+			data: data
+		});
+
+	};
+}
