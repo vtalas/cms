@@ -1,18 +1,16 @@
 ﻿<h2>{{data.Name}}</h2>
 
 
-<div ng-repeat="item in data.GridElements">
+<div ng-repeat="line in data.Lines">
 	
-	<div style="border:1px solid red">
-		<a href="#/gridpage/{{data.Id}}/edit/{{item.Id}}" target="_blank">edit (nová stránka) </a>
-		<button ng-click="remove(item)">smazat</button>
+	<span ng-repeat="item in line">
+		{{item.Id}} | {{item.Width}} .
 		<button ng-click="edit(item)">edit</button>
-
+		<button ng-click="remove(item)">smazat</button>
 		<div gridelement  ></div>
-
-	</div>
+	</span>
+	<hr />
 </div>
 	
 <input type="text" ng-model="newName"/>
 <button ng-click="add()">pridat</button>
-s

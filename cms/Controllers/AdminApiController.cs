@@ -45,10 +45,9 @@ namespace cms.Controllers
 		}
 		public ActionResult GetGrid(int id)
         {
-			var g = db.GetGrid(id);
+			var g = db.GetGridPage(id);
 			return new JSONNetResult(g);
 		}
-		
 		public ActionResult UpdateGridElement(GridElement item)
 		{
 			var g = db.Update(item);

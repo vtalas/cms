@@ -58,12 +58,21 @@ namespace cms.data.EF
 
 		public override IEnumerable<Grid> Grids()
 		{
-			return db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
+			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
+			return a;
+
+
 		}
 
 		public override Grid GetGrid(int id)
 		{
 			return db.Grids.Single(x => x.Id == id);
+		}
+
+		public override GridPage GetGridPage(int id)
+		{
+			var a = db.Grids.Single(x => x.Id == id);
+			return a.ToGridPage();
 		}
 
 		public override void DeleteGrid(int id)

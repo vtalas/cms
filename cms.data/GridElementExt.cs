@@ -7,6 +7,18 @@ namespace cms.data
 	public static class GridElementExt
 	{
 
+		public static GridPage ToGridPage(this Grid source)
+		{
+			return new GridPage
+			{
+				Lines = source.GridElements.ToLines(),
+				Home = source.Home,
+				Id = source.Id,
+				Link = source.Link,
+				Name = source.Name
+			};
+
+		}
 		private static IEnumerable<GridElement> DefaultLine(int line)
 		{
 			var d = new List<GridElement>();

@@ -78,17 +78,17 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGrid/' + $routeParams.Id })
 		.success(function (data, status, headers, config) {
 			$scope.data = data;
-			//console.log(data, "edit");
+			console.log(data, "edit");
 		})
 		
 		.error(function (data, status, headers, config) {
 
 		});
 
-		$scope.add = function () {
-			var newitem = { Width: 12, Type: $scope.newName };
-			$scope.data.GridElements.push(newitem);
 
+		$scope.add = function (item) {
+			var newitem = item ? addItem(item) : addNewline();
+			console.log(newitem);
 			$http({
 				method: 'POST',
 				url: '/adminApi/null/AddGridElement',
@@ -96,8 +96,8 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 					data: newitem,
 					gridId: $scope.data.Id
 				}
-			}).success(function(data, status, headers, config) {
-
+			}).success(function (data, status, headers, config) {
+				//TODO update value 
 			});
 			$scope.newName = '';
 		};
@@ -116,7 +116,19 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 				item.Edit = 1;
 			}
 	;
+			var addNewline = function () {
+				var newlineIndex = $scope.data.Lines.length;
+				var newline = [];
+				var newitem = { Width: 12, Type: $scope.newName, Line: newlineIndex };
 
+				newline.push(newitem);
+
+				$scope.data.Lines.push(newline);
+				return newitem;
+			};
+			var addItem = function (newitem) {
+				return newitem;
+			};
 }
 
 function CreateCtrl($scope) {

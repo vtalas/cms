@@ -83,6 +83,11 @@ namespace cms.data.Files
 			return grid;
 		}
 
+		public override GridPage GetGridPage(int id)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public override void DeleteGrid(int id)
 		{
 			throw new System.NotImplementedException();
