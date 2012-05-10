@@ -30,6 +30,12 @@ function novinka($scope, $http,appSettings) {
 		return $scope.data.thumb;
 	};
 
+
+	////////////////////////////
+	$scope.add = function() {
+		
+	};
+
 	$scope.save = function () {
 		var data = jQuery.extend(true, {}, $scope.data);
 		

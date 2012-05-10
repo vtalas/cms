@@ -26,7 +26,7 @@ module.run(function ($route) {
 
 module.directive("gridelement", function factory($templateCache, $compile, $rootScope) {
 	var template = function (type) {
-		var elementType = type ? type : "textEdit";
+		var elementType = type ? type : "text";
 		if (!$templateCache.get(elementType)) {
 			$.ajax({
 				url: 'GridElementTmpl/' + elementType+"Edit",
@@ -66,9 +66,6 @@ function GridListController($scope, $http,  $rootScope, appSettings, $gridApi) {
 			$scope.data = data;
 			//console.log(data, "GridListController");
 		});
-
-
-
 }
 
 function GridPageCtrl($scope, $http, $routeParams, appSettings) {
@@ -89,6 +86,7 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 		$scope.add = function (item) {
 			var newitem = item ? addItem(item) : addNewline();
 			console.log(newitem);
+
 			$http({
 				method: 'POST',
 				url: '/adminApi/null/AddGridElement',
@@ -97,25 +95,29 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 					gridId: $scope.data.Id
 				}
 			}).success(function (data, status, headers, config) {
-				//TODO update value 
+				console.log(data, "ser");
+				if (data.Line >= $scope.data.Lines.length) {
+					$scope.data.Lines.push([]);
+				}
+				$scope.data.Lines[data.Line][data.Position] = data;
 			});
 			$scope.newName = '';
 		};
 		$scope.remove = function (item) {
-			var index = $scope.data.GridElements.indexOf(item);
-			if (index != -1) $scope.data.GridElements.splice(index, 1);
+			console.log(item);
+			var index = $scope.data.Lines[item.Line].indexOf(item);
+
+			if (index != -1) $scope.data.Lines[item.Line].splice(index, 1);
 
 			$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/DeleteGridElement', data: item })
 				.success(function (data, status, headers, config) {
 					console.log("deleted");
 				});
-			};
+		};
 
-			$scope.edit = function (item, $element) {
-				console.log(item.Type, $element, "par");
-				item.Edit = 1;
-			}
-	;
+		$scope.edit = function(item, $element) {
+			item.Edit = 1;
+		};
 			var addNewline = function () {
 				var newlineIndex = $scope.data.Lines.length;
 				var newline = [];
@@ -123,7 +125,6 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 
 				newline.push(newitem);
 
-				$scope.data.Lines.push(newline);
 				return newitem;
 			};
 			var addItem = function (newitem) {

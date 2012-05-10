@@ -3,7 +3,16 @@
 }
 <div ng-controller="text">
 	<b>text</b>
-	<div ng-show="item.Edit">
+
+	<div ng-show="item.Id">
+		<button ng-click="edit(item)">edit</button>
+		<button ng-click="remove(item)">smazat</button>
+	</div>
+	<div ng-show="item.Id==0">
+		<button ng-click="add(item)">Create</button>
+	</div>
+	
+	<div ng-show="item.Edit" >
 		<div>
 			<textarea ng-model="data.Content" cols="10" rows="2"></textarea>
 		</div>

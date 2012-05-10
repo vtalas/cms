@@ -5,6 +5,8 @@ function text($scope, $http, appSettings) {
 	$scope.data = $scope.$parent.item; 
 	//console.log("text controller", $scope, $scope.item);
 
+
+	////////////////////////
 	$scope.save = function () {
 		var data = jQuery.extend(true, {}, $scope.data);
 		if (angular.isObject(data.Content))
