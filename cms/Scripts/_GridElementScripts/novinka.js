@@ -36,17 +36,4 @@ function novinka($scope, $http,appSettings) {
 		
 	};
 
-	$scope.save = function () {
-		var data = jQuery.extend(true, {}, $scope.data);
-		
-		if(angular.isObject(data.Content))
-			data.Content = JSON.stringify(data.Content);
-		
-		$http({
-			method: 'POST',
-			url: '/adminApi/' + appSettings.Name + '/UpdateGridElement/' + $scope.data.Id,
-			data: data
-		});
-
-	};
 }

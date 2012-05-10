@@ -1,25 +1,24 @@
 ﻿@{
 	//Bundles.Reference("~/Scripts/Admin/aaaa.js");
-}
-<div ng-controller="text">
-	<b>text</b>
+	}
+@model cms.Controllers.TemplateSettings
+
+<div ng-controller="@Model.Type" >
 
 	<div ng-show="item.Id">
 		<button ng-click="edit(item)">edit</button>
 		<button ng-click="remove(item)">smazat</button>
+		<b>@Model.Type</b>
 	</div>
 	<div ng-show="item.Id==0">
 		<button ng-click="add(item)">Create</button>
 	</div>
 	
 	<div ng-show="item.Edit" >
-		<div>
-			<textarea ng-model="data.Content" cols="10" rows="2"></textarea>
-		</div>
-		<button ng-click="save()">Uložit</button>
+		@Html.Partial(Model.TemplateEdit)
 	</div>
+		@Html.Partial(Model.TemplateView)
 	
-	@Html.Partial("_GridElementTmpl/text")
 
 </div>
 

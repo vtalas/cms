@@ -29,7 +29,8 @@ module.directive("gridelement", function factory($templateCache, $compile, $root
 		var elementType = type ? type : "text";
 		if (!$templateCache.get(elementType)) {
 			$.ajax({
-				url: 'GridElementTmpl/' + elementType+"Edit",
+				url: 'GridElementTmpl',
+				data : {type: elementType},
 				async: false, //kvuli tomuto tu neni $http
 				success: function (data) {
 					$templateCache.put(elementType, data);
@@ -118,6 +119,25 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 		$scope.edit = function(item, $element) {
 			item.Edit = 1;
 		};
+
+		$scope.save = function (item) {
+			var data = jQuery.extend(true, {}, item);
+
+			if (angular.isObject(data.Content))
+				data.Content = JSON.stringify(data.Content);
+
+			$http({
+				method: 'POST',
+				url: '/adminApi/' + appSettings.Name + '/UpdateGridElement/' + $scope.data.Id,
+				data: data
+			}).success(function () {
+				item.Edit = 0;
+
+			});
+
+		};
+
+
 			var addNewline = function () {
 				var newlineIndex = $scope.data.Lines.length;
 				var newline = [];

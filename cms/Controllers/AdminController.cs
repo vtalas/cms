@@ -24,12 +24,10 @@ namespace cms.Controllers
 
 			return View(applications);
 		}
-		
 		public ActionResult Show()
 		{
 			return View();
         }
-
 		public ActionResult Grids()
 		{
 			return View();
@@ -39,11 +37,24 @@ namespace cms.Controllers
 			var templateName = id;
 			return View("template/" + templateName);
         }
-		public ActionResult GridElementTmpl(string id)
+		public ActionResult GridElementTmpl(string type, string skin)
 		{
-			var templateName = id;
-			return View("_GridElementTmpl/" + templateName);
+			var settings = new TemplateSettings()
+			        	{
+			        		TemplateEdit = string.Format("_GridElementTmpl/{0}_edit", type),
+			        		TemplateView = string.Format("_GridElementTmpl/{0}_view",type),
+			        		Type = type
+			        	};
+			return View("_GridElementTmpl/GridElement", settings);
         }
 
     }
+
+	public class TemplateSettings
+	{
+		public string Type { get; set; }
+		public string TemplateEdit { get; set; }
+		public string TemplateView { get; set; }
+
+	}
 }

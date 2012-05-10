@@ -152,6 +152,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
@@ -173,7 +174,6 @@
     <Content Include="Scripts\Admin\Grids.js" />
     <Content Include="Scripts\Admin\Index.js" />
     <Content Include="Scripts\_GridElementScripts\novinka.js" />
-    <Content Include="Scripts\home\index.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\showdown.js" />
     <Content Include="Web.config" />
@@ -238,10 +238,13 @@
   <ItemGroup>
     <None Include="Node\package.json" />
     <Content Include="Views\Admin\template\edit.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\text.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\novinka.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\novinkaEdit.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\textEdit.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\text_View.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\GridElement.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -1,16 +1,16 @@
 ﻿<h2>{{data.Name}}</h2>
 
 
-<div ng-repeat="line in data.Lines">
-	
-	<span ng-repeat="item in line">
-		{{item.Id}} | {{item.Width}} .
-@*		<button ng-click="edit(item)">edit</button>
-		<button ng-click="remove(item)">smazat</button>
-*@		<div gridelement  ></div>
-	</span>
-	<hr />
+<div class="container_12">
+
+	<div ng-repeat="line in data.Lines" >
+		<div ng-repeat="item in line" class="grid_{{item.Width}}">
+			<div gridelement  ></div>
+		</div>
+		<hr class="clear"/>
+	</div>
+
+	<div class="clear"></div>
+	<input type="text" ng-model="newName"/>
+	<button ng-click="add()">pridat</button>
 </div>
-	
-<input type="text" ng-model="newName"/>
-<button ng-click="add()">pridat</button>
