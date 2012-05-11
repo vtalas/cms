@@ -24,7 +24,7 @@ namespace cms.data
 			var d = new List<GridElement>();
 			for (int i = 0; i < 12; i++)
 			{
-				d.Add(new GridElement() { Line = line, Width = 1, Position = i });
+				d.Add(new GridElement { Line = line, Width = 1, Position = i });
 			}
 			return d;
 		}

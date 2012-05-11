@@ -1,11 +1,33 @@
 ﻿@{
-    ViewBag.Title = "index";
+	ViewBag.Title = "index";
 	Layout = "_Layout.cshtml";
 }
 
 
 <h2>client test1 index</h2>
 <a href="/clientapi/test1/ContentElement" class="test" >XXXX</a>
+<a href="/service/client.svc/echo" class="testx" >http://localhost:62364/service/client.svc/Echo</a><br />
+<a href="/service/client.svc/GetGridpage" class="testxx" >gridpage </a><br />
+<a href="/service/client.svc/GetGridpageJson" class="json" >gridpageJson </a>
+
+<div>
+	@{
+	//	using (
+		var client = new cms.ServiceReference1.ClientClient();
+		//	)
+		//{
+			try
+			{
+				var r = client.Ok();
+			}
+			catch (Exception e)
+			{
+				@e.ToString();
+			}	
+		//}
+	}
+</div>
+
 
 <script>
 	$(document).ready(function () {
@@ -15,6 +37,62 @@
 				type: "post",
 				url: $(this).attr("href")
 			});
+		});
+
+		$(".testx").click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				type: "get",
+				url: $(this).attr("href"),
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				success: function (data) {
+					console.log(data);
+				},
+				error: function (data) {
+					console.log("err");
+				}
+			}
+			);
+		});
+
+		$(".testxx").click(function (e) {
+			e.preventDefault();
+			$.ajax({
+				type: "post",
+				url: $(this).attr("href"),
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+
+				data: JSON.stringify({ application: "test1", link: "aaa" }),
+				success: function (data) {
+					console.log(data);
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					console.log(jqXHR, textStatus, errorThrown);
+				}
+			}
+			);
+		});
+
+		$(".json").click(function (e) {
+			e.preventDefault();
+			var send = $.ajax({
+				type: "post",
+				url: $(this).attr("href"),
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+
+				data: JSON.stringify({ application: "test1", link: "aaaxx" })
+			}
+			);
+
+			send.done(function (data) {
+					console.log("oka");
+				})
+				.fail(function (data) {
+					console.log(data.responseText);
+				})
 		});
 	})
 </script>

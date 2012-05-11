@@ -8,6 +8,10 @@ namespace cms.Controllers
         {
 			return View(ViewPath("index"));
         }
+        public ActionResult Service()
+        {
+			return View(ViewPath("index"));
+        }
 
     }
 }

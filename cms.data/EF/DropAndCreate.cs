@@ -35,7 +35,7 @@ namespace cms.data.EF
 			var grids = new Grid()
 			            	{
 			            		Id = 1,
-								Link = "gridSelementama",
+								Link = "linkTestPage",
 			            		Name = "test page",
 			            		GridElements = new List<GridElement>()
 			            		               	{

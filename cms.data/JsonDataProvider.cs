@@ -31,6 +31,7 @@ namespace cms.data
 		public abstract void DeleteGridElement(int id);
 		public abstract GridElement GetGridElement(int id);
 		public abstract GridElement Update(GridElement item);
+		public abstract GridPage GetGridPage(string link);
 	}
 
 	public class GridPage

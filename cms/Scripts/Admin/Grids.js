@@ -90,7 +90,7 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 
 			$http({
 				method: 'POST',
-				url: '/adminApi/null/AddGridElement',
+				url: '/adminApi/' + appSettings.Name + '/AddGridElement',
 				data: {
 					data: newitem,
 					gridId: $scope.data.Id

@@ -20,23 +20,80 @@ namespace cms.data.EF
 		
 		}
 
-		public override ApplicationSetting GetApplication(int id)
-		{
-			return db.ApplicationSettings.Single(x => x.Id == id);
-		}
-
 		public override IEnumerable<ApplicationSetting> Applications()
 		{
 			return db.ApplicationSettings;
 		}
+		public override IEnumerable<Grid> Grids()
+		{
+			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
+			return a;
+		}
 
+		public override ApplicationSetting GetApplication(int id)
+		{
+			return db.ApplicationSettings.Single(x => x.Id == id);
+		}
+		public override Grid GetGrid(int id)
+		{
+			return Grids().Single(x => x.Id == id);
+		}
+		public override GridPage GetGridPage(int id)
+		{
+			var a = Grids().Single(x => x.Id == id);
+			return a.ToGridPage();
+		}
+		public override GridPage GetGridPage(string link)
+		{
+			var a = Grids().SingleOrDefault(x => x.Link == link);
+			if (a == null)
+			{
+				throw new ObjectNotFoundException(string.Format("'{0}' not found", link));
+			}
+			return a.ToGridPage();
+		}
+		public override GridElement GetGridElement(int id)
+		{
+			return db.GridElements.Single(x => x.Id == id);
+		}
 
+		public override void DeleteGrid(int id)
+		{
+			var delete = GetGrid(id);
+			db.Grids.Remove(delete);
+			db.SaveChanges();
+		}
+		public override void DeleteGridElement(int id)
+		{
+			var delete = GetGridElement(id);
+			db.GridElements.Remove(delete);
+			db.SaveChanges();
+		}
+		public override GridElement Update(GridElement item)
+		{
+			db.Entry(item).State = EntityState.Modified;
+			//db.GridElements.Attach(item);
+			db.SaveChanges();
+			return item;
+		}
 		public override void DeleteApplication(int id)
 		{
 			var delete = GetApplication(id);
 			db.ApplicationSettings.Remove(delete);
 		}
 
+		public override Grid Add(Grid newitem)
+		{
+			db.Grids.Add(newitem);
+			db.SaveChanges();
+			return newitem;
+		}
+		public override GridElement Add(GridElement newitem)
+		{
+			db.GridElements.Add(newitem);
+			db.SaveChanges();
+			return newitem;
+		}
 		public override ApplicationSetting Add(ApplicationSetting newitem)
 		{
 			db.ApplicationSettings.Add(newitem);
@@ -52,65 +109,7 @@ namespace cms.data.EF
 				                	};
 			}
 			db.SaveChanges();
-			
-			return newitem;
-		}
 
-		public override IEnumerable<Grid> Grids()
-		{
-			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
-			return a;
-
-
-		}
-
-		public override Grid GetGrid(int id)
-		{
-			return db.Grids.Single(x => x.Id == id);
-		}
-
-		public override GridPage GetGridPage(int id)
-		{
-			var a = db.Grids.Single(x => x.Id == id);
-			return a.ToGridPage();
-		}
-
-		public override void DeleteGrid(int id)
-		{
-			var delete = GetGrid(id);
-			db.Grids.Remove(delete);
-			db.SaveChanges();
-		}
-		public override void DeleteGridElement(int id)
-		{
-			var delete = GetGridElement(id);
-			db.GridElements.Remove(delete);
-			db.SaveChanges();
-		}
-
-		public override GridElement GetGridElement(int id)
-		{
-			return db.GridElements.Single(x => x.Id == id);
-		}
-
-		public override GridElement Update(GridElement item)
-		{
-			db.Entry(item).State = EntityState.Modified;
-			//db.GridElements.Attach(item);
-			db.SaveChanges();
-			return item;
-		}
-
-		public override Grid Add(Grid newitem)
-		{
-			db.Grids.Add(newitem);
-			db.SaveChanges();
-			return newitem;
-		}
-		public override GridElement Add(GridElement newitem)
-		{
-			db.GridElements.Add(newitem);
-			db.SaveChanges();
 			return newitem;
 		}
 

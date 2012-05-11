@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using NUnit.Framework;
@@ -83,6 +84,7 @@ namespace cms.data.tests.EF
 			Console.WriteLine(repo.GetGrid(1).GridElements.Count);
 
 		}
+	
 		[Test]
 		public void UpdateGridElement()
 		{
@@ -117,6 +119,23 @@ namespace cms.data.tests.EF
 
 
 		}
+		
+		[Test]
+		public void GetGridPage()
+		{
+			var a = repo.GetGridPage("linkTestPage");
+		}
+
+		[Test]
+		public void GetGridPage_no_link()
+		{
+			Assert.Throws<ObjectNotFoundException>(() => repo.GetGridPage("linkTestPageXXX"));
+		}
+
+
+
+
+
 
 	}
 }

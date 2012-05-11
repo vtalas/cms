@@ -57,6 +57,11 @@ namespace cms.data.Files
 			throw new System.NotImplementedException();
 		}
 
+		public override GridPage GetGridPage(string link)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public override IEnumerable<Grid> Grids()
 		{
 			throw new System.NotImplementedException();

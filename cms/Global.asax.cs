@@ -28,7 +28,7 @@ namespace cms
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
-				"admin", // Route name
+				"applicationAdmin", // Route name
 				"admin/{application}/{action}/{id}", // URL with parameters
 				new { controller = "admin", action = "Index", application="", id = UrlParameter.Optional } // Parameter defaults
 			);
@@ -104,9 +104,6 @@ namespace cms
 //                    return pile;
 //                })
 //                .PrepareRoutes(RouteTable.Routes);
-
-			RegisterGlobalFilters(GlobalFilters.Filters);
-			RegisterRoutes(RouteTable.Routes);
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);
