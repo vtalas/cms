@@ -167,14 +167,21 @@
     <Compile Include="Service\JsonFault.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ServiceReference1\Client.wsdl" />
-    <None Include="Service References\ServiceReference1\Client.xsd">
+    <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
+    <None Include="Service References\ServiceReference1\Client1.wsdl" />
+    <None Include="Service References\ServiceReference1\Client4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Client1.xsd">
+    <None Include="Service References\ServiceReference1\Client41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Client2.xsd">
+    <None Include="Service References\ServiceReference1\Client42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Client43.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference1\Client44.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
@@ -183,7 +190,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\ServiceReference1\Client.disco" />
+    <None Include="Service References\ServiceReference1\Client1.disco" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
@@ -298,8 +305,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>62364</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>62728</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/cms</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

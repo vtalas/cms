@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
@@ -13,15 +14,14 @@ namespace cms.Service
 	public interface IClient
 	{
 		[OperationContract]
-		[WebInvoke(Method = "POST",RequestFormat = WebMessageFormat.Json,BodyStyle = WebMessageBodyStyle.WrappedRequest)]
+		//[WebInvoke(Method = "POST",RequestFormat = WebMessageFormat.Json,BodyStyle = WebMessageBodyStyle.Wrapped )]
+		//[WebGet(BodyStyle = WebMessageBodyStyle.Wrapped )]
 		[FaultContract(typeof (MyApplicationFault))]
-		string GetGridpage(string application, string link);
+		GridPage GetGridpage(GetGridpageRq rq);
 
 		[OperationContract]
-		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json,
-			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
-		//[FaultContract(typeof (MyApplicationFault))]
-		string GetGridpageJson(string application, string link);
+		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+		GridPage GetGridpageJson(GetGridpageRq rq);
 
 		[OperationContract]
 		[WebInvoke(Method = "GET",ResponseFormat = WebMessageFormat.Json,RequestFormat = WebMessageFormat.Json,
@@ -35,6 +35,16 @@ namespace cms.Service
 		string Fail();
 	}
 
+	[DataContract]
+	public class GetGridpageRq
+	{
+		[DataMember]
+		public string ApplicationName { get; set; }
+
+		[DataMember]
+		public string Link { get; set; }
+	}
+
 	public class MyApplicationFault
 	{
 		public string Message { get; set; }
@@ -46,16 +56,12 @@ namespace cms.Service
 		{
 			// clear default error handlers.  
 			endpointDispatcher.ChannelDispatcher.ErrorHandlers.Clear();
-
 			// add the Json error handler.  
 			endpointDispatcher.ChannelDispatcher.ErrorHandlers.Add(new JsonErrorHandler());
 		}
 	}
 	public class JsonErrorWebHttpBehaviorElement : BehaviorExtensionElement
 	{
-		///  
-		/// Get the type of behavior to attach to the endpoint  
-		///  
 		public override Type BehaviorType
 		{
 			get
@@ -64,9 +70,6 @@ namespace cms.Service
 			}
 		}
 
-		///  
-		/// Create the custom behavior  
-		///  
 		protected override object CreateBehavior()
 		{
 			return new JsonErrorWebHttpBehavior();

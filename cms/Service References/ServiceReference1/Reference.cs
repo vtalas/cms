@@ -15,6 +15,67 @@ namespace cms.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GetGridpageRq", Namespace="http://schemas.datacontract.org/2004/07/cms.Service")]
+    [System.SerializableAttribute()]
+    public partial class GetGridpageRq : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApplicationNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinkField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApplicationName {
+            get {
+                return this.ApplicationNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApplicationNameField, value) != true)) {
+                    this.ApplicationNameField = value;
+                    this.RaisePropertyChanged("ApplicationName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Link {
+            get {
+                return this.LinkField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinkField, value) != true)) {
+                    this.LinkField = value;
+                    this.RaisePropertyChanged("Link");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="MyApplicationFault", Namespace="http://schemas.datacontract.org/2004/07/cms.Service")]
     [System.SerializableAttribute()]
     public partial class MyApplicationFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -64,11 +125,10 @@ namespace cms.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/GetGridpage", ReplyAction="http://tempuri.org/IClient/GetGridpageResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(cms.ServiceReference1.MyApplicationFault), Action="http://tempuri.org/IClient/GetGridpageMyApplicationFaultFault", Name="MyApplicationFault", Namespace="http://schemas.datacontract.org/2004/07/cms.Service")]
-        string GetGridpage(string application, string link);
+        cms.data.GridPage GetGridpage(cms.ServiceReference1.GetGridpageRq rq);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/GetGridpageJson", ReplyAction="http://tempuri.org/IClient/GetGridpageJsonResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(cms.ServiceReference1.MyApplicationFault), Action="http://tempuri.org/IClient/GetGridpageJsonMyApplicationFaultFault", Name="MyApplicationFault", Namespace="http://schemas.datacontract.org/2004/07/cms.Service")]
-        string GetGridpageJson(string application, string link);
+        cms.data.GridPage GetGridpageJson(cms.ServiceReference1.GetGridpageRq rq);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/Echo", ReplyAction="http://tempuri.org/IClient/EchoResponse")]
         string Echo();
@@ -107,12 +167,12 @@ namespace cms.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string GetGridpage(string application, string link) {
-            return base.Channel.GetGridpage(application, link);
+        public cms.data.GridPage GetGridpage(cms.ServiceReference1.GetGridpageRq rq) {
+            return base.Channel.GetGridpage(rq);
         }
         
-        public string GetGridpageJson(string application, string link) {
-            return base.Channel.GetGridpageJson(application, link);
+        public cms.data.GridPage GetGridpageJson(cms.ServiceReference1.GetGridpageRq rq) {
+            return base.Channel.GetGridpageJson(rq);
         }
         
         public string Echo() {

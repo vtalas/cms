@@ -25,11 +25,12 @@ namespace cms.Service
 			return ret;
 			
 		}
-		public string GetGridpage(string application, string link)
+		public GridPage GetGridpage(GetGridpageRq rq)
 		{
+			var db = new JsonDataEf(rq.ApplicationName);
 			try
 			{
-				return GetGridpageAction(application, link);
+				return db.GetGridPage(rq.Link);
 			}
 			catch (Exception e)
 			{
@@ -39,14 +40,18 @@ namespace cms.Service
 					Message = "ljkabsdjbasjkdbjkasd EEE"
 				};
 				throw new FaultException<MyApplicationFault>(fault);
-
 			}
 
 		}
 
-		public string GetGridpageJson(string application, string link)
+		public GridPage GetGridpageJson(GetGridpageRq rq)
 		{
-			return GetGridpageAction(application, link);
+			if (rq == null) throw new ArgumentNullException("GetGridpageRq");
+			if (rq.Link == null) throw new ArgumentNullException("Link");
+			if (rq.ApplicationName == null) throw new ArgumentNullException("ApplicationName");
+
+			var db = new JsonDataEf(rq.ApplicationName);
+			return db.GetGridPage(rq.Link);
 		}
 
 		public string Echo()
