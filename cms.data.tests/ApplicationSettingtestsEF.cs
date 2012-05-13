@@ -18,14 +18,5 @@ namespace cms.data.tests
 			D = new EfDataProvider( new DropAndCreate());
 		}
 
-		[Test]
-		public void Aaa()
-		{
-			var list = D.ApplicationSettings;
-
-			Assert.IsNotNull(list);
-			Assert.True(list.Any());
-
-		}
 	}
 }

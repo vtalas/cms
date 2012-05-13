@@ -51,12 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationSettingtestsEF.cs" />
+    <Compile Include="SampleData\CreateSampleDataTest.cs" />
     <Compile Include="EF\JsonDataEfTest.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@ using System.ServiceModel.Description;
 using System.ServiceModel.Web;
 using Newtonsoft.Json.Linq;
 using cms.data;
+using cms.data.Dtos;
 
 namespace cms.Service
 {
@@ -14,25 +15,15 @@ namespace cms.Service
 	public interface IClient
 	{
 		[OperationContract]
-		//[WebInvoke(Method = "POST",RequestFormat = WebMessageFormat.Json,BodyStyle = WebMessageBodyStyle.Wrapped )]
-		//[WebGet(BodyStyle = WebMessageBodyStyle.Wrapped )]
-		[FaultContract(typeof (MyApplicationFault))]
-		GridPage GetGridpage(GetGridpageRq rq);
+		[WebGet(ResponseFormat = WebMessageFormat.Json)]
+		GridPageDto GetGridpageJson(string ApplicationName ,string Link );
 
 		[OperationContract]
-		[WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
-		GridPage GetGridpageJson(GetGridpageRq rq);
+		[WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Wrapped)]
+		string EchoJson(string message);
 
 		[OperationContract]
-		[WebInvoke(Method = "GET",ResponseFormat = WebMessageFormat.Json,RequestFormat = WebMessageFormat.Json,
-			BodyStyle = WebMessageBodyStyle.WrappedRequest)]
 		string Echo();
-
-		[OperationContract]
-		string Ok();
-
-		[OperationContract]
-		string Fail();
 	}
 
 	[DataContract]

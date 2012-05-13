@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using cms.data.Dtos;
 using cms.data.Models;
 
 namespace cms.data
@@ -7,9 +8,9 @@ namespace cms.data
 	public static class GridElementExt
 	{
 
-		public static GridPage ToGridPage(this Grid source)
+		public static GridPageDto ToGridPageDto(this Grid source)
 		{
-			return new GridPage
+			return new GridPageDto()
 			{
 				Lines = source.GridElements.ToLines(),
 				Home = source.Home,
@@ -19,19 +20,19 @@ namespace cms.data
 			};
 
 		}
-		private static IEnumerable<GridElement> DefaultLine(int line)
+		private static IEnumerable<GridElementDto> DefaultLine(int line)
 		{
-			var d = new List<GridElement>();
+			var d = new List<GridElementDto>();
 			for (int i = 0; i < 12; i++)
 			{
-				d.Add(new GridElement { Line = line, Width = 1, Position = i });
+				d.Add(new GridElementDto { Line = line, Width = 1, Position = i });
 			}
 			return d;
 		}
-		
-		private static IEnumerable<GridElement> ToFixedLine(this IEnumerable<GridElement> source, int line)
+
+		private static IEnumerable<GridElementDto> ToFixedLine(this IEnumerable<GridElement> source, int line)
 		{
-			var d = new List<GridElement>();
+			var d = new List<GridElementDto>();
 			var position = source.GetEnumerator();
 			position.MoveNext();
 			for (int i = 0; i < 12; i++)
@@ -39,23 +40,27 @@ namespace cms.data
 				var cur = position.Current;
 				if (cur != null && cur.Position == i)
 				{
-					d.Add(cur);
+					d.Add(cur.ToDto());
 					i += cur.Width - 1;
 					position.MoveNext();
 				}
 				else
 				{
-					d.Add(new GridElement { Content = "nnn", Line = line, Grid = null, Position = i, 
-					                        //Status = Status.Private, 
-					                        Type = "", Width = 1 });
+					d.Add(new GridElementDto
+					{
+						Content = "nnn",
+						Line = line,
+						Position = i, 
+						//Status = Status.Private, 
+						Type = "", Width = 1 });
 				}
 			}
 			return d;
 		}
 
-		public static IList<IEnumerable<GridElement>> ToLines(this IEnumerable<GridElement> source)
+		public static IList<IEnumerable<GridElementDto>> ToLines(this IEnumerable<GridElement> source)
 		{
-			var a = new List<IEnumerable<GridElement>>();
+			var a = new List<IEnumerable<GridElementDto>>();
 			if (source == null || !source.Any())
 			{
 				a.Add(DefaultLine(0));

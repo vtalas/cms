@@ -1,4 +1,4 @@
-﻿@using cms.ServiceReference1
+﻿@*@using cms.ServiceReference1
 @{
 	ViewBag.Title = "index";
 	Layout = "_Layout.cshtml";
@@ -9,7 +9,7 @@
 <a href="/clientapi/test1/ContentElement" class="test" >XXXX</a>
 <a href="/service/client.svc/echo" class="testx" >http://localhost:62364/service/client.svc/Echo</a><br />
 <a href="/service/client.svc/GetGridpage" class="testxx" >gridpage </a><br />
-<a href="/service/client.svc/GetGridpageJson?Application=test1&Link=aaa&callback=xxxx" class="json" >gridpageJson </a>
+<a href="/service/client.svc/GetGridpageJson" class="json" >gridpageJson </a>
 
 <script>
 	$(document).ready(function () {
@@ -64,11 +64,11 @@
 			var rq = { ApplicationName: "test1", Link: "aaa" };
 
 			var send = $.ajax({
-				type: "GET",
+				type: "post",
 				url: $(this).attr("href"),
-				dataType: "jsonp",
-				//contentType: "application/json; charset=utf-8",
-				data: JSON.stringify({ rq: rq })
+				dataType: "json",
+				contentType: "application/json; charset=utf-8",
+				data: { rq: rq }
 			}
 			);
 
@@ -80,4 +80,4 @@
 				});
 		});
 	})
-</script>
+</script>*@

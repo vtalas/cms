@@ -4,6 +4,7 @@ using System.ServiceModel.Activation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.data;
+using cms.data.Dtos;
 using cms.data.EF;
 
 namespace cms.Service
@@ -23,35 +24,20 @@ namespace cms.Service
 			var ret = JsonConvert.SerializeObject(data, settings);
 
 			return ret;
-			
-		}
-		public GridPage GetGridpage(GetGridpageRq rq)
-		{
-			var db = new JsonDataEf(rq.ApplicationName);
-			try
-			{
-				return db.GetGridPage(rq.Link);
-			}
-			catch (Exception e)
-			{
-
-				var fault = new MyApplicationFault
-				{
-					Message = "ljkabsdjbasjkdbjkasd EEE"
-				};
-				throw new FaultException<MyApplicationFault>(fault);
-			}
-
 		}
 
-		public GridPage GetGridpageJson(GetGridpageRq rq)
+		public GridPageDto GetGridpageJson(string ApplicationName, string Link)
 		{
-			if (rq == null) throw new ArgumentNullException("GetGridpageRq");
-			if (rq.Link == null) throw new ArgumentNullException("Link");
-			if (rq.ApplicationName == null) throw new ArgumentNullException("ApplicationName");
+			if (Link == null) throw new ArgumentNullException("Link");
+			if (ApplicationName == null) throw new ArgumentNullException("ApplicationName");
 
-			var db = new JsonDataEf(rq.ApplicationName);
-			return db.GetGridPage(rq.Link);
+			var db = new JsonDataEf(ApplicationName);
+			return db.GetGridPage(Link);
+		}
+		
+		public string EchoJson(string message)
+		{
+			return "xxx" + message;
 		}
 
 		public string Echo()
@@ -65,20 +51,5 @@ namespace cms.Service
 			return "xkjbsjkabd";
 		}
 
-		public string Ok()
-		{
-			return "xxx";
-		}
-
-		public string Fail()
-		{
-			var fault = new MyApplicationFault
-			{
-				Message = "ljkabsdjbasjkdbjkasd EEE"
-			};
-			throw new FaultException<MyApplicationFault>(fault);
-
-			return "xkjbsjkabd";
-		}
 	}
 }

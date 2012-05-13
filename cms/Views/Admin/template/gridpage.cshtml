@@ -5,12 +5,18 @@
 
 	<div ng-repeat="line in data.Lines" >
 		<div ng-repeat="item in line" class="grid_{{item.Width}}">
-			<div gridelement  ></div>
+			<div gridelement="item" ></div>
 		</div>
 		<hr class="clear"/>
 	</div>
 
 	<div class="clear"></div>
 	<input type="text" ng-model="newName"/>
+
+	@*<select ng-model="template" ng-options="t.name for t in templates">
+		<option value="">(blank)</option>
+	</select>
+	*@
+
 	<button ng-click="add()">pridat</button>
 </div>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using cms.data.Dtos;
 using cms.data.Models;
 
 namespace cms.data.Files
@@ -57,7 +58,12 @@ namespace cms.data.Files
 			throw new System.NotImplementedException();
 		}
 
-		public override GridPage GetGridPage(string link)
+		public override GridPageDto GetGridPage(string link)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public override T Add<T>(T newitem)
 		{
 			throw new System.NotImplementedException();
 		}
@@ -88,7 +94,7 @@ namespace cms.data.Files
 			return grid;
 		}
 
-		public override GridPage GetGridPage(int id)
+		public override GridPageDto GetGridPage(int id)
 		{
 			throw new System.NotImplementedException();
 		}

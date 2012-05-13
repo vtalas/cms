@@ -27,7 +27,7 @@ namespace cms.data.EF
 		{
 			var application = new ApplicationSetting
 			                  	{
-			                  		Name = "testovaciaplikacka"
+			                  		Name = "test1"
 			                  	};
 
 			context.ApplicationSettings.Add(application);
@@ -57,9 +57,10 @@ namespace cms.data.EF
 			                  		Name = "grid Bez elementu"
 			                  	});
 
+			context.TemplateTypes.Add(new TemplateType { Name = "novinka" });
+			context.TemplateTypes.Add(new TemplateType { Name = "text" });
+
 			context.SaveChanges();
-
-
 		}
 
 	}

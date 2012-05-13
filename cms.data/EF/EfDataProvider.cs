@@ -18,29 +18,9 @@ namespace cms.data.EF
 			Database.SetInitializer(initializer);
 		}
 
-		public IQueryable<ApplicationSetting> ApplicationSettings
+		public EfContext Contenxt
 		{
-			get { return db.ApplicationSettings;}
-		}
-
-		public ApplicationSetting Add(ApplicationSetting newitem)
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public ApplicationSetting Get(int id)
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public ApplicationSetting Update(ApplicationSetting item)
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public ApplicationSetting Find(string name)
-		{
-			throw new System.NotImplementedException();
+			get { throw new System.NotImplementedException(); }
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using cms.data.Dtos;
 using cms.data.Models;
 
 namespace cms.data.EF
@@ -17,7 +18,6 @@ namespace cms.data.EF
 		public JsonDataEf(string application)
 			: this(application,new EfContext())
 		{
-		
 		}
 
 		public override IEnumerable<ApplicationSetting> Applications()
@@ -38,19 +38,19 @@ namespace cms.data.EF
 		{
 			return Grids().Single(x => x.Id == id);
 		}
-		public override GridPage GetGridPage(int id)
+		public override GridPageDto GetGridPage(int id)
 		{
 			var a = Grids().Single(x => x.Id == id);
-			return a.ToGridPage();
+			return a.ToGridPageDto();
 		}
-		public override GridPage GetGridPage(string link)
+		public override GridPageDto GetGridPage(string link)
 		{
 			var a = Grids().SingleOrDefault(x => x.Link == link);
 			if (a == null)
 			{
 				throw new ObjectNotFoundException(string.Format("'{0}' not found", link));
 			}
-			return a.ToGridPage();
+			return a.ToGridPageDto();
 		}
 		public override GridElement GetGridElement(int id)
 		{
@@ -80,6 +80,11 @@ namespace cms.data.EF
 		{
 			var delete = GetApplication(id);
 			db.ApplicationSettings.Remove(delete);
+		}
+
+		public override T Add<T>(T newitem)
+		{
+			return newitem;
 		}
 
 		public override Grid Add(Grid newitem)

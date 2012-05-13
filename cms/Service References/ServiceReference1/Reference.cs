@@ -74,70 +74,21 @@ namespace cms.ServiceReference1 {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MyApplicationFault", Namespace="http://schemas.datacontract.org/2004/07/cms.Service")]
-    [System.SerializableAttribute()]
-    public partial class MyApplicationFault : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MessageField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Message {
-            get {
-                return this.MessageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
-                    this.MessageField = value;
-                    this.RaisePropertyChanged("Message");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IClient")]
     public interface IClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/GetGridpage", ReplyAction="http://tempuri.org/IClient/GetGridpageResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(cms.ServiceReference1.MyApplicationFault), Action="http://tempuri.org/IClient/GetGridpageMyApplicationFaultFault", Name="MyApplicationFault", Namespace="http://schemas.datacontract.org/2004/07/cms.Service")]
-        cms.data.GridPage GetGridpage(cms.ServiceReference1.GetGridpageRq rq);
+        cms.data.Dtos.GridPageDto GetGridpage(cms.ServiceReference1.GetGridpageRq rq);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/GetGridpageJson", ReplyAction="http://tempuri.org/IClient/GetGridpageJsonResponse")]
-        cms.data.GridPage GetGridpageJson(cms.ServiceReference1.GetGridpageRq rq);
+        cms.data.Dtos.GridPageDto GetGridpageJson(cms.ServiceReference1.GetGridpageRq rq);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/EchoJson", ReplyAction="http://tempuri.org/IClient/EchoJsonResponse")]
+        string EchoJson(string message);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/Echo", ReplyAction="http://tempuri.org/IClient/EchoResponse")]
         string Echo();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/Ok", ReplyAction="http://tempuri.org/IClient/OkResponse")]
-        string Ok();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClient/Fail", ReplyAction="http://tempuri.org/IClient/FailResponse")]
-        string Fail();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -167,24 +118,20 @@ namespace cms.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public cms.data.GridPage GetGridpage(cms.ServiceReference1.GetGridpageRq rq) {
+        public cms.data.Dtos.GridPageDto GetGridpage(cms.ServiceReference1.GetGridpageRq rq) {
             return base.Channel.GetGridpage(rq);
         }
         
-        public cms.data.GridPage GetGridpageJson(cms.ServiceReference1.GetGridpageRq rq) {
+        public cms.data.Dtos.GridPageDto GetGridpageJson(cms.ServiceReference1.GetGridpageRq rq) {
             return base.Channel.GetGridpageJson(rq);
+        }
+        
+        public string EchoJson(string message) {
+            return base.Channel.EchoJson(message);
         }
         
         public string Echo() {
             return base.Channel.Echo();
-        }
-        
-        public string Ok() {
-            return base.Channel.Ok();
-        }
-        
-        public string Fail() {
-            return base.Channel.Fail();
         }
     }
 }

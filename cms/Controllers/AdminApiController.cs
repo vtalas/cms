@@ -14,7 +14,6 @@ namespace cms.Controllers
 {
     public class AdminApiController : ApiControllerBase
     {
-
         public ActionResult Applications()
         {
         	var applications = db.Applications();
@@ -33,11 +32,19 @@ namespace cms.Controllers
 			var newitem = db.Add(data);
 			return new JSONNetResult(newitem);
 		}
+
+        public ActionResult AddGrid(Grid data)
+        {
+        	var newgrid =  db.Add(data);
+			return new JSONNetResult(newgrid);
+        }
+
         public ActionResult DeleteGridElement(GridElement data)
         {
 			db.DeleteGridElement(data.Id); 
 			return new JSONNetResult(null);
 		}
+		
 		public ActionResult Grids()
         {
 			var g = db.Grids();
@@ -48,6 +55,7 @@ namespace cms.Controllers
 			var g = db.GetGridPage(id);
 			return new JSONNetResult(g);
 		}
+		
 		public ActionResult UpdateGridElement(GridElement item)
 		{
 			var g = db.Update(item);
@@ -68,7 +76,5 @@ namespace cms.Controllers
 			return new JSONNetResult(e);
 
 		}
-
-
     }
 }

@@ -1,7 +1,6 @@
 ///<reference path="../angular-1.0.0rc8.js"/>
 
-
-var module = angular.module("gridsmodule", []);
+var module = angular.module("gridsmodule", ['cmsapi']);
 module.config(function ($routeProvider, $provide) {
 	$provide.factory('appSettings', function () {
 		var e = angular.element(".gridsmodule"); ;
@@ -11,7 +10,6 @@ module.config(function ($routeProvider, $provide) {
 		return settings;
 	});
 	$provide.factory('$gridApi', function () {
-		
 		return null;
 	});
 	$routeProvider
@@ -24,13 +22,13 @@ module.config(function ($routeProvider, $provide) {
 module.run(function ($route) {
 });
 
-module.directive("gridelement", function factory($templateCache, $compile, $rootScope) {
+module.directive("gridelement", function factory($templateCache, $compile) {
 	var template = function (type) {
 		var elementType = type ? type : "text";
 		if (!$templateCache.get(elementType)) {
 			$.ajax({
 				url: 'GridElementTmpl',
-				data : {type: elementType},
+				data: { type: elementType },
 				async: false, //kvuli tomuto tu neni $http
 				success: function (data) {
 					$templateCache.put(elementType, data);
@@ -42,24 +40,35 @@ module.directive("gridelement", function factory($templateCache, $compile, $root
 
 	var directiveDefinitionObject = {
 		scope: {},
-		link: function (scope, iElement, tAttrs, transclude) {
-			var item = scope.$parent.item;
-			var type = item.Type;
-			
-			var sablona = template(type);
-			var compiled = $compile(sablona);
-			iElement.html(compiled	(scope.$parent));
+		inject: {
+			gridelement: 'accessor'
+		},
+		compile: function (iElement, tAttrs, transclude) {
+			console.log(tAttrs.gridelement);
+			return function(scope, iElement, tAttrs, transclude) {
+				console.log(scope);
+				var item = scope.$parent.item;
+				var type = item.Type;
+
+				var sablona = template(type);
+				var compiled = $compile(sablona);
+				iElement.html(compiled(scope.$parent));
+			};
 		}
+//link: function(scope, iElement, tAttrs, transclude) {
+//				console.log(tAttrs.gridelement);
+//				var item = scope.$parent.item;
+//				var type = item.Type;
+
+//				var sablona = template(type);
+//				var compiled = $compile(sablona);
+//				iElement.html(compiled(scope.$parent));
+//			};
 	};
-
-
 	return directiveDefinitionObject;
 });
 
-appName = function() {
-};
-
-function GridListController($scope, $http,  $rootScope, appSettings, $gridApi) {
+function GridListController($scope, $http, $rootScope, appSettings, GridApi) {
 	var self = this;
 	$scope.data = { };
 	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/grids' })
@@ -67,90 +76,14 @@ function GridListController($scope, $http,  $rootScope, appSettings, $gridApi) {
 			$scope.data = data;
 			//console.log(data, "GridListController");
 		});
+		$scope.add = function () {
+			GridApi.get({ }, function( parameters) {
+				console.log(parameters);
+			});
+			//$scope.newName = '';
+		};
 }
 
-function GridPageCtrl($scope, $http, $routeParams, appSettings) {
-	$scope.data = {};
-	var self = this;
-
-	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGrid/' + $routeParams.Id })
-		.success(function (data, status, headers, config) {
-			$scope.data = data;
-			console.log(data, "edit");
-		})
-		
-		.error(function (data, status, headers, config) {
-
-		});
-
-
-		$scope.add = function (item) {
-			var newitem = item ? addItem(item) : addNewline();
-			console.log(newitem);
-
-			$http({
-				method: 'POST',
-				url: '/adminApi/' + appSettings.Name + '/AddGridElement',
-				data: {
-					data: newitem,
-					gridId: $scope.data.Id
-				}
-			}).success(function (data, status, headers, config) {
-				console.log(data, "ser");
-				if (data.Line >= $scope.data.Lines.length) {
-					$scope.data.Lines.push([]);
-				}
-				$scope.data.Lines[data.Line][data.Position] = data;
-			});
-			$scope.newName = '';
-		};
-		$scope.remove = function (item) {
-			console.log(item);
-			var index = $scope.data.Lines[item.Line].indexOf(item);
-
-			if (index != -1) $scope.data.Lines[item.Line].splice(index, 1);
-
-			$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/DeleteGridElement', data: item })
-				.success(function (data, status, headers, config) {
-					console.log("deleted");
-				});
-		};
-
-		$scope.edit = function(item, $element) {
-			item.Edit = 1;
-		};
-
-		$scope.save = function (item) {
-			var data = jQuery.extend(true, {}, item);
-
-			if (angular.isObject(data.Content))
-				data.Content = JSON.stringify(data.Content);
-
-			$http({
-				method: 'POST',
-				url: '/adminApi/' + appSettings.Name + '/UpdateGridElement/' + $scope.data.Id,
-				data: data
-			}).success(function () {
-				item.Edit = 0;
-
-			});
-
-		};
-
-
-			var addNewline = function () {
-				var newlineIndex = $scope.data.Lines.length;
-				var newline = [];
-				var newitem = { Width: 12, Type: $scope.newName, Line: newlineIndex };
-
-				newline.push(newitem);
-
-				return newitem;
-			};
-			var addItem = function (newitem) {
-				return newitem;
-			};
-}
 
 function CreateCtrl($scope) {
 	

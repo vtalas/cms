@@ -24,8 +24,9 @@ namespace cms
             //   bundles.Add<StylesheetBundle>("Content");
             // In production mode, all of ~/Content will be combined into a single bundle.
             
+			bundles.Add<ScriptBundle>("Scripts/Admin");
             // If you want a bundle per folder, try this:
-            //   bundles.AddPerSubDirectory<ScriptBundle>("Scripts");
+            //bundles.AddPerSubDirectory<ScriptBundle>("Scripts/Admin");
             // Each immediate sub-directory of ~/Scripts will be combined into its own bundle.
             // This is useful when there are lots of scripts for different areas of the website.
 
