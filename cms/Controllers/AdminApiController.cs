@@ -35,7 +35,7 @@ namespace cms.Controllers
 
         public ActionResult AddGrid(Grid data)
         {
-        	var newgrid =  db.Add(data);
+			var newgrid =  db.Add(data);
 			return new JSONNetResult(newgrid);
         }
 

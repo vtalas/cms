@@ -20,6 +20,7 @@ namespace cms.data.EF
 		{
 		}
 
+		public override ApplicationSetting CurrentApplication{get { return db.ApplicationSettings.Single(x => x.Name == ApplicationName); }} 
 		public override IEnumerable<ApplicationSetting> Applications()
 		{
 			return db.ApplicationSettings;
@@ -89,6 +90,7 @@ namespace cms.data.EF
 
 		public override Grid Add(Grid newitem)
 		{
+			CurrentApplication.Grids.Add(newitem);
 			db.Grids.Add(newitem);
 			db.SaveChanges();
 			return newitem;

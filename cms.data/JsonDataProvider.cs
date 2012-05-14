@@ -9,6 +9,8 @@ namespace cms.data
 	public abstract class JsonDataProvider
 	{
 		protected string ApplicationName { get; set; }
+		public abstract ApplicationSetting CurrentApplication { get; }
+
 		protected JsonDataProvider(string application )
 		{
 			//if (string.IsNullOrEmpty(application))

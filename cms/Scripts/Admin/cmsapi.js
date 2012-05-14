@@ -12,8 +12,14 @@
     	var project = $resource('/adminApi/:applicationName/grids',
     		{applicationName : "test1"}, 
     		{
-            	get: { method: 'POST' }
+            	get: { method: 'POST' ,isArray:true}
             }
         );
+        project.prototype.save = function(cb) {
+            console.log("save");
+            return project.save({id: this._id.$oid},
+                angular.extend({}, this, {_id:undefined}), cb);
+        };
+
     	return project;
     });

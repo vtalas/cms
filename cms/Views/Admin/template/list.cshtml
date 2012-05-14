@@ -1,12 +1,14 @@
 ﻿<p>...............................................</p>
-	<div ng-repeat="line in data">
-		<div>
+<table>
+<tr ng-repeat="line in data">
+			<td>
 			<a href="#/gridpage/{{line.Id}}"> {{line.Name}}</a> 
-			<button ng-click="remove()">Smazat</button>
-		</div>
-		<input type="text" ng-model="newName"/>
-		<button ng-click="add()" >Pridat</button>
-	</div>
+			</td>
+			<td><button ng-click="remove()">Smazat</button></td>
+	</tr>
+</table>
+<input type="text" ng-model="newName"/>
+	<button ng-click="add()" >Pridat</button>
 
 
 

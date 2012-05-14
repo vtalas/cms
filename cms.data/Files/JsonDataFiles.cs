@@ -22,6 +22,11 @@ namespace cms.data.Files
 			return apps.Single(x => x.Id == id);
 		}
 
+		public override ApplicationSetting CurrentApplication
+		{
+			get { throw new System.NotImplementedException(); }
+		}
+
 		public override IEnumerable<ApplicationSetting> Applications()
 		{
 			return apps;
