@@ -1,6 +1,4 @@
-﻿
-
-function GridPageCtrl($scope, $http, $routeParams, appSettings) {
+﻿var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', function ($scope, $http, $routeParams, appSettings) {
 	$scope.data = {};
 	var self = this;
 
@@ -80,4 +78,4 @@ function GridPageCtrl($scope, $http, $routeParams, appSettings) {
 	var addItem = function (newitem) {
 		return newitem;
 	};
-}
+}]

@@ -4,20 +4,19 @@
 
 	Bundles.Reference("~/Scripts/showdown.js");
 	
-	Bundles.Reference("~/Scripts/Admin");
-	
 	Bundles.Reference("~/Scripts/_GridElementScripts/text.js");
 	Bundles.Reference("~/Scripts/_GridElementScripts/novinka.js");
 	
-	var ApplicationName = ViewBag.Application;
-	}
+	var applicationName = ViewBag.Application;
+}
+	
 
-<h2>@ApplicationName</h2>
+<h2>@applicationName</h2>
 @Html.ActionLink("back","index","admin")
 
 
 <div ng-app="gridsmodule"
-	 data-application-name="@ApplicationName"
+	 data-application-name="@applicationName"
 	 class="gridsmodule"
 	>
 	<div ng-view>

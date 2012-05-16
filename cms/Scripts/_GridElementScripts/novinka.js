@@ -37,3 +37,5 @@ function novinka($scope, $http,appSettings) {
 	};
 
 }
+novinka.$inject = ['$scope', '$http', 'appSettings'];
+

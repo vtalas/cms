@@ -11,11 +11,12 @@ namespace cms.data.EF
 		{
 			if (context.Database.Exists())
 			{
-				using (var ctx = new EfContext())
-				{
+				//using (var ctx = new EfContext())
+			//	{
 					Database.SetInitializer<EfContext>(null);
-					ctx.Database.ExecuteSqlCommand("ALTER DATABASE " + ctx.Database.Connection.Database + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
-				}
+					//ctx.Database.ExecuteSqlCommand("ALTER DATABASE " + ctx.Database.Connection.Database + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
+					context.Database.ExecuteSqlCommand("ALTER DATABASE " + context.Database.Connection.Database + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
+				//}
 				context.Database.Delete();
 			}
 			context.Database.Create();

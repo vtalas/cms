@@ -8,3 +8,5 @@ function text($scope, $http, appSettings) {
 
 	////////////////////////
 }
+text.$inject = ['$scope', '$http', 'appSettings'];
+

@@ -1,3 +1,5 @@
+/// <reference path="angular-1.0.0rc8.js"/>
+
 /**
  * @license AngularJS v1.0.0rc8
  * (c) 2010-2012 Google, Inc. http://angularjs.org

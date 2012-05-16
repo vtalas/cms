@@ -1,7 +1,9 @@
 ///<reference path="../angular-1.0.0rc8.js"/>
+///<reference path="../angular-resource-1.0.0rc8.js"/>
 
 var module = angular.module("gridsmodule", ['cmsapi']);
-module.config(function ($routeProvider, $provide) {
+
+module.config(['$routeProvider', '$provide', function ($routeProvider, $provide) {
 	$provide.factory('appSettings', function () {
 		var e = angular.element(".gridsmodule"); ;
 		var settings = {
@@ -18,11 +20,11 @@ module.config(function ($routeProvider, $provide) {
 		.when('/gridpage/:Id/edit/:GridElementId', { controller: EditCtrl, template: 'template/edit' })
 		.when('/new', { controller: CreateCtrl, template: 'template/new' })
 		.otherwise({ redirectTo: '/list' });
-});
-module.run(function ($route) {
-});
+}]);
 
-module.directive("gridelement", function factory($templateCache, $compile) {
+module.directive("gridelement", ['$templateCache', '$compile', function ($templateCache, $compile) {
+	
+	
 	var template = function (type) {
 		var elementType = type ? type : "text";
 		if (!$templateCache.get(elementType)) {
@@ -44,7 +46,6 @@ module.directive("gridelement", function factory($templateCache, $compile) {
 			gridelement: 'accessor'
 		},
 		compile: function (iElement, tAttrs, transclude) {
-			console.log(tAttrs.gridelement);
 			return function(scope, iElement, tAttrs, transclude) {
 				console.log(scope);
 				var item = scope.$parent.item;
@@ -55,20 +56,12 @@ module.directive("gridelement", function factory($templateCache, $compile) {
 				iElement.html(compiled(scope.$parent));
 			};
 		}
-//link: function(scope, iElement, tAttrs, transclude) {
-//				console.log(tAttrs.gridelement);
-//				var item = scope.$parent.item;
-//				var type = item.Type;
-
-//				var sablona = template(type);
-//				var compiled = $compile(sablona);
-//				iElement.html(compiled(scope.$parent));
-//			};
 	};
 	return directiveDefinitionObject;
-});
+}]);
 
-function GridListController($scope, $http, $rootScope, appSettings, GridApi) {
+//function GridListController($scope, $http, $rootScope, appSettings, GridApi) {
+var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function($scope, $http, $rootScope, appSettings, GridApi) {
 	var self = this;
 	$scope.data = { };
 	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/grids' })
@@ -82,13 +75,15 @@ function GridListController($scope, $http, $rootScope, appSettings, GridApi) {
 			});
 			//$scope.newName = '';
 		};
-}
+}]
 
 
 function CreateCtrl($scope) {
-	
+
 }
-function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
+
+//function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
+var EditCtrl = ['$scope', '$route', '$routeParams', 'location', '$http', '$log', '$templateCache', 'appSettings', function($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
 	$scope.data = {};
 	console.log($routeParams);
 
@@ -105,5 +100,5 @@ function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templat
 		});
 
 
-}
+}]
 

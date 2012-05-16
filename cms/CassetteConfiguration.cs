@@ -1,4 +1,5 @@
 using Cassette.Configuration;
+using Cassette.HtmlTemplates;
 using Cassette.Scripts;
 using Cassette.Stylesheets;
 
@@ -9,6 +10,7 @@ namespace cms
     /// </summary>
     public class CassetteConfiguration : ICassetteConfiguration
     {
+
         public void Configure(BundleCollection bundles, CassetteSettings settings)
         {
             // TODO: Configure your bundles here...
@@ -23,15 +25,24 @@ namespace cms
             // To combine files, try something like this instead:
             //   bundles.Add<StylesheetBundle>("Content");
             // In production mode, all of ~/Content will be combined into a single bundle.
-            
-			bundles.Add<ScriptBundle>("Scripts/Admin");
+
+			bundles.Add<ScriptBundle>("Scripts/Admin",
+				b => b.Processor = new ScriptPipeline
+				{
+					CoffeeScriptCompiler = new IECoffeeScriptCompiler()
+				});
+
+			//Jquery HTml 
+			//bundles.Add<HtmlTemplateBundle>("HtmlTemplates",
+			//    bundle => bundle.Processor = new JQueryTmplPipeline()
+			//);
+			bundles.Add<HtmlTemplateBundle>("HtmlTemplates");
+
             // If you want a bundle per folder, try this:
             //bundles.AddPerSubDirectory<ScriptBundle>("Scripts/Admin");
             // Each immediate sub-directory of ~/Scripts will be combined into its own bundle.
             // This is useful when there are lots of scripts for different areas of the website.
 
-            // *** TOP TIP: Delete all ".min.js" files now ***
-            // Cassette minifies scripts for you. So those files are never used.
         }
     }
 }
