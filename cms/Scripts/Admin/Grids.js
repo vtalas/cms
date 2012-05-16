@@ -60,23 +60,6 @@ module.directive("gridelement", ['$templateCache', '$compile', function ($templa
 	return directiveDefinitionObject;
 }]);
 
-//function GridListController($scope, $http, $rootScope, appSettings, GridApi) {
-var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function($scope, $http, $rootScope, appSettings, GridApi) {
-	var self = this;
-	$scope.data = { };
-	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/grids' })
-		.success(function(data, status, headers, config) {
-			$scope.data = data;
-			//console.log(data, "GridListController");
-		});
-	$scope.add = function() {
-		GridApi.get({ }, function(parameters) {
-			console.log(parameters);
-		});
-		//$scope.newName = '';
-	};
-}];
-
 
 function CreateCtrl($scope) {
 

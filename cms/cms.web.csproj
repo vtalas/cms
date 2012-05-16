@@ -169,7 +169,17 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServiceReference1\Client1.disco" />
+    <Content Include="Scripts\Admin\aaa.coffee">
+      <Generator>CoffeeScriptGenerator</Generator>
+      <LastGenOutput>aaa.js</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\Admin\aaa.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>aaa.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\Admin\cmsapi.js" />
+    <Content Include="Scripts\Admin\GridListController.js" />
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
     <Content Include="Scripts\angular-1.0.0rc8.js" />
     <Content Include="Scripts\angular-resource-1.0.0rc8.js" />

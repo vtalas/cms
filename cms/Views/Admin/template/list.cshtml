@@ -4,11 +4,11 @@
 			<td>
 			<a href="#/gridpage/{{line.Id}}"> {{line.Name}}</a> 
 			</td>
-			<td><button ng-click="remove()">Smazat</button></td>
+			<td><button ng-click="remove(line)">Smazat</button></td>
 	</tr>
 </table>
 <input type="text" ng-model="newName"/>
-	<button ng-click="add()" >Pridat</button>
+<button ng-click="add()" >Pridat</button>
 
 
 
