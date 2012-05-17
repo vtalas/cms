@@ -1,12 +1,4 @@
-/**
- * Created with JetBrains WebStorm.
- * User: ladik
- * Date: 14.5.12
- * Time: 21:43
- * To change this template use File | Settings | File Templates.
- */
 var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function($scope, $http, $rootScope, appSettings, GridApi) {
-    
 	$scope.data = GridApi.get(null, function(d){
         console.log(d);
     });

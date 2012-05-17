@@ -1,8 +1,6 @@
-
 /*
 @reference ../jquery-1.7.2.js
 */
-
 (function() {
   var cubes, list, math, num, number, opposite, race, square,
     __slice = Array.prototype.slice;

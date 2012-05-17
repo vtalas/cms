@@ -14,7 +14,7 @@
 
 
 	$scope.add = function (item) {
-		var newitem = item ? addItem(item) : addNewline();
+        var newitem = item ? addItem(item) : addNewline();
 
 		$http({
 			method: 'POST',
@@ -75,7 +75,24 @@
 
 		return newitem;
 	};
+    var addLineIfLast = function(item){
+        var linesCount = $scope.data.Lines.length;
+        var position = item.Line+1;
+        console.log(position,linesCount,item,$scope.data.Lines);
+
+        if(position >= linesCount){
+            var newline = [];
+            var newitem = { Width: 12, Type: "text", Line: linesCount };
+            newline.push(newitem);
+
+            $scope.data.Lines.push(newline);
+
+            console.log("kjasbd")
+
+        }
+    };
 	var addItem = function (newitem) {
+        addLineIfLast(newitem);
 		return newitem;
 	};
 }]

@@ -23,8 +23,6 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 }]);
 
 module.directive("gridelement", ['$templateCache', '$compile', function ($templateCache, $compile) {
-	
-	
 	var template = function (type) {
 		var elementType = type ? type : "text";
 		if (!$templateCache.get(elementType)) {
@@ -68,9 +66,6 @@ function CreateCtrl($scope) {
 //function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
 var EditCtrl = ['$scope', '$route', '$routeParams', 'location', '$http', '$log', '$templateCache', 'appSettings', function($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
 	$scope.data = {};
-	console.log($routeParams);
-
-	$scope.sablona = "GridElementTmpl/novinka";
 
 	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGridElement/' + $routeParams.GridElementId })
 		.success(function (data, status, headers, config) {
@@ -81,7 +76,5 @@ var EditCtrl = ['$scope', '$route', '$routeParams', 'location', '$http', '$log',
 		.error(function (data, status, headers, config) {
 
 		});
-
-
 }]
 
