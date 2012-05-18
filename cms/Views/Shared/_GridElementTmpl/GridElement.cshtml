@@ -1,6 +1,4 @@
-﻿@{
-	//Bundles.Reference("~/Scripts/Admin/aaaa.js");
-	}
+﻿
 @model cms.Controllers.TemplateSettings
 
 <div ng-controller="@Model.Type" >
@@ -11,12 +9,22 @@
 		<b>@Model.Type</b>
 	</div>
 	<div ng-show="item.Id==0">
+		
+		<select ng-model="item.Type">
+			<option value="text">text</option>
+			<option value="novinka">novinka</option>
+		</select>
+		
 		<button ng-click="add(item)">Create</button>
+
 	</div>
 	
 	<div ng-show="item.Edit" >
 		@Html.Partial(Model.TemplateEdit)
 	</div>
+	
+		{{item.Line}}|{{item.Width}}|{{item.Id}}
+
 		@Html.Partial(Model.TemplateView)
 	
 

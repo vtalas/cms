@@ -64,7 +64,7 @@ namespace cms.data
 			bool any = source.Any();
 			if (source == null || !any)
 			{
-				a.Add(DefaultLine(0));
+				//a.Add(DefaultLine(0));
 				return a;
 			}
 						

@@ -45,7 +45,7 @@ module.directive("gridelement", ['$templateCache', '$compile', function ($templa
 		},
 		compile: function (iElement, tAttrs, transclude) {
 			return function(scope, iElement, tAttrs, transclude) {
-				console.log(scope);
+				//console.log(scope);
 				var item = scope.$parent.item;
 				var type = item.Type;
 

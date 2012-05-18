@@ -1,6 +1,6 @@
 var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function($scope, $http, $rootScope, appSettings, GridApi) {
 	$scope.data = GridApi.get(null, function(d){
-        console.log(d);
+        //console.log(d);
     });
 
     $scope.add = function () {
