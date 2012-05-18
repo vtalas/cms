@@ -73,6 +73,11 @@ namespace cms.data.Files
 			throw new System.NotImplementedException();
 		}
 
+		public override Grid Update(Grid item)
+		{
+			throw new System.NotImplementedException();
+		}
+
 		public override IEnumerable<Grid> Grids()
 		{
 			throw new System.NotImplementedException();

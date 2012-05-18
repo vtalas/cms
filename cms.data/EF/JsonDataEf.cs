@@ -78,6 +78,13 @@ namespace cms.data.EF
 			db.SaveChanges();
 			return item;
 		}
+
+		public override Grid Update(Grid item)
+		{
+			db.Entry(item).State = EntityState.Modified;
+			db.SaveChanges();
+			return item;
+		}
 		public override void DeleteApplication(int id)
 		{
 			var delete = GetApplication(id);

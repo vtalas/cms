@@ -36,6 +36,7 @@ namespace cms.data
 		public abstract GridElement Update(GridElement item);
 		public abstract GridPageDto GetGridPage(string link);
 		public abstract T Add<T>(T newitem);
+		public abstract Grid Update(Grid item);
 	}
 }
 

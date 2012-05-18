@@ -11,12 +11,8 @@ namespace cms.data.EF
 		{
 			if (context.Database.Exists())
 			{
-				//using (var ctx = new EfContext())
-			//	{
-					Database.SetInitializer<EfContext>(null);
-					//ctx.Database.ExecuteSqlCommand("ALTER DATABASE " + ctx.Database.Connection.Database + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
-					context.Database.ExecuteSqlCommand("ALTER DATABASE " + context.Database.Connection.Database + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
-				//}
+				Database.SetInitializer<EfContext>(null);
+				context.Database.ExecuteSqlCommand("ALTER DATABASE " + context.Database.Connection.Database + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
 				context.Database.Delete();
 			}
 			context.Database.Create();
@@ -40,11 +36,13 @@ namespace cms.data.EF
 			            		Name = "test page",
 			            		GridElements = new List<GridElement>()
 			            		               	{
-			            		               		new GridElement{Content = "aaa",Line = 0,Position = 0,Width = 3,Type = "text"},
-			            		               		new GridElement{Content = "aaa",Line = 0,Position = 3,Width = 3,Type = "text"},
-			            		               		new GridElement{Content = "aaa",Line = 0,Position = 6,Width = 3,Type = "text"},
-			            		               		new GridElement{Content = "aaa",Line = 2,Position = 5,Width = 3,Type = "text"},
-			            		               		new GridElement{Content = "aaa",Line = 3,Position = 0,Width = 12,Type = "text"}
+													//new GridElement{Content = "aaa",Line = 0,Position = 0,Width = 3,Type = "text"},
+													//new GridElement{Content = "aaa",Line = 0,Position = 3,Width = 3,Type = "text"},
+													//new GridElement{Content = "aaa",Line = 0,Position = 6,Width = 3,Type = "text"},
+													//new GridElement{Content = "aaa",Line = 2,Position = 5,Width = 3,Type = "text"},
+													//new GridElement{Content = "aaa",Line = 3,Position = 0,Width = 12,Type = "text"}
+													new GridElement{Content = "akjhasbdsa", Line = 1,Width = 12,Type = "text"}
+
 			            		               	},
 								ApplicationSettings = application
 
@@ -55,7 +53,8 @@ namespace cms.data.EF
 			                  	{
 			                  		Id = 2,
 									Link = "sdakjs",
-			                  		Name = "grid Bez elementu"
+			                  		Name = "grid Bez elementu",
+									ApplicationSettings = application
 			                  	});
 
 			context.TemplateTypes.Add(new TemplateType { Name = "novinka" });

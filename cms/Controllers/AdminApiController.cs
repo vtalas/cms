@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using cms.data;
 using cms.data.Files;
 using cms.data.Models;
+using cms.data.Dtos;
 
 namespace cms.Controllers
 {
@@ -34,14 +35,14 @@ namespace cms.Controllers
         	data.Grid.Add(grid);
 			
 			var newitem = db.Add(data);
-			return new JSONNetResult(newitem);
+			return new JSONNetResult(newitem.ToDto());
 		}
 
 		[HttpPost]
 		public ActionResult AddGrid(Grid data)
         {
 			var newgrid = db.Add(data);
-			return new JSONNetResult(newgrid);
+			return new JSONNetResult(newgrid.ToGridPageDto());
         }
 
 		[HttpPost]
@@ -55,6 +56,12 @@ namespace cms.Controllers
 		public ActionResult DeleteGrid(int id)
         {
 			db.DeleteGrid(id); 
+			return new JSONNetResult(null);
+		}
+		[HttpPost]
+		public ActionResult UpdateGrid(Grid item)
+        {
+			db.Update(item); 
 			return new JSONNetResult(null);
 		}
 		
@@ -73,7 +80,7 @@ namespace cms.Controllers
 		public ActionResult UpdateGridElement(GridElement item)
 		{
 			var g = db.Update(item);
-			return new JSONNetResult(g);
+			return new JSONNetResult(g.ToDto());
 		}
 		public ActionResult GetGridElement(int id)
         {
