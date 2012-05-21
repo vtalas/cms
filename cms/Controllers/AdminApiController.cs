@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using cms.data;
 using cms.data.Files;
 using cms.data.Models;
+using cms.data.Dtos;
 
 namespace cms.Controllers
 {
@@ -19,29 +20,48 @@ namespace cms.Controllers
         	var applications = db.Applications();
 			return new JSONNetResult(applications);
 		}
-        public ActionResult AddApplication(ApplicationSetting data)
+		
+		[HttpPost]
+		public ActionResult AddApplication(ApplicationSetting data)
         {
         	var a = db.Add(data);		
 			return new JSONNetResult(a);
 		}
-        public ActionResult AddGridElement(GridElement data, int gridId)
+		
+		[HttpPost]
+		public ActionResult AddGridElement(GridElement data, int gridId)
         {
         	var grid = db.GetGrid(gridId);
         	data.Grid.Add(grid);
 			
 			var newitem = db.Add(data);
-			return new JSONNetResult(newitem);
+			return new JSONNetResult(newitem.ToDto());
 		}
 
-        public ActionResult AddGrid(Grid data)
+		[HttpPost]
+		public ActionResult AddGrid(Grid data)
         {
-			var newgrid =  db.Add(data);
-			return new JSONNetResult(newgrid);
+			var newgrid = db.Add(data);
+			return new JSONNetResult(newgrid.ToGridPageDto());
         }
 
-        public ActionResult DeleteGridElement(GridElement data)
+		[HttpPost]
+		public ActionResult DeleteGridElement(GridElement data)
         {
 			db.DeleteGridElement(data.Id); 
+			return new JSONNetResult(null);
+		}
+
+		[HttpPost]
+		public ActionResult DeleteGrid(int id)
+        {
+			db.DeleteGrid(id); 
+			return new JSONNetResult(null);
+		}
+		[HttpPost]
+		public ActionResult UpdateGrid(Grid item)
+        {
+			db.Update(item); 
 			return new JSONNetResult(null);
 		}
 		
@@ -55,11 +75,12 @@ namespace cms.Controllers
 			var g = db.GetGridPage(id);
 			return new JSONNetResult(g);
 		}
-		
+
+		[HttpPost]
 		public ActionResult UpdateGridElement(GridElement item)
 		{
 			var g = db.Update(item);
-			return new JSONNetResult(g);
+			return new JSONNetResult(g.ToDto());
 		}
 		public ActionResult GetGridElement(int id)
         {

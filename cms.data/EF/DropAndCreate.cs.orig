@@ -69,6 +69,13 @@ namespace cms.data.EF
 			            		Name = "test page",
 			            		GridElements = new List<GridElement>()
 			            		               	{
+<<<<<<< HEAD
+			            		               		new GridElement {Content = "aaa", Line = 0, Position = 0, Width = 3, Type = "text"},
+			            		               		new GridElement {Content = "aaa", Line = 0, Position = 3, Width = 3, Type = "text"},
+			            		               		new GridElement {Content = "aaa", Line = 0, Position = 6, Width = 3, Type = "text"},
+			            		               		new GridElement {Content = "aaa", Line = 2, Position = 5, Width = 3, Type = "text"},
+			            		               		new GridElement {Content = "aaa", Line = 3, Position = 0, Width = 12, Type = "text"}
+=======
 													//new GridElement{Content = "aaa",Line = 0,Position = 0,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 0,Position = 3,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 0,Position = 6,Width = 3,Type = "text"},
@@ -76,6 +83,7 @@ namespace cms.data.EF
 													//new GridElement{Content = "aaa",Line = 3,Position = 0,Width = 12,Type = "text"}
 													new GridElement{Content = "akjhasbdsa", Line = 1,Width = 12,Type = "text"}
 
+>>>>>>> 2fc8f5a67e2d971c68f7ef7666c6666ef6e6cd7d
 			            		               	},
 			            		ApplicationSettings = application
 
@@ -85,9 +93,14 @@ namespace cms.data.EF
 			Context.Grids.Add(new Grid
 			                  	{
 			                  		Id = 2,
+<<<<<<< HEAD
 			                  		Link = "sdakjs",
+			                  		Name = "grid Bez elementu"
+=======
+									Link = "sdakjs",
 			                  		Name = "grid Bez elementu",
 									ApplicationSettings = application
+>>>>>>> 2fc8f5a67e2d971c68f7ef7666c6666ef6e6cd7d
 			                  	});
 
 			Context.TemplateTypes.Add(new TemplateType {Name = "novinka"});

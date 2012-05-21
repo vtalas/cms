@@ -72,7 +72,15 @@ namespace cms.data.EF
 			db.GridElements.Remove(delete);
 			db.SaveChanges();
 		}
+		
 		public override GridElement Update(GridElement item)
+		{
+			db.Entry(item).State = EntityState.Modified;
+			db.SaveChanges();
+			return item;
+		}
+
+		public override Grid Update(Grid item)
 		{
 			db.Entry(item).State = EntityState.Modified;
 			db.SaveChanges();

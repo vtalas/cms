@@ -5,7 +5,11 @@
 
 	<div ng-repeat="line in data.Lines" >
 		<div ng-repeat="item in line" class="grid_{{item.Width}}">
+<<<<<<< HEAD
+			<div gridelement="item" ng-model="item" ></div>
+=======
 			<div gridelement ></div>
+>>>>>>> 2fc8f5a67e2d971c68f7ef7666c6666ef6e6cd7d
 		</div>
 		<hr class="clear"/>
 	</div>

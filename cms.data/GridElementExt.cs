@@ -7,10 +7,10 @@ namespace cms.data
 {
 	public static class GridElementExt
 	{
-
+		private static int _minsize = 12;
 		public static GridPageDto ToGridPageDto(this Grid source)
 		{
-			return new GridPageDto()
+			return new GridPageDto
 			{
 				Lines = source.GridElements.ToLines(),
 				Home = source.Home,
@@ -23,9 +23,9 @@ namespace cms.data
 		private static IEnumerable<GridElementDto> DefaultLine(int line)
 		{
 			var d = new List<GridElementDto>();
-			for (int i = 0; i < 12; i++)
+			for (int i = 0; i < 12; i+=_minsize)
 			{
-				d.Add(new GridElementDto { Line = line, Width = 1, Position = i });
+				d.Add(new GridElementDto { Line = line, Width = _minsize, Position = i });
 			}
 			return d;
 		}
@@ -61,13 +61,15 @@ namespace cms.data
 		public static IList<IEnumerable<GridElementDto>> ToLines(this IEnumerable<GridElement> source)
 		{
 			var a = new List<IEnumerable<GridElementDto>>();
-			if (source == null || !source.Any())
+			bool any = source.Any();
+			if (source == null || !any)
 			{
-				a.Add(DefaultLine(0));
+				//a.Add(DefaultLine(0));
 				return a;
 			}
 						
 			var c = source.Max(x => x.Line);
+
 			for (int i = 0; i <= c; i++)
 			{
 				var xx = source.Where(x => x.Line == i);

@@ -23,8 +23,8 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 }]);
 
 module.directive("gridelement", ['$templateCache', '$compile', function ($templateCache, $compile) {
-
-
+	
+	
 	var template = function (type) {
 		var elementType = type ? type : "text";
 		if (!$templateCache.get(elementType)) {
@@ -65,23 +65,6 @@ module.directive("gridelement", ['$templateCache', '$compile', function ($templa
 	return directiveDefinitionObject;
 } ]);
 
-//function GridListController($scope, $http, $rootScope, appSettings, GridApi) {
-var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function($scope, $http, $rootScope, appSettings, GridApi) {
-	var self = this;
-	$scope.data = { };
-	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/grids' })
-		.success(function(data, status, headers, config) {
-			$scope.data = data;
-			//console.log(data, "GridListController");
-		});
-	$scope.add = function() {
-		GridApi.get({ }, function(parameters) {
-			console.log(parameters);
-		});
-		//$scope.newName = '';
-	};
-}];
-
 
 function CreateCtrl($scope) {
 
@@ -90,9 +73,6 @@ function CreateCtrl($scope) {
 //function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
 var EditCtrl = ['$scope', '$route', '$routeParams', 'location', '$http', '$log', '$templateCache', 'appSettings', function($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
 	$scope.data = {};
-	console.log($routeParams);
-
-	$scope.sablona = "GridElementTmpl/novinka";
 
 	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGridElement/' + $routeParams.GridElementId })
 		.success(function (data, status, headers, config) {
@@ -103,7 +83,5 @@ var EditCtrl = ['$scope', '$route', '$routeParams', 'location', '$http', '$log',
 		.error(function (data, status, headers, config) {
 
 		});
-
-
 }]
 

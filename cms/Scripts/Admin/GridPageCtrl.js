@@ -1,47 +1,47 @@
-﻿var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', function ($scope, $http, $routeParams, appSettings) {
+﻿function _newitem(line){
+    var newitem = { Id:0, Width: 12, Type: "text", Line: line, Edit:0 };
+    return newitem;
+}
+
+
+var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', function ($scope, $http, $routeParams, appSettings) {
 	$scope.data = {};
 	var self = this;
 
 	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGrid/' + $routeParams.Id })
 		.success(function (data, status, headers, config) {
 			$scope.data = data;
-			console.log(data, "edit");
+            var newitem = _newitem($scope.data.Lines.length);
+            $scope.data.Lines.push([newitem]);
 		})
-
 		.error(function (data, status, headers, config) {
 
 		});
-
-
 	$scope.add = function (item) {
-		var newitem = item ? addItem(item) : addNewline();
 
-		$http({
-			method: 'POST',
-			url: '/adminApi/' + appSettings.Name + '/AddGridElement',
+        console.log(item);
+        $http({method: 'POST',url: '/adminApi/' + appSettings.Name + '/AddGridElement',
 			data: {
-				data: newitem,
+				data: item,
 				gridId: $scope.data.Id
 			}
 		}).success(function (data, status, headers, config) {
-			console.log(data, "ser");
-			if (data.Line >= $scope.data.Lines.length) {
-				$scope.data.Lines.push([]);
-			}
+//		    console.log(data.Line , $scope.data.Lines.length-1);
+			if (data.Line >= $scope.data.Lines.length-1) {
+                var newitem = _newitem($scope.data.Lines.length);
+                $scope.data.Lines.push([newitem]);
+            }
+            data.Edit = 1;
 			$scope.data.Lines[data.Line][data.Position] = data;
+
 		});
-		$scope.newName = '';
 	};
 	$scope.remove = function (item) {
-		console.log(item);
-		var index = $scope.data.Lines[item.Line].indexOf(item);
-
-		if (index != -1) $scope.data.Lines[item.Line].splice(index, 1);
-
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/DeleteGridElement', data: item })
 				.success(function (data, status, headers, config) {
 					console.log("deleted");
-				});
+                    item.Id= 0;item.Edit =0;
+            });
 	};
 
 	$scope.edit = function (item, $element) {
@@ -60,22 +60,6 @@
 			data: data
 		}).success(function () {
 			item.Edit = 0;
-
 		});
-
-	};
-
-
-	var addNewline = function () {
-		var newlineIndex = $scope.data.Lines.length;
-		var newline = [];
-		var newitem = { Width: 12, Type: $scope.newName, Line: newlineIndex };
-
-		newline.push(newitem);
-
-		return newitem;
-	};
-	var addItem = function (newitem) {
-		return newitem;
 	};
 }]
