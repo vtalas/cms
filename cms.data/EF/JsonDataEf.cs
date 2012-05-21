@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using cms.data.Dtos;
 using cms.data.Models;
@@ -13,6 +14,7 @@ namespace cms.data.EF
 		public JsonDataEf(string application, EfContext context) : base(application)
 		{
 			db = context;
+			Database.SetInitializer(new CreateIfNotExists());
 		}
 
 		public JsonDataEf(string application)
@@ -74,7 +76,6 @@ namespace cms.data.EF
 		public override GridElement Update(GridElement item)
 		{
 			db.Entry(item).State = EntityState.Modified;
-			//db.GridElements.Attach(item);
 			db.SaveChanges();
 			return item;
 		}

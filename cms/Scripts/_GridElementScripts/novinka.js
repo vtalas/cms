@@ -15,8 +15,11 @@ function novinka($scope, $http,appSettings) {
 	var converter = new Showdown.converter();
 	var self = this;
 	var toHtml = function (markdown) {
-		return converter.makeHtml(markdown);
-	};
+        var a = true;
+        alert(jhasdb);
+
+        return converter.makeHtml(markdown);
+    };
 
 	$scope.headerHtml = function () {
 		return toHtml($scope.data.Content.header);
