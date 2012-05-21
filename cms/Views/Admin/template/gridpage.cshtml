@@ -5,7 +5,7 @@
 
 	<div ng-repeat="line in data.Lines" >
 		<div ng-repeat="item in line" class="grid_{{item.Width}}">
-			<div gridelement="item" ></div>
+			<div gridelement="item" ng-model="item" ></div>
 		</div>
 		<hr class="clear"/>
 	</div>
