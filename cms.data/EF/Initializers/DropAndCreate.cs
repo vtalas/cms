@@ -2,29 +2,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using cms.data.Models;
 
-namespace cms.data.EF
+namespace cms.data.EF.Initializers
 {
-	public class CreateIfNotExists : IDatabaseInitializer<EfContext>
-	{
-		public void InitializeDatabase(EfContext context)
-		{
-			if (!context.Database.Exists())
-			{
-				context.Database.Create();
-				Seed(context);
-				context.SaveChanges();
-			}
-		}
-
-
-		}
-
-		protected virtual void Seed(EfContext context)
-		{
-			var sampledata = new SampleData(context);
-			sampledata.Generate();
-		}
-	}
 	public class DropAndCreate : IDatabaseInitializer<EfContext>
 	{
 

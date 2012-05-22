@@ -29,3 +29,5 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 packages/*
 cms/Service References/ServiceReference1/*
+cms/App_Data/*.mdf
+cms/App_Data/*.ldf

@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using NUnit.Framework;
 using cms.data.EF;
+using cms.data.EF.Initializers;
 using cms.data.Models;
 
 namespace cms.data.tests.SampleData

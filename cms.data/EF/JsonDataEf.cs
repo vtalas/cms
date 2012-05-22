@@ -15,7 +15,7 @@ namespace cms.data.EF
 		{
 			db = context;
 			//Database.SetInitializer(new CreateIfNotExists());
-			Database.SetInitializer(new CreateIfNotExists());
+//			Database.SetInitializer(new DropAndCreateTables());
 		}
 
 		public JsonDataEf(string application)

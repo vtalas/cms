@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using cms.data.EF;
 using System.Linq;
+using cms.data.EF.Initializers;
 
 namespace cms.Controllers
 {
@@ -9,9 +10,12 @@ namespace cms.Controllers
     {
         public ActionResult Index()
         {
-        	var a = new EfContext();
-			Database.SetInitializer(new DropAndCreate());
-        	a.ApplicationSettings.ToList();
+        	using (var a = new EfContext())
+        	{
+
+				Database.SetInitializer(new DropAndCreateTables());
+				a.ApplicationSettings.ToList();
+        	}
 			return View();
         }
 

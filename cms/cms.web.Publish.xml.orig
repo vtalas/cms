@@ -1,135 +1,133 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <publishData>
 <<<<<<< HEAD
-  <publishProfile publishUrl="ftp://ladeso.aspone.cz/www" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FTP" replaceMatchingFiles="True" userName="ladeso.aspone.cz" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAp7YN7IfsXUSgwFJ1ZAbUVwAAAAACAAAAAAAQZgAAAAEAACAAAABVzRxmglAxKKwHI7f8cWX1WmNrzuHmC/n6sGb3IZ51QAAAAAAOgAAAAAIAACAAAACPYr/WijJnAOTNy4mLBENECQYBr0x33CUBnuAUrRrhZCAAAAChlLzNQtrvALrVkvHE0APe5EIzTnmUYadBEjM+1yJ/mEAAAABlXGM+INiuOGJxRplEBXYzbw0bq6rbcjOXTcGFLgPeRN29kvud/YM2h2e0QQz+P01S+HsM7QmxCPG1Ht3WEguz" SelectedForPublish="True">
+  <publishProfile publishUrl="ftp://ladeso.aspone.cz/www" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FTP" replaceMatchingFiles="True" userName="ladeso.aspone.cz" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAp7YN7IfsXUSgwFJ1ZAbUVwAAAAACAAAAAAAQZgAAAAEAACAAAADaIglLBrbcFlw8DIdbKsfeO0ZVNBlIwGoBJOsd+QXzEwAAAAAOgAAAAAIAACAAAABU4Moo0NEr6vveuEWP7QblZC8dz3PC9IGNvfvzDPbpkSAAAABQ1kp2BH1y7RzYCgqMmwBmXM5NnFzFtSz3HRZdKM2ti0AAAADq+/v0iyPUtyhWEWmetgs2Du43lpSn2URWvwY30KxuPDO/y52mT3ijxz14RnE5Hk/bmppMz7wxzhoRevdezsLS" SelectedForPublish="True">
     <file relUrl="Scripts/jquery.validate.unobtrusive.js" publishTime="04/22/2012 18:56:22" />
-    <file relUrl="bin/cms.dll" publishTime="05/20/2012 22:21:20" />
+    <file relUrl="bin/cms.dll" publishTime="05/21/2012 22:31:31" />
     <file relUrl="Scripts/Admin/aaa.coffee" publishTime="05/16/2012 22:07:11" />
     <file relUrl="Scripts/Admin/Index.js" publishTime="05/16/2012 22:07:11" />
-    <file relUrl="Views/Web.config" publishTime="04/22/2012 17:53:36" />
-    <file relUrl="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png" publishTime="04/22/2012 17:36:39" />
+    <file relUrl="Views/Shared/_GridElementTmpl/GridElement.cshtml" publishTime="05/20/2012 20:23:10" />
+    <file relUrl="bin/IronRuby.dll" publishTime="04/22/2012 17:53:08" />
     <file relUrl="bin/Microsoft.Scripting.Metadata.dll" publishTime="04/22/2012 17:53:08" />
-    <file relUrl="bin/System.Web.WebPages.xml" publishTime="12/19/2010 22:59:38" />
     <file relUrl="Views/Admin/_Layout.cshtml" publishTime="05/16/2012 22:07:11" />
     <file relUrl="Views/Admin/template/list.cshtml" publishTime="05/18/2012 23:50:08" />
-    <file relUrl="Views/Shared/_GridElementTmpl/GridElement.cshtml" publishTime="05/20/2012 20:23:10" />
+    <file relUrl="Scripts/angular-resource-1.0.0rc8.js" publishTime="05/16/2012 22:07:11" />
+    <file relUrl="Content/themes/base/jquery-ui.css" publishTime="04/22/2012 17:36:39" />
     <file relUrl="bin/EntityFramework.xml" publishTime="05/01/2012 21:30:01" />
-    <file relUrl="bin/System.Web.Mvc.dll" publishTime="01/05/2011 16:42:16" />
     <file relUrl="Views/Shared/_GridElementTmpl/novinka_Edit.cshtml" publishTime="05/10/2012 22:11:12" />
-    <file relUrl="bin/Microsoft.Practices.ServiceLocation.dll" publishTime="04/22/2012 17:53:08" />
+    <file relUrl="bin/System.Web.Mvc.dll" publishTime="01/05/2011 16:42:16" />
     <file relUrl="Views/Admin/Grids.cshtml" publishTime="05/18/2012 23:26:52" />
-    <file relUrl="Web.config" publishTime="05/20/2012 20:37:02" />
-    <file relUrl="bin/System.Web.WebPages.Deployment.xml" publishTime="12/20/2010 09:52:36" />
+    <file relUrl="Web.config" publishTime="05/21/2012 22:13:58" />
+    <file relUrl="bin/System.Web.WebPages.Deployment.xml" publishTime="01/17/2012 00:47:42" />
     <file relUrl="Content/themes/base/images/ui-icons_cd0a0a_256x240.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="Scripts/_GridElementScripts/text.js" publishTime="05/16/2012 22:07:11" />
     <file relUrl="Views/Shared/_GridElementTmpl/text_View.cshtml" publishTime="05/10/2012 18:55:42" />
-    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="05/01/2012 22:02:23" />
     <file relUrl="Views/Admin/template/new.cshtml" publishTime="05/03/2012 20:00:18" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="05/01/2012 21:30:01" />
     <file relUrl="Global.asax" publishTime="04/22/2012 17:36:39" />
     <file relUrl="bin/Cassette.dll" publishTime="04/22/2012 17:53:09" />
     <file relUrl="bin/Microsoft.Dynamic.dll" publishTime="04/22/2012 17:53:08" />
     <file relUrl="bin/AjaxMin.pdb" publishTime="04/22/2012 17:53:06" />
     <file relUrl="Content/themes/base/images/ui-icons_2e83ff_256x240.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="Scripts/_GridElementScripts/novinka.js" publishTime="05/16/2012 22:07:11" />
+    <file relUrl="Scripts/_GridElementScripts/novinka.js" publishTime="05/21/2012 21:56:22" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png" publishTime="04/22/2012 17:36:39" />
     <file relUrl="Scripts/jquery-ui.js" publishTime="04/22/2012 17:36:39" />
     <file relUrl="HtmlTemplates/test.htm" publishTime="05/16/2012 22:07:11" />
-    <file relUrl="Views/client/test1/_Layout.cshtml" publishTime="05/08/2012 15:46:09" />
-    <file relUrl="bin/System.Web.WebPages.dll" publishTime="01/05/2011 14:45:38" />
+    <file relUrl="bin/System.Web.Razor.xml" publishTime="12/20/2010 09:52:36" />
+    <file relUrl="bin/System.Web.WebPages.dll" publishTime="01/26/2012 19:01:06" />
     <file relUrl="bin/SassAndCoffee.Core.dll" publishTime="04/22/2012 17:53:09" />
     <file relUrl="Scripts/jquery-1.7.2.js" publishTime="04/22/2012 18:55:45" />
     <file relUrl="bin/AjaxMin.dll" publishTime="04/22/2012 17:53:06" />
     <file relUrl="bin/System.Web.Mvc.xml" publishTime="01/04/2011 14:29:22" />
-    <file relUrl="bin/System.Web.Helpers.xml" publishTime="12/19/2010 22:59:38" />
+    <file relUrl="bin/System.Web.Helpers.xml" publishTime="01/17/2012 09:00:48" />
     <file relUrl="Scripts/Admin/GridPageCtrl.js" publishTime="05/18/2012 23:03:43" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="Scripts/angular-1.0.0rc8.js" publishTime="05/13/2012 12:28:34" />
-    <file relUrl="bin/cms.pdb" publishTime="05/20/2012 22:21:20" />
-    <file relUrl="Scripts/Admin/GridListController.js" publishTime="05/18/2012 23:53:02" />
-    <file relUrl="Scripts/Admin/Grids.js" publishTime="05/18/2012 19:31:56" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.min.js" publishTime="04/22/2012 17:36:39" />
+    <file relUrl="bin/cms.pdb" publishTime="05/21/2012 22:31:31" />
+    <file relUrl="bin/Microsoft.Practices.ServiceLocation.xml" publishTime="04/22/2012 17:53:08" />
+    <file relUrl="Scripts/Admin/GridListController.js" publishTime="05/18/2012 23:53:02" />
+    <file relUrl="Scripts/Admin/Grids.js" publishTime="05/21/2012 21:56:22" />
+    <file relUrl="bin/SassAndCoffee.Ruby.dll" publishTime="04/22/2012 17:53:09" />
+    <file relUrl="Scripts/_GridElementScripts/text.js" publishTime="05/16/2012 22:07:11" />
     <file relUrl="Views/Admin/template/gridpage.cshtml" publishTime="05/20/2012 20:22:10" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="Scripts/Admin/aaa.js" publishTime="05/17/2012 20:24:04" />
-    <file relUrl="bin/cms.data.pdb" publishTime="05/18/2012 23:52:36" />
-    <file relUrl="Views/Shared/Error.cshtml" publishTime="04/22/2012 17:36:39" />
+    <file relUrl="Scripts/jquery.validate.unobtrusive.min.js" publishTime="04/22/2012 17:36:39" />
+    <file relUrl="bin/System.Web.Helpers.dll" publishTime="01/26/2012 19:01:06" />
+    <file relUrl="bin/cms.data.pdb" publishTime="05/21/2012 22:09:58" />
     <file relUrl="bin/Microsoft.Web.Infrastructure.dll" publishTime="04/22/2012 17:53:09" />
+    <file relUrl="bin/Microsoft.Practices.ServiceLocation.dll" publishTime="04/22/2012 17:53:08" />
     <file relUrl="bin/Microsoft.Scripting.dll" publishTime="04/22/2012 17:53:08" />
-    <file relUrl="Scripts/jquery.validate.js" publishTime="04/22/2012 17:36:39" />
     <file relUrl="bin/Microsoft.Practices.ServiceLocation.pdb" publishTime="04/22/2012 17:53:08" />
     <file relUrl="bin/Cassette.Views.dll" publishTime="04/22/2012 17:53:09" />
     <file relUrl="bin/Cassette.Web.dll" publishTime="04/22/2012 17:53:09" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="04/22/2012 17:36:39" />
     <file relUrl="bin/Jurassic.dll" publishTime="05/03/2012 20:03:08" />
     <file relUrl="Scripts/Admin/cmsapi.js" publishTime="05/16/2012 22:07:11" />
     <file relUrl="Content/themes/base/images/ui-icons_222222_256x240.png" publishTime="04/22/2012 17:36:39" />
     <file relUrl="packages.config" publishTime="05/16/2012 22:07:11" />
-    <file relUrl="bin/System.Web.WebPages.Razor.dll" publishTime="01/05/2011 14:45:38" />
-    <file relUrl="Content/themes/base/images/ui-icons_888888_256x240.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="Views/Shared/_GridElementTmpl/text_Edit.cshtml" publishTime="05/10/2012 22:20:44" />
-    <file relUrl="bin/Newtonsoft.Json.xml" publishTime="05/01/2012 22:02:23" />
+    <file relUrl="Scripts/jquery-ui.min.js" publishTime="04/22/2012 17:36:39" />
+    <file relUrl="Views/setup/index.cshtml" publishTime="05/21/2012 22:08:26" />
+    <file relUrl="bin/cms.data.dll" publishTime="05/21/2012 22:09:58" />
     <file relUrl="Views/Admin/Index.cshtml" publishTime="05/16/2012 22:07:11" />
-    <file relUrl="Scripts/angular-resource-1.0.0rc8.js" publishTime="05/16/2012 22:07:11" />
+    <file relUrl="Views/Shared/Error.cshtml" publishTime="04/22/2012 17:36:39" />
     <file relUrl="bin/log4net.dll" publishTime="05/01/2012 20:47:41" />
+    <file relUrl="bin/Newtonsoft.Json.pdb" publishTime="05/01/2012 22:02:23" />
     <file relUrl="Content/themes/base/images/ui-icons_454545_256x240.png" publishTime="04/22/2012 17:36:39" />
     <file relUrl="bin/IronRuby.Libraries.dll" publishTime="04/22/2012 17:53:08" />
     <file relUrl="bin/Pandora.dll" publishTime="04/22/2012 17:53:09" />
     <file relUrl="Content/grid.css" publishTime="05/10/2012 19:36:02" />
-    <file relUrl="bin/System.Web.WebPages.Razor.xml" publishTime="12/20/2010 09:52:36" />
     <file relUrl="Scripts/jquery.validate.min.js" publishTime="04/22/2012 17:36:39" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="bin/Newtonsoft.Json.pdb" publishTime="05/01/2012 22:02:23" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="05/01/2012 22:02:23" />
     <file relUrl="Views/client/test1/testRequest.cshtml" publishTime="05/12/2012 12:16:12" />
-    <file relUrl="Content/Site.css" publishTime="04/22/2012 17:36:39" />
+    <file relUrl="Scripts/angular-1.0.0rc8.js" publishTime="05/13/2012 12:28:34" />
     <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="04/22/2012 17:36:39" />
     <file relUrl="Views/Shared/_GridElementTmpl/novinka_View.cshtml" publishTime="05/07/2012 23:08:30" />
     <file relUrl="bin/WebActivator.dll" publishTime="04/22/2012 17:53:09" />
     <file relUrl="bin/IronRuby.Libraries.Yaml.dll" publishTime="04/22/2012 17:53:08" />
     <file relUrl="Views/Shared/_Layout.cshtml" publishTime="05/13/2012 21:20:47" />
-    <file relUrl="Scripts/jquery-ui.min.js" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="bin/cms.data.dll" publishTime="05/18/2012 23:52:36" />
-    <file relUrl="Scripts/showdown.js" publishTime="04/24/2012 19:20:45" />
-    <file relUrl="bin/EntityFramework.dll" publishTime="05/01/2012 21:30:01" />
-    <file relUrl="bin/log4net.xml" publishTime="05/01/2012 20:47:41" />
-    <file relUrl="Content/themes/base/jquery-ui.css" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="Views/client/test1/Index.cshtml" publishTime="05/12/2012 16:09:34" />
-    <file relUrl="bin/System.Web.Helpers.dll" publishTime="01/05/2011 14:45:38" />
+    <file relUrl="Views/Web.config" publishTime="05/21/2012 21:56:22" />
+    <file relUrl="Content/Site.css" publishTime="04/22/2012 17:36:39" />
+    <file relUrl="Views/client/test1/_Layout.cshtml" publishTime="05/08/2012 15:46:09" />
+    <file relUrl="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png" publishTime="04/22/2012 17:36:39" />
+    <file relUrl="Content/themes/base/images/ui-icons_888888_256x240.png" publishTime="04/22/2012 17:36:39" />
     <file relUrl="bin/System.Web.Razor.dll" publishTime="01/05/2011 14:45:38" />
+    <file relUrl="Scripts/Admin/aaa.js" publishTime="05/17/2012 20:24:04" />
+    <file relUrl="Views/client/test1/Index.cshtml" publishTime="05/12/2012 16:09:34" />
+    <file relUrl="Scripts/showdown.js" publishTime="04/24/2012 19:20:45" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.js" publishTime="04/22/2012 18:56:43" />
     <file relUrl="Views/Admin/template/edit.cshtml" publishTime="05/07/2012 14:42:46" />
-    <file relUrl="bin/Microsoft.Practices.ServiceLocation.xml" publishTime="04/22/2012 17:53:08" />
-    <file relUrl="bin/System.Web.Razor.xml" publishTime="12/20/2010 09:52:36" />
-    <file relUrl="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="bin/System.Web.WebPages.Deployment.dll" publishTime="01/05/2011 14:45:38" />
-    <file relUrl="bin/IronRuby.dll" publishTime="04/22/2012 17:53:08" />
+    <file relUrl="bin/System.Web.WebPages.xml" publishTime="01/17/2012 09:00:48" />
+    <file relUrl="bin/Newtonsoft.Json.xml" publishTime="05/01/2012 22:02:23" />
+    <file relUrl="Scripts/jquery.validate.js" publishTime="04/22/2012 17:36:39" />
     <file relUrl="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="Scripts/jquery.validate.unobtrusive.min.js" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="bin/SassAndCoffee.Ruby.dll" publishTime="04/22/2012 17:53:09" />
+    <file relUrl="Views/Home/index.cshtml" publishTime="05/08/2012 15:34:54" />
+    <file relUrl="Views/Shared/_GridElementTmpl/text_Edit.cshtml" publishTime="05/10/2012 22:20:44" />
     <file relUrl="Service/Client.svc" publishTime="05/11/2012 16:55:29" />
     <file relUrl="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png" publishTime="04/22/2012 17:36:39" />
-    <file relUrl="Views/Home/index.cshtml" publishTime="05/08/2012 15:34:54" />
+    <file relUrl="bin/log4net.xml" publishTime="05/01/2012 20:47:41" />
+    <file relUrl="bin/System.Web.WebPages.Deployment.dll" publishTime="01/26/2012 19:01:06" />
 =======
   <publishProfile publishUrl="ftp://ladeso.aspone.cz/www" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="False" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FTP" replaceMatchingFiles="True" userName="ladeso.aspone.cz" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAkoGRMt31ykaqc9IxBt30mwAAAAACAAAAAAADZgAAwAAAABAAAADg+DF0e512zQXMDznRmgeHAAAAAASAAACgAAAAEAAAALk5zXnEdgznuVMQTzenbPAYAAAAdbD2jpaZcHIDipDv2bsryV6wqdBr2v6iFAAAAG55Tq/pQMomzS0Vu1knx0i0W7ia" SelectedForPublish="True">
     <file relUrl="Scripts/jquery.validate.unobtrusive.js" publishTime="04/25/2012 09:33:08" />
-    <file relUrl="bin/cms.dll" publishTime="05/21/2012 15:57:06" />
+    <file relUrl="bin/cms.dll" publishTime="05/22/2012 15:26:12" />
+    <file relUrl="Scripts/Admin/aaa.coffee" publishTime="05/16/2012 08:37:09" />
     <file relUrl="Scripts/Admin/Index.js" publishTime="05/16/2012 09:39:45" />
-    <file relUrl="Views/Web.config" publishTime="05/21/2012 10:07:09" />
     <file relUrl="Content/themes/base/images/ui-bg_flat_75_ffffff_40x100.png" publishTime="04/25/2012 09:33:08" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png" publishTime="04/25/2012 09:33:08" />
+    <file relUrl="bin/IronRuby.dll" publishTime="05/02/2012 08:27:17" />
     <file relUrl="bin/Microsoft.Scripting.Metadata.dll" publishTime="05/02/2012 08:27:17" />
-    <file relUrl="bin/System.Web.WebPages.xml" publishTime="12/19/2010 23:59:38" />
     <file relUrl="Views/Admin/_Layout.cshtml" publishTime="05/16/2012 10:08:02" />
-    <file relUrl="Views/Admin/template/list.cshtml" publishTime="05/16/2012 10:16:16" />
-    <file relUrl="Views/Shared/_GridElementTmpl/GridElement.cshtml" publishTime="05/11/2012 08:14:55" />
+    <file relUrl="Views/Admin/template/list.cshtml" publishTime="05/21/2012 17:09:13" />
+    <file relUrl="Views/Shared/_GridElementTmpl/GridElement.cshtml" publishTime="05/21/2012 17:09:13" />
     <file relUrl="bin/EntityFramework.xml" publishTime="05/02/2012 08:54:51" />
-    <file relUrl="bin/System.Web.Mvc.dll" publishTime="01/05/2011 17:42:16" />
     <file relUrl="Views/Shared/_GridElementTmpl/novinka_Edit.cshtml" publishTime="05/11/2012 08:14:55" />
-    <file relUrl="bin/Microsoft.Practices.ServiceLocation.dll" publishTime="05/02/2012 08:27:17" />
-    <file relUrl="Views/Admin/Grids.cshtml" publishTime="05/16/2012 10:08:09" />
-    <file relUrl="Web.config" publishTime="05/21/2012 15:55:00" />
+    <file relUrl="bin/System.Web.Mvc.dll" publishTime="01/05/2011 17:42:16" />
+    <file relUrl="Views/Admin/Grids.cshtml" publishTime="05/21/2012 17:09:13" />
+    <file relUrl="Web.config" publishTime="05/22/2012 15:31:21" />
     <file relUrl="Content/themes/base/images/ui-icons_cd0a0a_256x240.png" publishTime="04/25/2012 09:33:08" />
-    <file relUrl="Scripts/_GridElementScripts/text.js" publishTime="05/16/2012 10:06:49" />
     <file relUrl="Views/Shared/_GridElementTmpl/text_View.cshtml" publishTime="05/11/2012 08:14:55" />
-    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="05/02/2012 08:55:10" />
     <file relUrl="Views/Admin/template/new.cshtml" publishTime="05/04/2012 07:14:15" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="05/02/2012 08:54:51" />
     <file relUrl="Global.asax" publishTime="04/25/2012 09:33:08" />
     <file relUrl="bin/Cassette.dll" publishTime="05/02/2012 08:27:18" />
     <file relUrl="bin/Microsoft.Dynamic.dll" publishTime="05/02/2012 08:27:17" />
@@ -139,37 +137,39 @@
     <file relUrl="Content/themes/base/images/ui-bg_glass_75_e6e6e6_1x400.png" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Scripts/jquery-ui.js" publishTime="04/25/2012 09:33:08" />
     <file relUrl="HtmlTemplates/test.htm" publishTime="05/16/2012 08:47:07" />
-    <file relUrl="Views/client/test1/_Layout.cshtml" publishTime="05/11/2012 09:46:03" />
+    <file relUrl="bin/System.Web.Razor.xml" publishTime="12/20/2010 10:52:36" />
     <file relUrl="bin/System.Web.WebPages.dll" publishTime="01/05/2011 15:45:38" />
     <file relUrl="bin/SassAndCoffee.Core.dll" publishTime="05/02/2012 08:27:17" />
     <file relUrl="Scripts/jquery-1.7.2.js" publishTime="04/25/2012 09:33:08" />
     <file relUrl="bin/AjaxMin.dll" publishTime="05/02/2012 08:27:15" />
     <file relUrl="bin/System.Web.Mvc.xml" publishTime="02/09/2011 11:26:24" />
     <file relUrl="bin/System.Web.Helpers.xml" publishTime="12/19/2010 23:59:38" />
-    <file relUrl="Scripts/Admin/GridPageCtrl.js" publishTime="05/16/2012 09:34:28" />
-    <file relUrl="Content/themes/base/images/ui-bg_glass_55_fbf9ee_1x400.png" publishTime="04/25/2012 09:33:08" />
+    <file relUrl="Scripts/Admin/GridPageCtrl.js" publishTime="05/21/2012 17:09:13" />
+    <file relUrl="Views/client/test1/_Layout.cshtml" publishTime="05/11/2012 09:46:03" />
     <file relUrl="Scripts/angular-1.0.0rc8.js" publishTime="05/10/2012 12:40:14" />
-    <file relUrl="bin/cms.pdb" publishTime="05/21/2012 15:57:06" />
-    <file relUrl="Scripts/Admin/Grids.js" publishTime="05/18/2012 13:42:10" />
+    <file relUrl="bin/cms.pdb" publishTime="05/22/2012 15:26:12" />
+    <file relUrl="bin/Microsoft.Practices.ServiceLocation.xml" publishTime="05/02/2012 08:27:17" />
+    <file relUrl="Scripts/Admin/GridListController.js" publishTime="05/21/2012 17:09:13" />
+    <file relUrl="Scripts/Admin/Grids.js" publishTime="05/21/2012 17:10:18" />
+    <file relUrl="bin/SassAndCoffee.Ruby.dll" publishTime="05/02/2012 08:27:17" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.min.js" publishTime="04/25/2012 09:33:08" />
-    <file relUrl="Views/Admin/template/gridpage.cshtml" publishTime="05/18/2012 13:41:10" />
+    <file relUrl="Views/Admin/template/gridpage.cshtml" publishTime="05/21/2012 17:11:22" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_75_dadada_1x400.png" publishTime="04/25/2012 09:33:08" />
     <file relUrl="bin/System.Web.Helpers.dll" publishTime="01/05/2011 15:45:38" />
-    <file relUrl="bin/cms.data.pdb" publishTime="05/21/2012 15:57:04" />
+    <file relUrl="bin/cms.data.pdb" publishTime="05/22/2012 15:26:11" />
     <file relUrl="Views/Shared/Error.cshtml" publishTime="04/25/2012 09:33:08" />
     <file relUrl="bin/Microsoft.Web.Infrastructure.dll" publishTime="05/02/2012 08:44:31" />
+    <file relUrl="bin/Microsoft.Practices.ServiceLocation.dll" publishTime="05/02/2012 08:27:17" />
     <file relUrl="bin/Microsoft.Scripting.dll" publishTime="05/02/2012 08:27:17" />
-    <file relUrl="Scripts/jquery.validate.js" publishTime="04/25/2012 09:33:08" />
     <file relUrl="bin/Microsoft.Practices.ServiceLocation.pdb" publishTime="05/02/2012 08:27:17" />
     <file relUrl="bin/Cassette.Views.dll" publishTime="05/02/2012 08:44:31" />
     <file relUrl="bin/Cassette.Web.dll" publishTime="05/02/2012 08:44:31" />
+    <file relUrl="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="04/25/2012 09:33:08" />
     <file relUrl="bin/Jurassic.dll" publishTime="05/03/2012 14:55:00" />
     <file relUrl="Scripts/Admin/cmsapi.js" publishTime="05/16/2012 10:16:16" />
     <file relUrl="Content/themes/base/images/ui-icons_222222_256x240.png" publishTime="04/25/2012 09:33:08" />
     <file relUrl="packages.config" publishTime="05/16/2012 08:18:37" />
-    <file relUrl="Content/themes/base/images/ui-icons_888888_256x240.png" publishTime="04/25/2012 09:33:08" />
-    <file relUrl="Views/Shared/_GridElementTmpl/text_Edit.cshtml" publishTime="05/11/2012 08:14:55" />
-    <file relUrl="bin/Newtonsoft.Json.xml" publishTime="05/02/2012 08:55:10" />
+    <file relUrl="Scripts/jquery-ui.min.js" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Views/Admin/Index.cshtml" publishTime="05/16/2012 09:44:03" />
     <file relUrl="Scripts/angular-resource-1.0.0rc8.js" publishTime="05/16/2012 09:24:40" />
     <file relUrl="bin/log4net.dll" publishTime="05/02/2012 08:57:56" />
@@ -177,36 +177,38 @@
     <file relUrl="bin/IronRuby.Libraries.dll" publishTime="05/02/2012 08:27:17" />
     <file relUrl="bin/Pandora.dll" publishTime="05/02/2012 08:27:18" />
     <file relUrl="Content/grid.css" publishTime="05/11/2012 08:14:55" />
+    <file relUrl="bin/Newtonsoft.Json.pdb" publishTime="05/02/2012 08:55:10" />
     <file relUrl="Scripts/jquery.validate.min.js" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Content/themes/base/images/ui-bg_glass_65_ffffff_1x400.png" publishTime="04/25/2012 09:33:08" />
-    <file relUrl="bin/Newtonsoft.Json.pdb" publishTime="05/02/2012 08:55:10" />
+    <file relUrl="bin/Newtonsoft.Json.dll" publishTime="05/02/2012 08:55:10" />
     <file relUrl="Views/client/test1/testRequest.cshtml" publishTime="05/14/2012 08:46:54" />
-    <file relUrl="Content/Site.css" publishTime="04/25/2012 09:33:08" />
+    <file relUrl="bin/cms.data.dll" publishTime="05/22/2012 15:26:11" />
     <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Views/Shared/_GridElementTmpl/novinka_View.cshtml" publishTime="05/11/2012 08:14:55" />
     <file relUrl="bin/WebActivator.dll" publishTime="05/02/2012 08:44:31" />
     <file relUrl="bin/IronRuby.Libraries.Yaml.dll" publishTime="05/02/2012 08:27:17" />
     <file relUrl="Views/Shared/_Layout.cshtml" publishTime="05/14/2012 08:46:54" />
-    <file relUrl="Scripts/jquery-ui.min.js" publishTime="04/25/2012 09:33:08" />
-    <file relUrl="bin/cms.data.dll" publishTime="05/21/2012 15:57:04" />
-    <file relUrl="Scripts/showdown.js" publishTime="05/02/2012 08:52:36" />
-    <file relUrl="bin/EntityFramework.dll" publishTime="05/02/2012 08:54:51" />
+    <file relUrl="Views/Web.config" publishTime="05/21/2012 10:07:09" />
+    <file relUrl="Content/Site.css" publishTime="04/25/2012 09:33:08" />
+    <file relUrl="Scripts/_GridElementScripts/text.js" publishTime="05/16/2012 10:06:49" />
+    <file relUrl="Content/themes/base/images/ui-icons_888888_256x240.png" publishTime="04/25/2012 09:33:08" />
     <file relUrl="bin/log4net.xml" publishTime="05/02/2012 08:57:56" />
     <file relUrl="Content/themes/base/jquery-ui.css" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Views/client/test1/Index.cshtml" publishTime="05/14/2012 08:46:54" />
+    <file relUrl="Scripts/showdown.js" publishTime="05/02/2012 08:52:36" />
     <file relUrl="bin/System.Web.Razor.dll" publishTime="01/05/2011 15:45:38" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.js" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Views/Admin/template/edit.cshtml" publishTime="05/10/2012 12:40:14" />
-    <file relUrl="bin/Microsoft.Practices.ServiceLocation.xml" publishTime="05/02/2012 08:27:17" />
-    <file relUrl="bin/System.Web.Razor.xml" publishTime="12/20/2010 10:52:36" />
-    <file relUrl="Content/themes/base/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="04/25/2012 09:33:08" />
-    <file relUrl="bin/IronRuby.dll" publishTime="05/02/2012 08:27:17" />
+    <file relUrl="bin/System.Web.WebPages.xml" publishTime="12/19/2010 23:59:38" />
+    <file relUrl="bin/Newtonsoft.Json.xml" publishTime="05/02/2012 08:55:10" />
+    <file relUrl="Scripts/Admin/aaa.js" publishTime="05/21/2012 17:09:13" />
+    <file relUrl="Scripts/jquery.validate.js" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Content/themes/base/images/ui-bg_flat_0_aaaaaa_40x100.png" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Scripts/jquery.validate.unobtrusive.min.js" publishTime="04/25/2012 09:33:08" />
-    <file relUrl="bin/SassAndCoffee.Ruby.dll" publishTime="05/02/2012 08:27:17" />
+    <file relUrl="Views/Shared/_GridElementTmpl/text_Edit.cshtml" publishTime="05/11/2012 08:14:55" />
     <file relUrl="Service/Client.svc" publishTime="05/11/2012 09:22:47" />
     <file relUrl="Content/themes/base/images/ui-bg_highlight-soft_75_cccccc_1x100.png" publishTime="04/25/2012 09:33:08" />
     <file relUrl="Views/Home/index.cshtml" publishTime="05/10/2012 12:40:14" />
->>>>>>> origin/master
+>>>>>>> caeea2f7f47b81b7ea6c817f80c4e9bbed1689e4
   </publishProfile>
 </publishData>

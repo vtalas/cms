@@ -54,7 +54,8 @@
     <Compile Include="Dtos\DtoExtensons.cs" />
     <Compile Include="Dtos\GridElementDto.cs" />
     <Compile Include="Dtos\GridPageDto.cs" />
-    <Compile Include="EF\DropAndCreate.cs" />
+    <Compile Include="EF\Initializers\DropAndCreate.cs" />
+    <Compile Include="EF\Initializers\DropAndCreateTables.cs" />
     <Compile Include="EF\EfDataProvider.cs" />
     <Compile Include="EF\JsonDataEf.cs" />
     <Compile Include="Files\JsonDataFiles.cs" />
@@ -63,10 +64,6 @@
     <Compile Include="IDataProvider.cs" />
     <Compile Include="EF\EfContext.cs" />
     <Compile Include="JsonDataProvider.cs" />
-    <Compile Include="Migrations\201205221413300_InitialMigration.cs" />
-    <Compile Include="Migrations\201205221413300_InitialMigration.Designer.cs">
-      <DependentUpon>201205221413300_InitialMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationSetting.cs" />
     <Compile Include="Models\Grid.cs" />

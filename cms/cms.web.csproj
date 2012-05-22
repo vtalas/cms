@@ -300,6 +300,8 @@
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".idea\" />
+    <Folder Include="App_Data\" />
     <Folder Include="Content\themes\test1\" />
     <Folder Include="Scripts\_GridElementScripts\test1\" />
   </ItemGroup>
