@@ -31,20 +31,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="applicationHost.config" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://C:/applicationHost.config">
+      <file leaf-file-name="aaa.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/aaa.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="329" column="57" selection-start="20917" selection-end="20917" vertical-scroll-proportion="0.17582418">
+            <state line="10" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="aaa.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/aaa.coffee">
+      <file leaf-file-name="applicationHost.config" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://C:/applicationHost.config">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="21" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="342" column="13" selection-start="21484" selection-end="21484" vertical-scroll-proportion="0.20879121">
+              <folding>
+                <element signature="tag#system.webServer#0;tag#configuration#0" expanded="false" />
+                <element signature="tag#location#0;tag#configuration#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -291,15 +294,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/aaa.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="21" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
+        <state line="10" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/applicationHost.config">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="329" column="57" selection-start="20917" selection-end="20917" vertical-scroll-proportion="0.17582418">
-          <folding />
+        <state line="342" column="13" selection-start="21484" selection-end="21484" vertical-scroll-proportion="0.20879121">
+          <folding>
+            <element signature="tag#system.webServer#0;tag#configuration#0" expanded="false" />
+            <element signature="tag#location#0;tag#configuration#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
