@@ -8,9 +8,12 @@ namespace cms.data.EF
 	{
 		public void InitializeDatabase(EfContext context)
 		{
-			context.Database.CreateIfNotExists();
-			this.Seed(context);
-			context.SaveChanges();
+			if (!context.Database.Exists())
+			{
+				context.Database.Create();
+				Seed(context);
+				context.SaveChanges();
+			}
 		}
 
 		protected virtual void Seed(EfContext context)
@@ -32,7 +35,7 @@ namespace cms.data.EF
 			}
 			context.Database.Create();
 
-			this.Seed(context);
+			Seed(context);
 			context.SaveChanges();
 
 		}
