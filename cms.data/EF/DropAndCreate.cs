@@ -16,6 +16,9 @@ namespace cms.data.EF
 			}
 		}
 
+
+		}
+
 		protected virtual void Seed(EfContext context)
 		{
 			var sampledata = new SampleData(context);

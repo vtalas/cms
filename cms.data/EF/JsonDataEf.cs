@@ -14,6 +14,7 @@ namespace cms.data.EF
 		public JsonDataEf(string application, EfContext context) : base(application)
 		{
 			db = context;
+			//Database.SetInitializer(new CreateIfNotExists());
 			Database.SetInitializer(new CreateIfNotExists());
 		}
 
