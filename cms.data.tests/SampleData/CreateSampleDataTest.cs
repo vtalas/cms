@@ -13,24 +13,22 @@ namespace cms.data.tests.SampleData
 	[TestFixture]
 	public class CreateSampleDataTest
 	{
-		private JsonDataEf repo { get; set; }
+		private JsonDataEf Repo { get; set; }
 
 		[SetUp]
 		public void Setup()
 		{
 			var context = new EfContext("EfContextSampleData");
 			Database.SetInitializer(new DropAndCreate());
-			repo = new JsonDataEf("aaa", context);
+			Repo = new JsonDataEf("aaa", context);
 		}
 
 
 		[Test]
-		public void create()
+		public void Create()
 		{
-			var a = repo.Applications();
-
+			var a = Repo.Applications();
 			Console.WriteLine(a.Count());
-
 		}
 
 

@@ -221,6 +221,26 @@
     <Content Include="Scripts\_GridElementScripts\novinka.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\showdown.js" />
+    <Content Include="tests\config\jstd-scenario-adapter-config.js" />
+    <Content Include="tests\scripts\web-server.js" />
+    <Content Include="tests\test\e2e\runner.html" />
+    <Content Include="tests\test\e2e\scenarios.js" />
+    <Content Include="tests\test\lib\angular\angular-1.0.0rc9.js" />
+    <Content Include="tests\test\lib\angular\angular-mocks.js" />
+    <Content Include="tests\test\lib\angular\angular-scenario.js" />
+    <Content Include="tests\test\lib\angular\jstd-scenario-adapter.js" />
+    <Content Include="tests\test\lib\angular\version.txt" />
+    <Content Include="tests\test\lib\jasmine-jstd-adapter\JasmineAdapter.js" />
+    <Content Include="tests\test\lib\jasmine-jstd-adapter\version.txt" />
+    <Content Include="tests\test\lib\jasmine\jasmine-html.js" />
+    <Content Include="tests\test\lib\jasmine\jasmine.css" />
+    <Content Include="tests\test\lib\jasmine\jasmine.js" />
+    <Content Include="tests\test\lib\jasmine\jasmine_favicon.png" />
+    <Content Include="tests\test\lib\jstestdriver\JsTestDriver.jar" />
+    <Content Include="tests\test\lib\jstestdriver\version.txt" />
+    <Content Include="tests\test\unit\controllersSpec.js" />
+    <Content Include="tests\test\unit\servicesSpec.js" />
+    <Content Include="tests\test\unit\_test.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -245,6 +265,26 @@
     <Content Include="Views\client\test1\Index.cshtml" />
     <Content Include="HtmlTemplates\test.htm" />
     <Content Include="Views\setup\index.cshtml" />
+    <None Include="tests\config\jsTestDriver-scenario.conf" />
+    <None Include="tests\config\jsTestDriver.conf" />
+    <None Include="tests\scripts\e2e-test-server.bat" />
+    <None Include="tests\scripts\e2e-test-server.sh" />
+    <None Include="tests\scripts\e2e-test.bat" />
+    <None Include="tests\scripts\e2e-test.sh" />
+    <None Include="tests\scripts\private\format-json.sh" />
+    <None Include="tests\scripts\private\goto_step.bat" />
+    <None Include="tests\scripts\private\goto_step.sh" />
+    <None Include="tests\scripts\private\push-to-github.sh" />
+    <None Include="tests\scripts\private\retag.sh" />
+    <None Include="tests\scripts\private\snapshot-web.sh" />
+    <None Include="tests\scripts\private\snapshot.sh" />
+    <None Include="tests\scripts\test-server.bat" />
+    <None Include="tests\scripts\test-server.sh" />
+    <None Include="tests\scripts\test.bat" />
+    <None Include="tests\scripts\test.sh" />
+    <None Include="tests\scripts\update-repo.sh" />
+    <None Include="tests\scripts\watchr.rb" />
+    <None Include="tests\test\lib\jasmine\MIT.LICENSE" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />

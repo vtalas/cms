@@ -23,8 +23,8 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 }]);
 
 module.directive("gridelement", ['$templateCache', '$compile', function ($templateCache, $compile) {
-	
-	
+
+
 	var template = function (type) {
 		var elementType = type ? type : "text";
 		if (!$templateCache.get(elementType)) {
