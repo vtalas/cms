@@ -1,4 +1,4 @@
-/// <reference path="angular-1.0.0rc8.js"/>
+/// <reference path="angular-1.0.0rc9.js"/>
 
 /**
  * @license AngularJS v1.0.0rc8

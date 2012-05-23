@@ -195,7 +195,7 @@
     <Content Include="Scripts\Admin\cmsapi.js" />
     <Content Include="Scripts\Admin\GridListController.js" />
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
-    <Content Include="Scripts\angular-1.0.0rc8.js" />
+    <Content Include="Scripts\angular-1.0.0rc9.js" />
     <Content Include="Scripts\angular-resource-1.0.0rc8.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />

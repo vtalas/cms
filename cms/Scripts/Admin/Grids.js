@@ -1,4 +1,4 @@
-///<reference path="../angular-1.0.0rc8.js"/>
+///<reference path="../angular-1.0.0rc9.js"/>
 ///<reference path="../angular-resource-1.0.0rc8.js"/>
 
 var module = angular.module("gridsmodule", ['cmsapi']);

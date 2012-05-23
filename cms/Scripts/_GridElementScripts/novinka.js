@@ -1,6 +1,6 @@
 ///<reference path="../showdown.js"/>
 ///<reference path="../jquery-1.7.2.js"/>
-///<reference path="../angular-1.0.0rc8.js"/>
+///<reference path="../angular-1.0.0rc9.js"/>
 
 function novinka($scope, $http,appSettings) {
 	$scope.data = $scope.$parent.item;
