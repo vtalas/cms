@@ -16,7 +16,6 @@ function novinka($scope, $http,appSettings) {
 	var self = this;
 	var toHtml = function (markdown) {
         var a = true;
-        alert(jhasdb);
 
         return converter.makeHtml(markdown);
     };

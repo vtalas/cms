@@ -12,8 +12,8 @@ namespace cms.Controllers
         {
         	using (var a = new EfContext())
         	{
-
 				Database.SetInitializer(new DropAndCreateTables());
+			
 				a.ApplicationSettings.ToList();
         	}
 			return View();

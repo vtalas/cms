@@ -45,21 +45,28 @@ module.directive("gridelement", ['$templateCache', '$compile', function ($templa
 		inject: {
 			gridelement: 'accessor'
 		},
-		compile: function (tElement, tAttrs, transclude) {
-			var sablona = template("text");
-			console.log(sablona)
-			tElement.html(sablona);
+//		compile: function (tElement, tAttrs, transclude) {
+////			var sablona = template("text");
+////			console.log(sablona)
+////			tElement.html(sablona);
+//			return function (scope, iElement, tAttrs, transclude) {
 
-			return function (scope, iElement, tAttrs, transclude) {
+//				scope.item = scope.$parent.item;
+//				var item = scope.$parent.item;
+//				var type = item.Type;
 
-				scope.item = scope.$parent.item;
-				var item = scope.$parent.item;
-				var type = item.Type;
+//				var sablona = template(type);
+//				var compiled = $compile(sablona);
+//				iElement.html(compiled(scope.$parent));
+//			};
+//		}
+		link: function (scope, iElement, tAttrs, transclude) {
+			var item = scope.$parent.item;
+			var type = item.Type;
 
-				/*				var sablona = template(type);
-				var compiled = $compile(sablona);
-				iElement.html(compiled(scope.$parent));*/
-			};
+			var sablona = template(type);
+			var compiled = $compile(sablona);
+			iElement.html(compiled(scope.$parent));
 		}
 	};
 	return directiveDefinitionObject;

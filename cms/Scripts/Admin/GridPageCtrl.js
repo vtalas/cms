@@ -19,7 +19,7 @@ var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', function (
 		});
 	$scope.add = function (item) {
 
-        console.log(item);
+        console.log("xx",item);
         $http({method: 'POST',url: '/adminApi/' + appSettings.Name + '/AddGridElement',
 			data: {
 				data: item,
