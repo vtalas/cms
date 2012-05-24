@@ -195,8 +195,8 @@
     <Content Include="Scripts\Admin\cmsapi.js" />
     <Content Include="Scripts\Admin\GridListController.js" />
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
-    <Content Include="Scripts\angular-1.0.0rc9.js" />
-    <Content Include="Scripts\angular-resource-1.0.0rc8.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
@@ -225,7 +225,6 @@
     <Content Include="tests\scripts\web-server.js" />
     <Content Include="tests\test\e2e\runner.html" />
     <Content Include="tests\test\e2e\scenarios.js" />
-    <Content Include="tests\test\lib\angular\angular-1.0.0rc9.js" />
     <Content Include="tests\test\lib\angular\angular-mocks.js" />
     <Content Include="tests\test\lib\angular\angular-scenario.js" />
     <Content Include="tests\test\lib\angular\jstd-scenario-adapter.js" />
@@ -238,7 +237,7 @@
     <Content Include="tests\test\lib\jasmine\jasmine_favicon.png" />
     <Content Include="tests\test\lib\jstestdriver\JsTestDriver.jar" />
     <Content Include="tests\test\lib\jstestdriver\version.txt" />
-    <Content Include="tests\test\unit\controllersSpec.js" />
+    <Content Include="tests\test\unit\cmsapiTests.js" />
     <Content Include="tests\test\unit\servicesSpec.js" />
     <Content Include="tests\test\unit\_test.js" />
     <Content Include="Web.config" />

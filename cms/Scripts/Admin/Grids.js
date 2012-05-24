@@ -1,5 +1,7 @@
-///<reference path="../angular-1.0.0rc9.js"/>
-///<reference path="../angular-resource-1.0.0rc8.js"/>
+///<reference path="../angular.js"/>
+///<reference path="../angular-resource.js"/>
+angular.module('testmodule', [])
+    .value('version', 'v1.0.1');
 
 var module = angular.module("gridsmodule", ['cmsapi']);
 

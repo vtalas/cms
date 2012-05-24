@@ -1,4 +1,7 @@
-﻿angular.module('cmsapi', ['ngResource'])
+﻿
+
+angular.module('cmsapi', ['ngResource'])
+    .value('version', 'gridapi1.0.1')
     .factory('Project',  [ '$resource',function ($resource) {
     	
 		var project = $resource('/adminApi/' + appSettings.Name + '/GetGrid/' + $routeParams.Id,

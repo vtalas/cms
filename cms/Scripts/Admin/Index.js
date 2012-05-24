@@ -1,4 +1,4 @@
-///<reference path="../angular-1.0.0rc9.js"/>
+///<reference path="../angular.js"/>
 
 var index = ['$scope', '$http', function($scope, $http) {
 	var self = this;

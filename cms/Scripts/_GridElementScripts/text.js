@@ -1,4 +1,4 @@
-///<reference path="../angular-1.0.0rc9.js"/>
+///<reference path="../angular.js"/>
 ///<reference path="../jquery-1.7.2.js"/>
 
 function text($scope, $http, appSettings) {
