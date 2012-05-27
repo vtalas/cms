@@ -2,7 +2,7 @@
 
 namespace cms.Controllers
 {
-	public class ClientController : ApiControllerBase
+	public class ClientController : ControllerBase
     {
         public ActionResult Index()
         {

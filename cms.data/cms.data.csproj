@@ -64,6 +64,10 @@
     <Compile Include="IDataProvider.cs" />
     <Compile Include="EF\EfContext.cs" />
     <Compile Include="JsonDataProvider.cs" />
+    <Compile Include="Migrations\201205260933021_ApplicationIdtoGuid.cs" />
+    <Compile Include="Migrations\201205260933021_ApplicationIdtoGuid.Designer.cs">
+      <DependentUpon>201205260933021_ApplicationIdtoGuid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationSetting.cs" />
     <Compile Include="Models\Grid.cs" />

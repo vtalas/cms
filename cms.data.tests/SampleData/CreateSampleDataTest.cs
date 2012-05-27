@@ -27,7 +27,7 @@ namespace cms.data.tests.SampleData
 		[Test]
 		public void Create()
 		{
-			var a = Repo.Applications();
+			var a = JsonDataEf.Applications();
 			Console.WriteLine(a.Count());
 		}
 

@@ -8,21 +8,20 @@ namespace cms.data
 
 	public abstract class JsonDataProvider
 	{
-		protected string ApplicationName { get; set; }
+		public string ApplicationName { get; protected set; }
+		public Guid ApplicationId { get; protected set; }
 		public abstract ApplicationSetting CurrentApplication { get; }
 
+		protected JsonDataProvider(Guid applicationId )
+		{
+			this.ApplicationId  = applicationId;
+		}
 		protected JsonDataProvider(string application )
 		{
-			//if (string.IsNullOrEmpty(application))
-			//{
-			//    throw  new ArgumentNullException(application);
-			//}
 			ApplicationName = application;
 		}
 
-		public abstract IEnumerable<ApplicationSetting> Applications();
-		public abstract ApplicationSetting GetApplication(int id);
-		public abstract void DeleteApplication(int id);
+		public abstract void DeleteApplication(Guid guid);
 		public abstract GridElement Add(GridElement gridElement);
 
 		public abstract IEnumerable<Grid> Grids();
@@ -37,6 +36,8 @@ namespace cms.data
 		public abstract GridPageDto GetGridPage(string link);
 		public abstract T Add<T>(T newitem);
 		public abstract Grid Update(Grid item);
+		public abstract ApplicationSetting GetApplication(Guid id);
+		public abstract ApplicationSetting GetApplication(string name);
 	}
 }
 

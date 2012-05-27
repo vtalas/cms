@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
 using cms.data.Models;
@@ -9,17 +10,22 @@ namespace cms.data.Files
 	{
 		List<ApplicationSetting> apps  = new List<ApplicationSetting>()
 		                                 	{
-		                                 		new ApplicationSetting(){Id = 1, Name = "xxxxx"},
-		                                 		new ApplicationSetting(){Id = 2, Name = "xxxxxxxx"}
+		                                 		new ApplicationSetting(){Id = Guid.NewGuid(), Name = "xxxxx"},
+		                                 		new ApplicationSetting(){Id = Guid.NewGuid(), Name = "xxxxxxxx"}
 		                                 	}; 
 
 		public JsonDataFiles(string application) : base(application)
 		{
 		}
 
-		public override ApplicationSetting GetApplication(int id)
+		public override ApplicationSetting GetApplication(Guid id)
 		{
 			return apps.Single(x => x.Id == id);
+		}
+
+		public override ApplicationSetting GetApplication(string name)
+		{
+			throw new NotImplementedException();
 		}
 
 		public override ApplicationSetting CurrentApplication
@@ -27,13 +33,12 @@ namespace cms.data.Files
 			get { throw new System.NotImplementedException(); }
 		}
 
-		public override IEnumerable<ApplicationSetting> Applications()
+		public  IEnumerable<ApplicationSetting> Applications()
 		{
 			return apps;
 		}
 
-
-		public override void DeleteApplication(int id)
+		public override void DeleteApplication(Guid guid)
 		{
 			throw new System.NotImplementedException();
 		}

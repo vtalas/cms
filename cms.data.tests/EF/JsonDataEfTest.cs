@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using NUnit.Framework;
+using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.Initializers;
 using cms.data.Models;
@@ -15,9 +16,9 @@ namespace cms.data.tests.EF
 	{
 		private JsonDataEf repo { get; set; }
 		
-		private IList<ApplicationSetting> AplicationSettings()
+		private IList<ApplicationSettingDto> AplicationSettings()
 		{
-			return repo.Applications().ToList();
+			return JsonDataEf.Applications().ToList();
 		}
 
 		private IList<Grid> Grids()
@@ -40,7 +41,7 @@ namespace cms.data.tests.EF
 		[Test]
 		public void Applications_test()
 		{
-			var list = repo.Applications();
+			var list = JsonDataEf.Applications();
 
 			foreach (var item in list)
 			{

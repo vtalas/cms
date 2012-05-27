@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -14,30 +15,52 @@ namespace cms.data.EF
 		public JsonDataEf(string application, EfContext context) : base(application)
 		{
 			db = context;
+
+			var app = GetApplication(application);
+			ApplicationId = app == null ?  new Guid("00000000-0000-0000-0000-000000000000") : app.Id;
+
 			//Database.SetInitializer(new CreateIfNotExists());
 //			Database.SetInitializer(new DropAndCreateTables());
 		}
 
-		public JsonDataEf(string application)
-			: this(application,new EfContext())
+		public JsonDataEf(Guid application, EfContext context) : base(application)
 		{
+			db = context;
+
+			var app = GetApplication(application);
+			ApplicationName =  app==null ? "" : app.Name ;
 		}
 
+		public JsonDataEf(string application): this(application,new EfContext()){}
+
+		public JsonDataEf(Guid applicationId): this(applicationId,new EfContext()){}
+
 		public override ApplicationSetting CurrentApplication{get { return db.ApplicationSettings.Single(x => x.Name == ApplicationName); }} 
-		public override IEnumerable<ApplicationSetting> Applications()
+
+		public static IEnumerable<ApplicationSettingDto> Applications()
 		{
-			return db.ApplicationSettings;
+			using (var a = new EfContext() )
+			{
+				return a.ApplicationSettings.ToList().ToDtos();
+			}
 		}
+	
 		public override IEnumerable<Grid> Grids()
 		{
 			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
 			return a;
 		}
 
-		public override ApplicationSetting GetApplication(int id)
+		public override sealed ApplicationSetting GetApplication(Guid id)
 		{
-			return db.ApplicationSettings.Single(x => x.Id == id);
+			return db.ApplicationSettings.SingleOrDefault(x => x.Id == id);
 		}
+
+		public override sealed ApplicationSetting GetApplication(string name)
+		{
+			return db.ApplicationSettings.SingleOrDefault(x => x.Name == name);
+		}
+
 		public override Grid GetGrid(int id)
 		{
 			return Grids().Single(x => x.Id == id);
@@ -87,7 +110,7 @@ namespace cms.data.EF
 			db.SaveChanges();
 			return item;
 		}
-		public override void DeleteApplication(int id)
+		public override void DeleteApplication(Guid id)
 		{
 			var delete = GetApplication(id);
 			db.ApplicationSettings.Remove(delete);

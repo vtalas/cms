@@ -15,11 +15,11 @@ namespace cms.Controllers
 {
     public class AdminApiController : ApiControllerBase
     {
-        public ActionResult Applications()
-        {
-        	var applications = db.Applications();
-			return new JSONNetResult(applications);
-		}
+		//public ActionResult Applications()
+		//{
+		//    var applications = db.Applications();
+		//    return new JSONNetResult(applications);
+		//}
 		
 		[HttpPost]
 		public ActionResult AddApplication(ApplicationSetting data)

@@ -8,14 +8,15 @@
 	Bundles.Reference("~/Scripts/_GridElementScripts/novinka.js");
 	
 	var applicationName = ViewBag.Application;
+	var applicationId = ViewBag.ApplicationId;
 }
 	
-
 <h2>@applicationName</h2>
-
+<h2>@applicationId</h2>
 
 <div ng-app="gridsmodule"
 	 data-application-name="@applicationName"
+	 data-application-id="@applicationId"
 	 class="gridsmodule"
 	>
 	<div ng-view>

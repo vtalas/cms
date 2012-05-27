@@ -1,7 +1,7 @@
-﻿
+﻿angular.module('appConfig', [])
+    .factory("nasme","test1")
 
-angular.module('cmsapi', ['ngResource'])
-    .value('version', 'gridapi1.0.1')
+angular.module('cmsapi', ['ngResource', 'appConfig'])
     .factory('Project',  [ '$resource',function ($resource) {
     	
 		var project = $resource('/adminApi/' + appSettings.Name + '/GetGrid/' + $routeParams.Id,
@@ -12,11 +12,12 @@ angular.module('cmsapi', ['ngResource'])
     	return project;
     }])
     
-	.factory('GridApi', [ '$resource',function ($resource) {
-    	var project = $resource('/adminApi/:applicationName/grids',
-    		{applicationName : "test1"}, 
+	.factory('GridApi', [ '$resource',function ($resource, appConfig, $provide) {
+
+        var project = $resource('/adminApi/:applicationId/grids',
+    		{applicationId : "test1"},
     		{
-            	get: { method: 'POST' ,isArray:true}
+            	get: { method: 'GET' ,isArray:true}
             }
         );
         project.prototype.save = function(cb) {

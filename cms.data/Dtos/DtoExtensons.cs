@@ -1,10 +1,27 @@
-﻿using cms.data.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using cms.data.Models;
 
 namespace cms.data.Dtos
 {
 	public static class DtoExtensons
 	{
-		 public static GridPageDto ToDto(this GridPage source)
+		public static ApplicationSettingDto ToDto(this ApplicationSetting source)
+		 {
+			 return new ApplicationSettingDto
+		 	       	{
+						Name =source.Name,
+						Id = source.Id
+		 	       	};
+		 }
+
+		public static IList<ApplicationSettingDto> ToDtos(this IList<ApplicationSetting> source)
+		{
+			return source.Select(item => item.ToDto()).ToList();
+		}
+
+		public static GridPageDto ToDto(this GridPage source)
 		 {
 		 	return new GridPageDto
 		 	       	{
@@ -29,5 +46,11 @@ namespace cms.data.Dtos
 		 	       		Width = source.Width
 		 	       	};
 		 }
+	}
+
+	public class ApplicationSettingDto
+	{
+		public Guid Id { get; set; }
+		public string Name { get; set; }
 	}
 }
