@@ -4,44 +4,40 @@
 }
 
 
-var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', function ($scope, $http, $routeParams, appSettings) {
+var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi", function ($scope, $http, $routeParams, appSettings,GridApi) {
 	$scope.data = {};
-	var self = this;
 
-	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGrid/' + $routeParams.Id })
-		.success(function (data, status, headers, config) {
-			$scope.data = data;
-            var newitem = _newitem($scope.data.Lines.length);
-            $scope.data.Lines.push([newitem]);
-		})
-		.error(function (data, status, headers, config) {
+    var params = {
+        applicationId : appSettings.Id,
+        id:$routeParams.Id
+    };
+    GridApi.getGrid(params, function (data) {
+        $scope.data = data;
+        var newitem = _newitem($scope.data.Lines.length);
+        $scope.data.Lines.push([newitem]);
+    });
 
-		});
 	$scope.add = function (item) {
 
-        console.log("xx",item);
-        $http({method: 'POST',url: '/adminApi/' + appSettings.Name + '/AddGridElement',
-			data: {
-				data: item,
-				gridId: $scope.data.Id
-			}
-		}).success(function (data, status, headers, config) {
-//		    console.log(data.Line , $scope.data.Lines.length-1);
-			if (data.Line >= $scope.data.Lines.length-1) {
+        GridApi.AddGridElement({
+            applicationId : appSettings.Id,
+            data: item,
+            gridId: $scope.data.Id
+        }, function (data) {
+            if (data.Line >= $scope.data.Lines.length-1) {
                 var newitem = _newitem($scope.data.Lines.length);
                 $scope.data.Lines.push([newitem]);
             }
             data.Edit = 1;
-			$scope.data.Lines[data.Line][data.Position] = data;
-
-		});
+            $scope.data.Lines[data.Line][data.Position] = data;
+        });
 	};
 	$scope.remove = function (item) {
-		$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/DeleteGridElement', data: item })
-				.success(function (data, status, headers, config) {
-					console.log("deleted");
-                    item.Id= 0;item.Edit =0;
-            });
+        GridApi.DeleteGridElement({applicationId : appSettings.Id,data: item},
+        function (data) {
+            console.log("deleted");
+            item.Id= 0;item.Edit =0;item.Content ="";
+        });
 	};
 
 	$scope.edit = function (item, $element) {
@@ -54,12 +50,9 @@ var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', function (
 		if (angular.isObject(data.Content))
 			data.Content = JSON.stringify(data.Content);
 
-		$http({
-			method: 'POST',
-			url: '/adminApi/' + appSettings.Name + '/UpdateGridElement/' + $scope.data.Id,
-			data: data
-		}).success(function () {
-			item.Edit = 0;
-		});
+        GridApi.UpdateGridElement({applicationId : appSettings.Id,data: data},
+        function () {
+            item.Edit = 0;
+        });
 	};
 }]

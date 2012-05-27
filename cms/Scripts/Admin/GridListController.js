@@ -1,8 +1,7 @@
 var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
 
-    console.log(appSettings)
-	$scope.data = GridApi.get({applicationId : appSettings.Id}, function (d) {
-		//console.log(d);
+	$scope.data = GridApi.grids({applicationId : appSettings.Id}, function (d) {
+
 	});
 
 	$scope.add = function () {
@@ -16,6 +15,7 @@ var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridA
             });
 		$scope.newName = '';
 	};
+
 	$scope.remove = function (item) {
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/DeleteGrid', data: { id: item.Id} })
             .success(function (data, status, headers, config) {
@@ -26,18 +26,19 @@ var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridA
 
             });
 	};
-	$scope.save = function(item) {
 
+	$scope.save = function(item) {
+        console.log(item);
 		item.Edit = 0;
-		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/UpdateGrid', data: { item: item} })
+		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/UpdateGrid', data: { data: item} })
             .success(function (data, status, headers, config) {
             })
             .error(function (data, status, headers, config) {
 
             });
 	};
-	$scope.edit = function (item) {
 
+	$scope.edit = function (item) {
 		item.Edit = 1;
 		return;
 	};

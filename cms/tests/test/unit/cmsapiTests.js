@@ -9,7 +9,7 @@ describe('cms Api module', function () {
         beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
 
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('/adminApi/test1/grids').
+            $httpBackend.expectGET('/adminApi/1111/grids').
                 respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
 
             // scope = $rootScope.$new();
@@ -17,12 +17,10 @@ describe('cms Api module', function () {
 
         }));
 
-        it('should load GridApi', inject(function(module) {
-            expect(module).toEqual('gridapi');
-        }));
-
         it('should load GridApi', inject(function(_$httpBackend_, GridApi) {
-            var rs = GridApi.get(null, function(data){
+            var rs = GridApi.grids({
+                    applicationId : "1111"
+                }, function(data){
                     console.log(data, "xx");
                 }
             );
