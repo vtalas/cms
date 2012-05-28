@@ -3,9 +3,8 @@
 
 function text($scope, $http, appSettings) {
 	$scope.data = $scope.$parent.item; 
-	//console.log("text controller", $scope, $scope.item);
-
-
+	
+	console.log("text controller", $scope);
 	////////////////////////
 }
 text.$inject = ['$scope', '$http', 'appSettings'];
