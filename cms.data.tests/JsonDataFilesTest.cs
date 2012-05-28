@@ -29,12 +29,14 @@ namespace cms.data.tests
 			Assert.IsNotNull(list);
 			Assert.IsTrue(list.Any());
 		}
-		[Test]
-		public void Application()
-		{
 
-			var list = db.GetApplication(1);
-			Assert.IsNotNull(list);
+		[Test]
+		public void guidtest()
+		{
+			var a = "749acbca-8917-4ddf-9b43-0dbb6078d74c";
+			var x = "749acbca89174ddf9b430dbb6078d74c";
+			Console.WriteLine(new Guid(a));
+			Console.WriteLine(new Guid(x).ToString("N"));
 		}
 	}
 }

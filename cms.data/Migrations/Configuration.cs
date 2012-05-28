@@ -5,12 +5,12 @@ namespace cms.data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<cms.data.EF.EfContext>
+    public sealed class Configuration : DbMigrationsConfiguration<cms.data.EF.EfContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-        }
+		}
 
         protected override void Seed(cms.data.EF.EfContext context)
         {

@@ -1,28 +1,22 @@
 ///<reference path="../angular.js"/>
 
-var index = ['$scope', '$http', function($scope, $http) {
+var index = ['$scope', '$http', '$element', function ($scope, $http, $element) {
 	var self = this;
 
-	$http({ method: 'POST', url: '/adminApi/null/Applications' })
-		.success(function(data, status, headers, config) {
-			$scope.data = data;
-			console.log(data);
-		})
-		.error(function(data, status, headers, config) {
-		});
+	$scope.data = JSON.parse(  $element.data("model"));
 
-	$scope.add = function() {
+	$scope.add = function () {
 		var newitem = { Name: $scope.newitem };
 		$scope.data.push(newitem);
 
-		$http({ method: 'POST', url: '/adminApi/null/AddApplication', data: newitem })
-			.success(function(data, status, headers, config) {
+		$http({ method: 'POST', url: '/adminApi/00000000-0000-0000-0000-000000000000/AddApplication', data: newitem })
+			.success(function (data, status, headers, config) {
 
 			})
-			.error(function(data, status, headers, config) {
+			.error(function (data, status, headers, config) {
 
 			});
 		$scope.newitem = '';
 	};
 
-}];
+} ];

@@ -26,12 +26,12 @@ namespace cms
 			routes.MapRoute(
 				"applicationAdmin", // Route name
 				"admin/{application}/{action}/{id}", // URL with parameters
-				new { controller = "admin", action = "Index", application="", id = UrlParameter.Optional } // Parameter defaults
+				new { controller = "admin", action = "Index", application="00000000-0000-0000-0000-000000000000", id = UrlParameter.Optional } // Parameter defaults
 			);
 			routes.MapRoute(
 				"adminapi", // Route name
-				"adminapi/{application}/{action}/{id}", // URL with parameters
-				new { controller = "adminapi", action = "error", application="", id = UrlParameter.Optional } // Parameter defaults
+				"adminapi/{applicationId}/{action}/{id}", // URL with parameters
+				new { controller = "adminapi", action = "error", id = UrlParameter.Optional } // Parameter defaults
 			);
 			routes.MapRoute(
 				"client", // Route name
@@ -40,7 +40,7 @@ namespace cms
 			);
 			routes.MapRoute(
 				"clientApi", // Route name
-				"clientapi/{application}/{action}/{id}", // URL with parameters
+				"clientapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "ClientApi", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 			);
 			routes.MapRoute(

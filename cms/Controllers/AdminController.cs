@@ -1,29 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Newtonsoft.Json.Linq;
-using cms.data;
+﻿using System.Web.Mvc;
+using Newtonsoft.Json;
 using cms.data.EF;
-using cms.data.Files;
-using cms.data.Models;
 
 namespace cms.Controllers
 {
-	public class AdminController : ApiControllerBase
+	public class AdminController : ControllerBase
     {
-		public AdminController()
-		{
-		}
 
 		public ActionResult Index()
 		{
+			var applications = JsonDataEf.Applications();
+			ViewBag.Json = JSONNetResult.ToJson(applications);
 
-			var applications = db.Applications();
-
-			return View(applications);
+			return View();
 		}
+
 		public ActionResult Show()
 		{
 			return View();
@@ -49,12 +40,4 @@ namespace cms.Controllers
         }
 
     }
-
-	public class TemplateSettings
-	{
-		public string Type { get; set; }
-		public string TemplateEdit { get; set; }
-		public string TemplateView { get; set; }
-
-	}
 }

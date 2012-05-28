@@ -1,10 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace cms.data.Models
 {
 	public class ApplicationSetting :IEntity
 	{
-		public int Id { get; set; }
+		public ApplicationSetting()
+		{
+			Id = Guid.NewGuid();
+		}
+
+		public Guid Id { get; set; }
 		public string Name { get; set; }
 		public virtual ICollection<Grid> Grids { get; set; }
 	}

@@ -1,22 +1,14 @@
-﻿
+﻿angular.module('cmsapi', ['ngResource'])
+	.factory('GridApi', [ '$resource',function ($resource, appConfig, $provide) {
 
-angular.module('cmsapi', ['ngResource'])
-    .value('version', 'gridapi1.0.1')
-    .factory('Project',  [ '$resource',function ($resource) {
-    	
-		var project = $resource('/adminApi/' + appSettings.Name + '/GetGrid/' + $routeParams.Id,
-            { Link: '@link', ApplicationName: 'test1' }, {
-            	get: { method: 'POST' }
-            }
-        );
-    	return project;
-    }])
-    
-	.factory('GridApi', [ '$resource',function ($resource) {
-    	var project = $resource('/adminApi/:applicationName/grids',
-    		{applicationName : "test1"}, 
-    		{
-            	get: { method: 'POST' ,isArray:true}
+        var project = $resource('/adminApi/:applicationId/:action',
+    		{applicationId : "@applicationId"},
+            {
+                grids: { method: 'GET' ,isArray:true, params: {action : "grids"}},
+                getGrid: { method: 'POST' , params: {action : "GetGrid"}},
+                AddGridElement: { method: 'POST' , params: {action : "AddGridElement"}},
+                DeleteGridElement: { method: 'POST' , params: {action : "DeleteGridElement"}},
+                UpdateGridElement: { method: 'POST' , params: {action : "UpdateGridElement"}}
             }
         );
         project.prototype.save = function(cb) {
