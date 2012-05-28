@@ -1,9 +1,6 @@
 ﻿using System;
-using System.ServiceModel;
 using System.ServiceModel.Activation;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using cms.data;
 using cms.data.Dtos;
 using cms.data.EF;
 
@@ -21,7 +18,7 @@ namespace cms.Service
 			{
 				ReferenceLoopHandling = ReferenceLoopHandling.Ignore
 			};
-			var ret = JsonConvert.SerializeObject(data, settings);
+			var ret = JsonConvert.SerializeObject(data, Formatting.Indented,settings);
 
 			return ret;
 		}

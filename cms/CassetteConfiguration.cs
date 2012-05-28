@@ -1,3 +1,4 @@
+using Cassette;
 using Cassette.Configuration;
 using Cassette.HtmlTemplates;
 using Cassette.Scripts;
@@ -13,7 +14,8 @@ namespace cms
 
         public void Configure(BundleCollection bundles, CassetteSettings settings)
         {
-            // TODO: Configure your bundles here...
+            
+			// TODO: Configure your bundles here...
             // Please read http://getcassette.net/documentation/configuration
 
             // This default configuration treats each file as a separate 'bundle'.
@@ -32,11 +34,13 @@ namespace cms
 					CoffeeScriptCompiler = new IECoffeeScriptCompiler()
 				});
 
+
 			//Jquery HTml 
-			//bundles.Add<HtmlTemplateBundle>("HtmlTemplates",
-			//    bundle => bundle.Processor = new JQueryTmplPipeline()
-			//);
-			bundles.Add<HtmlTemplateBundle>("HtmlTemplates");
+			bundles.Add<HtmlTemplateBundle>("HtmlTemplates",
+				bundle => bundle.Processor = new JQueryTmplPipeline()
+			);
+
+
 
             // If you want a bundle per folder, try this:
             //bundles.AddPerSubDirectory<ScriptBundle>("Scripts/Admin");
