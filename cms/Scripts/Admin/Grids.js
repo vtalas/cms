@@ -25,8 +25,11 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 		.otherwise({ redirectTo: '/list' });
 }]);
 
-module.directive("gridelement", ['$templateCache', '$compile', function ($templateCache, $compile) {
-
+module.directive("gridelement", ['$templateCache', '$compile', "GridApi", "appSettings", function ($templateCache, $compile, GridApi, appSettings) {
+	function _newitem(line) {
+		var newitem = { Id: 0, Width: 12, Type: "text", Line: line, Edit: 0 };
+		return newitem;
+	}
 
 	var template = function (type) {
 		var elementType = type ? type : "text";
@@ -44,32 +47,54 @@ module.directive("gridelement", ['$templateCache', '$compile', function ($templa
 	};
 
 	var directiveDefinitionObject = {
-		scope: {},
-		inject: {
-			gridelement: 'accessor'
-		},
-//		compile: function (tElement, tAttrs, transclude) {
-////			var sablona = template("text");
-////			console.log(sablona)
-////			tElement.html(sablona);
-//			return function (scope, iElement, tAttrs, transclude) {
+		scope: { data: "accessor", grid: "accessor" },
 
-//				scope.item = scope.$parent.item;
-//				var item = scope.$parent.item;
-//				var type = item.Type;
+		link: function (scope, iElement, tAttrs, controller) {
+			scope.item = scope.data();
+			scope.grid = scope.grid();
 
-//				var sablona = template(type);
-//				var compiled = $compile(sablona);
-//				iElement.html(compiled(scope.$parent));
-//			};
-//		}
-		link: function (scope, iElement, tAttrs, transclude) {
-			var item = scope.$parent.item;
-			var type = item.Type;
+			var sablona = template(scope.item.Type);
 
-			var sablona = template(type);
-			var compiled = $compile(sablona);
-			iElement.html(compiled(scope.$parent));
+			var compiled = $compile(sablona)(scope);
+			iElement.html(compiled);
+
+			scope.add = function (item) {
+				GridApi.AddGridElement({
+					applicationId: appSettings.Id,
+					data: item,
+					gridId: scope.grid.Id
+				}, function (data) {
+					if (data.Line >= scope.grid.Lines.length - 1) {
+						var newitem = _newitem(scope.grid.Lines.length);
+						scope.grid.Lines.push([newitem]);
+					}
+					data.Edit = 1;
+					scope.grid.Lines[data.Line][data.Position] = data;
+				});
+			};
+
+			scope.remove = function (item) {
+				GridApi.DeleteGridElement({ applicationId: appSettings.Id, data: item },
+					function () { item.Id = 0; item.Edit = 0; item.Content = ""; });
+			};
+
+			scope.edit = function (item) {
+				item.Edit = 1;
+			};
+
+			scope.save = function (item) {
+				var copy = jQuery.extend(true, {}, item());
+
+				if (angular.isObject(copy.Content))
+					copy.Content = JSON.stringify(copy.Content);
+
+				GridApi.UpdateGridElement({ applicationId: appSettings.Id, data: copy },
+				function () {
+					item().Edit = 0;
+				});
+			};
+
+
 		}
 	};
 	return directiveDefinitionObject;
@@ -79,19 +104,4 @@ module.directive("gridelement", ['$templateCache', '$compile', function ($templa
 function CreateCtrl($scope) {
 
 }
-
-//function EditCtrl($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
-var EditCtrl = ['$scope', '$route', '$routeParams', 'location', '$http', '$log', '$templateCache', 'appSettings', function($scope, $route, $routeParams, $location, $http, $log, $templateCache, appSettings) {
-	$scope.data = {};
-
-	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGridElement/' + $routeParams.GridElementId })
-		.success(function (data, status, headers, config) {
-			$scope.data = data;
-			console.log(data, "edit");
-		})
-
-		.error(function (data, status, headers, config) {
-
-		});
-}]
 

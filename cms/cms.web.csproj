@@ -203,6 +203,7 @@
       <DependentUpon>aaa.coffee</DependentUpon>
     </Content>
     <Content Include="Scripts\Admin\cmsapi.js" />
+    <Content Include="Scripts\Admin\EditCtrl.js" />
     <Content Include="Scripts\Admin\GridListController.js" />
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
@@ -296,6 +297,7 @@
     <None Include="tests\test\lib\jasmine\MIT.LICENSE" />
     <Content Include="Views\setup\MigrateDatabaseToLatestVersion.cshtml" />
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
+    <Content Include="Views\Admin\template\xxx.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
