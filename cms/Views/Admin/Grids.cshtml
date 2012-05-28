@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "grids";
-	Layout = "_Layout.cshtml";
+	Layout = "_Layout_Grids.cshtml";
 
 	Bundles.Reference("~/Scripts/showdown.js");
 	
@@ -11,8 +11,6 @@
 	var applicationId = ViewBag.ApplicationId;
 }
 	
-<h2>@applicationName</h2>
-<h2>@applicationId</h2>
 
 <div ng-app="gridsmodule"
 	 data-application-name="@applicationName"

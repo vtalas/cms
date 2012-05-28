@@ -1,0 +1,20 @@
+﻿@{
+	Layout = "_Layout.cshtml";
+
+	var applicationName = ViewBag.Application;
+	var applicationId = ViewBag.ApplicationId;
+}
+<ul>
+	<li>
+		<a href="@Url.Action("grids")">@applicationName</a>
+	</li>
+	<li>
+		nastavení
+	</li>
+</ul>
+
+
+
+@RenderBody()
+
+
