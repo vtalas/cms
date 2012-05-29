@@ -1,44 +1,40 @@
-/**/
-///<reference path="../showdown.js"/>
-///<reference path="../jquery-1.7.2.js"/>
-///<reference path="../angular.js"/>
 
-function novinka($scope, $http,appSettings) {
-	$scope.data = $scope.$parent.item;
+/*
+@reference ../showdown.js
+@reference ../jquery-1.7.2.js
+@reference ../angular.js
 
 
-	$scope.data.Content = angular.fromJson($scope.data.Content) || {header:"",text:""};
-
-	//console.log("nka", $scope.data.Content, appSettings);
-	//$scope.data.Content.header = $scope.$parent.item.Content.header || "AA";
-	//$scope.data.Content.text = $scope.$parent.item.Content.text || "XXX";
-
-	var converter = new Showdown.converter();
-	var self = this;
-	var toHtml = function (markdown) {
-		var a = true;
-
-		return converter.makeHtml(markdown);
-	};
-
-	$scope.headerHtml = function () {
-		return toHtml($scope.data.Content.header);
-	};
-
-	$scope.textHtml = function () {
-		return toHtml($scope.data.Content.text);
-	};
-
-	$scope.thumb = function () {
-		return $scope.data.thumb;
-	};
+*/
 
 
-	////////////////////////////
-	$scope.add = function() {
+(function() {
+  var novinka;
 
-	};
+  novinka = function($scope, appSettings) {
+    var converter, toHtml;
+    $scope.item = $scope.$parent.item;
+    $scope.item.Content = angular.fromJson($scope.item.Content) || {
+      header: "xxx"
+    };
+    ({
+      text: "xxxccccc"
+    });
+    converter = new Showdown.converter();
+    toHtml = function(markdown) {
+      return converter.makeHtml(markdown);
+    };
+    $scope.headerHtml = function() {
+      return toHtml($scope.item.Content.header);
+    };
+    $scope.textHtml = function() {
+      return toHtml($scope.item.Content.text);
+    };
+    return $scope.thumb = function() {
+      return $scope.item.thumb;
+    };
+  };
 
-}
-novinka.$inject = ['$scope', '$http', 'appSettings'];
+  novinka.$inject = ["$scope", "appSettings"];
 
+}).call(this);

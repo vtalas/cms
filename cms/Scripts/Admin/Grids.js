@@ -83,14 +83,14 @@ module.directive("gridelement", ['$templateCache', '$compile', "GridApi", "appSe
 			};
 
 			scope.save = function (item) {
-				var copy = jQuery.extend(true, {}, item());
+				var copy = jQuery.extend(true, {}, item);
 
 				if (angular.isObject(copy.Content))
 					copy.Content = JSON.stringify(copy.Content);
 
 				GridApi.UpdateGridElement({ applicationId: appSettings.Id, data: copy },
 				function () {
-					item().Edit = 0;
+					item.Edit = 0;
 				});
 			};
 

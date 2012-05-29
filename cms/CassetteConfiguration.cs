@@ -22,7 +22,11 @@ namespace cms
             // In production the content will be minified, but the files are not combined.
             // So you probably want to tweak these defaults!
             bundles.AddPerIndividualFile<StylesheetBundle>("Content");
-            bundles.AddPerIndividualFile<ScriptBundle>("Scripts");
+            bundles.AddPerIndividualFile<ScriptBundle>("Scripts",null,
+				b => b.Processor = new ScriptPipeline
+				{
+					CoffeeScriptCompiler = new IECoffeeScriptCompiler()
+				});
 
             // To combine files, try something like this instead:
             //   bundles.Add<StylesheetBundle>("Content");

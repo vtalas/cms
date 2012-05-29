@@ -208,6 +208,10 @@
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\_GridElementScripts\novinka.coffee" />
+    <Content Include="Scripts\_GridElementScripts\novinka.js">
+      <DependentUpon>novinka.coffee</DependentUpon>
+    </Content>
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
@@ -229,7 +233,6 @@
     <Content Include="Scripts\_GridElementScripts\text.js" />
     <Content Include="Scripts\Admin\Grids.js" />
     <Content Include="Scripts\Admin\Index.js" />
-    <Content Include="Scripts\_GridElementScripts\novinka.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\showdown.js" />
     <Content Include="tests\config\jstd-scenario-adapter-config.js" />

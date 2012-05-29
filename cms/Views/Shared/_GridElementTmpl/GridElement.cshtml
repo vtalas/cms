@@ -1,6 +1,6 @@
 ﻿@model cms.Controllers.TemplateSettings
 
-<div>
+<div ng-controller="@Model.Type">
 	<div ng-show="item.Id">
 		<button ng-click="edit(item)">edit</button>
 		<button ng-click="remove(item)">smazat</button>
