@@ -4,7 +4,8 @@
 	var applicationName = ViewBag.Application;
 	var applicationId = ViewBag.ApplicationId;
 }
-<ul>
+<div class="adminheader"> 
+<ul class="mainmenu">
 	<li>
 		<a href="@Url.Action("grids")">@applicationName</a>
 	</li>
@@ -13,6 +14,7 @@
 	</li>
 </ul>
 
+</div>
 
 
 @RenderBody()

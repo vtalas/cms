@@ -165,8 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\aaa.styl" />
-    <None Include="Content\bbb.styl" />
-    <None Include="Content\ccc.styl" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Service References\ServiceReference1\Client1.wsdl" />
@@ -189,10 +187,9 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServiceReference1\Client1.disco" />
+    <Content Include="Content\aa.scss" />
     <Content Include="Content\aaa.css" />
-    <Content Include="Content\xxx.sass" />
-    <Content Include="Content\bbb.css" />
-    <Content Include="Content\ccc.css" />
+    <Content Include="Content\reset.sass" />
     <Content Include="Scripts\Admin\aaa.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>aaa.js</LastGenOutput>
@@ -209,13 +206,9 @@
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\_GridElementScripts\novinka.coffee" />
-    <Content Include="Scripts\_GridElementScripts\novinka.js">
-      <DependentUpon>novinka.coffee</DependentUpon>
-    </Content>
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -301,6 +294,7 @@
     <Content Include="Views\setup\MigrateDatabaseToLatestVersion.cshtml" />
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\Admin\template\xxx.cshtml" />
+    <Content Include="Views\Admin\_Layout_Grids.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
