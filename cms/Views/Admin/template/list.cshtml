@@ -1,25 +1,50 @@
-﻿<p>...............................................</p>
-<table>
-<tr ng-repeat="grid in data">
-	<td>
-		<a href="#/gridpage/{{grid.Id}}"> {{grid.Name}}</a> 
-	</td>
-	<td ng-hide="grid.Edit">
-		{{grid.Link}}
-	</td>
-	<td ng-show="grid.Edit">
-		<input type="text" ng-model="grid.Link"/>
-	</td>
-	<td>
-		<button ng-hide="grid.Edit" ng-click="edit(grid)">Edit</button>
-		<button ng-show="grid.Edit" ng-click="save(grid)">Ok</button>
+﻿<table>
+
+	<tr ng-repeat="grid in data">
+		<td>
+			<a href="#/gridpage/{{grid.Id}}"> {{grid.Name}}</a> 
+		</td>
+		<td ng-hide="grid.Edit">
+			{{grid.Link}}
+		</td>
+		<td ng-show="grid.Edit">
+			<input type="text" ng-model="grid.Link"/>
+		</td>
+		<td>
+			<button ng-hide="grid.Edit" ng-click="edit(grid)">Edit</button>
+			<button ng-show="grid.Edit" ng-click="save(grid)">Ok</button>
 		
-		<button ng-click="remove(grid)">Smazat</button>
-	</td>
+			<button ng-click="remove(grid)">Smazat</button>
+		</td>
 	</tr>
 </table>
-<input type="text" ng-model="newName"/>
-<button ng-click="add()" >Pridat</button>
+
+<script type="text/ng-template" id="GridTemplate">
+    <div>
+		<h2>new</h2>
+		<input type="text" ng-model="newName"/>
+    </div>
+</script>
+
+<button ng-click="addclick()" >Přidat</button>
+
+
+<div ng-show="createNew" ng-hide="!createNew" >
+	<h2>new</h2>
+	<table>
+		<tr>
+			<td>Jméno:</td>
+			<td><input type="text" ng-model="newitem.Name" /></td>
+		</tr>	
+		<tr>
+			<td>Link:</td>
+			<td><input type="text" ng-model="newitem.Link" /></td>
+		</tr>
+
+	</table>
+	<button ng-click="add()">Ok</button>
+	<button ng-click="createNewCancel()">Cancel</button>
+</div>
 
 
 

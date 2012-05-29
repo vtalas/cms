@@ -1,11 +1,22 @@
 var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
 
-	$scope.data = GridApi.grids({applicationId : appSettings.Id}, function (d) {
+	$scope.data = GridApi.grids({ applicationId: appSettings.Id }, function (d) {
 
 	});
 
+
+	$scope.addclick = function () {
+		$scope.createNew = true;
+	};
+	$scope.createNewCancel = function() {
+		$scope.createNew = false;
+	};
+
+
 	$scope.add = function () {
-		var newitem = { Name: $scope.newName };
+
+		var newitem = $scope.newitem;
+
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/AddGrid', data: { data: newitem} })
             .success(function (data, status, headers, config) {
             	$scope.data.push(data);
@@ -27,8 +38,8 @@ var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridA
             });
 	};
 
-	$scope.save = function(item) {
-        console.log(item);
+	$scope.save = function (item) {
+		console.log(item);
 		item.Edit = 0;
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/UpdateGrid', data: { data: item} })
             .success(function (data, status, headers, config) {
