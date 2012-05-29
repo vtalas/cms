@@ -1,5 +1,10 @@
-﻿<table>
+﻿
 
+<link href="/Content/{{css}}.css" rel="stylesheet" type="text/css" />
+<input type="text" ng-model="css"/>
+{{css}}
+
+<table>
 	<tr ng-repeat="grid in data">
 		<td>
 			<a href="#/gridpage/{{grid.Id}}"> {{grid.Name}}</a> 
@@ -19,12 +24,7 @@
 	</tr>
 </table>
 
-<script type="text/ng-template" id="GridTemplate">
-    <div>
-		<h2>new</h2>
-		<input type="text" ng-model="newName"/>
-    </div>
-</script>
+
 
 <button ng-click="addclick()" >Přidat</button>
 
