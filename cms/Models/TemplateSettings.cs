@@ -1,4 +1,4 @@
-namespace cms.Controllers
+namespace cms.Models
 {
 	public class TemplateSettings
 	{

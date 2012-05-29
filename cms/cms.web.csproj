@@ -49,6 +49,9 @@
     <Reference Include="Cassette.Web, Version=1.2.1.30492, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Cassette.Web.1.2.1\lib\net40\Cassette.Web.dll</HintPath>
     </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>..\packages\dotless.1.3.0.3\lib\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="IronRuby, Version=1.1.3.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.dll</HintPath>
@@ -135,9 +138,10 @@
   <ItemGroup>
     <Compile Include="CassetteConfiguration.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\BootstrapController.cs" />
     <Compile Include="Controllers\JSONNetResult.cs" />
     <Compile Include="Controllers\SetupController.cs" />
-    <Compile Include="Controllers\TemplateSettings.cs" />
+    <Compile Include="Models\TemplateSettings.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,16 +161,76 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Service\IClient.cs" />
-    <Compile Include="Models\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\IService1.cs" />
     <Compile Include="Service\JsonErrorHandler.cs" />
     <Compile Include="Service\JsonFault.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\bootstrap\less\Copy of accordion.less">
+      <Generator>LessGenerator</Generator>
+      <LastGenOutput>accordion.css</LastGenOutput>
+    </Content>
     <None Include="Content\aaa.styl" />
+    <Content Include="App_Themes\bootstrap\less\accordion.less">
+      <Generator>LessGenerator</Generator>
+      <LastGenOutput>accordion.css</LastGenOutput>
+    </Content>
+    <Content Include="App_Themes\bootstrap\less\alerts.less" />
+    <Content Include="App_Themes\bootstrap\less\bootstrap.less" />
+    <Content Include="App_Themes\bootstrap\less\breadcrumbs.less" />
+    <Content Include="App_Themes\bootstrap\less\button-groups.less" />
+    <Content Include="App_Themes\bootstrap\less\buttons.less" />
+    <Content Include="App_Themes\bootstrap\less\carousel.less" />
+    <Content Include="App_Themes\bootstrap\less\close.less" />
+    <Content Include="App_Themes\bootstrap\less\code.less" />
+    <Content Include="App_Themes\bootstrap\less\component-animations.less" />
+    <Content Include="App_Themes\bootstrap\less\dropdowns.less" />
+    <Content Include="App_Themes\bootstrap\less\forms.less" />
+    <Content Include="App_Themes\bootstrap\less\grid.less" />
+    <Content Include="App_Themes\bootstrap\less\hero-unit.less" />
+    <Content Include="App_Themes\bootstrap\less\labels-badges.less" />
+    <Content Include="App_Themes\bootstrap\less\layouts.less" />
+    <Content Include="App_Themes\bootstrap\less\mixins.less" />
+    <Content Include="App_Themes\bootstrap\less\modals.less" />
+    <Content Include="App_Themes\bootstrap\less\navbar.less" />
+    <Content Include="App_Themes\bootstrap\less\navs.less" />
+    <Content Include="App_Themes\bootstrap\less\pager.less" />
+    <Content Include="App_Themes\bootstrap\less\pagination.less" />
+    <Content Include="App_Themes\bootstrap\less\popovers.less" />
+    <Content Include="App_Themes\bootstrap\less\progress-bars.less" />
+    <Content Include="App_Themes\bootstrap\less\reset.less" />
+    <Content Include="App_Themes\bootstrap\less\responsive-1200px-min.less" />
+    <Content Include="App_Themes\bootstrap\less\responsive-767px-max.less" />
+    <Content Include="App_Themes\bootstrap\less\responsive-768px-979px.less" />
+    <Content Include="App_Themes\bootstrap\less\responsive-navbar.less" />
+    <Content Include="App_Themes\bootstrap\less\responsive-utilities.less" />
+    <Content Include="App_Themes\bootstrap\less\responsive.less" />
+    <Content Include="App_Themes\bootstrap\less\scaffolding.less" />
+    <Content Include="App_Themes\bootstrap\less\sprites.less" />
+    <Content Include="App_Themes\bootstrap\less\tables.less" />
+    <Content Include="App_Themes\bootstrap\less\thumbnails.less" />
+    <Content Include="App_Themes\bootstrap\less\tooltip.less" />
+    <Content Include="App_Themes\bootstrap\less\type.less" />
+    <Content Include="App_Themes\bootstrap\less\utilities.less" />
+    <Content Include="App_Themes\bootstrap\less\variables.less" />
+    <Content Include="App_Themes\bootstrap\less\wells.less" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
+    <Content Include="Content\admin.css">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>admin.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\admin.scss">
+      <Generator>ScssGenerator</Generator>
+      <LastGenOutput>admin.css</LastGenOutput>
+    </Content>
+    <Content Include="App_Themes\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="App_Themes\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Scripts\Admin\Bootstrap.coffee">
+      <Generator>CoffeeScriptGenerator</Generator>
+      <LastGenOutput>Bootstrap.js</LastGenOutput>
+    </Content>
     <None Include="Service References\ServiceReference1\Client1.wsdl" />
     <None Include="Service References\ServiceReference1\Client4.xsd">
       <SubType>Designer</SubType>
@@ -202,6 +266,11 @@
     <Content Include="Scripts\Admin\EditCtrl.js" />
     <Content Include="Scripts\Admin\GridListController.js" />
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
+    <Content Include="Scripts\Admin\Bootstrap.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bootstrap.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\_GridElementScripts\novinka.coffee" />
@@ -292,8 +361,8 @@
     <None Include="tests\test\lib\jasmine\MIT.LICENSE" />
     <Content Include="Views\setup\MigrateDatabaseToLatestVersion.cshtml" />
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
-    <Content Include="Views\Admin\template\xxx.cshtml" />
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
+    <Content Include="Views\Bootstrap\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
@@ -314,16 +383,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\_Layout.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Grids.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\template\list.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Admin\template\new.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\template\gridpage.cshtml" />
@@ -345,7 +411,6 @@
   <ItemGroup>
     <Folder Include=".idea\" />
     <Folder Include="App_Data\" />
-    <Folder Include="App_Themes\" />
     <Folder Include="Content\themes\test1\" />
     <Folder Include="Scripts\_GridElementScripts\test1\" />
   </ItemGroup>

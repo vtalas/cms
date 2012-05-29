@@ -1,25 +1,22 @@
 ﻿@{
-	Layout = "_Layout.cshtml";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 
 	var applicationName = ViewBag.Application;
 	var applicationId = ViewBag.ApplicationId;
 }
 <div class="adminheader"> 
-<ul class="mainmenu">
-	<li>
-		<a href="@Url.Action("grids")">@applicationName</a>
-	</li>
-	<li>
-		nastavení
-	</li>
-</ul>
-
+	<ul class="mainmenu">
+		<li>
+			<a href="@Url.Action("grids")">@applicationName</a>
+		</li>
+		<li>
+			nastavení
+		</li>
+	</ul>
 </div>
 
 
 <div class="admincontent">
-	
-@RenderBody()
-
+	@RenderBody()
 </div>
 

@@ -4,13 +4,10 @@ using System.ServiceModel;
 using System.ServiceModel.Configuration;
 using System.ServiceModel.Description;
 using System.ServiceModel.Web;
-using Newtonsoft.Json.Linq;
-using cms.data;
 using cms.data.Dtos;
 
 namespace cms.Service
 {
-	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IClient" in both code and config file together.
 	[ServiceContract]
 	public interface IClient
 	{
