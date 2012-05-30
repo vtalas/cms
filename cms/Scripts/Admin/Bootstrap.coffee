@@ -12,8 +12,7 @@ bootstrap = ($scope, $http) ->
     method: "POST"
     url: "/bootstrap/Current"
   ).success((data, status, headers, config) ->
-    a= $.parseJSON data
-    console.log a
+    console.log data
   )
 
 window.bootstrap = bootstrap

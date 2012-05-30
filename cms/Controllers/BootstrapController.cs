@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
 using cms.Code.Bootstraper;
+using dotless.Core;
 
 namespace cms.Controllers
 {
@@ -14,14 +16,22 @@ namespace cms.Controllers
         {
             return View();
         }
-        public ActionResult aaa()
+        public ActionResult css()
         {
-        	var a = "aasdsa";
-        	return new JSONNetResult(a);
+        	var css = "body{color:yellow;}";
+
+        	var a = new LessEngine();
+
+
+
+			//this.Engine.TransformToCss(this.FileReader.GetFileContents(localPath), localPath))
+
+			Response.ContentType = "text/css";
+			Response.Write(css);
+
+        	return new EmptyResult();
         }
 
-
-		
 		public ActionResult Current()
 		{
 			var id = Session.SessionID;
@@ -31,6 +41,7 @@ namespace cms.Controllers
         }
 
 		private string bootstrappath = "~/App_Themes/bootstrap/less/user/bootstrap_{0}.less";
+
 
 		private string GetUserBootstrap(string id)
 		{
@@ -47,11 +58,23 @@ namespace cms.Controllers
 			//var variablesDefaultJson = "~/App_Themes/bootstrap/default_bootstrap.json";
 			//var variablesUserJson = string.Format("~/App_Themes/bootstrap/less/user/variables_{0}.json", id);
 
+			//string bbb = "~/Content/aaa.less"+DateTime.Now;
+			//var aaa = Server.MapPath(bbb);
+			//SetContent(aaa,"body{color:red}");
+
 			var basepath = Server.MapPath("~/App_Data");
 			var bb = new BootstrapDataRepositoryImpl(basepath);
 
 			return bb.Get(id);
 
 		}
+		private void SetContent(string file, string content)
+		{
+			var target = new StreamWriter(file);
+			target.Write(content);
+			target.Close();
+		}
+
+
     }
 }

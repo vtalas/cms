@@ -8,6 +8,13 @@ namespace cms.Code.Bootstraper
 		public abstract string Get(string id);
 		public abstract void Save(string id,string data);
 	}
+	public class Less
+	{
+		public void xxx ()
+		{
+
+		}
+	}
 
 	public class BootstrapDataRepositoryImpl : BootstrapDataRepository
 	{

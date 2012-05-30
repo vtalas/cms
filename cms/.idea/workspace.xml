@@ -25,7 +25,7 @@
       <file leaf-file-name="Bootstrap.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/Bootstrap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="0.2037855">
+            <state line="14" column="20" selection-start="334" selection-end="334" vertical-scroll-proportion="0.15015773">
               <folding />
             </state>
           </provider>
@@ -612,7 +612,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Bootstrap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="0.2037855">
+        <state line="14" column="20" selection-start="334" selection-end="334" vertical-scroll-proportion="0.15015773">
           <folding />
         </state>
       </provider>
