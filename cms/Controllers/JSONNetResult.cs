@@ -24,12 +24,6 @@ namespace cms.Controllers
 		{
 			var response = context.HttpContext.Response;
 			response.ContentType = "application/json";
-			//var settings = new JsonSerializerSettings()
-			//                {
-			//                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-			//                };
-
-			//response.Write(JsonConvert.SerializeObject(_data, Formatting.Indented, settings));
 			response.Write(ToJson(_data));
 		}
 	}

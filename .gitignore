@@ -32,3 +32,4 @@ cms/Service References/ServiceReference1/*
 cms/App_Data/*.mdf
 cms/App_Data/*.ldf
 cms/Web.config
+cms/App_Data/userdata/*
