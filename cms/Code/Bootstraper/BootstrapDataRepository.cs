@@ -8,13 +8,6 @@ namespace cms.Code.Bootstraper
 		public abstract string Get(string id);
 		public abstract void Save(string id,string data);
 	}
-	public class Less
-	{
-		public void xxx ()
-		{
-
-		}
-	}
 
 	public class BootstrapDataRepositoryImpl : BootstrapDataRepository
 	{
@@ -27,7 +20,7 @@ namespace cms.Code.Bootstraper
 		public override string Default()
 		{
 			var file = Path.Combine(BasePath, "default_bootstrap.json");
-			return getContent(file);
+			return FileExts.GetContent(file);
 		}
 
 		public override string Get(string id)
@@ -41,12 +34,12 @@ namespace cms.Code.Bootstraper
 				return data;
 			}
 			
-			return getContent(variablesUserj);
+			return FileExts.GetContent(variablesUserj);
 		}
 
 		public override void Save(string id, string data)
 		{
-			SetContent(UserDataPath(id),data);
+			FileExts.SetContent(UserDataPath(id),data);
 		}
 		
 		private string UserDataPath(string id )
@@ -54,21 +47,7 @@ namespace cms.Code.Bootstraper
 			return Path.Combine(BasePath, string.Format("userdata/variables_{0}.json", id));
 		}
 
-		private string getContent(string file)
-		{
-			if (File.Exists(file))
-			{
-				var content = File.ReadAllText(file);
-				return content;
-			}
-			throw new FileNotFoundException(file);
-		}
 
-		private void SetContent(string file, string content)
-		{
-			var target = new StreamWriter(file);
-			target.Write(content);
-			target.Close();
-		}
+
 	}
 }

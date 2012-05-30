@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
 using cms.Code.Bootstraper;
 using dotless.Core;
+using dotless.Core.Loggers;
+using dotless.Core.Parser;
 
 namespace cms.Controllers
 {
@@ -18,16 +20,20 @@ namespace cms.Controllers
         }
         public ActionResult css()
         {
-        	var css = "body{color:yellow;}";
-
-        	var a = new LessEngine();
+			var test = Server.MapPath("~/App_Data/bootstrap/less/bootstrap.less");
 
 
+			var a = new LessEngine
+						{
+							Logger = new ResponseLogger(Response)
+						};
 
-			//this.Engine.TransformToCss(this.FileReader.GetFileContents(localPath), localPath))
+
+			var css = a.TransformToCss(FileExts.GetContent(test), null);
 
 			Response.ContentType = "text/css";
 			Response.Write(css);
+
 
         	return new EmptyResult();
         }
@@ -40,41 +46,47 @@ namespace cms.Controllers
 			return new JSONNetResult(JObject.Parse(jsonString));
         }
 
-		private string bootstrappath = "~/App_Themes/bootstrap/less/user/bootstrap_{0}.less";
-
-
-		private string GetUserBootstrap(string id)
-		{
-			var bootstrapfile = Server.MapPath(string.Format(bootstrappath,id));
-			if (!System.IO.File.Exists(bootstrapfile))
-			{
-				System.IO.File.Create(bootstrapfile);
-			}
-			return bootstrapfile;
-		}
-		
 		private string CurrentConfigJson(string id)
 		{
-			//var variablesDefaultJson = "~/App_Themes/bootstrap/default_bootstrap.json";
-			//var variablesUserJson = string.Format("~/App_Themes/bootstrap/less/user/variables_{0}.json", id);
-
-			//string bbb = "~/Content/aaa.less"+DateTime.Now;
-			//var aaa = Server.MapPath(bbb);
-			//SetContent(aaa,"body{color:red}");
-
 			var basepath = Server.MapPath("~/App_Data");
 			var bb = new BootstrapDataRepositoryImpl(basepath);
 
 			return bb.Get(id);
 
 		}
-		private void SetContent(string file, string content)
+    }
+
+	public class ResponseLogger : ILogger
+	{
+		private HttpResponseBase r { get; set; }
+		public ResponseLogger(HttpResponseBase response)
 		{
-			var target = new StreamWriter(file);
-			target.Write(content);
-			target.Close();
+			r = response;
 		}
 
+		public void Log(LogLevel level, string message)
+		{
+			throw new NotImplementedException();
+		}
 
-    }
+		public void Info(string message)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Debug(string message)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Warn(string message)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Error(string message)
+		{
+			r.Write(message);
+		}
+	}
 }
