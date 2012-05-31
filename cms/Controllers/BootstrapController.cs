@@ -1,42 +1,62 @@
-﻿using System;
-using System.IO;
-using System.Web;
+﻿using System.IO;
 using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
 using cms.Code.Bootstraper;
 using dotless.Core;
 using dotless.Core.Importers;
 using dotless.Core.Input;
-using dotless.Core.Loggers;
 using dotless.Core.Parser;
 
 namespace cms.Controllers
 {
 	public class BootstrapController : Controller
     {
-        public ActionResult Index()
+        //string basepath = 
+		public ActionResult Index()
         {
             return View();
         }
-        public ActionResult css()
-        {
-			Directory.SetCurrentDirectory(Server.MapPath("~/App_Data/bootstrap/less/"));
 
-			var test = Server.MapPath("~/App_Data/bootstrap/less/bootstrap.less");
-
+		private  string LessToCss(string lessfile)
+		{
 			var parser = new Parser();
-        	var imp = new Importer(new FileReader(new ServerPathResolver(Server)));
+			var imp = new Importer(new FileReader(new ServerPathResolver(Server)));
 
-        	parser.Importer = imp;
+			parser.Importer = imp;
 
 			var a = new LessEngine
-						{
-							Logger = new ResponseLogger(Response),
-							Parser = parser
-						};
+			{
+				Logger = new ResponseLogger(Response),
+				Parser = parser
+			};
 
 			//a.Compress = true;
-			var css = a.TransformToCss(FileExts.GetContent(test), test);
+			return a.TransformToCss(FileExts.GetContent(lessfile), lessfile);
+			
+		}
+		public ActionResult UserBootstrap()
+        {
+			var userid = Session.SessionID;
+			var less = Server.MapPath(string.Format("~/App_Data/userdata/bootstrap_{0}.less",userid));
+			var lessVariables = Server.MapPath(string.Format("~/App_Data/userdata/variables_{0}.less",userid));
+
+			if (!System.IO.File.Exists(lessVariables))
+			{
+				var defaultvars = Server.MapPath("~/App_Data/bootstrap/less/variables.less");
+				var content = FileExts.GetContent(defaultvars);
+				FileExts.SetContent(lessVariables, content);
+			}
+
+			if (!System.IO.File.Exists(less))
+			{
+				var defaultboot = Server.MapPath("~/App_Data/bootstrap/less/bootstrap.less");
+				var content = FileExts.GetContent(defaultboot);
+				var updatedBoot = content.Replace("variables.less", string.Format("variables_{0}.less", userid));
+				FileExts.SetContent(less,updatedBoot);
+			}
+
+			var css = LessToCss(less);
+
 			Response.ContentType = "text/css";
 			Response.Write(css);
 			Response.Write(Session.SessionID);
@@ -55,58 +75,8 @@ namespace cms.Controllers
 		private string CurrentConfigJson(string id)
 		{
 			var basepath = Server.MapPath("~/App_Data");
-			var bb = new BootstrapDataRepositoryImpl(basepath);
-
-			return bb.Get(id);
-
+			var jsondata = new BootstrapDataRepositoryImpl(basepath);
+			return jsondata.Get(id);
 		}
     }
-
-	public class ServerPathResolver : IPathResolver
-	{
-		private HttpServerUtilityBase Server { get; set; }
-		public ServerPathResolver(HttpServerUtilityBase server)
-		{
-			Server = server;
-		}
-
-		public string GetFullPath(string path)
-		{
-			return Server.MapPath(path);
-		}
-	}
-
-	public class ResponseLogger : ILogger
-	{
-		private HttpResponseBase r { get; set; }
-		public ResponseLogger(HttpResponseBase response)
-		{
-			r = response;
-		}
-
-		public void Log(LogLevel level, string message)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Info(string message)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Debug(string message)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Warn(string message)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Error(string message)
-		{
-			r.Write(message);
-		}
-	}
 }

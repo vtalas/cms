@@ -110,6 +110,8 @@
     <Compile Include="Controllers\BootstrapController.cs" />
     <Compile Include="Code\Bootstraper\BootstrapDataRepository.cs" />
     <Compile Include="Controllers\JSONNetResult.cs" />
+    <Compile Include="Controllers\ResponseLogger.cs" />
+    <Compile Include="Controllers\ServerPathResolver.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Code\Bootstraper\BootstraperData.cs" />
     <Compile Include="Models\TemplateSettings.cs" />
@@ -210,7 +212,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServiceReference1\Client1.disco" />
-    <Content Include="Controllers\reset.sass" />
+    <Content Include="Content\reset.sass" />
     <Content Include="Scripts\Admin\cmsapi.js" />
     <Content Include="Scripts\Admin\EditCtrl.js" />
     <Content Include="Scripts\Admin\GridListController.js" />
