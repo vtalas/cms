@@ -3,23 +3,22 @@
 	<head>
 		<title>@ViewBag.Title</title>
 		@{
-			Bundles.Reference("~/Scripts/jquery-1.7.2.js");
-			Bundles.Reference("~/Scripts/angular.js");
-			Bundles.Reference("~/Scripts/angular-resource.js");
+			//Bundles.Reference("~/Scripts/jquery-1.7.2.js");
+			//Bundles.Reference("~/Scripts/angular.js");
+			//Bundles.Reference("~/Scripts/angular-resource.js");
 
-			Bundles.Reference("~/Scripts/Admin/Bootstrap.coffee");
+			//Bundles.Reference("~/Scripts/Admin/Bootstrap.coffee");
 
 		}
 	
-		@Bundles.RenderScripts()
-		@Bundles.RenderStylesheets()
-		@Bundles.RenderHtmlTemplates()
 
 	</head>
 
 	<body ng-controller="bootstrap">
 
-		<link href="@Url.Content("~/App_Themes/bootstrap/less/bootstrap.less?{{xxx}}")" rel="stylesheet" type="text/css" />
+		@*		<link href="@Url.Content("~/App_Themes/bootstrap/less/bootstrap.less?{{xxx}}")" rel="stylesheet" type="text/css" />
+*@		
+
 		<link href="@Url.Content("/bootstrap/css")" rel="stylesheet" type="text/css" />
 		<br />
 		<br />
