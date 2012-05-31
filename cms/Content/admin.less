@@ -1,5 +1,3 @@
-@import "reset.sass";
-
 body{
   font-family: "Segoe UI", "Segoe WP", Helvetica, "Lucida Grande", sans-xxxxx;
 }
@@ -18,14 +16,14 @@ h3{
 
 .adminheader{
   color: red;
-  $aMainmenu: #fff;
-  $aMainmenuHover: #ff7f50;
+  @aMainmenu: #fff;
+  @aMainmenuHover: #ff7f50;
 
   a {
     text-decoration: none;
     color: $aMainmenu;
-    &:hover { color: $aMainmenuHover; }
-    &:visited { color: $aMainmenu; }
+    &:hover { color: @aMainmenuHover; }
+    &:visited { color: @aMainmenu; }
 
   }
 

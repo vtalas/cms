@@ -1,0 +1,512 @@
+2012-05-31 14:02:23,959 [62] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:02:23,959 [59] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:02:23,990 [62] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:02:23,992 [62] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/content/Site.css' (Mode: Static)
+2012-05-31 14:02:23,993 [62] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 24 ms
+2012-05-31 14:02:46,182 [55] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:02:46,183 [65] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:02:46,184 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:02:46,184 [55] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/content/Site.css' (Mode: Static)
+2012-05-31 14:02:46,184 [55] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 1 ms
+2012-05-31 14:03:07,302 [58] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:03:07,302 [62] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:03:07,303 [58] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:03:07,303 [58] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/content/Site.css' (Mode: Static)
+2012-05-31 14:03:07,304 [58] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 1 ms
+2012-05-31 14:03:14,120 [58] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:03:14,120 [55] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:03:14,121 [58] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:03:14,121 [58] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/content/Site.css' (Mode: Static)
+2012-05-31 14:03:14,122 [58] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 1 ms
+2012-05-31 14:03:15,076 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:03:15,077 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:03:15,077 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/content/Site.css' (Mode: Static)
+2012-05-31 14:03:15,077 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 1 ms
+2012-05-31 14:03:15,076 [58] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:03:15,827 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:03:15,828 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:03:15,828 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/content/Site.css' (Mode: Static)
+2012-05-31 14:03:15,828 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 1 ms
+2012-05-31 14:03:15,830 [60] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:03:22,496 [63] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:03:22,498 [63] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:03:22,501 [63] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:03:22,502 [63] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:03:22,502 [63] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:03:22,535 [63] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:03:22,539 [63] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:03:22,541 [63] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:03:22,542 [63] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set BootstrapJs.  Current hash: 
+2012-05-31 14:03:22,542 [63] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 527
+2012-05-31 14:03:22,542 [63] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:03:22,548 [63] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 52 ms
+2012-05-31 14:03:22,553 [63] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:03:46,487 [57] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:03:46,491 [57] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:03:46,491 [57] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:03:46,492 [57] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:03:46,492 [57] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:03:46,492 [57] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:03:46,492 [57] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:03:46,492 [57] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 1 ms
+2012-05-31 14:03:46,493 [57] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:03:46,494 [57] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:03:46,494 [57] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:03:46,717 [57] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 222 ms
+2012-05-31 14:03:46,717 [57] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 229 ms
+2012-05-31 14:03:57,119 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:03:57,122 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:03:57,122 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:03:58,398 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:03:58,398 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:04:02,679 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:04:02,680 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:04:04,023 [57] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:04:04,023 [57] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:04:04,023 [57] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:04:04,024 [57] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:04:04,024 [57] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:04:04,024 [57] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:04:04,024 [57] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:04:04,026 [57] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:04:04,028 [57] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:04:04,029 [57] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:04:04,029 [57] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:04:04,030 [57] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 6 ms
+2012-05-31 14:04:07,608 [57] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:04:07,609 [57] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:04:07,609 [57] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:04:07,609 [57] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:04:07,609 [57] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:04:07,609 [57] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:04:07,609 [57] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:04:07,609 [57] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:04:07,609 [57] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:04:07,611 [57] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 1 ms
+2012-05-31 14:04:07,611 [57] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:04:07,663 [57] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 52 ms
+2012-05-31 14:04:07,663 [57] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 54 ms
+2012-05-31 14:05:12,442 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:05:12,442 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:05:12,443 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:05:24,424 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:05:24,425 [65] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:05:24,456 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:05:24,457 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:05:24,459 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:05:24,461 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:05:24,463 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:05:24,466 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:05:24,467 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:05:24,468 [60] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:05:24,474 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 39 ms
+2012-05-31 14:05:28,415 [58] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:05:28,421 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:05:28,422 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:05:28,423 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:05:28,423 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:05:28,423 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:05:28,423 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:05:28,423 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 2 ms
+2012-05-31 14:05:28,424 [58] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:05:28,425 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:05:28,425 [58] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:05:28,619 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 194 ms
+2012-05-31 14:05:28,619 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 202 ms
+2012-05-31 14:05:41,476 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:05:41,478 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:05:41,478 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:05:43,091 [60] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:05:43,091 [60] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:05:43,091 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:05:43,093 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:05:43,093 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:05:43,093 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:05:43,093 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:05:43,100 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1097737029
+2012-05-31 14:05:43,100 [60] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:05:43,101 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 9 ms
+2012-05-31 14:05:44,160 [62] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:05:44,160 [62] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:05:44,161 [62] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:05:44,161 [62] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:05:44,161 [62] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:05:44,161 [62] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:05:44,161 [62] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:05:44,830 [62] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 668 ms
+2012-05-31 14:05:44,831 [62] DEBUG Combres.RequestProcessor - Compressing combined content...
+2012-05-31 14:05:44,838 [62] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering siteJs': 7 ms
+2012-05-31 14:05:44,839 [62] DEBUG Combres.RequestProcessor - Writing content to browser...
+2012-05-31 14:05:44,840 [62] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 679 ms
+2012-05-31 14:05:47,459 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:05:47,459 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:05:47,459 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:05:51,306 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:05:51,306 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:06:01,665 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:06:01,666 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:06:02,794 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:06:02,795 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:06:06,308 [62] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:06:06,308 [62] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:06:06,308 [62] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:06:06,312 [62] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:06:06,312 [62] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:06:06,312 [62] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:06:06,312 [62] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:06:06,315 [62] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:06:06,325 [62] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:06:06,327 [62] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:06:06,327 [62] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:06:06,328 [62] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 20 ms
+2012-05-31 14:06:07,446 [63] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:06:07,446 [63] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:06:07,446 [63] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:06:07,446 [63] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:06:07,447 [63] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:06:07,447 [63] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:06:07,447 [63] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:06:07,447 [63] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:06:07,447 [63] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:06:07,448 [63] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 1 ms
+2012-05-31 14:06:07,448 [63] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:06:07,478 [63] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 29 ms
+2012-05-31 14:06:07,478 [63] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 31 ms
+2012-05-31 14:06:12,955 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:06:12,955 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:06:12,956 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:06:13,923 [55] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:06:13,923 [55] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:06:13,923 [55] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:06:13,926 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:06:13,927 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:06:13,927 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:06:13,927 [55] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:06:13,929 [55] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:06:13,931 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1940923600
+2012-05-31 14:06:13,931 [55] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:06:13,932 [55] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 8 ms
+2012-05-31 14:06:13,932 [55] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:06:13,932 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:06:13,932 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:06:13,932 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:06:13,932 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:06:13,932 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:06:13,932 [55] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:06:13,932 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:06:13,932 [55] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:06:14,605 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 672 ms
+2012-05-31 14:06:14,606 [55] DEBUG Combres.RequestProcessor - Compressing combined content...
+2012-05-31 14:06:14,613 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering siteJs': 7 ms
+2012-05-31 14:06:14,613 [55] DEBUG Combres.RequestProcessor - Writing content to browser...
+2012-05-31 14:06:14,613 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 681 ms
+2012-05-31 14:06:19,366 [55] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:06:19,366 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:06:19,366 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:06:19,366 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:06:19,366 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:06:19,366 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:06:19,366 [55] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:06:19,367 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:06:19,367 [55] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:06:20,043 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 675 ms
+2012-05-31 14:06:20,043 [55] DEBUG Combres.RequestProcessor - Compressing combined content...
+2012-05-31 14:06:20,050 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Compressing & filtering siteJs': 7 ms
+2012-05-31 14:06:20,051 [55] DEBUG Combres.RequestProcessor - Writing content to browser...
+2012-05-31 14:06:20,051 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 684 ms
+2012-05-31 14:07:02,444 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:02,444 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:07:02,444 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:03,933 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:03,934 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:04,520 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:04,520 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:05,501 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:05,502 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:06,431 [60] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:07:06,431 [60] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:07:06,431 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:07:06,434 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:07:06,434 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:07:06,434 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:07:06,434 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:07:06,436 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:07:06,439 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:07:06,441 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:07:06,441 [60] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:07:06,441 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 10 ms
+2012-05-31 14:07:17,261 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:17,261 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:07:17,261 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:07:18,789 [60] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:07:18,789 [60] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:07:18,789 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:07:18,791 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:07:18,791 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:07:18,791 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:07:18,791 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:07:18,792 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:07:18,795 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:07:18,796 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:07:18,796 [60] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:07:18,796 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 6 ms
+2012-05-31 14:07:24,341 [57] DEBUG Combres.ChangeMonitor - Dynamic resource change monitor thread starts...
+2012-05-31 14:07:24,341 [58] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:07:24,374 [58] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:07:24,375 [58] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:07:24,376 [58] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:07:24,378 [58] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:07:24,380 [58] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:07:24,388 [58] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:07:24,390 [58] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:07:24,390 [58] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:07:24,396 [58] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 45 ms
+2012-05-31 14:08:23,947 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:08:23,949 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:08:23,950 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:08:29,193 [60] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:08:29,193 [60] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:08:29,193 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:08:29,196 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:08:29,196 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:08:29,196 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:08:29,197 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:29,216 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:29,220 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:29,221 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:08:29,221 [60] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:08:29,222 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 28 ms
+2012-05-31 14:08:30,460 [58] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:08:30,464 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:08:30,464 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:30,466 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:08:30,466 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:30,466 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:08:30,466 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:30,466 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 2 ms
+2012-05-31 14:08:30,467 [58] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:08:30,468 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:08:30,468 [58] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:08:30,674 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 205 ms
+2012-05-31 14:08:30,674 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 212 ms
+2012-05-31 14:08:33,217 [58] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:08:33,218 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:08:33,218 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:33,218 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:08:33,218 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:33,218 [58] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:08:33,218 [58] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:33,218 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:08:33,218 [58] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:08:33,220 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 1 ms
+2012-05-31 14:08:33,220 [58] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:08:33,264 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 43 ms
+2012-05-31 14:08:33,264 [58] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 45 ms
+2012-05-31 14:08:34,722 [60] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:08:34,722 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:08:34,722 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:34,722 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:08:34,722 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:34,723 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:08:34,723 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:34,723 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:08:34,723 [60] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:08:34,724 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 1 ms
+2012-05-31 14:08:34,724 [60] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:08:34,771 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 47 ms
+2012-05-31 14:08:34,771 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 49 ms
+2012-05-31 14:08:35,115 [59] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:08:35,115 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:08:35,115 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:35,115 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:08:35,115 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:35,115 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:08:35,115 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:35,115 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:08:35,115 [59] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:08:35,116 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:08:35,116 [59] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:08:35,157 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 41 ms
+2012-05-31 14:08:35,157 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 42 ms
+2012-05-31 14:08:38,028 [55] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:08:38,028 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:08:38,028 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:38,028 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:08:38,028 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:38,028 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:08:38,029 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:38,029 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:08:38,029 [55] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:08:38,030 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:08:38,030 [55] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:08:38,078 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 48 ms
+2012-05-31 14:08:38,078 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 49 ms
+2012-05-31 14:08:41,176 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:08:41,176 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:08:41,176 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:08:41,986 [55] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:08:41,986 [55] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:08:41,986 [55] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:08:41,989 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:08:41,989 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:08:41,989 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:08:41,989 [55] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:41,992 [55] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:41,993 [55] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 1940923600
+2012-05-31 14:08:41,993 [55] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:08:41,994 [55] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 8 ms
+2012-05-31 14:08:45,579 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:08:45,579 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:08:45,579 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:08:46,626 [60] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:08:46,626 [60] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:08:46,626 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:08:46,635 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:08:46,635 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:08:46,635 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:08:46,635 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:46,637 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:46,639 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:46,640 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:08:46,640 [60] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:08:46,640 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 14 ms
+2012-05-31 14:08:46,641 [60] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:08:46,641 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:08:46,641 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:46,641 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:08:46,641 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:46,641 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:08:46,641 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:46,641 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:08:46,641 [60] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:08:46,642 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 1 ms
+2012-05-31 14:08:46,642 [60] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:08:46,671 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 29 ms
+2012-05-31 14:08:46,671 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 30 ms
+2012-05-31 14:08:47,346 [55] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:08:47,346 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:08:47,346 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:08:47,346 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:08:47,346 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:08:47,346 [55] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:08:47,346 [55] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:08:47,346 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:08:47,346 [55] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:08:47,347 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:08:47,347 [55] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:08:47,381 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 34 ms
+2012-05-31 14:08:47,381 [55] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 35 ms
+2012-05-31 14:09:13,452 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:09:13,452 [8] DEBUG Combres.Configuration - Change posted. Change Type: Config - Affected resource list: 
+
+2012-05-31 14:09:13,452 [8] DEBUG Combres.ChangeMonitor - OnConfigChanged
+2012-05-31 14:10:56,673 [60] DEBUG Combres.Configuration - Apply changes
+2012-05-31 14:10:56,673 [60] DEBUG Combres.Configuration - Apply change: Change Type: Config - Affected resource list: 
+
+2012-05-31 14:10:56,673 [60] DEBUG Combres.Configuration - Reload Combres settings
+2012-05-31 14:10:56,674 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteCss.  Current hash: 
+2012-05-31 14:10:56,674 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: 2146601108
+2012-05-31 14:10:56,675 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - Computing hash for set siteJs.  Current hash: 
+2012-05-31 14:10:56,675 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:10:56,676 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:10:56,679 [60] DEBUG Combres.ResourceContentReader - Retrieving new content for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:10:56,680 [60] DEBUG Combres.VersionGenerators.HashCodeVersionGenerator - New hash: -1457824639
+2012-05-31 14:10:56,680 [60] DEBUG Combres.ChangeMonitor - Watch new settings
+2012-05-31 14:10:56,680 [60] DEBUG Combres.Configuration - Elapsed time for 'ReloadSettings': 7 ms
+2012-05-31 14:10:56,706 [59] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:10:56,706 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:10:56,707 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:10:56,707 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:10:56,707 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:10:56,707 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:10:56,707 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:10:56,707 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:10:56,707 [59] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:10:56,708 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:10:56,708 [59] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:10:56,763 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 55 ms
+2012-05-31 14:10:56,763 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 56 ms
+2012-05-31 14:11:05,517 [60] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:11:05,517 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:11:05,517 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:11:05,517 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:11:05,517 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:11:05,517 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:11:05,517 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:11:05,517 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:11:05,517 [60] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:11:05,526 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 3 ms
+2012-05-31 14:11:05,526 [60] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:11:05,568 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 41 ms
+2012-05-31 14:11:05,568 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 50 ms
+2012-05-31 14:11:08,914 [60] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:11:08,915 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:11:08,915 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:11:08,915 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:11:08,915 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:11:08,915 [60] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:11:08,915 [60] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:11:08,915 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:11:08,915 [60] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:11:08,916 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:11:08,916 [60] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:11:08,959 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 42 ms
+2012-05-31 14:11:08,959 [60] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 44 ms
+2012-05-31 14:11:19,377 [59] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:11:19,378 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:11:19,378 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:11:19,378 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:11:19,378 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:11:19,378 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:11:19,378 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:11:19,378 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:11:19,378 [59] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:11:19,379 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:11:19,379 [59] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:11:19,419 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 40 ms
+2012-05-31 14:11:19,419 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 41 ms
+2012-05-31 14:11:53,669 [65] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:11:53,669 [65] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:11:53,669 [65] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:11:53,669 [65] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:11:53,669 [65] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:11:53,669 [65] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:11:53,669 [65] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:11:53,669 [65] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:11:53,669 [65] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:11:53,670 [65] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:11:53,670 [65] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:11:53,720 [65] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 49 ms
+2012-05-31 14:11:53,720 [65] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 51 ms
+2012-05-31 14:11:56,055 [59] DEBUG Combres.RequestProcessor - ***** Processing request for resource set siteJs
+2012-05-31 14:11:56,055 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/jquery-1.7.2.js...
+2012-05-31 14:11:56,055 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/jquery-1.7.2.js' (Mode: Static)
+2012-05-31 14:11:56,055 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular.js...
+2012-05-31 14:11:56,055 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular.js' (Mode: Static)
+2012-05-31 14:11:56,055 [59] DEBUG Combres.RequestProcessor - Reading content of ~/Scripts/angular-resource.js...
+2012-05-31 14:11:56,055 [59] DEBUG Combres.ResourceContentReader - Use content from content's cache for Resource '~/Scripts/angular-resource.js' (Mode: Static)
+2012-05-31 14:11:56,055 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Reading & filtering siteJs': 0 ms
+2012-05-31 14:11:56,055 [59] DEBUG Combres.RequestProcessor - Combining resources' contents...
+2012-05-31 14:11:56,056 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Combining & filtering siteJs': 0 ms
+2012-05-31 14:11:56,056 [59] DEBUG Combres.RequestProcessor - Minifying combined content using minifier default and binder Combres.Binders.SimpleObjectBinder...
+2012-05-31 14:11:56,099 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Minifying & filtering siteJs': 42 ms
+2012-05-31 14:11:56,099 [59] DEBUG Combres.RequestProcessor - Elapsed time for 'Processing siteJs': 43 ms

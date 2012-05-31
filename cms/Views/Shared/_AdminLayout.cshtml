@@ -1,23 +1,31 @@
-﻿<!DOCTYPE html>
+﻿@using SquishIt.Framework
+<!DOCTYPE html>
 <html>	
 	<head>
 		<title>@ViewBag.Title</title>
-		@{
-			Bundles.Reference("~/Scripts/jquery-1.7.2.js");
-			Bundles.Reference("~/Scripts/angular.js");
-			Bundles.Reference("~/Scripts/angular-resource.js");
+		@Html.Raw(
+			Bundle.Css()
+				.Add("~/Content/grid.css")
+				.Add("~/Content/admin.less")
+				.Render("xxx.css")
+			)
+		@Html.Raw(
+			Bundle.JavaScript()
+				.Add("~/Scripts/jquery-1.7.2.js")
+				.Add("~/Scripts/angular.js")
+				.Add("~/Scripts/angular-resource.js")
 
-			Bundles.Reference("~/Scripts/Admin");
-			Bundles.Reference("~/Content/grid.css");
+				.Add("~/Scripts/Admin")
+				
+				.Add("~/Scripts/Coffee/Bootstrap.coffee")
+				
+				.Add("~/Scripts/_GridElementScripts/novinka.coffee")
+				.Add("~/Scripts/_GridElementScripts/text.js")
+				
+				.Add("~/Scripts/showdown.js")
+				.Render("~/AdminLayout_index#.js")
+			)
 			
-			Bundles.Reference("~/Content/admin.scss");
-			//Bundles.Reference("~/HtmlTemplates/test.htm");
-		}
-	
-		@Bundles.RenderScripts()
-		@Bundles.RenderStylesheets()
-		@Bundles.RenderHtmlTemplates()
-
 	</head>
 
 	<body>

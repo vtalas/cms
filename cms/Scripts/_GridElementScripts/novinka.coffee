@@ -8,9 +8,7 @@ novinka = ($scope, $http, appSettings) ->
   novinka.$inject = [ "$scope", "$http", "appSettings" ]
 
   $scope.data = $scope.$parent.item
-  $scope.data.Content = angular.fromJson($scope.data.Content) or
-  header: ""
-  text: ""
+  $scope.data.Content = angular.fromJson($scope.data.Content) or { header: "",  text: ""}
 
   converter = new Showdown.converter()
   self = this
