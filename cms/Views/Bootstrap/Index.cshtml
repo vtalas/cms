@@ -9,7 +9,7 @@
 				.Add("~/Scripts/jquery-1.7.2.js")
 				.Add("~/Scripts/angular.js")
 				.Add("~/Scripts/angular-resource.js")
-				.Add("~/Scripts/Admin/Bootstrap.coffee")
+				.Add("~/Scripts/Coffee/Bootstrap.coffee")
 				.Render("bootstrap_index#.js")
 			)
 
@@ -20,18 +20,16 @@
 		@*		<link href="@Url.Content("~/App_Themes/bootstrap/less/bootstrap.less?{{xxx}}")" rel="stylesheet" type="text/css" />
 *@		
 
-		<link href="@Url.Content("/bootstrap/css?{{xxx}}")" rel="stylesheet" type="text/css" />
+		<link href="@Url.Content("/bootstrap/UserBootstrap?{{xxx}}")" rel="stylesheet" type="text/css" />
 		<br />
 		<br />
 		<br />
 		<br />
 		<br />
-		<div>
-		
-			{{xxx}}
-		</div>
-		<input ng-model="xxx"/>
-		XX @Session.LCID
+		<input ng-model="xxx"/><br />
+		<input ng-model="data.black"/><br />
+		<input ng-model="data.bodyBackground"/><br />
+		<button ng-click="refresh()">refresh</button>
 
 		<!-- Navbar
 			================================================== -->

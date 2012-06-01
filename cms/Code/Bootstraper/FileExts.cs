@@ -1,4 +1,6 @@
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace cms.Code.Bootstraper
 {
@@ -16,9 +18,18 @@ namespace cms.Code.Bootstraper
 
 		public static void SetContent(string file, string content)
 		{
-			var target = new StreamWriter(file);
-			target.Write(content);
-			target.Close();
+			using (var target = new StreamWriter(file))
+			{
+				target.Write(content);
+			}
+		}
+
+		public static void SetContent(string file, JObject data)
+		{
+			using (TextWriter writer = File.CreateText(file))
+			{
+				data.WriteTo(new JsonTextWriter(writer));
+			}
 		}
 
 	}

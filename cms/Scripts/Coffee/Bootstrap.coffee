@@ -12,7 +12,18 @@ bootstrap = ($scope, $http) ->
     method: "POST"
     url: "/bootstrap/Current"
   ).success((data, status, headers, config) ->
-    console.log data
+      $scope.data = data;
+      console.log data
   )
 
+  $scope.refresh = ->
+    $http(
+      method: "POST"
+      url: "/bootstrap/Refresh"
+      data: $scope.data
+    ).success((data, status, headers, config) ->
+      console.log data
+    )
+
+  1
 window.bootstrap = bootstrap

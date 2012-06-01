@@ -1,5 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Json;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.Code.Bootstraper;
 using dotless.Core;
@@ -11,34 +14,28 @@ namespace cms.Controllers
 {
 	public class BootstrapController : Controller
     {
-        //string basepath = 
+		private BootstrapDataRepository JsonRepository { get; set; }
+		private string UserId { get; set; }
+
+		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
+		{
+			var basepath = requestContext.HttpContext.Server.MapPath("~/App_Data");
+			JsonRepository = new BootstrapDataRepositoryImpl(basepath);
+			UserId = requestContext.HttpContext.Session != null ? requestContext.HttpContext.Session.SessionID : Guid.NewGuid().ToString();
+
+			base.Initialize(requestContext);
+		}
+
+
 		public ActionResult Index()
         {
             return View();
         }
 
-		private  string LessToCss(string lessfile)
-		{
-			var parser = new Parser();
-			var imp = new Importer(new FileReader(new ServerPathResolver(Server)));
-
-			parser.Importer = imp;
-
-			var a = new LessEngine
-			{
-				Logger = new ResponseLogger(Response),
-				Parser = parser
-			};
-
-			//a.Compress = true;
-			return a.TransformToCss(FileExts.GetContent(lessfile), lessfile);
-			
-		}
 		public ActionResult UserBootstrap()
         {
-			var userid = Session.SessionID;
-			var less = Server.MapPath(string.Format("~/App_Data/userdata/bootstrap_{0}.less",userid));
-			var lessVariables = Server.MapPath(string.Format("~/App_Data/userdata/variables_{0}.less",userid));
+			var less = Server.MapPath(string.Format("~/App_Data/userdata/bootstrap_{0}.less", UserId));
+			var lessVariables = Server.MapPath(string.Format("~/App_Data/userdata/variables_{0}.less", UserId));
 
 			if (!System.IO.File.Exists(lessVariables))
 			{
@@ -51,7 +48,7 @@ namespace cms.Controllers
 			{
 				var defaultboot = Server.MapPath("~/App_Data/bootstrap/less/bootstrap.less");
 				var content = FileExts.GetContent(defaultboot);
-				var updatedBoot = content.Replace("variables.less", string.Format("variables_{0}.less", userid));
+				var updatedBoot = content.Replace("bootstrap/less/variables.less", string.Format("userdata/variables_{0}.less", UserId));
 				FileExts.SetContent(less,updatedBoot);
 			}
 
@@ -66,17 +63,56 @@ namespace cms.Controllers
 
 		public ActionResult Current()
 		{
-			var id = Session.SessionID;
-			var jsonString = CurrentConfigJson(id);
-			
-			return new JSONNetResult(JObject.Parse(jsonString));
+			return new JSONNetResult(JsonRepository.Get(UserId));
         }
 
-		private string CurrentConfigJson(string id)
+		
+		[ObjectFilter(Param = "data", RootType = typeof(JObject))]
+		public ActionResult Refresh(JObject data)
 		{
-			var basepath = Server.MapPath("~/App_Data");
-			var jsondata = new BootstrapDataRepositoryImpl(basepath);
-			return jsondata.Get(id);
+			JsonRepository.Save(UserId, (JObject)data);
+			return new EmptyResult();
 		}
+
+
+		private string LessToCss(string lessfile)
+		{
+			var parser = new Parser();
+			var imp = new Importer(new FileReader(new ServerPathResolver(Server)));
+
+			parser.Importer = imp;
+
+			var a = new LessEngine
+			{
+				Logger = new ResponseLogger(Response),
+				Parser = parser
+			};
+
+			//a.Compress = true;
+			return a.TransformToCss(FileExts.GetContent(lessfile), lessfile);
+
+		}
+
+		 public class ObjectFilter : ActionFilterAttribute {
+
+			public string Param { get; set; }
+			public Type RootType { get; set; }
+
+			public override void OnActionExecuting(ActionExecutingContext filterContext)
+			{
+				if ((filterContext.HttpContext.Request.ContentType ?? string.Empty).Contains("application/json"))
+				{
+					var stream = filterContext.HttpContext.Request.InputStream;
+					stream.Position = 0;
+					var aaa = new StreamReader(stream);
+					
+					var x = JsonConvert.DeserializeObject<JObject>(aaa.ReadToEnd());
+					filterContext.ActionParameters[Param] = x;
+				}
+			}
+		 }
+
+
+
     }
 }

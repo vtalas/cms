@@ -1,12 +1,16 @@
+using System;
 using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace cms.Code.Bootstraper
 {
 	public abstract class BootstrapDataRepository
 	{
-		public abstract string Default();
-		public abstract string Get(string id);
-		public abstract void Save(string id,string data);
+		public abstract JObject Default();
+		public abstract JObject Get(string userid);
+		public abstract void Save(string userid,string data);
+		public abstract void Save(string userId, JObject data);
 	}
 
 	public class BootstrapDataRepositoryImpl : BootstrapDataRepository
@@ -17,13 +21,13 @@ namespace cms.Code.Bootstraper
 			BasePath = basepath;
 		}
 		
-		public override string Default()
+		public override JObject Default()
 		{
 			var file = Path.Combine(BasePath, "default_bootstrap.json");
-			return FileExts.GetContent(file);
+			return JObject.Parse(FileExts.GetContent(file));
 		}
 
-		public override string Get(string id)
+		public override JObject Get(string id)
 		{
 			var variablesUserj = UserDataPath(id);
 
@@ -33,15 +37,25 @@ namespace cms.Code.Bootstraper
 				Save(id, data);
 				return data;
 			}
-			
-			return FileExts.GetContent(variablesUserj);
+			var filecontent = FileExts.GetContent(variablesUserj);
+			if (string.IsNullOrEmpty(filecontent))
+			{
+				return Default();
+			}
+
+			return JObject.Parse(filecontent);
 		}
 
 		public override void Save(string id, string data)
 		{
 			FileExts.SetContent(UserDataPath(id),data);
 		}
-		
+
+		public override void Save(string userId, JObject data)
+		{
+			FileExts.SetContent( UserDataPath(userId), data);
+		}
+
 		private string UserDataPath(string id )
 		{
 			return Path.Combine(BasePath, string.Format("userdata/variables_{0}.json", id));
