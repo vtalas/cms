@@ -67,10 +67,15 @@ namespace cms.Controllers
         }
 
 		
-		[ObjectFilter(Param = "data", RootType = typeof(JObject))]
+		[JObjectFilter(Param = "data")]
 		public ActionResult Refresh(JObject data)
 		{
-			JsonRepository.Save(UserId, (JObject)data);
+			JsonRepository.Save(UserId, data);
+
+			var lessVariables = Server.MapPath(string.Format("~/App_Data/userdata/variables_{0}.less", UserId));
+			
+			FileExts.SetContent(lessVariables,data.ToLess());
+
 			return new EmptyResult();
 		}
 
@@ -93,10 +98,9 @@ namespace cms.Controllers
 
 		}
 
-		 public class ObjectFilter : ActionFilterAttribute {
+		 public class JObjectFilter : ActionFilterAttribute {
 
 			public string Param { get; set; }
-			public Type RootType { get; set; }
 
 			public override void OnActionExecuting(ActionExecutingContext filterContext)
 			{
@@ -104,9 +108,10 @@ namespace cms.Controllers
 				{
 					var stream = filterContext.HttpContext.Request.InputStream;
 					stream.Position = 0;
-					var aaa = new StreamReader(stream);
+
+					var streamReader = new StreamReader(stream);
 					
-					var x = JsonConvert.DeserializeObject<JObject>(aaa.ReadToEnd());
+					var x = JsonConvert.DeserializeObject<JObject>(streamReader.ReadToEnd());
 					filterContext.ActionParameters[Param] = x;
 				}
 			}
