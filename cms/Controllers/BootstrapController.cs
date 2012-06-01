@@ -1,14 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization.Json;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.Code.Bootstraper;
-using dotless.Core;
-using dotless.Core.Importers;
-using dotless.Core.Input;
-using dotless.Core.Parser;
 
 namespace cms.Controllers
 {
@@ -52,7 +47,9 @@ namespace cms.Controllers
 				FileExts.SetContent(less,updatedBoot);
 			}
 
-			var css = LessToCss(less);
+			var lesak = new Lessaak(new ResponseLogger(Response), new ServerPathResolver(Server));
+			
+			var css =lesak.LessToCss(less);
 
 			Response.ContentType = "text/css";
 			Response.Write(css);
@@ -79,24 +76,6 @@ namespace cms.Controllers
 			return new EmptyResult();
 		}
 
-
-		private string LessToCss(string lessfile)
-		{
-			var parser = new Parser();
-			var imp = new Importer(new FileReader(new ServerPathResolver(Server)));
-
-			parser.Importer = imp;
-
-			var a = new LessEngine
-			{
-				Logger = new ResponseLogger(Response),
-				Parser = parser
-			};
-
-			//a.Compress = true;
-			return a.TransformToCss(FileExts.GetContent(lessfile), lessfile);
-
-		}
 
 		 public class JObjectFilter : ActionFilterAttribute {
 

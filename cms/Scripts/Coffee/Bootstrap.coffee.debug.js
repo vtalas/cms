@@ -6,7 +6,6 @@
   var bootstrap;
   bootstrap = function($scope, $http) {
     console.log("kjabsdjkasd");
-    $scope.xxx = "bootstrap";
     $http({
       method: "POST",
       url: "/bootstrap/Current"
@@ -20,7 +19,8 @@
         url: "/bootstrap/Refresh",
         data: $scope.data
       }).success(function(data, status, headers, config) {
-        return console.log(data);
+        console.log(data);
+        return $scope.refreshtoken = new Date;
       });
     };
     return 1;

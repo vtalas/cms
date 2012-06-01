@@ -20,15 +20,14 @@
 		@*		<link href="@Url.Content("~/App_Themes/bootstrap/less/bootstrap.less?{{xxx}}")" rel="stylesheet" type="text/css" />
 *@		
 
-		<link href="@Url.Content("/bootstrap/UserBootstrap?{{xxx}}")" rel="stylesheet" type="text/css" />
+		<link href="@Url.Content("/bootstrap/UserBootstrap?{{refreshtoken}}")" rel="stylesheet" type="text/css" />
 		<br />
 		<br />
 		<br />
 		<br />
 		<br />
-		<input ng-model="xxx"/><br />
-		<input ng-model="data.black"/><br />
-		<input ng-model="data.bodyBackground"/><br />
+		@@black<input ng-model="data.black"/><br />
+		@@bodyBackground<input ng-model="data.bodyBackground" ng-change="refresh()"/><br />
 		<button ng-click="refresh()">refresh</button>
 
 		<!-- Navbar

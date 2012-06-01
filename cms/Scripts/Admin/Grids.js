@@ -1,8 +1,5 @@
 ///<reference path="../angular.js"/>
 ///<reference path="../angular-resource.js"/>
-angular.module('testmodule', [])
-    .value('version', 'v1.0.1');
-
 var module = angular.module("gridsmodule", ['cmsapi']);
 
 module.config(['$routeProvider', '$provide', function ($routeProvider, $provide) {
@@ -13,9 +10,6 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 			Id: e.data("application-id")
 		};
 		return settings;
-	});
-	$provide.factory('$gridApi', function () {
-		return null;
 	});
 	$routeProvider
 		.when('/list', { controller: GridListController, template: 'template/list' })

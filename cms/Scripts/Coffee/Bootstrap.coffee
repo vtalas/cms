@@ -6,7 +6,6 @@
 bootstrap = ($scope, $http) ->
   #novinka.$inject = [ "$scope", "$http", "appSettings" ]
   console.log "kjabsdjkasd"
-  $scope.xxx = "bootstrap"
 
   $http(
     method: "POST"
@@ -23,6 +22,7 @@ bootstrap = ($scope, $http) ->
       data: $scope.data
     ).success((data, status, headers, config) ->
       console.log data
+      $scope.refreshtoken = new Date
     )
 
   1
