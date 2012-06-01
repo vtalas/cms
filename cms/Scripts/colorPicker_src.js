@@ -224,7 +224,6 @@ function colorPicker(e,mode,size,allowResize,allowClose,allowDrag,expColor,expHE
 	}:colorPicker.CP, // collection of colors/coords
 
 	initCp = function (rgb) {
-		console.log(rgb);
 		cPM = /R|G|B/.exec(CP.mode) ? 'RGB' : 'HSV';
 		x = /R|G/.exec(CP.mode) ? 2 : CP.mode == 'H' ? 1 : 0;
 		y = /S|H/.exec(CP.mode) ? 2 : CP.mode == 'G' ? 0 : 1;
@@ -271,7 +270,6 @@ function colorPicker(e,mode,size,allowResize,allowClose,allowDrag,expColor,expHE
 
 	doRender = function (xy, yz) { // function for pure rendering. No rendering elsewhere!!
 		var CP = colorPicker.CP, cP = colorPicker.cP, a = 0, b = 0, c = 0, ctrDif, colDif, tmpHSV, nCtr, nrCtr, cPCtr, WS; // cP & CP = scope shifting
-		console.log(CP);
 		// display all the nice colors in sliders
 		if (xy) { // left slider -> right
 			if (CP.xyz[0] > CP.xyz[1]) b = 1; else a = 1;
@@ -341,12 +339,13 @@ function colorPicker(e,mode,size,allowResize,allowClose,allowDrag,expColor,expHE
 		if (CP.bd) document.body.style.background = 'rgb(' + CP.rgbRND + ')';
 
 		if (colorPicker.exportColor) colorPicker.exportColor();
-		if (xy && yz) { // stopRender
-			cP.cPSRCR.className = cP.cPSRCL.className.replace('L', 'R'); // ;o)
-			cP.cPM0s.backgroundColor = 'rgb(' + CP.rgbRND + ')';
-			if (CP.cPM0CN) { cP.cPM0.className = CP.cPM0CN; CP.cPM0CN = '' }
-		}
-	},
+
+        if (xy && yz) { // stopRender
+            cP.cPSRCR.className = cP.cPSRCL.className.replace('L', 'R'); // ;o)
+            cP.cPM0s.backgroundColor = 'rgb(' + CP.rgbRND + ')';
+            if (CP.cPM0CN) { cP.cPM0.className = CP.cPM0CN; CP.cPM0CN = '' }
+        }
+    },
 
 	stopDrag = function(){
 		removeEvent(docBody, 'mousemove');
@@ -536,6 +535,7 @@ function colorPicker(e,mode,size,allowResize,allowClose,allowDrag,expColor,expHE
 			cP.cObjs = obj.style;
 			if (obj.value) CP.valPrefix = /(#*)/.exec(obj.value)[0]; else CP.valPrefix = '#'; // wether you have an # or an ## (Cold Fusion) or none
 			toggleCp(cP.cPSkins.display == '' && obj == cP.cObj ? true : false, obj);
-			if (!e) resizeWin(size==1?' S XS XXS':size==2?' S XS':size==3?' S':'');
-	})();
+        if (!e) resizeWin(size==1?' S XS XXS':size==2?' S XS':size==3?' S':'');
+
+    })();
 }

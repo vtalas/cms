@@ -8,9 +8,12 @@
     $scope.data = $.parseJSON($element.data("model"));
     $scope.colorsrefonly = colorsonly;
     console.log(colorsonly, "xxx", $scope);
-    $scope.aaa = function($event) {
+    $scope.aaa = function($event, item) {
       colorPicker($event);
-      return console.log("kajsbdasjkbdk", $event, this);
+      return colorPicker.exportColor = function() {
+        item.value = "#" + colorPicker.CP.hex;
+        return $scope.$apply();
+      };
     };
     $scope.hider = [];
     $scope.refresh = function() {
