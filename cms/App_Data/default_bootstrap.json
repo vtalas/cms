@@ -1,31 +1,29 @@
 {
-  "grays":{
-    "black":  { "type":"color", "value":  "green"} ,
-    "grayDarker": { "type":"color", "value":  "#222"},
-    "grayDark": { "type":"color", "value":  "#333"},
-    "gray": { "type":"color", "value":  "#555"},
-    "grayLight": { "type":"color", "value":  "#999"},
-    "grayLighter": { "type":"color", "value":  "#eee"},
-    "white": { "type":"color", "value":  "#fff"}
-  },
+    
+	{ "name":"Grays" , "type":"group", "value":  "green"} ,
+    { "name":"black" , "type":"color", "value":  "green"} ,
+    { "name":"grayDarker", "type":"color", "value":  "#222"},
+    { "name":"grayDark", "type":"color", "value":  "#333"},
+    { "name":"gray", "type":"color", "value":  "#555"},
+    { "name":"grayLight", "type":"color", "value":  "#999"},
+    { "name":"grayLighter", "type":"color", "value":  "#eee"},
+    { "name":"white", "type":"color", "value":  "#fff"},
   
-  "acolors":{
-    "blue": { "type":"color", "value":  "#049cdb"},
-    "blueDark": { "type":"color", "value":  "#0064cd"},
-    "green": { "type":"color", "value":  "#46a546"},	
-    "red": { "type":"color", "value":  "#9d261d"},
-    "yellow": { "type":"color", "value":  "#ffc40d"},
-    "orange": { "type":"color", "value":  "#f89406"},
-    "pink": { "type":"color", "value":  "#c3325f"},
-    "purple": { "type":"color", "value":  "#7a43b6"}
-  },
+    { "name":"Accent colors", "type":"group", "value":  "#049cdb"},
+    { "name":"blue", "type":"color", "value":  "#049cdb"},
+    { "name":"blueDark", "type":"color", "value":  "#0064cd"},
+    { "name":"green", "type":"color", "value":  "#46a546"},	
+    { "name":"red", "type":"color", "value":  "#9d261d"},
+    { "name":"yellow", "type":"color", "value":  "#ffc40d"},
+    { "name":"orange", "type":"color", "value":  "#f89406"},
+    { "name":"pink", "type":"color", "value":  "#c3325f"},
+    { "name":"purple", "type":"color", "value":  "#7a43b6"},
   
-  "scaffolding":{
-    "bodyBackground": { "type":"color", "value":  "@black"},
-    "textColor": { "type":"color", "value":  "@grayDark"},
-    "linkColor": { "type":"color", "value":  "#08c"},
-    "linkColorHover": { "type":"color", "value":  "darken(@linkColor, 15%)"}
-  }
+    { "name":"Scaffolding", "type":"group", "value":  "@black"},
+    { "name":"bodyBackground", "type":"color", "value":  "@black"},
+    { "name":"textColor", "type":"color", "value":  "@grayDark"},
+    { "name":"linkColor", "type":"color", "value":  "#08c"},
+    { "name":"linkColorHover", "type":"color", "value":  "darken(@linkColor, 15%)"}
   
   
  }

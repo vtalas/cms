@@ -2,7 +2,7 @@
 @using SquishIt.Framework
 @using cms.Code.Bootstraper
 <!DOCTYPE html>
-<html ng-app="bootstrapApp">
+<html ng-app="bootstrapApp" class=".main" data-modeldata="@Model">
 <head>
 	<title>@ViewBag.Title</title>
 	@MvcHtmlString.Create(
@@ -106,11 +106,25 @@
 		<div class="xxx">
 			@{
 				JObject m = Model;
-				var x = m["scaffolding"];
 			}
-			<button ng-click="refresh()" class="btn primary">
-				refresh</button>
-			@VariablesGroup("Scaffolding", "scf", m["scaffolding"])
+
+			<button ng-click="refresh()" class="btn primary">refresh</button>
+
+			<div ng-repeat="item in data.scaffolding">
+				{{item.name}}
+				<h3 ng-show="item.type== 'group'">{{item.name}}</h3>
+				<input ng-model="item.value" bootstrapelem/>
+			</div>
+			<div ng-repeat="item in data.tables">
+				{{item}}
+				<input ng-model="item.value" bootstrapelem/>
+			</div>
+			
+			xxx<div ng-repeat="item in colorsrefonly">
+				{{item}}.......
+			</div>
+
+			VariablesGroup("Scaffolding", "scf", m["scaffolding"])
 			@*@VariablesGroup("Scaffolding", "scf", new[] { m["bodyBackground"], m["textColor"] })
 			@VariablesGroup("Grays", "grs", new[] { m["black"], m["grayDarker"], m["grayDark"], m["gray"], m["grayLight"], m["grayLighter"], m["white"] })
 			
@@ -129,7 +143,9 @@
 			@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground", "heroUnitHeadingColor", "heroUnitLeadColor" })
 			@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
 			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
-			*@ @*		<div class="span3">
+			*@ 
+			
+			@*		<div class="span3">
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })

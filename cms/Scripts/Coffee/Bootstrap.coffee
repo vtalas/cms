@@ -3,9 +3,14 @@
 @reference ../angular.js
 ###
 
-bootstrap = ($scope, $http, $element) ->
+bootstrap = ($scope, $http, $element,colorsrefonly) ->
 
   $scope.data = $.parseJSON $element.data("model")
+
+  $scope.colorsrefonly = colorsrefonly
+  console.log colorsrefonly,"xxx",$scope
+
+  #console.log $scope.data
 
   $scope.hider = []
 

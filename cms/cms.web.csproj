@@ -220,6 +220,7 @@
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\Coffee\BootstrapApp.coffee" />
     <Content Include="Scripts\_GridElementScripts\novinka.coffee" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
