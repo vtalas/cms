@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization.Json;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -9,11 +8,14 @@ using dotless.Core;
 using dotless.Core.Importers;
 using dotless.Core.Input;
 using dotless.Core.Parser;
+using log4net;
 
 namespace cms.Controllers
 {
 	public class BootstrapController : Controller
     {
+		private static readonly ILog Log = LogManager.GetLogger(typeof(BootstrapController));
+		
 		private BootstrapDataRepository JsonRepository { get; set; }
 		private string UserId { get; set; }
 
@@ -29,13 +31,15 @@ namespace cms.Controllers
 
 		public ActionResult Index()
         {
-            return View();
+			return View();
         }
 
 		public ActionResult UserBootstrap()
         {
 			var less = Server.MapPath(string.Format("~/App_Data/userdata/bootstrap_{0}.less", UserId));
 			var lessVariables = Server.MapPath(string.Format("~/App_Data/userdata/variables_{0}.less", UserId));
+
+			Log.Info("kjbasdkjbsajkdbasjkbdkjbsad");
 
 			if (!System.IO.File.Exists(lessVariables))
 			{
@@ -70,7 +74,7 @@ namespace cms.Controllers
 		[ObjectFilter(Param = "data", RootType = typeof(JObject))]
 		public ActionResult Refresh(JObject data)
 		{
-			JsonRepository.Save(UserId, (JObject)data);
+			JsonRepository.Save(UserId, data);
 			return new EmptyResult();
 		}
 
