@@ -49,28 +49,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BootstrapApp.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BootstrapApp.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="34" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.36719242">
+            <state line="57" column="0" selection-start="1545" selection-end="1545" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bootstrap.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Bootstrap.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.cshtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="70" selection-start="2416" selection-end="2416" vertical-scroll-proportion="-16.961538">
+            <state line="16" column="41" selection-start="374" selection-end="374" vertical-scroll-proportion="0.5374677">
               <folding />
             </state>
           </provider>
@@ -107,18 +98,18 @@
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/bootstrap.less" />
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less" />
         <option value="$PROJECT_DIR$/Scripts/_GridElementScripts/novinka.coffee" />
-        <option value="$PROJECT_DIR$/Scripts/colorPicker_src.js" />
-        <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
         <option value="$PROJECT_DIR$/Views/Bootstrap/Index.cshtml" />
         <option value="$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee" />
+        <option value="$PROJECT_DIR$/Scripts/colorPicker_src.js" />
+        <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1216" />
-    <option name="height" value="1770" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -168,7 +159,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -179,17 +170,53 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="C:" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -289,11 +316,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1216" height="1770" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32569557" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24944155" sideWeight="0.67266774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -305,7 +333,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32569557" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -411,6 +438,11 @@
         <state line="11390" column="47" selection-start="375880" selection-end="375880" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="14" selection-start="3468" selection-end="3468" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="569" column="35" selection-start="18478" selection-end="18478" vertical-scroll-proportion="0.0" />
@@ -426,28 +458,23 @@
         <state line="14" column="32" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="70" selection-start="2416" selection-end="2416" vertical-scroll-proportion="-16.961538">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
+        <state line="57" column="0" selection-start="1545" selection-end="1545" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/colorPicker_src.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="526" column="61" selection-start="52015" selection-end="52015" vertical-scroll-proportion="0.0" />
+        <state line="526" column="61" selection-start="52015" selection-end="52015" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="34" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.36719242">
+        <state line="16" column="41" selection-start="374" selection-end="374" vertical-scroll-proportion="0.5374677">
           <folding />
         </state>
       </provider>

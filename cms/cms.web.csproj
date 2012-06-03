@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CassetteConfiguration.cs" />
+    <Compile Include="Code\Bootstraper\Lessaak.cs" />
     <Compile Include="Code\Bootstraper\RazorExtensions.cs" />
     <Compile Include="Code\Bootstraper\FileExts.cs" />
     <Compile Include="Code\Bootstraper\Less.cs" />
@@ -138,55 +139,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\default_bootstrap.json" />
-    <None Include="App_Data\bootstrap\less\accordion.less">
-      <Generator>LessGenerator</Generator>
-      <LastGenOutput>accordion.css</LastGenOutput>
-    </None>
-    <None Include="App_Data\bootstrap\less\alerts.less" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
-    <None Include="App_Data\bootstrap\less\breadcrumbs.less" />
-    <None Include="App_Data\bootstrap\less\button-groups.less" />
-    <None Include="App_Data\bootstrap\less\buttons.less" />
-    <None Include="App_Data\bootstrap\less\carousel.less" />
-    <None Include="App_Data\bootstrap\less\close.less" />
-    <None Include="App_Data\bootstrap\less\code.less" />
-    <None Include="App_Data\bootstrap\less\component-animations.less" />
-    <None Include="App_Data\bootstrap\less\dropdowns.less" />
-    <None Include="App_Data\bootstrap\less\forms.less" />
-    <None Include="App_Data\bootstrap\less\grid.less" />
-    <None Include="App_Data\bootstrap\less\hero-unit.less" />
-    <None Include="App_Data\bootstrap\less\labels-badges.less" />
-    <None Include="App_Data\bootstrap\less\layouts.less" />
-    <None Include="App_Data\bootstrap\less\mixins.less" />
-    <None Include="App_Data\bootstrap\less\modals.less" />
-    <None Include="App_Data\bootstrap\less\navbar.less" />
-    <None Include="App_Data\bootstrap\less\navs.less" />
-    <None Include="App_Data\bootstrap\less\pager.less" />
-    <None Include="App_Data\bootstrap\less\pagination.less" />
-    <None Include="App_Data\bootstrap\less\popovers.less" />
-    <None Include="App_Data\bootstrap\less\progress-bars.less" />
-    <None Include="App_Data\bootstrap\less\reset.less" />
-    <None Include="App_Data\bootstrap\less\responsive-1200px-min.less" />
-    <None Include="App_Data\bootstrap\less\responsive-767px-max.less" />
-    <None Include="App_Data\bootstrap\less\responsive-768px-979px.less" />
-    <None Include="App_Data\bootstrap\less\responsive-navbar.less" />
-    <None Include="App_Data\bootstrap\less\responsive-utilities.less" />
-    <None Include="App_Data\bootstrap\less\responsive.less" />
-    <None Include="App_Data\bootstrap\less\scaffolding.less" />
-    <None Include="App_Data\bootstrap\less\sprites.less" />
-    <None Include="App_Data\bootstrap\less\tables.less" />
-    <None Include="App_Data\bootstrap\less\thumbnails.less" />
-    <None Include="App_Data\bootstrap\less\tooltip.less" />
-    <None Include="App_Data\bootstrap\less\type.less" />
-    <None Include="App_Data\bootstrap\less\utilities.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
-    <None Include="App_Data\bootstrap\less\wells.less" />
     <Content Include="Content\bootswatch.html" />
     <Content Include="log4net.config" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
-    <Content Include="App_Data\bootstrap\img\glyphicons-halflings-white.png" />
-    <Content Include="App_Data\bootstrap\img\glyphicons-halflings.png" />
     <None Include="Content\admin.less" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\Coffee\Bootstrap.coffee">
