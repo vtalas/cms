@@ -32,7 +32,6 @@ namespace cms.Code.Bootstraper
 		{
 			return new HelperResult(writer =>
 										{
-
 											var arr = items.ToArray();
 											for (int i = step * count; i < step * count + count; i++)
 											{

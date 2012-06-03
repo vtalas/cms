@@ -52,16 +52,25 @@
       <file leaf-file-name="BootstrapApp.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="30" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
+            <state line="47" column="29" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bootstrap.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Bootstrap.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="5" selection-start="595" selection-end="595" vertical-scroll-proportion="0.0">
+            <state line="16" column="37" selection-start="360" selection-end="360" vertical-scroll-proportion="0.334471">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="colorPicker_src.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/colorPicker_src.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="357" column="16" selection-start="43913" selection-end="43913" vertical-scroll-proportion="-7.28">
               <folding />
             </state>
           </provider>
@@ -70,19 +79,8 @@
       <file leaf-file-name="Index.cshtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="185" column="88" selection-start="9054" selection-end="9054" vertical-scroll-proportion="-32.692307">
+            <state line="121" column="25" selection-start="3200" selection-end="3200" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="colorPicker_src.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Scripts/colorPicker_src.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="325" column="63" selection-start="42460" selection-end="42460" vertical-scroll-proportion="1.9573791">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -97,7 +95,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Content/admin.scss" />
         <option value="C:/DOWNLOADs/twitter-bootstrap-v2.0.3-6-ga85c8fe/twitter-bootstrap-a85c8fe/less/mixins.less" />
         <option value="$PROJECT_DIR$/Content/less.less" />
         <option value="$PROJECT_DIR$/Content/bootstrap/less/variables.less" />
@@ -110,17 +107,18 @@
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/bootstrap.less" />
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less" />
         <option value="$PROJECT_DIR$/Scripts/_GridElementScripts/novinka.coffee" />
-        <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
-        <option value="$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee" />
         <option value="$PROJECT_DIR$/Views/Bootstrap/Index.cshtml" />
+        <option value="$PROJECT_DIR$/Scripts/colorPicker_src.js" />
+        <option value="$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee" />
+        <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1216" />
-    <option name="height" value="1770" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -222,12 +220,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="last_opened_file_path" value="C:" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -327,13 +325,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1216" height="1770" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32733223" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2497876" sideWeight="0.67142856" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24944155" sideWeight="0.67266774" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -343,7 +342,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32857144" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -468,33 +466,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="30" selection-start="1834" selection-end="1834" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="5" selection-start="595" selection-end="595" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="88" selection-start="9054" selection-end="9054" vertical-scroll-proportion="-32.692307">
+        <state line="121" column="25" selection-start="3200" selection-end="3200" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/colorPicker_src.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="325" column="63" selection-start="42460" selection-end="42460" vertical-scroll-proportion="1.9573791">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="357" column="16" selection-start="43913" selection-end="43913" vertical-scroll-proportion="-7.28">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="29" selection-start="1235" selection-end="1235" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="37" selection-start="360" selection-end="360" vertical-scroll-proportion="0.334471">
+          <folding />
         </state>
       </provider>
     </entry>

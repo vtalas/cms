@@ -8,8 +8,9 @@
     $scope.data = $.parseJSON($element.data("model"));
     $scope.colorsrefonly = colorsonly;
     console.log(colorsonly, "xxx", $scope);
-    $scope.aaa = function($element) {
-      return console.log("kajsbdasjkbdk", $element, this);
+    $scope.aaa = function($event) {
+      colorPicker($event);
+      return console.log("kajsbdasjkbdk", $event, this);
     };
     $scope.hider = [];
     $scope.refresh = function() {

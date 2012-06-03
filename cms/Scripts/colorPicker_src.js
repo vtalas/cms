@@ -268,75 +268,83 @@ function colorPicker(e,mode,size,allowResize,allowClose,allowDrag,expColor,expHE
 
 		if (!rSpeed || render) doRender(xy,mouseIs);
 	},
-	
-	doRender = function(xy,yz) { // function for pure rendering. No rendering elsewhere!!
-		var CP=colorPicker.CP,cP=colorPicker.cP,a=0,b=0,c=0,ctrDif,colDif,tmpHSV,nCtr,nrCtr,cPCtr, WS; // cP & CP = scope shifting
 
+	doRender = function (xy, yz) { // function for pure rendering. No rendering elsewhere!!
+		var CP = colorPicker.CP, cP = colorPicker.cP, a = 0, b = 0, c = 0, ctrDif, colDif, tmpHSV, nCtr, nrCtr, cPCtr, WS; // cP & CP = scope shifting
+		console.log(CP);
 		// display all the nice colors in sliders
 		if (xy) { // left slider -> right
-			if (CP.xyz[0] > CP.xyz[1]) b=1; else a=1;
-			if (CP.mode == 'S' || CP.mode == 'V') {cP.cPSR2s.backgroundColor = 'rgb('+HSV2RGB(CP.xyz[0],255,255)+')'; b=1; c=255}
-			else if (CP.mode != 'H' && !CP.modeRGB[CP.mode]) cP.cPSR2.className = 'cPSR'+(2+a)+CP.mode+' cPOP'+Math.round((CP.xyz[a]-CP.xyz[b])/(255-CP.xyz[b])*100 || 0);
-			if (CP.mode != 'H' && !CP.modeRGB[CP.mode]) cP.cPSR3.className = 'cPSR4'+CP.mode+' cPOP'+Math.round(Math.abs(c-CP.xyz[b])/2.55);
-			cP.cPSLCs.cssText = 'left:'+(CP.xyz[0]/sX-5)+'px;top:'+Math.ceil(250-CP.xyz[1]/sX/sZ-xyzCorr)+'px'; // change cursor
+			if (CP.xyz[0] > CP.xyz[1]) b = 1; else a = 1;
+			if (CP.mode == 'S' || CP.mode == 'V') { cP.cPSR2s.backgroundColor = 'rgb(' + HSV2RGB(CP.xyz[0], 255, 255) + ')'; b = 1; c = 255 }
+			else if (CP.mode != 'H' && !CP.modeRGB[CP.mode]) cP.cPSR2.className = 'cPSR' + (2 + a) + CP.mode + ' cPOP' + Math.round((CP.xyz[a] - CP.xyz[b]) / (255 - CP.xyz[b]) * 100 || 0);
+			if (CP.mode != 'H' && !CP.modeRGB[CP.mode]) cP.cPSR3.className = 'cPSR4' + CP.mode + ' cPOP' + Math.round(Math.abs(c - CP.xyz[b]) / 2.55);
+			cP.cPSLCs.cssText = 'left:' + (CP.xyz[0] / sX - 5) + 'px;top:' + Math.ceil(250 - CP.xyz[1] / sX / sZ - xyzCorr) + 'px'; // change cursor
 		}
 		if (!xy || yz) { // right slider -> left
-			if (CP.mode == 'H') {tmpHSV = HSV2RGB(CP.xyz[2],255,255); cP.cPSL1s.backgroundColor = 'rgb('+tmpHSV+')'}
-			else cP.cPSL3.className = 'cPSL3'+CP.mode+' cPOP'+(100-Math.round(CP.xyz[2]/2.55));
-			cP.cPSRCLs.top = c = +Math.ceil(252-CP.xyz[2]/sX/sZ-xyzCorr)+'px'; // change right-left cursor ... recycle var c
+			if (CP.mode == 'H') { tmpHSV = HSV2RGB(CP.xyz[2], 255, 255); cP.cPSL1s.backgroundColor = 'rgb(' + tmpHSV + ')' }
+			else cP.cPSL3.className = 'cPSL3' + CP.mode + ' cPOP' + (100 - Math.round(CP.xyz[2] / 2.55));
+			cP.cPSRCLs.top = c = +Math.ceil(252 - CP.xyz[2] / sX / sZ - xyzCorr) + 'px'; // change right-left cursor ... recycle var c
 			if (yz) cP.cPSRCRs.top = c; // change right-right cursor
 		}
-		
+
 		// switch brightness if contrast changes
 		cPCtr = getBrightness(CP.rgbRND); nCtr = cPCtr > 128;
 		if (cCtr !== nCtr) {
-			if (nCtr) {if (expColor) cP.cObjs.color = '#222'; cP.cPSLC.className = 'cPSLCB'; CP.cPM0CN = 'cPM0 cPM0B';
-				if (CP.mode != 'H' && !CP.modeRGB[CP.mode]) {cP.cPSRCL.className = 'cPSRCLB';
-					if (xy) cP.cPSRCR.className = 'cPSRCRB'}
-			}	else {if (expColor) cP.cObjs.color = '#ddd';cP.cPSLC.className = 'cPSLCW'; CP.cPM0CN = 'cPM0';
-				if (CP.mode != 'H' && !CP.modeRGB[CP.mode]) {cP.cPSRCL.className = 'cPSRCLW';
-					if (xy) cP.cPSRCR.className = 'cPSRCRW'}
+			if (nCtr) {
+				if (expColor) cP.cObjs.color = '#222'; cP.cPSLC.className = 'cPSLCB'; CP.cPM0CN = 'cPM0 cPM0B';
+				if (CP.mode != 'H' && !CP.modeRGB[CP.mode]) {
+					cP.cPSRCL.className = 'cPSRCLB';
+					if (xy) cP.cPSRCR.className = 'cPSRCRB'
+				}
+			} else {
+				if (expColor) cP.cObjs.color = '#ddd'; cP.cPSLC.className = 'cPSLCW'; CP.cPM0CN = 'cPM0';
+				if (CP.mode != 'H' && !CP.modeRGB[CP.mode]) {
+					cP.cPSRCL.className = 'cPSRCLW';
+					if (xy) cP.cPSRCR.className = 'cPSRCRW'
+				}
 			}
 		} cCtr = nCtr;
 		if (!xy || yz) { // only right
 			if (CP.modeRGB[CP.mode]) {
 				nrCtr = CP.xyz[2] > 153;
-				if (crCtr !== nrCtr){ // RGB special mode
-					if (nrCtr && CP.mode == 'G') {cP.cPSRCL.className = 'cPSRCLB'; if (xy) cP.cPSRCR.className = 'cPSRCRB'; 
-					} else {cP.cPSRCL.className = 'cPSRCLW'; if (xy) cP.cPSRCR.className = 'cPSRCRW'}}
+				if (crCtr !== nrCtr) { // RGB special mode
+					if (nrCtr && CP.mode == 'G') {
+						cP.cPSRCL.className = 'cPSRCLB'; if (xy) cP.cPSRCR.className = 'cPSRCRB';
+					} else { cP.cPSRCL.className = 'cPSRCLW'; if (xy) cP.cPSRCR.className = 'cPSRCRW' } 
+				}
 			} else if (CP.mode == 'H') { // HSB_H mode extra rules
-				nrCtr = getBrightness(tmpHSV || HSV2RGB(CP.hsv[0],255,255)) > 128;
-				if (crCtr !== nrCtr) {if (nrCtr) cP.cPSRCL.className = 'cPSRCLB'; else cP.cPSRCL.className = 'cPSRCLW'}
+				nrCtr = getBrightness(tmpHSV || HSV2RGB(CP.hsv[0], 255, 255)) > 128;
+				if (crCtr !== nrCtr) { if (nrCtr) cP.cPSRCL.className = 'cPSRCLB'; else cP.cPSRCL.className = 'cPSRCLW' }
 			} crCtr = nrCtr;
 		}
-		
+
 		// display brightness/color match bar
-		colDif = getColorDifference(CP.CB2Color,CP.rgb)/765*difWidth; // 765 = 3 colors * 255 possible values
-		ctrDif = Math.abs((cPCtr-CP.iCtr)/255*difWidth);
-		cP.cPCTRTs.cssText = 'width:'+ctrDif+'px;'+((colDif>ctrDif)?cP.CTRTop:'');
-		cP.cPCDs.cssText = 'width:'+colDif+'px;'+((ctrDif<difWidth/2 && colDif<difWidth/3*2)?'':((ctrDif<difWidth/2 || colDif<difWidth/3*2)?cP.cPCD1:cP.cPCD2));
-		
+		colDif = getColorDifference(CP.CB2Color, CP.rgb) / 765 * difWidth; // 765 = 3 colors * 255 possible values
+		ctrDif = Math.abs((cPCtr - CP.iCtr) / 255 * difWidth);
+		cP.cPCTRTs.cssText = 'width:' + ctrDif + 'px;' + ((colDif > ctrDif) ? cP.CTRTop : '');
+		cP.cPCDs.cssText = 'width:' + colDif + 'px;' + ((ctrDif < difWidth / 2 && colDif < difWidth / 3 * 2) ? '' : ((ctrDif < difWidth / 2 || colDif < difWidth / 3 * 2) ? cP.cPCD1 : cP.cPCD2));
+
 		// display color values // this also touches the DOM
 		cP.cPIR.value = CP.rgbRND[0]; cP.cPIG.value = CP.rgbRND[1]; cP.cPIB.value = CP.rgbRND[2];
-		cP.cPIH.value = Math.round(CP.hsv[0]/255*360); cP.cPIS.value = Math.round(CP.hsv[1]/2.55); cP.cPIV.value = Math.round(CP.hsv[2]/2.55);
+		cP.cPIH.value = Math.round(CP.hsv[0] / 255 * 360); cP.cPIS.value = Math.round(CP.hsv[1] / 2.55); cP.cPIV.value = Math.round(CP.hsv[2] / 2.55);
 		cP.cPIC.value = CP.cmyk[0]; cP.cPIM.value = CP.cmyk[1]; cP.cPIY.value = CP.cmyk[2]; cP.cPIK.value = CP.cmyk[3];
 		cP.cPIX.value = CP.hex;
 
 		// display WEBSave/WEBSmart/otherColor button
-		WS = (CP.rgbRND[0]%51==0 && CP.rgbRND[1]%51==0 && CP.rgbRND[2]%51==0) ? 'W' :
-		     (CP.rgbRND[0]%17==0 && CP.rgbRND[1]%17==0 && CP.rgbRND[2]%17==0) ? 'M' : '!';
+		WS = (CP.rgbRND[0] % 51 == 0 && CP.rgbRND[1] % 51 == 0 && CP.rgbRND[2] % 51 == 0) ? 'W' :
+		     (CP.rgbRND[0] % 17 == 0 && CP.rgbRND[1] % 17 == 0 && CP.rgbRND[2] % 17 == 0) ? 'M' : '!';
 		if (WS != CP.WS) cP.cPBRX.firstChild.data = CP.WS = WS;
-		
+
 		// display value/color in initField swatch and left/background
-		cP.cPCB1s.backgroundColor = 'rgb('+CP.rgbRND+')';
-		if (expColor) cP.cObjs.backgroundColor = 'rgb('+CP.rgbRND+')'; if (expHEX) cP.cObj.value = CP.valPrefix+CP.hex;
-		if (CP.bd) document.body.style.background = 'rgb('+CP.rgbRND+')';
-		
+		cP.cPCB1s.backgroundColor = 'rgb(' + CP.rgbRND + ')';
+		if (expColor) cP.cObjs.backgroundColor = 'rgb(' + CP.rgbRND + ')'; if (expHEX) cP.cObj.value = CP.valPrefix + CP.hex;
+		if (CP.bd) document.body.style.background = 'rgb(' + CP.rgbRND + ')';
+
 		if (colorPicker.exportColor) colorPicker.exportColor();
 		if (xy && yz) { // stopRender
-			cP.cPSRCR.className = cP.cPSRCL.className.replace('L','R'); // ;o)
-			cP.cPM0s.backgroundColor = 'rgb('+CP.rgbRND+')';
-			if (CP.cPM0CN) {cP.cPM0.className = CP.cPM0CN; CP.cPM0CN = ''}
+			cP.cPSRCR.className = cP.cPSRCL.className.replace('L', 'R'); // ;o)
+			cP.cPM0s.backgroundColor = 'rgb(' + CP.rgbRND + ')';
+			if (CP.cPM0CN) { cP.cPM0.className = CP.cPM0CN; CP.cPM0CN = '' }
 		}
 	},
 
@@ -403,10 +411,16 @@ function colorPicker(e,mode,size,allowResize,allowClose,allowDrag,expColor,expHE
 	},
 	
 	X2RGB = function (hex) { // accepts array(r,g,b), 'rgb(r,g,b)', #0 - #123AEFxyz, 0 - 123AEFxyz, #2af, 2af
-		hex = (hex+'').replace(/[(^rgb\()]*[^a-fA-F0-9,]*/g,'').split(',');
+        hex = hex.toUpperCase();
+        hex = (hex+'').replace(/[(^rgb\()]*[^a-fA-F0-9,]*/g,'').split(',');
 		if (hex.length == 3) return [+hex[0],+hex[1],+hex[2]];
-		hex+=''; if (hex.length == 3) {hex=hex.split(''); return [parseInt((hex[0]+hex[0]),16),parseInt((hex[1]+hex[1]),16),parseInt((hex[2]+hex[2]),16)]}
-		while(hex.length<6) hex='0'+hex; return [parseInt(hex.substr(0,2),16),parseInt(hex.substr(2,2),16),parseInt(hex.substr(4,2),16)]
+		hex+='';
+
+        if (hex.length == 3) {hex=hex.split(''); return [parseInt((hex[0]+hex[0]),16),parseInt((hex[1]+hex[1]),16),parseInt((hex[2]+hex[2]),16)]}
+
+        while(hex.length<6) hex='0'+hex;
+
+        return [parseInt(hex.substr(0,2),16),parseInt(hex.substr(2,2),16),parseInt(hex.substr(4,2),16)]
 	},
 	
 	RGB2HEX = function (r,g,b) {

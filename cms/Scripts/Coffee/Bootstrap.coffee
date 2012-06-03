@@ -12,8 +12,9 @@ bootstrap = ($scope, $http, $element,colorsonly) ->
 
   #console.log $scope.data
 
-  $scope.aaa = ($element)->
-    console.log("kajsbdasjkbdk", $element, this)
+  $scope.aaa = ($event)->
+    colorPicker($event);
+    console.log("kajsbdasjkbdk", $event, this)
 
   $scope.hider = []
 
