@@ -5,7 +5,7 @@
   */
   var bootstrap;
   bootstrap = function($scope, $http) {
-    console.log("kjabsdjkasd");
+    $scope.hider = [];
     $http({
       method: "POST",
       url: "/bootstrap/Current"
@@ -22,6 +22,17 @@
         console.log(data);
         return $scope.refreshtoken = new Date;
       });
+    };
+    $scope.toggleValue = function(item) {
+      if ($scope.hider[item]) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+    $scope.toggle = function(item) {
+      $scope.hider[item] = !$scope.toggleValue(item);
+      return console.log($scope.hider, item);
     };
     return 1;
   };

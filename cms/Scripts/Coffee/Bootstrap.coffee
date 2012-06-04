@@ -5,7 +5,8 @@
 
 bootstrap = ($scope, $http) ->
   #novinka.$inject = [ "$scope", "$http", "appSettings" ]
-  console.log "kjabsdjkasd"
+
+  $scope.hider = []
 
   $http(
     method: "POST"
@@ -24,6 +25,15 @@ bootstrap = ($scope, $http) ->
       console.log data
       $scope.refreshtoken = new Date
     )
+
+  $scope.toggleValue = (item) ->
+    return (if $scope.hider[item] then true else false)
+
+
+  $scope.toggle = (item)->
+    $scope.hider[item] = !$scope.toggleValue(item);
+    console.log $scope.hider, item
+
 
   1
 window.bootstrap = bootstrap

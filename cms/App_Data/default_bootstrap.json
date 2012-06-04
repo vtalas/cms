@@ -18,6 +18,7 @@
   "textColor": "@grayDark",
   "linkColor": "#08c",
   "linkColorHover": "darken(@linkColor, 15%)",
+  
   "sansFontFamily": "'Helvetica Neue', Helvetica, Arial, sans-serif",
   "serifFontFamily": "Georgia, 'Times New Roman', Times, serif",
   "monoFontFamily": "Menlo, Monaco, Consolas, 'Courier New', monospace",
@@ -28,10 +29,12 @@
   "headingsFontFamily": "inherit",
   "headingsFontWeight": "bold",
   "headingsColor": "inherit",
+  
   "tableBackground": "transparent",
   "tableBackgroundAccent": "#f9f9f9",
   "tableBackgroundHover": "#f5f5f5",
   "tableBorder": "#ddd",
+  
   "btnBackground": "@white",
   "btnBackgroundHighlight": "darken(@white, 10%)",
   "btnBorder": "#ccc",
@@ -81,9 +84,11 @@
   "navbarSearchBorder": "darken(@navbarSearchBackground, 30%)",
   "navbarSearchPlaceholderColor": "#ccc",
   "navbarBrandColor": "@navbarLinkColor",
+  
   "heroUnitBackground": "@grayLighter",
   "heroUnitHeadingColor": "inherit",
   "heroUnitLeadColor": "inherit",
+  
   "warningText": "#c09853",
   "warningBackground": "#fcf8e3",
   "warningBorder": "darken(spin(@warningBackground, -10), 3%)",

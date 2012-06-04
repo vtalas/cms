@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CassetteConfiguration.cs" />
+    <Compile Include="Code\Bootstraper\RazorExtensions.cs" />
     <Compile Include="Code\Bootstraper\FileExts.cs" />
     <Compile Include="Code\Bootstraper\Less.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
@@ -311,6 +312,8 @@
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
     <Content Include="Views\Bootstrap\Index.cshtml" />
+    <Content Include="Views\Bootstrap\xxx.cshtml" />
+    <Content Include="Views\Bootstrap\csstest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
