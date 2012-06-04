@@ -1,0 +1,70 @@
+"btnBackground","btnBackgroundHighlight","btnBorder","btnPrimaryBackground","btnPrimaryBackgroundHighlight","btnInfoBackground","btnInfoBackgroundHighlight","btnSuccessBackground","btnSuccessBackgroundHighlight","btnWarningBackground","btnWarningBackgroundHighlight","btnDangerBackground","btnDangerBackgroundHighlight","btnInverseBackground","btnInverseBackgroundHighlight",
+
+// Forms
+// -------------------------
+"inputBackground","inputBorder","inputBorderRadius","inputDisabledBackground","formActionsBackground"
+
+// Dropdowns
+// -------------------------
+"dropdownBackground","dropdownBorder","dropdownLinkColor","dropdownLinkColorHover","dropdownLinkBackgroundHover"
+
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these ",)
+"zindexDropdown",  1000;
+"zindexPopover",   1010;
+"zindexTooltip",   1020;
+"zindexFixedNavbar",       1030;
+"zindexModalBackdrop",     1040;
+"zindexModal",     1050;
+
+
+// Sprite icons path
+// -------------------------
+"iconSpritePath","iconWhiteSpritePath"
+
+
+// Input placeholder text color
+// -------------------------
+"placeholderText"
+
+
+// Hr border color
+// -------------------------
+"hrBorder"
+
+
+// Navbar
+// -------------------------
+"navbarHeight","navbarBackground","navbarBackgroundHighlight","navbarText","navbarLinkColor","navbarLinkColorHover","navbarLinkColorActive","navbarLinkBackgroundHover","navbarLinkBackgroundActive","navbarSearchBackground","navbarSearchBackgroundFocus","navbarSearchBorder","navbarSearchPlaceholderColor","navbarBrandColor"
+
+
+// Hero unit
+// -------------------------
+"heroUnitBackground","heroUnitHeadingColor","heroUnitLeadColor"
+
+
+// Form states and alerts
+// -------------------------
+"warningText","warningBackground","warningBorder","errorText","errorBackground","errorBorder","successText","successBackground",
+"successBorder","infoText","infoBackground","infoBorder",
+
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+"gridColumns","gridColumnWidth","gridGutterWidth","gridRowWidth",
+
+// Fluid grid
+// -------------------------
+"fluidGridColumnWidth","fluidGridGutterWidth"

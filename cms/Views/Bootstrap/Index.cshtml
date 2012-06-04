@@ -1,7 +1,7 @@
 ﻿@using SquishIt.Framework
 @using cms.Code.Bootstraper
 <!DOCTYPE html>
-<html ng-app>	
+<html ng-app="bootstrapApp">	
 	<head>
 		<title>@ViewBag.Title</title>
 
@@ -11,6 +11,7 @@
 				.Add("~/Scripts/angular.js")
 				.Add("~/Scripts/angular-resource.js")
 				.Add("~/Scripts/Coffee/Bootstrap.coffee")
+				.Add("~/Scripts/Coffee/BootstrapApp.coffee")
 				.Render("bootstrap_index#.js")
 			)
 
@@ -21,7 +22,7 @@
 			<h3 ng-click="toggle('@id')">@name</h3>
 			<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')">
 				@values.List(
-					@<text>@@@item<input ng-model="data.@item" ng-change="refresh()"/></text>
+					@<text>@@@item<input ng-model="data.@item" /></text>
 				)
 			</div>
 		</text>;
@@ -29,7 +30,8 @@
 	 }
 
 
-	<body ng-controller="bootstrap">
+	<body>
+	<div ng-controller="bootstrap">
 		<link href="@Url.Content("/bootstrap/UserBootstrap?{{refreshtoken}}")" rel="stylesheet" type="text/css" />
 		<br />
 		<br />
@@ -38,16 +40,41 @@
 	<br />
 	
 		<div class="span3">
+			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
-			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
-			@VariablesGroup("Links", "lnks", new[] { "linkColor", "linkColorHover" })
+			@VariablesGroup("Links", "lnkss", new[] { "linkColor", "linkColorHover" })
 		</div>
 		<div class="span3">
-			@VariablesGroup("Links", "lnks", new[] { "linkColor", "linkColorHover" })
+			@VariablesGroup("Typography", "tpgr", new[] { "sansFontFamily","serifFontFamily","monoFontFamily","baseFontSize","baseFontFamily","baseLineHeight","altFontFamily","headingsFontFamily","headingsFontWeight","headingsColor", })
 		</div>
+		<div class="span3">
+			@VariablesGroup("Tables", "tabls", new[] { "tableBackground", "tableBackgroundAccent", "tableBackgroundHover", "tableBorder" })
+		</div>
+		<div class="span3">
+			@VariablesGroup("Buttons", "btn", new[] {"btnBackground","btnBackgroundHighlight","btnBorder","btnPrimaryBackground","btnPrimaryBackgroundHighlight","btnInfoBackground","btnInfoBackgroundHighlight","btnSuccessBackground","btnSuccessBackgroundHighlight","btnWarningBackground","btnWarningBackgroundHighlight","btnDangerBackground","btnDangerBackgroundHighlight","btnInverseBackground","btnInverseBackgroundHighlight"})
+		</div>
+		<div class="span3">
+			@VariablesGroup("Forms", "frm", new[] { "inputBackground", "inputBorder", "inputBorderRadius", "inputDisabledBackground", "formActionsBackground" })
+			@VariablesGroup("Dropdowns", "ldrp", new[] { "dropdownBackground", "dropdownBorder", "dropdownLinkColor", "dropdownLinkColorHover", "dropdownLinkBackgroundHover" })
+			@VariablesGroup("Sprites", "lnks", new[] { "iconSpritePath", "iconWhiteSpritePath" })
+			
+		</div>
+		<div class="span3">
+			
+			@VariablesGroup("Placeholder color", "plcc", new[] { "placeholderText" })
+			@VariablesGroup("hr border color", "hrc", new[] { "hrBorder" })
+			@VariablesGroup("Navbar", "navb", new[] { "navbarHeight","navbarBackground","navbarBackgroundHighlight","navbarText","navbarLinkColor","navbarLinkColorHover","navbarLinkColorActive","navbarLinkBackgroundHover","navbarLinkBackgroundActive","navbarSearchBackground","navbarSearchBackgroundFocus","navbarSearchBorder","navbarSearchPlaceholderColor","navbarBrandColor"})
+			@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground","heroUnitHeadingColor","heroUnitLeadColor" })
+			@VariablesGroup("Form states and alerts", "fa", new[] { "warningText","warningBackground","warningBorder","errorText","errorBackground","errorBorder","successText","successBackground","successBorder","infoText","infoBackground","infoBorder"})
+			@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
+			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
+		</div>
+		
+     </div>
 
 		<br clear="all" />
+	 xxxxx<div ng-view></div>xxxxxx
 		
 		<button ng-click="refresh()">refresh</button>
 
