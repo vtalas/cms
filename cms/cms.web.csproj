@@ -182,6 +182,7 @@
     <None Include="App_Data\bootstrap\less\utilities.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <None Include="App_Data\bootstrap\less\wells.less" />
+    <Content Include="log4net.config" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <Content Include="App_Data\bootstrap\img\glyphicons-halflings-white.png" />
@@ -260,7 +261,9 @@
     <Content Include="tests\test\unit\cmsapiTests.js" />
     <Content Include="tests\test\unit\servicesSpec.js" />
     <Content Include="tests\test\unit\_test.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

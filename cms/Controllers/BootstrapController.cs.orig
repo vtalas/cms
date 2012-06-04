@@ -4,7 +4,14 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.Code.Bootstraper;
+<<<<<<< HEAD
+=======
+using dotless.Core;
+using dotless.Core.Importers;
+using dotless.Core.Input;
+using dotless.Core.Parser;
 using log4net;
+>>>>>>> ae474ce763bfc20b6baa632007772f5993113f46
 
 namespace cms.Controllers
 {
@@ -73,6 +80,19 @@ namespace cms.Controllers
 		public ActionResult Refresh(JObject data)
 		{
 			JsonRepository.Save(UserId, data);
+<<<<<<< HEAD
+=======
+			return new EmptyResult();
+		}
+
+
+		private string LessToCss(string lessfile)
+		{
+			var parser = new Parser();
+			var imp = new Importer(new FileReader(new ServerPathResolver(Server)));
+
+			parser.Importer = imp;
+>>>>>>> ae474ce763bfc20b6baa632007772f5993113f46
 
 			var lessVariables = Server.MapPath(string.Format("~/App_Data/userdata/variables_{0}.less", UserId));
 			

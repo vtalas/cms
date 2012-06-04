@@ -33,87 +33,51 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxMin">
       <HintPath>..\packages\AjaxMin.4.46.4422.26284\lib\net20\AjaxMin.dll</HintPath>
     </Reference>
-    <Reference Include="Cassette">
-      <HintPath>..\packages\Cassette.1.2.1\lib\net40-Client\Cassette.dll</HintPath>
+    <Reference Include="dotless.Core, Version=1.3.0.3, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\dotless.1.3.0.3\lib\dotless.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Cassette.Views">
-      <HintPath>..\packages\Cassette.Views.1.2.1\lib\net40\Cassette.Views.dll</HintPath>
+    <Reference Include="EcmaScript.NET.modified">
+      <HintPath>..\packages\YUICompressor.NET.1.7.1.0\lib\net35\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
-    <Reference Include="Cassette.Web">
-      <HintPath>..\packages\Cassette.Web.1.2.1\lib\net40\Cassette.Web.dll</HintPath>
+    <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="Jurassic">
+      <HintPath>..\packages\Jurassic.2.1.1\lib\Jurassic.dll</HintPath>
     </Reference>
-    <Reference Include="IronRuby">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.dll</HintPath>
-    </Reference>
-    <Reference Include="IronRuby.Libraries">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.Libraries.dll</HintPath>
-    </Reference>
-    <Reference Include="IronRuby.Libraries.Yaml">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\IronRuby.Libraries.Yaml.dll</HintPath>
-    </Reference>
-    <Reference Include="Jurassic, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CoffeeSharp.0.5\lib\Jurassic.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Dynamic">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Dynamic.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Scripting.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting.Metadata">
-      <HintPath>..\packages\IronRuby.1.1.3\Lib\Microsoft.Scripting.Metadata.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.4\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Pandora">
-      <HintPath>..\packages\Cassette.1.2.1\lib\net40-Client\Pandora.dll</HintPath>
+    <Reference Include="SquishIt.Framework">
+      <HintPath>..\packages\SquishIt.0.8.6\lib\SquishIt.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="SassAndCoffee.Core">
-      <HintPath>..\packages\SassAndCoffee.Core.2.0.2.0\lib\net40-Client\SassAndCoffee.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="SassAndCoffee.Ruby">
-      <HintPath>..\packages\SassAndCoffee.Ruby.2.0.2.0\lib\net40-Client\SassAndCoffee.Ruby.dll</HintPath>
+    <Reference Include="SquishIt.Mvc">
+      <HintPath>..\packages\SquishIt.Mvc.0.8.6\lib\SquishIt.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
-<<<<<<< HEAD
-    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-=======
->>>>>>> origin/master
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-<<<<<<< HEAD
-=======
     <Reference Include="System.Web.WebPages">
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Helpers">
       <Private>True</Private>
     </Reference>
->>>>>>> origin/master
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -124,15 +88,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -142,12 +97,23 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="WebActivator">
-      <HintPath>..\packages\WebActivator.1.5\lib\net40\WebActivator.dll</HintPath>
+    <Reference Include="Yahoo.Yui.Compressor">
+      <HintPath>..\packages\YUICompressor.NET.1.7.1.0\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CassetteConfiguration.cs" />
+    <Compile Include="Code\Bootstraper\FileExts.cs" />
+    <Compile Include="Code\Bootstraper\Less.cs" />
+    <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\BootstrapController.cs" />
+    <Compile Include="Code\Bootstraper\BootstrapDataRepository.cs" />
+    <Compile Include="Controllers\JSONNetResult.cs" />
+    <Compile Include="Code\Bootstraper\ResponseLogger.cs" />
+    <Compile Include="Code\Bootstraper\ServerPathResolver.cs" />
+    <Compile Include="Controllers\SetupController.cs" />
+    <Compile Include="Code\Bootstraper\BootstraperData.cs" />
+    <Compile Include="Models\TemplateSettings.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,7 +124,7 @@
       <DependentUpon>Client.svc</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\ClientApiController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\AdminApiController.cs" />
@@ -167,15 +133,65 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Service\IClient.cs" />
-    <Compile Include="Models\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\IService1.cs" />
     <Compile Include="Service\JsonErrorHandler.cs" />
     <Compile Include="Service\JsonFault.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\default_bootstrap.json" />
+    <None Include="App_Data\bootstrap\less\accordion.less">
+      <Generator>LessGenerator</Generator>
+      <LastGenOutput>accordion.css</LastGenOutput>
+    </None>
+    <None Include="App_Data\bootstrap\less\alerts.less" />
+    <None Include="App_Data\bootstrap\less\bootstrap.less" />
+    <None Include="App_Data\bootstrap\less\breadcrumbs.less" />
+    <None Include="App_Data\bootstrap\less\button-groups.less" />
+    <None Include="App_Data\bootstrap\less\buttons.less" />
+    <None Include="App_Data\bootstrap\less\carousel.less" />
+    <None Include="App_Data\bootstrap\less\close.less" />
+    <None Include="App_Data\bootstrap\less\code.less" />
+    <None Include="App_Data\bootstrap\less\component-animations.less" />
+    <None Include="App_Data\bootstrap\less\dropdowns.less" />
+    <None Include="App_Data\bootstrap\less\forms.less" />
+    <None Include="App_Data\bootstrap\less\grid.less" />
+    <None Include="App_Data\bootstrap\less\hero-unit.less" />
+    <None Include="App_Data\bootstrap\less\labels-badges.less" />
+    <None Include="App_Data\bootstrap\less\layouts.less" />
+    <None Include="App_Data\bootstrap\less\mixins.less" />
+    <None Include="App_Data\bootstrap\less\modals.less" />
+    <None Include="App_Data\bootstrap\less\navbar.less" />
+    <None Include="App_Data\bootstrap\less\navs.less" />
+    <None Include="App_Data\bootstrap\less\pager.less" />
+    <None Include="App_Data\bootstrap\less\pagination.less" />
+    <None Include="App_Data\bootstrap\less\popovers.less" />
+    <None Include="App_Data\bootstrap\less\progress-bars.less" />
+    <None Include="App_Data\bootstrap\less\reset.less" />
+    <None Include="App_Data\bootstrap\less\responsive-1200px-min.less" />
+    <None Include="App_Data\bootstrap\less\responsive-767px-max.less" />
+    <None Include="App_Data\bootstrap\less\responsive-768px-979px.less" />
+    <None Include="App_Data\bootstrap\less\responsive-navbar.less" />
+    <None Include="App_Data\bootstrap\less\responsive-utilities.less" />
+    <None Include="App_Data\bootstrap\less\responsive.less" />
+    <None Include="App_Data\bootstrap\less\scaffolding.less" />
+    <None Include="App_Data\bootstrap\less\sprites.less" />
+    <None Include="App_Data\bootstrap\less\tables.less" />
+    <None Include="App_Data\bootstrap\less\thumbnails.less" />
+    <None Include="App_Data\bootstrap\less\tooltip.less" />
+    <None Include="App_Data\bootstrap\less\type.less" />
+    <None Include="App_Data\bootstrap\less\utilities.less" />
+    <None Include="App_Data\bootstrap\less\variables.less" />
+    <None Include="App_Data\bootstrap\less\wells.less" />
+    <Content Include="log4net.config" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
+    <Content Include="App_Data\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="App_Data\bootstrap\img\glyphicons-halflings.png" />
+    <None Include="Content\admin.less" />
+    <Content Include="Scripts\Coffee\Bootstrap.coffee">
+      <Generator>CoffeeScriptGenerator</Generator>
+      <LastGenOutput>Bootstrap.js</LastGenOutput>
+    </Content>
     <None Include="Service References\ServiceReference1\Client1.wsdl" />
     <None Include="Service References\ServiceReference1\Client4.xsd">
       <SubType>Designer</SubType>
@@ -196,24 +212,17 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServiceReference1\Client1.disco" />
-    <Content Include="Scripts\Admin\aaa.coffee">
-      <Generator>CoffeeScriptGenerator</Generator>
-      <LastGenOutput>aaa.js</LastGenOutput>
-    </Content>
-    <Content Include="Scripts\Admin\aaa.js">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>aaa.coffee</DependentUpon>
-    </Content>
+    <Content Include="Content\reset.sass" />
     <Content Include="Scripts\Admin\cmsapi.js" />
+    <Content Include="Scripts\Admin\EditCtrl.js" />
     <Content Include="Scripts\Admin\GridListController.js" />
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
-    <Content Include="Scripts\angular-1.0.0rc8.js" />
-    <Content Include="Scripts\angular-resource-1.0.0rc8.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\_GridElementScripts\novinka.coffee" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -231,10 +240,30 @@
     <Content Include="Scripts\_GridElementScripts\text.js" />
     <Content Include="Scripts\Admin\Grids.js" />
     <Content Include="Scripts\Admin\Index.js" />
-    <Content Include="Scripts\_GridElementScripts\novinka.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\showdown.js" />
-    <Content Include="Web.config" />
+    <Content Include="tests\config\jstd-scenario-adapter-config.js" />
+    <Content Include="tests\scripts\web-server.js" />
+    <Content Include="tests\test\e2e\runner.html" />
+    <Content Include="tests\test\e2e\scenarios.js" />
+    <Content Include="tests\test\lib\angular\angular-mocks.js" />
+    <Content Include="tests\test\lib\angular\angular-scenario.js" />
+    <Content Include="tests\test\lib\angular\jstd-scenario-adapter.js" />
+    <Content Include="tests\test\lib\angular\version.txt" />
+    <Content Include="tests\test\lib\jasmine-jstd-adapter\JasmineAdapter.js" />
+    <Content Include="tests\test\lib\jasmine-jstd-adapter\version.txt" />
+    <Content Include="tests\test\lib\jasmine\jasmine-html.js" />
+    <Content Include="tests\test\lib\jasmine\jasmine.css" />
+    <Content Include="tests\test\lib\jasmine\jasmine.js" />
+    <Content Include="tests\test\lib\jasmine\jasmine_favicon.png" />
+    <Content Include="tests\test\lib\jstestdriver\JsTestDriver.jar" />
+    <Content Include="tests\test\lib\jstestdriver\version.txt" />
+    <Content Include="tests\test\unit\cmsapiTests.js" />
+    <Content Include="tests\test\unit\servicesSpec.js" />
+    <Content Include="tests\test\unit\_test.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -257,6 +286,31 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\client\test1\Index.cshtml" />
     <Content Include="HtmlTemplates\test.htm" />
+    <Content Include="Views\setup\index.cshtml" />
+    <None Include="tests\config\jsTestDriver-scenario.conf" />
+    <None Include="tests\config\jsTestDriver.conf" />
+    <None Include="tests\scripts\e2e-test-server.bat" />
+    <None Include="tests\scripts\e2e-test-server.sh" />
+    <None Include="tests\scripts\e2e-test.bat" />
+    <None Include="tests\scripts\e2e-test.sh" />
+    <None Include="tests\scripts\private\format-json.sh" />
+    <None Include="tests\scripts\private\goto_step.bat" />
+    <None Include="tests\scripts\private\goto_step.sh" />
+    <None Include="tests\scripts\private\push-to-github.sh" />
+    <None Include="tests\scripts\private\retag.sh" />
+    <None Include="tests\scripts\private\snapshot-web.sh" />
+    <None Include="tests\scripts\private\snapshot.sh" />
+    <None Include="tests\scripts\test-server.bat" />
+    <None Include="tests\scripts\test-server.sh" />
+    <None Include="tests\scripts\test.bat" />
+    <None Include="tests\scripts\test.sh" />
+    <None Include="tests\scripts\update-repo.sh" />
+    <None Include="tests\scripts\watchr.rb" />
+    <None Include="tests\test\lib\jasmine\MIT.LICENSE" />
+    <Content Include="Views\setup\MigrateDatabaseToLatestVersion.cshtml" />
+    <Content Include="Views\setup\DropAndCreateTables.cshtml" />
+    <Content Include="Views\Admin\_Layout_Grids.cshtml" />
+    <Content Include="Views\Bootstrap\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
@@ -274,16 +328,10 @@
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cms.data\cms.data.csproj">
-      <Project>{815F85FC-179F-4817-9634-8CE3C1FF5CE2}</Project>
-      <Name>cms.data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\_Layout.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Grids.cshtml" />
@@ -292,13 +340,9 @@
     <Content Include="Views\Admin\template\list.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\template\new.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Admin\template\gridpage.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Node\package.json" />
     <Content Include="Views\Admin\template\edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
@@ -312,8 +356,17 @@
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".idea\" />
+    <Folder Include="App_Data\userdata\" />
+    <Folder Include="App_Themes\" />
     <Folder Include="Content\themes\test1\" />
     <Folder Include="Scripts\_GridElementScripts\test1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cms.data\cms.data.csproj">
+      <Project>{815F85FC-179F-4817-9634-8CE3C1FF5CE2}</Project>
+      <Name>cms.data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -344,4 +397,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>stylus -f $(ProjectDir)Content</PreBuildEvent>
+  </PropertyGroup>
 </Project>
