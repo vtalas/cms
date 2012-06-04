@@ -27,7 +27,8 @@
 		</td>
 		<td title="{{data.@(item).value}}" ng-dblclick="aaa($event)">
 			<input ng-model="data.@(item).value " bootstrapelem="data.@item"  />
-			@*<input ng-show="data.@(item).type == 'color' " class="colorPicker"  ng-model="data.@(item).value" bootstrapelem="data.@item" />*@ &nbsp;&nbsp;&nbsp;
+			@*<input ng-show="data.@(item).type == 'color' " class="colorPicker"  ng-model="data.@(item).value" bootstrapelem="data.@item" />*@
+			&nbsp;&nbsp;&nbsp;
 		</td>
 	</tr>
 }
@@ -35,13 +36,13 @@
 	{
 
 	<text>
-	<div class="accordion-group" >
+	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#@id" >@name
 			</a>
 		</div>
 		<div id="@id" class="accordion-body collapse" >
-			<div class="accordion-inner clearfix" >
+			<div class="accordion-inner clearfix">
 				@{
 					const int count = 5;
 					int len = values.Length / count;
@@ -81,10 +82,10 @@
 		cursor: pointer;
 		background-color: white;
 	}
-	.colorPicker {
+	.colorPicker
+	{
 		width: 1em;
 		cursor: pointer;
-		
 	}
 </style>
 <body>
@@ -119,6 +120,22 @@
 		<br />
 		<br />
 		<br />
+		@*<div class="subnav subnav-fixed">
+			<ul class="nav nav-pills">
+				<li><a href="#javascript">All plugins</a></li>
+				<li><a href="#modals">Modal</a></li>
+				<li><a href="#dropdowns">Dropdown</a></li>
+				<li class=""><a href="#scrollspy">Scrollspy</a></li>
+				<li class=""><a href="#tabs">Tab</a></li>
+				<li class=""><a href="#tooltips">Tooltip</a></li>
+				<li class=""><a href="#popovers">Popover</a></li>
+				<li><a href="#alerts">Alert</a></li>
+				<li class="active"><a href="#buttons">Button</a></li>
+				<li><a href="#collapse">Collapse</a></li>
+				<li><a href="#carousel">Carousel</a></li>
+				<li><a href="#typeahead">Typeahead</a></li>
+			</ul>
+		</div>*@
 		<div class="xxx">
 			@*			<div ng-repeat="item in colorsrefonly">
 				{{item.key}} {{item}}.......
@@ -128,7 +145,6 @@
   <input type="text" class="colorPicker" value="#5BC0de"/>
 			  XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 *@
-
 			<button ng-click="refresh()" class="btn primary">
 				refresh</button>
 			<div class="accordion" id="accordion2">
@@ -158,24 +174,24 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(
-      function () {
-      	$('#accordion2').on('shown', function (e) {
-      		$(e.target).closest(".accordion-body").css("overflow", "visible");
-      	});
-      	$('#accordion2').on('show', function (e) {
-      		$(e.target).closest(".accordion-group").css("width", "960px");
-      	});
-      	$('#accordion2').on('hide', function (e) {
-      		$(e.target).closest(".accordion-group").width("100px");
-      		$(e.target).closest(".accordion-body").css("overflow", "hidden");
-      	});
+				function () {
+					$('#accordion2').on('shown', function (e) {
+						$(e.target).closest(".accordion-body").css("overflow", "visible");
+					});
+					$('#accordion2').on('show', function (e) {
+						$(e.target).closest(".accordion-group").css("width", "960px");
+					});
+					$('#accordion2').on('hide', function (e) {
+						$(e.target).closest(".accordion-group").width("100px");
+						$(e.target).closest(".accordion-body").css("overflow", "hidden");
+					});
 
-      	//$(".colorPicker").click(function (e) {
-//      	$(".colorPicker").click(function (e) {
-//      		colorPicker(e);
-//      	});
+					//$(".colorPicker").click(function (e) {
+					//      	$(".colorPicker").click(function (e) {
+					//      		colorPicker(e);
+					//      	});
 
-      })
+				})
 	</script>
 </body>
 </html>
