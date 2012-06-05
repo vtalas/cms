@@ -33,12 +33,28 @@
 	<body>
 	<div ng-controller="bootstrap">
 		<link href="@Url.Content("/bootstrap/UserBootstrap?{{refreshtoken}}")" rel="stylesheet" type="text/css" />
+		
+		<!-- Navbar	================================================== -->
+		
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="brand" href="/Bootstrap">Bootstrap</a>
+					<ul class="nav">
+						<li><a href="#csstest">CSS test</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
 		<br />
 		<br />
 		<br />
 		<br />
 	<br />
 	
+
+		<button ng-click="refresh()">refresh</button>
 		<div class="span3">
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
@@ -71,14 +87,11 @@
 			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
 		</div>
 		
+		<br clear="all" />
+		<button ng-click="refresh()">refresh</button>
      </div>
 
-		<br clear="all" />
-	 xxxxx<div ng-view></div>xxxxxx
-		
-		<button ng-click="refresh()">refresh</button>
-
-		@Html.Partial("csstest")
+	 <div ng-view></div>
 		
 	</body>
 </html>

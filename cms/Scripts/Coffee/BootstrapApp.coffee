@@ -6,12 +6,12 @@
 module = angular.module("bootstrapApp", [  ])
 module.config [ "$routeProvider", "$provide", ($routeProvider, $provide) ->
 
-  $routeProvider.when("/aaa",
+  $routeProvider.when("/csstest",
+    controller: aaaController
+    template: "/Content/csstest.html"
+  ).when("/aaa",
     controller: aaaController
     template: "/Content/aaa.html"
-  ).when("/new",
-    controller: aaaController
-    template: "template/new"
   )
 
 ]

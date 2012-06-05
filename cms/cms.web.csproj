@@ -311,7 +311,7 @@
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
     <Content Include="Views\Bootstrap\Index.cshtml" />
     <Content Include="Views\Bootstrap\xxx.cshtml" />
-    <Content Include="Views\Bootstrap\csstest.cshtml" />
+    <Content Include="Content\csstest.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
