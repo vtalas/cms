@@ -58,13 +58,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grids.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="38" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.35114503">
+            <state line="36" column="17" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationHost.config" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://C:/applicationHost.config">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="345" column="43" selection-start="21733" selection-end="21733" vertical-scroll-proportion="0.5087266">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,7 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/cms.web.csproj" />
         <option value="$PROJECT_DIR$/Content/grid.css" />
         <option value="$PROJECT_DIR$/Content/admin.scss" />
         <option value="C:/DOWNLOADs/twitter-bootstrap-v2.0.3-6-ga85c8fe/twitter-bootstrap-a85c8fe/less/mixins.less" />
@@ -95,6 +103,7 @@
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less" />
         <option value="$PROJECT_DIR$/Scripts/_GridElementScripts/novinka.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
+        <option value="C:/applicationHost.config" />
       </list>
     </option>
   </component>
@@ -511,10 +520,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="38" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.35114503">
+        <state line="36" column="17" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/applicationHost.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="345" column="43" selection-start="21733" selection-end="21733" vertical-scroll-proportion="0.5087266">
+          <folding />
         </state>
       </provider>
     </entry>
