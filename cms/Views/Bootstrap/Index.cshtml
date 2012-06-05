@@ -20,15 +20,30 @@
 	 @helper VariablesGroup(string name,string id, string[] values){
 	 	<text>
 			<h3 ng-click="toggle('@id')">@name</h3>
-			<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')">
+			<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa">
 				@values.List(
-					@<text>@@@item<input ng-model="data.@item" /></text>
+					@<text>
+					 	<div style="display: inline-block">
+						@@@item<br />
+						<input ng-model="data.@item" />
+						</div>
+					 </text>
 				)
 			</div>
 		</text>;
 	 	
 	 }
-
+	<style>
+		input {
+			display: block;
+		}
+		.xxx {
+			position: fixed;
+		}
+		.aaa {
+			background-color: white;
+		}
+	</style>
 
 	<body>
 	<div ng-controller="bootstrap">
@@ -42,6 +57,7 @@
 					<a class="brand" href="/Bootstrap">Bootstrap</a>
 					<ul class="nav">
 						<li><a href="#csstest">CSS test</a></li>
+						<li><a href="#bootswatch">bootswatch</a></li>
 					</ul>
 				</div>
 			</div>
@@ -54,8 +70,26 @@
 	<br />
 	
 
+<div class="xxx">
 		<button ng-click="refresh()">refresh</button>
-		<div class="span3">
+			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
+			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
+			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
+			@VariablesGroup("Links", "lnkss", new[] { "linkColor", "linkColorHover" })
+			@VariablesGroup("Typography", "tpgr", new[] { "sansFontFamily","serifFontFamily","monoFontFamily","baseFontSize","baseFontFamily","baseLineHeight","altFontFamily","headingsFontFamily","headingsFontWeight","headingsColor", })
+			@VariablesGroup("Tables", "tabls", new[] { "tableBackground", "tableBackgroundAccent", "tableBackgroundHover", "tableBorder" })
+			@VariablesGroup("Buttons", "btn", new[] {"btnBackground","btnBackgroundHighlight","btnBorder","btnPrimaryBackground","btnPrimaryBackgroundHighlight","btnInfoBackground","btnInfoBackgroundHighlight","btnSuccessBackground","btnSuccessBackgroundHighlight","btnWarningBackground","btnWarningBackgroundHighlight","btnDangerBackground","btnDangerBackgroundHighlight","btnInverseBackground","btnInverseBackgroundHighlight"})
+			@VariablesGroup("Forms", "frm", new[] { "inputBackground", "inputBorder", "inputBorderRadius", "inputDisabledBackground", "formActionsBackground" })
+			@VariablesGroup("Dropdowns", "ldrp", new[] { "dropdownBackground", "dropdownBorder", "dropdownLinkColor", "dropdownLinkColorHover", "dropdownLinkBackgroundHover" })
+			@VariablesGroup("Sprites", "lnks", new[] { "iconSpritePath", "iconWhiteSpritePath" })
+			@VariablesGroup("Placeholder color", "plcc", new[] { "placeholderText" })
+			@VariablesGroup("hr border color", "hrc", new[] { "hrBorder" })
+			@VariablesGroup("Navbar", "navb", new[] { "navbarHeight","navbarBackground","navbarBackgroundHighlight","navbarText","navbarLinkColor","navbarLinkColorHover","navbarLinkColorActive","navbarLinkBackgroundHover","navbarLinkBackgroundActive","navbarSearchBackground","navbarSearchBackgroundFocus","navbarSearchBorder","navbarSearchPlaceholderColor","navbarBrandColor"})
+			@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground","heroUnitHeadingColor","heroUnitLeadColor" })
+			@VariablesGroup("Form states and alerts", "fa", new[] { "warningText","warningBackground","warningBorder","errorText","errorBackground","errorBorder","successText","successBackground","successBorder","infoText","infoBackground","infoBorder"})
+			@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
+			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
+@*		<div class="span3">
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
@@ -86,9 +120,9 @@
 			@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
 			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
 		</div>
-		
-		<br clear="all" />
+*@
 		<button ng-click="refresh()">refresh</button>
+</div>
      </div>
 
 	 <div ng-view></div>

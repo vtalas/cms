@@ -13,6 +13,9 @@
       }).when("/aaa", {
         controller: aaaController,
         template: "/Content/aaa.html"
+      }).when("/bootswatch", {
+        controller: aaaController,
+        template: "/Content/bootswatch.html"
       });
     }
   ]);
