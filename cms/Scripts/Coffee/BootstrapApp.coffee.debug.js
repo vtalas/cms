@@ -19,7 +19,24 @@
       });
     }
   ]);
-  aaaController = function($scope, $http) {
-    return 1;
-  };
+  module.directive("bootstrapelem", [
+    function() {
+      var directiveDefinitionObject;
+      directiveDefinitionObject = {
+        link: function(scope, el, tAttrs, controller) {
+          scope.$watch(tAttrs.ngModel, function() {
+            var val;
+            val = el.val();
+            if (val[0] === "#") {
+              el.css("background", val);
+            }
+            return console.log(val[0]);
+          });
+          return 1;
+        }
+      };
+      return directiveDefinitionObject;
+    }
+  ]);
+  aaaController = function($scope, $http) {};
 }).call(this);

@@ -19,12 +19,12 @@
 	{
 	<text>
 	<h3 ng-click="toggle('@id')">@name</h3>
-	<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa">
+	<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa" >
 		@values.List(
 					@<text>
 		<div style="display: inline-block">
 			@@@item<br />
-			<input ng-model="data.@item" />
+			<input ng-model="data.@item" bootstrapelem />
 		</div>
 		</text>
 				)
@@ -77,7 +77,8 @@
 		<br />
 		<br />
 		<div class="xxx">
-			<button ng-click="refresh()" class="btn primary">refresh</button>
+			<input ng-model="prdel" />
+      <button ng-click="refresh()" class="btn primary">refresh</button>
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black", "grayDarker", "grayDark", "gray", "grayLight", "grayLighter", "white" })
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })

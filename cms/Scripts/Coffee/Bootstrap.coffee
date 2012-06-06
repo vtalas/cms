@@ -13,7 +13,8 @@ bootstrap = ($scope, $http) ->
     url: "/bootstrap/Current"
   ).success((data, status, headers, config) ->
       $scope.data = data;
-      console.log data
+      $scope.prdel = "xhjasvbhj"
+      console.log data, "loaded"
   )
 
   $scope.refresh = ->

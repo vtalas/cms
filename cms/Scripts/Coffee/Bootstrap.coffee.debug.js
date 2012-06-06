@@ -11,7 +11,8 @@
       url: "/bootstrap/Current"
     }).success(function(data, status, headers, config) {
       $scope.data = data;
-      return console.log(data);
+      $scope.prdel = "xhjasvbhj";
+      return console.log(data, "loaded");
     });
     $scope.refresh = function() {
       return $http({

@@ -19,10 +19,23 @@ module.config [ "$routeProvider", "$provide", ($routeProvider, $provide) ->
 
 
 ]
+module.directive "bootstrapelem", [ () ->
+
+  directiveDefinitionObject =
+    link: (scope, el, tAttrs, controller) ->
+      scope.$watch(tAttrs.ngModel, ()->
+        val = el.val()
+        if val[0] == "#" then el.css "background", val
+        console.log val[0]
+      )
+      1
+
+  directiveDefinitionObject
+]
+
+
 #window.bootstrap = bootstrap
 
 aaaController = ($scope, $http) ->
 
-  1
-#window.bootstrap = bootstrap
 
