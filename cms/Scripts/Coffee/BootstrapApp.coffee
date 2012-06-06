@@ -17,6 +17,7 @@ module.config [ "$routeProvider", "$provide", ($routeProvider, $provide) ->
     template: "/Content/bootswatch.html"
   )
 
+
 ]
 #window.bootstrap = bootstrap
 

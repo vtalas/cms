@@ -35,7 +35,7 @@ namespace cms.Controllers
 			var less = Server.MapPath(string.Format("~/App_Data/userdata/bootstrap_{0}.less", UserId));
 			var lessVariables = Server.MapPath(string.Format("~/App_Data/userdata/variables_{0}.less", UserId));
 
-			Log.Info("kjbasdkjbsajkdbasjkbdkjbsad");
+			//Log.Info("kjbasdkjbsajkdbasjkbdkjbsad");
 
 			if (!System.IO.File.Exists(lessVariables))
 			{
@@ -75,8 +75,9 @@ namespace cms.Controllers
 			JsonRepository.Save(UserId, data);
 
 			var lessVariables = Server.MapPath(string.Format("~/App_Data/userdata/variables_{0}.less", UserId));
-			
-			FileExts.SetContent(lessVariables,data.ToLess());
+			var lesccontent = data.ToLess();
+
+			FileExts.SetContent(lessVariables,lesccontent);
 
 			return new EmptyResult();
 		}

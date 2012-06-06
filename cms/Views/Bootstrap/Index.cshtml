@@ -1,95 +1,101 @@
 ﻿@using SquishIt.Framework
 @using cms.Code.Bootstraper
 <!DOCTYPE html>
-<html ng-app="bootstrapApp">	
-	<head>
-		<title>@ViewBag.Title</title>
-
-		@MvcHtmlString.Create(
+<html ng-app="bootstrapApp">
+<head>
+	<title>@ViewBag.Title</title>
+	@MvcHtmlString.Create(
 			Bundle.JavaScript()
 				.Add("~/Scripts/jquery-1.7.2.js")
 				.Add("~/Scripts/angular.js")
 				.Add("~/Scripts/angular-resource.js")
+				.Add("~/Scripts/bootstrap.js")
 				.Add("~/Scripts/Coffee/Bootstrap.coffee")
 				.Add("~/Scripts/Coffee/BootstrapApp.coffee")
 				.Render("bootstrap_index#.js")
 			)
-
-	</head>
-	
-	 @helper VariablesGroup(string name,string id, string[] values){
-	 	<text>
-			<h3 ng-click="toggle('@id')">@name</h3>
-			<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa">
-				@values.List(
+</head>
+@helper VariablesGroup(string name, string id, string[] values)
+	{
+	<text>
+	<h3 ng-click="toggle('@id')">@name</h3>
+	<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa">
+		@values.List(
 					@<text>
-					 	<div style="display: inline-block">
-						@@@item<br />
-						<input ng-model="data.@item" />
-						</div>
-					 </text>
+		<div style="display: inline-block">
+			@@@item<br />
+			<input ng-model="data.@item" />
+		</div>
+		</text>
 				)
-			</div>
-		</text>;
+	</div>
+	</text>;
 	 	
-	 }
-	<style>
-		input {
-			display: block;
-		}
-		.xxx {
-			position: fixed;
-		}
-		.aaa {
-			background-color: white;
-		}
-	</style>
-
-	<body>
+}
+<style>
+	.xxx
+	{
+		position: fixed;
+	}
+	.aaa
+	{
+		background-color: white;
+	}
+</style>
+<body>
 	<div ng-controller="bootstrap">
 		<link href="@Url.Content("/bootstrap/UserBootstrap?{{refreshtoken}}")" rel="stylesheet" type="text/css" />
-		
 		<!-- Navbar	================================================== -->
-		
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="brand" href="/Bootstrap">Bootstrap</a>
 					<ul class="nav">
-						<li><a href="#csstest">CSS test</a></li>
-						<li><a href="#bootswatch">bootswatch</a></li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Templates
+							<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#csstest">CSS test</a></li>
+								<li><a href="#bootswatch">bootswatch</a></li>
+							</ul>
+						</li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Download
+							<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="kajbsdjkasd">bootastrap.css</a></li>
+								<li><a href="kajbsdjkasd">bootastrap.min.css</a></li>
+								<li class="divider"></li>
+								<li><a href="kajbsdjkasd">bootastrap.less</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-
 		<br />
 		<br />
 		<br />
 		<br />
-	<br />
-	
-
-<div class="xxx">
-		<button ng-click="refresh()">refresh</button>
+		<br />
+		<div class="xxx">
+			<button ng-click="refresh()" class="btn primary">refresh</button>
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
-			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
+			@VariablesGroup("Grays", "grs", new[] { "black", "grayDarker", "grayDark", "gray", "grayLight", "grayLighter", "white" })
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
 			@VariablesGroup("Links", "lnkss", new[] { "linkColor", "linkColorHover" })
-			@VariablesGroup("Typography", "tpgr", new[] { "sansFontFamily","serifFontFamily","monoFontFamily","baseFontSize","baseFontFamily","baseLineHeight","altFontFamily","headingsFontFamily","headingsFontWeight","headingsColor", })
+			@VariablesGroup("Typography", "tpgr", new[] { "sansFontFamily", "serifFontFamily", "monoFontFamily", "baseFontSize", "baseFontFamily", "baseLineHeight", "altFontFamily", "headingsFontFamily", "headingsFontWeight", "headingsColor", })
+			@VariablesGroup("Navbar", "navb", new[] { "navbarHeight", "navbarBackground", "navbarBackgroundHighlight", "navbarText", "navbarLinkColor", "navbarLinkColorHover", "navbarLinkColorActive", "navbarLinkBackgroundHover", "navbarLinkBackgroundActive", "navbarSearchBackground", "navbarSearchBackgroundFocus", "navbarSearchBorder", "navbarSearchPlaceholderColor", "navbarBrandColor" })
 			@VariablesGroup("Tables", "tabls", new[] { "tableBackground", "tableBackgroundAccent", "tableBackgroundHover", "tableBorder" })
-			@VariablesGroup("Buttons", "btn", new[] {"btnBackground","btnBackgroundHighlight","btnBorder","btnPrimaryBackground","btnPrimaryBackgroundHighlight","btnInfoBackground","btnInfoBackgroundHighlight","btnSuccessBackground","btnSuccessBackgroundHighlight","btnWarningBackground","btnWarningBackgroundHighlight","btnDangerBackground","btnDangerBackgroundHighlight","btnInverseBackground","btnInverseBackgroundHighlight"})
-			@VariablesGroup("Forms", "frm", new[] { "inputBackground", "inputBorder", "inputBorderRadius", "inputDisabledBackground", "formActionsBackground" })
+			@VariablesGroup("Buttons", "btn", new[] { "btnBackground", "btnBackgroundHighlight", "btnBorder", "btnPrimaryBackground", "btnPrimaryBackgroundHighlight", "btnInfoBackground", "btnInfoBackgroundHighlight", "btnSuccessBackground", "btnSuccessBackgroundHighlight", "btnWarningBackground", "btnWarningBackgroundHighlight", "btnDangerBackground", "btnDangerBackgroundHighlight", "btnInverseBackground", "btnInverseBackgroundHighlight" })
 			@VariablesGroup("Dropdowns", "ldrp", new[] { "dropdownBackground", "dropdownBorder", "dropdownLinkColor", "dropdownLinkColorHover", "dropdownLinkBackgroundHover" })
-			@VariablesGroup("Sprites", "lnks", new[] { "iconSpritePath", "iconWhiteSpritePath" })
+			@VariablesGroup("Forms", "frm", new[] { "inputBackground", "inputBorder", "inputBorderRadius", "inputDisabledBackground", "formActionsBackground" })
+			@VariablesGroup("Form states and alerts", "fa", new[] { "warningText", "warningBackground", "warningBorder", "errorText", "errorBackground", "errorBorder", "successText", "successBackground", "successBorder", "infoText", "infoBackground", "infoBorder" })
 			@VariablesGroup("Placeholder color", "plcc", new[] { "placeholderText" })
+			@VariablesGroup("Sprites", "lnks", new[] { "iconSpritePath", "iconWhiteSpritePath" })
 			@VariablesGroup("hr border color", "hrc", new[] { "hrBorder" })
-			@VariablesGroup("Navbar", "navb", new[] { "navbarHeight","navbarBackground","navbarBackgroundHighlight","navbarText","navbarLinkColor","navbarLinkColorHover","navbarLinkColorActive","navbarLinkBackgroundHover","navbarLinkBackgroundActive","navbarSearchBackground","navbarSearchBackgroundFocus","navbarSearchBorder","navbarSearchPlaceholderColor","navbarBrandColor"})
-			@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground","heroUnitHeadingColor","heroUnitLeadColor" })
-			@VariablesGroup("Form states and alerts", "fa", new[] { "warningText","warningBackground","warningBorder","errorText","errorBackground","errorBorder","successText","successBackground","successBorder","infoText","infoBackground","infoBorder"})
+			@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground", "heroUnitHeadingColor", "heroUnitLeadColor" })
 			@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
 			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
-@*		<div class="span3">
+			@*		<div class="span3">
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
@@ -121,14 +127,11 @@
 			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
 		</div>
 *@
-		<button ng-click="refresh()">refresh</button>
-</div>
-     </div>
-
-	 <div ng-view></div>
-		
-	</body>
+			<button ng-click="refresh()">
+				refresh</button>
+		</div>
+	</div>
+	<div ng-view>
+	</div>
+</body>
 </html>
-
-
-

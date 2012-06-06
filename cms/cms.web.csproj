@@ -181,12 +181,14 @@
     <None Include="App_Data\bootstrap\less\utilities.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <None Include="App_Data\bootstrap\less\wells.less" />
+    <Content Include="Content\bootswatch.html" />
     <Content Include="log4net.config" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <Content Include="App_Data\bootstrap\img\glyphicons-halflings-white.png" />
     <Content Include="App_Data\bootstrap\img\glyphicons-halflings.png" />
     <None Include="Content\admin.less" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\Coffee\Bootstrap.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>Bootstrap.js</LastGenOutput>
