@@ -3,19 +3,11 @@
 @reference ../angular.js
 ###
 
-bootstrap = ($scope, $http) ->
-  #novinka.$inject = [ "$scope", "$http", "appSettings" ]
+bootstrap = ($scope, $http, $element) ->
+
+  $scope.data = $.parseJSON $element.data("model")
 
   $scope.hider = []
-
-  $http(
-    method: "POST"
-    url: "/bootstrap/Current"
-  ).success((data, status, headers, config) ->
-      $scope.data = data;
-      $scope.prdel = "xhjasvbhj"
-      console.log data, "loaded"
-  )
 
   $scope.refresh = ->
     $http(

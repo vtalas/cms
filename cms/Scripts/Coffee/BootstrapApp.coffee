@@ -26,7 +26,6 @@ module.directive "bootstrapelem", [ () ->
       scope.$watch(tAttrs.ngModel, ()->
         val = el.val()
         if val[0] == "#" then el.css "background", val
-        console.log val[0]
       )
       1
 

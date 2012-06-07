@@ -22,10 +22,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Index.cshtml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Index.cshtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="7" selection-start="859" selection-end="859" vertical-scroll-proportion="-18.307692">
+            <state line="21" column="41" selection-start="636" selection-end="636" vertical-scroll-proportion="0.16494179">
               <folding />
             </state>
           </provider>
@@ -49,10 +49,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BootstrapApp.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BootstrapApp.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="29" selection-start="545" selection-end="545" vertical-scroll-proportion="0.2466877">
+            <state line="24" column="23" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -70,7 +70,7 @@
       <file leaf-file-name="Bootstrap.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="21" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
+            <state line="29" column="0" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,8 +100,8 @@
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less" />
         <option value="$PROJECT_DIR$/Scripts/_GridElementScripts/novinka.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
-        <option value="$PROJECT_DIR$/Views/Bootstrap/Index.cshtml" />
         <option value="$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee" />
+        <option value="$PROJECT_DIR$/Views/Bootstrap/Index.cshtml" />
       </list>
     </option>
   </component>
@@ -526,23 +526,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="7" selection-start="859" selection-end="859" vertical-scroll-proportion="-18.307692">
+        <state line="24" column="23" selection-start="569" selection-end="569" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="21" selection-start="398" selection-end="398" vertical-scroll-proportion="0.0">
+        <state line="29" column="0" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
+    <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="29" selection-start="545" selection-end="545" vertical-scroll-proportion="0.2466877">
+        <state line="21" column="41" selection-start="636" selection-end="636" vertical-scroll-proportion="0.16494179">
           <folding />
         </state>
       </provider>

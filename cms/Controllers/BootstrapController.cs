@@ -27,7 +27,7 @@ namespace cms.Controllers
 
 		public ActionResult Index()
         {
-			return View();
+			return View(JsonRepository.Get(UserId));
         }
 
 		public ActionResult UserBootstrap()

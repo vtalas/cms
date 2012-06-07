@@ -4,16 +4,9 @@
   @reference ../angular.js
   */
   var bootstrap;
-  bootstrap = function($scope, $http) {
+  bootstrap = function($scope, $http, $element) {
+    $scope.data = $.parseJSON($element.data("model"));
     $scope.hider = [];
-    $http({
-      method: "POST",
-      url: "/bootstrap/Current"
-    }).success(function(data, status, headers, config) {
-      $scope.data = data;
-      $scope.prdel = "xhjasvbhj";
-      return console.log(data, "loaded");
-    });
     $scope.refresh = function() {
       return $http({
         method: "POST",

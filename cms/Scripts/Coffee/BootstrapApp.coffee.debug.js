@@ -28,9 +28,8 @@
             var val;
             val = el.val();
             if (val[0] === "#") {
-              el.css("background", val);
+              return el.css("background", val);
             }
-            return console.log(val[0]);
           });
           return 1;
         }
