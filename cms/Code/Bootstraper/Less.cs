@@ -19,7 +19,7 @@ namespace cms.Code.Bootstraper
 			{
 				x.Append("@"+item.Key)
 					.Append(":")
-					.Append(item.Value+";")
+					.Append(item.Value["value"]+";")
 					.AppendLine();
 
 			}

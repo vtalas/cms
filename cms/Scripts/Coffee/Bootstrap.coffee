@@ -12,6 +12,9 @@ bootstrap = ($scope, $http, $element,colorsonly) ->
 
   #console.log $scope.data
 
+  $scope.aaa = ($element)->
+    console.log("kajsbdasjkbdk", $element, this)
+
   $scope.hider = []
 
   $scope.refresh = ->

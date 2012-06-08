@@ -34,10 +34,9 @@
 	{
 
 	<text>
-		<div class="accordion-group">
+		<div class="accordion-group" ng-click="aaa($element)">
 			<div class="accordion-heading">
-				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#@id">
-					@name </a>
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#@id" >@name </a>
 			</div>
 			<div id="@id" class="accordion-body collapse" style="height: 0px;">
 				<div class="accordion-inner">
@@ -190,5 +189,58 @@
 	</div>
 	<div ng-view>
 	</div>
+<script type="text/javascript">
+  $(document).ready(
+      function(){
+        $('#accordion2').on('show', function (e) {
+          $(e.target).closest(".accordion-group").width("960px")
+        })
+        $('#accordion2').on('hide', function (e) {
+          $(e.target).closest(".accordion-group").width("150px")
+        })
+      })
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
