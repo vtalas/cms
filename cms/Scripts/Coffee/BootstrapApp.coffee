@@ -60,7 +60,7 @@ module.directive "bootstrapelem", (datajson,colorsrefonly,colorsonly,$filter) ->
         a = scope.bootstrapelem()
 
         if a.type == "color"
-          el.width "30px"
+          el.width "50px"
           if a.value[0] != "@"
             el.css "background", a.value
 

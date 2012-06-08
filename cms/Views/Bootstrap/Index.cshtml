@@ -17,37 +17,78 @@
 		)
 </head>
 @model Newtonsoft.Json.Linq.JObject
+@helper xxx(string item)
+	{
+	<tr>
+		<td>
+			@@@item
+		</td>
+		<td title="{{data.@(item).value}}">
+			<input ng-model="data.@(item).value " bootstrapelem="data.@item" ng-class="data.@(item).type" />
+			<span ng-show="data.@(item).type == 'color' ">color picker</span><br />
+			&nbsp;&nbsp;&nbsp;
+		</td>
+	</tr>
+}
 @helper VariablesGroup(string name, string id, string[] values)
 	{
 
 	<text>
-	<h3 ng-click="toggle('@id')">@name</h3>
-	<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa"  >
-		@values.List(
-		  @<div class="bootstrapitem" style="display: inline-block">
-		   	<span title="{{data.@(item).value}}">@@@item
-				<input ng-model="data.@(item).value " bootstrapelem="data.@item" ng-class="data.@(item).type" />
-			</span>
-
-		   	<span ng-show="data.@(item).type == 'color' ">color picker</span><bR />
-				
-		   </div>
-	)
-	</div>
+		<div class="accordion-group">
+			<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#@id">
+					@name </a>
+			</div>
+			<div id="@id" class="accordion-body collapse" style="height: 0px;">
+				<div class="accordion-inner">
+					@{
+						const int count = 5;
+						int len = values.Length / count;
+						if (values.Length % count > 0) { len++; }
+					}
+					@for (int i = 0; i < len; i++)
+	 {
+						<table style="float: left">
+							@values.List(i, count, @<text>@xxx(item)</text>)
+						</table>
+	 }
+				</div>
+			</div>
+		</div>
+	@*<h3 ng-click="toggle('@id')">@name</h3>
+	<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa clearfix"  >
+		@{
+			const int count = 5;
+			int len = values.Length / count;
+			if (values.Length % count > 0) { len++; }
+		}
+		@for (int i = 0; i < len; i++)
+  {
+			<table style="float: left">
+				@values.List(i, count, @<text>@xxx(item)</text>)
+			</table>
+  }
+	</div>*@
 	</text>;
 	 	
 }
 <style>
-	.color {
+	.accordion-group {
+		background-color: white;
+	}
+	.color
+	{
 		width: 20px;
 		border: 1px solid red;
 	}
 	.xxx
 	{
 		position: fixed;
+		width: 150px;
 	}
 	.aaa
 	{
+		cursor: pointer;
 		background-color: white;
 	}
 </style>
@@ -86,20 +127,20 @@
 		<br />
 		<br />
 		<div class="xxx">
-						<div ng-repeat="item in colorsrefonly">
+			@*			<div ng-repeat="item in colorsrefonly">
 				{{item.key}} {{item}}.......
 			</div>
-
-			<button ng-click="refresh()" class="btn primary">refresh</button>
-			
-			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
+*@
+			<button ng-click="refresh()" class="btn primary">
+				refresh</button>
+				<div class="accordion" id="accordion2" >
+@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black", "grayDarker", "grayDark", "gray", "grayLight", "grayLighter", "white" })
-			@*
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
 			@VariablesGroup("Links", "lnkss", new[] { "linkColor", "linkColorHover" })
 			@VariablesGroup("Typography", "tpgr", new[] { "sansFontFamily", "serifFontFamily", "monoFontFamily", "baseFontSize", "baseFontFamily", "baseLineHeight", "altFontFamily", "headingsFontFamily", "headingsFontWeight", "headingsColor", })
 			@VariablesGroup("Navbar", "navb", new[] { "navbarHeight", "navbarBackground", "navbarBackgroundHighlight", "navbarText", "navbarLinkColor", "navbarLinkColorHover", "navbarLinkColorActive", "navbarLinkBackgroundHover", "navbarLinkBackgroundActive", "navbarSearchBackground", "navbarSearchBackgroundFocus", "navbarSearchBorder", "navbarSearchPlaceholderColor", "navbarBrandColor" })
-			@VariablesGroup("Tables", "tabls", new[] { "tableBackground", "tableBackgroundAccent", "tableBackgroundHover", "tableBorder" })
+			@VariablesGroup("Tables", "hagscdgh", new[] { "tableBackground", "tableBackgroundAccent", "tableBackgroundHover", "tableBorder" })
 			@VariablesGroup("Buttons", "btn", new[] { "btnBackground", "btnBackgroundHighlight", "btnBorder", "btnPrimaryBackground", "btnPrimaryBackgroundHighlight", "btnInfoBackground", "btnInfoBackgroundHighlight", "btnSuccessBackground", "btnSuccessBackgroundHighlight", "btnWarningBackground", "btnWarningBackgroundHighlight", "btnDangerBackground", "btnDangerBackgroundHighlight", "btnInverseBackground", "btnInverseBackgroundHighlight" })
 			@VariablesGroup("Dropdowns", "ldrp", new[] { "dropdownBackground", "dropdownBorder", "dropdownLinkColor", "dropdownLinkColorHover", "dropdownLinkBackgroundHover" })
 			@VariablesGroup("Forms", "frm", new[] { "inputBackground", "inputBorder", "inputBorderRadius", "inputDisabledBackground", "formActionsBackground" })
@@ -109,8 +150,9 @@
 			@VariablesGroup("hr border color", "hrc", new[] { "hrBorder" })
 			@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground", "heroUnitHeadingColor", "heroUnitLeadColor" })
 			@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
-			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
-			*@ @*		<div class="span3">
+					@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
+					</div>
+			@*		<div class="span3">
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
@@ -142,9 +184,9 @@
 			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
 		</div>
 *@
-			<button ng-click="refresh()">refresh</button>
+			<button ng-click="refresh()">
+				refresh</button>
 		</div>
-
 	</div>
 	<div ng-view>
 	</div>
