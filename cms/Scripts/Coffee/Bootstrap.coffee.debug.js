@@ -4,10 +4,10 @@
   @reference ../angular.js
   */
   var bootstrap;
-  bootstrap = function($scope, $http, $element, colorsrefonly) {
+  bootstrap = function($scope, $http, $element, colorsonly) {
     $scope.data = $.parseJSON($element.data("model"));
-    $scope.colorsrefonly = colorsrefonly;
-    console.log(colorsrefonly, "xxx", $scope);
+    $scope.colorsrefonly = colorsonly;
+    console.log(colorsonly, "xxx", $scope);
     $scope.hider = [];
     $scope.refresh = function() {
       return $http({

@@ -9,22 +9,22 @@ module = angular.module("bootstrapApp", [  ])
 module.config  ($routeProvider, $provide,$filterProvider) ->
   $filterProvider.register('typevalue', ()->
     (data, type)->
-      console.log "kjbsadksjbd"
-      x = []
+      x = {}
       #vyfiltruj to co je 'type' a zaroven nezacina na '@'
-      x[num.name] = num.value for num in data.grays  when num.type is type && num.value[0] isnt "@"
+      for key,prop of data
+        x[key] = prop.value if prop.type is type && prop.value[0] isnt "@"
       x
   )
   $filterProvider.register('refs', ()->
     (data, type)->
-      console.log "krefsd"
-      x = []
-      #vyfiltruj to co je 'type' a zaroven zacina na '@'
-      x[num.name] = num.value for num in data.scaffolding  when num.type is type && num.value[0] is "@"
+      x = {}
+      #vyfiltruj to co je 'type' a zaroven ZACINA na '@'
+      for key,prop of data
+        x[key] = prop.value if prop.type is type && prop.value[0] is "@"
       x
   )
 
-  $provide.factory("datajson", ($filter)->
+  $provide.factory("datajson", ()->
     d = $.parseJSON angular.element("html").data("modeldata")
     d
   )
@@ -49,22 +49,23 @@ module.config  ($routeProvider, $provide,$filterProvider) ->
     template: "/Content/bootswatch.html"
   ).otherwise redirectTo: '/aaa'
 
-module.directive "bootstrapelem", (datajson,colorsonly) ->
+module.directive "bootstrapelem", (datajson,colorsrefonly,colorsonly,$filter) ->
 
   directiveDefinitionObject =
+    scope: {bootstrapelem: "accessor" }
     link: (scope, el, tAttrs, controller) ->
-      console.log colorsonly,datajson
 
       all = scope.$parent.data
-      scope.$watch(tAttrs.ngModel, ()->
-        a = scope.item
+      scope.$watch('bootstrapelem().value', ()->
+        a = scope.bootstrapelem()
 
-        if a.type == "color" && a.value[0] == "#"
+        if a.type == "color" && a.value[0] != "@"
           el.css "background", a.value
 
+        ccc =  $filter("typevalue")(all, "color")
+#        console.log ccc
         if a.type == "color" && a.value[0] == "@"
-          #console.log "ref",colorsonly[a.value.substr(1)]
-          r = colorsonly[a.value.substr(1)]
+          r = ccc[a.value.substr(1)]
           el.css "background", r if r
 
       )
@@ -76,8 +77,23 @@ module.directive "bootstrapelem", (datajson,colorsonly) ->
 
 #window.bootstrap = bootstrap
 
-aaaController = ($scope, $http,colorsrefonly) ->
-  $scope.colorsrefonly = colorsrefonly
+aaaController = ($scope, $http) ->
+  # Type here!
+
+#  days =
+#    monday: 1
+#    tuesday: 2
+#    wednesday: 3
+#    thursday: 4
+#    friday: 5
+#    saturday: 6
+#    sunday: 7
+#
+#  for xx of days
+#    console.log xx
+
+
+#$scope.colorsrefonly = colorsrefonly
 1
 
 

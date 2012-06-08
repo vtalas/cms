@@ -8,14 +8,12 @@
   module.config(function($routeProvider, $provide, $filterProvider) {
     $filterProvider.register('typevalue', function() {
       return function(data, type) {
-        var num, x, _i, _len, _ref;
-        console.log("kjbsadksjbd");
-        x = [];
-        _ref = data.grays;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          num = _ref[_i];
-          if (num.type === type && num.value[0] !== "@") {
-            x[num.name] = num.value;
+        var key, prop, x;
+        x = {};
+        for (key in data) {
+          prop = data[key];
+          if (prop.type === type && prop.value[0] !== "@") {
+            x[key] = prop.value;
           }
         }
         return x;
@@ -23,20 +21,18 @@
     });
     $filterProvider.register('refs', function() {
       return function(data, type) {
-        var num, x, _i, _len, _ref;
-        console.log("krefsd");
-        x = [];
-        _ref = data.scaffolding;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          num = _ref[_i];
-          if (num.type === type && num.value[0] === "@") {
-            x[num.name] = num.value;
+        var key, prop, x;
+        x = {};
+        for (key in data) {
+          prop = data[key];
+          if (prop.type === type && prop.value[0] === "@") {
+            x[key] = prop.value;
           }
         }
         return x;
       };
     });
-    $provide.factory("datajson", function($filter) {
+    $provide.factory("datajson", function() {
       var d;
       d = $.parseJSON(angular.element("html").data("modeldata"));
       return d;
@@ -64,21 +60,24 @@
       redirectTo: '/aaa'
     });
   });
-  module.directive("bootstrapelem", function(datajson, colorsonly) {
+  module.directive("bootstrapelem", function(datajson, colorsrefonly, colorsonly, $filter) {
     var directiveDefinitionObject;
     directiveDefinitionObject = {
+      scope: {
+        bootstrapelem: "accessor"
+      },
       link: function(scope, el, tAttrs, controller) {
         var all;
-        console.log(colorsonly, datajson);
         all = scope.$parent.data;
-        scope.$watch(tAttrs.ngModel, function() {
-          var a, r;
-          a = scope.item;
-          if (a.type === "color" && a.value[0] === "#") {
+        scope.$watch('bootstrapelem().value', function() {
+          var a, ccc, r;
+          a = scope.bootstrapelem();
+          if (a.type === "color" && a.value[0] !== "@") {
             el.css("background", a.value);
           }
+          ccc = $filter("typevalue")(all, "color");
           if (a.type === "color" && a.value[0] === "@") {
-            r = colorsonly[a.value.substr(1)];
+            r = ccc[a.value.substr(1)];
             if (r) {
               return el.css("background", r);
             }
@@ -89,8 +88,6 @@
     };
     return directiveDefinitionObject;
   });
-  aaaController = function($scope, $http, colorsrefonly) {
-    return $scope.colorsrefonly = colorsrefonly;
-  };
+  aaaController = function($scope, $http) {};
   1;
 }).call(this);

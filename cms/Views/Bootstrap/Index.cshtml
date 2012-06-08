@@ -17,28 +17,19 @@
 		)
 </head>
 @model Newtonsoft.Json.Linq.JObject
-@helper VariablesGroup(string name, string id, JToken values)
+@helper VariablesGroup(string name, string id, string[] values)
 	{
 
 	<text>
 		@values.List(
   @<div class="bootstrapitem">
-   	@{
-		var prop = (JProperty) item;
-		var elname = prop.Name;
-		var type = item.First["type"];
-		var value = item.First["value"];
-	}
-	@if (type.ToString() == "color")
-	{
-	 <input ng-model="data.@elname" bootstrapelem />
-	}
+   	@@@item<br /><input ng-model="data.@(item).value " bootstrapelem="data.@item" />
    </div>
 
 						)
 
 			 	@*		<h3 ng-click="toggle('@id')">@name</h3>
-	<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa" >
+	<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa"  >
 		@values.List(
 
 
@@ -110,7 +101,7 @@
 
 			<button ng-click="refresh()" class="btn primary">refresh</button>
 
-			<div ng-repeat="item in data.scaffolding">
+			@*<div ng-repeat="item in data.scaffolding">
 				{{item.name}}
 				<h3 ng-show="item.type== 'group'">{{item.name}}</h3>
 				<input ng-model="item.value" bootstrapelem/>
@@ -120,14 +111,15 @@
 				<input ng-model="item.value" bootstrapelem/>
 			</div>
 			
+			*@
 			xxx<div ng-repeat="item in colorsrefonly">
+				{{item.key}}
 				{{item}}.......
 			</div>
 
-			VariablesGroup("Scaffolding", "scf", m["scaffolding"])
-			@*@VariablesGroup("Scaffolding", "scf", new[] { m["bodyBackground"], m["textColor"] })
-			@VariablesGroup("Grays", "grs", new[] { m["black"], m["grayDarker"], m["grayDark"], m["gray"], m["grayLight"], m["grayLighter"], m["white"] })
-			
+			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
+			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
+			@*
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
 			@VariablesGroup("Links", "lnkss", new[] { "linkColor", "linkColorHover" })
 			@VariablesGroup("Typography", "tpgr", new[] { "sansFontFamily", "serifFontFamily", "monoFontFamily", "baseFontSize", "baseFontFamily", "baseLineHeight", "altFontFamily", "headingsFontFamily", "headingsFontWeight", "headingsColor", })

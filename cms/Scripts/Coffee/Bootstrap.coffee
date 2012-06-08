@@ -3,12 +3,12 @@
 @reference ../angular.js
 ###
 
-bootstrap = ($scope, $http, $element,colorsrefonly) ->
+bootstrap = ($scope, $http, $element,colorsonly) ->
 
   $scope.data = $.parseJSON $element.data("model")
 
-  $scope.colorsrefonly = colorsrefonly
-  console.log colorsrefonly,"xxx",$scope
+  $scope.colorsrefonly = colorsonly
+  console.log colorsonly,"xxx",$scope
 
   #console.log $scope.data
 
