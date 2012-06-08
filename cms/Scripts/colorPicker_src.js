@@ -222,26 +222,28 @@ function colorPicker(e,mode,size,allowResize,allowClose,allowDrag,expColor,expHE
 		scripts=div=newCSS=n=m=cPDir=nN=nB=CSSTxt=CSSTmp=HTMLTxt=_h=_blank=_horizontal=_vertical=_icons=_patches=_IE=_nonIE=testPix=filter=null;
 		CP=colorPicker.CP={}; CP.modeRGB={}; CP.mode=colorPicker.mode||mode; colorPicker.rSpeed=rSpeed;
 	}:colorPicker.CP, // collection of colors/coords
-	
-	initCp = function(rgb) {
-		cPM = /R|G|B/.exec(CP.mode)?'RGB':'HSV';
-		x=/R|G/.exec(CP.mode)?2:CP.mode=='H'?1:0;
-		y=/S|H/.exec(CP.mode)?2:CP.mode=='G'?0:1;
-		z=/R|H/.exec(CP.mode)?0:/G|S/.exec(CP.mode)?1:2;
-		
-		setCookie('CP.mode',CP.mode); if (!allowResize) cP.cPResizes.display='none'; if (!allowClose) cP.cPCloses.display='none';
-		sX=/cPSkin(\s+S)*(\s+XS)*(\s+XXS)*/.exec(cP.className); sZ=sX[3]?2:1; sX=sX[1]?2:1; xyzCorr=(sX>1?128:0)+(sZ>1?64:0); // reset size and size correction
-		for(var n=0; n<cP.but.length; n++) if (cP.but[n][1] == 'L') chBut(cP[cP.but[n][0]],cP.but[n][2] != CP.mode); // reset button states
-		for(var n=0,nob='RGB'.split('');n<nob.length;n++) if (CP.modeRGB[nob[n]]) cP['cPBR'+nob[n]].className = 'cPBR'+nob[n]+' '+'bUp';
-		difWidth = getStyle(cP.cPCTRT.parentNode,'width').replace('px','')-difPad; // max width of contrast/color bar
-		CP.iCtr = getBrightness(CP.CB2Color); cCtr=null; crCtr=null;// of the current saved color !!!
-		cP.cPCB2s.backgroundColor = 'rgb('+CP.CB2Color+')'; // set right swatch
+
+	initCp = function (rgb) {
+		console.log(rgb);
+		cPM = /R|G|B/.exec(CP.mode) ? 'RGB' : 'HSV';
+		x = /R|G/.exec(CP.mode) ? 2 : CP.mode == 'H' ? 1 : 0;
+		y = /S|H/.exec(CP.mode) ? 2 : CP.mode == 'G' ? 0 : 1;
+		z = /R|H/.exec(CP.mode) ? 0 : /G|S/.exec(CP.mode) ? 1 : 2;
+
+		setCookie('CP.mode', CP.mode); if (!allowResize) cP.cPResizes.display = 'none'; if (!allowClose) cP.cPCloses.display = 'none';
+		sX = /cPSkin(\s+S)*(\s+XS)*(\s+XXS)*/.exec(cP.className); sZ = sX[3] ? 2 : 1; sX = sX[1] ? 2 : 1; xyzCorr = (sX > 1 ? 128 : 0) + (sZ > 1 ? 64 : 0); // reset size and size correction
+		for (var n = 0; n < cP.but.length; n++) if (cP.but[n][1] == 'L') chBut(cP[cP.but[n][0]], cP.but[n][2] != CP.mode); // reset button states
+		for (var n = 0, nob = 'RGB'.split(''); n < nob.length; n++) if (CP.modeRGB[nob[n]]) cP['cPBR' + nob[n]].className = 'cPBR' + nob[n] + ' ' + 'bUp';
+		difWidth = getStyle(cP.cPCTRT.parentNode, 'width').replace('px', '') - difPad; // max width of contrast/color bar
+		CP.iCtr = getBrightness(CP.CB2Color); cCtr = null; crCtr = null; // of the current saved color !!!
+		cP.cPCB2s.backgroundColor = 'rgb(' + CP.CB2Color + ')'; // set right swatch
 		rSpeed = colorPicker.rSpeed;
-		for(var n=1, m='L';n<=3;n++) { // preset all classNames in all sliders
-			cP['cPS'+m+n].className = 'cPS'+m+n+CP.mode+(CP.modeRGB[CP.mode]&&n>1&&m=='R'?' cPhide':'');
-			if (n>2 && m=='L') {m='R'; n=0}}
-		CP.rgb=[]; CP.hsv=[]; if (cPM == 'HSV') rgb = RGB2HSV(rgb[0],rgb[1],rgb[2]);
-		doDrag(null,null,true,[rgb[x],rgb[y],rgb[z]],true);
+		for (var n = 1, m = 'L'; n <= 3; n++) { // preset all classNames in all sliders
+			cP['cPS' + m + n].className = 'cPS' + m + n + CP.mode + (CP.modeRGB[CP.mode] && n > 1 && m == 'R' ? ' cPhide' : '');
+			if (n > 2 && m == 'L') { m = 'R'; n = 0 } 
+		}
+		CP.rgb = []; CP.hsv = []; if (cPM == 'HSV') rgb = RGB2HSV(rgb[0], rgb[1], rgb[2]);
+		doDrag(null, null, true, [rgb[x], rgb[y], rgb[z]], true);
 	},
 	
 	doDrag = function(e,origin,xy,mouseIs,render,rgb,hsv) { // this func gets/stores mouse coordinates and calculates all colors

@@ -135,7 +135,11 @@
 				{{item.key}} {{item}}.......
 			</div>
 *@
+			  XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  <input type="text" class="colorPicker" value="#5bc0de"/>
+
 			<button ng-click="refresh()" class="btn primary">
+			
 				refresh</button>
 				<div class="accordion" id="accordion2" >
 @VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
@@ -194,8 +198,6 @@
 	</div>
   <div ng-view>
 	</div>
-  XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  <input type="text" class="colorPicker"/>
 
 
 
@@ -227,10 +229,6 @@
           //e = e || window.event;
           colorPicker(e);
           colorPicker.cP.style.zIndex = 9999999;
-          console.log(colorPicker.cP)
-          console.log(colorPicker)
-
-
         })
 
 //        var inputTags = $(".colorx")
