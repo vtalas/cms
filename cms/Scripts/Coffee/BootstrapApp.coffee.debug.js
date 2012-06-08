@@ -73,7 +73,7 @@
           var a, ccc, r;
           a = scope.bootstrapelem();
           if (a.type === "color") {
-            el.width("50px");
+            el.width("80px");
             if (a.value[0] !== "@") {
               el.css("background", a.value);
             }
