@@ -21,36 +21,27 @@
 	{
 
 	<text>
-		@values.List(
-  @<div class="bootstrapitem">
-   	@@@item<br /><input ng-model="data.@(item).value " bootstrapelem="data.@item" />
-   </div>
-
-						)
-
-			 	@*		<h3 ng-click="toggle('@id')">@name</h3>
+	<h3 ng-click="toggle('@id')">@name</h3>
 	<div ng-show="toggleValue('@id')" ng-hide="!toggleValue('@id')" class="aaa"  >
 		@values.List(
+		  @<div class="bootstrapitem" style="display: inline-block">
+		   	<span title="{{data.@(item).value}}">@@@item
+				<input ng-model="data.@(item).value " bootstrapelem="data.@item" ng-class="data.@(item).type" />
+			</span>
 
-
-  @<text>
-		<div style="display: inline-block">
-			@@@item<br />
-			@{
-				if (item["type"].ToString() == "color")
-				{
-				<input ng-model="data.@item["value"]" bootstrapelem />
-				}
-			}
-		</div>
-		</text>
-		)
+		   	<span ng-show="data.@(item).type == 'color' ">color picker</span><bR />
+				
+		   </div>
+	)
 	</div>
-*@	
 	</text>;
 	 	
 }
 <style>
+	.color {
+		width: 20px;
+		border: 1px solid red;
+	}
 	.xxx
 	{
 		position: fixed;
@@ -95,30 +86,14 @@
 		<br />
 		<br />
 		<div class="xxx">
-			@{
-				JObject m = Model;
-			}
+						<div ng-repeat="item in colorsrefonly">
+				{{item.key}} {{item}}.......
+			</div>
 
 			<button ng-click="refresh()" class="btn primary">refresh</button>
-
-			@*<div ng-repeat="item in data.scaffolding">
-				{{item.name}}
-				<h3 ng-show="item.type== 'group'">{{item.name}}</h3>
-				<input ng-model="item.value" bootstrapelem/>
-			</div>
-			<div ng-repeat="item in data.tables">
-				{{item}}
-				<input ng-model="item.value" bootstrapelem/>
-			</div>
 			
-			*@
-			xxx<div ng-repeat="item in colorsrefonly">
-				{{item.key}}
-				{{item}}.......
-			</div>
-
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
-			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
+			@VariablesGroup("Grays", "grs", new[] { "black", "grayDarker", "grayDark", "gray", "grayLight", "grayLighter", "white" })
 			@*
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
 			@VariablesGroup("Links", "lnkss", new[] { "linkColor", "linkColorHover" })
@@ -135,9 +110,7 @@
 			@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground", "heroUnitHeadingColor", "heroUnitLeadColor" })
 			@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
 			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
-			*@ 
-			
-			@*		<div class="span3">
+			*@ @*		<div class="span3">
 			@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor" })
 			@VariablesGroup("Grays", "grs", new[] { "black","grayDarker","grayDark","gray","grayLight","grayLighter","white"})
 			@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
@@ -169,9 +142,9 @@
 			@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
 		</div>
 *@
-			<button ng-click="refresh()">
-				refresh</button>
+			<button ng-click="refresh()">refresh</button>
 		</div>
+
 	</div>
 	<div ng-view>
 	</div>

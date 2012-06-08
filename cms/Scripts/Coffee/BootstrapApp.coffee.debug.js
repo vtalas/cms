@@ -69,21 +69,23 @@
       link: function(scope, el, tAttrs, controller) {
         var all;
         all = scope.$parent.data;
-        scope.$watch('bootstrapelem().value', function() {
+        return scope.$watch('bootstrapelem().value', function() {
           var a, ccc, r;
           a = scope.bootstrapelem();
-          if (a.type === "color" && a.value[0] !== "@") {
-            el.css("background", a.value);
-          }
-          ccc = $filter("typevalue")(all, "color");
-          if (a.type === "color" && a.value[0] === "@") {
-            r = ccc[a.value.substr(1)];
-            if (r) {
-              return el.css("background", r);
+          if (a.type === "color") {
+            el.width("30px");
+            if (a.value[0] !== "@") {
+              el.css("background", a.value);
+            }
+            ccc = $filter("typevalue")(all, "color");
+            if (a.value[0] === "@") {
+              r = ccc[a.value.substr(1)];
+              if (r) {
+                return el.css("background", r);
+              }
             }
           }
         });
-        return 1;
       }
     };
     return directiveDefinitionObject;

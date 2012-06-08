@@ -59,17 +59,19 @@ module.directive "bootstrapelem", (datajson,colorsrefonly,colorsonly,$filter) ->
       scope.$watch('bootstrapelem().value', ()->
         a = scope.bootstrapelem()
 
-        if a.type == "color" && a.value[0] != "@"
-          el.css "background", a.value
+        if a.type == "color"
+          el.width "30px"
+          if a.value[0] != "@"
+            el.css "background", a.value
 
-        ccc =  $filter("typevalue")(all, "color")
-#        console.log ccc
-        if a.type == "color" && a.value[0] == "@"
-          r = ccc[a.value.substr(1)]
-          el.css "background", r if r
+          ccc =  $filter("typevalue")(all, "color")
+          if a.value[0] == "@"
+            r = ccc[a.value.substr(1)]
+            el.css "background", r if r
+
+
 
       )
-      1
 
   directiveDefinitionObject
 

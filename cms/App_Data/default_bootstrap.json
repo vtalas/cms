@@ -18,7 +18,7 @@
   "bodyBackground":{"type":"color", "value":"@black"},
   "textColor":{"type":"color", "value":"@grayDark"},
   "linkColor":{"type":"color", "value":"#08c"},
-  "linkColorHover":{"type":"color", "value":"darken(@linkColor, 15%)"}
+  "linkColorHover":{"type":"grad", "value":"darken(@linkColor, 15%)"}
   
   
  }
