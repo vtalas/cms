@@ -41,13 +41,10 @@ module.config  ($routeProvider, $provide,$filterProvider) ->
   $routeProvider.when("/csstest",
     controller: aaaController
     template: "/Content/csstest.html"
-  ).when("/aaa",
-    controller: aaaController
-    template: "/Content/aaa.html"
   ).when("/bootswatch",
     controller: aaaController
     template: "/Content/bootswatch.html"
-  ).otherwise redirectTo: '/aaa'
+  ).otherwise redirectTo: '/csstes'
 
 module.directive "bootstrapelem", (datajson,colorsrefonly,colorsonly,$filter) ->
 

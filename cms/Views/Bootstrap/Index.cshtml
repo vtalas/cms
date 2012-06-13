@@ -35,24 +35,24 @@
 @helper VariablesGroup(string name, string id, string[] values)
 	{
 	<text>
-		<div style="float: left"> 
-			<h3>@name</h3>
-			@{
-				const int count = 5;
-				int len = values.Length / count;
-				if (values.Length % count > 0) { len++; }
-			}
-			@for (int i = 0; i < len; i++)
-			{
-				<table style="float: left">
-					@values.List(i, count, @<text>@xxx(item)</text>)
-				</table>
-			}
-		</div>
+	<div style="float: left">
+		<h3>@name</h3>
+		@{
+			const int count = 5;
+			int len = values.Length / count;
+			if (values.Length % count > 0) { len++; }
+		}
+		@for (int i = 0; i < len; i++)
+  {
+			<table style="float: left">
+				@values.List(i, count, @<text>@xxx(item)</text>)
+			</table>
+  }
+	</div>
 	</text>;
 	 	
 }
-@helper accordion(string name, string id, Func< dynamic, HelperResult> action)
+@helper accordion(string name, string id, Func<dynamic, HelperResult> action)
 	{
 	<div class="accordion-group">
 		<div class="accordion-heading">
@@ -65,7 +65,6 @@
 		</div>
 	</div>
 }
-
 <style>
 	.accordion-group
 	{
@@ -78,9 +77,14 @@
 		width: 20px;
 		border: 1px solid red;
 	}
+	#accordion2 {
+		position: relative;
+		width: 100%;
+	}
 	.xxx
 	{
-		position: absolute;
+		position: fixed;
+		top: 40px;
 		width: 100px;
 	}
 	.aaa
@@ -103,6 +107,7 @@
 				<div class="container">
 					<a class="brand" href="/Bootstrap">Bootstrap</a>
 					<ul class="nav">
+						<li><a ng-click="refresh()">refresh</a> </li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Templates
 							<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -126,53 +131,46 @@
 		<br />
 		<br />
 		<br />
-		<div class="xxx">
-			@*			<div ng-repeat="item in colorsrefonly">
+		@*			<div ng-repeat="item in colorsrefonly">
 				{{item.key}} {{item}}.......
 			</div>
   <input type="text" class="colorPicker" value="#5bc0de"/>
-*@
   <input type="text" class="ccc" value="#5BC0de"/>
 			{{data.bodyBackground.value}}
 			<input ng-model="data.bodyBackground.value" class="cccc" />
-
-			<button ng-click="refresh()" class="btn primary">
-				refresh</button>
+*@
+		<div class="xxx">
 			<div class="accordion" id="accordion2">
-				
 				@accordion("Colors", "vv", @<text>
-					@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor", "linkColor", "linkColorHover" })
-					@VariablesGroup("Grays", "grs", new[] { "black", "grayDarker", "grayDark", "gray", "grayLight", "grayLighter", "white" })
-					@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
+				@VariablesGroup("Scaffolding", "scf", new[] { "bodyBackground", "textColor", "linkColor", "linkColorHover" })
+				@VariablesGroup("Grays", "grs", new[] { "black", "grayDarker", "grayDark", "gray", "grayLight", "grayLighter", "white" })
+				@VariablesGroup("Accent colors", "acol", new[] { "blue", "blueDark", "green", "red", "yellow", "orange", "pink", "purple" })
 				</text>)
 				@accordion("Fonts", "tt", @<text>
-					@VariablesGroup("Typography", "tpgr", new[] { "sansFontFamily", "serifFontFamily", "monoFontFamily", "baseFontSize", "baseFontFamily", "baseLineHeight", "altFontFamily", "headingsFontFamily", "headingsFontWeight", "headingsColor", })
+				@VariablesGroup("Typography", "tpgr", new[] { "sansFontFamily", "serifFontFamily", "monoFontFamily", "baseFontSize", "baseFontFamily", "baseLineHeight", "altFontFamily", "headingsFontFamily", "headingsFontWeight", "headingsColor", })
 				</text>)
 				@accordion("Navigation", "nn", @<text>
-					@VariablesGroup("Navbar", "navb", new[] { "navbarHeight", "navbarBackground", "navbarBackgroundHighlight", "navbarText", "navbarLinkColor", "navbarLinkColorHover", "navbarLinkColorActive", "navbarLinkBackgroundHover", "navbarLinkBackgroundActive", "navbarSearchBackground", "navbarSearchBackgroundFocus", "navbarSearchBorder", "navbarSearchPlaceholderColor", "navbarBrandColor" })
+				@VariablesGroup("Navbar", "navb", new[] { "navbarHeight", "navbarBackground", "navbarBackgroundHighlight", "navbarText", "navbarLinkColor", "navbarLinkColorHover", "navbarLinkColorActive", "navbarLinkBackgroundHover", "navbarLinkBackgroundActive", "navbarSearchBackground", "navbarSearchBackgroundFocus", "navbarSearchBorder", "navbarSearchPlaceholderColor", "navbarBrandColor" })
 				</text>)
 				@accordion("Buttons etc", "bbt", @<text>
-					@VariablesGroup("Buttons", "btn", new[] { "btnBackground", "btnBackgroundHighlight", "btnBorder", "btnPrimaryBackground", "btnPrimaryBackgroundHighlight", "btnInfoBackground", "btnInfoBackgroundHighlight", "btnSuccessBackground", "btnSuccessBackgroundHighlight", "btnWarningBackground", "btnWarningBackgroundHighlight", "btnDangerBackground", "btnDangerBackgroundHighlight", "btnInverseBackground", "btnInverseBackgroundHighlight" })
-					@VariablesGroup("Dropdowns", "ldrp", new[] { "dropdownBackground", "dropdownBorder", "dropdownLinkColor", "dropdownLinkColorHover", "dropdownLinkBackgroundHover" })
-					@VariablesGroup("Tables", "hagscdgh", new[] { "tableBackground", "tableBackgroundAccent", "tableBackgroundHover", "tableBorder" })
+				@VariablesGroup("Buttons", "btn", new[] { "btnBackground", "btnBackgroundHighlight", "btnBorder", "btnPrimaryBackground", "btnPrimaryBackgroundHighlight", "btnInfoBackground", "btnInfoBackgroundHighlight", "btnSuccessBackground", "btnSuccessBackgroundHighlight", "btnWarningBackground", "btnWarningBackgroundHighlight", "btnDangerBackground", "btnDangerBackgroundHighlight", "btnInverseBackground", "btnInverseBackgroundHighlight" })
+				@VariablesGroup("Dropdowns", "ldrp", new[] { "dropdownBackground", "dropdownBorder", "dropdownLinkColor", "dropdownLinkColorHover", "dropdownLinkBackgroundHover" })
+				@VariablesGroup("Tables", "hagscdgh", new[] { "tableBackground", "tableBackgroundAccent", "tableBackgroundHover", "tableBorder" })
 				</text>)
 				@accordion("Forms, inputs", "ffi", @<text>
-					@VariablesGroup("Form states and alerts", "fa", new[] { "warningText", "warningBackground", "warningBorder", "errorText", "errorBackground", "errorBorder", "successText", "successBackground", "successBorder", "infoText", "infoBackground", "infoBorder" })
-					@VariablesGroup("Forms", "frm", new[] { "inputBackground", "inputBorder", "inputBorderRadius", "inputDisabledBackground", "formActionsBackground" })
-					@VariablesGroup("Placeholder color", "plcc", new[] { "placeholderText", "hrBorder" })
+				@VariablesGroup("Form states and alerts", "fa", new[] { "warningText", "warningBackground", "warningBorder", "errorText", "errorBackground", "errorBorder", "successText", "successBackground", "successBorder", "infoText", "infoBackground", "infoBorder" })
+				@VariablesGroup("Forms", "frm", new[] { "inputBackground", "inputBorder", "inputBorderRadius", "inputDisabledBackground", "formActionsBackground" })
+				@VariablesGroup("Placeholder color", "plcc", new[] { "placeholderText", "hrBorder" })
 				</text>)
 				@accordion("Grid", "gg", @<text>
-					@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground", "heroUnitHeadingColor", "heroUnitLeadColor" })
-					@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
-					@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
+				@VariablesGroup("Hero unit", "hrh", new[] { "heroUnitBackground", "heroUnitHeadingColor", "heroUnitLeadColor" })
+				@VariablesGroup("Grid 940px", "grd99", new[] { "gridColumns", "gridColumnWidth", "gridGutterWidth", "gridRowWidth" })
+				@VariablesGroup("Fluid grid", "fga", new[] { "fluidGridColumnWidth", "fluidGridGutterWidth" })
 				</text>)
 				@accordion("Icons", "gg", @<text>
-					@VariablesGroup("Sprites", "lnks", new[] { "iconSpritePath", "iconWhiteSpritePath" })
+				@VariablesGroup("Sprites", "lnks", new[] { "iconSpritePath", "iconWhiteSpritePath" })
 				</text>)
-
 			</div>
-			<button ng-click="refresh()">
-				refresh</button>
 		</div>
 	</div>
 	<div ng-view>
@@ -182,26 +180,28 @@
 				function () {
 					$('#accordion2').on('shown', function (e) {
 						$(e.target).closest(".accordion-body").css("overflow", "visible");
+						var grp = $(e.target).closest(".accordion-group");
+
+						var grpTop = grp.position().top;
+
+						$(this).stop(true, true).animate({ top:  -grpTop }, 500);
+
+						//css("top", p - grpTop);
+						console.log(p, -grpTop);
+
 					});
 					$('#accordion2').on('show', function (e) {
+
 						$(e.target).closest(".accordion-group").css("width", "1060px");
 					});
 					$('#accordion2').on('hide', function (e) {
 						$(e.target).closest(".accordion-group").width("100px");
 						$(e.target).closest(".accordion-body").css("overflow", "hidden");
+						$(this).animate({ top: 0 }, 500);
+					});
+					$('#accordion2').on('hidden', function (e) {
 					});
 
-//					$(".cccc").click(function (e) {
-//						console.log("kajsbdjksabd", this);
-//						$(this).val("#fff");
-//						//colorPicker(e);
-//					});
-					$(".ccc").click(function (e) {
-						colorPicker(e);
-						colorPicker.exportColor = function (a) {
-							var v = colorPicker.CP.valPrefix + colorPicker.CP.hex;
-						};
-					});
 
 				})
 	</script>

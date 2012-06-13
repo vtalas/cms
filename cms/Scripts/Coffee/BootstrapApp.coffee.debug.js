@@ -50,14 +50,11 @@
     return $routeProvider.when("/csstest", {
       controller: aaaController,
       template: "/Content/csstest.html"
-    }).when("/aaa", {
-      controller: aaaController,
-      template: "/Content/aaa.html"
     }).when("/bootswatch", {
       controller: aaaController,
       template: "/Content/bootswatch.html"
     }).otherwise({
-      redirectTo: '/aaa'
+      redirectTo: '/csstes'
     });
   });
   module.directive("bootstrapelem", function(datajson, colorsrefonly, colorsonly, $filter) {

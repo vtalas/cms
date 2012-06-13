@@ -10,7 +10,6 @@ bootstrap = ($scope, $http, $element,colorsonly) ->
   $scope.colorsrefonly = colorsonly
   console.log colorsonly,"xxx",$scope
 
-  #console.log $scope.data
 
   $scope.aaa = ($event,item)->
     colorPicker($event)
