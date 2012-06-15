@@ -11,11 +11,13 @@ bootstrap = ($scope, $http, $element,colorsonly) ->
   console.log colorsonly,"xxx",$scope
 
 
+  $scope.test= ($event,item)->
+    console.log(item, "asdasdvbh")
+
   $scope.aaa = ($event,item)->
     colorPicker($event)
     colorPicker.exportColor = ->
       item.value = "#"+colorPicker.CP.hex
-      $scope.$apply()
 
 
   $scope.hider = []

@@ -25,9 +25,8 @@
 		<td>
 			@@@item
 		</td>
-		<td title="{{data.@(item).value}}" ng-dblclick="aaa($event, data.@(item))">
-			<input ng-model="data.@(item).value " bootstrapelem="data.@item"  />
-			@*<input ng-show="data.@(item).type == 'color' " class="colorPicker"  ng-model="data.@(item).value" bootstrapelem="data.@item" />*@
+		<td title="{{data.@(item).value}}" ng-dblclick="aaa($event, data.@(item))" >
+			<input ng-model="data.@(item).value " bootstrapelem="data.@item"  ng-change="test($event)" />
 			&nbsp;&nbsp;&nbsp;
 		</td>
 	</tr>
@@ -154,7 +153,7 @@
 				</text>)
 				@accordion("Buttons etc", "bbt", @<text>
 				@VariablesGroup("Buttons", "btn", new[] { "btnBackground", "btnBackgroundHighlight", "btnBorder", "btnPrimaryBackground", "btnPrimaryBackgroundHighlight", "btnInfoBackground", "btnInfoBackgroundHighlight", "btnSuccessBackground", "btnSuccessBackgroundHighlight", "btnWarningBackground", "btnWarningBackgroundHighlight", "btnDangerBackground", "btnDangerBackgroundHighlight", "btnInverseBackground", "btnInverseBackgroundHighlight" })
-				@VariablesGroup("Dropdowns", "ldrp", new[] { "dropdownBackground", "dropdownBorder", "dropdownLinkColor", "dropdownLinkColorHover", "dropdownLinkBackgroundHover" })
+				@VariablesGroup("Dropdowns", "ldrp", new[] { "dropdownBackground", "dropdownBorder", "dropdownLinkColor", "dropdownLinkColorHover", "dropdownLinkBackgroundHover", "dropdownDividerTop", "dropdownDividerBottom" })
 				@VariablesGroup("Tables", "hagscdgh", new[] { "tableBackground", "tableBackgroundAccent", "tableBackgroundHover", "tableBorder" })
 				</text>)
 				@accordion("Forms, inputs", "ffi", @<text>
