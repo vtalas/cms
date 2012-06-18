@@ -9,10 +9,11 @@ module = angular.module("bootstrapApp", [  ])
 module.config  ($routeProvider, $provide,$filterProvider) ->
   $filterProvider.register('nameType', ()->
     (data, type, name)->
-      x = {}
+      x = []
       #vyfiltruj to co je 'type' a zaroven nezacina na '@'
       for key,prop of data
-        x[key] = prop.value if prop.type is type && key.indexOf(name.substr(1)) isnt -1
+        #x[key] = prop.value if prop.type is type && key.indexOf(name.substr(1)) isnt -1
+        x.push("@"+key) if prop.type is type && key.indexOf(name.substr(1)) isnt -1
       x
   )
   $filterProvider.register('typevalue', ()->
@@ -43,44 +44,75 @@ module.config  ($routeProvider, $provide,$filterProvider) ->
 
   $routeProvider.when("/csstest",
     controller: aaaController
-    template: "/Content/csstest.html"
+    templateUrl : "/Content/csstest.html"
   ).when("/bootswatch",
     controller: aaaController
-    template: "/Content/bootswatch.html"
+    templateUrl : "/Content/bootswatch.html"
   ).otherwise redirectTo: '/csstest'
+
+menu = (element, options)->
+  e = element
+  template= '<ul class="typeahead dropdown-menu"><li>xxx</li></ul>'
+
+  obj = {}
+  obj.show = ()->
+    console.log("obj", e)
+
+  obj
+
 
 module.directive "bootstrapelem", (datajson,$filter) ->
 
   directiveDefinitionObject =
-    scope: {bootstrapelem: "accessor" }
+    #scope: {bootstrapelem: "=" }
     controller : ($scope, $element )->
       $scope.test = ($event)->
         all = $scope.$parent.data
-        a = $scope.bootstrapelem()
+        console.log($scope)
+        item = $scope.bootstrapelem
 
-        basiccolors=  $filter("nameType")(all, "basiccolor", a.value )
-        if a.value[0] is "@" && a.value.length is 1
-          console.log(basiccolors, "is aaa")
 
-        console.log(basiccolors,a.value.length, a.value[0])
-      1
+        basiccolors=$filter("nameType")(all, "basiccolor", item.value )
+
+
+        $($element).typeahead({
+                              source:basiccolors,
+                              updater: (val)->
+                                $scope.bootstrapelem.value = val
+                                console.log $scope.bootstrapelem, "aaa", val
+                              items:11
+                              });
+
+#        if item.value[0] is "@" && item.value.length is 1
+#          console.log(basiccolors, "is aaa")
+        1
+    require : '?ngModel',
     link: (scope, el, tAttrs, controller) ->
-      all = scope.$parent.data
-      scope.$watch('bootstrapelem().value', ()->
-        a = scope.bootstrapelem()
+      console.log(scope,controller)
+     # controller.$setViewValue(controller.$viewValue.value)
 
-        switch a.type
-          when "color","basiccolor"
-            el.width "80px"
-            if a.value[0] != "@"
-              el.css "background", a.value
-
-            if a.value[0] == "@"
-              colorsonly =  $filter("typevalue")(all, "color","basiccolor" )
-              r = colorsonly[a.value.substr(1)]
-              el.css "background", r if r
-
-      )
+      controller.$render = ()->
+        el.val(controller.$viewValue.value);
+        #el.val(ngModel.$viewValue || '');
+#      all = scope.$parent.data
+#
+#      scope.$watch(scope.bootstrapelem.value, ()->
+#        a = scope.bootstrapelem
+#        console.log(scope, "xxx")
+#        el.val(scope.bootstrapelem.value)
+#
+#        switch a.type
+#          when "color","basiccolor"
+#            el.width "80px"
+#            if a.value[0] != "@"
+#              el.css "background", a.value
+#
+#            if a.value[0] == "@"
+#              colorsonly =  $filter("typevalue")(all, "color","basiccolor" )
+#              r = colorsonly[a.value.substr(1)]
+#              el.css "background", r if r
+#
+#      )
 
   directiveDefinitionObject
 

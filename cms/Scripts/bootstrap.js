@@ -1791,7 +1791,7 @@
    * =========================== */
 
   $.fn.typeahead = function (option) {
-    return this.each(function () {
+      return this.each(function () {
       var $this = $(this)
         , data = $this.data('typeahead')
         , options = typeof option == 'object' && option

@@ -3,18 +3,17 @@
   @reference ../jquery-1.7.2.js
   @reference ../angular.js
   */
-  var aaaController, module;
+  var aaaController, menu, module;
   module = angular.module("bootstrapApp", []);
   module.config(function($routeProvider, $provide, $filterProvider) {
     $filterProvider.register('nameType', function() {
       return function(data, type, name) {
         var key, prop, x;
-        x = {};
-        console.log(name.substr(1));
+        x = [];
         for (key in data) {
           prop = data[key];
           if (prop.type === type && key.indexOf(name.substr(1)) !== -1) {
-            x[key] = prop.value;
+            x.push("@" + key);
           }
         }
         return x;
@@ -56,62 +55,53 @@
       a = $filter("typevalue")(datajson, "color");
       return a;
     });
-    $provide.factory("colorsrefonly", function($filter, datajson) {
-      var a;
-      a = $filter("refs")(datajson, "color");
-      return a;
-    });
     return $routeProvider.when("/csstest", {
       controller: aaaController,
-      template: "/Content/csstest.html"
+      templateUrl: "/Content/csstest.html"
     }).when("/bootswatch", {
       controller: aaaController,
-      template: "/Content/bootswatch.html"
+      templateUrl: "/Content/bootswatch.html"
     }).otherwise({
       redirectTo: '/csstest'
     });
   });
-  module.directive("bootstrapelem", function(datajson, colorsrefonly, colorsonly, $filter) {
+  menu = function(element, options) {
+    var e, obj, template;
+    e = element;
+    template = '<ul class="typeahead dropdown-menu"><li>xxx</li></ul>';
+    obj = {};
+    obj.show = function() {
+      return console.log("obj", e);
+    };
+    return obj;
+  };
+  module.directive("bootstrapelem", function(datajson, $filter) {
     var directiveDefinitionObject;
     directiveDefinitionObject = {
-      scope: {
-        bootstrapelem: "accessor"
-      },
-      controller: function($scope) {
-        $scope.test = function($event) {
-          var a, all, basiccolors;
+      controller: function($scope, $element) {
+        return $scope.test = function($event) {
+          var all, basiccolors, item;
           all = $scope.$parent.data;
-          a = $scope.bootstrapelem();
-          basiccolors = $filter("nameType")(all, "basiccolor", a.value);
-          if (a.value[0] === "@" && a.value.length === 1) {
-            console.log(basiccolors, "is aaa");
-          }
-          return console.log(basiccolors, a.value.length, a.value[0]);
+          console.log($scope);
+          item = $scope.bootstrapelem;
+          basiccolors = $filter("nameType")(all, "basiccolor", item.value);
+          $($element).typeahead({
+            source: basiccolors,
+            updater: function(val) {
+              $scope.bootstrapelem.value = val;
+              return console.log($scope.bootstrapelem, "aaa", val);
+            },
+            items: 11
+          });
+          return 1;
         };
-        return 1;
       },
+      require: '?ngModel',
       link: function(scope, el, tAttrs, controller) {
-        var all;
-        all = scope.$parent.data;
-        return scope.$watch('bootstrapelem().value', function() {
-          var a, r;
-          a = scope.bootstrapelem();
-          switch (a.type) {
-            case "color":
-            case "basiccolor":
-              el.width("80px");
-              if (a.value[0] !== "@") {
-                el.css("background", a.value);
-              }
-              if (a.value[0] === "@") {
-                colorsonly = $filter("typevalue")(all, "color", "basiccolor");
-                r = colorsonly[a.value.substr(1)];
-                if (r) {
-                  return el.css("background", r);
-                }
-              }
-          }
-        });
+        console.log(scope, controller);
+        return controller.$render = function() {
+          return el.val(controller.$viewValue.value);
+        };
       }
     };
     return directiveDefinitionObject;
