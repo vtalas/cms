@@ -1,5 +1,3 @@
-///<reference path="../angular.js"/>
-///<reference path="../angular-resource.js"/>
 var module = angular.module("gridsmodule", ['cmsapi']);
 
 module.config(['$routeProvider', '$provide', function ($routeProvider, $provide) {
@@ -13,7 +11,7 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 	});
 	$routeProvider
 		.when('/list', { controller: GridListController, template: 'template/list' })
-		.when('/gridpage/:Id', { controller: GridPageCtrl, template: 'template/gridpage' })
+		.when('/gridpage/:Id', { controller: GridPageCtrl, templateUrl: 'template/gridpage' })
 		.when('/gridpage/:Id/edit/:GridElementId', { controller: EditCtrl, template: 'template/edit' })
 		.when('/new', { controller: CreateCtrl, template: 'template/new' })
 		.otherwise({ redirectTo: '/list' });
@@ -41,11 +39,11 @@ module.directive("gridelement", ['$templateCache', '$compile', "GridApi", "appSe
 	};
 
 	var directiveDefinitionObject = {
-		scope: { data: "accessor", grid: "accessor" },
+		scope: { data: "=", grid: "=" },
 
 		link: function (scope, iElement, tAttrs, controller) {
-			scope.item = scope.data();
-			scope.grid = scope.grid();
+			scope.item = scope.data;
+			scope.grid = scope.grid;
 
 			var sablona = template(scope.item.Type);
 

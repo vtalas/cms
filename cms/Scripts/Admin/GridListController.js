@@ -1,9 +1,7 @@
 var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
 
 	$scope.data = GridApi.grids({ applicationId: appSettings.Id }, function (d) {
-
 	});
-
 
 	$scope.addclick = function () {
 		$scope.createNew = true;
@@ -14,7 +12,6 @@ var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridA
 
 
 	$scope.add = function () {
-
 		var newitem = $scope.newitem;
 
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/AddGrid', data: { data: newitem} })
