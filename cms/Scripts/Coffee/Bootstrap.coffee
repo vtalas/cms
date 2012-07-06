@@ -3,19 +3,22 @@
 @reference ../angular.js
 ###
 
-bootstrap = ($scope, $http, $element,colorsonly, $filter) ->
+xxx = ($scope) ->
+  $scope.data = {"aaa":"xxx"}
+
+1
+window.xxx = xxx
+
 
   $scope.data = $.parseJSON $element.data("model")
 
   $scope.colorsrefonly = colorsonly
-  console.log colorsonly,"xxx",$scope
 
-  $scope.ppp= ($event,name)->
+  $scope.showColorPicker = ($event,item)->
     all = $scope.data
     item = all[name]
     basiccolors=$filter("nameType")(all, "basiccolor", item.value )
     el = $event.currentTarget
-
     console.log(basiccolors, $(el).val())
     $(el).typeahead({
                   source:basiccolors,
@@ -25,14 +28,9 @@ bootstrap = ($scope, $http, $element,colorsonly, $filter) ->
                   items:11
                   });
     1
-
-  $scope.aaa = ($event,item)->
     colorPicker($event)
     colorPicker.exportColor = ->
       item.value = "#"+colorPicker.CP.hex
-
-
-  $scope.hider = []
 
   $scope.refresh = ->
     $http(
@@ -51,7 +49,6 @@ bootstrap = ($scope, $http, $element,colorsonly, $filter) ->
   $scope.toggle = (item)->
     $scope.hider[item] = !$scope.toggleValue(item);
     console.log $scope.hider, item
-
 
   1
 window.bootstrap = bootstrap
