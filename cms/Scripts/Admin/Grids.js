@@ -18,7 +18,8 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 }]);
 
 module.directive("gridelement", ['$templateCache', '$compile', "GridApi", "appSettings", function ($templateCache, $compile, GridApi, appSettings) {
-	function _newitem(line) {
+
+    function _newitem(line) {
 		var newitem = { Id: 0, Width: 12, Type: "text", Line: line, Edit: 0 };
 		return newitem;
 	}

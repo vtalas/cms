@@ -3,21 +3,23 @@
   @reference ../jquery-1.7.2.js
   @reference ../angular.js
   */
-  var bootstrap;
+  var bootstrap, xxx;
+  xxx = function($scope) {
+    return $scope.data = {
+      "aaa": "xxx"
+    };
+  };
+  1;
+  window.xxx = xxx;
   bootstrap = function($scope, $http, $element, colorsonly) {
     $scope.data = $.parseJSON($element.data("model"));
     $scope.colorsrefonly = colorsonly;
-    console.log(colorsonly, "xxx", $scope);
-    $scope.test = function($event, item) {
-      return console.log(item, "asdasdvbh");
-    };
-    $scope.aaa = function($event, item) {
+    $scope.showColorPicker = function($event, item) {
       colorPicker($event);
       return colorPicker.exportColor = function() {
         return item.value = "#" + colorPicker.CP.hex;
       };
     };
-    $scope.hider = [];
     $scope.refresh = function() {
       return $http({
         method: "POST",
