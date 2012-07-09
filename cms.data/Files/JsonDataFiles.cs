@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
-using cms.data.Models;
+using cms.data.Shared.Models;
 
 namespace cms.data.Files
 {

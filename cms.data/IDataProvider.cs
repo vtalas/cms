@@ -1,12 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using cms.data.EF;
-using cms.data.Models;
 
 namespace cms.data
 {
-	public interface IDataProvider
+	public interface IDataProvider : IDisposable
 	{
-		EfContext Contenxt { get; }
+		EfContext Context { get; }
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using cms.data.Models;
+using cms.data.Shared.Models;
 
 namespace cms.data.Dtos
 {

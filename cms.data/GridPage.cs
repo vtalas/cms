@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using cms.data.Models;
+using cms.data.Shared.Models;
 
 namespace cms.data
 {

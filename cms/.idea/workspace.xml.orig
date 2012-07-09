@@ -22,68 +22,86 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="bootstrap.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/bootstrap.less">
+      <file leaf-file-name="Bootstrap.coffee.debug.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Bootstrap.coffee.debug.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="20" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="variables.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/variables.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="147" column="46" selection-start="4129" selection-end="4129" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bootstrap.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="0" selection-start="64" selection-end="800" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mixins.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="589" column="18" selection-start="19019" selection-end="19019" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+      <file leaf-file-name="cmsapi.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
-            <state line="36" column="17" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0">
+            <state line="21" column="0" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0">
 =======
-            <state line="47" column="38" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.0">
->>>>>>> 4fd2a9af9bd99e4a5b853532ed196ce36596a294
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="14" column="32" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0">
+>>>>>>> ?
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
 <<<<<<< HEAD
-      <file leaf-file-name="applicationHost.config" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://C:/applicationHost.config">
+      <file leaf-file-name="GridPageCtrl.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/GridPageCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="345" column="43" selection-start="21733" selection-end="21733" vertical-scroll-proportion="0.5087266">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
 =======
       <file leaf-file-name="BootstrapApp.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="32" selection-start="279" selection-end="279" vertical-scroll-proportion="0.221843">
->>>>>>> 4fd2a9af9bd99e4a5b853532ed196ce36596a294
+            <state line="62" column="97" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.31911263">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="angular.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/angular.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11676" column="0" selection-start="381171" selection-end="381200" vertical-scroll-proportion="0.0">
+>>>>>>> ?
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="Grids.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="62" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.46501273">
+=======
+      <file leaf-file-name="bootstrap.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/bootstrap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1776" column="25" selection-start="48986" selection-end="48986" vertical-scroll-proportion="0.0">
+>>>>>>> ?
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GridListController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/GridListController.js">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state line="4" column="0" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="angular.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/angular.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8276" column="7" selection-start="261609" selection-end="261609" vertical-scroll-proportion="0.0">
+=======
+            <state line="17" column="0" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+>>>>>>> ?
               <folding />
             </state>
           </provider>
@@ -99,10 +117,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Content/grid.css" />
-        <option value="$PROJECT_DIR$/Content/admin.scss" />
-        <option value="C:/DOWNLOADs/twitter-bootstrap-v2.0.3-6-ga85c8fe/twitter-bootstrap-a85c8fe/less/mixins.less" />
-        <option value="$PROJECT_DIR$/Content/less.less" />
         <option value="$PROJECT_DIR$/Content/bootstrap/less/variables.less" />
         <option value="$PROJECT_DIR$/Content/bootstrap/less/accordion.less" />
         <option value="$PROJECT_DIR$/App_Themes/bootstrap/less/bootstrap.less" />
@@ -113,12 +127,12 @@
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/bootstrap.less" />
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less" />
         <option value="$PROJECT_DIR$/Scripts/_GridElementScripts/novinka.coffee" />
+        <option value="$PROJECT_DIR$/Scripts/colorPicker_src.js" />
         <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
-<<<<<<< HEAD
-        <option value="C:/applicationHost.config" />
-=======
+        <option value="$PROJECT_DIR$/Views/Bootstrap/Index.cshtml" />
+        <option value="$PROJECT_DIR$/Scripts/bootstrap.js" />
         <option value="$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee" />
->>>>>>> 4fd2a9af9bd99e4a5b853532ed196ce36596a294
+        <option value="$PROJECT_DIR$/Scripts/Admin/GridListController.js" />
       </list>
     </option>
   </component>
@@ -154,11 +168,6 @@
             <id>XML</id>
           </State>
         </expanded-state>
-        <selected-state>
-          <State>
-            <id>CSS</id>
-          </State>
-        </selected-state>
       </profile-state>
     </entry>
   </component>
@@ -176,7 +185,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -187,6 +196,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
+<<<<<<< HEAD
     <panes>
       <pane id="ProjectPane">
         <subPane>
@@ -234,43 +244,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Coffee" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_GridElementScripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -287,12 +261,19 @@
         </subPane>
       </pane>
     </panes>
+=======
+    <panes />
+>>>>>>> ?
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< HEAD
+=======
+    <property name="options.lastSelected" value="preferences.updates" />
+>>>>>>> ?
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.CoffeeScript" />
+    <property name="options.lastSelected" value="preferences.fileTypes" />
     <property name="last_opened_file_path" value="C:" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -397,12 +378,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25093076" sideWeight="0.67142856" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24869695" sideWeight="0.67453414" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -412,7 +393,11 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32857144" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32546583" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32405892" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> ?
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -473,89 +458,131 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cms.web.csproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="17" selection-start="9929" selection-end="9929" vertical-scroll-proportion="0.43048897" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/grid.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="15" selection-start="539" selection-end="539" vertical-scroll-proportion="0.40246212" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/default_bootstrap.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="30" selection-start="376" selection-end="376" vertical-scroll-proportion="0.17160884" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/scaffolding.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="8" selection-start="418" selection-end="418" vertical-scroll-proportion="0.28977272" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/grid.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/layouts.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="1" selection-start="371" selection-end="371" vertical-scroll-proportion="0.25757575" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/_GridElementScripts/novinka.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="2" selection-start="412" selection-end="412" vertical-scroll-proportion="0.18233438" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/bootstrap.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="20" selection-start="560" selection-end="560" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/variables.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="147" column="46" selection-start="4129" selection-end="4129" vertical-scroll-proportion="0.0" />
+        <state line="147" column="46" selection-start="4129" selection-end="4129" vertical-scroll-proportion="0.31356466" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less">
+    <entry file="file://$PROJECT_DIR$/App_Data/bootstrap/less/bootstrap.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="589" column="18" selection-start="19019" selection-end="19019" vertical-scroll-proportion="0.0" />
+        <state line="15" column="20" selection-start="560" selection-end="560" vertical-scroll-proportion="0.16088328" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="38" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
+        <state line="91" column="6" selection-start="2625" selection-end="2625" vertical-scroll-proportion="0.36996806" />
+      </provider>
+    </entry>
+    <entry file="file://C:/DOWNLOADs/bootstrap-typeahead.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="280" column="16" selection-start="7024" selection-end="7024" vertical-scroll-proportion="0.8927445" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1805" column="53" selection-start="49706" selection-end="49706" vertical-scroll-proportion="0.72964376" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="24" selection-start="949" selection-end="949" vertical-scroll-proportion="0.010996119" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="0" selection-start="64" selection-end="800" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="27" column="31" selection-start="550" selection-end="550" vertical-scroll-proportion="0.2895899" />
+=======
+    <entry file="file://$PROJECT_DIR$/Scripts/colorPicker_src.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="494" column="34" selection-start="50673" selection-end="50673" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee.debug.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="44" selection-start="508" selection-end="508" vertical-scroll-proportion="0.5953608" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Bootstrap/Index.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="13" selection-start="725" selection-end="725" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="44" selection-start="433" selection-end="820" vertical-scroll-proportion="0.0" />
+>>>>>>> ?
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
-        <state line="36" column="17" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="487" column="31" selection-start="50515" selection-end="50515" vertical-scroll-proportion="0.36195928" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/EditCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
 =======
-        <state line="10" column="32" selection-start="279" selection-end="279" vertical-scroll-proportion="0.221843">
+        <state line="14" column="32" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11676" column="0" selection-start="381171" selection-end="381200" vertical-scroll-proportion="0.0" />
+>>>>>>> ?
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state line="8276" column="7" selection-start="261609" selection-end="261609" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Bootstrap.coffee.debug.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/GridListController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0">
           <folding />
->>>>>>> 4fd2a9af9bd99e4a5b853532ed196ce36596a294
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/applicationHost.config">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/GridPageCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="345" column="43" selection-start="21733" selection-end="21733" vertical-scroll-proportion="0.5087266">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+=======
+        <state line="1776" column="25" selection-start="48986" selection-end="48986" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0" />
+>>>>>>> ?
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state line="43" column="62" selection-start="1522" selection-end="1522" vertical-scroll-proportion="0.46501273">
+=======
+        <state line="62" column="97" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.31911263">
+>>>>>>> ?
           <folding />
         </state>
       </provider>

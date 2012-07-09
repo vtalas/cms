@@ -8,8 +8,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.data;
 using cms.data.Files;
-using cms.data.Models;
 using cms.data.Dtos;
+using cms.data.Shared.Models;
 
 namespace cms.Controllers
 {

@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Configuration;
+using System.IO;
 using NUnit.Framework;
+using cms.Code.Bootstraper;
 using cms.data.Files;
 using System.Linq;
+using cms.data.Migrations;
 
 namespace cms.data.tests
 {
@@ -18,7 +22,6 @@ namespace cms.data.tests
 		[Test]
 		public void Applications()
 		{
-
 			var list = db.Applications();
 
 			foreach (var item in list)
@@ -31,7 +34,15 @@ namespace cms.data.tests
 		}
 
 		[Test]
-		public void guidtest()
+		public void SettingsTest()
+		{
+			var x = ConfigurationManager.AppSettings.Get("DefaultJsonBootstrap");
+			Console.WriteLine(Path.GetFullPath(x));
+			Assert.IsTrue(File.Exists(x));
+		}
+
+		[Test]
+		public void Guidtest()
 		{
 			var a = "749acbca-8917-4ddf-9b43-0dbb6078d74c";
 			var x = "749acbca89174ddf9b430dbb6078d74c";

@@ -104,18 +104,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CassetteConfiguration.cs" />
-    <Compile Include="Code\Bootstraper\Lessaak.cs" />
+    <Compile Include="Code\Bootstraper\DataRepository\BootstrapDataRepositoryEfImpl.cs" />
+    <Compile Include="Code\Bootstraper\DataRepository\BootstrapDataRepositoryImpl.cs" />
+    <Compile Include="Code\Bootstraper\BootstrapGenerator.cs" />
+    <Compile Include="Code\Bootstraper\DataRepository\BootstrapDataRepositoryProvider.cs" />
+    <Compile Include="Code\Bootstraper\Less\Lessaak.cs" />
     <Compile Include="Code\Bootstraper\RazorExtensions.cs" />
-    <Compile Include="Code\Bootstraper\FileExts.cs" />
     <Compile Include="Code\Bootstraper\Less.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
     <Compile Include="Controllers\BootstrapController.cs" />
-    <Compile Include="Code\Bootstraper\BootstrapDataRepository.cs" />
+    <Compile Include="Code\Bootstraper\DataRepository\BootstrapDataRepository.cs" />
     <Compile Include="Controllers\JSONNetResult.cs" />
-    <Compile Include="Code\Bootstraper\ResponseLogger.cs" />
-    <Compile Include="Code\Bootstraper\ServerPathResolver.cs" />
+    <Compile Include="Code\Bootstraper\Less\ResponseLogger.cs" />
+    <Compile Include="Code\Bootstraper\Less\ServerPathResolver.cs" />
     <Compile Include="Controllers\SetupController.cs" />
-    <Compile Include="Code\Bootstraper\BootstraperData.cs" />
     <Compile Include="Models\TemplateSettings.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>

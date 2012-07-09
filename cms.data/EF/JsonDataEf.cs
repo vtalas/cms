@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using cms.data.Dtos;
-using cms.data.Models;
+using cms.data.Shared.Models;
 
 namespace cms.data.EF
 {

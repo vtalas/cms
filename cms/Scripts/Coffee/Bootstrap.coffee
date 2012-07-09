@@ -3,16 +3,28 @@
 @reference ../angular.js
 ###
 
-bootstrap = ($scope, $http, $element,colorsonly) ->
+bootstrap = ($scope, $http, $element,colorsonly, $filter) ->
 
   $scope.data = $.parseJSON $element.data("model")
 
   $scope.colorsrefonly = colorsonly
   console.log colorsonly,"xxx",$scope
 
+  $scope.ppp= ($event,name)->
+    all = $scope.data
+    item = all[name]
+    basiccolors=$filter("nameType")(all, "basiccolor", item.value )
+    el = $event.currentTarget
 
-  $scope.test= ($event,item)->
-    console.log(item, "asdasdvbh")
+    console.log(basiccolors, $(el).val())
+    $(el).typeahead({
+                  source:basiccolors,
+                  updater: (val)->
+                    $(el).val(val)
+                    $scope.data[name].value = val
+                  items:11
+                  });
+    1
 
   $scope.aaa = ($event,item)->
     colorPicker($event)

@@ -16,7 +16,7 @@ namespace cms.data.tests
 		[SetUp]
 		public void Setup()
 		{
-			D = new EfDataProvider( new DropAndCreate());
+			D = new SessionProvider( new DropAndCreate());
 		}
 
 	}

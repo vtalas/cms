@@ -1,12 +1,15 @@
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
-using cms.data.Models;
+using System.IO;
+using cms.Code.Bootstraper;
+using cms.data.EF.Bootstrap;
+using cms.data.Shared.Models;
 
 namespace cms.data.EF.Initializers
 {
 	public class DropAndCreate : IDatabaseInitializer<EfContext>
 	{
-
 		public void InitializeDatabase(EfContext context)
 		{
 			if (context.Database.Exists())
@@ -31,6 +34,8 @@ namespace cms.data.EF.Initializers
 
 	public class SampleData
 	{
+		//static readonly ILog Log = LogManager.GetLogger<SampleData>();
+
 		public SampleData(EfContext context)
 		{
 			Context = context;
@@ -77,6 +82,22 @@ namespace cms.data.EF.Initializers
 
 			Context.TemplateTypes.Add(new TemplateType {Name = "novinka"});
 			Context.TemplateTypes.Add(new TemplateType {Name = "text"});
+
+
+			string defualtjsondata = ConfigurationManager.AppSettings.Get("DefaultJsonBootstrap");
+			//TODO pridat log4net
+			//if (!File.Exists(defualtjsondata))
+			//{
+			//    Log.ErrorFormat("{0} not exist..", defualtjsondata);
+			//}
+
+			Context.Bootstrapgenerators.Add(new Bootstrapgenerator
+			{
+				Data = FileExts.GetContent(defualtjsondata),
+				Name = "default",
+				Status = Boostrapperstatus.Default
+			});
+
 
 			Context.SaveChanges();
 

@@ -7,7 +7,7 @@ using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.Initializers;
-using cms.data.Models;
+using cms.data.Shared.Models;
 
 namespace cms.data.tests.EF
 {
