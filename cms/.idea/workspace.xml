@@ -25,7 +25,7 @@
       <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="44" selection-start="433" selection-end="820" vertical-scroll-proportion="0.0">
+            <state line="16" column="44" selection-start="740" selection-end="740" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -40,10 +40,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BootstrapApp.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="BootstrapApp.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="97" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.31911263">
+            <state line="10" column="12" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -52,7 +52,7 @@
       <file leaf-file-name="angular.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/angular.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11676" column="0" selection-start="381171" selection-end="381200" vertical-scroll-proportion="0.0">
+            <state line="9178" column="2" selection-start="295347" selection-end="295347" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -70,7 +70,16 @@
       <file leaf-file-name="Bootstrap.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+            <state line="13" column="0" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jsTestDriver.conf" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/config/jsTestDriver.conf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="21" selection-start="285" selection-end="285" vertical-scroll-proportion="0.26109216">
               <folding />
             </state>
           </provider>
@@ -83,10 +92,23 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="node " />
+      <command text="coffee" />
+      <command text="coffee" />
+      <command text="node" />
+      <command text="dir" />
+      <command text="ls" />
+      <command text="C:\Users\ladik\AppData\Roaming\npm\coffee" />
+      <command text="C:\Users\ladik\AppData\Roaming\npm\coffee.cmd" />
+      <command text="compile.bat" />
+      <command text="compile.bat" />
+    </commandsHistory>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Content/less.less" />
         <option value="$PROJECT_DIR$/Content/bootstrap/less/variables.less" />
         <option value="$PROJECT_DIR$/Content/bootstrap/less/accordion.less" />
         <option value="$PROJECT_DIR$/App_Themes/bootstrap/less/bootstrap.less" />
@@ -98,10 +120,11 @@
         <option value="$PROJECT_DIR$/App_Data/bootstrap/less/mixins.less" />
         <option value="$PROJECT_DIR$/Scripts/_GridElementScripts/novinka.coffee" />
         <option value="$PROJECT_DIR$/Scripts/colorPicker_src.js" />
-        <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
         <option value="$PROJECT_DIR$/Views/Bootstrap/Index.cshtml" />
         <option value="$PROJECT_DIR$/Scripts/bootstrap.js" />
         <option value="$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee" />
+        <option value="$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee" />
+        <option value="$PROJECT_DIR$/tests/config/jsTestDriver.conf" />
       </list>
     </option>
   </component>
@@ -154,7 +177,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -165,17 +188,48 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.updates" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="last_opened_file_path" value="C:" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -185,18 +239,12 @@
       <recent name="C:\lades\WEB\cms\cms\Content" />
     </key>
   </component>
-  <component name="RunManager" selected="JsTestDriver.jsTestDriver.conf">
-    <configuration default="false" name="Gridapi tests" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver" temporary="true">
-      <setting name="configLocationType" value="TEST_CASE" />
-      <setting name="configType" value="GENERATED" />
-      <setting name="jsFile" value="$PROJECT_DIR$/tests/test/unit/cmsapiTests.js" />
-      <setting name="testCase" value="Gridapi tests" />
-      <setting name="serverType" value="INTERNAL" />
-      <RunnerSettings RunnerId="JsTestDriverClientRunner" />
-      <ConfigurationWrapper RunnerId="JsTestDriverClientRunner" />
+  <component name="RunManager" selected="Node JS.Unnamed">
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node JS" path-to-node="C:/Program Files (x86)/nodejs/node" working-dir="$PROJECT_DIR$" coffeescript-path="" coffeescript-run="true" coffeescript-params="">
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node JS" working-dir="$PROJECT_DIR$" coffeescript-run="false">
+    <configuration default="true" type="NodeJSRemoteDebug" factoryName="Node JS Remote Debug">
+      <node-js-remote-debug />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -204,6 +252,32 @@
       <setting name="settingsFile" value="C:\lades\Weby\cms\cms\tests\config\jsTestDriver.conf" />
       <setting name="serverType" value="EXTERNAL" />
       <setting name="serverAddress" value="http://localhost:9876" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeunitConfigurationType" factoryName="Nodeunit">
+      <setting name="nodePath" value="C:/Program Files (x86)/nodejs/node" />
+      <envs />
+      <setting name="passParentEnvVars" value="true" />
+      <setting name="nodeunitModuleDir" value="$USER_HOME$/AppData/Roaming/npm" />
+      <setting name="workingDirectory" value="$PROJECT_DIR$" />
+      <setting name="testType" value="DIRECTORY" />
+      <setting name="directory" value="Scripts/Coffee" />
+      <method />
+    </configuration>
+    <configuration default="true" type="XSLT" factoryName="XSLT">
+      <option name="myOutputFile" />
+      <option name="myOpenOutputFile" value="false" />
+      <option name="myOpenInBrowser" value="false" />
+      <option name="mySmartErrorHandling" value="true" />
+      <option name="myRunnerPort" value="34873" />
+      <option name="myVmArguments" />
+      <option name="myWorkingDirectory" />
+      <option name="myModule" />
+      <option name="myJdk" />
+      <parameters />
+      <OutputType value="CONSOLE" save-to-file="false" />
+      <FileType name="XML" />
+      <JdkChoice value="FROM_MODULE" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -222,9 +296,14 @@
       <ConfigurationWrapper RunnerId="JsTestDriverClientRunner" />
       <method />
     </configuration>
+    <configuration default="false" name="Unnamed" type="NodeJSConfigurationType" factoryName="Node JS" path-to-node="C:/Program Files (x86)/nodejs/node" working-dir="$PROJECT_DIR$" coffeescript-path="C:\Users\ladik\AppData\Roaming\npm\coffee.cmd" coffeescript-run="true" coffeescript-params="--compile Scripts\Coffee">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
     <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="JsTestDriver.Gridapi tests" />
-      <item index="1" class="java.lang.String" itemvalue="JsTestDriver.jsTestDriver.conf" />
+      <item index="0" class="java.lang.String" itemvalue="JsTestDriver.jsTestDriver.conf" />
+      <item index="1" class="java.lang.String" itemvalue="Node JS.Unnamed" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -243,6 +322,7 @@
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
     <configuration useDefault="false">C:\Users\v.talas\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
@@ -276,25 +356,26 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24869695" sideWeight="0.67453414" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24869695" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5063291" order="2" side_tool="true" content_ui="tabs" x="11" y="193" width="1343" height="342" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6497545" sideWeight="0.52122116" order="2" side_tool="true" content_ui="tabs" x="11" y="193" width="1343" height="342" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.46165302" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32405892" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32405892" sideWeight="0.47356665" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -394,7 +475,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="44" selection-start="433" selection-end="820" vertical-scroll-proportion="0.0" />
+        <state line="16" column="44" selection-start="740" selection-end="740" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
@@ -402,9 +483,14 @@
         <state line="14" column="32" selection-start="786" selection-end="786" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="12" selection-start="251" selection-end="251" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/angular.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11676" column="0" selection-start="381171" selection-end="381200" vertical-scroll-proportion="0.0" />
+        <state line="9178" column="2" selection-start="295347" selection-end="295347" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/bootstrap.js">
@@ -414,12 +500,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Coffee/Bootstrap.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0" />
+        <state line="13" column="0" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Coffee/BootstrapApp.coffee">
+    <entry file="file://$PROJECT_DIR$/tests/config/jsTestDriver.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="97" selection-start="1863" selection-end="1863" vertical-scroll-proportion="0.31911263">
+        <state line="9" column="21" selection-start="285" selection-end="285" vertical-scroll-proportion="0.26109216">
           <folding />
         </state>
       </provider>

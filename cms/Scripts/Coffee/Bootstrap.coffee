@@ -3,17 +3,15 @@
 @reference ../angular.js
 ###
 
-xxx = ($scope) ->
-  $scope.data = {"aaa":"xxx"}
+#xxx = ($scope) ->
+#  $scope.data = {"aaa":"xxx"}
+#1
+#window.xxx = xxx
 
-1
-window.xxx = xxx
-
+bootstrap = ($scope, $http, $element,colorsonly, $filter) ->
 
   $scope.data = $.parseJSON $element.data("model")
-
   $scope.colorsrefonly = colorsonly
-
   $scope.showColorPicker = ($event,item)->
     all = $scope.data
     item = all[name]

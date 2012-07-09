@@ -1,0 +1,1 @@
+coffee -cw -o ../coffeeCompiled ../../Scripts/Coffee

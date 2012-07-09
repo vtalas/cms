@@ -3,10 +3,9 @@
 @reference ../angular.js
 ###
 
-
 module = angular.module("bootstrapApp", [  ])
 
-module.config  ($routeProvider, $provide,$filterProvider) ->
+module.config ($routeProvider,$provide,$filterProvider) ->
   $filterProvider.register('nameType', ()->
     (data, type, name)->
       x = []
@@ -83,10 +82,6 @@ module.directive "bootstrapelem", (datajson,$filter) ->
               r = colorsonly[a.value.substr(1)]
               el.css "background", r if r
   directiveDefinitionObject
-
-
-
-#window.bootstrap = bootstrap
 
 aaaController = ($scope, $http) ->
   # Type here!
