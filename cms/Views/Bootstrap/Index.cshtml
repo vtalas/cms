@@ -1,5 +1,4 @@
-﻿@using Newtonsoft.Json.Linq
-@using SquishIt.Framework
+﻿@using SquishIt.Framework
 @using cms.Code.Bootstraper
 <!DOCTYPE html>
 <html ng-app="bootstrapApp" class=".main" data-modeldata="@Model">
@@ -18,7 +17,6 @@
 				.Render("bootstrap_index#.js")
 		)
 </head>
-@model Newtonsoft.Json.Linq.JObject
 @helper xxx(string item)
 	{
 	<tr>
@@ -102,7 +100,7 @@
 <body>
 	<div ng-controller="bootstrap" data-model="@Model">
 		<link href="@Url.Content("/bootstrap/UserBootstrap?{{refreshtoken}}")" rel="stylesheet" type="text/css" />
-		<!-- Navbar	================================================== -->
+
 		<div class="navbar navbar-fixed-top">
 			<div class="navbar-inner">
 				<div class="container">

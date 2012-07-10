@@ -5,11 +5,11 @@ describe('Bootstrap controllers', function () {
 
         beforeEach(function() {
             scope = {},
-            ctrl = new xxx(scope);
+            ctrl = new bootstrap(scope);
         });
 
-		it('co to ma delat', function () {
-            console.log(scope);
+		it('xxx', function () {
+            console.log(scope.colorsrefonly);
 		});
 	});
 
