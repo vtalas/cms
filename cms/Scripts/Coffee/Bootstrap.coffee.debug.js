@@ -10,7 +10,6 @@
     $scope.showColorPicker = function($event, item) {
       var all, basiccolors, el;
       all = $scope.data;
-      item = all[name];
       basiccolors = $filter("nameType")(all, "basiccolor", item.value);
       el = $event.currentTarget;
       console.log(basiccolors, $(el).val());

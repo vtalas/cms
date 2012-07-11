@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using NUnit.Framework;
-using Newtonsoft.Json.Linq;
 using cms.Code.Bootstraper.DataRepository;
 using cms.data.EF.Bootstrap;
 using cms.data.EF.Initializers;

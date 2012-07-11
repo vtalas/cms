@@ -14,7 +14,7 @@ bootstrap = ($scope, $http, $element,colorsonly, $filter) ->
   $scope.colorsrefonly = colorsonly
   $scope.showColorPicker = ($event,item)->
     all = $scope.data
-    item = all[name]
+    #item = all[name]
     basiccolors=$filter("nameType")(all, "basiccolor", item.value )
     el = $event.currentTarget
     console.log(basiccolors, $(el).val())
