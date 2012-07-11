@@ -2,7 +2,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace cms.Code.Bootstraper
+namespace cms.data.Shared
 {
 	public class FileExts
 	{

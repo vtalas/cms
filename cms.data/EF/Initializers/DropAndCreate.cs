@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.IO;
-using cms.Code.Bootstraper;
 using cms.data.EF.Bootstrap;
+using cms.data.Shared;
 using cms.data.Shared.Models;
 
 namespace cms.data.EF.Initializers

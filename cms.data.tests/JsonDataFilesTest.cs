@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.IO;
 using NUnit.Framework;
-using cms.Code.Bootstraper;
 using cms.data.Files;
 using System.Linq;
 using cms.data.Migrations;

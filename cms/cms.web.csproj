@@ -104,19 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CassetteConfiguration.cs" />
-    <Compile Include="Code\Bootstraper\DataRepository\BootstrapDataRepositoryEfImpl.cs" />
-    <Compile Include="Code\Bootstraper\DataRepository\BootstrapDataRepositoryImpl.cs" />
-    <Compile Include="Code\Bootstraper\BootstrapGenerator.cs" />
-    <Compile Include="Code\Bootstraper\DataRepository\BootstrapDataRepositoryProvider.cs" />
-    <Compile Include="Code\Bootstraper\Less\Lessaak.cs" />
-    <Compile Include="Code\Bootstraper\RazorExtensions.cs" />
-    <Compile Include="Code\Bootstraper\Less.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
-    <Compile Include="Controllers\BootstrapController.cs" />
-    <Compile Include="Code\Bootstraper\DataRepository\BootstrapDataRepository.cs" />
     <Compile Include="Controllers\JSONNetResult.cs" />
-    <Compile Include="Code\Bootstraper\Less\ResponseLogger.cs" />
-    <Compile Include="Code\Bootstraper\Less\ServerPathResolver.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Models\TemplateSettings.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
@@ -146,7 +135,6 @@
     <None Include="App_Data\default_bootstrap.json" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
-    <Content Include="Content\bootswatch.html" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
     </Content>
@@ -264,7 +252,6 @@
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
     <Content Include="Views\Bootstrap\Index.cshtml" />
-    <Content Include="Content\csstest.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
