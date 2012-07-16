@@ -8,8 +8,8 @@
   novinka = function($scope, $http, appSettings) {
     var converter, self, toHtml;
     novinka.$inject = ["$scope", "$http", "appSettings"];
-    $scope.data = $scope.$parent.item;
-    $scope.data.Content = angular.fromJson($scope.data.Content) || {
+    $scope.item = $scope.$parent.data;
+    $scope.data.Content = angular.fromJson($scope.item.Content) || {
       header: "",
       text: ""
     };
@@ -23,13 +23,13 @@
       }
     };
     $scope.headerHtml = function() {
-      return toHtml($scope.data.Content.header);
+      return toHtml($scope.item.Content.header);
     };
     $scope.textHtml = function() {
-      return toHtml($scope.data.Content.text);
+      return toHtml($scope.item.Content.text);
     };
     $scope.thumb = function() {
-      return $scope.data.thumb;
+      return $scope.item.thumb;
     };
     return $scope.add = function() {};
   };

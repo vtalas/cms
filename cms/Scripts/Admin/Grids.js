@@ -10,7 +10,7 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 		return settings;
 	});
 	$routeProvider
-		.when('/list', { controller: GridListController, template: 'template/list' })
+		.when('/list', { controller: GridListController, templateUrl: 'template/list' })
 		.when('/gridpage/:Id', { controller: GridPageCtrl, templateUrl: 'template/gridpage' })
 		.when('/gridpage/:Id/edit/:GridElementId', { controller: EditCtrl, template: 'template/edit' })
 		.when('/new', { controller: CreateCtrl, template: 'template/new' })
@@ -43,10 +43,8 @@ module.directive("gridelement", ['$templateCache', '$compile', "GridApi", "appSe
 		scope: { data: "=", grid: "=" },
 
 		link: function (scope, iElement, tAttrs, controller) {
-			scope.item = scope.data;
-			scope.grid = scope.grid;
 
-			var sablona = template(scope.item.Type);
+			var sablona = template(scope.data.Type);
 
 			var compiled = $compile(sablona)(scope);
 			iElement.html(compiled);

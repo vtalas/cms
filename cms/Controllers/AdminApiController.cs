@@ -70,9 +70,9 @@ namespace cms.Controllers
 			var g = db.Grids();
 			return new JSONNetResult(g);
 		}
-		public ActionResult GetGrid(int id)
+		public ActionResult GetGrid(int? id)
         {
-			var g = db.GetGridPage(id);
+			var g = db.GetGridPage(id.Value);
 			return new JSONNetResult(g);
 		}
 

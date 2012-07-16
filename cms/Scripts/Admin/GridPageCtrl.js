@@ -10,7 +10,10 @@ var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi",
     var params = {
         applicationId : appSettings.Id,
         id:$routeParams.Id
-    };
+       };
+	
+	
+
     GridApi.getGrid(params, function (data) {
         $scope.data = data;
         var newitem = _newitem($scope.data.Lines.length);

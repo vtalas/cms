@@ -1,9 +1,4 @@
 ﻿
-
-<link href="/Content/{{css}}.css" rel="stylesheet" type="text/css" />
-<input type="text" ng-model="css"/>
-{{css}}
-
 <table>
 	<tr ng-repeat="grid in data">
 		<td>
@@ -24,10 +19,7 @@
 	</tr>
 </table>
 
-
-
 <button ng-click="addclick()" >Přidat</button>
-
 
 <div ng-show="createNew" ng-hide="!createNew" >
 	<h2>new</h2>

@@ -7,8 +7,12 @@
 novinka = ($scope, $http, appSettings) ->
   novinka.$inject = [ "$scope", "$http", "appSettings" ]
 
-  $scope.data = $scope.$parent.item
-  $scope.data.Content = angular.fromJson($scope.data.Content) or { header: "",  text: ""}
+
+  $scope.item = $scope.$parent.data
+
+#  console.log($scope.data)
+
+  $scope.data.Content = angular.fromJson($scope.item.Content) or { header: "",  text: ""}
 
   converter = new Showdown.converter()
   self = this
@@ -18,13 +22,13 @@ novinka = ($scope, $http, appSettings) ->
     converter.makeHtml markdown if markdown
 
   $scope.headerHtml = ->
-    toHtml $scope.data.Content.header
+    toHtml $scope.item.Content.header
 
   $scope.textHtml = ->
-    toHtml $scope.data.Content.text
+    toHtml $scope.item.Content.text
 
   $scope.thumb = ->
-    $scope.data.thumb
+    $scope.item.thumb
 
   $scope.add = ->
 
