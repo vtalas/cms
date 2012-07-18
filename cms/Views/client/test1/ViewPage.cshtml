@@ -1,15 +1,41 @@
-﻿@using cms.ServiceReference1
-@{
+﻿@{
 	ViewBag.Title = "index";
 	Layout = "_Layout.cshtml";
 }
 
 
+
+@model cms.data.Dtos.GridPageDto
+
+
+SERVER RENDER  <br />
+------------------------------------------<br />
+
+@Model.Name
+@foreach (var line in Model.Lines)
+{
+	foreach (var item in line)
+	{
+		<div>
+			@item.Content 
+		</div>
+	}
+}
+
+AJAX RENDER  <br />
+------------------------------------------<br />
 <h2>client test1 index</h2>
 <a href="/clientapi/test1/ContentElement" class="test" >XXXX</a>
 <a href="/service/client.svc/echo" class="testx" >http://localhost:62364/service/client.svc/Echo</a><br />
 <a href="/service/client.svc/GetGridpage" class="testxx" >gridpage </a><br />
-<a href="/service/client.svc/GetGridpageJson?Application=test1&Link=aaa&callback=xxxx" class="json" >gridpageJson </a>
+
+
+service pripravena, zakomentovana - zatim neni potreba 
+<a href="/service/client.svc/GetGridpageJson?ApplicationName=test1&Link=linkTestPage&callback=xxxx" class="json" >gridpageJson JSONP client.svc</a>
+
+
+<br />
+<a href="http://localhost:62728/client/json/7683508e-0941-4561-b9a3-c7df85791d23/linkTestPage?callback=xxx" class="json" >gridpageJson JSONP</a>
 
 <script>
 	$(document).ready(function () {
@@ -58,26 +84,32 @@
 			}
 			);
 		});
-
+		function xxx() {
+			
+		}
 		$(".json").click(function (e) {
 			e.preventDefault();
-			var rq = { ApplicationName: "test1", Link: "aaa" };
+			//var rq = { ApplicationName: "test1", Link: "aaa" };
 
 			var send = $.ajax({
+				//crossDomain: true,
 				type: "GET",
 				url: $(this).attr("href"),
 				dataType: "jsonp",
-				//contentType: "application/json; charset=utf-8",
-				data: JSON.stringify({ rq: rq })
+				contentType: "application/json; charset=utf-8"
+				//data: JSON.stringify({ rq: rq })
 			}
 			);
 
-			send.done(function(data) {
+			send.done(function (data) {
 				console.log("oka", data);
 			})
-				.fail(function(data) {
-					console.log(data.responseText);
-				});
+			.fail(function (data) {
+				data.then(function (xx) {
+					console.log(xx)
+				})
+				console.log("fails", data,data.responseText);
+			});
 		});
 	})
 </script>

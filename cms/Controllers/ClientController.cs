@@ -4,13 +4,10 @@ namespace cms.Controllers
 {
 	public class ClientController : ControllerBase
     {
-        public ActionResult Index()
-        {
-			return View(ViewPath("index"));
-        }
-        public ActionResult Service()
-        {
-			return View(ViewPath("index"));
+		public ActionResult ViewPage(string link)
+		{
+			var a = db.GetGridPage(link);
+			return View(ApplicationViewPath("ViewPage"), a);
         }
 
     }

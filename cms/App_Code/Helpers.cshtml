@@ -1,0 +1,14 @@
+﻿@using System.Web.Mvc
+@using SquishIt.Framework
+@using SquishIt.Framework.Css
+@using SquishIt.Framework.JavaScript
+
+
+@helper BundleJs(string renderto, Func<JavaScriptBundle, JavaScriptBundle> action)
+	{
+	@MvcHtmlString.Create(action(Bundle.JavaScript()).Render(renderto))
+}
+@helper BundleCss(string renderto, Func<CSSBundle, CSSBundle> action)
+	{
+	@MvcHtmlString.Create(action(Bundle.Css()).Render(renderto))
+}

@@ -8,5 +8,11 @@ namespace cms.Controllers
         {
 			return View();
         }
-    }
+	
+		public ActionResult ViewPageJson(string link)
+		{
+			var a = db.GetGridPage(link);
+			return new Code.JSONNetResult(a);
+		}
+	}
 }

@@ -70,13 +70,20 @@ namespace cms.data.EF
 			var a = Grids().Single(x => x.Id == id);
 			return a.ToGridPageDto();
 		}
+		
+		
+		//TODO: pokud nenanjde melo by o vracet homepage
 		public override GridPageDto GetGridPage(string link)
 		{
-			var a = Grids().SingleOrDefault(x => x.Link == link);
+			var a = Grids().FirstOrDefault(x => x.Link == link);
 			if (a == null)
 			{
 				throw new ObjectNotFoundException(string.Format("'{0}' not found", link));
 			}
+			//if (a.Count() > 1)
+			//{
+				
+			//}
 			return a.ToGridPageDto();
 		}
 		public override GridElement GetGridElement(int id)

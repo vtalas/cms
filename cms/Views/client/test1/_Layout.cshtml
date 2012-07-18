@@ -3,12 +3,10 @@
 
 	<head>
 		<title>@ViewBag.Title</title>
-		@{
-			Bundles.Reference("~/Scripts/jquery-1.7.2.js");
-			Bundles.Reference("~/Scripts/angular.js");
-		}
-	
-		@Bundles.RenderScripts()
+		@Helpers.BundleJs("test1#.js", x =>
+			x.Add("~/Scripts/jquery-1.7.2.js")
+			.Add("~/Scripts/angular.js")
+		)
 
 	</head>
 

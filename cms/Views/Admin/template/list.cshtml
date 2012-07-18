@@ -13,8 +13,12 @@
 		<td>
 			<button ng-hide="grid.Edit" ng-click="edit(grid)">Edit</button>
 			<button ng-show="grid.Edit" ng-click="save(grid)">Ok</button>
-		
 			<button ng-click="remove(grid)">Smazat</button>
+		</td>
+		<td>
+			<a href="/client/@ViewBag.Application/{{grid.Link}}">viewhtml</a> |
+			<a href="/client/json/@ViewBag.ApplicationId/{{grid.Link}}">viewJson</a> |
+			<a href="/service/client.svc/GetGridpageJson?ApplicationName=@ViewBag.Application&Link={{grid.Link}}&callback=xxxx">viewJson (client.cvc) jsonp</a> 
 		</td>
 	</tr>
 </table>

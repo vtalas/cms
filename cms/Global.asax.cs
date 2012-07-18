@@ -33,16 +33,26 @@ namespace cms
 				"adminapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "adminapi", action = "error", id = UrlParameter.Optional } // Parameter defaults
 			);
+			
+			
 			routes.MapRoute(
-				"client", // Route name
-				"client/{application}/{action}/{id}", // URL with parameters
-				new { controller = "Client", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+				"ViewPage", // Route name
+				"client/{application}/{link}", // URL with parameters
+				new { controller = "Client", action="ViewPage",link = UrlParameter.Optional } 
+			);
+			routes.MapRoute(
+				"clientApiJson", // Route name
+				"client/json/{applicationId}/{link}", // URL with parameters
+				new { controller = "ClientApi", action = "ViewPageJson", link = UrlParameter.Optional } // Parameter defaults
 			);
 			routes.MapRoute(
 				"clientApi", // Route name
 				"clientapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "ClientApi", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 			);
+			
+			
+			
 			routes.MapRoute(
 				"Default", // Route name
 				"{controller}/{action}/{id}", // URL with parameters

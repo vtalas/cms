@@ -9,7 +9,7 @@ namespace cms.Controllers
 	{
 		protected JsonDataProvider db { get; set; }
 
-		public string ViewPath(string view)
+		public string ApplicationViewPath(string view)
 		{
 			return string.Format("{0}/{1}", Application, view);
 		}

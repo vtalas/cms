@@ -103,9 +103,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CassetteConfiguration.cs" />
     <Compile Include="Controllers\ApiControllerBase.cs" />
-    <Compile Include="Controllers\JSONNetResult.cs" />
+    <Compile Include="Code\JSONNetResult.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Models\TemplateSettings.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
@@ -132,6 +131,7 @@
     <Compile Include="Service\JsonFault.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Helpers.cshtml" />
     <None Include="App_Data\default_bootstrap.json" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
@@ -142,10 +142,6 @@
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\Coffee\Bootstrap.coffee">
-      <Generator>CoffeeScriptGenerator</Generator>
-      <LastGenOutput>Bootstrap.js</LastGenOutput>
-    </Content>
     <None Include="Service References\ServiceReference1\Client1.wsdl" />
     <None Include="Service References\ServiceReference1\Client4.xsd">
       <SubType>Designer</SubType>
@@ -172,7 +168,6 @@
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\Coffee\BootstrapApp.coffee" />
     <Content Include="Scripts\colorPicker_src.js" />
     <Content Include="Scripts\_GridElementScripts\novinka.coffee" />
     <Content Include="Service\Client.svc" />
@@ -225,7 +220,6 @@
     </Content>
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\client\test1\Index.cshtml" />
     <Content Include="HtmlTemplates\test.htm" />
     <Content Include="Views\setup\index.cshtml" />
     <None Include="tests\config\jsTestDriver-scenario.conf" />
@@ -252,6 +246,7 @@
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
     <Content Include="Views\Bootstrap\Index.cshtml" />
+    <Content Include="Views\client\test1\ViewPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
