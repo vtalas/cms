@@ -1,23 +1,22 @@
 ﻿@model cms.Models.TemplateSettings
 
 <div ng-controller="@Model.Type">
-	<div ng-show="item.Id">
-		<button ng-click="edit(item)">edit</button>
-		<button ng-click="remove(item)">smazat</button>
+	<div ng-show="gridelement.Id">
+		<button ng-click="edit(gridelement)">edit</button>
+		<button ng-click="remove(gridelement)">smazat</button>
 		<b>@Model.Type</b>
 	</div>
-	<div ng-show="item.Id==0">
+	<div ng-show="gridelement.Id==0">
 		
-		<select ng-model="item.Type">
+		<select ng-model="gridelement.Type">
 			<option value="text">text</option>
 			<option value="novinka">novinka</option>
 		</select>
 		
-		<button ng-click="add(item)">Create</button>
-
+		<button ng-click="add(gridelement)">Create</button>
 	</div>
 	
-	<div ng-show="item.Edit" >
+	<div ng-show="gridelement.Edit" >
 		@Html.Partial(Model.TemplateEdit)
 	</div>
 	@Html.Partial(Model.TemplateView)

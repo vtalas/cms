@@ -5,16 +5,14 @@
   @reference ../angular.js
   */
   var novinka;
-  novinka = function($scope, $http, appSettings) {
-    var converter, self, toHtml;
-    novinka.$inject = ["$scope", "$http", "appSettings"];
-    $scope.item = $scope.$parent.data;
-    $scope.data.Content = angular.fromJson($scope.item.Content) || {
+  novinka = function($scope, $http) {
+    var converter, toHtml;
+    novinka.$inject = ["$scope", "$http"];
+    $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) || {
       header: "",
       text: ""
     };
     converter = new Showdown.converter();
-    self = this;
     toHtml = function(markdown) {
       var x;
       x = true;
@@ -23,15 +21,14 @@
       }
     };
     $scope.headerHtml = function() {
-      return toHtml($scope.item.Content.header);
+      return toHtml($scope.gridelement.Content.header);
     };
     $scope.textHtml = function() {
-      return toHtml($scope.item.Content.text);
+      return toHtml($scope.gridelement.Content.text);
     };
-    $scope.thumb = function() {
-      return $scope.item.thumb;
+    return $scope.thumb = function() {
+      return $scope.gridelement.thumb;
     };
-    return $scope.add = function() {};
   };
   window.novinka = novinka;
 }).call(this);

@@ -1,5 +1,4 @@
-﻿
-<table>
+﻿<table>
 	<tr ng-repeat="grid in data">
 		<td>
 			<a href="#/gridpage/{{grid.Id}}"> {{grid.Name}}</a> 
@@ -17,8 +16,7 @@
 		</td>
 		<td>
 			<a href="/client/@ViewBag.Application/{{grid.Link}}">viewhtml</a> |
-			<a href="/client/json/@ViewBag.ApplicationId/{{grid.Link}}">viewJson</a> |
-			<a href="/service/client.svc/GetGridpageJson?ApplicationName=@ViewBag.Application&Link={{grid.Link}}&callback=xxxx">viewJson (client.cvc) jsonp</a> 
+			<a href="/client/json/@ViewBag.ApplicationId/{{grid.Link}}">viewJson</a> 
 		</td>
 	</tr>
 </table>

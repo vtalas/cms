@@ -141,6 +141,8 @@
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
+    <Content Include="Scripts\Apps\defaults\_GridElementScripts\novinka.coffee.debug.js" />
+    <Content Include="Scripts\Apps\defaults\_GridElementScripts\text.coffee.debug.js" />
     <Content Include="Scripts\bootstrap.js" />
     <None Include="Service References\ServiceReference1\Client1.wsdl" />
     <None Include="Service References\ServiceReference1\Client4.xsd">
@@ -169,11 +171,9 @@
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\colorPicker_src.js" />
-    <Content Include="Scripts\_GridElementScripts\novinka.coffee" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\_GridElementScripts\text.js" />
     <Content Include="Scripts\Admin\Grids.js" />
     <Content Include="Scripts\Admin\Index.js" />
     <Content Include="Scripts\jquery-1.7.2.js" />
@@ -220,7 +220,6 @@
     </Content>
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="HtmlTemplates\test.htm" />
     <Content Include="Views\setup\index.cshtml" />
     <None Include="tests\config\jsTestDriver-scenario.conf" />
     <None Include="tests\config\jsTestDriver.conf" />
@@ -246,7 +245,7 @@
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
     <Content Include="Views\Bootstrap\Index.cshtml" />
-    <Content Include="Views\client\test1\ViewPage.cshtml" />
+    <Content Include="Views\client\test1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
@@ -256,9 +255,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\client\test1\testRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Index.cshtml" />
@@ -292,10 +288,10 @@
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include=".idea\" />
     <Folder Include="App_Data\userdata\" />
     <Folder Include="App_Themes\" />
-    <Folder Include="Scripts\_GridElementScripts\test1\" />
+    <Folder Include="Content\Apps\test1\" />
+    <Folder Include="Scripts\Apps\test1\_GridElementScripts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cms.data\cms.data.csproj">

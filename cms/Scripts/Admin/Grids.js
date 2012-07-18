@@ -79,10 +79,11 @@ module.directive("gridelement", ['$templateCache', '$compile', "GridApi", "appSe
     }
 
 	var directiveDefinitionObject = {
-		scope: { data: "=", grid: "=" },
+		scope: {  grid: "=", gridelement: "=" },
         controller:gridelementCtrl,
 		link: function (scope, iElement, tAttrs, controller) {
-			var sablona = template(scope.data.Type);
+			console.log(scope)
+            var sablona = template(scope.gridelement.Type);
 			var compiled = $compile(sablona)(scope);
 			iElement.html(compiled);
 		}

@@ -3,27 +3,23 @@
 <html>	
 	<head>
 		<title>@ViewBag.Title</title>
-		@Html.Raw(
-			Bundle.Css()
-				.Add("~/Content/grid.css")
+		@Helpers.BundleCss("~/adminlayout#.css", x=>
+				x.Add("~/Content/grid.css")
 				.Add("~/Content/admin.less")
-				.Render("xxx.css")
 			)
-		@Html.Raw(
-			Bundle.JavaScript()
-				.Add("~/Scripts/jquery-1.7.2.js")
+		@Helpers.BundleJs("~/adminlayout#.js", x=>
+				x.Add("~/Scripts/jquery-1.7.2.js")
 				.Add("~/Scripts/angular.js")
 				.Add("~/Scripts/angular-resource.js")
 
 				.Add("~/Scripts/Admin")
 				
-				.Add("~/Scripts/_GridElementScripts/novinka.coffee")
-				.Add("~/Scripts/_GridElementScripts/text.js")
+				//TODO: misto add by tu melo byt neco jako AddUsers("novinka.coffee") aby se dalo overidnout default, user scripty jsou na spec. miste 				
+				.Add("~/Scripts/Apps/defaults/_GridElementScripts/novinka.coffee")
+				.Add("~/Scripts/Apps/defaults/_GridElementScripts/text.coffee")
 				
 				.Add("~/Scripts/showdown.js")
-				.Render("~/AdminLayout_index#.js")
-			)
-			
+		)
 	</head>
 
 	<body>

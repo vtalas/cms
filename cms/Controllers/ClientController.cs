@@ -7,7 +7,7 @@ namespace cms.Controllers
 		public ActionResult ViewPage(string link)
 		{
 			var a = db.GetGridPage(link);
-			return View(ApplicationViewPath("ViewPage"), a);
+			return View(ApplicationViewPath("Index"), a);
         }
 
     }

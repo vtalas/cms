@@ -2,9 +2,6 @@
 	ViewBag.Title = "index";
 	Layout = "_Layout.cshtml";
 }
-
-
-
 @model cms.data.Dtos.GridPageDto
 
 
@@ -22,6 +19,8 @@ SERVER RENDER  <br />
 	}
 }
 
+
+
 AJAX RENDER  <br />
 ------------------------------------------<br />
 <h2>client test1 index</h2>
@@ -36,6 +35,18 @@ service pripravena, zakomentovana - zatim neni potreba
 
 <br />
 <a href="http://localhost:62728/client/json/7683508e-0941-4561-b9a3-c7df85791d23/linkTestPage?callback=xxx" class="json" >gridpageJson JSONP</a>
+
+
+<div>
+	<h1>RESOURCES</h1>
+	
+	<ul>
+		<li>/Scrips/Apps/test1/_GridElementScripts - text.coffee, novinka.coffee ... </li>
+		<li>/Views/client/test1/  </li>
+	</ul>
+
+
+</div>
 
 <script>
 	$(document).ready(function () {
