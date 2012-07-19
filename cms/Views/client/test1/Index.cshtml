@@ -14,10 +14,11 @@ SERVER RENDER  <br />
 	foreach (var item in line)
 	{
 		<div>
-			@item.Content 
+			@item.Content
 		</div>
 	}
 }
+
 
 
 
@@ -29,9 +30,9 @@ AJAX RENDER  <br />
 <a href="/service/client.svc/GetGridpage" class="testxx" >gridpage </a><br />
 
 
-service pripravena, zakomentovana - zatim neni potreba 
+@*service pripravena, zakomentovana - zatim neni potreba 
 <a href="/service/client.svc/GetGridpageJson?ApplicationName=test1&Link=linkTestPage&callback=xxxx" class="json" >gridpageJson JSONP client.svc</a>
-
+*@
 
 <br />
 <a href="http://localhost:62728/client/json/7683508e-0941-4561-b9a3-c7df85791d23/linkTestPage?callback=xxx" class="json" >gridpageJson JSONP</a>

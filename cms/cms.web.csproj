@@ -244,7 +244,6 @@
     <Content Include="Views\setup\MigrateDatabaseToLatestVersion.cshtml" />
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
-    <Content Include="Views\Bootstrap\Index.cshtml" />
     <Content Include="Views\client\test1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

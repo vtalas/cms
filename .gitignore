@@ -36,3 +36,6 @@ cms/App_Data/userdata/*
 cms/.idea/*
 cms/.idea/*
 cms/.idea/*
+*.ncrunchsolution
+cmd.web.tests/*.ncrunchproject
+*.ncrunchproject

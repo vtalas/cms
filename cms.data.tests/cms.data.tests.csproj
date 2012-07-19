@@ -35,6 +35,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
@@ -44,6 +47,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationSettingtestsEF.cs" />
+    <Compile Include="LocalizationsTests.cs" />
     <Compile Include="SampleData\CreateSampleDataTest.cs" />
     <Compile Include="EF\JsonDataEfTest.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
@@ -70,6 +75,10 @@
     <ProjectReference Include="..\cms.data\cms.data.csproj">
       <Project>{815F85FC-179F-4817-9634-8CE3C1FF5CE2}</Project>
       <Name>cms.data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cms\cms.web.csproj">
+      <Project>{DE7729CE-0050-4798-A6BA-A1E3ED191195}</Project>
+      <Name>cms.web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
