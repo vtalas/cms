@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ApiControllerBase.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
+    <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Models\TemplateSettings.cs" />
     <Compile Include="Service References\ServiceReference1\Reference.cs">
@@ -141,8 +142,10 @@
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
-    <Content Include="Scripts\Apps\defaults\_GridElementScripts\novinka.coffee.debug.js" />
-    <Content Include="Scripts\Apps\defaults\_GridElementScripts\text.coffee.debug.js" />
+    <Content Include="Scripts\Apps\defaults\_GridElementScripts\novinka.coffee" />
+    <Content Include="Scripts\Apps\defaults\_GridElementScripts\text.coffee" />
+    <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
+    <Content Include="Scripts\Apps\test1\mainCtrl.js" />
     <Content Include="Scripts\bootstrap.js" />
     <None Include="Service References\ServiceReference1\Client1.wsdl" />
     <None Include="Service References\ServiceReference1\Client4.xsd">
@@ -245,6 +248,7 @@
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
     <Content Include="Views\client\test1\Index.cshtml" />
+    <Content Include="Content\Apps\test1\StaticContent.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
@@ -276,7 +280,7 @@
   <ItemGroup>
     <Content Include="Views\Admin\template\edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_View.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
+    <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\GridElement.cshtml">
@@ -289,7 +293,6 @@
   <ItemGroup>
     <Folder Include="App_Data\userdata\" />
     <Folder Include="App_Themes\" />
-    <Folder Include="Content\Apps\test1\" />
     <Folder Include="Scripts\Apps\test1\_GridElementScripts\" />
   </ItemGroup>
   <ItemGroup>

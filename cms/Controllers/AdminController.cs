@@ -26,21 +26,11 @@ namespace cms.Controllers
 		{
 			return View();
         }
-		public ActionResult Template(string id)
-		{
-			var templateName = id;
-			return View("template/" + templateName);
-        }
-		public ActionResult GridElementTmpl(string type, string skin)
-		{
-			var settings = new TemplateSettings()
-			        	{
-			        		TemplateEdit = string.Format("_GridElementTmpl/{0}_edit", type),
-			        		TemplateView = string.Format("_GridElementTmpl/{0}_view",type),
-			        		Type = type
-			        	};
-			return View("_GridElementTmpl/GridElement", settings);
-        }
+		//public ActionResult Template(string id)
+		//{
+		//    var templateName = id;
+		//    return View("template/" + templateName);
+		//}
 
     }
 }

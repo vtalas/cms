@@ -1,16 +1,5 @@
 {
-    "localizations": {
-        "culture": "en",
-        "items": {
-            "001": "eeeeeeeeeeeeee",
-            "002": "eeeeeeeeeeeeee"
-        }
-    },
-    "header": {
-        "localization": "001"
-    },
-    "text": {
-        "localization": "002"
-    },
+    "header": "kjasbdjkbasjkdbkasd",
+    "text": "kjasbdjkbasjkdbkasd",
     "image": "1.jpg"
 }

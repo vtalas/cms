@@ -4,6 +4,7 @@
 @reference ../angular.js
 ###
 
+
 novinka = ($scope, $http) ->
   novinka.$inject = [ "$scope", "$http" ]
 
@@ -23,5 +24,6 @@ novinka = ($scope, $http) ->
 
   $scope.thumb = ->
     $scope.gridelement.thumb
+
 
 window.novinka = novinka

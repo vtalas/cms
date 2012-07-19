@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html ng-app="clientModule">
+<head>
+	<title>Static page </title>
+	<script type="text/javascript" src="/Scripts/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="/Scripts/angular.js"></script>
+	<script type="text/javascript" src="/Scripts/angular-resource.js"></script>
+	<script type="text/javascript" src="/Scripts/angular-templates-ext.js"></script>
+
+	<script type="text/javascript" src="/Scripts/Apps/defaults/clientmodule.js"></script>
+	<script type="text/javascript" src="/Scripts/Apps/test1/mainCtrl.js"></script>
+
+
+
+</head>
+	<body>
+
+
+	<script type="text/ng-template" id="novinka-template">
+		<div ng-bind-html-unsafe="headerHtml()"> </div>
+		{{thumb() }}klasndklasdk
+		<div ng-bind-html-unsafe="textHtml()"> </div>
+	</script>
+
+
+	Staticka strnaka, obsah nahravany dynamicky
+
+		<div ng-controller="mainCtrl">
+
+		 {{data.Name}}
+			<div ng-repeat="line in data.Lines">
+				<div ng-repeat="item in line">
+					<div gridelement="item" grid="data" >
+
+
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+
+	</body>
+</html>

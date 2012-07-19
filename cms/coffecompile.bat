@@ -1,0 +1,1 @@
+coffee -cw -o Scripts/Apps/defaults Scripts/Apps/defaults

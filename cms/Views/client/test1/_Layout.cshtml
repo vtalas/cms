@@ -1,11 +1,14 @@
 ﻿<!DOCTYPE html>
-<html ng-app>	
+<html ng-app="clientModule">	
 
 	<head>
 		<title>@ViewBag.Title</title>
 		@Helpers.BundleJs("test1#.js", x =>
 			x.Add("~/Scripts/jquery-1.7.2.js")
 			.Add("~/Scripts/angular.js")
+			.Add("~/Scripts/angular-resource.js")
+			.Add("~/Scripts/angular-templates-ext.coffee")
+			.Add("~/Scripts/Apps/defaults/clientmodule.coffee")
 		)
 
 	</head>

@@ -23,7 +23,7 @@ namespace cms.data.Shared.Models
 		public string Skin { get; set; }
 
 		public virtual ICollection<Grid> Grid { get; set; }
-		public virtual ICollection<LocalizedContent> LocalizedContents { get; set; }
+		//public virtual ICollection<LocalizedContent> LocalizedContents { get; set; }
 
 	}
 
