@@ -12,7 +12,6 @@
             }
         );
         project.prototype.save = function(cb) {
-            console.log("save");
             return project.save({id: this._id.$oid},
                 angular.extend({}, this, {_id:undefined}), cb);
         };

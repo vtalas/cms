@@ -5,7 +5,6 @@ var EditCtrl = ['$scope', '$route', '$routeParams', 'location', '$http', '$log',
 	$http({ method: 'POST', url: '/adminApi/' + appSettings.Name + '/GetGridElement/' + $routeParams.GridElementId })
 		.success(function (data, status, headers, config) {
 			$scope.data = data;
-			console.log(data, "edit");
 		})
 
 		.error(function (data, status, headers, config) {

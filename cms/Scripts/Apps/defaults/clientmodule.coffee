@@ -8,7 +8,8 @@
 module = angular.module("clientModule",['ngResource','templateExt'])
 
 module.run ()->
-	console.log("run clientModule")
+	1
+#console.log("run clientModule")
 
 module.config ($provide)->
 	$provide.factory "appSettings", () ->
@@ -25,21 +26,20 @@ module.config ($provide)->
 		proj
 	1
 
-module.directive "gridelement", (gridtemplate,$compile)->
-	directiveDefinitionObject =
-		scope: {  grid: "=", gridelement: "=" }
-#		controller:GridElementCtrl
-		templateUrl:"novinka-template"
-		link: (scope, iElement, tAttrs, controller) ->
-#			sablona = gridtemplate(scope.gridelement.Type)
-#
-#			compiled = $compile(sablona)(scope)
-#			iElement.html( "type---" + scope.gridelement.Type)
-			console.log("askjbdasjkbd")
-			1
+module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templateCache)->
+
+  directiveDefinitionObject =
+    scope: {  grid: "=", gridelement: "=" }
+    link: (scope, iElement, tAttrs, controller) ->
+      type = scope.gridelement.Type
+      sablona = $("#"+type+"-template").html()
+      compiled = $compile(sablona)(scope)
+      iElement.html(compiled)
+
+  directiveDefinitionObject
 
 
-	directiveDefinitionObject
+
 
 
 

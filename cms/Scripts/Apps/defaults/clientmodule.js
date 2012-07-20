@@ -13,7 +13,7 @@
   module = angular.module("clientModule", ['ngResource', 'templateExt']);
 
   module.run(function() {
-    return console.log("run clientModule");
+    return 1;
   });
 
   module.config(function($provide) {
@@ -42,17 +42,19 @@
     return 1;
   });
 
-  module.directive("gridelement", function(gridtemplate, $compile) {
+  module.directive("gridelement", function(gridtemplate, gridtemplateClient, $compile, $templateCache) {
     var directiveDefinitionObject;
     directiveDefinitionObject = {
       scope: {
         grid: "=",
         gridelement: "="
       },
-      templateUrl: "novinka-template",
       link: function(scope, iElement, tAttrs, controller) {
-        console.log("askjbdasjkbd");
-        return 1;
+        var compiled, sablona, type;
+        type = scope.gridelement.Type;
+        sablona = $("#" + type + "-template").html();
+        compiled = $compile(sablona)(scope);
+        return iElement.html(compiled);
       }
     };
     return directiveDefinitionObject;

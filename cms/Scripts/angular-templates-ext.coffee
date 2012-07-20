@@ -18,5 +18,18 @@ module.config ($provide )->
 						$templateCache.put(elementType, data);
 				)
 			$templateCache.get(elementType)
+	$provide.factory "gridtemplateClient", ($templateCache) ->
+		(type)->
+      elementType = type ? type : "text"
+      $.ajax(
+        url: '/Templates/GridElementTmplClient'
+        data: { type: elementType }
+        async: false
+      ).responseText
+
 	1
+
+
+
+
 

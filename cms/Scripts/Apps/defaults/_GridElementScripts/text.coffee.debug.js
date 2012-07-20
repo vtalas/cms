@@ -6,7 +6,9 @@
   */
   var text;
   text = function($scope, $http) {
-    return text.$inject = ["$scope", "$http"];
+    text.$inject = ["$scope", "$http"];
+    $scope.xxx = "xxxx";
+    return 1;
   };
   window.text = text;
 }).call(this);

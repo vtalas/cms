@@ -5,17 +5,16 @@
   @reference ../angular.js
   */
   var novinka;
-  novinka = function($scope, $http) {
+  novinka = function($scope) {
     var converter, toHtml;
-    novinka.$inject = ["$scope", "$http"];
+    novinka.$inject = ["$scope"];
     $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) || {
       header: "",
       text: ""
     };
+    console.log($scope.gridelement, $scope.gridelement.Content, "novinka.cooffe");
     converter = new Showdown.converter();
     toHtml = function(markdown) {
-      var x;
-      x = true;
       if (markdown) {
         return converter.makeHtml(markdown);
       }

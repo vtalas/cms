@@ -5,9 +5,9 @@
   @reference ../angular.js
   */
   var module;
-  module = angular.module("clientModule", ['ngResource']);
+  module = angular.module("clientModule", ['ngResource', 'templateExt']);
   module.run(function() {
-    return console.log("run clientModule");
+    return 1;
   });
   module.config(function($provide) {
     $provide.factory("appSettings", function() {
@@ -33,5 +33,26 @@
       return proj;
     });
     return 1;
+  });
+  module.directive("gridelement", function(gridtemplate, gridtemplateClient, $compile, $templateCache) {
+    var GridElementCtrl, directiveDefinitionObject;
+    GridElementCtrl = function($scope) {
+      return console.log("GridElementCtrl");
+    };
+    directiveDefinitionObject = {
+      scope: {
+        grid: "=",
+        gridelement: "="
+      },
+      controller: GridElementCtrl,
+      link: function(scope, iElement, tAttrs, controller) {
+        var compiled, sablona, type;
+        type = scope.gridelement.Type;
+        sablona = gridtemplateClient(scope.gridelement.Type);
+        compiled = $compile(sablona)(scope);
+        return iElement.html(compiled);
+      }
+    };
+    return directiveDefinitionObject;
   });
 }).call(this);

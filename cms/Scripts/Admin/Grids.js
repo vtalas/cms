@@ -26,7 +26,7 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 	}
 
 
-    var GridElementCtrl = function($scope,gridtemplate){
+    var GridElementCtrl = function($scope){
         $scope.add = function (item) {
             GridApi.AddGridElement({
                                        applicationId: appSettings.Id,

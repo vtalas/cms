@@ -26,11 +26,11 @@ namespace cms.Controllers
 		{
 			return View();
         }
-		//public ActionResult Template(string id)
-		//{
-		//    var templateName = id;
-		//    return View("template/" + templateName);
-		//}
+		public ActionResult Template(string id)
+		{
+			var templateName = id;
+			return View("template/" + templateName);
+		}
 
     }
 }

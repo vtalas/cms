@@ -39,3 +39,4 @@ cms/.idea/*
 *.ncrunchsolution
 cmd.web.tests/*.ncrunchproject
 *.ncrunchproject
+cms/.idea/*

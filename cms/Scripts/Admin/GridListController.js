@@ -36,7 +36,6 @@ var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridA
 	};
 
 	$scope.save = function (item) {
-		console.log(item);
 		item.Edit = 0;
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/UpdateGrid', data: { data: item} })
             .success(function (data, status, headers, config) {

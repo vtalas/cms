@@ -6,22 +6,18 @@
 	<script type="text/javascript" src="/Scripts/angular.js"></script>
 	<script type="text/javascript" src="/Scripts/angular-resource.js"></script>
 	<script type="text/javascript" src="/Scripts/angular-templates-ext.js"></script>
+	<script type="text/javascript" src="/Scripts/showdown.js"></script>
 
 	<script type="text/javascript" src="/Scripts/Apps/defaults/clientmodule.js"></script>
 	<script type="text/javascript" src="/Scripts/Apps/test1/mainCtrl.js"></script>
+
+	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/novinka.js"></script>
+	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/text.js"></script>
 
 
 
 </head>
 	<body>
-
-
-	<script type="text/ng-template" id="novinka-template">
-		<div ng-bind-html-unsafe="headerHtml()"> </div>
-		{{thumb() }}klasndklasdk
-		<div ng-bind-html-unsafe="textHtml()"> </div>
-	</script>
-
 
 	Staticka strnaka, obsah nahravany dynamicky
 
@@ -30,16 +26,26 @@
 		 {{data.Name}}
 			<div ng-repeat="line in data.Lines">
 				<div ng-repeat="item in line">
-					<div gridelement="item" grid="data" >
-
-
-					</div>
-
+					<div gridelement="item" grid="data" >	</div>
 				</div>
 			</div>
 
-
 		</div>
+
+
+	<script type="text/ng-template" id="novinka-template">
+		<div ng-controller="novinka">
+			<div ng-bind-html-unsafe="headerHtml()"> </div>
+			{{thumb() }}
+			<div ng-bind-html-unsafe="textHtml()"></div>
+		</div>
+	</script>
+
+	<script type="text/ng-template" id="text-template">
+		<div ng-controller="text">
+			{{gridelement.Content}}
+		</div>
+	</script>
 
 	</body>
 </html>
