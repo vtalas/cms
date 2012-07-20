@@ -21,49 +21,31 @@
 
 	Staticka stranka, obsah nahravany dynamicky
 
-<div ng-controller="appController">
-	<div class="row" style="border:1px solid red;margin: 0px auto">
-		<div class="span16">
-			Level 1 of column
-			<div class="row">
-				<div class="span3">
-					<ul>
-						<li>
-							<a href="#/gallery/g1" > g1</a>
-						</li>
-						<li>
-							<a href="#/gallery/g2" > g2</a>
-						</li>
-						<li>----</li>
-						<li>
-							<a href="#/link/profil" > profil</a>
-						</li>
-						<li>
-							<a href="#/link/certifikace" > certifikace</a>
-						</li>
-						<li>
-							<a href="#/link/kontakt" > kontakt</a>
-						</li>
-					</ul>
-				</div>
-				<div class="span13">
-					<div ng-view></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row" style="border:1px solid red;margin: 0px auto">
-		<div class="span16">
-			<ul ng-repeat="thumb in thumbs">
-				<li> {{thumb}}</li>
-			</ul>
-		</div>
-	</div>
-</div>
 
 
 
 
+<ul>
+	<li>
+		<a href="#/link/g1" > g1</a>
+	</li>
+	<li>
+		<a href="#/link/g2" > g2</a>
+	</li>
+	<li>
+		<a href="#/link/profil" > profil</a>
+	</li>
+	<li>
+		<a href="#/link/certifikace" > certifikace</a>
+	</li>
+	<li>
+		<a href="#/link/kontakt" > kontakt</a>
+	</li>
+</ul>
+
+
+
+	<div ng-view></div>
 
 	<script type="text/ng-template" id="novinka-template">
 		<div ng-controller="novinka">
@@ -86,7 +68,7 @@
 	</script>
 
 	<script type="text/ng-template" id="link-template">
-		<div ng-repeat="line in data.Lines">
+			<div ng-repeat="line in data.Lines">
 				<div ng-repeat="item in line">
 					<div gridelement="item" grid="data" >	</div>
 				</div>

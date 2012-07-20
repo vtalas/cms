@@ -28,8 +28,8 @@ module.config ($provide, $routeProvider)->
     proj
 
   $routeProvider
-    .when('/link/:link', { controller: clientPageCtrl, templateUrl: 'clientPage-template' })
-    .otherwise( redirectTo: '/list' )
+    .when('/link/:link', { controller: linkCtrl, templateUrl: 'link-template' })
+    .when('/gallery/:link', { controller: galleryCtrl, templateUrl: 'link-template' })
 
   1
 
@@ -48,15 +48,69 @@ module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templ
 
 
 
-clientPageCtrl = ($scope,$routeParams,clientApi) ->
+appController = ($scope, $routeParams,clientApi)->
+  $scope.thumbs  = []
+  $scope.refresh = (link)->
+    $scope.thumbs = [link,"asdasd","jhasvdjs", "jhasvdjd"]
 
+window.appController = appController
+
+###########################
+
+linkCtrl = ($scope,$routeParams,clientApi) ->
   p = $routeParams
-
   clientApi.getJson({link:p.link }, (data)->
     $scope.data = data
   )
+window.linkCtrl = linkCtrl
 
-window.clientPageCtrl = clientPageCtrl
+###########################
+
+galleryCtrl = ($scope,$routeParams,clientApi) ->
+  p = $routeParams
+  $scope.$parent.refresh(p.link)
+  clientApi.getJson({link:p.link }, (data)->
+    $scope.data = data
+  )
+window.linkCtrl = linkCtrl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

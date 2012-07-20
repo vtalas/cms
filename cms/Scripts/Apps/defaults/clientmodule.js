@@ -8,7 +8,7 @@
 
 
 (function() {
-  var clientPageCtrl, module;
+  var appController, galleryCtrl, linkCtrl, module;
 
   module = angular.module("clientModule", ['ngResource', 'templateExt']);
 
@@ -42,10 +42,11 @@
       return proj;
     });
     $routeProvider.when('/link/:link', {
-      controller: clientPageCtrl,
-      templateUrl: 'clientPage-template'
-    }).otherwise({
-      redirectTo: '/list'
+      controller: linkCtrl,
+      templateUrl: 'link-template'
+    }).when('/gallery/:link', {
+      controller: galleryCtrl,
+      templateUrl: 'link-template'
     });
     return 1;
   });
@@ -68,7 +69,16 @@
     return directiveDefinitionObject;
   });
 
-  clientPageCtrl = function($scope, $routeParams, clientApi) {
+  appController = function($scope, $routeParams, clientApi) {
+    $scope.thumbs = [];
+    return $scope.refresh = function(link) {
+      return $scope.thumbs = [link, "asdasd", "jhasvdjs", "jhasvdjd"];
+    };
+  };
+
+  window.appController = appController;
+
+  linkCtrl = function($scope, $routeParams, clientApi) {
     var p;
     p = $routeParams;
     return clientApi.getJson({
@@ -78,6 +88,19 @@
     });
   };
 
-  window.clientPageCtrl = clientPageCtrl;
+  window.linkCtrl = linkCtrl;
+
+  galleryCtrl = function($scope, $routeParams, clientApi) {
+    var p;
+    p = $routeParams;
+    $scope.$parent.refresh(p.link);
+    return clientApi.getJson({
+      link: p.link
+    }, function(data) {
+      return $scope.data = data;
+    });
+  };
+
+  window.linkCtrl = linkCtrl;
 
 }).call(this);

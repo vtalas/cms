@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.data;
-using cms.data.Files;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 
@@ -59,7 +58,7 @@ namespace cms.Controllers
 			return new JSONNetResult(null);
 		}
 		[HttpPost]
-		public ActionResult UpdateGrid(Grid data)
+		public ActionResult UpdateGrid(GridPageDto data)
         {
 			db.Update(data); 
 			return new JSONNetResult(null);
@@ -98,4 +97,5 @@ namespace cms.Controllers
 
 		}
     }
+
 }

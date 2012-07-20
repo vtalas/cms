@@ -142,6 +142,7 @@
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
+    <Content Include="Scripts\Apps\defaults\_GridElementScripts\simplehtml.coffee" />
     <Content Include="Scripts\Apps\defaults\_GridElementScripts\novinka.coffee" />
     <Content Include="Scripts\Apps\defaults\_GridElementScripts\text.coffee" />
     <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
@@ -280,6 +281,8 @@
   <ItemGroup>
     <Content Include="Views\Admin\template\edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_View.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\simplehtml_Edit.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\simplehtml_View.cshtml" />
     <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />
