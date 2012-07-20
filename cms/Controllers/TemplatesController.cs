@@ -11,6 +11,7 @@ namespace cms.Controllers
     {
 		public ActionResult GridElementTmpl(string type, string skin)
 		{
+			//TODO: type_edit.cshtml, view.cshtml ... melo by to byt nejak lip
 			var settings = new TemplateSettings()
 			        	{
 			        		TemplateEdit = string.Format("_GridElementTmpl/{0}_edit", type),

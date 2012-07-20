@@ -6,6 +6,7 @@
 		<select ng-model="gridelement.Type">
 			<option value="text">text</option>
 			<option value="novinka">novinka</option>
+			<option value="simplehtml">simple HTML</option>
 		</select>
 		<button ng-click="add(gridelement)">Create</button>
 	</div>
@@ -28,6 +29,13 @@
 </div>
 
 
+
+
+
+@* 
+//NOTE: include static html file 
+<%= File.ReadAllText(Server.MapPath("~/Content/snippet.html")) %>
+*@
 
 
 

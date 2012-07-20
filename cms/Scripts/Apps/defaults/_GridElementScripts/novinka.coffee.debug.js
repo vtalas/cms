@@ -12,7 +12,6 @@
       header: "",
       text: ""
     };
-    console.log($scope.gridelement, $scope.gridelement.Content, "novinka.cooffe");
     converter = new Showdown.converter();
     toHtml = function(markdown) {
       if (markdown) {

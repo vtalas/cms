@@ -35,20 +35,16 @@
     return 1;
   });
   module.directive("gridelement", function(gridtemplate, gridtemplateClient, $compile, $templateCache) {
-    var GridElementCtrl, directiveDefinitionObject;
-    GridElementCtrl = function($scope) {
-      return console.log("GridElementCtrl");
-    };
+    var directiveDefinitionObject;
     directiveDefinitionObject = {
       scope: {
         grid: "=",
         gridelement: "="
       },
-      controller: GridElementCtrl,
       link: function(scope, iElement, tAttrs, controller) {
         var compiled, sablona, type;
         type = scope.gridelement.Type;
-        sablona = gridtemplateClient(scope.gridelement.Type);
+        sablona = $("#" + type + "-template").html();
         compiled = $compile(sablona)(scope);
         return iElement.html(compiled);
       }

@@ -26,6 +26,9 @@ namespace cms.Controllers
 		{
 			return View();
         }
+		
+		
+		//TODO: tohle asi hodit do template controlleru 
 		public ActionResult Template(string id)
 		{
 			var templateName = id;
