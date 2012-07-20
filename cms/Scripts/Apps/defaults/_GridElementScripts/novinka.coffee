@@ -4,15 +4,14 @@
 @reference ../angular.js
 ###
 
-novinka = ($scope, $http) ->
-  novinka.$inject = [ "$scope", "$http" ]
+novinka = ($scope) ->
+  novinka.$inject = [ "$scope" ]
 
   $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { header: "",  text: ""}
 
   converter = new Showdown.converter()
 
   toHtml = (markdown) ->
-    x = true;
     converter.makeHtml markdown if markdown
 
   $scope.headerHtml = ->
@@ -23,5 +22,6 @@ novinka = ($scope, $http) ->
 
   $scope.thumb = ->
     $scope.gridelement.thumb
+
 
 window.novinka = novinka

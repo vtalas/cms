@@ -111,11 +111,18 @@ namespace cms.data.EF
 			return item;
 		}
 
-		public override Grid Update(Grid item)
+		public override Grid Update(GridPageDto item)
 		{
-			db.Entry(item).State = EntityState.Modified;
+			var grid = new Grid
+			           	{
+			           		Id = item.Id,
+			           		Home = item.Home,
+			           		Link = item.Link,
+			           		Name = item.Name
+			           	};
+			db.Entry(grid).State = EntityState.Modified;
 			db.SaveChanges();
-			return item;
+			return grid;
 		}
 		public override void DeleteApplication(Guid id)
 		{

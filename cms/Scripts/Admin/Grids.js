@@ -1,4 +1,4 @@
-var module = angular.module("gridsmodule", ['cmsapi']);
+var module = angular.module("gridsmodule", ['cmsapi', "templateExt"]);
 
 module.config(['$routeProvider', '$provide', function ($routeProvider, $provide) {
 	$provide.factory('appSettings', function () {
@@ -13,33 +13,19 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 		.when('/list', { controller: GridListController, templateUrl: 'template/list' })
 		.when('/gridpage/:Id', { controller: GridPageCtrl, templateUrl: 'template/gridpage' })
 		.when('/gridpage/:Id/edit/:GridElementId', { controller: EditCtrl, template: 'template/edit' })
-		.when('/new', { controller: CreateCtrl, template: 'template/new' })
 		.otherwise({ redirectTo: '/list' });
 }]);
 
-module.directive("gridelement", ['$templateCache', '$compile', "GridApi", "appSettings", function ($templateCache, $compile, GridApi, appSettings) {
+//module.directive("gridelement", ['$compile', "GridApi", "appSettings","$http",
+module.directive("gridelement", function ($compile, GridApi, appSettings, gridtemplate) {
 
     function _newitem(line) {
 		var newitem = { Id: 0, Width: 12, Type: "text", Line: line, Edit: 0 };
 		return newitem;
 	}
 
-	var template = function (type) {
-		var elementType = type ? type : "text";
-		if (!$templateCache.get(elementType)) {
-			$.ajax({
-				url: 'GridElementTmpl',
-				data: { type: elementType },
-				async: false, //kvuli tomuto tu neni $http
-				success: function (data) {
-					$templateCache.put(elementType, data);
-				}
-			});
-		}
-		return $templateCache.get(elementType);
-	};
 
-    var gridelementCtrl = function($scope){
+    var GridElementCtrl = function($scope){
         $scope.add = function (item) {
             GridApi.AddGridElement({
                                        applicationId: appSettings.Id,
@@ -80,16 +66,15 @@ module.directive("gridelement", ['$templateCache', '$compile', "GridApi", "appSe
 
 	var directiveDefinitionObject = {
 		scope: {  grid: "=", gridelement: "=" },
-        controller:gridelementCtrl,
+        controller:GridElementCtrl,
 		link: function (scope, iElement, tAttrs, controller) {
-			console.log(scope)
-            var sablona = template(scope.gridelement.Type);
+			var sablona = gridtemplate(scope.gridelement.Type);
 			var compiled = $compile(sablona)(scope);
 			iElement.html(compiled);
 		}
 	};
 	return directiveDefinitionObject;
-} ]);
+} );
 
 
 function CreateCtrl($scope) {

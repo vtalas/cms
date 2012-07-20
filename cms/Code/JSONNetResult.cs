@@ -1,3 +1,4 @@
+using System.Text;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 
@@ -24,7 +25,8 @@ namespace cms.Code
 		{
 			var response = context.HttpContext.Response;
 			response.ContentType = "application/json";
-			response.Write(ToJson(_data));
+			response.ContentEncoding = Encoding.UTF8;
+			response.Write( ToJson(_data));
 		}
 	}
 }

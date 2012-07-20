@@ -3,6 +3,8 @@ using System.Runtime.Serialization;
 
 namespace cms.data.Dtos
 {
+
+	
 	[DataContract]
 	public class GridPageDto
 	{
@@ -21,4 +23,5 @@ namespace cms.data.Dtos
 		[DataMember]
 		public IList<IEnumerable<GridElementDto>> Lines{get; set; }
 	}
+
 }

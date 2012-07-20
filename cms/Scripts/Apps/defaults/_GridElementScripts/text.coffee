@@ -4,7 +4,10 @@
 @reference ../angular.js
 ###
 
-text= ($scope, $http) ->
+text = ($scope, $http) ->
   text.$inject = [ "$scope", "$http" ]
+
+  $scope.xxx = "xxxx"
+  1
 
 window.text = text

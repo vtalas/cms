@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html ng-app="clientModule">
+<head>
+	<title>Static page </title>
+	<script type="text/javascript" src="/Scripts/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="/Scripts/angular.js"></script>
+	<script type="text/javascript" src="/Scripts/angular-resource.js"></script>
+	<script type="text/javascript" src="/Scripts/angular-templates-ext.js"></script>
+	<script type="text/javascript" src="/Scripts/showdown.js"></script>
+
+	<script type="text/javascript" src="/Scripts/Apps/defaults/clientmodule.js"></script>
+
+	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/novinka.js"></script>
+	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/text.js"></script>
+	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/simplehtml.js"></script>
+
+	<link rel="stylesheet" href="/Content/Apps/test1/bootstrap.css" >
+
+</head>
+	<body>
+
+	Staticka stranka, obsah nahravany dynamicky
+
+<div ng-controller="appController">
+	<div class="row" style="border:1px solid red;margin: 0px auto">
+		<div class="span16">
+			Level 1 of column
+			<div class="row">
+				<div class="span3">
+					<ul>
+						<li>
+							<a href="#/gallery/g1" > g1</a>
+						</li>
+						<li>
+							<a href="#/gallery/g2" > g2</a>
+						</li>
+						<li>----</li>
+						<li>
+							<a href="#/link/profil" > profil</a>
+						</li>
+						<li>
+							<a href="#/link/certifikace" > certifikace</a>
+						</li>
+						<li>
+							<a href="#/link/kontakt" > kontakt</a>
+						</li>
+					</ul>
+				</div>
+				<div class="span13">
+					<div ng-view></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="border:1px solid red;margin: 0px auto">
+		<div class="span16">
+			<ul ng-repeat="thumb in thumbs">
+				<li> {{thumb}}</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+	<script type="text/ng-template" id="novinka-template">
+		<div ng-controller="novinka">
+			<div ng-bind-html-unsafe="headerHtml()"> </div>
+			{{thumb() }}
+			<div ng-bind-html-unsafe="textHtml()"></div>
+		</div>
+	</script>
+
+	<script type="text/ng-template" id="text-template">
+		<div ng-controller="text">
+			{{gridelement.Content}}
+		</div>
+	</script>
+
+	<script type="text/ng-template" id="simplehtml-template">
+		<div ng-controller="simplehtml">
+			<div ng-bind-html-unsafe="ContentToHtml()"> </div>
+		</div>
+	</script>
+
+	<script type="text/ng-template" id="link-template">
+		<div ng-repeat="line in data.Lines">
+				<div ng-repeat="item in line">
+					<div gridelement="item" grid="data" >	</div>
+				</div>
+			</div>
+	</script>
+
+	</body>
+</html>

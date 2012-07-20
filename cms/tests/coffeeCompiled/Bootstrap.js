@@ -18,7 +18,6 @@
       item = all[name];
       basiccolors = $filter("nameType")(all, "basiccolor", item.value);
       el = $event.currentTarget;
-      console.log(basiccolors, $(el).val());
       $(el).typeahead({
         source: basiccolors,
         updater: function(val) {
@@ -40,7 +39,6 @@
         url: "/bootstrap/Refresh",
         data: $scope.data
       }).success(function(data, status, headers, config) {
-        console.log(data);
         return $scope.refreshtoken = new Date;
       });
     };
@@ -49,7 +47,6 @@
     };
     $scope.toggle = function(item) {
       $scope.hider[item] = !$scope.toggleValue(item);
-      return console.log($scope.hider, item);
     };
     return 1;
   };
