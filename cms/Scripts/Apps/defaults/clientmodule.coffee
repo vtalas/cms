@@ -11,20 +11,28 @@ module.run ()->
 	1
 #console.log("run clientModule")
 
-module.config ($provide)->
-	$provide.factory "appSettings", () ->
-		applicationId: "7683508e-0941-4561-b9a3-c7df85791d23"
+module.config ($provide, $routeProvider)->
+  $provide.factory "appSettings", () ->
+    setings =
+      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+      serverUrl: "http://localhost\\:62728"
 
-	$provide.factory "clientApi", ($resource,appSettings) ->
-		defaults =
-			applicationId: appSettings.applicationId
+  $provide.factory "clientApi", ($resource,appSettings) ->
+    defaults =
+      applicationId: appSettings.applicationId,
 
-		actions =
-			getJson: { method: 'GET' ,isArray:false, params: {action : "grids"}},
+    actions =
+		  getJson: { method: 'GET' ,isArray:false, params: {action : "grids"}},
 
-		proj = $resource("http://localhost\\:62728/client/json/:applicationId/:link?callback=JSON_CALLBACK",defaults, actions)
-		proj
-	1
+    proj = $resource(appSettings.serverUrl+"/client/json/:applicationId/:link?callback=JSON_CALLBACK",defaults, actions)
+    proj
+
+  $routeProvider
+    .when('/link/:link', { controller: clientPageCtrl, templateUrl: 'clientPage-template' })
+    .otherwise( redirectTo: '/list' )
+
+  1
+
 
 module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templateCache)->
 
@@ -40,7 +48,15 @@ module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templ
 
 
 
+clientPageCtrl = ($scope,$routeParams,clientApi) ->
 
+  p = $routeParams
+
+  clientApi.getJson({link:p.link }, (data)->
+    $scope.data = data
+  )
+
+window.clientPageCtrl = clientPageCtrl
 
 
 

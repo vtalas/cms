@@ -8,7 +8,7 @@
 
 
 (function() {
-  var module;
+  var clientPageCtrl, module;
 
   module = angular.module("clientModule", ['ngResource', 'templateExt']);
 
@@ -16,10 +16,12 @@
     return 1;
   });
 
-  module.config(function($provide) {
+  module.config(function($provide, $routeProvider) {
     $provide.factory("appSettings", function() {
-      return {
-        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23"
+      var setings;
+      return setings = {
+        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+        serverUrl: "http://localhost\\:62728"
       };
     });
     $provide.factory("clientApi", function($resource, appSettings) {
@@ -36,8 +38,14 @@
           }
         }
       };
-      proj = $resource("http://localhost\\:62728/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
+      proj = $resource(appSettings.serverUrl + "/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
       return proj;
+    });
+    $routeProvider.when('/link/:link', {
+      controller: clientPageCtrl,
+      templateUrl: 'clientPage-template'
+    }).otherwise({
+      redirectTo: '/list'
     });
     return 1;
   });
@@ -59,5 +67,17 @@
     };
     return directiveDefinitionObject;
   });
+
+  clientPageCtrl = function($scope, $routeParams, clientApi) {
+    var p;
+    p = $routeParams;
+    return clientApi.getJson({
+      link: p.link
+    }, function(data) {
+      return $scope.data = data;
+    });
+  };
+
+  window.clientPageCtrl = clientPageCtrl;
 
 }).call(this);

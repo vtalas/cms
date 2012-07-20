@@ -9,29 +9,27 @@
 	<script type="text/javascript" src="/Scripts/showdown.js"></script>
 
 	<script type="text/javascript" src="/Scripts/Apps/defaults/clientmodule.js"></script>
-	<script type="text/javascript" src="/Scripts/Apps/test1/mainCtrl.js"></script>
 
 	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/novinka.js"></script>
 	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/text.js"></script>
-
+	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/simplehtml.js"></script>
 
 
 </head>
 	<body>
 
-	Staticka strnaka, obsah nahravany dynamicky
+	Staticka stranka, obsah nahravany dynamicky
 
-		<div ng-controller="mainCtrl">
+<ul>
+	<li>
+		<a href="#/link/sdakjs" > sdakjs</a>
+	</li>
+	<li>
+		<a href="#/link/linkTestPage" > linkTestPage</a>
+	</li>
+</ul>
 
-		 {{data.Name}}
-			<div ng-repeat="line in data.Lines">
-				<div ng-repeat="item in line">
-					<div gridelement="item" grid="data" >	</div>
-				</div>
-			</div>
-
-		</div>
-
+	<div ng-view></div>
 
 	<script type="text/ng-template" id="novinka-template">
 		<div ng-controller="novinka">
@@ -45,6 +43,20 @@
 		<div ng-controller="text">
 			{{gridelement.Content}}
 		</div>
+	</script>
+
+	<script type="text/ng-template" id="simplehtml-template">
+		<div ng-controller="simplehtml">
+			<div ng-bind-html-unsafe="ContentToHtml()"> </div>
+		</div>
+	</script>
+
+	<script type="text/ng-template" id="clientPage-template">
+			<div ng-repeat="line in data.Lines">
+				<div ng-repeat="item in line">
+					<div gridelement="item" grid="data" >	</div>
+				</div>
+			</div>
 	</script>
 
 	</body>

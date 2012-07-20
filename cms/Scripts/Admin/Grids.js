@@ -13,7 +13,6 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 		.when('/list', { controller: GridListController, templateUrl: 'template/list' })
 		.when('/gridpage/:Id', { controller: GridPageCtrl, templateUrl: 'template/gridpage' })
 		.when('/gridpage/:Id/edit/:GridElementId', { controller: EditCtrl, template: 'template/edit' })
-		.when('/new', { controller: CreateCtrl, template: 'template/new' })
 		.otherwise({ redirectTo: '/list' });
 }]);
 
