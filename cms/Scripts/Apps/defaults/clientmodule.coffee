@@ -70,6 +70,7 @@ window.linkCtrl = linkCtrl
 galleryCtrl = ($scope,$routeParams,clientApi) ->
   p = $routeParams
   $scope.$parent.refresh(p.link)
+
   clientApi.getJson({link:p.link }, (data)->
     $scope.data = data
   )

@@ -15,7 +15,6 @@ var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi",
 	});
 
 	$scope.getGrid = function () {
-		console.log ("ljkasbndlkasnd")
         GridApi.getGrid(params, function (data) {
 			$scope.data = data;
 			var newitem = _newitem($scope.data.Lines.length);
