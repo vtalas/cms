@@ -20,7 +20,7 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
         serverUrl: "http://localhost\\:62728"
       };
     });

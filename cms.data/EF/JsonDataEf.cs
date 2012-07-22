@@ -97,10 +97,21 @@ namespace cms.data.EF
 			db.Grids.Remove(delete);
 			db.SaveChanges();
 		}
-		public override void DeleteGridElement(int id)
+		public override void DeleteGridElement(int id, int gridid)
 		{
-			var delete = GetGridElement(id);
+			var grid = GetGrid(gridid);
+			var delete = grid.GridElements.Single(x => x.Id == id);
 			db.GridElements.Remove(delete);
+			var deletedline = delete.Line;
+
+			if (!grid.GridElements.Any(x=>x.Line == deletedline))
+			{
+				foreach (var item in grid.GridElements.OrderBy(x=>x.Line))
+				{
+					if (item.Line > deletedline && item.Line > 0) item.Line--;
+				}
+			}
+			
 			db.SaveChanges();
 		}
 		

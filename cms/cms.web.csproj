@@ -279,10 +279,11 @@
     <Content Include="Views\Admin\template\gridpage.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\template\edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\simplehtml_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\simplehtml_View.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\reference_Edit.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\reference_View.cshtml" />
     <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />

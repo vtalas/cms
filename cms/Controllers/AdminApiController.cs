@@ -32,7 +32,6 @@ namespace cms.Controllers
         {
         	var grid = db.GetGrid(gridId);
         	data.Grid.Add(grid);
-			
 			var newitem = db.Add(data);
 			return new JSONNetResult(newitem.ToDto());
 		}
@@ -45,9 +44,9 @@ namespace cms.Controllers
         }
 
 		[HttpPost]
-		public ActionResult DeleteGridElement(GridElement data)
+		public ActionResult DeleteGridElement(GridElement data, int gridId)
         {
-			db.DeleteGridElement(data.Id); 
+			db.DeleteGridElement(data.Id,gridId); 
 			return new JSONNetResult(null);
 		}
 

@@ -4,15 +4,17 @@
   @reference ../jquery-1.7.2.js
   @reference ../angular.js
   */
-  var module;
+  var appController, galleryCtrl, linkCtrl, module;
   module = angular.module("clientModule", ['ngResource', 'templateExt']);
   module.run(function() {
     return 1;
   });
-  module.config(function($provide) {
+  module.config(function($provide, $routeProvider) {
     $provide.factory("appSettings", function() {
-      return {
-        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23"
+      var setings;
+      return setings = {
+        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+        serverUrl: "http://localhost\\:62728"
       };
     });
     $provide.factory("clientApi", function($resource, appSettings) {
@@ -29,8 +31,15 @@
           }
         }
       };
-      proj = $resource("http://localhost\\:62728/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
+      proj = $resource(appSettings.serverUrl + "/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
       return proj;
+    });
+    $routeProvider.when('/link/:link', {
+      controller: linkCtrl,
+      templateUrl: 'link-template'
+    }).when('/gallery/:link', {
+      controller: galleryCtrl,
+      templateUrl: 'link-template'
     });
     return 1;
   });
@@ -51,4 +60,32 @@
     };
     return directiveDefinitionObject;
   });
+  appController = function($scope, $routeParams, clientApi) {
+    $scope.thumbs = [];
+    return $scope.refresh = function(link) {
+      return $scope.thumbs = [link, "asdasd", "jhasvdjs", "jhasvdjd"];
+    };
+  };
+  window.appController = appController;
+  linkCtrl = function($scope, $routeParams, clientApi) {
+    var p;
+    p = $routeParams;
+    return clientApi.getJson({
+      link: p.link
+    }, function(data) {
+      return $scope.data = data;
+    });
+  };
+  window.linkCtrl = linkCtrl;
+  galleryCtrl = function($scope, $routeParams, clientApi) {
+    var p;
+    p = $routeParams;
+    $scope.$parent.refresh(p.link);
+    return clientApi.getJson({
+      link: p.link
+    }, function(data) {
+      return $scope.data = data;
+    });
+  };
+  window.linkCtrl = linkCtrl;
 }).call(this);

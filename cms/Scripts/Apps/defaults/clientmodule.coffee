@@ -14,7 +14,8 @@ module.run ()->
 module.config ($provide, $routeProvider)->
   $provide.factory "appSettings", () ->
     setings =
-      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+#      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
       serverUrl: "http://localhost\\:62728"
 
   $provide.factory "clientApi", ($resource,appSettings) ->
@@ -22,7 +23,7 @@ module.config ($provide, $routeProvider)->
       applicationId: appSettings.applicationId,
 
     actions =
-		  getJson: { method: 'GET' ,isArray:false, params: {action : "grids"}},
+	    getJson: { method: 'GET' ,isArray:false, params: {action : "grids"}}
 
     proj = $resource(appSettings.serverUrl+"/client/json/:applicationId/:link?callback=JSON_CALLBACK",defaults, actions)
     proj
