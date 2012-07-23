@@ -20,7 +20,7 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
         serverUrl: "http://localhost\\:62728"
       };
     });
@@ -30,12 +30,9 @@
         applicationId: appSettings.applicationId
       };
       actions = {
-        getJson: {
+        gridpageJson: {
           method: 'GET',
-          isArray: false,
-          params: {
-            action: "grids"
-          }
+          isArray: false
         }
       };
       proj = $resource(appSettings.serverUrl + "/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
@@ -71,8 +68,8 @@
 
   appController = function($scope, $routeParams, clientApi) {
     $scope.thumbs = [];
-    return $scope.refresh = function(link) {
-      return $scope.thumbs = [link, "asdasd", "jhasvdjs", "jhasvdjd"];
+    return $scope.refresh = function(lines) {
+      return $scope.thumbs = lines;
     };
   };
 
@@ -81,7 +78,7 @@
   linkCtrl = function($scope, $routeParams, clientApi) {
     var p;
     p = $routeParams;
-    return clientApi.getJson({
+    return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
       return $scope.data = data;
@@ -93,10 +90,10 @@
   galleryCtrl = function($scope, $routeParams, clientApi) {
     var p;
     p = $routeParams;
-    $scope.$parent.refresh(p.link);
-    return clientApi.getJson({
+    return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
+      $scope.$parent.refresh(data.Lines);
       return $scope.data = data;
     });
   };

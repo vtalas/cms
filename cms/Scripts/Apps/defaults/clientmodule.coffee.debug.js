@@ -13,7 +13,7 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
         serverUrl: "http://localhost\\:62728"
       };
     });
@@ -23,7 +23,7 @@
         applicationId: appSettings.applicationId
       };
       actions = {
-        getJson: {
+        gridpageJson: {
           method: 'GET',
           isArray: false,
           params: {
@@ -70,7 +70,7 @@
   linkCtrl = function($scope, $routeParams, clientApi) {
     var p;
     p = $routeParams;
-    return clientApi.getJson({
+    return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
       return $scope.data = data;
@@ -81,7 +81,7 @@
     var p;
     p = $routeParams;
     $scope.$parent.refresh(p.link);
-    return clientApi.getJson({
+    return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
       return $scope.data = data;

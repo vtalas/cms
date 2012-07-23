@@ -4,29 +4,34 @@
 @reference ../angular.js
 ###
 
-reference = ($scope, $http, GridApi,appSettings) ->
-  reference.$inject = [ "$scope", "$http" ]
+reference = ($scope, $http, GridApi, appSettings) ->
+  reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"]
+#  console.log("ref",appSettings)
 
   $scope.$on("gridelement-edit",()->
-
     if $scope.grids.length==0
       console.log "load.."
       $scope.grids()
   )
 
   $scope.grids = []
-  $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: ""}
+  $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null}
 
-  GridApi.getGrid({ applicationId: appSettings.Id,Id:$scope.gridelement.Content.Id}, (data)->
-    $scope.destination = data
-  )
+  if $scope.gridelement.Content.Id
+    GridApi.getGrid({ applicationId: appSettings.Id,Id:$scope.gridelement.Content.Id}, (data)->
+      $scope.destination = data
+    )
 
   $scope.choose = (grid)->
     $scope.destination = grid
     $scope.gridelement.Content.Id = grid.Id
     $scope.$parent.Edit = 0
+    $scope.$parent.save($scope.gridelement)
+
+
 
   $scope.grids = ()->
+    console.log(appSettings)
     GridApi.grids({ applicationId: appSettings.Id}, (data)->
       console.log data
       $scope.grids = data

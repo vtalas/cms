@@ -14,17 +14,15 @@ module.run ()->
 module.config ($provide, $routeProvider)->
   $provide.factory "appSettings", () ->
     setings =
-#      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
-      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+#      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
       serverUrl: "http://localhost\\:62728"
 
   $provide.factory "clientApi", ($resource,appSettings) ->
     defaults =
       applicationId: appSettings.applicationId,
-
     actions =
-	    getJson: { method: 'GET' ,isArray:false, params: {action : "grids"}}
-
+	    gridpageJson: { method: 'GET' ,isArray:false}
     proj = $resource(appSettings.serverUrl+"/client/json/:applicationId/:link?callback=JSON_CALLBACK",defaults, actions)
     proj
 
@@ -36,7 +34,6 @@ module.config ($provide, $routeProvider)->
 
 
 module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templateCache)->
-
   directiveDefinitionObject =
     scope: {  grid: "=", gridelement: "=" }
     link: (scope, iElement, tAttrs, controller) ->
@@ -44,15 +41,14 @@ module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templ
       sablona = $("#"+type+"-template").html()
       compiled = $compile(sablona)(scope)
       iElement.html(compiled)
-
   directiveDefinitionObject
 
 
 
 appController = ($scope, $routeParams,clientApi)->
   $scope.thumbs  = []
-  $scope.refresh = (link)->
-    $scope.thumbs = [link,"asdasd","jhasvdjs", "jhasvdjd"]
+  $scope.refresh = (lines)->
+    $scope.thumbs = lines
 
 window.appController = appController
 
@@ -60,7 +56,7 @@ window.appController = appController
 
 linkCtrl = ($scope,$routeParams,clientApi) ->
   p = $routeParams
-  clientApi.getJson({link:p.link }, (data)->
+  clientApi.gridpageJson({link:p.link }, (data)->
     $scope.data = data
   )
 window.linkCtrl = linkCtrl
@@ -69,9 +65,10 @@ window.linkCtrl = linkCtrl
 
 galleryCtrl = ($scope,$routeParams,clientApi) ->
   p = $routeParams
-  $scope.$parent.refresh(p.link)
 
-  clientApi.getJson({link:p.link }, (data)->
+
+  clientApi.gridpageJson({link:p.link }, (data)->
+    $scope.$parent.refresh(data.Lines)
     $scope.data = data
   )
 window.linkCtrl = linkCtrl
