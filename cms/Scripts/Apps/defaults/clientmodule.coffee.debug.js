@@ -61,9 +61,9 @@
     return directiveDefinitionObject;
   });
   appController = function($scope, $routeParams, clientApi) {
-    $scope.thumbs = [];
+    $scope.refernceItem = [];
     return $scope.refresh = function(link) {
-      return $scope.thumbs = [link, "asdasd", "jhasvdjs", "jhasvdjd"];
+      return $scope.refernceItem = [link, "asdasd", "jhasvdjs", "jhasvdjd"];
     };
   };
   window.appController = appController;

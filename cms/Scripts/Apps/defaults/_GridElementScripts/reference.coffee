@@ -5,7 +5,7 @@
 ###
 
 reference = ($scope, $http, GridApi, appSettings) ->
-  reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"]
+#  reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"]
 #  console.log("ref",appSettings)
 
   $scope.$on("gridelement-edit",()->
@@ -18,7 +18,7 @@ reference = ($scope, $http, GridApi, appSettings) ->
   $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null}
 
   if $scope.gridelement.Content.Id
-    GridApi.getGrid({ applicationId: appSettings.Id,Id:$scope.gridelement.Content.Id}, (data)->
+    GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
       $scope.destination = data
     )
 
@@ -28,10 +28,8 @@ reference = ($scope, $http, GridApi, appSettings) ->
     $scope.$parent.Edit = 0
     $scope.$parent.save($scope.gridelement)
 
-
-
   $scope.grids = ()->
-    console.log(appSettings)
+    console.log(appSettings, "ref")
     GridApi.grids({ applicationId: appSettings.Id}, (data)->
       console.log data
       $scope.grids = data

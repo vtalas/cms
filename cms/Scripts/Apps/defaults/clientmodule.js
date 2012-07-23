@@ -38,6 +38,23 @@
       proj = $resource(appSettings.serverUrl + "/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
       return proj;
     });
+    $provide.factory("GridApi", function($resource, appSettings) {
+      var actions, defaults, proj;
+      defaults = {
+        applicationId: appSettings.applicationId
+      };
+      actions = {
+        getGrid: {
+          method: 'GET',
+          isArray: false,
+          params: {
+            action: "GetGrid"
+          }
+        }
+      };
+      proj = $resource(appSettings.serverUrl + "/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK", defaults, actions);
+      return proj;
+    });
     $routeProvider.when('/link/:link', {
       controller: linkCtrl,
       templateUrl: 'link-template'
@@ -66,15 +83,6 @@
     return directiveDefinitionObject;
   });
 
-  appController = function($scope, $routeParams, clientApi) {
-    $scope.thumbs = [];
-    return $scope.refresh = function(lines) {
-      return $scope.thumbs = lines;
-    };
-  };
-
-  window.appController = appController;
-
   linkCtrl = function($scope, $routeParams, clientApi) {
     var p;
     p = $routeParams;
@@ -87,17 +95,27 @@
 
   window.linkCtrl = linkCtrl;
 
-  galleryCtrl = function($scope, $routeParams, clientApi) {
+  galleryCtrl = function($scope, $routeParams, clientApi, GridApi) {
     var p;
     p = $routeParams;
     return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
-      $scope.$parent.refresh(data.Lines);
-      return $scope.data = data;
+      $scope.$parent.refreshThumbs(data);
+      return console.log(data, "xx");
     });
   };
 
   window.linkCtrl = linkCtrl;
+
+  appController = function($scope, $routeParams) {
+    $scope.referenceItems = {};
+    return $scope.refreshThumbs = function(lines) {
+      console.log(lines, "xxx");
+      return $scope.referenceItems = lines;
+    };
+  };
+
+  window.appController = appController;
 
 }).call(this);

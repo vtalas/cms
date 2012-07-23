@@ -22,8 +22,16 @@ module.config ($provide, $routeProvider)->
     defaults =
       applicationId: appSettings.applicationId,
     actions =
-	    gridpageJson: { method: 'GET' ,isArray:false}
+	    gridpageJson: { method: 'GET' ,isArray:false},
     proj = $resource(appSettings.serverUrl+"/client/json/:applicationId/:link?callback=JSON_CALLBACK",defaults, actions)
+    proj
+
+  $provide.factory "GridApi", ($resource,appSettings) ->
+    defaults =
+      applicationId: appSettings.applicationId,
+    actions =
+      getGrid: { method: 'GET' ,isArray:false, params : {action: "GetGrid"}}
+    proj = $resource(appSettings.serverUrl+"/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK",defaults, actions)
     proj
 
   $routeProvider
@@ -45,14 +53,6 @@ module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templ
 
 
 
-appController = ($scope, $routeParams,clientApi)->
-  $scope.thumbs  = []
-  $scope.refresh = (lines)->
-    $scope.thumbs = lines
-
-window.appController = appController
-
-###########################
 
 linkCtrl = ($scope,$routeParams,clientApi) ->
   p = $routeParams
@@ -63,16 +63,34 @@ window.linkCtrl = linkCtrl
 
 ###########################
 
-galleryCtrl = ($scope,$routeParams,clientApi) ->
+galleryCtrl = ($scope,$routeParams,clientApi, GridApi) ->
   p = $routeParams
 
-
   clientApi.gridpageJson({link:p.link }, (data)->
-    $scope.$parent.refresh(data.Lines)
-    $scope.data = data
-  )
+    $scope.$parent.refreshThumbs(data)
+#    $scope.data = data
+
+    console.log(data, "xx")
+#    GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
+#      $scope.destination = data
+#      #    $scope.data = data
+#      )
+
+    )
+
+
+
 window.linkCtrl = linkCtrl
 
+appController = ($scope, $routeParams)->
+  $scope.referenceItems  = {}
+  $scope.refreshThumbs = (lines)->
+    console.log( lines, "xxx")
+    $scope.referenceItems = lines
+
+window.appController = appController
+
+###########################
 
 
 
