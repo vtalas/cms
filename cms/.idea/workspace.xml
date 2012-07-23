@@ -22,10 +22,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="StaticContent.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="StaticContent.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Content/Apps/test1/StaticContent.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="0" selection-start="2462" selection-end="2462" vertical-scroll-proportion="0.6619628">
+            <state line="60" column="10" selection-start="1950" selection-end="1950" vertical-scroll-proportion="-34.46154">
               <folding />
             </state>
           </provider>
@@ -34,16 +34,16 @@
       <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="5" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0">
+            <state line="31" column="5" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clientmodule.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="clientmodule.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.0">
+            <state line="97" column="31" selection-start="2847" selection-end="2847" vertical-scroll-proportion="0.78252614">
               <folding />
             </state>
           </provider>
@@ -52,7 +52,7 @@
       <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="23" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0">
+            <state line="43" column="46" selection-start="1450" selection-end="1450" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -79,7 +79,7 @@
       <file leaf-file-name="reference.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="67" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
+            <state line="16" column="38" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,9 +108,9 @@
         <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/text.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" />
+        <option value="$PROJECT_DIR$/Content/Apps/test1/StaticContent.html" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee" />
-        <option value="$PROJECT_DIR$/Content/Apps/test1/StaticContent.html" />
       </list>
     </option>
   </component>
@@ -304,12 +304,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.HTML" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.HTML" />
     <property name="last_opened_file_path" value="C:" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -416,6 +416,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32236025" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25233644" sideWeight="0.6776397" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -427,7 +428,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32236025" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956672" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -547,14 +547,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="5" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0">
+        <state line="31" column="5" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="23" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
@@ -564,28 +559,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/text.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="3" selection-start="236" selection-end="236" vertical-scroll-proportion="0.0">
+        <state line="11" column="3" selection-start="236" selection-end="236" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/Apps/test1/StaticContent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="10" selection-start="1950" selection-end="1950" vertical-scroll-proportion="-34.46154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="46" selection-start="1450" selection-end="1450" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="67" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
+        <state line="16" column="38" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1737" selection-end="1737" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/Apps/test1/StaticContent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="2462" selection-end="2462" vertical-scroll-proportion="0.6619628">
+        <state line="97" column="31" selection-start="2847" selection-end="2847" vertical-scroll-proportion="0.78252614">
           <folding />
         </state>
       </provider>

@@ -37,6 +37,7 @@ module.config ($provide, $routeProvider)->
   $routeProvider
     .when('/link/:link', { controller: linkCtrl, templateUrl: 'link-template' })
     .when('/gallery/:link', { controller: galleryCtrl, templateUrl: 'link-template' })
+    .when('/gallery/:link/:xxx', { controller: linkCtrl, templateUrl: 'link-template' })
 
   1
 
@@ -65,27 +66,35 @@ window.linkCtrl = linkCtrl
 
 galleryCtrl = ($scope,$routeParams,clientApi, GridApi) ->
   p = $routeParams
+  console.log(p.link, $scope.current)
+
+
+  $scope.current = p.link
 
   clientApi.gridpageJson({link:p.link }, (data)->
     $scope.$parent.refreshThumbs(data)
 #    $scope.data = data
-
-    console.log(data, "xx")
 #    GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
 #      $scope.destination = data
 #      #    $scope.data = data
 #      )
 
     )
+window.galleryCtrl = galleryCtrl
 
-
-
-window.linkCtrl = linkCtrl
+galleryCtrl2 = ($scope,$routeParams,clientApi, GridApi) ->
+  p = $routeParams
+  console.log("gallery2")
+window.galleryCtrl2 = galleryCtrl2
 
 appController = ($scope, $routeParams)->
   $scope.referenceItems  = {}
+  $scope.$on("reference-loaded", (data)->
+    console.log("refrecne-loaded")
+#   $scope.data = data
+  )
+
   $scope.refreshThumbs = (lines)->
-    console.log( lines, "xxx")
     $scope.referenceItems = lines
 
 window.appController = appController

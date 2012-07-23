@@ -8,19 +8,23 @@ reference = ($scope, $http, GridApi, appSettings) ->
 #  reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"]
 #  console.log("ref",appSettings)
 
-  $scope.$on("gridelement-edit",()->
-    if $scope.grids.length==0
-      console.log "load.."
-      $scope.grids()
-  )
 
   $scope.grids = []
   $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null}
 
   if $scope.gridelement.Content.Id
     GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
+      $scope.$emit("reference-loaded")
+      console.log("refffff")
       $scope.destination = data
     )
+
+  #  ADmin only
+  $scope.$on("gridelement-edit",()->
+    if $scope.grids.length==0
+      console.log "load.."
+      $scope.grids()
+  )
 
   $scope.choose = (grid)->
     $scope.destination = grid

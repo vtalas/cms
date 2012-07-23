@@ -8,7 +8,7 @@
 
 
 (function() {
-  var appController, galleryCtrl, linkCtrl, module;
+  var appController, galleryCtrl, galleryCtrl2, linkCtrl, module;
 
   module = angular.module("clientModule", ['ngResource', 'templateExt']);
 
@@ -61,6 +61,9 @@
     }).when('/gallery/:link', {
       controller: galleryCtrl,
       templateUrl: 'link-template'
+    }).when('/gallery/:link/:xxx', {
+      controller: linkCtrl,
+      templateUrl: 'link-template'
     });
     return 1;
   });
@@ -98,20 +101,31 @@
   galleryCtrl = function($scope, $routeParams, clientApi, GridApi) {
     var p;
     p = $routeParams;
+    console.log(p.link, $scope.current);
+    $scope.current = p.link;
     return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
-      $scope.$parent.refreshThumbs(data);
-      return console.log(data, "xx");
+      return $scope.$parent.refreshThumbs(data);
     });
   };
 
-  window.linkCtrl = linkCtrl;
+  window.galleryCtrl = galleryCtrl;
+
+  galleryCtrl2 = function($scope, $routeParams, clientApi, GridApi) {
+    var p;
+    p = $routeParams;
+    return console.log("gallery2");
+  };
+
+  window.galleryCtrl2 = galleryCtrl2;
 
   appController = function($scope, $routeParams) {
     $scope.referenceItems = {};
+    $scope.$on("reference-loaded", function(data) {
+      return console.log("refrecne-loaded");
+    });
     return $scope.refreshThumbs = function(lines) {
-      console.log(lines, "xxx");
       return $scope.referenceItems = lines;
     };
   };
