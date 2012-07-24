@@ -4,8 +4,9 @@
 @reference ../angular.js
 ###
 
-text = ($scope, $http) ->
-  text.$inject = [ "$scope", "$http" ]
+text = ($scope, $http, appSettings) ->
+  text.$inject = [ "$scope", "$http", "appSettings"]
+#  console.log(appSettings)
 
   $scope.xxx = "xxxx"
   1

@@ -9,5 +9,11 @@ namespace cms.Controllers
 			var a = db.GetGridPage(link);
 			return new Code.JSONNetResult(a);
 		}
+
+		public ActionResult GetGrid(int id)
+		{
+			var a = db.GetGridPage(id);
+			return new Code.JSONNetResult(a);
+		}
 	}
 }

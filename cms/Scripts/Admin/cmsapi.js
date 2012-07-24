@@ -5,6 +5,7 @@
     		{applicationId : "@applicationId"},
             {
                 grids: { method: 'GET' ,isArray:true, params: {action : "grids"}},
+	            gridpageJson: { method: 'GET' ,isArray:false, params: {action : "grids"}},
                 getGrid: { method: 'POST' , params: {action : "GetGrid"}},
                 AddGridElement: { method: 'POST' , params: {action : "AddGridElement"}},
                 DeleteGridElement: { method: 'POST' , params: {action : "DeleteGridElement"}},

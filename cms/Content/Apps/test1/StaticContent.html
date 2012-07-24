@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/novinka.js"></script>
 	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/text.js"></script>
 	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/simplehtml.js"></script>
+	<script type="text/javascript" src="/Scripts/Apps/defaults/_GridElementScripts/reference.js"></script>
 
 	<link rel="stylesheet" href="/Content/Apps/test1/bootstrap.css" >
 
@@ -34,6 +35,13 @@
 						<li>
 							<a href="#/gallery/g2" > g2</a>
 						</li>
+						<li>
+							<a href="#/gallery/s" > g2</a>
+							???????????????
+							<a href="#/gallery/s/aaa" > g2</a>
+							<a href="#/gallery/s/xxx" > g2</a>
+							<a href="#/gallery/s/aaaa" > g2</a>
+						</li>
 						<li>----</li>
 						<li>
 							<a href="#/link/profil" > profil</a>
@@ -54,15 +62,16 @@
 	</div>
 	<div class="row" style="border:1px solid red;margin: 0px auto">
 		<div class="span16">
-			<ul ng-repeat="thumb in thumbs">
-				<li> {{thumb}}</li>
-			</ul>
+
+			<div ng-repeat="line in referenceItems.Lines">
+				<div ng-repeat="item in line">
+					<div gridelement="item" grid="data" >	</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </div>
-
-
-
 
 
 	<script type="text/ng-template" id="novinka-template">
@@ -70,6 +79,11 @@
 			<div ng-bind-html-unsafe="headerHtml()"> </div>
 			{{thumb() }}
 			<div ng-bind-html-unsafe="textHtml()"></div>
+		</div>
+	</script>
+	<script type="text/ng-template" id="reference-template">
+		<div ng-controller="reference">
+			<a href="#/link/{{destination.Link}}">{{destination.Name}}</a>
 		</div>
 	</script>
 

@@ -8,7 +8,7 @@
 
 
 (function() {
-  var appController, galleryCtrl, linkCtrl, module;
+  var appController, galleryCtrl, galleryCtrl2, linkCtrl, module;
 
   module = angular.module("clientModule", ['ngResource', 'templateExt']);
 
@@ -20,7 +20,7 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
         serverUrl: "http://localhost\\:62728"
       };
     });
@@ -30,15 +30,29 @@
         applicationId: appSettings.applicationId
       };
       actions = {
-        getJson: {
+        gridpageJson: {
           method: 'GET',
-          isArray: false,
-          params: {
-            action: "grids"
-          }
+          isArray: false
         }
       };
       proj = $resource(appSettings.serverUrl + "/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
+      return proj;
+    });
+    $provide.factory("GridApi", function($resource, appSettings) {
+      var actions, defaults, proj;
+      defaults = {
+        applicationId: appSettings.applicationId
+      };
+      actions = {
+        getGrid: {
+          method: 'GET',
+          isArray: false,
+          params: {
+            action: "GetGrid"
+          }
+        }
+      };
+      proj = $resource(appSettings.serverUrl + "/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK", defaults, actions);
       return proj;
     });
     $routeProvider.when('/link/:link', {
@@ -46,6 +60,9 @@
       templateUrl: 'link-template'
     }).when('/gallery/:link', {
       controller: galleryCtrl,
+      templateUrl: 'link-template'
+    }).when('/gallery/:link/:xxx', {
+      controller: linkCtrl,
       templateUrl: 'link-template'
     });
     return 1;
@@ -69,38 +86,50 @@
     return directiveDefinitionObject;
   });
 
-  appController = function($scope, $routeParams, clientApi) {
-    $scope.thumbs = [];
-    return $scope.refresh = function(link) {
-      return $scope.thumbs = [link, "asdasd", "jhasvdjs", "jhasvdjd"];
+  linkCtrl = function($scope, $routeParams, clientApi) {
+    var p;
+    p = $routeParams;
+    return clientApi.gridpageJson({
+      link: p.link
+    }, function(data) {
+      return $scope.data = data;
+    });
+  };
+
+  window.linkCtrl = linkCtrl;
+
+  galleryCtrl = function($scope, $routeParams, clientApi, GridApi) {
+    var p;
+    p = $routeParams;
+    console.log(p.link, $scope.current);
+    $scope.current = p.link;
+    return clientApi.gridpageJson({
+      link: p.link
+    }, function(data) {
+      return $scope.$parent.refreshThumbs(data);
+    });
+  };
+
+  window.galleryCtrl = galleryCtrl;
+
+  galleryCtrl2 = function($scope, $routeParams, clientApi, GridApi) {
+    var p;
+    p = $routeParams;
+    return console.log("gallery2");
+  };
+
+  window.galleryCtrl2 = galleryCtrl2;
+
+  appController = function($scope, $routeParams) {
+    $scope.referenceItems = {};
+    $scope.$on("reference-loaded", function(data) {
+      return console.log("refrecne-loaded");
+    });
+    return $scope.refreshThumbs = function(lines) {
+      return $scope.referenceItems = lines;
     };
   };
 
   window.appController = appController;
-
-  linkCtrl = function($scope, $routeParams, clientApi) {
-    var p;
-    p = $routeParams;
-    return clientApi.getJson({
-      link: p.link
-    }, function(data) {
-      return $scope.data = data;
-    });
-  };
-
-  window.linkCtrl = linkCtrl;
-
-  galleryCtrl = function($scope, $routeParams, clientApi) {
-    var p;
-    p = $routeParams;
-    $scope.$parent.refresh(p.link);
-    return clientApi.getJson({
-      link: p.link
-    }, function(data) {
-      return $scope.data = data;
-    });
-  };
-
-  window.linkCtrl = linkCtrl;
 
 }).call(this);
