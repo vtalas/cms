@@ -8,7 +8,7 @@
 
 
 (function() {
-  var appController, galleryCtrl, galleryCtrl2, linkCtrl, module;
+  var appController, galleryCtrl, linkCtrl, module;
 
   module = angular.module("clientModule", ['ngResource', 'templateExt']);
 
@@ -20,7 +20,7 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
         serverUrl: "http://localhost\\:62728"
       };
     });
@@ -62,7 +62,7 @@
       controller: galleryCtrl,
       templateUrl: 'link-template'
     }).when('/gallery/:link/:xxx', {
-      controller: linkCtrl,
+      controller: galleryCtrl,
       templateUrl: 'link-template'
     });
     return 1;
@@ -101,8 +101,19 @@
   galleryCtrl = function($scope, $routeParams, clientApi, GridApi) {
     var p;
     p = $routeParams;
-    console.log(p.link, $scope.current);
-    $scope.current = p.link;
+    console.log(p.link, $scope.$parent.current);
+    if (p.xxx) {
+      clientApi.gridpageJson({
+        link: p.xxx
+      }, function(data) {
+        console.log(data);
+        return $scope.data = data;
+      });
+    }
+    if ($scope.$parent.current === p.link) {
+      return;
+    }
+    $scope.$parent.current = p.link;
     return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
@@ -112,19 +123,9 @@
 
   window.galleryCtrl = galleryCtrl;
 
-  galleryCtrl2 = function($scope, $routeParams, clientApi, GridApi) {
-    var p;
-    p = $routeParams;
-    return console.log("gallery2");
-  };
-
-  window.galleryCtrl2 = galleryCtrl2;
-
-  appController = function($scope, $routeParams) {
+  appController = function($scope) {
+    $scope.current = "xx";
     $scope.referenceItems = {};
-    $scope.$on("reference-loaded", function(data) {
-      return console.log("refrecne-loaded");
-    });
     return $scope.refreshThumbs = function(lines) {
       return $scope.referenceItems = lines;
     };

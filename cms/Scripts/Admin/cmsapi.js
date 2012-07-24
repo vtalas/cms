@@ -1,8 +1,8 @@
 ﻿angular.module('cmsapi', ['ngResource'])
-	.factory('GridApi', [ '$resource',function ($resource, appConfig, $provide) {
+	.factory('GridApi', [ '$resource','appSettings',function ($resource,appSettings) {
 
         var project = $resource('/adminApi/:applicationId/:action/:Id',
-    		{applicationId : "@applicationId"},
+    		{applicationId : appSettings.Id},
             {
                 grids: { method: 'GET' ,isArray:true, params: {action : "grids"}},
 	            gridpageJson: { method: 'GET' ,isArray:false, params: {action : "grids"}},

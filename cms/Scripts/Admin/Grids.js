@@ -31,7 +31,7 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 
 	var GridElementCtrl = function($scope) {
 		$scope.add = function(item) {
-			GridApi.AddGridElement({
+            GridApi.AddGridElement({
 					applicationId: appSettings.Id,
 					data: item,
 					gridId: $scope.grid.Id
@@ -40,9 +40,11 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 						var newitem = _newitem($scope.grid.Lines.length);
 						$scope.grid.Lines.push([newitem]);
 					}
-					data.Edit = 1;
 					$scope.grid.Lines[data.Line][data.Position] = data;
-				});
+                    //TODO: nevyvola se broadcast
+                    $scope.edit(data);
+                    console.log(data)
+            });
 		};
 
 		$scope.remove = function(item) {
@@ -51,10 +53,8 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
             GridApi.DeleteGridElement({ applicationId: appSettings.Id, data: item, gridId: $scope.grid.Id},
 				function() {
 					item.Id = 0;item.Edit = 0;item.Content = "";
-
                     //refresh - preopocitani poradi radku
                     if (line.length == 1){
-                        console.log($scope.$parent.$parent.line)
                         $scope.$emit("refreshgrid");
                     }
                 });
@@ -62,14 +62,8 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 
 		$scope.edit = function(item) {
 			$scope.$broadcast("gridelement-edit");
-			$scope.Edit = 1;
-			//            item.Edit = 1;
+			item.Edit = 1;
 		};
-
-		//        $scope.$on("gridelement-edit",function(){
-		//          console.log("khvsajdhvsahjd EEEE")
-		//        })
-
 
 		$scope.save = function(item) {
 			var copy = jQuery.extend(true, { }, item);
@@ -78,9 +72,7 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 				copy.Content = JSON.stringify(copy.Content);
 
 			GridApi.UpdateGridElement({ applicationId: appSettings.Id, data: copy },
-				function() {
-					$scope.Edit = 0;
-				});
+				function() {item.Edit = 0;});
 		};
 
 	};

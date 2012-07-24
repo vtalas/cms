@@ -22,55 +22,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="StaticContent.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/Apps/test1/StaticContent.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="10" selection-start="1950" selection-end="1950" vertical-scroll-proportion="-34.46154">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reference.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="5" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="clientmodule.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="clientmodule.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="97" column="31" selection-start="2847" selection-end="2847" vertical-scroll-proportion="0.78252614">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="46" selection-start="1450" selection-end="1450" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cmsapi.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="71" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="text.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/text.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="3" selection-start="236" selection-end="236" vertical-scroll-proportion="0.0">
+            <state line="68" column="38" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -79,7 +34,16 @@
       <file leaf-file-name="reference.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="38" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
+            <state line="16" column="0" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StaticContent.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Content/Apps/test1/StaticContent.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="52" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.10178571">
               <folding />
             </state>
           </provider>
@@ -101,24 +65,24 @@
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/Copy of text.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/simplehtml.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Apps/test1/clientPageCtrl.coffee" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/GridListController.js" />
         <option value="$PROJECT_DIR$/Views/Admin/_Layout_Grids.cshtml" />
         <option value="$PROJECT_DIR$/Views/Shared/_GridElementTmpl/reference_Edit.cshtml" />
         <option value="$PROJECT_DIR$/Scripts/Admin/GridPageCtrl.js" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/text.coffee" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/GridListController.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" />
-        <option value="$PROJECT_DIR$/Content/Apps/test1/StaticContent.html" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee" />
+        <option value="$PROJECT_DIR$/Content/Apps/test1/StaticContent.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1216" />
-    <option name="height" value="1770" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -189,6 +153,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -285,16 +259,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="_GridElementScripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -411,14 +375,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1216" height="1770" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32236025" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3207856" sideWeight="0.48845866" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25233644" sideWeight="0.6776397" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25167537" sideWeight="0.6792144" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.54545456" order="7" side_tool="true" content_ui="tabs" />
@@ -530,14 +494,19 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/GridListController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="53" selection-start="197" selection-end="197" vertical-scroll-proportion="0.059336822" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/novinka.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="0" selection-start="290" selection-end="290" vertical-scroll-proportion="0.34812286" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="0" selection-start="2083" selection-end="2083" vertical-scroll-proportion="-0.15017667" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="5" selection-start="817" selection-end="817" vertical-scroll-proportion="0.30375427" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/GridPageCtrl.js">
@@ -545,47 +514,38 @@
         <state line="14" column="7" selection-start="450" selection-end="450" vertical-scroll-proportion="0.41535777" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.js">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/GridListController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="5" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="14" column="0" selection-start="397" selection-end="397" vertical-scroll-proportion="0.32460734" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="71" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" />
+        <state line="18" column="50" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.5221843" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/text.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="3" selection-start="236" selection-end="236" vertical-scroll-proportion="0.0" />
+        <state line="12" column="0" selection-start="237" selection-end="237" vertical-scroll-proportion="0.34812286" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/Apps/test1/StaticContent.html">
+    <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="10" selection-start="1950" selection-end="1950" vertical-scroll-proportion="-34.46154">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="46" selection-start="1450" selection-end="1450" vertical-scroll-proportion="0.0">
+        <state line="68" column="38" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="38" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
+        <state line="16" column="0" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee">
+    <entry file="file://$PROJECT_DIR$/Content/Apps/test1/StaticContent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="31" selection-start="2847" selection-end="2847" vertical-scroll-proportion="0.78252614">
+        <state line="40" column="52" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.10178571">
           <folding />
         </state>
       </provider>

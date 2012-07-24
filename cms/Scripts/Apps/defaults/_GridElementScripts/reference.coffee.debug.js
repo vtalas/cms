@@ -6,12 +6,6 @@
   */
   var reference;
   reference = function($scope, $http, GridApi, appSettings) {
-    $scope.$on("gridelement-edit", function() {
-      if ($scope.grids.length === 0) {
-        console.log("load..");
-        return $scope.grids();
-      }
-    });
     $scope.grids = [];
     $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) || {
       Id: null
@@ -20,9 +14,17 @@
       GridApi.getGrid({
         Id: $scope.gridelement.Content.Id
       }, function(data) {
+        $scope.$emit("reference-loaded");
+        console.log("refffff");
         return $scope.destination = data;
       });
     }
+    $scope.$on("gridelement-edit", function() {
+      console.log("load..");
+      if ($scope.grids.length === 0) {
+        return $scope.grids();
+      }
+    });
     $scope.choose = function(grid) {
       $scope.destination = grid;
       $scope.gridelement.Content.Id = grid.Id;
@@ -31,9 +33,7 @@
     };
     $scope.grids = function() {
       console.log(appSettings, "ref");
-      return GridApi.grids({
-        applicationId: appSettings.Id
-      }, function(data) {
+      return GridApi.grids(null, function(data) {
         console.log(data);
         return $scope.grids = data;
       });

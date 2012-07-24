@@ -14,8 +14,8 @@ module.run ()->
 module.config ($provide, $routeProvider)->
   $provide.factory "appSettings", () ->
     setings =
-      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
-#      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+#      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
       serverUrl: "http://localhost\\:62728"
 
   $provide.factory "clientApi", ($resource,appSettings) ->
@@ -37,7 +37,7 @@ module.config ($provide, $routeProvider)->
   $routeProvider
     .when('/link/:link', { controller: linkCtrl, templateUrl: 'link-template' })
     .when('/gallery/:link', { controller: galleryCtrl, templateUrl: 'link-template' })
-    .when('/gallery/:link/:xxx', { controller: linkCtrl, templateUrl: 'link-template' })
+    .when('/gallery/:link/:xxx', { controller: galleryCtrl, templateUrl: 'link-template' })
 
   1
 
@@ -61,15 +61,18 @@ linkCtrl = ($scope,$routeParams,clientApi) ->
     $scope.data = data
   )
 window.linkCtrl = linkCtrl
-
-###########################
-
+#########################################################################################################
 galleryCtrl = ($scope,$routeParams,clientApi, GridApi) ->
   p = $routeParams
-  console.log(p.link, $scope.current)
+  console.log p.link, $scope.$parent.current
+  if p.xxx
+    clientApi.gridpageJson({link:p.xxx }, (data)->
+      console.log data
+      $scope.data = data
+    )
 
-
-  $scope.current = p.link
+  return if $scope.$parent.current == p.link
+  $scope.$parent.current = p.link
 
   clientApi.gridpageJson({link:p.link }, (data)->
     $scope.$parent.refreshThumbs(data)
@@ -81,19 +84,11 @@ galleryCtrl = ($scope,$routeParams,clientApi, GridApi) ->
 
     )
 window.galleryCtrl = galleryCtrl
+#########################################################################################################
+appController = ($scope)->
+  $scope.current = "xx"
 
-galleryCtrl2 = ($scope,$routeParams,clientApi, GridApi) ->
-  p = $routeParams
-  console.log("gallery2")
-window.galleryCtrl2 = galleryCtrl2
-
-appController = ($scope, $routeParams)->
   $scope.referenceItems  = {}
-  $scope.$on("reference-loaded", (data)->
-    console.log("refrecne-loaded")
-#   $scope.data = data
-  )
-
   $scope.refreshThumbs = (lines)->
     $scope.referenceItems = lines
 

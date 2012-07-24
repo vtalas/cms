@@ -14,15 +14,13 @@ reference = ($scope, $http, GridApi, appSettings) ->
 
   if $scope.gridelement.Content.Id
     GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
-      $scope.$emit("reference-loaded")
-      console.log("refffff")
       $scope.destination = data
     )
 
   #  ADmin only
   $scope.$on("gridelement-edit",()->
+    console.log "load.."
     if $scope.grids.length==0
-      console.log "load.."
       $scope.grids()
   )
 
@@ -34,7 +32,7 @@ reference = ($scope, $http, GridApi, appSettings) ->
 
   $scope.grids = ()->
     console.log(appSettings, "ref")
-    GridApi.grids({ applicationId: appSettings.Id}, (data)->
+    GridApi.grids(null, (data)->
       console.log data
       $scope.grids = data
     )

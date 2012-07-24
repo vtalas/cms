@@ -19,14 +19,12 @@
       GridApi.getGrid({
         Id: $scope.gridelement.Content.Id
       }, function(data) {
-        $scope.$emit("reference-loaded");
-        console.log("refffff");
         return $scope.destination = data;
       });
     }
     $scope.$on("gridelement-edit", function() {
+      console.log("load..");
       if ($scope.grids.length === 0) {
-        console.log("load..");
         return $scope.grids();
       }
     });
@@ -38,9 +36,7 @@
     };
     $scope.grids = function() {
       console.log(appSettings, "ref");
-      return GridApi.grids({
-        applicationId: appSettings.Id
-      }, function(data) {
+      return GridApi.grids(null, function(data) {
         console.log(data);
         return $scope.grids = data;
       });
