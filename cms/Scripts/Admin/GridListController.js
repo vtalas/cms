@@ -12,7 +12,9 @@ var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridA
 
 
 	$scope.add = function () {
-        $http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/AddGrid', data: { data: newitem} })
+		var newitem = $scope.newitem;
+
+		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/AddGrid', data: { data: newitem} })
             .success(function (data, status, headers, config) {
             	$scope.data.push(data);
             })

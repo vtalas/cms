@@ -20,8 +20,10 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
-        serverUrl: "http://localhost\\:62728"
+        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+        serverUrl: "http://localhost\\:62728",
+        currentGallery: "s",
+        currentSubGallery: "ss1"
       };
     });
     $provide.factory("clientApi", function($resource, appSettings) {
@@ -57,9 +59,6 @@
     });
     $routeProvider.when('/link/:link', {
       controller: linkCtrl,
-      templateUrl: 'link-template'
-    }).when('/gallery/:link', {
-      controller: galleryCtrl,
       templateUrl: 'link-template'
     }).when('/gallery/:link/:xxx', {
       controller: galleryCtrl,
@@ -98,36 +97,33 @@
 
   window.linkCtrl = linkCtrl;
 
-  galleryCtrl = function($scope, $routeParams, clientApi, GridApi) {
+  galleryCtrl = function($scope, $routeParams, clientApi, GridApi, appSettings) {
     var p;
     p = $routeParams;
-    console.log(p.link, $scope.$parent.current);
     if (p.xxx) {
       clientApi.gridpageJson({
         link: p.xxx
       }, function(data) {
-        console.log(data);
         return $scope.data = data;
       });
     }
-    if ($scope.$parent.current === p.link) {
+    if (appSettings.currentgallery === p.link) {
       return;
     }
-    $scope.$parent.current = p.link;
+    appSettings.currentgallery = p.link;
     return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
-      return $scope.$parent.refreshThumbs(data);
+      return $scope.$parent.refreshGalleryThumbs(data);
     });
   };
 
   window.galleryCtrl = galleryCtrl;
 
-  appController = function($scope) {
-    $scope.current = "xx";
-    $scope.referenceItems = {};
-    return $scope.refreshThumbs = function(lines) {
-      return $scope.referenceItems = lines;
+  appController = function($scope, appSettings, clientApi, $routeParams, $location, $route) {
+    console.log($routeParams, $routeParams.link, $location, $route.current);
+    return $scope.refreshGalleryThumbs = function(lines) {
+      return $scope.galleryThumbs = lines;
     };
   };
 

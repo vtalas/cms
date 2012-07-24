@@ -14,9 +14,11 @@ module.run ()->
 module.config ($provide, $routeProvider)->
   $provide.factory "appSettings", () ->
     setings =
-#      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
-      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+#      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
       serverUrl: "http://localhost\\:62728"
+      currentGallery: "s"
+      currentSubGallery: "ss1"
 
   $provide.factory "clientApi", ($resource,appSettings) ->
     defaults =
@@ -34,11 +36,11 @@ module.config ($provide, $routeProvider)->
     proj = $resource(appSettings.serverUrl+"/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK",defaults, actions)
     proj
 
+
   $routeProvider
     .when('/link/:link', { controller: linkCtrl, templateUrl: 'link-template' })
-    .when('/gallery/:link', { controller: galleryCtrl, templateUrl: 'link-template' })
     .when('/gallery/:link/:xxx', { controller: galleryCtrl, templateUrl: 'link-template' })
-
+    .otherwise('/gallery/:link/:xxx', { controller: galleryCtrl, templateUrl: 'link-template' })
   1
 
 
@@ -54,7 +56,6 @@ module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templ
 
 
 
-
 linkCtrl = ($scope,$routeParams,clientApi) ->
   p = $routeParams
   clientApi.gridpageJson({link:p.link }, (data)->
@@ -62,39 +63,64 @@ linkCtrl = ($scope,$routeParams,clientApi) ->
   )
 window.linkCtrl = linkCtrl
 #########################################################################################################
-galleryCtrl = ($scope,$routeParams,clientApi, GridApi) ->
+galleryCtrl = ($scope,$routeParams,clientApi, GridApi, appSettings) ->
   p = $routeParams
-  console.log p.link, $scope.$parent.current
+
   if p.xxx
     clientApi.gridpageJson({link:p.xxx }, (data)->
-      console.log data
       $scope.data = data
     )
 
-  return if $scope.$parent.current == p.link
-  $scope.$parent.current = p.link
+  # aby se zbytecne nepreenacitalo 's' pri kliku s/ss1 -> s/ss2
+  return if appSettings.currentgallery  == p.link
+  appSettings.currentgallery = p.link
 
   clientApi.gridpageJson({link:p.link }, (data)->
-    $scope.$parent.refreshThumbs(data)
-#    $scope.data = data
-#    GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
-#      $scope.destination = data
-#      #    $scope.data = data
-#      )
-
-    )
+    $scope.$parent.refreshGalleryThumbs(data)
+  )
 window.galleryCtrl = galleryCtrl
 #########################################################################################################
-appController = ($scope)->
-  $scope.current = "xx"
+appController = ($scope,appSettings,clientApi,$routeParams, $location, $route)->
+  console.log($routeParams, $routeParams.link, $location, $route.current);
 
-  $scope.referenceItems  = {}
-  $scope.refreshThumbs = (lines)->
-    $scope.referenceItems = lines
+  $scope.refreshGalleryThumbs = (lines)->
+    $scope.galleryThumbs = lines
+
+#  if !$routeParams.xxx
+#    clientApi.gridpageJson({link:appSettings.currentSubGallery }, (data)->
+#      $scope.galleryThumbs = data
+#    )
 
 window.appController = appController
-
 ###########################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,6 +12,7 @@
 
   reference = function($scope, $http, GridApi, appSettings) {
     $scope.grids = [];
+    $scope.app = appSettings;
     $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) || {
       Id: null
     };

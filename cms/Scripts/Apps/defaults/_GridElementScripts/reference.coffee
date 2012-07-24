@@ -10,6 +10,7 @@ reference = ($scope, $http, GridApi, appSettings) ->
 
 
   $scope.grids = []
+  $scope.app = appSettings
   $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null}
 
   if $scope.gridelement.Content.Id

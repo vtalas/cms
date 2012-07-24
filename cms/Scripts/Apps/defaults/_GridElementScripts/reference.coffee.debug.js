@@ -7,6 +7,7 @@
   var reference;
   reference = function($scope, $http, GridApi, appSettings) {
     $scope.grids = [];
+    $scope.app = appSettings;
     $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) || {
       Id: null
     };
@@ -14,8 +15,6 @@
       GridApi.getGrid({
         Id: $scope.gridelement.Content.Id
       }, function(data) {
-        $scope.$emit("reference-loaded");
-        console.log("refffff");
         return $scope.destination = data;
       });
     }

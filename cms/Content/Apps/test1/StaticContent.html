@@ -30,16 +30,16 @@
 				<div class="span3">
 					<ul>
 						<li>
-							<a href="#/gallery/g1" > g1</a>
+							<a href="#/gallery/g1/gg1" > g1</a>
 						</li>
 						<li>
-							<a href="#/gallery/g2" > g2</a>
+							<a href="#/gallery/g2/gg2" > g2</a>
 						</li>
 						<li>
-							<a href="#/gallery/s" > g2</a>
+							<a href="#/gallery/s/ss1" > g2</a>
 							???????????????
 							<a href="#/gallery/s/ss1" > g2</a>
-							<a href="#/gallery/s/xxx" > g2</a>
+							<a href="#/gallery/s/ss2" > g2</a>
 						</li>
 						<li>----</li>
 						<li>
@@ -61,10 +61,9 @@
 	</div>
 	<div class="row" style="border:1px solid red;margin: 0px auto">
 		<div class="span16">
-
-			<div ng-repeat="line in referenceItems.Lines">
+			<div ng-repeat="line in galleryThumbs.Lines">
 				<div ng-repeat="item in line">
-					<div gridelement="item" grid="data" >	</div>
+					<div gridelement="item" grid="data" ></div>
 				</div>
 			</div>
 
@@ -82,7 +81,7 @@
 	</script>
 	<script type="text/ng-template" id="reference-template">
 		<div ng-controller="reference">
-			<a href="#/link/{{destination.Link}}">{{destination.Name}}</a>
+			<a href="#/gallery/{{app.currentGallery}}/{{destination.Link}}">{{destination.Name}}</a>
 		</div>
 	</script>
 
