@@ -13,8 +13,10 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
-        serverUrl: "http://localhost\\:62728"
+        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+        serverUrl: "http://localhost\\:62728",
+        currentGallery: "s",
+        currentSubGallery: "ss1"
       };
     });
     $provide.factory("clientApi", function($resource, appSettings) {
@@ -25,19 +27,36 @@
       actions = {
         gridpageJson: {
           method: 'GET',
-          isArray: false,
-          params: {
-            action: "grids"
-          }
+          isArray: false
         }
       };
       proj = $resource(appSettings.serverUrl + "/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
       return proj;
     });
+    $provide.factory("GridApi", function($resource, appSettings) {
+      var actions, defaults, proj;
+      defaults = {
+        applicationId: appSettings.applicationId
+      };
+      actions = {
+        getGrid: {
+          method: 'GET',
+          isArray: false,
+          params: {
+            action: "GetGrid"
+          }
+        }
+      };
+      proj = $resource(appSettings.serverUrl + "/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK", defaults, actions);
+      return proj;
+    });
     $routeProvider.when('/link/:link', {
       controller: linkCtrl,
       templateUrl: 'link-template'
-    }).when('/gallery/:link', {
+    }).when('/gallery/:link/:xxx', {
+      controller: galleryCtrl,
+      templateUrl: 'link-template'
+    }).otherwise('/gallery/:link/:xxx', {
       controller: galleryCtrl,
       templateUrl: 'link-template'
     });
@@ -60,13 +79,6 @@
     };
     return directiveDefinitionObject;
   });
-  appController = function($scope, $routeParams, clientApi) {
-    $scope.refernceItem = [];
-    return $scope.refresh = function(link) {
-      return $scope.refernceItem = [link, "asdasd", "jhasvdjs", "jhasvdjd"];
-    };
-  };
-  window.appController = appController;
   linkCtrl = function($scope, $routeParams, clientApi) {
     var p;
     p = $routeParams;
@@ -77,15 +89,32 @@
     });
   };
   window.linkCtrl = linkCtrl;
-  galleryCtrl = function($scope, $routeParams, clientApi) {
+  galleryCtrl = function($scope, $routeParams, clientApi, GridApi, appSettings) {
     var p;
     p = $routeParams;
-    $scope.$parent.refresh(p.link);
+    if (p.xxx) {
+      clientApi.gridpageJson({
+        link: p.xxx
+      }, function(data) {
+        return $scope.data = data;
+      });
+    }
+    if (appSettings.currentgallery === p.link) {
+      return;
+    }
+    appSettings.currentgallery = p.link;
     return clientApi.gridpageJson({
       link: p.link
     }, function(data) {
-      return $scope.data = data;
+      return $scope.$parent.refreshGalleryThumbs(data);
     });
   };
-  window.linkCtrl = linkCtrl;
+  window.galleryCtrl = galleryCtrl;
+  appController = function($scope, appSettings, clientApi, $routeParams, $location, $route) {
+    console.log($routeParams, $routeParams.link, $location, $route);
+    return $scope.refreshGalleryThumbs = function(lines) {
+      return $scope.galleryThumbs = lines;
+    };
+  };
+  window.appController = appController;
 }).call(this);

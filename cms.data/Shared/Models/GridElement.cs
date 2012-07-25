@@ -23,15 +23,10 @@ namespace cms.data.Shared.Models
 		public string Skin { get; set; }
 
 		public virtual ICollection<Grid> Grid { get; set; }
-		//public virtual ICollection<LocalizedContent> LocalizedContents { get; set; }
+		
+		//public virtual ICollection<Resource> Resources { get; set; }
 
 	}
 
-	public class LocalizedContent :IEntity
-	{
-		public int Id { get; set; }
-		public string CultureCode { get; set; }
-		public string Content { get; set; }
-	}
 
 }

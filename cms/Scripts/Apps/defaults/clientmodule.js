@@ -20,7 +20,7 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
         serverUrl: "http://localhost\\:62728",
         currentGallery: "s",
         currentSubGallery: "ss1"
@@ -61,6 +61,9 @@
       controller: linkCtrl,
       templateUrl: 'link-template'
     }).when('/gallery/:link/:xxx', {
+      controller: galleryCtrl,
+      templateUrl: 'link-template'
+    }).otherwise('/link/profil', {
       controller: galleryCtrl,
       templateUrl: 'link-template'
     });
@@ -121,10 +124,18 @@
   window.galleryCtrl = galleryCtrl;
 
   appController = function($scope, appSettings, clientApi, $routeParams, $location, $route) {
-    console.log($routeParams, $routeParams.link, $location, $route.current);
-    return $scope.refreshGalleryThumbs = function(lines) {
+    $scope.refreshGalleryThumbs = function(lines) {
       return $scope.galleryThumbs = lines;
     };
+    return $scope.$on("$routeChangeSuccess", function() {
+      if (!$routeParams.xxx && !$scope.galleryThumbs) {
+        return clientApi.gridpageJson({
+          link: appSettings.currentGallery
+        }, function(data) {
+          return $scope.galleryThumbs = data;
+        });
+      }
+    });
   };
 
   window.appController = appController;

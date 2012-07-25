@@ -35,12 +35,12 @@ namespace cms.data.tests
 			         		{"003", "bbb"}
 			         	};
 
-			var a = new List<LocalizedContent>
+			var a = new List<Resource>
 			        	{
-							new LocalizedContent{Id = 1,Content = "kjasbdjkbasjkdjkasdasd",CultureCode = "cs"},
-							new LocalizedContent{Id = 1,Content = "kjasbdjkbasjkdjkasdasd",CultureCode = "cs"},
-							new LocalizedContent{Id = 1,Content = "kjasbdjkbasjkdjkasdasd",CultureCode = "cs"},
-							new LocalizedContent{Id = 1,Content = "kjasbdjkbasjkdjkasdasd",CultureCode = "cs"},
+							new Resource{Id = 1,Value= "EEasbdjkbasjkdjkasdasd",Culture = "cs"},
+							new Resource{Id = 2,Value= "AAkjasbdjkbasjkdjkasdasd",Culture = "cs"},
+							new Resource{Id = 3,Value= "BBkjasbdjkbasjkdjkasdasd",Culture = "cs"},
+							new Resource{Id = 4,Value= "CCkjasbdjkbasjkdjkasdasd",Culture = "cs"},
 			        	};
 
 			var json = JSONNetResult.ToJson(dd);

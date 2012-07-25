@@ -4,7 +4,6 @@
 @reference ../angular.js
 ###
 
-
 module = angular.module("clientModule",['ngResource','templateExt'])
 
 module.run ()->
@@ -14,8 +13,8 @@ module.run ()->
 module.config ($provide, $routeProvider)->
   $provide.factory "appSettings", () ->
     setings =
-      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
-#      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+#      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
+      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
       serverUrl: "http://localhost\\:62728"
       currentGallery: "s"
       currentSubGallery: "ss1"
@@ -36,13 +35,11 @@ module.config ($provide, $routeProvider)->
     proj = $resource(appSettings.serverUrl+"/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK",defaults, actions)
     proj
 
-
   $routeProvider
     .when('/link/:link', { controller: linkCtrl, templateUrl: 'link-template' })
     .when('/gallery/:link/:xxx', { controller: galleryCtrl, templateUrl: 'link-template' })
-    .otherwise('/gallery/:link/:xxx', { controller: galleryCtrl, templateUrl: 'link-template' })
+    .otherwise('/link/profil', { controller: galleryCtrl, templateUrl: 'link-template' })
   1
-
 
 module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templateCache)->
   directiveDefinitionObject =
@@ -53,8 +50,6 @@ module.directive "gridelement", (gridtemplate,gridtemplateClient,$compile,$templ
       compiled = $compile(sablona)(scope)
       iElement.html(compiled)
   directiveDefinitionObject
-
-
 
 linkCtrl = ($scope,$routeParams,clientApi) ->
   p = $routeParams
@@ -70,7 +65,6 @@ galleryCtrl = ($scope,$routeParams,clientApi, GridApi, appSettings) ->
     clientApi.gridpageJson({link:p.xxx }, (data)->
       $scope.data = data
     )
-
   # aby se zbytecne nepreenacitalo 's' pri kliku s/ss1 -> s/ss2
   return if appSettings.currentgallery  == p.link
   appSettings.currentgallery = p.link
@@ -81,15 +75,16 @@ galleryCtrl = ($scope,$routeParams,clientApi, GridApi, appSettings) ->
 window.galleryCtrl = galleryCtrl
 #########################################################################################################
 appController = ($scope,appSettings,clientApi,$routeParams, $location, $route)->
-  console.log($routeParams, $routeParams.link, $location, $route.current);
 
   $scope.refreshGalleryThumbs = (lines)->
     $scope.galleryThumbs = lines
 
-#  if !$routeParams.xxx
-#    clientApi.gridpageJson({link:appSettings.currentSubGallery }, (data)->
-#      $scope.galleryThumbs = data
-#    )
+  $scope.$on("$routeChangeSuccess", ()->
+    if !$routeParams.xxx && !$scope.galleryThumbs
+      clientApi.gridpageJson({link:appSettings.currentGallery }, (data)->
+        $scope.galleryThumbs = data
+      )
+  )
 
 window.appController = appController
 ###########################
