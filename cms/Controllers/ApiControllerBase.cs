@@ -1,4 +1,5 @@
 using System;
+using System.Data.Entity;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using cms.data;
@@ -14,6 +15,7 @@ namespace cms.Controllers
 
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
+		
 			base.Initialize(requestContext);
 			var a = this.RouteData;
 			ApplicationId = new Guid( a.Values["applicationId"].ToString());

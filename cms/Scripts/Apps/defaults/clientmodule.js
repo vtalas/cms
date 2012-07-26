@@ -20,7 +20,7 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+        applicationId: "c78ee05e-1115-480b-9ab7-a3ab3c0f6643",
         serverUrl: "http://localhost\\:62728",
         currentGallery: "s",
         currentSubGallery: "ss1"

@@ -15,7 +15,7 @@ namespace cms.Controllers
 			using (var a = new EfContext())
 			{
 				Database.SetInitializer(new DropAndCreateTables());
-				a.ApplicationSettings.ToList();
+				Response.Write(a.ApplicationSettings.ToList());
 			}
 			return View();
 
@@ -25,7 +25,7 @@ namespace cms.Controllers
 			using (var a = new EfContext())
 			{
 				Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext,data.Migrations.Configuration>());
-				a.ApplicationSettings.ToList();
+				Response.Write(a.ApplicationSettings.ToList());
 			}
 			return View();
 		}

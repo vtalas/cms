@@ -28,7 +28,7 @@ namespace cms.data
 		public abstract Grid GetGrid(int id);
 		public abstract GridPageDto GetGridPage(int id);
 		public abstract void DeleteGrid(int id);
-		public abstract Grid Add(Grid newitem);
+		public abstract Grid Add(GridPageDto newitem);
 		public abstract ApplicationSetting Add(ApplicationSetting newitem);
 		public abstract void DeleteGridElement(int id, int gridid);
 		public abstract GridElement GetGridElement(int id);
@@ -38,6 +38,7 @@ namespace cms.data
 		public abstract Grid Update(GridPageDto item);
 		public abstract ApplicationSetting GetApplication(Guid id);
 		public abstract ApplicationSetting GetApplication(string name);
+		public abstract IEnumerable<GridPageDto> GridsPages();
 	}
 }
 

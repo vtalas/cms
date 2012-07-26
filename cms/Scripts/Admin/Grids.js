@@ -81,7 +81,7 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 		scope: { grid: "=", gridelement: "=" },
 		controller: GridElementCtrl,
 		link: function (scope, iElement, tAttrs, controller) {
-			var sablona = gridtemplate(scope.gridelement.Type);
+            var sablona = gridtemplate(scope.gridelement.Type);
 			var compiled = $compile(sablona)(scope);
 			iElement.html(compiled);
 		}

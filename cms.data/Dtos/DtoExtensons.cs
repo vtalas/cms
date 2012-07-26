@@ -21,18 +21,6 @@ namespace cms.data.Dtos
 			return source.Select(item => item.ToDto()).ToList();
 		}
 
-		public static GridPageDto ToDto(this GridPage source)
-		 {
-		 	return new GridPageDto
-		 	       	{
-		 	       		Home = source.Home,
-		 	       		Id = source.Id,
-		 	       		Name = source.Name,
-		 	       		Link = source.Link
-						
-		 	       	};
-		 }
-
 		 public static GridElementDto ToDto(this GridElement source)
 		 {
 		 	return new GridElementDto
@@ -43,8 +31,9 @@ namespace cms.data.Dtos
 		 	       		Position = source.Position,
 		 	       		Skin = source.Skin,
 		 	       		Type = source.Type,
-		 	       		Width = source.Width
-		 	       	};
+		 	       		Width = source.Width,
+		 	       		Resources = source.Resources
+					};
 		 }
 	}
 

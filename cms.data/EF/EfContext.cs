@@ -19,7 +19,7 @@ namespace cms.data.EF
 		public DbSet<Grid> Grids { get; set; }
 		public DbSet<GridElement> GridElements { get; set; }
 		public DbSet<TemplateType> TemplateTypes { get; set; }
-
+		public DbSet<Resource> Resources { get; set; }
 		public DbSet<Bootstrapgenerator> Bootstrapgenerators { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -27,6 +27,5 @@ namespace cms.data.EF
 			modelBuilder.Entity<Bootstrapgenerator>().Property(p => p.StatusData).HasColumnName("sm");
 			modelBuilder.Entity<Bootstrapgenerator>().Ignore(p => p.Status);
 		}
-
 	}
 }

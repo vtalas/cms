@@ -15,27 +15,15 @@ namespace cms.data.tests.EF
 	public class JsonDataEfTest
 	{
 		private JsonDataEf repo { get; set; }
-		
-		private IList<ApplicationSettingDto> AplicationSettings()
-		{
-			return JsonDataEf.Applications().ToList();
-		}
+		private string _defaultlink = "linkTestPage";
 
-		private IList<Grid> Grids()
-		{
-			return repo.Grids().ToList();
-		}
-		private Grid Grid()
-		{
-			return repo.Grids().Single(x => x.Id == 1);
-		}
-			
 		[SetUp]
 		public void Setup()
 		{
 			var context = new EfContext();
 			Database.SetInitializer(new DropAndCreate());
-			repo = new JsonDataEf("aaa", context);
+			repo = new JsonDataEf(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), context);
+			Assert.IsNotNull(repo);
 		}
 
 		[Test]
@@ -55,13 +43,12 @@ namespace cms.data.tests.EF
 		[Test]
 		public void Application_add_test()
 		{
-			var a = new ApplicationSetting()
+			var a = new ApplicationSetting
 			        	{
 			        		Name = "xxx",
 			        	};
 			var newitem = repo.Add(a);
 			Console.WriteLine(newitem.Name);
-
 			Assert.IsNotNull(repo.GetApplication(newitem.Id));
 
 		}
@@ -69,7 +56,8 @@ namespace cms.data.tests.EF
 		[Test]
 		public void AddGridElement()
 		{
-			var grid = repo.GetGrid(1);
+			var gridpage = repo.GetGridPage(_defaultlink);
+			var grid = repo.GetGrid(gridpage.Id);
 
 			var gridelem = new GridElement()
 			{
@@ -79,11 +67,38 @@ namespace cms.data.tests.EF
 				Width = 12,
 				Type = "text",
 			};
+
 			gridelem.Grid.Add(grid);
+			
 			var newgridelem = repo.Add(gridelem);
 
-			Console.WriteLine(newgridelem.Grid.Count);
-			Console.WriteLine(repo.GetGrid(1).GridElements.Count);
+			Assert.AreEqual(1, newgridelem.Grid.Count);
+			Assert.AreEqual(2, repo.GetGrid(gridpage.Id).GridElements.Count);
+
+		}
+	
+		[Test]
+		public void AddGridElement_resources_test_same_keys()
+		{
+			var gridpage = repo.GetGridPage(_defaultlink);
+			var grid = repo.GetGrid(gridpage.Id);
+
+			var gridelem = new GridElement
+			{
+				Content = "XXX",Line = 0,Position = 0,Width = 12,Type = "text",
+				Resources = new List<Resource>
+				            	{
+				            		new Resource{ Culture = "cs", Value = "cesky", Key = "text1"},
+									new Resource{ Culture = "en", Value = "englicky", Key = "text1"},
+				            	}
+			};
+
+			gridelem.Grid.Add(grid);
+			
+			var newgridelem = repo.Add(gridelem);
+
+			Assert.IsTrue(newgridelem.Resources.Any());
+			Assert.AreEqual(2,newgridelem.Resources.Count(x => x.Key == "text1"));
 
 		}
 	
@@ -112,20 +127,17 @@ namespace cms.data.tests.EF
 			Console.WriteLine(updated.Id);
 			Console.WriteLine(updated.Line);
 			Console.WriteLine(updated.Width);
-			Console.WriteLine(updated.Content);
-
-
-
-
-
-
-
+			Assert.AreEqual( 1,updated.Line);
+			Assert.AreEqual( 0,updated.Width);
+			Assert.AreEqual( "newcontent",updated.Content);
 		}
 		
 		[Test]
 		public void GetGridPage()
 		{
-			var a = repo.GetGridPage("linkTestPage");
+			var a = repo.GetGridPage(_defaultlink);
+			Assert.IsNotNull(a);
+			Assert.AreEqual("linkTestPage", a.Resource.Value);
 		}
 
 		[Test]

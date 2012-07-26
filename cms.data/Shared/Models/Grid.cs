@@ -12,22 +12,12 @@ namespace cms.data.Shared.Models
 		}
 		public int Id { get; set; }
 		public string Name { get; set; }
-		public string Link { get; set; }
+		//public string Link { get; set; }
 		public bool Home { get; set; }
 		//public GridTypeWrapper GridType { get; set; }
 		//public StatusWrapper Status { get; set; }
-
 		public virtual ApplicationSetting ApplicationSettings { get; set; }
+		public virtual Resource Resource { get; set; }
 		public virtual ICollection<GridElement> GridElements { get; set; }
-
-		//public virtual Resource Resource { get; set; }
-	}
-
-	public class Resource : IEntity
-	{
-		public int Id { get; set; }
-		public string Culture { get; set; }
-		public string Key { get; set; }
-		public string Value { get; set; }
 	}
 }

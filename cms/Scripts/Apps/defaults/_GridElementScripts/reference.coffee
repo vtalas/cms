@@ -27,7 +27,9 @@ reference = ($scope, $http, GridApi, appSettings) ->
 
   $scope.choose = (grid)->
     $scope.destination = grid
-    $scope.gridelement.Content.Id = grid.Id
+    console.log($scope.gridelement)
+    #### TODODODODOOD
+    $scope.gridelement.Resources.Id = grid.Resource.Id
     $scope.$parent.Edit = 0
     $scope.$parent.save($scope.gridelement)
 

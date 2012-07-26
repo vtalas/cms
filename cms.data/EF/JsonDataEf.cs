@@ -15,7 +15,6 @@ namespace cms.data.EF
 		public JsonDataEf(string application, EfContext context) : base(application)
 		{
 			db = context;
-
 			var app = GetApplication(application);
 			ApplicationId = app == null ?  new Guid("00000000-0000-0000-0000-000000000000") : app.Id;
 
@@ -50,6 +49,17 @@ namespace cms.data.EF
 			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
 			return a;
 		}
+		IQueryable<Grid> AvailableGrids()
+		{
+			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
+			return a;
+		}
+
+		public override IEnumerable<GridPageDto> GridsPages()
+		{
+			var a = db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName).ToList();
+			return a.Select(grid => grid.ToGridPageDto()).ToList();
+		}
 
 		public override sealed ApplicationSetting GetApplication(Guid id)
 		{
@@ -63,7 +73,7 @@ namespace cms.data.EF
 
 		public override Grid GetGrid(int id)
 		{
-			return Grids().Single(x => x.Id == id);
+			return AvailableGrids().Single(x => x.Id == id);
 		}
 		public override GridPageDto GetGridPage(int id)
 		{
@@ -75,7 +85,8 @@ namespace cms.data.EF
 		//TODO: pokud nenanjde melo by o vracet homepage
 		public override GridPageDto GetGridPage(string link)
 		{
-			var a = Grids().FirstOrDefault(x => x.Link == link);
+			var a = db.Grids.FirstOrDefault(x => x.ApplicationSettings.Name == ApplicationName && x.Resource.Value == link);
+			//var a = Grids().FirstOrDefault(x => x.Resource.Value == link);
 			if (a == null)
 			{
 				throw new ObjectNotFoundException(string.Format("'{0}' not found", link));
@@ -124,13 +135,12 @@ namespace cms.data.EF
 
 		public override Grid Update(GridPageDto item)
 		{
-			var grid = new Grid
-			           	{
-			           		Id = item.Id,
-			           		Home = item.Home,
-			           		Link = item.Link,
-			           		Name = item.Name
-			           	};
+			var grid = GetGrid(item.Id);
+			grid.Resource = item.Resource;
+			
+			grid.Name = item.Name;
+			grid.Home = item.Home;
+
 			db.Entry(grid).State = EntityState.Modified;
 			db.SaveChanges();
 			return grid;
@@ -146,16 +156,32 @@ namespace cms.data.EF
 			return newitem;
 		}
 
-		public override Grid Add(Grid newitem)
+		public override Grid Add(GridPageDto newitem)
 		{
-			CurrentApplication.Grids.Add(newitem);
-			db.Grids.Add(newitem);
+			var item = newitem.ToGrid();
+			CurrentApplication.Grids.Add(item);
+			db.Grids.Add(item);
+
+			var aa = db.Resources.Add(newitem.Resource);
+			item.Resource = aa;
+
 			db.SaveChanges();
-			return newitem;
+			return item;
 		}
+
 		public override GridElement Add(GridElement newitem)
 		{
-			db.GridElements.Add(newitem);
+			var item = db.GridElements.Add(newitem);
+			
+			if (newitem.Resources != null)
+			{
+				foreach (var resource in newitem.Resources)
+				{
+					var rr = db.Resources.Add(resource);
+
+				}
+			}
+			
 			db.SaveChanges();
 			return newitem;
 		}
