@@ -43,3 +43,5 @@ cms/.idea/*
 cms/.idea/*
 cms/.idea/*
 cms/.idea/*
+*.ncrunchsolution
+cms.ncrunchsolution

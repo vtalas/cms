@@ -32,7 +32,10 @@
     $scope.choose = function(grid) {
       $scope.destination = grid;
       console.log($scope.gridelement);
-      $scope.gridelement.Resources.Id = grid.Resource.Id;
+      $scope.gridelement.Resources = [];
+      $scope.gridelement.Resources.push({
+        Id: grid.Resource.Id
+      });
       $scope.$parent.Edit = 0;
       return $scope.$parent.save($scope.gridelement);
     };

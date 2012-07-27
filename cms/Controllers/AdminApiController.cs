@@ -56,16 +56,17 @@ namespace cms.Controllers
 			db.DeleteGrid(id); 
 			return new JSONNetResult(null);
 		}
+		
 		[HttpPost]
 		public ActionResult UpdateGrid(GridPageDto data)
         {
-			db.Update(data); 
-			return new JSONNetResult(null);
+			var updated = db.Update(data); 
+			return new JSONNetResult(updated);
 		}
 		
 		public ActionResult Grids()
         {
-			var g = db.GridsPages();
+			var g = db.GridPages();
 			return new JSONNetResult(g);
 		}
 		public ActionResult GetGrid(int? id)

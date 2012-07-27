@@ -12,6 +12,6 @@ namespace cms.data.Dtos
 		public string Content { get; set; }
 		public string Type { get; set; }
 		public string Skin { get; set; }
-		public IEnumerable<Resource> Resources { get; set; }
+		public IEnumerable<ResourceDto> Resources { get; set; }
 	}
 }

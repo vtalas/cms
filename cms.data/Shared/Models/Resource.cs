@@ -9,6 +9,8 @@ namespace cms.data.Shared.Models
 		public string Key { get; set; }
 		public string Value { get; set; }
 		public virtual ICollection<GridElement> GridElements{ get; set; }
-
 	}
+
+
+
 }

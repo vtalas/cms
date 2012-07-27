@@ -49,13 +49,14 @@ namespace cms.data.EF
 			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
 			return a;
 		}
+		
 		IQueryable<Grid> AvailableGrids()
 		{
 			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
 			return a;
 		}
 
-		public override IEnumerable<GridPageDto> GridsPages()
+		public override IEnumerable<GridPageDto> GridPages()
 		{
 			var a = db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName).ToList();
 			return a.Select(grid => grid.ToGridPageDto()).ToList();
@@ -75,13 +76,12 @@ namespace cms.data.EF
 		{
 			return AvailableGrids().Single(x => x.Id == id);
 		}
+		
 		public override GridPageDto GetGridPage(int id)
 		{
 			var a = Grids().Single(x => x.Id == id);
 			return a.ToGridPageDto();
 		}
-		
-		
 		//TODO: pokud nenanjde melo by o vracet homepage
 		public override GridPageDto GetGridPage(string link)
 		{
@@ -97,6 +97,7 @@ namespace cms.data.EF
 			//}
 			return a.ToGridPageDto();
 		}
+		
 		public override GridElement GetGridElement(int id)
 		{
 			return db.GridElements.Single(x => x.Id == id);
@@ -108,6 +109,7 @@ namespace cms.data.EF
 			db.Grids.Remove(delete);
 			db.SaveChanges();
 		}
+		
 		public override void DeleteGridElement(int id, int gridid)
 		{
 			var grid = GetGrid(gridid);
@@ -133,18 +135,25 @@ namespace cms.data.EF
 			return item;
 		}
 
-		public override Grid Update(GridPageDto item)
+		public override GridPageDto Update(GridPageDto item)
 		{
+			if(item.Resource !=null)
+			{
+				if (item.Resource.Id != 0)
+				{
+					db.Resources.Single(x => x.Id == item.Resource.Id).UpdateValues(item.Resource);
+				}
+			}
 			var grid = GetGrid(item.Id);
-			grid.Resource = item.Resource;
-			
+
 			grid.Name = item.Name;
 			grid.Home = item.Home;
 
 			db.Entry(grid).State = EntityState.Modified;
 			db.SaveChanges();
-			return grid;
+			return grid.ToGridPageDto();
 		}
+		
 		public override void DeleteApplication(Guid id)
 		{
 			var delete = GetApplication(id);
@@ -156,35 +165,43 @@ namespace cms.data.EF
 			return newitem;
 		}
 
-		public override Grid Add(GridPageDto newitem)
+		public override GridPageDto Add(GridPageDto newitem)
 		{
 			var item = newitem.ToGrid();
 			CurrentApplication.Grids.Add(item);
 			db.Grids.Add(item);
+			var res = newitem.Resource ?? new ResourceDto() {Value = item.Name.Replace(" ", string.Empty)};
 
-			var aa = db.Resources.Add(newitem.Resource);
+			var aa = db.Resources.Add(res.ToResource());
 			item.Resource = aa;
 
 			db.SaveChanges();
-			return item;
+			return item.ToGridPageDto();
 		}
 
 		public override GridElement Add(GridElement newitem)
 		{
-			var item = db.GridElements.Add(newitem);
+			db.GridElements.Add(newitem);
 			
 			if (newitem.Resources != null)
 			{
 				foreach (var resource in newitem.Resources)
 				{
-					var rr = db.Resources.Add(resource);
-
+					if (resource.Id != 0)
+					{
+						db.Resources.Attach(resource);
+					}
+					else
+					{
+						db.Resources.Add(resource);
+					}
 				}
 			}
 			
 			db.SaveChanges();
 			return newitem;
 		}
+		
 		public override ApplicationSetting Add(ApplicationSetting newitem)
 		{
 			db.ApplicationSettings.Add(newitem);
