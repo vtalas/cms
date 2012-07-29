@@ -28,30 +28,28 @@ namespace cms.Controllers
 		}
 		
 		[HttpPost]
-		public ActionResult AddGridElement(GridElement data, int gridId)
+		public ActionResult AddGridElement(GridElement data, Guid gridId)
         {
-        	var grid = db.GetGrid(gridId);
-        	data.Grid.Add(grid);
-			var newitem = db.Add(data);
+			var newitem = db.AddGridElementToGrid(data, gridId);
 			return new JSONNetResult(newitem.ToDto());
 		}
 
 		[HttpPost]
 		public ActionResult AddGrid(Grid data)
         {
-			var newgrid = db.Add(data);
-			return new JSONNetResult(newgrid.ToGridPageDto());
+			var newgrid = db.Add(data.ToGridPageDto());
+			return new JSONNetResult(newgrid);
         }
 
 		[HttpPost]
-		public ActionResult DeleteGridElement(GridElement data, int gridId)
+		public ActionResult DeleteGridElement(GridElement data, Guid gridId)
         {
 			db.DeleteGridElement(data.Id,gridId); 
 			return new JSONNetResult(null);
 		}
 
 		[HttpPost]
-		public ActionResult DeleteGrid(int id)
+		public ActionResult DeleteGrid(Guid id)
         {
 			db.DeleteGrid(id); 
 			return new JSONNetResult(null);
@@ -69,7 +67,7 @@ namespace cms.Controllers
 			var g = db.GridPages();
 			return new JSONNetResult(g);
 		}
-		public ActionResult GetGrid(int? id)
+		public ActionResult GetGrid(Guid? id)
         {
 			var g = db.GetGridPage(id.Value);
 			return new JSONNetResult(g);
@@ -81,7 +79,7 @@ namespace cms.Controllers
 			var g = db.Update(data);
 			return new JSONNetResult(g.ToDto());
 		}
-		public ActionResult GetGridElement(int id)
+		public ActionResult GetGridElement(Guid id)
         {
 			var g = db.GetGridElement(id);
 			return new JSONNetResult(g);

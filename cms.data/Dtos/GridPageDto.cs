@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using cms.data.Shared.Models;
@@ -6,7 +7,7 @@ namespace cms.data.Dtos
 {
 	public class GridPageDto
 	{
-		public int Id { get; set; }
+		public Guid Id { get; set; }
 		public string Name { get; set; }
 		public bool Home { get; set; }
 

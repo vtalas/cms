@@ -72,12 +72,12 @@ namespace cms.data.EF
 			return db.ApplicationSettings.SingleOrDefault(x => x.Name == name);
 		}
 
-		public override Grid GetGrid(int id)
+		public override Grid GetGrid(Guid id)
 		{
 			return AvailableGrids().Single(x => x.Id == id);
 		}
 		
-		public override GridPageDto GetGridPage(int id)
+		public override GridPageDto GetGridPage(Guid id)
 		{
 			var a = Grids().Single(x => x.Id == id);
 			return a.ToGridPageDto();
@@ -98,19 +98,19 @@ namespace cms.data.EF
 			return a.ToGridPageDto();
 		}
 		
-		public override GridElement GetGridElement(int id)
+		public override GridElement GetGridElement(Guid id)
 		{
 			return db.GridElements.Single(x => x.Id == id);
 		}
 
-		public override void DeleteGrid(int id)
+		public override void DeleteGrid(Guid id)
 		{
 			var delete = GetGrid(id);
 			db.Grids.Remove(delete);
 			db.SaveChanges();
 		}
 		
-		public override void DeleteGridElement(int id, int gridid)
+		public override void DeleteGridElement(Guid id, Guid gridid)
 		{
 			var grid = GetGrid(gridid);
 			var delete = grid.GridElements.Single(x => x.Id == id);
@@ -131,6 +131,9 @@ namespace cms.data.EF
 		public override GridElement Update(GridElement item)
 		{
 			db.Entry(item).State = EntityState.Modified;
+
+
+
 			db.SaveChanges();
 			return item;
 		}
@@ -160,27 +163,26 @@ namespace cms.data.EF
 			db.ApplicationSettings.Remove(delete);
 		}
 
-		public override T Add<T>(T newitem)
-		{
-			return newitem;
-		}
-
 		public override GridPageDto Add(GridPageDto newitem)
 		{
 			var item = newitem.ToGrid();
 			CurrentApplication.Grids.Add(item);
 			db.Grids.Add(item);
-			var res = newitem.Resource ?? new ResourceDto() {Value = item.Name.Replace(" ", string.Empty)};
+			var resDto = newitem.Resource ?? new ResourceDto() {Value = item.Name.Replace(" ", string.Empty)};
 
-			var aa = db.Resources.Add(res.ToResource());
-			item.Resource = aa;
+			var res = db.Resources.Add(resDto.ToResource());
+			res.Owner = item.Id; 
+			item.Resource = res;
 
 			db.SaveChanges();
 			return item.ToGridPageDto();
 		}
 
-		public override GridElement Add(GridElement newitem)
+		public override GridElement AddGridElementToGrid(GridElement newitem, Guid gridId)
 		{
+			var grid = GetGrid(gridId);
+			newitem.Grid.Add(grid);
+
 			db.GridElements.Add(newitem);
 			
 			if (newitem.Resources != null)
@@ -193,6 +195,7 @@ namespace cms.data.EF
 					}
 					else
 					{
+						resource.Owner = newitem.Id;
 						db.Resources.Add(resource);
 					}
 				}
@@ -216,6 +219,7 @@ namespace cms.data.EF
 				        				}				                		
 				                	};
 			}
+
 			db.SaveChanges();
 
 			return newitem;

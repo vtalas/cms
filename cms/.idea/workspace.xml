@@ -34,7 +34,7 @@
       <file leaf-file-name="reference.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="4" selection-start="882" selection-end="882" vertical-scroll-proportion="0.5068259">
+            <state line="38" column="35" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.5648464">
               <folding />
             </state>
           </provider>
@@ -179,12 +179,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.HTML" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.HTML" />
     <property name="last_opened_file_path" value="C:" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -452,7 +452,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="4" selection-start="882" selection-end="882" vertical-scroll-proportion="0.5068259">
+        <state line="38" column="35" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.5648464">
           <folding />
         </state>
       </provider>

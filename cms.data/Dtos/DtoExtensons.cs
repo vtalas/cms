@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using cms.data.Shared.Models;
 
@@ -6,6 +7,12 @@ namespace cms.data.Dtos
 {
 	public static class DtoExtensons
 	{
+		public static bool IsEmpty(this Guid s )
+		{
+			var zeros = new Guid("00000000-0000-0000-0000-000000000000");
+			return s.Equals(zeros);
+		}
+		
 		public static ResourceDto ToDto(this Resource source)
 		{
 			return new ResourceDto
@@ -34,6 +41,8 @@ namespace cms.data.Dtos
 		
 		public static IEnumerable<ResourceDto> ToDtos(this ICollection<Resource> source)
 		{
+			if (source == null) 
+				return new LinkedList<ResourceDto>();
 			return source.Select(item => item.ToDto()).ToList();
 		}
 
@@ -71,7 +80,7 @@ namespace cms.data.Dtos
 			{
 				Name = source.Name,
 				Home = source.Home,
-				Id = source.Id
+				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id
 			};
 			return a;
 		}

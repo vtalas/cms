@@ -53,17 +53,17 @@ namespace cms.data.EF.Initializers
 
 			var grids = new Grid
 			            	{
-			            		Id = 1,
-			            		Resource =  new Resource { Value = "linkTestPage"},
+								Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+								Resource = new Resource { Value = "linkTestPage", Owner = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643") },
 			            		Name = "test page",
-			            		GridElements = new List<GridElement>()
+			            		GridElements = new List<GridElement>
 			            		               	{
 													//new GridElement{Content = "aaa",Line = 0,Position = 0,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 0,Position = 3,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 0,Position = 6,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 2,Position = 5,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 3,Position = 0,Width = 12,Type = "text"}
-													new GridElement{Content = "akjhasbdsa", Line = 0,Width = 12,Type = "text"}
+													new GridElement{Content = "aaaaaaaa aaa", Line = 0,Width = 12,Type = "text"}
 			            		               	},
 			            		ApplicationSettings = application
 
@@ -72,31 +72,31 @@ namespace cms.data.EF.Initializers
 			Context.Grids.Add(grids);
 			Context.Grids.Add(new Grid
 			                  	{
-			                  		Id = 2,
+									Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
 			                  		Name = "grid Bez elementu",
 									ApplicationSettings = application,
-									Resource = new Resource {Value = "bezelementu"}
+									Resource = new Resource { Value = "bezelementu", Owner = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
 			                  	});
 			Context.Grids.Add(new Grid
 			                  	{
-			                  		Id = 3,
+									Id = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
 			                  		Name = "gallery 1 ",
 									ApplicationSettings = application,
-									Resource = new Resource {Value = "s"}
+									Resource = new Resource { Value = "s", Owner = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
 			                  	});
 			Context.Grids.Add(new Grid
 			                  	{
-			                  		Id = 4,
-			                  		Name = "gallery 1 sub 1",
+									Id = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+									Name = "gallery 1 sub 1",
 									ApplicationSettings = application,
-									Resource = new Resource {Value = "ss1"}
+									Resource = new Resource { Value = "ss1", Owner = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
 			                  	});
 			Context.Grids.Add(new Grid
 			                  	{
-			                  		Id = 5,
-			                  		Name = "gallery 1 sub 2 ",
+									Id = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+									Name = "gallery 1 sub 2 ",
 									ApplicationSettings = application,
-									Resource = new Resource {Value = "ss2"}
+									Resource = new Resource { Value = "ss2", Owner = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
 			                  	});
 
 			Context.TemplateTypes.Add(new TemplateType {Name = "novinka"});

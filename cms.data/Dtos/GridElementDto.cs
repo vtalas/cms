@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using cms.data.Shared.Models;
 
@@ -5,7 +6,7 @@ namespace cms.data.Dtos
 {
 	public class GridElementDto 
 	{
-		public int Id { get; set; }
+		public Guid Id { get; set; }
 		public int Line { get; set; }
 		public int Width { get; set; }
 		public int Position { get; set; }

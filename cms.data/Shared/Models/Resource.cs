@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace cms.data.Shared.Models
@@ -8,6 +9,7 @@ namespace cms.data.Shared.Models
 		public string Culture { get; set; }
 		public string Key { get; set; }
 		public string Value { get; set; }
+		public Guid Owner { get; set; }
 		public virtual ICollection<GridElement> GridElements{ get; set; }
 	}
 

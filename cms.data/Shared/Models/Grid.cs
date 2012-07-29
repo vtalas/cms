@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace cms.data.Shared.Models
@@ -8,9 +9,10 @@ namespace cms.data.Shared.Models
 		{
 			//GridType = DomainModels.GridType.Content;
 			//Status = DomainModels.Status.Private;
+			Id = Guid.NewGuid();
 			GridElements = new List<GridElement>();
 		}
-		public int Id { get; set; }
+		public Guid Id { get; set; }
 		public string Name { get; set; }
 		//public string Link { get; set; }
 		public bool Home { get; set; }

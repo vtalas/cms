@@ -17,13 +17,34 @@ namespace cms.data.tests.EF
 		private JsonDataEf repo { get; set; }
 		private string _defaultlink = "linkTestPage";
 		EfContext _context;
+		private Guid guid = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
+
+		GridElement AddDefaultGridElement()
+		{
+			var a = new GridElement
+			{
+				Content = "oldcontent",
+				Width = 12,
+				Line = 0,
+				Skin = "xxx",
+				Resources = new List<Resource>
+				            	{
+				            		new Resource{ Culture = "cs", Value = "cesky", Key = "text1"},
+									new Resource{ Culture = "en", Value = "englicky", Key = "text1"},
+				            	}
+
+			};
+			var newitem = repo.AddGridElementToGrid(a, guid);
+			Assert.True(!newitem.Id.IsEmpty());
+			return newitem;
+		}
 
 		[SetUp]
 		public void Setup()
 		{
 			_context = new EfContext();
 			Database.SetInitializer(new DropAndCreate());
-			repo = new JsonDataEf(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), _context);
+			repo = new JsonDataEf(guid, _context);
 			Assert.IsNotNull(repo);
 		}
 
@@ -58,7 +79,7 @@ namespace cms.data.tests.EF
 		public void AddGridElement()
 		{
 			var gridpage = repo.Add(new GridPageDto { Name = "addgridElement test Gridpage" });
-			var grid = repo.GetGrid(gridpage.Id);
+			var gridDb = repo.GetGrid(gridpage.Id);
 			Assert.AreEqual(0, repo.GetGrid(gridpage.Id).GridElements.Count);
 
 			var gridelem = new GridElement()
@@ -70,9 +91,7 @@ namespace cms.data.tests.EF
 				Type = "text",
 			};
 
-			gridelem.Grid.Add(grid);
-
-			var newgridelem = repo.Add(gridelem);
+			var newgridelem = repo.AddGridElementToGrid(gridelem,gridDb.Id);
 
 			Assert.AreEqual(1, newgridelem.Grid.Count);
 			Assert.AreEqual(1, repo.GetGrid(gridpage.Id).GridElements.Count);
@@ -99,9 +118,8 @@ namespace cms.data.tests.EF
 				            	}
 			};
 
-			gridelem.Grid.Add(grid);
 
-			var newgridelem = repo.Add(gridelem);
+			var newgridelem = repo.AddGridElementToGrid(gridelem,grid.Id);
 
 			Assert.IsTrue(newgridelem.Resources.Any());
 			Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));
@@ -131,9 +149,7 @@ namespace cms.data.tests.EF
 								}
 			};
 
-			gridelem.Grid.Add(grid);
-
-			var newgridelem = repo.Add(gridelem);
+			var newgridelem = repo.AddGridElementToGrid(gridelem,grid.Id);
 
 			Assert.IsTrue(newgridelem.Resources.Any());
 			Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));
@@ -144,22 +160,16 @@ namespace cms.data.tests.EF
 		}
 
 		[Test]
-		public void UpdateGridElement_test()
+		public void UpdateGridElement_Basics_test()
 		{
-			var a = new GridElement
-						{
-							Content = "oldcontent",
-							Width = 12,
-							Line = 0,
-							Skin = "xxx"
-						};
-			var newitem = repo.Add(a);
-
-			Assert.True(newitem.Id != 0);
+			var newitem = AddDefaultGridElement();
 
 			newitem.Line = 1;
 			newitem.Content = "newcontent";
 			newitem.Width = 0;
+			newitem.Position = 111;
+			newitem.Skin = "aaa";
+
 
 			repo.Update(newitem);
 
@@ -167,15 +177,57 @@ namespace cms.data.tests.EF
 
 			Assert.AreEqual(1, updated.Line);
 			Assert.AreEqual(0, updated.Width);
+			Assert.AreEqual(111, updated.Position);
+			Assert.AreEqual("aaa", updated.Skin);
 			Assert.AreEqual("newcontent", updated.Content);
 		}
+
+		[Test]
+		public void UpdateGridElement_Resources_Replace_test()
+		{
+			var newitem = AddDefaultGridElement();
+			var resourcesCountBefore = _context.Resources.Count();
+
+			newitem.Resources.ToList()[0].Value = "xxx";
+			newitem.Resources.ToList()[0].Key = "new cs";
+				
+			repo.Update(newitem);
+
+			var updated = repo.GetGridElement(newitem.Id);
+
+			Assert.AreEqual(2, updated.Resources.Count);
+			Assert.IsNotNull(updated.Resources.SingleOrDefault(x=>x.Value =="xxx"));
+			Assert.AreEqual("new cs", updated.Resources.Single(x=>x.Value =="xxx").Key);
+		
+			//check esli se nepridalo neco novyho 
+			Assert.AreEqual(resourcesCountBefore  , _context.Resources.Count());
+		
+		}
+
+		//[Test]
+		//public void UpdateGridElement_Resources_Replace_test()
+		//{
+		//    var newitem = AddDefaultGridElement();
+		//    var resourcesCountBefore = _context.Resources.Count();
+
+	
+		//    repo.Update(newitem);
+
+		//    var updated = repo.GetGridElement(newitem.Id);
+
+		//    Assert.AreEqual(2, updated.Resources.Count);
+		//    Assert.IsNotNull(updated.Resources.SingleOrDefault(x=>x.Value =="xxx"));
+		//    Assert.AreEqual("newcs", updated.Resources.Single(x=>x.Value =="xxx").Key);
+		//    //check esli se nepridalo neco novyho 
+		//    Assert.AreEqual(resourcesCountBefore , _context.Resources.Count());
+		//}
 
 		[Test]
 		public void UpdateGridElement_addNewResources()
 		{
 			var a = new GridElement { Content = "oldcontent", Width = 12, Line = 0, Skin = "xxx" };
-			var newitem = repo.Add(a);
-			Assert.True(newitem.Id != 0);
+			var newitem = repo.AddGridElementToGrid(a,guid);
+			Assert.True(!newitem.Id.IsEmpty());
 
 			var resources = new List<Resource>
 			                	{
@@ -191,14 +243,43 @@ namespace cms.data.tests.EF
 		}
 
 		[Test]
+		public void UpdateGridElement_TryAttachNonExistingResources()
+		{
+			var gridelementdb = AddDefaultGridElement();
+			var resourcesCountBefore = _context.Resources.Count();
+			gridelementdb.Resources.Add(new Resource { Id = 111, Value = "non existing"});
+
+			repo.Update(gridelementdb);
+
+			Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
+		}
+
+		[Test]
+		public void UpdateGridElement_AttachExistingResources_sadsd()
+		{
+			var gridelementdb1 = AddDefaultGridElement();
+			var gridelementdb2 = AddDefaultGridElement();
+
+			var resourcesCountBefore = _context.Resources.Count();
+			var res2 = gridelementdb2.Resources.First();
+
+			gridelementdb1.Resources.Add(new Resource { Id = res2.Id, Value = "reference na resource z 1"});
+
+			repo.Update(gridelementdb1);
+
+			var updated = repo.GetGridElement(gridelementdb1.Id);
+			
+			Assert.AreEqual(3,updated.Resources.Count);
+			Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
+		}
+
+		[Test]
 		public void UpdateGridElement_AttachExistingResources()
 		{
 			var a = new GridElement { Content = "oldcontent", Width = 12, Line = 0, Skin = "xxx" };
-			var newitem = repo.Add(a);
+			var gridelementdb = repo.AddGridElementToGrid(a,guid);
 			var resourcesCountBefore = _context.Resources.Count();
 			var existingsResBefore = _context.Resources.First();
-
-			Assert.True(newitem.Id != 0);
 
 			var resources = new List<Resource>
 			                	{
@@ -206,19 +287,18 @@ namespace cms.data.tests.EF
 			                		new Resource {Culture = "cs", Value = "new cesky", Key = "text1"},
 								};
 
-			newitem.Resources = resources;
+			gridelementdb.Resources = resources;
 
-			repo.Update(newitem);
+			repo.Update(gridelementdb);
 
-			var updated = repo.GetGridElement(newitem.Id);
-			var resourcesCountAfter = _context.Resources.Count();
+			var updated = repo.GetGridElement(gridelementdb.Id);
+
 			var existingsResAfter = _context.Resources.First(x => x.Id == existingsResBefore.Id);
 
 			Assert.AreEqual(2, updated.Resources.Count);
-			Assert.AreEqual(resourcesCountBefore + 1, resourcesCountAfter);
+			Assert.AreEqual(resourcesCountBefore + 1, _context.Resources.Count());
 			Assert.AreEqual(existingsResBefore.Value, existingsResAfter.Value);
 		}
-
 
 		[Test]
 		public void UpdateGridPage_test()
@@ -257,11 +337,6 @@ namespace cms.data.tests.EF
 		{
 			Assert.Throws<ObjectNotFoundException>(() => repo.GetGridPage("linkTestPageXXX"));
 		}
-
-
-
-
-
 
 	}
 }
