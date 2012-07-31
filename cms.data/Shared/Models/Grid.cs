@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace cms.data.Shared.Models
@@ -8,26 +9,17 @@ namespace cms.data.Shared.Models
 		{
 			//GridType = DomainModels.GridType.Content;
 			//Status = DomainModels.Status.Private;
+			Id = Guid.NewGuid();
 			GridElements = new List<GridElement>();
 		}
-		public int Id { get; set; }
+		public Guid Id { get; set; }
 		public string Name { get; set; }
-		public string Link { get; set; }
+		//public string Link { get; set; }
 		public bool Home { get; set; }
 		//public GridTypeWrapper GridType { get; set; }
 		//public StatusWrapper Status { get; set; }
-
 		public virtual ApplicationSetting ApplicationSettings { get; set; }
+		public virtual Resource Resource { get; set; }
 		public virtual ICollection<GridElement> GridElements { get; set; }
-
-		//public virtual Resource Resource { get; set; }
-	}
-
-	public class Resource : IEntity
-	{
-		public int Id { get; set; }
-		public string Culture { get; set; }
-		public string Key { get; set; }
-		public string Value { get; set; }
 	}
 }

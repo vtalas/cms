@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
@@ -45,27 +46,24 @@ namespace cms.data.EF.Initializers
 
 		public void Generate()
 		{
-			var application = new ApplicationSetting
-			                  	{
-			                  		Name = "test1"
-			                  	};
+
+			var application = new ApplicationSetting { Name = "test1", Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643") };
 
 			Context.ApplicationSettings.Add(application);
 
-			var grids = new Grid()
+			var grids = new Grid
 			            	{
-			            		Id = 1,
-			            		Link = "linkTestPage",
+								Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+								Resource = new Resource { Value = "linkTestPage", Owner = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643") },
 			            		Name = "test page",
-			            		GridElements = new List<GridElement>()
+			            		GridElements = new List<GridElement>
 			            		               	{
 													//new GridElement{Content = "aaa",Line = 0,Position = 0,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 0,Position = 3,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 0,Position = 6,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 2,Position = 5,Width = 3,Type = "text"},
 													//new GridElement{Content = "aaa",Line = 3,Position = 0,Width = 12,Type = "text"}
-													new GridElement{Content = "akjhasbdsa", Line = 1,Width = 12,Type = "text"}
-
+													new GridElement{Content = "aaaaaaaa aaa", Line = 0,Width = 12,Type = "text"}
 			            		               	},
 			            		ApplicationSettings = application
 
@@ -74,14 +72,36 @@ namespace cms.data.EF.Initializers
 			Context.Grids.Add(grids);
 			Context.Grids.Add(new Grid
 			                  	{
-			                  		Id = 2,
-			                  		Link = "sdakjs",
+									Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
 			                  		Name = "grid Bez elementu",
-									ApplicationSettings = application
+									ApplicationSettings = application,
+									Resource = new Resource { Value = "bezelementu", Owner = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
+			                  	});
+			Context.Grids.Add(new Grid
+			                  	{
+									Id = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+			                  		Name = "gallery 1 ",
+									ApplicationSettings = application,
+									Resource = new Resource { Value = "s", Owner = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
+			                  	});
+			Context.Grids.Add(new Grid
+			                  	{
+									Id = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+									Name = "gallery 1 sub 1",
+									ApplicationSettings = application,
+									Resource = new Resource { Value = "ss1", Owner = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
+			                  	});
+			Context.Grids.Add(new Grid
+			                  	{
+									Id = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+									Name = "gallery 1 sub 2 ",
+									ApplicationSettings = application,
+									Resource = new Resource { Value = "ss2", Owner = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
 			                  	});
 
 			Context.TemplateTypes.Add(new TemplateType {Name = "novinka"});
 			Context.TemplateTypes.Add(new TemplateType {Name = "text"});
+			Context.TemplateTypes.Add(new TemplateType {Name = "reference"});
 
 
 			string defualtjsondata = ConfigurationManager.AppSettings.Get("DefaultJsonBootstrap");
@@ -91,12 +111,14 @@ namespace cms.data.EF.Initializers
 			//    Log.ErrorFormat("{0} not exist..", defualtjsondata);
 			//}
 
-			Context.Bootstrapgenerators.Add(new Bootstrapgenerator
-			{
-				Data = FileExts.GetContent(defualtjsondata),
-				Name = "default",
-				Status = Boostrapperstatus.Default
-			});
+
+			//TODO: opravit
+			//Context.Bootstrapgenerators.Add(new Bootstrapgenerator
+			//{
+			//    Data = FileExts.GetContent(defualtjsondata),
+			//    Name = "default",
+			//    Status = Boostrapperstatus.Default
+			//});
 
 
 			Context.SaveChanges();

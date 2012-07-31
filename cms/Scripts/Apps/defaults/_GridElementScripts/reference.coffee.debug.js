@@ -26,7 +26,11 @@
     });
     $scope.choose = function(grid) {
       $scope.destination = grid;
-      $scope.gridelement.Content.Id = grid.Id;
+      console.log($scope.gridelement);
+      $scope.gridelement.Resources = [];
+      $scope.gridelement.Resources.push({
+        Id: grid.Resource.Id
+      });
       $scope.$parent.Edit = 0;
       return $scope.$parent.save($scope.gridelement);
     };

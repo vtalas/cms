@@ -52,9 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\ApplicationSettingDto.cs" />
     <Compile Include="Dtos\DtoExtensons.cs" />
     <Compile Include="Dtos\GridElementDto.cs" />
     <Compile Include="Dtos\GridPageDto.cs" />
+    <Compile Include="Dtos\ResourceDto.cs" />
     <Compile Include="EF\Bootstrap\Bootstrapgenerator.cs" />
     <Compile Include="EF\Bootstrap\IBootStrapGenerator.cs" />
     <Compile Include="EF\SessionProvider.cs" />
@@ -78,6 +80,8 @@
     <Compile Include="Shared\Models\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\Models\ApplicationSetting.cs" />
+    <Compile Include="Shared\Models\Resource.cs" />
+    <Compile Include="Shared\Models\TemplateType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

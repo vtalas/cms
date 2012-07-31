@@ -1,4 +1,5 @@
 using System;
+using System.Data.Entity;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using cms.data;
@@ -17,9 +18,7 @@ namespace cms.Controllers
 			base.Initialize(requestContext);
 			var a = this.RouteData;
 			ApplicationId = new Guid( a.Values["applicationId"].ToString());
-
 			db = new JsonDataEf(ApplicationId);
-
 		}
 
 		protected override void OnActionExecuted(ActionExecutedContext filterContext)
@@ -27,7 +26,6 @@ namespace cms.Controllers
 			base.OnActionExecuted(filterContext);
 			ViewBag.ApplicationId = ApplicationId.ToString("N");
 		}
-
 
 		public class JSONNetResult : ActionResult
 		{
@@ -45,7 +43,6 @@ namespace cms.Controllers
 				               	{
 				               		ReferenceLoopHandling = ReferenceLoopHandling.Ignore
 				               	};
-				
 				response.Write(JsonConvert.SerializeObject(_data, Formatting.Indented,settings));
 			}
 		}

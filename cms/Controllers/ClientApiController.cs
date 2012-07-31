@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace cms.Controllers
 {
@@ -10,7 +11,7 @@ namespace cms.Controllers
 			return new Code.JSONNetResult(a);
 		}
 
-		public ActionResult GetGrid(int id)
+		public ActionResult GetGrid(Guid id)
 		{
 			var a = db.GetGridPage(id);
 			return new Code.JSONNetResult(a);

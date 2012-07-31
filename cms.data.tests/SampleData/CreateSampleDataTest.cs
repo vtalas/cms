@@ -15,6 +15,7 @@ namespace cms.data.tests.SampleData
 		private JsonDataEf Repo { get; set; }
 
 		[SetUp]
+		[Ignore]
 		public void Setup()
 		{
 			var context = new EfContext("EfContextSampleData");
@@ -24,6 +25,7 @@ namespace cms.data.tests.SampleData
 
 
 		[Test]
+		[Ignore]
 		public void Create()
 		{
 			var a = JsonDataEf.Applications();

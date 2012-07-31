@@ -1,26 +1,18 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using cms.data.Shared.Models;
 
 namespace cms.data.Dtos
 {
-
-	
-	[DataContract]
 	public class GridPageDto
 	{
-		[DataMember]
-		public int Id { get; set; }
-
-		[DataMember]
+		public Guid Id { get; set; }
 		public string Name { get; set; }
-
-		[DataMember]
-		public string Link { get; set; }
-
-		[DataMember]
 		public bool Home { get; set; }
 
-		[DataMember]
+		//TODO: tady by melo byt ResourceDto
+		public ResourceDto Resource { get; set; }
 		public IList<IEnumerable<GridElementDto>> Lines{get; set; }
 	}
 

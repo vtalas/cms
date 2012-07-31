@@ -13,8 +13,7 @@ module.run ()->
 module.config ($provide, $routeProvider)->
   $provide.factory "appSettings", () ->
     setings =
-#      applicationId: "7683508e-0941-4561-b9a3-c7df85791d23",
-      applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+      applicationId: "c78ee05e-1115-480b-9ab7-a3ab3c0f6643",
       serverUrl: "http://localhost\\:62728"
       currentGallery: "s"
       currentSubGallery: "ss1"

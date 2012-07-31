@@ -8,18 +8,6 @@ namespace cms.data
 	public static class GridElementExt
 	{
 		private static int _minsize = 12;
-		public static GridPageDto ToGridPageDto(this Grid source)
-		{
-			return new GridPageDto
-			{
-				Lines = source.GridElements.ToLines(),
-				Home = source.Home,
-				Id = source.Id,
-				Link = source.Link,
-				Name = source.Name
-			};
-
-		}
 		private static IEnumerable<GridElementDto> DefaultLine(int line)
 		{
 			var d = new List<GridElementDto>();

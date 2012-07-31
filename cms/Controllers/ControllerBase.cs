@@ -1,4 +1,5 @@
 using System;
+using System.Data.Entity;
 using System.Web.Mvc;
 using cms.data;
 using cms.data.EF;
@@ -30,7 +31,6 @@ namespace cms.Controllers
 			Application = a.Values["application"].ToString();
 			db = new JsonDataEf(Application);
 			ApplicationId = db.ApplicationId;
-
 		}
 	}
 }
