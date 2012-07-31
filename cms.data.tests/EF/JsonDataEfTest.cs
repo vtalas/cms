@@ -11,6 +11,25 @@ using cms.data.Shared.Models;
 
 namespace cms.data.tests.EF
 {
+	public class SessionManager : IDisposable
+	{
+		private static JsonDataEf Context { get; set; }
+
+		public static JsonDataEf CreateSession
+		{
+			get
+			{
+				Context = new JsonDataEf(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"));
+				return Context;
+			}
+		}
+
+		public void Dispose()
+		{
+			Context.Dispose();
+		}
+	}
+
 	[TestFixture]
 	public class JsonDataEfTest
 	{
@@ -19,24 +38,31 @@ namespace cms.data.tests.EF
 		EfContext _context;
 		private Guid guid = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
 
+
+
 		GridElement AddDefaultGridElement()
 		{
-			var a = new GridElement
+			using (var db = SessionManager.CreateSession)
 			{
-				Content = "oldcontent",
-				Width = 12,
-				Line = 0,
-				Skin = "xxx",
-				Resources = new List<Resource>
+				var a = new GridElement
+				{
+					Content = "oldcontent",
+					Width = 12,
+					Line = 0,
+					Skin = "xxx",
+					Resources = new List<Resource>
 				            	{
 				            		new Resource{ Culture = "cs", Value = "cesky", Key = "text1"},
 									new Resource{ Culture = "en", Value = "englicky", Key = "text1"},
 				            	}
 
-			};
-			var newitem = repo.AddGridElementToGrid(a, guid);
-			Assert.True(!newitem.Id.IsEmpty());
-			return newitem;
+				};
+				var newitem = db.AddGridElementToGrid(a, guid);
+				Assert.True(!newitem.Id.IsEmpty());
+				return newitem;
+				
+			}
+
 		}
 
 		[SetUp]
@@ -162,24 +188,26 @@ namespace cms.data.tests.EF
 		[Test]
 		public void UpdateGridElement_Basics_test()
 		{
-			var newitem = AddDefaultGridElement();
+			using (var db = SessionManager.CreateSession)
+			{
+				var newitem = AddDefaultGridElement();
 
-			newitem.Line = 1;
-			newitem.Content = "newcontent";
-			newitem.Width = 0;
-			newitem.Position = 111;
-			newitem.Skin = "aaa";
+				newitem.Line = 1;
+				newitem.Content = "newcontent";
+				newitem.Width = 0;
+				newitem.Position = 111;
+				newitem.Skin = "aaa";
 
+				db.Update(newitem);
 
-			repo.Update(newitem);
+				var updated = db.GetGridElement(newitem.Id);
 
-			var updated = repo.GetGridElement(newitem.Id);
-
-			Assert.AreEqual(1, updated.Line);
-			Assert.AreEqual(0, updated.Width);
-			Assert.AreEqual(111, updated.Position);
-			Assert.AreEqual("aaa", updated.Skin);
-			Assert.AreEqual("newcontent", updated.Content);
+				Assert.AreEqual(1, updated.Line);
+				Assert.AreEqual(0, updated.Width);
+				Assert.AreEqual(111, updated.Position);
+				Assert.AreEqual("aaa", updated.Skin);
+				Assert.AreEqual("newcontent", updated.Content);
+			}
 		}
 
 		[Test]
@@ -225,9 +253,15 @@ namespace cms.data.tests.EF
 		[Test]
 		public void UpdateGridElement_addNewResources()
 		{
-			var a = new GridElement { Content = "oldcontent", Width = 12, Line = 0, Skin = "xxx" };
-			var newitem = repo.AddGridElementToGrid(a,guid);
-			Assert.True(!newitem.Id.IsEmpty());
+
+			GridElement newitem;
+			using (var db = SessionManager.CreateSession)
+			{
+				var a = new GridElement { Content = "oldcontent", Width = 12, Line = 0, Skin = "xxx" };
+				newitem = db.AddGridElementToGrid(a, guid);
+				Assert.True(!newitem.Id.IsEmpty());
+			}
+
 
 			var resources = new List<Resource>
 			                	{
@@ -277,7 +311,7 @@ namespace cms.data.tests.EF
 		{
 			var g1 = AddDefaultGridElement();
 			var resourcesCountBefore = _context.Resources.Count();
-			var a = new Resource()
+			var a = new Resource
 			        	{
 			        		Value = "xxx",
 			        		Key = "key1"

@@ -7,7 +7,7 @@ using cms.data.Shared.Models;
 namespace cms.data
 {
 
-	public abstract class JsonDataProvider: IResources
+	public abstract class JsonDataProvider: IResources,IDisposable
 	{
 		public string ApplicationName { get; protected set; }
 		public Guid ApplicationId { get; protected set; }
@@ -41,6 +41,7 @@ namespace cms.data
 		
 		public abstract ResourceDto Add(ResourceDto resource);
 		public abstract ResourceDto GetResourceDto(Guid elementId, string key, string culture);
+		public abstract void Dispose();
 	}
 
 	public interface IResources
