@@ -52,7 +52,7 @@ namespace cms.data.EF
 		
 		IQueryable<Grid> AvailableGrids()
 		{
-			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
+			var a=  db.Grids.Where(x=>x.ApplicationSettings.Id == ApplicationId);
 			return a;
 		}
 
@@ -60,6 +60,37 @@ namespace cms.data.EF
 		{
 			var a = db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName).ToList();
 			return a.Select(grid => grid.ToGridPageDto()).ToList();
+		}
+
+		public override ResourceDto Add(ResourceDto resource)
+		{
+			var item = new Resource()
+			           	{
+			           		Key = resource.Key,
+			           		Value = resource.Value,
+			           		Culture = resource.Culture,
+			           	};
+			db.Resources.Add(item);
+			db.SaveChanges();
+			return item.ToDto();
+		}
+
+		Resource GetResource(Guid elementId, string key, string culture)
+		{
+			var el = GetGridElement(elementId);
+			if (el.Resources != null)
+			{
+				return el.Resources.SingleOrDefault(x => x.Key == key && culture == x.Culture );
+			}
+			return null;
+		}
+
+		public override ResourceDto GetResourceDto(Guid elementId, string key, string culture)
+		{
+			var r = GetResource(elementId, key, culture);
+			if (r != null) 
+				return r.ToDto();
+			throw new ObjectNotFoundException(string.Format("resource {0} not found {1}", key, culture));
 		}
 
 		public override sealed ApplicationSetting GetApplication(Guid id)
@@ -127,13 +158,36 @@ namespace cms.data.EF
 			
 			db.SaveChanges();
 		}
+
+		bool IsOwner(Guid id, Resource resource)
+		{
+			return resource.Owner == id;
+		}
 		
 		public override GridElement Update(GridElement item)
 		{
-			db.Entry(item).State = EntityState.Modified;
 
-
-
+			if(item.Resources!= null)
+			{
+				foreach (var resource in item.Resources)
+				{
+					var rdb = GetResource(item.Id, resource.Key, resource.Culture);
+					if (rdb!=null && IsOwner(item.Id, resource))
+					{
+						rdb.Value = resource.Value;
+						//db.Entry(resource).State = EntityState.Modified;
+					}
+					if (rdb!=null && !IsOwner(item.Id, resource))
+					{
+						//pridej referenci
+					}
+					if (rdb==null)
+					{
+					//	db.Entry(resource).State = EntityState.Added;
+					}
+				}
+			}
+			//db.Entry(item).State = EntityState.Modified;
 			db.SaveChanges();
 			return item;
 		}

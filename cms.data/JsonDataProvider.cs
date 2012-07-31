@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 
 namespace cms.data
 {
 
-	public abstract class JsonDataProvider
+	public abstract class JsonDataProvider: IResources
 	{
 		public string ApplicationName { get; protected set; }
 		public Guid ApplicationId { get; protected set; }
@@ -37,6 +38,15 @@ namespace cms.data
 		public abstract ApplicationSetting GetApplication(Guid id);
 		public abstract ApplicationSetting GetApplication(string name);
 		public abstract IEnumerable<GridPageDto> GridPages();
+		
+		public abstract ResourceDto Add(ResourceDto resource);
+		public abstract ResourceDto GetResourceDto(Guid elementId, string key, string culture);
+	}
+
+	public interface IResources
+	{
+		ResourceDto Add(ResourceDto resource);
+		ResourceDto GetResourceDto(Guid elementId, string key, string culture);
 	}
 }
 

@@ -242,6 +242,55 @@ namespace cms.data.tests.EF
 			Assert.AreEqual(2, updated.Resources.Count);
 		}
 
+
+
+		[Test]
+		public void UpdateGridElement_UpdateAttachedResource()
+		{
+			var g1 = AddDefaultGridElement();
+			var resourcesCountBefore = _context.Resources.Count();
+			var res1 = g1.Resources.First();
+			
+			Assert.AreEqual("cs", res1.Culture);
+			Assert.AreEqual("text1", res1.Key);
+
+			res1.Value = "prd";
+			res1.Culture = "xx";
+			res1.Key = "kkk";
+
+			repo.Update(g1);
+			var updated = repo.GetGridElement(g1.Id);
+			var res1Updated = updated.Resources.First();
+
+
+			Assert.AreEqual(2, updated.Resources.Count);
+			Assert.AreEqual("prd", res1Updated.Value);
+			
+			//u resourcu se da zmenit jenom value
+			Assert.AreNotEqual("xx", res1Updated.Culture);
+			Assert.AreNotEqual("kkk", res1Updated.Key);
+			Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
+		}
+
+		[Test]
+		public void UpdateGridElement_AddNewResource()
+		{
+			var g1 = AddDefaultGridElement();
+			var resourcesCountBefore = _context.Resources.Count();
+			var a = new Resource()
+			        	{
+			        		Value = "xxx",
+			        		Key = "key1"
+			        	};
+			g1.Resources.Add(a);
+
+			repo.Update(g1);
+			var updated = repo.GetGridElement(g1.Id);
+
+			Assert.AreEqual(3, updated.Resources.Count);
+			Assert.AreEqual(resourcesCountBefore + 1, _context.Resources.Count());
+		}
+
 		[Test]
 		public void UpdateGridElement_TryAttachNonExistingResources()
 		{
