@@ -277,6 +277,26 @@ namespace cms.data.tests.EF
 		}
 
 
+		[Test]
+		public void UpdateGridElement_addNewResources_xxx()
+		{
+
+			GridElement newitem = AddDefaultGridElement();
+
+			var resources = new List<Resource>
+			                	{
+			                		new Resource {Culture = "cs", Value = "new cesky", Key = "text1"},
+			                		new Resource {Culture = "en", Value = "new englicky", Key = "text1"},
+			                	};
+
+			newitem.Resources = resources;
+
+			repo.Update(newitem);
+			var updated = repo.GetGridElement(newitem.Id);
+			Assert.AreEqual(200000, updated.Resources.Count);
+		}
+
+
 
 		[Test]
 		public void UpdateGridElement_UpdateAttachedResource()
