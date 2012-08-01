@@ -60,7 +60,6 @@ namespace cms.data.tests.EF
 				var newitem = db.AddGridElementToGrid(a, guid);
 				Assert.True(!newitem.Id.IsEmpty());
 				return newitem;
-				
 			}
 
 		}
@@ -278,22 +277,38 @@ namespace cms.data.tests.EF
 
 
 		[Test]
-		public void UpdateGridElement_addNewResources_xxx()
+		public void UpdateGridElement_addNewResources_keydoesntExist()
 		{
-
+			var resourcesCountBefore = _context.Resources.Count();
+	
 			GridElement newitem = AddDefaultGridElement();
 
-			var resources = new List<Resource>
-			                	{
-			                		new Resource {Culture = "cs", Value = "new cesky", Key = "text1"},
-			                		new Resource {Culture = "en", Value = "new englicky", Key = "text1"},
-			                	};
-
-			newitem.Resources = resources;
+			newitem.Resources.Add(new Resource {Culture = "cs", Value = "new cesky", Key = "text1xx"}); 
+			newitem.Resources.Add(new Resource {Culture = "en", Value = "new cesky", Key = "text1xx"}); 
 
 			repo.Update(newitem);
 			var updated = repo.GetGridElement(newitem.Id);
-			Assert.AreEqual(200000, updated.Resources.Count);
+			Assert.AreEqual(4, updated.Resources.Count);
+
+			Assert.AreEqual(resourcesCountBefore + 4, _context.Resources.Count());
+		}
+		
+		[Test]
+		public void UpdateGridElement_addNewResources_keydoesntExist_XXXXXXXXXXXXXXXXXXXXX()
+		{
+			var resourcesCountBefore = _context.Resources.Count();
+	
+			GridElement newitem = AddDefaultGridElement();
+
+			newitem.Resources.Add(new Resource {Culture = "cs", Value = "new cesky", Key = "text1"}); 
+			newitem.Resources.Add(new Resource {Culture = "en", Value = "new cesky", Key = "text1"}); 
+
+			repo.Update(newitem);
+			var updated = repo.GetGridElement(newitem.Id);
+			Assert.AreEqual(4, newitem.Resources.Count);
+			Assert.AreEqual(2, updated.Resources.Count);
+
+			Assert.AreEqual(resourcesCountBefore + 2, _context.Resources.Count());
 		}
 
 
