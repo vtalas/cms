@@ -93,6 +93,11 @@ namespace cms.data.EF
 			throw new ObjectNotFoundException(string.Format("resource {0} not found {1}", key, culture));
 		}
 
+		public override void Dispose()
+		{
+			if(db != null ) db.Dispose();
+		}
+
 		public override sealed ApplicationSetting GetApplication(Guid id)
 		{
 			return db.ApplicationSettings.SingleOrDefault(x => x.Id == id);
@@ -180,10 +185,13 @@ namespace cms.data.EF
 					if (rdb!=null && !IsOwner(item.Id, resource))
 					{
 						//pridej referenci
+						GetGridElement(item.Id).Resources.Add(rdb);
 					}
 					if (rdb==null)
 					{
-					//	db.Entry(resource).State = EntityState.Added;
+						resource.Owner = item.Id;
+						db.Resources.Add(resource);
+						GetGridElement(item.Id).Resources.Add(resource);
 					}
 				}
 			}
