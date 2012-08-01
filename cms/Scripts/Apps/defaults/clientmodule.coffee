@@ -26,14 +26,6 @@ module.config ($provide, $routeProvider)->
     proj = $resource(appSettings.serverUrl+"/client/json/:applicationId/:link?callback=JSON_CALLBACK",defaults, actions)
     proj
 
-  $provide.factory "GridApi", ($resource,appSettings) ->
-    defaults =
-      applicationId: appSettings.applicationId,
-    actions =
-      getGrid: { method: 'GET' ,isArray:false, params : {action: "GetGrid"}}
-    proj = $resource(appSettings.serverUrl+"/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK",defaults, actions)
-    proj
-
   $routeProvider
     .when('/link/:link', { controller: linkCtrl, templateUrl: 'link-template' })
     .when('/gallery/:link/:xxx', { controller: galleryCtrl, templateUrl: 'link-template' })
@@ -57,7 +49,7 @@ linkCtrl = ($scope,$routeParams,clientApi) ->
   )
 window.linkCtrl = linkCtrl
 #########################################################################################################
-galleryCtrl = ($scope,$routeParams,clientApi, GridApi, appSettings) ->
+galleryCtrl = ($scope,$routeParams,clientApi, appSettings) ->
   p = $routeParams
 
   if p.xxx

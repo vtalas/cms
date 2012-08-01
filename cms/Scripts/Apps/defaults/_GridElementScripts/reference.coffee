@@ -6,29 +6,27 @@
 
 reference = ($scope, $http, GridApi, appSettings) ->
 #  reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"]
-#  console.log("ref",appSettings)
-
 
   $scope.grids = []
-  $scope.app = appSettings
-  $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null}
+  $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null, Link : null}
 
   if $scope.gridelement.Content.Id
     GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
       $scope.destination = data
     )
 
-  #  ADmin only
+  # ADmin only
+  # load grid list
   $scope.$on("gridelement-edit",()->
-    console.log "load.."
     if $scope.grids.length==0
       $scope.grids()
   )
 
   $scope.choose = (grid)->
     $scope.destination = grid
-    console.log($scope.gridelement)
-    #### TODODODODOOD
+    $scope.gridelement.Content.Id = grid.Id;
+    $scope.gridelement.Content.Link = grid.Link;
+
     $scope.gridelement.Resources = []
     $scope.gridelement.Resources.push({Id : grid.Resource.Id})
 
@@ -36,9 +34,7 @@ reference = ($scope, $http, GridApi, appSettings) ->
     $scope.$parent.save($scope.gridelement)
 
   $scope.grids = ()->
-    console.log(appSettings, "ref")
     GridApi.grids(null, (data)->
-      console.log data
       $scope.grids = data
     )
 

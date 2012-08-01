@@ -40,23 +40,6 @@
       proj = $resource(appSettings.serverUrl + "/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
       return proj;
     });
-    $provide.factory("GridApi", function($resource, appSettings) {
-      var actions, defaults, proj;
-      defaults = {
-        applicationId: appSettings.applicationId
-      };
-      actions = {
-        getGrid: {
-          method: 'GET',
-          isArray: false,
-          params: {
-            action: "GetGrid"
-          }
-        }
-      };
-      proj = $resource(appSettings.serverUrl + "/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK", defaults, actions);
-      return proj;
-    });
     $routeProvider.when('/link/:link', {
       controller: linkCtrl,
       templateUrl: 'link-template'
@@ -100,7 +83,7 @@
 
   window.linkCtrl = linkCtrl;
 
-  galleryCtrl = function($scope, $routeParams, clientApi, GridApi, appSettings) {
+  galleryCtrl = function($scope, $routeParams, clientApi, appSettings) {
     var p;
     p = $routeParams;
     if (p.xxx) {

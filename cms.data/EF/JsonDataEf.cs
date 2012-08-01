@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Security;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 
@@ -12,90 +13,102 @@ namespace cms.data.EF
 	{
 		private EfContext db { get; set; }
 
-		public JsonDataEf(string application, EfContext context) : base(application)
+
+		public JsonDataEf(string application, EfContext context)
+			: base(application)
 		{
 			db = context;
 			var app = GetApplication(application);
-			ApplicationId = app == null ?  new Guid("00000000-0000-0000-0000-000000000000") : app.Id;
+			ApplicationId = app == null ? new Guid("00000000-0000-0000-0000-000000000000") : app.Id;
 
 			//Database.SetInitializer(new CreateIfNotExists());
-//			Database.SetInitializer(new DropAndCreateTables());
+			//			Database.SetInitializer(new DropAndCreateTables());
 		}
 
-		public JsonDataEf(Guid application, EfContext context) : base(application)
+		public JsonDataEf(Guid application, EfContext context)
+			: base(application)
 		{
 			db = context;
 
 			var app = GetApplication(application);
-			ApplicationName =  app==null ? "" : app.Name ;
+			ApplicationName = app == null ? "" : app.Name;
 		}
 
-		public JsonDataEf(string application): this(application,new EfContext()){}
+		public JsonDataEf(string application) : this(application, new EfContext()) { }
 
-		public JsonDataEf(Guid applicationId): this(applicationId,new EfContext()){}
+		public JsonDataEf(Guid applicationId) : this(applicationId, new EfContext()) { }
 
-		public override ApplicationSetting CurrentApplication{get { return db.ApplicationSettings.Single(x => x.Name == ApplicationName); }} 
+		public override ApplicationSetting CurrentApplication { get { return db.ApplicationSettings.Single(x => x.Name == ApplicationName); } }
 
 		public static IEnumerable<ApplicationSettingDto> Applications()
 		{
-			using (var a = new EfContext() )
+			using (var a = new EfContext())
 			{
 				return a.ApplicationSettings.ToList().ToDtos();
 			}
 		}
-	
+
 		public override IEnumerable<Grid> Grids()
 		{
-			var a=  db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName);
+			var a = db.Grids.Where(x => x.ApplicationSettings.Name == ApplicationName);
 			return a;
 		}
-		
+
 		IQueryable<Grid> AvailableGrids()
 		{
-			var a=  db.Grids.Where(x=>x.ApplicationSettings.Id == ApplicationId);
+			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId);
 			return a;
 		}
 
 		public override IEnumerable<GridPageDto> GridPages()
 		{
-			var a = db.Grids.Where(x=>x.ApplicationSettings.Name == ApplicationName).ToList();
+			var a = db.Grids.Where(x => x.ApplicationSettings.Name == ApplicationName).ToList();
 			return a.Select(grid => grid.ToGridPageDto()).ToList();
 		}
 
 		public override ResourceDto Add(ResourceDto resource)
 		{
 			var item = new Resource()
-			           	{
-			           		Key = resource.Key,
-			           		Value = resource.Value,
-			           		Culture = resource.Culture,
-			           	};
+						{
+							Key = resource.Key,
+							Value = resource.Value,
+							Culture = resource.Culture,
+						};
 			db.Resources.Add(item);
 			db.SaveChanges();
 			return item.ToDto();
 		}
 
-		Resource GetResource(Guid elementId, string key, string culture)
+		Resource GetResource(int id)
+		{
+			return db.Resources.SingleOrDefault(x => x.Id == id);
+		}
+
+		Resource GetResource(Guid elementId, Resource resource)
 		{
 			var el = GetGridElement(elementId);
 			if (el.Resources != null)
 			{
-				return el.Resources.SingleOrDefault(x => x.Key == key && culture == x.Culture );
+				return el.Resources.SingleOrDefault(x =>
+					(x.Key == resource.Key && x.Culture == resource.Culture)
+					|| resource.Id != 0 && x.Id == resource.Id
+				);
 			}
 			return null;
 		}
 
 		public override ResourceDto GetResourceDto(Guid elementId, string key, string culture)
 		{
-			var r = GetResource(elementId, key, culture);
-			if (r != null) 
-				return r.ToDto();
-			throw new ObjectNotFoundException(string.Format("resource {0} not found {1}", key, culture));
+			//var r = GetResource(elementIdt, key, culture);
+			//if (r != null) 
+			//    return r.ToDto();
+			//throw new ObjectNotFoundException(string.Format("resource {0} not found {1}", key, culture));
+			throw new NotImplementedException();
 		}
 
 		public override void Dispose()
 		{
-			if(db != null ) db.Dispose();
+			if (db != null) db.Dispose();
 		}
 
 		public override sealed ApplicationSetting GetApplication(Guid id)
@@ -112,7 +125,7 @@ namespace cms.data.EF
 		{
 			return AvailableGrids().Single(x => x.Id == id);
 		}
-		
+
 		public override GridPageDto GetGridPage(Guid id)
 		{
 			var a = Grids().Single(x => x.Id == id);
@@ -129,11 +142,11 @@ namespace cms.data.EF
 			}
 			//if (a.Count() > 1)
 			//{
-				
+
 			//}
 			return a.ToGridPageDto();
 		}
-		
+
 		public override GridElement GetGridElement(Guid id)
 		{
 			return db.GridElements.Single(x => x.Id == id);
@@ -145,7 +158,7 @@ namespace cms.data.EF
 			db.Grids.Remove(delete);
 			db.SaveChanges();
 		}
-		
+
 		public override void DeleteGridElement(Guid id, Guid gridid)
 		{
 			var grid = GetGrid(gridid);
@@ -153,14 +166,14 @@ namespace cms.data.EF
 			db.GridElements.Remove(delete);
 			var deletedline = delete.Line;
 
-			if (!grid.GridElements.Any(x=>x.Line == deletedline))
+			if (!grid.GridElements.Any(x => x.Line == deletedline))
 			{
-				foreach (var item in grid.GridElements.OrderBy(x=>x.Line))
+				foreach (var item in grid.GridElements.OrderBy(x => x.Line))
 				{
 					if (item.Line > deletedline && item.Line > 0) item.Line--;
 				}
 			}
-			
+
 			db.SaveChanges();
 		}
 
@@ -168,26 +181,29 @@ namespace cms.data.EF
 		{
 			return resource.Owner == id;
 		}
-		
+
 		public override GridElement Update(GridElement item)
 		{
 
-			if(item.Resources!= null)
+			if (item.Resources != null)
 			{
 				foreach (var resource in item.Resources)
 				{
-					var rdb = GetResource(item.Id, resource.Key, resource.Culture);
-					if (rdb!=null && IsOwner(item.Id, resource))
+					var rdb = GetResource(item.Id, resource);
+					if (rdb != null && IsOwner(item.Id, resource))
 					{
 						rdb.Value = resource.Value;
-						//db.Entry(resource).State = EntityState.Modified;
+						continue;
 					}
-					if (rdb!=null && !IsOwner(item.Id, resource))
+
+					if (rdb == null && db.Resources.Any(x => x.Id == resource.Id))
 					{
 						//pridej referenci
-						GetGridElement(item.Id).Resources.Add(rdb);
+						GetGridElement(item.Id).Resources.Add(GetResource(resource.Id));
+						continue;
 					}
-					if (rdb==null)
+
+					if (rdb == null)
 					{
 						resource.Owner = item.Id;
 						db.Resources.Add(resource);
@@ -195,14 +211,22 @@ namespace cms.data.EF
 					}
 				}
 			}
-			//db.Entry(item).State = EntityState.Modified;
+			var el = GetGridElement(item.Id);
+			//TODO:nahovno, udelat lip
+			el.Line = item.Line;
+			el.Position = item.Position;
+			el.Skin = item.Skin;
+			el.Type = item.Type;
+			el.Width = item.Width;
+			el.Content = item.Content;
+
 			db.SaveChanges();
 			return item;
 		}
 
 		public override GridPageDto Update(GridPageDto item)
 		{
-			if(item.Resource !=null)
+			if (item.Resource != null)
 			{
 				if (item.Resource.Id != 0)
 				{
@@ -218,7 +242,7 @@ namespace cms.data.EF
 			db.SaveChanges();
 			return grid.ToGridPageDto();
 		}
-		
+
 		public override void DeleteApplication(Guid id)
 		{
 			var delete = GetApplication(id);
@@ -230,10 +254,10 @@ namespace cms.data.EF
 			var item = newitem.ToGrid();
 			CurrentApplication.Grids.Add(item);
 			db.Grids.Add(item);
-			var resDto = newitem.Resource ?? new ResourceDto() {Value = item.Name.Replace(" ", string.Empty)};
+			var resDto = newitem.Resource ?? new ResourceDto() { Value = item.Name.Replace(" ", string.Empty) };
 
 			var res = db.Resources.Add(resDto.ToResource());
-			res.Owner = item.Id; 
+			res.Owner = item.Id;
 			item.Resource = res;
 
 			db.SaveChanges();
@@ -246,7 +270,7 @@ namespace cms.data.EF
 			newitem.Grid.Add(grid);
 
 			db.GridElements.Add(newitem);
-			
+
 			if (newitem.Resources != null)
 			{
 				foreach (var resource in newitem.Resources)
@@ -262,11 +286,11 @@ namespace cms.data.EF
 					}
 				}
 			}
-			
+
 			db.SaveChanges();
 			return newitem;
 		}
-		
+
 		public override ApplicationSetting Add(ApplicationSetting newitem)
 		{
 			db.ApplicationSettings.Add(newitem);

@@ -210,7 +210,7 @@ namespace cms.data.tests.EF
 		}
 
 		[Test]
-		public void UpdateGridElement_Resources_Replace_test()
+		public void UpdateGridElement_Resources_UpdateResourceValue_and_OnlyValue()
 		{
 			var newitem = AddDefaultGridElement();
 			var resourcesCountBefore = _context.Resources.Count();
@@ -223,34 +223,16 @@ namespace cms.data.tests.EF
 			var updated = repo.GetGridElement(newitem.Id);
 
 			Assert.AreEqual(2, updated.Resources.Count);
-			Assert.IsNotNull(updated.Resources.SingleOrDefault(x=>x.Value =="xxx"));
-			Assert.AreEqual("new cs", updated.Resources.Single(x=>x.Value =="xxx").Key);
+			Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
+			Assert.IsNotNull(updated.Resources.SingleOrDefault(x => x.Value == "xxx"));
+			
 		
-			//check esli se nepridalo neco novyho 
-			Assert.AreEqual(resourcesCountBefore  , _context.Resources.Count());
-		
+			Assert.AreNotEqual("new cs", updated.Resources.Single(x=>x.Value =="xxx").Key);
 		}
 
-		//[Test]
-		//public void UpdateGridElement_Resources_Replace_test()
-		//{
-		//    var newitem = AddDefaultGridElement();
-		//    var resourcesCountBefore = _context.Resources.Count();
-
-	
-		//    repo.Update(newitem);
-
-		//    var updated = repo.GetGridElement(newitem.Id);
-
-		//    Assert.AreEqual(2, updated.Resources.Count);
-		//    Assert.IsNotNull(updated.Resources.SingleOrDefault(x=>x.Value =="xxx"));
-		//    Assert.AreEqual("newcs", updated.Resources.Single(x=>x.Value =="xxx").Key);
-		//    //check esli se nepridalo neco novyho 
-		//    Assert.AreEqual(resourcesCountBefore , _context.Resources.Count());
-		//}
 
 		[Test]
-		public void UpdateGridElement_addNewResources()
+		public void UpdateGridElement_AddNewResources()
 		{
 
 			GridElement newitem;
@@ -294,7 +276,7 @@ namespace cms.data.tests.EF
 		}
 		
 		[Test]
-		public void UpdateGridElement_addNewResources_keydoesntExist_XXXXXXXXXXXXXXXXXXXXX()
+		public void UpdateGridElement_addNewResources_keyExist_XXXXXXXXXXXXXXXXXXXXX()
 		{
 			var resourcesCountBefore = _context.Resources.Count();
 	
@@ -361,6 +343,7 @@ namespace cms.data.tests.EF
 		}
 
 		[Test]
+		//INFO: Resources - pokud je neexistujici Id tak prida novy zaznam 
 		public void UpdateGridElement_TryAttachNonExistingResources()
 		{
 			var gridelementdb = AddDefaultGridElement();
@@ -369,11 +352,11 @@ namespace cms.data.tests.EF
 
 			repo.Update(gridelementdb);
 
-			Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
+			Assert.AreEqual(resourcesCountBefore + 1, _context.Resources.Count());
 		}
 
 		[Test]
-		public void UpdateGridElement_AttachExistingResources_sadsd()
+		public void UpdateGridElement_AttachExistingResources_sadsdXXXXXXXXXXXXXXXXXX()
 		{
 			var gridelementdb1 = AddDefaultGridElement();
 			var gridelementdb2 = AddDefaultGridElement();
