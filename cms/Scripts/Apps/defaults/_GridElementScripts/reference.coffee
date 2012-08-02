@@ -8,6 +8,7 @@ reference = ($scope, $http, GridApi, appSettings) ->
 #  reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"]
 
   $scope.grids = []
+  $scope.destination = {}
   $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null, Link : null}
 
   if $scope.gridelement.Content.Id
@@ -23,12 +24,11 @@ reference = ($scope, $http, GridApi, appSettings) ->
   )
 
   $scope.choose = (grid)->
-    $scope.destination = grid
     $scope.gridelement.Content.Id = grid.Id;
     $scope.gridelement.Content.Link = grid.Link;
 
     $scope.gridelement.Resources = []
-    $scope.gridelement.Resources.push({Id : grid.Resource.Id})
+    $scope.gridelement.Resources.push({Id : grid.ResourceDto.Id})
 
     $scope.$parent.Edit = 0
     $scope.$parent.save($scope.gridelement)

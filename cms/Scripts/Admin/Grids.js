@@ -41,8 +41,10 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 						$scope.grid.Lines.push([newitem]);
 					}
 					$scope.grid.Lines[data.Line][data.Position] = data;
+                    console.log("lasjbdasjkbdjko")
                     //TODO: nevyvola se broadcast
                     $scope.edit(data);
+
             });
 		};
 
@@ -80,7 +82,7 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 		scope: { grid: "=", gridelement: "=" },
 		controller: GridElementCtrl,
 		link: function (scope, iElement, tAttrs, controller) {
-            var sablona = gridtemplate(scope.gridelement.Type);
+			var sablona = gridtemplate(scope.gridelement.Type);
 			var compiled = $compile(sablona)(scope);
 			iElement.html(compiled);
 		}
