@@ -13,7 +13,6 @@ namespace cms.data.EF
 	{
 		private EfContext db { get; set; }
 
-
 		public JsonDataEf(string application, EfContext context)
 			: base(application)
 		{
@@ -46,12 +45,6 @@ namespace cms.data.EF
 			{
 				return a.ApplicationSettings.ToList().ToDtos();
 			}
-		}
-
-		public override IEnumerable<Grid> Grids()
-		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Name == ApplicationName);
-			return a;
 		}
 
 		IQueryable<Grid> AvailableGrids()
@@ -128,7 +121,7 @@ namespace cms.data.EF
 
 		public override GridPageDto GetGridPage(Guid id)
 		{
-			var a = Grids().Single(x => x.Id == id);
+			var a = AvailableGrids().Single(x => x.Id == id);
 			return a.ToGridPageDto();
 		}
 		//TODO: pokud nenanjde melo by o vracet homepage
@@ -226,11 +219,11 @@ namespace cms.data.EF
 
 		public override GridPageDto Update(GridPageDto item)
 		{
-			if (item.Resource != null)
+			if (item.ResourceDto != null)
 			{
-				if (item.Resource.Id != 0)
+				if (item.ResourceDto.Id != 0)
 				{
-					db.Resources.Single(x => x.Id == item.Resource.Id).UpdateValues(item.Resource);
+					db.Resources.Single(x => x.Id == item.ResourceDto.Id).UpdateValues(item.ResourceDto);
 				}
 			}
 			var grid = GetGrid(item.Id);
@@ -249,14 +242,31 @@ namespace cms.data.EF
 			db.ApplicationSettings.Remove(delete);
 		}
 
+		
+		void CheckIfLinkExist(GridPageDto newitem)
+		{
+			var linkExist = AvailableGrids().Any(x => x.Resource.Value == newitem.ResourceDto.Value);
+			if (linkExist)
+			{
+				throw new ArgumentException("link exists");
+			}
+			
+		}
+		
 		public override GridPageDto Add(GridPageDto newitem)
 		{
 			var item = newitem.ToGrid();
+			if (newitem.ResourceDto == null)
+			{
+				newitem.ResourceDto = new ResourceDto { Value = item.Name.Replace(" ", string.Empty) };
+			}
+
+			CheckIfLinkExist(newitem);
+
 			CurrentApplication.Grids.Add(item);
 			db.Grids.Add(item);
-			var resDto = newitem.Resource ?? new ResourceDto() { Value = item.Name.Replace(" ", string.Empty) };
 
-			var res = db.Resources.Add(resDto.ToResource());
+			var res = db.Resources.Add(newitem.ResourceDto.ToResource());
 			res.Owner = item.Id;
 			item.Resource = res;
 

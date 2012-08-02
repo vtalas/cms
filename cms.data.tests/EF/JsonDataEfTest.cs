@@ -11,24 +11,6 @@ using cms.data.Shared.Models;
 
 namespace cms.data.tests.EF
 {
-	public class SessionManager : IDisposable
-	{
-		private static JsonDataEf Context { get; set; }
-
-		public static JsonDataEf CreateSession
-		{
-			get
-			{
-				Context = new JsonDataEf(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"));
-				return Context;
-			}
-		}
-
-		public void Dispose()
-		{
-			Context.Dispose();
-		}
-	}
 
 	[TestFixture]
 	public class JsonDataEfTest
@@ -72,6 +54,67 @@ namespace cms.data.tests.EF
 			repo = new JsonDataEf(guid, _context);
 			Assert.IsNotNull(repo);
 		}
+
+		[TestFixture]
+		public class AddGridPageMethodTest
+		{
+			[SetUp]
+			public void Setup()
+			{
+				Database.SetInitializer(new DropAndCreate());
+			}
+
+			GridPageDto AddGridpage(string name, string link)
+			{
+				using (var db = SessionManager.CreateSession)
+				{
+					var a = new GridPageDto
+					{
+						Name = name,
+						ResourceDto = new ResourceDto { Value = link }
+					};
+
+					var n = db.Add(a);
+					Assert.AreEqual(name, n.Name);
+					Assert.AreEqual(link, n.ResourceDto.Value);
+					return n;
+				}
+				
+			}
+
+			GridPageDto GetGridpage(Guid id )
+			{
+				using (var db = SessionManager.CreateSession)
+				{
+					var n = db.GetGridPage(id);
+					return n;
+				}
+				
+			}
+			
+			[Test]
+			public void AddGridpage_Basic()
+			{
+				var name = "xxx";
+				var link = "AddGridpage_Basic";
+				var n = AddGridpage(name, link);
+				var g = GetGridpage(n.Id);
+				
+				Assert.AreEqual(name, g.Name);
+				Assert.AreEqual(link, g.ResourceDto.Value);
+			}
+
+			[Test]
+			public void AddGridpage_Basic_linkExists()
+			{
+				var name = "xxx";
+				var link = "AddGridpage_Basic_linkExists";
+				
+				var n1 = AddGridpage(name, link);
+				Assert.Throws<ArgumentException>(() => AddGridpage(name + name, link));
+			}
+		}
+
 
 		[Test]
 		public void Applications_test()
@@ -407,19 +450,19 @@ namespace cms.data.tests.EF
 			var gridpage = repo.Add(new GridPageDto
 			{
 				Name = "addgridElement test Gridpage",
-				Resource = new ResourceDto { Value = "newlink", Culture = "xx" }
+				ResourceDto = new ResourceDto { Value = "newlink", Culture = "xx" }
 			});
 			var resourcesCountBefore = _context.Resources.Count();
-			var gridpageResBefore = gridpage.Resource;
+			var gridpageResBefore = gridpage.ResourceDto;
 
-			gridpage.Resource.Value = "XXXX";
+			gridpage.ResourceDto.Value = "XXXX";
 			repo.Update(gridpage);
 
 			var updated = repo.GetGridPage(gridpage.Id);
 			var resourcesCountAfter = _context.Resources.Count();
-			var gridpageResAfter = updated.Resource;
+			var gridpageResAfter = updated.ResourceDto;
 
-			Assert.AreEqual("XXXX", updated.Resource.Value);
+			Assert.AreEqual("XXXX", updated.ResourceDto.Value);
 			//check esli se nepridalo neco novyho 
 			Assert.AreEqual(resourcesCountBefore, resourcesCountAfter);
 			Assert.AreEqual(gridpageResBefore.Id, gridpageResAfter.Id);
@@ -430,7 +473,7 @@ namespace cms.data.tests.EF
 		{
 			var a = repo.GetGridPage(_defaultlink);
 			Assert.IsNotNull(a);
-			Assert.AreEqual("linkTestPage", a.Resource.Value);
+			Assert.AreEqual("linkTestPage", a.ResourceDto.Value);
 		}
 
 		[Test]

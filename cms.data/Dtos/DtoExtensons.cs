@@ -92,7 +92,7 @@ namespace cms.data.Dtos
 				Lines = source.GridElements.ToLines(),
 				Home = source.Home,
 				Id = source.Id,
-				Resource = source.Resource.ToDto(),
+				ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDto(),
 				Name = source.Name
 			};
 

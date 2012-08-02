@@ -43,7 +43,6 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 					$scope.grid.Lines[data.Line][data.Position] = data;
                     //TODO: nevyvola se broadcast
                     $scope.edit(data);
-                    console.log(data)
             });
 		};
 

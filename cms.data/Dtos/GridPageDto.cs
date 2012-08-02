@@ -12,7 +12,7 @@ namespace cms.data.Dtos
 		public bool Home { get; set; }
 
 		//TODO: tady by melo byt ResourceDto
-		public ResourceDto Resource { get; set; }
+		public ResourceDto ResourceDto { get; set; }
 		public IList<IEnumerable<GridElementDto>> Lines{get; set; }
 	}
 

@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="898e5ae3-9ed6-4bb1-9d65-9aaca821c682" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/EF/DropAndCreate.cs" afterPath="$PROJECT_DIR$/cms.data/EF/DropAndCreate.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data.tests/cms.data.tests.csproj" afterPath="$PROJECT_DIR$/cms.data.tests/cms.data.tests.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data.tests/App.config" afterPath="$PROJECT_DIR$/cms.data.tests/App.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data.tests/EF/JsonDataEfTest.cs" afterPath="$PROJECT_DIR$/cms.data.tests/EF/JsonDataEfTest.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/Dtos/DtoExtensons.cs" afterPath="$PROJECT_DIR$/cms.data/Dtos/DtoExtensons.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/Dtos/GridPageDto.cs" afterPath="$PROJECT_DIR$/cms.data/Dtos/GridPageDto.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/EF/JsonDataEf.cs" afterPath="$PROJECT_DIR$/cms.data/EF/JsonDataEf.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/JsonDataProvider.cs" afterPath="$PROJECT_DIR$/cms.data/JsonDataProvider.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Controllers/AdminApiController.cs" afterPath="$PROJECT_DIR$/cms/Controllers/AdminApiController.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Views/Admin/Grids.cshtml" afterPath="$PROJECT_DIR$/cms/Views/Admin/Grids.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Admin/Grids.js" afterPath="$PROJECT_DIR$/cms/Scripts/Admin/Grids.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee.debug.js" afterPath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee.debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/clientmodule.coffee.debug.js" afterPath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/clientmodule.coffee.debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Views/Admin/template/list.cshtml" afterPath="$PROJECT_DIR$/cms/Views/Admin/template/list.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Web.config" afterPath="$PROJECT_DIR$/cms/Web.config" />
     </list>
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,62 +36,7 @@
     <favorites_list name="cms" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/Grids.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="46" selection-start="1618" selection-end="1618" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.cshtml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cms/Views/Admin/template/list.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="45" selection-start="202" selection-end="202" vertical-scroll-proportion="0.16382253">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GridListController.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="39" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GridPageCtrl.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridPageCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="35" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gridpage.cshtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms/Views/Admin/template/gridpage.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GridElement.cshtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/GridElement.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="30" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -93,20 +49,20 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/cms/Views/Admin/template/list.cshtml" />
         <option value="$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js" />
-        <option value="$PROJECT_DIR$/cms/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/GridElement.cshtml" />
         <option value="$PROJECT_DIR$/cms/Scripts/Admin/GridPageCtrl.js" />
         <option value="$PROJECT_DIR$/cms/Views/Admin/template/gridpage.cshtml" />
+        <option value="$PROJECT_DIR$/cms/Scripts/Admin/Grids.js" />
+        <option value="$PROJECT_DIR$/cms/Views/Admin/template/list.cshtml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1216" />
+    <option name="height" value="1770" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -154,16 +110,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -346,7 +292,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
+              <option name="myItemId" value="Apps" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -368,8 +314,74 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="defaults" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="_GridElementScripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -380,14 +392,14 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -422,14 +434,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1216" height="1770" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14370811" sideWeight="0.6712329" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282313" sideWeight="0.6712329" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -439,6 +450,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -499,44 +511,49 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js">
+    <entry file="file://$PROJECT_DIR$/cms/Views/Admin/template/list.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="39" selection-start="513" selection-end="513" vertical-scroll-proportion="0.0">
+        <state line="10" column="9" selection-start="267" selection-end="267" vertical-scroll-proportion="0.09759271">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="46" selection-start="1618" selection-end="1618" vertical-scroll-proportion="0.0">
+        <state line="35" column="31" selection-start="1197" selection-end="1197" vertical-scroll-proportion="0.32165605">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/GridElement.cshtml">
+    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="30" selection-start="255" selection-end="255" vertical-scroll-proportion="0.0">
+        <state line="12" column="0" selection-start="368" selection-end="368" vertical-scroll-proportion="0.11464968">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="8" selection-start="530" selection-end="530" vertical-scroll-proportion="0.17197452">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridPageCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="35" selection-start="726" selection-end="726" vertical-scroll-proportion="0.0">
+        <state line="22" column="6" selection-start="657" selection-end="657" vertical-scroll-proportion="0.21019109">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Views/Admin/template/gridpage.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cms/Views/Admin/template/list.cshtml">
+    <entry file="file://$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/GridElement.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="45" selection-start="202" selection-end="202" vertical-scroll-proportion="0.16382253">
+        <state line="10" column="13" selection-start="338" selection-end="338" vertical-scroll-proportion="0.096215524">
           <folding />
         </state>
       </provider>

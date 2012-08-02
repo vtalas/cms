@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="ApplicationSettingtestsEF.cs" />
     <Compile Include="EF\DtoTests.cs" />
+    <Compile Include="EF\SessionManager.cs" />
     <Compile Include="LocalizationsTests.cs" />
     <Compile Include="SampleData\CreateSampleDataTest.cs" />
     <Compile Include="EF\JsonDataEfTest.cs" />

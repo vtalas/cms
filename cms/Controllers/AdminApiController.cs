@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.data;
 using cms.data.Dtos;
+using cms.data.EF;
 using cms.data.Shared.Models;
 
 namespace cms.Controllers
@@ -35,10 +36,13 @@ namespace cms.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult AddGrid(Grid data)
+		public ActionResult AddGrid(GridPageDto data)
         {
-			var newgrid = db.Add(data.ToGridPageDto());
-			return new JSONNetResult(newgrid);
+			using ( var dataEf = new JsonDataEf(ApplicationId))
+			{
+				var newgrid = dataEf.Add(data);
+				return new JSONNetResult(newgrid);
+			}
         }
 
 		[HttpPost]

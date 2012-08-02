@@ -24,7 +24,6 @@ namespace cms.data
 
 		public abstract void DeleteApplication(Guid guid);
 		public abstract GridElement AddGridElementToGrid(GridElement gridElement, Guid gridId);
-		public abstract IEnumerable<Grid> Grids();
 		public abstract Grid GetGrid(Guid guid);
 		public abstract GridPageDto GetGridPage(Guid guid);
 		public abstract void DeleteGrid(Guid guid);

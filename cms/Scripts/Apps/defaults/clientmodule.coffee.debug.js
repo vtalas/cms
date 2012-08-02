@@ -13,7 +13,7 @@
     $provide.factory("appSettings", function() {
       var setings;
       return setings = {
-        applicationId: "86199013-5887-4743-89dd-29ddc5bc7df7",
+        applicationId: "c78ee05e-1115-480b-9ab7-a3ab3c0f6643",
         serverUrl: "http://localhost\\:62728",
         currentGallery: "s",
         currentSubGallery: "ss1"
@@ -33,30 +33,13 @@
       proj = $resource(appSettings.serverUrl + "/client/json/:applicationId/:link?callback=JSON_CALLBACK", defaults, actions);
       return proj;
     });
-    $provide.factory("GridApi", function($resource, appSettings) {
-      var actions, defaults, proj;
-      defaults = {
-        applicationId: appSettings.applicationId
-      };
-      actions = {
-        getGrid: {
-          method: 'GET',
-          isArray: false,
-          params: {
-            action: "GetGrid"
-          }
-        }
-      };
-      proj = $resource(appSettings.serverUrl + "/clientapi/:applicationId/:action/:Id?callback=JSON_CALLBACK", defaults, actions);
-      return proj;
-    });
     $routeProvider.when('/link/:link', {
       controller: linkCtrl,
       templateUrl: 'link-template'
     }).when('/gallery/:link/:xxx', {
       controller: galleryCtrl,
       templateUrl: 'link-template'
-    }).otherwise('/gallery/:link/:xxx', {
+    }).otherwise('/link/profil', {
       controller: galleryCtrl,
       templateUrl: 'link-template'
     });
@@ -89,7 +72,7 @@
     });
   };
   window.linkCtrl = linkCtrl;
-  galleryCtrl = function($scope, $routeParams, clientApi, GridApi, appSettings) {
+  galleryCtrl = function($scope, $routeParams, clientApi, appSettings) {
     var p;
     p = $routeParams;
     if (p.xxx) {
@@ -111,10 +94,18 @@
   };
   window.galleryCtrl = galleryCtrl;
   appController = function($scope, appSettings, clientApi, $routeParams, $location, $route) {
-    console.log($routeParams, $routeParams.link, $location, $route);
-    return $scope.refreshGalleryThumbs = function(lines) {
+    $scope.refreshGalleryThumbs = function(lines) {
       return $scope.galleryThumbs = lines;
     };
+    return $scope.$on("$routeChangeSuccess", function() {
+      if (!$routeParams.xxx && !$scope.galleryThumbs) {
+        return clientApi.gridpageJson({
+          link: appSettings.currentGallery
+        }, function(data) {
+          return $scope.galleryThumbs = data;
+        });
+      }
+    });
   };
   window.appController = appController;
 }).call(this);
