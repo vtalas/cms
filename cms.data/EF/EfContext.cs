@@ -2,6 +2,7 @@ using System;
 using System.Data.Entity;
 using cms.data.EF.Bootstrap;
 using cms.data.Shared.Models;
+using System.Linq;
 
 namespace cms.data.EF
 {
@@ -27,5 +28,24 @@ namespace cms.data.EF
 			modelBuilder.Entity<Bootstrapgenerator>().Property(p => p.StatusData).HasColumnName("sm");
 			modelBuilder.Entity<Bootstrapgenerator>().Ignore(p => p.Status);
 		}
+	}
+
+	public static class EfContextExt
+	{
+		public static bool Exist(this DbSet<Resource> context, int id  )
+		{
+			return context.Any(x => x.Id == id);
+		}
+
+		public static GridElement Get(this DbSet<GridElement> context, Guid id)
+		{
+			return context.Single(x => x.Id == id);
+		}
+
+		public static Resource Get(this DbSet<Resource> context, int id)
+		{
+			return context.Single(x => x.Id == id);
+		}
+
 	}
 }

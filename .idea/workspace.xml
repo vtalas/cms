@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="898e5ae3-9ed6-4bb1-9d65-9aaca821c682" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.gpState" afterPath="$PROJECT_DIR$/cms.gpState" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.ncrunchsolution" afterPath="$PROJECT_DIR$/cms.ncrunchsolution" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Admin/Grids.js" afterPath="$PROJECT_DIR$/cms/Scripts/Admin/Grids.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data.tests/App.config" afterPath="$PROJECT_DIR$/cms.data.tests/App.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data.tests/EF/JsonDataEfTest.cs" afterPath="$PROJECT_DIR$/cms.data.tests/EF/JsonDataEfTest.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/EF/EfContext.cs" afterPath="$PROJECT_DIR$/cms.data/EF/EfContext.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/EF/JsonDataEf.cs" afterPath="$PROJECT_DIR$/cms.data/EF/JsonDataEf.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee.debug.js" afterPath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee.debug.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee" afterPath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/reference_View.cshtml" afterPath="$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/reference_View.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Web.config" afterPath="$PROJECT_DIR$/cms/Web.config" />
     </list>
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,28 +51,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reference.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="reference.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="14" selection-start="518" selection-end="518" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reference_View.cshtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/reference_View.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="angular.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cms/Scripts/angular.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="18" selection-start="220" selection-end="220" vertical-scroll-proportion="0.15850145">
+            <state line="37" column="32" selection-start="1016" selection-end="1016" vertical-scroll-proportion="0.35060012">
               <folding />
             </state>
           </provider>
@@ -87,7 +72,7 @@
       <file leaf-file-name="gridpage.cshtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cms/Views/Admin/template/gridpage.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="271" selection-end="271" vertical-scroll-proportion="-6.875">
+            <state line="11" column="0" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -238,12 +223,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1216" height="1770" extended-state="0" />
+    <frame x="-8" y="-8" width="1216" height="1770" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32857144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282313" sideWeight="0.6712329" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -255,6 +239,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32857144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -348,30 +333,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/reference_Edit.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="103" selection-end="103" vertical-scroll-proportion="0.028864658">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cms/Views/Admin/template/gridpage.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="271" selection-end="271" vertical-scroll-proportion="-6.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/cmsapi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="94" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="33" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="3" column="0" selection-start="103" selection-end="103" vertical-scroll-proportion="0.028864658" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/Grids.js">
@@ -381,23 +343,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
+    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="14" selection-start="518" selection-end="518" vertical-scroll-proportion="0.0">
+        <state line="9" column="33" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/cmsapi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="94" selection-start="681" selection-end="681" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/Views/Admin/template/gridpage.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms/Scripts/angular.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="2" selection-start="2700" selection-end="2700" vertical-scroll-proportion="0.43949044">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/reference_View.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
+        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="-0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cms/Scripts/angular.js">
+    <entry file="file://$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/reference.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="18" selection-start="220" selection-end="220" vertical-scroll-proportion="0.15850145">
+        <state line="37" column="32" selection-start="1016" selection-end="1016" vertical-scroll-proportion="0.35060012">
           <folding />
         </state>
       </provider>

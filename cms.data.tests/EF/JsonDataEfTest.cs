@@ -12,9 +12,15 @@ using cms.data.Shared.Models;
 namespace cms.data.tests.EF
 {
 
-	public class Helpers
-{
-	static Guid guid = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
+
+	public static class Helpers{
+
+		public static Resource getresource(this IEnumerable<Resource> source, string culture, string key )
+		{
+			return source.Single(x => x.Culture == culture && x.Key == key);
+		}
+	
+		static Guid guid = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
 	
 		public static GridElement AddDefaultGridElement()
 		{
@@ -140,7 +146,7 @@ namespace cms.data.tests.EF
 				var name = "xxx";
 				var link = "AddGridpage_Basic_linkExists";
 				
-				var n1 = AddGridpage(name, link);
+				AddGridpage(name, link);
 				Assert.Throws<ArgumentException>(() => AddGridpage(name + name, link));
 			}
 		}
@@ -257,7 +263,7 @@ namespace cms.data.tests.EF
 			}
 
 			[Test]
-			public void UpdateGridElement_addNewResources_keyExist_XXXXXXXXXXXXXXXXXXXXX()
+			public void UpdateGridElement_addNewResources_keyExist()
 			{
 				var resourcesCountBefore = _context.Resources.Count();
 
@@ -268,11 +274,7 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSession)
 				{
-					db.Update(newitem);
-					var updated = db.GetGridElement(newitem.Id);
-					Assert.AreEqual(4, newitem.Resources.Count);
-					Assert.AreEqual(2, updated.Resources.Count);
-
+					Assert.Throws<ArgumentException>(() => db.Update(newitem));
 					Assert.AreEqual(resourcesCountBefore + 2, _context.Resources.Count());
 				}
 			}
@@ -389,9 +391,7 @@ namespace cms.data.tests.EF
 					gridelementdb.Resources = resources;
 
 					db.Update(gridelementdb);
-
 					var updated = db.GetGridElement(gridelementdb.Id);
-
 					var existingsResAfter = _context.Resources.First(x => x.Id == existingsResBefore.Id);
 
 					Assert.AreEqual(2, updated.Resources.Count);
@@ -403,21 +403,32 @@ namespace cms.data.tests.EF
 			[Test]
 			public void UpdateGridElement_Update_Attached()
 			{
+				const string culture = "cs";
+				const string key = "text1";
+
 				var a = Helpers.AddDefaultGridElement();
 				var b = Helpers.AddDefaultGridElement();
+				var c = Helpers.AddDefaultGridElement();
 				var resourcesCountBefore = _context.Resources.Count();
 				
-var res2 = gridelementdb2.Resources.First();
-
-				gridelementdb1.Resources.Add(new Resource { Id = res2.Id, Value = "reference na resource z 1" });
 				using (var db = SessionManager.CreateSession)
 				{
 
-					db.Update(gridelementdb1);
+					var resa = a.Resources.getresource(culture, key);
+					var resb = a.Resources.First();
 
-					var updated = db.GetGridElement(gridelementdb1.Id);
+					c.Resources = new List<Resource> {resa};
+					db.Update(c);
 
-					Assert.AreEqual(3, updated.Resources.Count);
+					var updated = db.GetGridElement(c.Id);
+					Assert.AreEqual(2, updated.Resources.Count);
+					Assert.AreEqual(resa.Id, updated.Resources.getresource(culture, key).Id);
+
+					c.Resources.Add(resb);
+					db.Update(c);
+					updated = db.GetGridElement(c.Id);
+					Assert.AreEqual(2, updated.Resources.Count);
+					Assert.AreEqual(resb.Id, updated.Resources.getresource(culture, key).Id);
 				}
 			
 				Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
@@ -457,6 +468,7 @@ var res2 = gridelementdb2.Resources.First();
 			var gridpage = repo.Add(new GridPageDto { Name = "addgridElement test Gridpage" });
 			var gridDb = repo.GetGrid(gridpage.Id);
 			Assert.AreEqual(0, repo.GetGrid(gridpage.Id).GridElements.Count);
+
 
 			var gridelem = new GridElement()
 			{

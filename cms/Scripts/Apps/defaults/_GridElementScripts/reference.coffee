@@ -24,6 +24,7 @@ reference = ($scope, $http, GridApi, appSettings) ->
   )
 
   $scope.choose = (grid)->
+    $scope.destination = grid;
     $scope.gridelement.Content.Id = grid.Id;
     $scope.gridelement.Content.Link = grid.Link;
 

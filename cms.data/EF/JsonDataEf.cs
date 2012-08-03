@@ -9,6 +9,7 @@ using cms.data.Shared.Models;
 
 namespace cms.data.EF
 {
+	
 	public class JsonDataEf : JsonDataProvider
 	{
 		private EfContext db { get; set; }
@@ -19,9 +20,8 @@ namespace cms.data.EF
 			db = context;
 			var app = GetApplication(application);
 			ApplicationId = app == null ? new Guid("00000000-0000-0000-0000-000000000000") : app.Id;
-
 			//Database.SetInitializer(new CreateIfNotExists());
-			//			Database.SetInitializer(new DropAndCreateTables());
+			//Database.SetInitializer(new DropAndCreateTables());
 		}
 
 		public JsonDataEf(Guid application, EfContext context)
@@ -79,7 +79,7 @@ namespace cms.data.EF
 
 		Resource GetResource(Guid elementId, Resource resource)
 		{
-			var el = GetGridElement(elementId);
+			var el = db.GridElements.Get(elementId);
 			if (el.Resources != null)
 			{
 				return el.Resources.SingleOrDefault(x =>
@@ -140,10 +140,10 @@ namespace cms.data.EF
 			return a.ToGridPageDto();
 		}
 
-		public override GridElement GetGridElement(Guid id)
-		{
-			return db.GridElements.Single(x => x.Id == id);
-		}
+		//public override GridElement GetGridElement(Guid id)
+		//{
+		//    return db.GridElements.Single(x => x.Id == id);
+		//}
 
 		public override void DeleteGrid(Guid id)
 		{
@@ -170,9 +170,14 @@ namespace cms.data.EF
 			db.SaveChanges();
 		}
 
-		bool IsOwner(Guid id, Resource resource)
+		public override GridElement GetGridElement(Guid guid)
 		{
-			return resource.Owner == id;
+			return db.GridElements.Get(guid);
+		}
+
+		bool CanUpdateValues(GridElement element, Resource resource)
+		{
+			return (element.Resources.Any(x => x.Id == resource.Id) && resource.Owner == element.Id);
 		}
 
 		public override GridElement Update(GridElement item)
@@ -180,31 +185,41 @@ namespace cms.data.EF
 
 			if (item.Resources != null)
 			{
-				foreach (var resource in item.Resources)
+				var curEl =  db.GridElements.Get(item.Id);
+				foreach (var resUpdate in item.Resources)
 				{
-					var rdb = GetResource(item.Id, resource);
-					if (rdb != null && IsOwner(item.Id, resource))
+					if (db.Resources.Exist(resUpdate.Id))
 					{
-						rdb.Value = resource.Value;
-						continue;
-					}
+						var res = db.Resources.Get(resUpdate.Id);
+						if (CanUpdateValues(curEl, res))
+						{
+							res.Value = resUpdate.Value;
+						}
 
-					if (rdb == null && db.Resources.Any(x => x.Id == resource.Id))
-					{
-						//pridej referenci
-						GetGridElement(item.Id).Resources.Add(GetResource(resource.Id));
-						continue;
+						if (res.Owner != curEl.Id)
+						{
+							//pridat referenci 
+							if (ReferenceExist(curEl, resUpdate.Key, resUpdate.Culture))
+							{
+								//oddelat puvodni a pridat novou 
+								curEl.Resources.Remove(GetResource(curEl, resUpdate.Key, resUpdate.Culture));
+							}
+							curEl.Resources.Add(res);
+						}
 					}
-
-					if (rdb == null)
+					
+					else
 					{
-						resource.Owner = item.Id;
-						db.Resources.Add(resource);
-						GetGridElement(item.Id).Resources.Add(resource);
+						if (ReferenceExist(curEl, resUpdate.Key, resUpdate.Culture))
+							throw new ArgumentException("link exists");
+
+						resUpdate.Owner = item.Id;
+						db.Resources.Add(resUpdate);
+						db.GridElements.Get(item.Id).Resources.Add(resUpdate);
 					}
 				}
 			}
-			var el = GetGridElement(item.Id);
+			var el = db.GridElements.Get(item.Id);
 			//TODO:nahovno, udelat lip
 			el.Line = item.Line;
 			el.Position = item.Position;
@@ -215,6 +230,22 @@ namespace cms.data.EF
 
 			db.SaveChanges();
 			return item;
+		}
+
+		bool ReferenceExist(GridElement curEl, string key, string culture)
+		{
+			return curEl.Resources.Any(x => x.Key == key && x.Culture == culture);
+		}
+
+		Resource GetResource(GridElement curEl, string key, string culture)
+		{
+			return curEl.Resources.Single(x => x.Key == key && x.Culture == culture);
+		}
+
+
+		private bool IsAttached(GridElement el, Resource resource)
+		{
+			throw new NotImplementedException();
 		}
 
 		public override GridPageDto Update(GridPageDto item)
@@ -241,7 +272,6 @@ namespace cms.data.EF
 			var delete = GetApplication(id);
 			db.ApplicationSettings.Remove(delete);
 		}
-
 		
 		void CheckIfLinkExist(GridPageDto newitem)
 		{
