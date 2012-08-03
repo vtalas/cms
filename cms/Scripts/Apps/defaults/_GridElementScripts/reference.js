@@ -12,6 +12,7 @@
 
   reference = function($scope, $http, GridApi, appSettings) {
     $scope.grids = [];
+    $scope.destination = {};
     $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) || {
       Id: null,
       Link: null
@@ -29,12 +30,11 @@
       }
     });
     $scope.choose = function(grid) {
-      $scope.destination = grid;
       $scope.gridelement.Content.Id = grid.Id;
       $scope.gridelement.Content.Link = grid.Link;
       $scope.gridelement.Resources = [];
       $scope.gridelement.Resources.push({
-        Id: grid.Resource.Id
+        Id: grid.ResourceDto.Id
       });
       $scope.$parent.Edit = 0;
       return $scope.$parent.save($scope.gridelement);
