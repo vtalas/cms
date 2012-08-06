@@ -407,7 +407,6 @@ namespace cms.data.tests.EF
 				const string key = "text1";
 
 				var a = Helpers.AddDefaultGridElement();
-				var b = Helpers.AddDefaultGridElement();
 				var c = Helpers.AddDefaultGridElement();
 				var resourcesCountBefore = _context.Resources.Count();
 				

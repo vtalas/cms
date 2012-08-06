@@ -30,6 +30,7 @@
       }
     });
     $scope.choose = function(grid) {
+      $scope.destination = grid;
       $scope.gridelement.Content.Id = grid.Id;
       $scope.gridelement.Content.Link = grid.Link;
       $scope.gridelement.Resources = [];

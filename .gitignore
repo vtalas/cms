@@ -45,3 +45,5 @@ cms/.idea/*
 cms/.idea/*
 *.ncrunchsolution
 cms.ncrunchsolution
+cms.data.tests/App.config
+cms/Web.config

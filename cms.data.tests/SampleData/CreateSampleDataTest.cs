@@ -29,6 +29,9 @@ namespace cms.data.tests.SampleData
 		public void Create()
 		{
 			var a = JsonDataEf.Applications();
+			
+			//zamerne fail
+			Assert.AreEqual(-1,a.Count());			
 			Console.WriteLine(a.Count());
 		}
 
