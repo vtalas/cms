@@ -14,7 +14,14 @@ var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi",
 		$scope.getGrid();
 	});
 
-	$scope.getGrid = function () {
+    $scope.$on("setCultureEvent",function(){
+        console.log("GridPageCtrl set culture")
+        $scope.getGrid();
+    })
+
+
+
+    $scope.getGrid = function () {
         GridApi.getGrid(params, function (data) {
 			$scope.data = data;
 			var newitem = _newitem($scope.data.Lines.length);

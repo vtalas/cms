@@ -4,6 +4,8 @@
         var project = $resource('/adminApi/:applicationId/:action/:Id',
     		{applicationId : appSettings.Id},
             {
+                setCulture: { method: 'POST' , params: {action : "SetCulture"}},
+
                 grids: { method: 'GET' ,isArray:true, params: {action : "grids"}},
 	            gridpageJson: { method: 'GET' ,isArray:false, params: {action : "grids"}},
                 getGrid: { method: 'POST' , params: {action : "GetGrid"}},

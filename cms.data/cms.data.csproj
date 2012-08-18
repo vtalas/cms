@@ -72,13 +72,12 @@
     <Compile Include="IDataProvider.cs" />
     <Compile Include="EF\EfContext.cs" />
     <Compile Include="JsonDataProvider.cs" />
-    <Compile Include="Migrations\201205260933021_ApplicationIdtoGuid.cs" />
-    <Compile Include="Migrations\201205260933021_ApplicationIdtoGuid.Designer.cs">
-      <DependentUpon>201205260933021_ApplicationIdtoGuid.cs</DependentUpon>
+    <Compile Include="Migrations\201208181646300_sss.cs" />
+    <Compile Include="Migrations\201208181646300_sss.Designer.cs">
+      <DependentUpon>201208181646300_sss.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Shared\Models\Grid.cs" />
-    <Compile Include="Shared\FileExts.cs" />
     <Compile Include="Shared\Models\GridElement.cs" />
     <Compile Include="Shared\Models\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,7 +88,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\cms.shared\cms.shared.csproj">
+      <Project>{D1A23BEB-46D6-47A9-AE9D-D369A5134050}</Project>
+      <Name>cms.shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

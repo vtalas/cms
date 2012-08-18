@@ -79,7 +79,7 @@ namespace cms.data.EF
 
 		Resource GetResource(Guid elementId, Resource resource)
 		{
-			var el = db.GridElements.Get(elementId);
+			var el = db.GridElements.Get( elementId, ApplicationId);
 			if (el.Resources != null)
 			{
 				return el.Resources.SingleOrDefault(x =>
@@ -88,6 +88,11 @@ namespace cms.data.EF
 				);
 			}
 			return null;
+		}
+
+		IQueryable<Resource> AvailableResources()
+		{
+			return db.Resources.Where(x => x.Culture == CurrentCulture || x.Culture == null);
 		}
 
 		public override ResourceDto GetResourceDto(Guid elementId, string key, string culture)
@@ -121,8 +126,9 @@ namespace cms.data.EF
 
 		public override GridPageDto GetGridPage(Guid id)
 		{
-			var a = AvailableGrids().Single(x => x.Id == id);
-			return a.ToGridPageDto();
+			var grid = AvailableGrids().Single(x => x.Id == id );
+
+			return grid.ToGridPageDto();
 		}
 		//TODO: pokud nenanjde melo by o vracet homepage
 		public override GridPageDto GetGridPage(string link)
@@ -172,7 +178,11 @@ namespace cms.data.EF
 
 		public override GridElement GetGridElement(Guid guid)
 		{
-			return db.GridElements.Get(guid);
+			var item = db.GridElements.Get(guid,ApplicationId);
+			var localizedResources = item.Resources.Where(x => x.Culture == CurrentCulture || x.Culture == null);
+			item.Resources = localizedResources.ToList();
+
+			return item;
 		}
 
 		bool CanUpdateValues(GridElement element, Resource resource)
@@ -180,46 +190,52 @@ namespace cms.data.EF
 			return (element.Resources.Any(x => x.Id == resource.Id) && resource.Owner == element.Id);
 		}
 
-		public override GridElement Update(GridElement item)
+		public override GridElementDto Update(GridElementDto item)
 		{
 
-			if (item.Resources != null)
+			if (item.ResourcesLoc != null)
 			{
-				var curEl =  db.GridElements.Get(item.Id);
-				foreach (var resUpdate in item.Resources)
+				var currentEl = db.GridElements.Get(item.Id, ApplicationId);
+				foreach (var resUpdate in item.ResourcesLoc)
 				{
-					if (db.Resources.Exist(resUpdate.Id))
+					if (db.Resources.Exist(resUpdate.Value.Id))
 					{
-						var res = db.Resources.Get(resUpdate.Id);
-						if (CanUpdateValues(curEl, res))
+						var res = db.Resources.Get(resUpdate.Value.Id);
+						if (CanUpdateValues(currentEl, res))
 						{
-							res.Value = resUpdate.Value;
+							res.Value = resUpdate.Value.Value;
 						}
 
-						if (res.Owner != curEl.Id)
+						if (res.Owner != currentEl.Id)
 						{
 							//pridat referenci 
-							if (ReferenceExist(curEl, resUpdate.Key, resUpdate.Culture))
+							if (ReferenceExist(currentEl, resUpdate.Key, resUpdate.Value.Culture))
 							{
 								//oddelat puvodni a pridat novou 
-								curEl.Resources.Remove(GetResource(curEl, resUpdate.Key, resUpdate.Culture));
+								currentEl.Resources.Remove(GetResource(currentEl, resUpdate.Key, resUpdate.Value.Culture));
 							}
-							curEl.Resources.Add(res);
+							currentEl.Resources.Add(res);
 						}
 					}
 					
 					else
 					{
-						if (ReferenceExist(curEl, resUpdate.Key, resUpdate.Culture))
+						if (ReferenceExist(currentEl, resUpdate.Key, resUpdate.Value.Culture))
 							throw new ArgumentException("link exists");
 
-						resUpdate.Owner = item.Id;
-						db.Resources.Add(resUpdate);
-						db.GridElements.Get(item.Id).Resources.Add(resUpdate);
+						var newres = new Resource()
+						             	{
+						             		Owner = item.Id,
+						             		Culture = resUpdate.Value.Culture,
+						             		Key = resUpdate.Key,
+						             		Value = resUpdate.Value.Value
+						             	};
+						db.Resources.Add(newres);
+						db.GridElements.Get(item.Id, ApplicationId).Resources.Add(newres);
 					}
 				}
 			}
-			var el = db.GridElements.Get(item.Id);
+			var el = db.GridElements.Get( item.Id,ApplicationId);
 			//TODO:nahovno, udelat lip
 			el.Line = item.Line;
 			el.Position = item.Position;
@@ -240,12 +256,6 @@ namespace cms.data.EF
 		Resource GetResource(GridElement curEl, string key, string culture)
 		{
 			return curEl.Resources.Single(x => x.Key == key && x.Culture == culture);
-		}
-
-
-		private bool IsAttached(GridElement el, Resource resource)
-		{
-			throw new NotImplementedException();
 		}
 
 		public override GridPageDto Update(GridPageDto item)

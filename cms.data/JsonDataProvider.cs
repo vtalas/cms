@@ -12,11 +12,13 @@ namespace cms.data
 		public string ApplicationName { get; protected set; }
 		public Guid ApplicationId { get; protected set; }
 		public abstract ApplicationSetting CurrentApplication { get; }
+		protected string CurrentCulture {get { return shared.SharedLayer.Culture; }}
 
 		protected JsonDataProvider(Guid applicationId )
 		{
 			this.ApplicationId  = applicationId;
 		}
+		
 		protected JsonDataProvider(string application )
 		{
 			ApplicationName = application;
@@ -31,7 +33,7 @@ namespace cms.data
 		public abstract ApplicationSetting Add(ApplicationSetting newitem);
 		public abstract void DeleteGridElement(Guid guid, Guid gridid);
 		public abstract GridElement GetGridElement(Guid guid);
-		public abstract GridElement Update(GridElement item);
+		public abstract GridElementDto Update(GridElementDto item);
 		public abstract GridPageDto GetGridPage(string link);
 		public abstract GridPageDto Update(GridPageDto item);
 		public abstract ApplicationSetting GetApplication(Guid id);

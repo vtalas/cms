@@ -13,7 +13,8 @@ using cms.data.Shared.Models;
 
 namespace cms.Controllers
 {
-    public class AdminApiController : ApiControllerBase
+    //AJAX ax=kce
+	public class AdminApiController : ApiControllerBase
     {
 		//public ActionResult Applications()
 		//{
@@ -78,10 +79,10 @@ namespace cms.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult UpdateGridElement(GridElement data)
+		public ActionResult UpdateGridElement(GridElementDto data)
 		{
 			var g = db.Update(data);
-			return new JSONNetResult(g.ToDto());
+			return new JSONNetResult(g);
 		}
 		public ActionResult GetGridElement(Guid id)
         {
@@ -97,6 +98,13 @@ namespace cms.Controllers
         	        	};
 			return new JSONNetResult(e);
 
+		}
+
+		public ActionResult SetCulture(string culture)
+		{
+			//TODO:ocekovat povolene
+			shared.SharedLayer.Culture = culture;
+			return new EmptyResult();
 		}
     }
 

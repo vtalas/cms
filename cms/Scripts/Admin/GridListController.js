@@ -1,5 +1,10 @@
 var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
 
+    $scope.$on("setCultureEvent",function(){
+        console.log("GridListController set culture")
+    })
+
+
 	$scope.data = GridApi.grids({ applicationId: appSettings.Id }, function (d) {
 	});
 

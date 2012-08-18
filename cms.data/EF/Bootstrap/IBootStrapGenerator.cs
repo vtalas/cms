@@ -4,6 +4,6 @@ namespace cms.data.EF.Bootstrap
 {
 	public interface IBootStrapGenerator
 	{
-		DbSet<Bootstrapgenerator> Bootstrapgenerators { get; set; }
+//		DbSet<Bootstrapgenerator> Bootstrapgenerators { get; set; }
 	}
 }

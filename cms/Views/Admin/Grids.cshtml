@@ -1,16 +1,24 @@
-﻿@{
+﻿@using cms.shared
+@{
     ViewBag.Title = "Grids";
 	Layout = "_Layout_Grids.cshtml";
 	
 	var applicationName = ViewBag.Application;
 	var applicationId = ViewBag.ApplicationId;
 }
-
 <div ng-app="gridsmodule"
 	 data-application-name="@applicationName"
 	 data-application-id="@applicationId"
+	 data-application-culture="@SharedLayer.Culture"
 	 class="gridsmodule"
 	>
+	<div ng-controller="cultureCtrl">
+		.@SharedLayer.Culture .
+		<button ng-click="setCulture('cs')" >cs</button>
+		<button ng-click="setCulture('en')" >en</button>
+
+	</div>
+	
 	<div ng-view>
 	</div>
 </div>

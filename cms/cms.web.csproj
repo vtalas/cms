@@ -103,7 +103,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ApiControllerBase.cs" />
+    <Compile Include="Code\ApiControllerBase.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
@@ -118,7 +118,7 @@
       <DependentUpon>Client.svc</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Code\ControllerBase.cs" />
     <Compile Include="Controllers\ClientApiController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\AdminApiController.cs" />
@@ -143,6 +143,7 @@
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
     <Content Include="Scripts\angular-templates-ext.coffee" />
+    <Content Include="Scripts\Apps\defaults\_GridElementScripts\textlocalized.coffee" />
     <Content Include="Scripts\Apps\defaults\_GridElementScripts\reference.coffee" />
     <Content Include="Scripts\Apps\defaults\_GridElementScripts\simplehtml.coffee" />
     <Content Include="Scripts\Apps\defaults\_GridElementScripts\novinka.coffee" />
@@ -285,6 +286,8 @@
     <Content Include="Views\Shared\_GridElementTmpl\simplehtml_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\reference_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\reference_View.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\textlocalized_Edit.cshtml" />
+    <Content Include="Views\Shared\_GridElementTmpl\textlocalized_View.cshtml" />
     <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />
@@ -304,6 +307,10 @@
     <ProjectReference Include="..\cms.data\cms.data.csproj">
       <Project>{815F85FC-179F-4817-9634-8CE3C1FF5CE2}</Project>
       <Name>cms.data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cms.shared\cms.shared.csproj">
+      <Project>{D1A23BEB-46D6-47A9-AE9D-D369A5134050}</Project>
+      <Name>cms.shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

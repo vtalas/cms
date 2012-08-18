@@ -21,12 +21,12 @@ namespace cms.data.EF
 		public DbSet<GridElement> GridElements { get; set; }
 		public DbSet<TemplateType> TemplateTypes { get; set; }
 		public DbSet<Resource> Resources { get; set; }
-		public DbSet<Bootstrapgenerator> Bootstrapgenerators { get; set; }
+		//public DbSet<Bootstrapgenerator> Bootstrapgenerators { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Bootstrapgenerator>().Property(p => p.StatusData).HasColumnName("sm");
-			modelBuilder.Entity<Bootstrapgenerator>().Ignore(p => p.Status);
+			//modelBuilder.Entity<Bootstrapgenerator>().Property(p => p.StatusData).HasColumnName("sm");
+			//modelBuilder.Entity<Bootstrapgenerator>().Ignore(p => p.Status);
 		}
 	}
 
@@ -37,9 +37,14 @@ namespace cms.data.EF
 			return context.Any(x => x.Id == id);
 		}
 
-		public static GridElement Get(this DbSet<GridElement> context, Guid id)
+		public static GridElement Get(this DbSet<GridElement> context, Guid guid, Guid applicationId)
 		{
-			return context.Single(x => x.Id == id);
+			var item = context.Single(x => x.Id == guid);
+			
+			if(item.Grid.Any(x=>x.ApplicationSettings.Id != applicationId))
+				throw new InvalidOperationException();
+			
+			return item;
 		}
 
 		public static Resource Get(this DbSet<Resource> context, int id)

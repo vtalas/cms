@@ -7,13 +7,14 @@ namespace cms.data
 {
 	public static class GridElementExt
 	{
-		private static int _minsize = 12;
-		private static IEnumerable<GridElementDto> DefaultLine(int line)
+		private const int ElementMinWidth = 12;
+
+		private static IEnumerable<GridElementDto> EmptyLine(int line)
 		{
 			var d = new List<GridElementDto>();
-			for (int i = 0; i < 12; i+=_minsize)
+			for (int i = 0; i < 12; i+=ElementMinWidth)
 			{
-				d.Add(new GridElementDto { Line = line, Width = _minsize, Position = i });
+				d.Add(new GridElementDto { Line = line, Width = ElementMinWidth, Position = i });
 			}
 			return d;
 		}
@@ -36,7 +37,7 @@ namespace cms.data
 				{
 					d.Add(new GridElementDto
 					{
-						Content = "nnn",
+						Content = "new empty element",
 						Line = line,
 						Position = i, 
 						//Status = Status.Private, 
@@ -49,10 +50,8 @@ namespace cms.data
 		public static IList<IEnumerable<GridElementDto>> ToLines(this IEnumerable<GridElement> source)
 		{
 			var a = new List<IEnumerable<GridElementDto>>();
-			bool any = source.Any();
-			if (source == null || !any)
+			if (source == null || !source.Any())
 			{
-				//a.Add(DefaultLine(0));
 				return a;
 			}
 						
@@ -67,7 +66,7 @@ namespace cms.data
 				}
 				else
 				{
-					a.Add(DefaultLine(i));
+					a.Add(EmptyLine(i));
 				}
 
 			}

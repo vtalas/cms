@@ -18,10 +18,11 @@ namespace cms.Controllers
 			return View();
 		}
 
-		public ActionResult Show()
-		{
-			return View();
-        }
+		//public ActionResult Show()
+		//{
+		//    return View();
+		//}
+
 		public ActionResult Grids()
 		{
 			return View();

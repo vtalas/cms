@@ -14,5 +14,7 @@ namespace cms.data.Dtos
 		public string Type { get; set; }
 		public string Skin { get; set; }
 		public IEnumerable<ResourceDto> Resources { get; set; }
+		public IDictionary<string, ResourceDtoLoc> ResourcesLoc { get; set; }
 	}
+
 }
