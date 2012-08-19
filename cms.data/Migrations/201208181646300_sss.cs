@@ -6,40 +6,40 @@ namespace cms.data.Migrations
     {
         public override void Up()
         {
-            CreateTable(
-                "Resources",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Culture = c.String(),
-                        Key = c.String(),
-                        Value = c.String(),
-                        Owner = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
+			//CreateTable(
+			//    "Resources",
+			//    c => new
+			//        {
+			//            Id = c.Int(nullable: false, identity: true),
+			//            Culture = c.String(),
+			//            Key = c.String(),
+			//            Value = c.String(),
+			//            Owner = c.Guid(nullable: false),
+			//        })
+			//    .PrimaryKey(t => t.Id);
             
-            CreateTable(
-                "GridElementResources",
-                c => new
-                    {
-                        GridElement_Id = c.Guid(nullable: false),
-                        Resource_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.GridElement_Id, t.Resource_Id })
-                .ForeignKey("GridElements", t => t.GridElement_Id, cascadeDelete: true)
-                .ForeignKey("Resources", t => t.Resource_Id, cascadeDelete: true)
-                .Index(t => t.GridElement_Id)
-                .Index(t => t.Resource_Id);
+			//CreateTable(
+			//    "GridElementResources",
+			//    c => new
+			//        {
+			//            GridElement_Id = c.Guid(nullable: false),
+			//            Resource_Id = c.Int(nullable: false),
+			//        })
+			//    .PrimaryKey(t => new { t.GridElement_Id, t.Resource_Id })
+			//    .ForeignKey("GridElements", t => t.GridElement_Id, cascadeDelete: true)
+			//    .ForeignKey("Resources", t => t.Resource_Id, cascadeDelete: true)
+			//    .Index(t => t.GridElement_Id)
+			//    .Index(t => t.Resource_Id);
             
-            AddColumn("ApplicationSettings", "DefaultLanguage", c => c.String());
-            AddColumn("Grids", "Resource_Id", c => c.Int());
-            AlterColumn("Grids", "Id", c => c.Guid(nullable: false));
-            AlterColumn("GridElements", "Id", c => c.Guid(nullable: false));
-            AlterColumn("GridElementGrids", "GridElement_Id", c => c.Guid(nullable: false));
-            AlterColumn("GridElementGrids", "Grid_Id", c => c.Guid(nullable: false));
-            AddForeignKey("Grids", "Resource_Id", "Resources", "Id");
-            CreateIndex("Grids", "Resource_Id");
-            DropColumn("Grids", "Link");
+			//AddColumn("ApplicationSettings", "DefaultLanguage", c => c.String());
+			//AddColumn("Grids", "Resource_Id", c => c.Int());
+			//AlterColumn("Grids", "Id", c => c.Guid(nullable: false));
+			//AlterColumn("GridElements", "Id", c => c.Guid(nullable: false));
+			//AlterColumn("GridElementGrids", "GridElement_Id", c => c.Guid(nullable: false));
+			//AlterColumn("GridElementGrids", "Grid_Id", c => c.Guid(nullable: false));
+			//AddForeignKey("Grids", "Resource_Id", "Resources", "Id");
+			//CreateIndex("Grids", "Resource_Id");
+			//DropColumn("Grids", "Link");
         }
         
         public override void Down()

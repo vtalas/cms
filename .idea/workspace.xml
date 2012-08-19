@@ -2,40 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="898e5ae3-9ed6-4bb1-9d65-9aaca821c682" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms.data\Migrations\201205260933021_ApplicationIdtoGuid.Designer.cs" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms.data\Migrations\201205260933021_ApplicationIdtoGuid.cs" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms.data\Shared\FileExts.cs" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Controllers\ApiControllerBase.cs" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Controllers\ControllerBase.cs" afterPath="" />
+      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms.data.tests\ApplicationSettingtestsEF.cs" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data.tests/cms.data.tests.csproj" afterPath="$PROJECT_DIR$/cms.data.tests/cms.data.tests.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/cms.data.csproj" afterPath="$PROJECT_DIR$/cms.data/cms.data.csproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.ncrunchsolution" afterPath="$PROJECT_DIR$/cms.ncrunchsolution" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.sln" afterPath="$PROJECT_DIR$/cms.sln" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Views/Admin/Grids.cshtml" afterPath="$PROJECT_DIR$/cms/Views/Admin/Grids.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Views/Admin/_Layout_Grids.cshtml" afterPath="$PROJECT_DIR$/cms/Views/Admin/_Layout_Grids.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Views/Shared/_AdminLayout.cshtml" afterPath="$PROJECT_DIR$/cms/Views/Shared/_AdminLayout.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/GridElement.cshtml" afterPath="$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/GridElement.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/cms.web.csproj" afterPath="$PROJECT_DIR$/cms/cms.web.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/textlocalized_Edit.cshtml" afterPath="$PROJECT_DIR$/cms/Views/Shared/_GridElementTmpl/textlocalized_Edit.cshtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data.tests/EF/JsonDataEfTest.cs" afterPath="$PROJECT_DIR$/cms.data.tests/EF/JsonDataEfTest.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/Dtos/DtoExtensons.cs" afterPath="$PROJECT_DIR$/cms.data/Dtos/DtoExtensons.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/Dtos/GridElementDto.cs" afterPath="$PROJECT_DIR$/cms.data/Dtos/GridElementDto.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/Dtos/ResourceDto.cs" afterPath="$PROJECT_DIR$/cms.data/Dtos/ResourceDto.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/EF/Bootstrap/IBootStrapGenerator.cs" afterPath="$PROJECT_DIR$/cms.data/EF/Bootstrap/IBootStrapGenerator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/EF/EfContext.cs" afterPath="$PROJECT_DIR$/cms.data/EF/EfContext.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data.tests/SampleData/CreateSampleDataTest.cs" afterPath="$PROJECT_DIR$/cms.data.tests/SampleData/CreateSampleDataTest.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/EF/JsonDataEf.cs" afterPath="$PROJECT_DIR$/cms.data/EF/JsonDataEf.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/GridElementExt.cs" afterPath="$PROJECT_DIR$/cms.data/GridElementExt.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/JsonDataProvider.cs" afterPath="$PROJECT_DIR$/cms.data/JsonDataProvider.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/Shared/Models/Resource.cs" afterPath="$PROJECT_DIR$/cms.data/Shared/Models/Resource.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/.idea/workspace.xml" afterPath="$PROJECT_DIR$/cms/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/EF/SessionProvider.cs" afterPath="$PROJECT_DIR$/cms.data/EF/SessionProvider.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.data/IDataProvider.cs" afterPath="$PROJECT_DIR$/cms.data/IDataProvider.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Code/ApiControllerBase.cs" afterPath="$PROJECT_DIR$/cms/Code/ApiControllerBase.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Code/ControllerBase.cs" afterPath="$PROJECT_DIR$/cms/Code/ControllerBase.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Controllers/AdminApiController.cs" afterPath="$PROJECT_DIR$/cms/Controllers/AdminApiController.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Controllers/AdminController.cs" afterPath="$PROJECT_DIR$/cms/Controllers/AdminController.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Global.asax.cs" afterPath="$PROJECT_DIR$/cms/Global.asax.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Admin/EditCtrl.js" afterPath="$PROJECT_DIR$/cms/Scripts/Admin/EditCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js" afterPath="$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Admin/GridPageCtrl.js" afterPath="$PROJECT_DIR$/cms/Scripts/Admin/GridPageCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Admin/Grids.js" afterPath="$PROJECT_DIR$/cms/Scripts/Admin/Grids.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Admin/cmsapi.js" afterPath="$PROJECT_DIR$/cms/Scripts/Admin/cmsapi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Controllers/ClientApiController.cs" afterPath="$PROJECT_DIR$/cms/Controllers/ClientApiController.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Controllers/ClientController.cs" afterPath="$PROJECT_DIR$/cms/Controllers/ClientController.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/textlocalized.coffee.debug.js" afterPath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/textlocalized.coffee.debug.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/textlocalized.coffee" afterPath="$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/textlocalized.coffee" />
     </list>
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,19 +41,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Grids.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/Grids.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="6" selection-start="2665" selection-end="2665" vertical-scroll-proportion="0.41979522">
+            <state line="92" column="47" selection-start="2743" selection-end="2743" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="textlocalized.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="textlocalized.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/textlocalized.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="27" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
+            <state line="12" column="0" selection-start="286" selection-end="286" vertical-scroll-proportion="0.34812286">
               <folding />
             </state>
           </provider>
@@ -250,7 +234,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -377,6 +361,13 @@
         <state line="18" column="40" selection-start="588" selection-end="588" vertical-scroll-proportion="0.5221843" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/Grids.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="47" selection-start="2743" selection-end="2743" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridListController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="43" selection-start="575" selection-end="575" vertical-scroll-proportion="0.0" />
@@ -384,26 +375,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/cmsapi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="64" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0" />
+        <state line="11" column="64" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/GridPageCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="47" selection-start="544" selection-end="544" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="17" column="47" selection-start="544" selection-end="544" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cms/Scripts/Apps/defaults/_GridElementScripts/textlocalized.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="27" selection-start="227" selection-end="227" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cms/Scripts/Admin/Grids.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="6" selection-start="2665" selection-end="2665" vertical-scroll-proportion="0.41979522">
+        <state line="12" column="0" selection-start="286" selection-end="286" vertical-scroll-proportion="0.34812286">
           <folding />
         </state>
       </provider>

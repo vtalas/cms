@@ -20,8 +20,6 @@ namespace cms.data.EF
 			db = context;
 			var app = GetApplication(application);
 			ApplicationId = app == null ? new Guid("00000000-0000-0000-0000-000000000000") : app.Id;
-			//Database.SetInitializer(new CreateIfNotExists());
-			//Database.SetInitializer(new DropAndCreateTables());
 		}
 
 		public JsonDataEf(Guid application, EfContext context)
@@ -39,12 +37,9 @@ namespace cms.data.EF
 
 		public override ApplicationSetting CurrentApplication { get { return db.ApplicationSettings.Single(x => x.Name == ApplicationName); } }
 
-		public static IEnumerable<ApplicationSettingDto> Applications()
+		public IEnumerable<ApplicationSettingDto> Applications()
 		{
-			using (var a = new EfContext())
-			{
-				return a.ApplicationSettings.ToList().ToDtos();
-			}
+			return db.ApplicationSettings.ToList().ToDtos();
 		}
 
 		IQueryable<Grid> AvailableGrids()
@@ -102,11 +97,6 @@ namespace cms.data.EF
 			//    return r.ToDto();
 			//throw new ObjectNotFoundException(string.Format("resource {0} not found {1}", key, culture));
 			throw new NotImplementedException();
-		}
-
-		public override void Dispose()
-		{
-			if (db != null) db.Dispose();
 		}
 
 		public override sealed ApplicationSetting GetApplication(Guid id)
@@ -361,5 +351,9 @@ namespace cms.data.EF
 			return newitem;
 		}
 
+		public override void Dispose()
+		{
+			if (db != null) db.Dispose();
+		}
 	}
 }

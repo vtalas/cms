@@ -1,14 +1,14 @@
 using System;
 using System.Data.Entity;
 using System.Web.Mvc;
-using cms.data;
 using cms.data.EF;
+using cms.data.EF.Initializers;
 
-namespace cms.Controllers
+namespace cms.Code
 {
-	public class ControllerBase : Controller
+	public class CmsControllerBase : Controller
 	{
-		protected JsonDataProvider db { get; set; }
+		protected SessionProvider SessionProvider { get; set; }
 
 		public string ApplicationViewPath(string view)
 		{
@@ -29,8 +29,15 @@ namespace cms.Controllers
 			base.Initialize(requestContext);
 			var a = this.RouteData;
 			Application = a.Values["application"].ToString();
-			db = new JsonDataEf(Application);
-			ApplicationId = db.ApplicationId;
+
+
+			SessionProvider = new SessionProvider(Application, new MigrateInitalizer());
+
+			using (var db = SessionProvider.CreateSession)
+			{
+				ApplicationId = db.ApplicationId;
+			}
+
 		}
 	}
 }

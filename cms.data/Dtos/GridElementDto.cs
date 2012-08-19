@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using cms.data.Shared.Models;
 
 namespace cms.data.Dtos
 {
@@ -15,6 +14,7 @@ namespace cms.data.Dtos
 		public string Skin { get; set; }
 		public IEnumerable<ResourceDto> Resources { get; set; }
 		public IDictionary<string, ResourceDtoLoc> ResourcesLoc { get; set; }
+		public IDictionary<string, string> Res { get; set; }
 	}
 
 }

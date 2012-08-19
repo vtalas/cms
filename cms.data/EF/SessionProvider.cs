@@ -1,49 +1,43 @@
+using System;
 using System.Data.Entity;
 
 namespace cms.data.EF
 {
-	public class SessionProvider : IDataProvider 
+	public class SessionProvider : IDataProvider
 	{
-		private static EfContext db { get; set; }
-		
-		public SessionProvider(EfContext context)
+		Lazy<JsonDataEf> db;
+
+		public SessionProvider(Guid applicationId)
 		{
-			db = context;
+			db = new Lazy<JsonDataEf>(() => new JsonDataEf(applicationId));
 		}
 
-		public SessionProvider():this (new EfContext())
+		public SessionProvider(string applicationName)
 		{
+			db = new Lazy<JsonDataEf>(() => new JsonDataEf(applicationName));
 		}
 
-		public SessionProvider(IDatabaseInitializer<EfContext> initializer)
+		public SessionProvider(string applicationName, IDatabaseInitializer<EfContext> initializer)
+			: this(applicationName)
 		{
-			db = new EfContext();
 			Database.SetInitializer(initializer);
 		}
 
-
-		public static  EfContext CreateSession(EfContext context)
+		public SessionProvider(Guid applicationId, IDatabaseInitializer<EfContext> initializer)
+			: this(applicationId)
 		{
-			db = context;
-			return context;
+			Database.SetInitializer(initializer);
 		}
 
-		public static EfContext CreateSession()
-		{
-			return CreateSession(new EfContext());
-		}
+		JsonDataEf Instance { get { return db.Value; } }
 
-		public EfContext Context
-		{
-			get { return db; }
-		}
-
+		public JsonDataEf CreateSession { get { return Instance; } }
 
 		public void Dispose()
 		{
-			if(db != null)
+			if(Instance != null)
 			{
-				db.Dispose();
+				Instance.Dispose();
 			}
 		}
 	}

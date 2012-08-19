@@ -1,15 +1,14 @@
 using System;
-using System.Data.Entity;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using cms.data;
 using cms.data.EF;
+using cms.data.EF.Initializers;
 
-namespace cms.Controllers
+namespace cms.Code
 {
 	public class ApiControllerBase : Controller
 	{
-		protected JsonDataProvider db { get; set; }
+		protected SessionProvider SessionProvider { get; set; }
 		
 		public Guid ApplicationId { get;  private set; }
 
@@ -17,8 +16,9 @@ namespace cms.Controllers
 		{
 			base.Initialize(requestContext);
 			var a = this.RouteData;
+
 			ApplicationId = new Guid( a.Values["applicationId"].ToString());
-			db = new JsonDataEf(ApplicationId);
+			SessionProvider = new SessionProvider(ApplicationId, new MigrateInitalizer());
 		}
 
 		protected override void OnActionExecuted(ActionExecutedContext filterContext)

@@ -55,7 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationSettingtestsEF.cs" />
     <Compile Include="EF\DtoTests.cs" />
     <Compile Include="EF\SessionManager.cs" />
     <Compile Include="LocalizationsTests.cs" />

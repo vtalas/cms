@@ -118,7 +118,7 @@
       <DependentUpon>Client.svc</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Code\ControllerBase.cs" />
+    <Compile Include="Code\CmsControllerBase.cs" />
     <Compile Include="Controllers\ClientApiController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\AdminApiController.cs" />

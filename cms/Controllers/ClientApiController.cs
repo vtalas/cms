@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using cms.Code;
 
 namespace cms.Controllers
 {
@@ -7,14 +8,20 @@ namespace cms.Controllers
     {
 		public ActionResult ViewPageJson(string link)
 		{
-			var a = db.GetGridPage(link);
-			return new Code.JSONNetResult(a);
+			using (var db = SessionProvider.CreateSession)
+			{
+				var a = db.GetGridPage(link);
+				return new Code.JSONNetResult(a);
+			}
 		}
 
 		public ActionResult GetGrid(Guid id)
 		{
-			var a = db.GetGridPage(id);
-			return new Code.JSONNetResult(a);
+			using (var db = SessionProvider.CreateSession)
+			{
+				var a = db.GetGridPage(id);
+				return new Code.JSONNetResult(a);
+			}
 		}
 	}
 }

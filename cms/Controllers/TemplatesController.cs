@@ -20,6 +20,5 @@ namespace cms.Controllers
 			        	};
 			return View("_GridElementTmpl/GridElement", settings);
         }
-
     }
 }

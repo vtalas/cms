@@ -6,6 +6,7 @@ using System.Linq;
 using NUnit.Framework;
 using cms.data.EF;
 using cms.data.EF.Initializers;
+using cms.data.tests.EF;
 
 namespace cms.data.tests.SampleData
 {
@@ -28,11 +29,14 @@ namespace cms.data.tests.SampleData
 		[Ignore]
 		public void Create()
 		{
-			var a = JsonDataEf.Applications();
-			
-			//zamerne fail
-			Assert.AreEqual(-1,a.Count());			
-			Console.WriteLine(a.Count());
+			using (var db = SessionManager.CreateSession)
+			{
+				var a = db.Applications();
+
+				//zamerne fail
+				Assert.AreEqual(-1, a.Count());
+				Console.WriteLine(a.Count());
+			}
 		}
 
 

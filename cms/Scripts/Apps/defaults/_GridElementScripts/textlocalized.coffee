@@ -8,6 +8,10 @@ textlocalized = ($scope, $http, appSettings) ->
   textlocalized.$inject = [ "$scope", "$http", "appSettings"]
 #  console.log(appSettings)
 
+  $scope.aaa = ()->
+    console.log( $scope.gridelement)
+
+
   1
 
 window.textlocalized = textlocalized

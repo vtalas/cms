@@ -1,14 +1,19 @@
 ﻿using System.Web.Mvc;
+using cms.Code;
 
 namespace cms.Controllers
 {
-	public class ClientController : ControllerBase
+	//TODO: je to k necemu ? 19.8.
+	public class ClientController : CmsControllerBase
     {
 		public ActionResult ViewPage(string link)
 		{
-			var a = db.GetGridPage(link);
-			return View(ApplicationViewPath("Index"), a);
-        }
+			using (var db = SessionProvider.CreateSession)
+			{
+				var a = db.GetGridPage(link);
+				return View(ApplicationViewPath("Index"), a);
+			}
+		}
 
     }
 }

@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using cms.Code;
 using cms.data;
 using cms.data.Dtos;
 using cms.data.EF;
@@ -16,32 +19,33 @@ namespace cms.Controllers
     //AJAX ax=kce
 	public class AdminApiController : ApiControllerBase
     {
-		//public ActionResult Applications()
-		//{
-		//    var applications = db.Applications();
-		//    return new JSONNetResult(applications);
-		//}
 		
 		[HttpPost]
 		public ActionResult AddApplication(ApplicationSetting data)
         {
-        	var a = db.Add(data);		
-			return new JSONNetResult(a);
-		}
+			using (var db = SessionProvider.CreateSession)
+			{
+				var a = db.Add(data);
+				return new JSONNetResult(a);
+			}
+        }
 		
 		[HttpPost]
 		public ActionResult AddGridElement(GridElement data, Guid gridId)
         {
-			var newitem = db.AddGridElementToGrid(data, gridId);
-			return new JSONNetResult(newitem.ToDto());
-		}
+			using (var db = SessionProvider.CreateSession)
+			{
+				var newitem = db.AddGridElementToGrid(data, gridId);
+				return new JSONNetResult(newitem.ToDto());
+			}
+        }
 
 		[HttpPost]
 		public ActionResult AddGrid(GridPageDto data)
         {
-			using ( var dataEf = new JsonDataEf(ApplicationId))
+			using (var db = SessionProvider.CreateSession)
 			{
-				var newgrid = dataEf.Add(data);
+				var newgrid = db.Add(data);
 				return new JSONNetResult(newgrid);
 			}
         }
@@ -49,46 +53,72 @@ namespace cms.Controllers
 		[HttpPost]
 		public ActionResult DeleteGridElement(GridElement data, Guid gridId)
         {
-			db.DeleteGridElement(data.Id,gridId); 
-			return new JSONNetResult(null);
-		}
+			using (var db = SessionProvider.CreateSession)
+			{
+				db.DeleteGridElement(data.Id, gridId);
+				return new JSONNetResult(null);
+			}
+        }
 
 		[HttpPost]
 		public ActionResult DeleteGrid(Guid id)
         {
-			db.DeleteGrid(id); 
-			return new JSONNetResult(null);
-		}
+			using (var db = SessionProvider.CreateSession)
+			{
+				db.DeleteGrid(id);
+				return new JSONNetResult(null);
+			}
+        }
 		
 		[HttpPost]
 		public ActionResult UpdateGrid(GridPageDto data)
         {
-			var updated = db.Update(data); 
-			return new JSONNetResult(updated);
-		}
+			using (var db = SessionProvider.CreateSession)
+			{
+				var updated = db.Update(data);
+				return new JSONNetResult(updated);
+			}
+        }
 		
 		public ActionResult Grids()
         {
-			var g = db.GridPages();
-			return new JSONNetResult(g);
-		}
+			using (var db = SessionProvider.CreateSession)
+			{
+				var g = db.GridPages();
+				return new JSONNetResult(g);
+			}
+        }
+		
 		public ActionResult GetGrid(Guid? id)
         {
-			var g = db.GetGridPage(id.Value);
-			return new JSONNetResult(g);
+			using (var db = SessionProvider.CreateSession)
+			{
+				var g = db.GetGridPage(id.Value);
+				return new JSONNetResult(g);
+			}
 		}
 
 		[HttpPost]
+		[JObjectFilter(Param = "data")]
 		public ActionResult UpdateGridElement(GridElementDto data)
+		//public ActionResult UpdateGridElement(GridElementDto data)
 		{
-			var g = db.Update(data);
-			return new JSONNetResult(g);
+			using (var db = SessionProvider.CreateSession)
+			{
+				var g = db.Update(data);
+				return new JSONNetResult(g);
+			}
 		}
+		
 		public ActionResult GetGridElement(Guid id)
         {
-			var g = db.GetGridElement(id);
-			return new JSONNetResult(g);
-		}
+			using (var db = SessionProvider.CreateSession)
+			{
+				var g = db.GetGridElement(id);
+				return new JSONNetResult(g);
+			}
+        }
+		
 		public ActionResult Error()
 		{
 			var e = new JObject()
@@ -99,13 +129,44 @@ namespace cms.Controllers
 			return new JSONNetResult(e);
 
 		}
-
+		
 		public ActionResult SetCulture(string culture)
 		{
 			//TODO:ocekovat povolene
 			shared.SharedLayer.Culture = culture;
 			return new EmptyResult();
 		}
+
+		public class JObjectFilter : ActionFilterAttribute
+		{
+
+			public string Param { get; set; }
+
+			public override void OnActionExecuting(ActionExecutingContext filterContext)
+			{
+				if ((filterContext.HttpContext.Request.ContentType ?? string.Empty).Contains("application/json"))
+				{
+					
+
+					var dto = filterContext.ActionParameters[Param] as GridElementDto;
+					if (dto != null)
+					{
+						var stream = filterContext.HttpContext.Request.InputStream;
+						stream.Position = 0;
+						var streamReader = new StreamReader(stream);
+						var jobject = JsonConvert.DeserializeObject<JObject>(streamReader.ReadToEnd());
+
+						var resources = jobject["data"]["ResourcesLoc"]
+							.ToDictionary(token => token["aaa"], token => token.Values());
+						//var xx = resources as IDictionary<string, ResourceDtoLoc>;
+						filterContext.ActionParameters[Param] = dto;
+					}
+
+
+				}
+			}
+		}
+
     }
 
 }

@@ -492,16 +492,21 @@ namespace cms.data.tests.EF
 			[Test]
 			public void Applications_test()
 			{
-				var list = JsonDataEf.Applications();
 
-
-				foreach (var item in list)
+				using (var db = SessionManager.CreateSession)
 				{
-					Console.WriteLine(item.Name);
-				}
 
-				Assert.IsNotNull(list);
-				Assert.IsTrue(list.Any());
+					var list = db.Applications();
+
+
+					foreach (var item in list)
+					{
+						Console.WriteLine(item.Name);
+					}
+
+					Assert.IsNotNull(list);
+					Assert.IsTrue(list.Any());
+				}
 			}
 
 			[Test]

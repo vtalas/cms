@@ -7,6 +7,6 @@ namespace cms.data
 {
 	public interface IDataProvider : IDisposable
 	{
-		EfContext Context { get; }
+		//EfContext Context { get; }
 	}
 }

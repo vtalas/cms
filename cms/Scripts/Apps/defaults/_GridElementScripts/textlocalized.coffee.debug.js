@@ -7,6 +7,9 @@
   var textlocalized;
   textlocalized = function($scope, $http, appSettings) {
     textlocalized.$inject = ["$scope", "$http", "appSettings"];
+    $scope.aaa = function() {
+      return console.log($scope.gridelement);
+    };
     return 1;
   };
   window.textlocalized = textlocalized;
