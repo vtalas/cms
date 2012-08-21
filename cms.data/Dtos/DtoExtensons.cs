@@ -19,23 +19,11 @@ namespace cms.data.Dtos
 			return s.Equals(zeros);
 		}
 		
-		public static ResourceDto ToDto(this Resource source)
-		{
-			return new ResourceDto
-			{
-				Key = source.Key,
-				Value = source.Value,
-				Culture = source.Culture,
-				Id = source.Id
-			};
-			
-		}
-		public static ResourceDtoLoc ToDtoLoc(this Resource source)
+		public static ResourceDtoLoc ToDto(this Resource source)
 		{
 			return new ResourceDtoLoc()
 			{
 				Value = source.Value,
-				Culture = source.Culture,
 				Id = source.Id
 			};
 			
@@ -55,36 +43,22 @@ namespace cms.data.Dtos
 			return source.Select(item => item.ToDto()).ToList();
 		}
 		
-		public static IEnumerable<ResourceDto> ToDtos(this ICollection<Resource> source)
-		{
-			if (source == null) 
-				return new LinkedList<ResourceDto>();
-			return source.Where(x => x.Culture == _currentCulture || x.Culture != null).Select(item => item.ToDto())
-				.ToList();
-		}
-
-		public static IDictionary<string,ResourceDtoLoc> ToDtosLoc(this ICollection<Resource> source)
+		public static IDictionary<string,ResourceDtoLoc> ToDtos(this ICollection<Resource> source)
 		{
 			if (source == null) 
 				return new Dictionary<string, ResourceDtoLoc>();
 
 			return source.Where(x => (x.Culture == _currentCulture || x.Culture == null) && x.Key != null)
-				.ToDictionary(x=>x.Key, v=>v.ToDtoLoc() );
+				.ToDictionary(x=>x.Key, v=>v.ToDto() );
 		}
 
-		public static Resource ToResource(this ResourceDto s)
+		public static Resource ToResource(this ResourceDtoLoc s)
 		{
-			return new Resource{Id = s.Id,}.UpdateValues(s);
-		}
-
-
-
-		public static Resource UpdateValues(this Resource destination, ResourceDto source )
-		{
-			destination.Value = source.Value;
-			destination.Culture = source.Culture;
-			destination.Key = source.Key;
-			return destination;
+			return new Resource
+			       	{
+			       		Id = s.Id,
+			       		Value = s.Value
+			       	};
 		}
 
 		public static GridElementDto ToDto(this GridElement source)
@@ -99,7 +73,7 @@ namespace cms.data.Dtos
 		 	       		Type = source.Type,
 		 	       		Width = source.Width,
 		 	       		//Resources = source.Resources.ToDtos(),
-		 	       		ResourcesLoc = source.Resources.ToDtosLoc()
+		 	       		ResourcesLoc = source.Resources.ToDtos()
 					};
 		 }
 
@@ -121,7 +95,7 @@ namespace cms.data.Dtos
 				Lines = source.GridElements.ToLines(),
 				Home = source.Home,
 				Id = source.Id,
-				ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDto(),
+				ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDtoLoc(),
 				Name = source.Name
 			};
 

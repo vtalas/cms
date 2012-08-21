@@ -3,6 +3,18 @@ using System.Collections.Generic;
 
 namespace cms.data.Shared.Models
 {
+	public class Menu :IEntity
+	{
+		public Menu()
+		{
+			Id = Guid.NewGuid();
+		}
+
+		public Guid Id { get; set; }
+		public string Name { get; set; }
+		public virtual ICollection<Resource> Resources { get; set; }
+	}
+
 	public class Grid :IEntity
 	{
 		public Grid()

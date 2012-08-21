@@ -74,7 +74,7 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 
 		$scope.edit = function (item) {
 			$scope.$broadcast("gridelement-edit");
-			item.Edit = 1;
+            item.Edit = 1;
 		};
 
 		$scope.save = function (item) {
@@ -84,7 +84,9 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 				copy.Content = JSON.stringify(copy.Content);
 
 			GridApi.UpdateGridElement({ applicationId: appSettings.Id, data: copy },
-				function () { item.Edit = 0; });
+				function () {
+                    item.Edit = 0;
+                });
 		};
 
 	};
@@ -93,7 +95,8 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 		scope: { grid: "=", gridelement: "=" },
 		controller: GridElementCtrl,
 		link: function (scope, iElement, tAttrs, controller) {
-			var sablona = gridtemplate(scope.gridelement.Type);
+			scope.gui = {edit:0};
+            var sablona = gridtemplate(scope.gridelement.Type);
 			var compiled = $compile(sablona)(scope);
 			iElement.html(compiled);
 		}

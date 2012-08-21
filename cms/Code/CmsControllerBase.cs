@@ -30,7 +30,7 @@ namespace cms.Code
 			var a = this.RouteData;
 			Application = a.Values["application"].ToString();
 
-
+				
 			SessionProvider = new SessionProvider(Application, new MigrateInitalizer());
 
 			using (var db = SessionProvider.CreateSession)

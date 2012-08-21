@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\ApiControllerBase.cs" />
+    <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />

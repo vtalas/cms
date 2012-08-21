@@ -82,7 +82,7 @@ namespace cms.data.tests.EF
 					var a = new GridPageDto
 					{
 						Name = name,
-						ResourceDto = new ResourceDto { Value = link }
+						ResourceDto = new ResourceDtoLoc { Value = link }
 					};
 
 					var n = db.Add(a);
@@ -642,7 +642,7 @@ namespace cms.data.tests.EF
 			var gridpage = repo.Add(new GridPageDto
 			{
 				Name = "addgridElement test Gridpage",
-				ResourceDto = new ResourceDto { Value = "newlink", Culture = "cs" }
+				ResourceDto = new ResourceDtoLoc() { Value = "newlink" }
 			});
 			var resourcesCountBefore = _context.Resources.Count();
 			var gridpageResBefore = gridpage.ResourceDto;

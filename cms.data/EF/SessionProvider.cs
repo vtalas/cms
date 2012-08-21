@@ -7,8 +7,11 @@ namespace cms.data.EF
 	{
 		Lazy<JsonDataEf> db;
 
+
 		public SessionProvider(Guid applicationId)
 		{
+//			var x = new Action<string>(() => new JsonDataEf(applicationId));
+
 			db = new Lazy<JsonDataEf>(() => new JsonDataEf(applicationId));
 		}
 
@@ -29,15 +32,13 @@ namespace cms.data.EF
 			Database.SetInitializer(initializer);
 		}
 
-		JsonDataEf Instance { get { return db.Value; } }
-
-		public JsonDataEf CreateSession { get { return Instance; } }
+		public JsonDataEf CreateSession { get { return new JsonDataEf("test1"); } }
 
 		public void Dispose()
 		{
-			if(Instance != null)
+			if(db.IsValueCreated)
 			{
-				Instance.Dispose();
+				db.Value.Dispose();
 			}
 		}
 	}

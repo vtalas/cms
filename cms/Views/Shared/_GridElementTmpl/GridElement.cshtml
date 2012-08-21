@@ -21,7 +21,7 @@
 			<input  type="checkbox" ng-model="preview" /> Zobrazit náhled
 		</span>
 *@	</div>
-	
+	{{edit}}
 	<div ng-show="gridelement.Edit" >
 		@Html.Partial(Model.TemplateEdit)
 		<button ng-click="save(gridelement)">Uložit</button>

@@ -5,7 +5,7 @@ using cms.data.EF;
 
 namespace cms.data
 {
-	public interface IDataProvider : IDisposable
+	public interface IDataProvider 
 	{
 		//EfContext Context { get; }
 	}

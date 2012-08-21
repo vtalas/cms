@@ -6,7 +6,7 @@ using cms.data.Shared.Models;
 namespace cms.data
 {
 
-	public abstract class JsonDataProvider: IResources,IDisposable
+	public abstract class JsonDataProvider: IResources,IDisposable,IMenu
 	{
 		public string ApplicationName { get; protected set; }
 		public Guid ApplicationId { get; protected set; }
@@ -39,15 +39,24 @@ namespace cms.data
 		public abstract ApplicationSetting GetApplication(string name);
 		public abstract IEnumerable<GridPageDto> GridPages();
 		
-		public abstract ResourceDto Add(ResourceDto resource);
-		public abstract ResourceDto GetResourceDto(Guid elementId, string key, string culture);
+		//public abstract ResourceDto Add(ResourceDto resource);
+		//public abstract ResourceDto GetResourceDto(Guid elementId, string key, string culture);
+		
+
+		
 		public abstract void Dispose();
 	}
 
+	public interface IMenu
+	{
+		//MenuDto GetGrid(Guid guid);
+	}
+
+
 	public interface IResources
 	{
-		ResourceDto Add(ResourceDto resource);
-		ResourceDto GetResourceDto(Guid elementId, string key, string culture);
+		//ResourceDto Add(ResourceDto resource);
+		//ResourceDto GetResourceDto(Guid elementId, string key, string culture);
 	}
 }
 

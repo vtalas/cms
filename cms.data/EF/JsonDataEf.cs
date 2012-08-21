@@ -10,7 +10,7 @@ using cms.data.Shared.Models;
 namespace cms.data.EF
 {
 	
-	public class JsonDataEf : JsonDataProvider
+	public partial class JsonDataEf : JsonDataProvider
 	{
 		private EfContext db { get; set; }
 
@@ -54,18 +54,18 @@ namespace cms.data.EF
 			return a.Select(grid => grid.ToGridPageDto()).ToList();
 		}
 
-		public override ResourceDto Add(ResourceDto resource)
-		{
-			var item = new Resource()
-						{
-							Key = resource.Key,
-							Value = resource.Value,
-							Culture = resource.Culture,
-						};
-			db.Resources.Add(item);
-			db.SaveChanges();
-			return item.ToDto();
-		}
+		//public override ResourceDto Add(ResourceDto resource)
+		//{
+		//    var item = new Resource()
+		//                {
+		//                    Key = resource.Key,
+		//                    Value = resource.Value,
+		//                    Culture = resource.Culture,
+		//                };
+		//    db.Resources.Add(item);
+		//    db.SaveChanges();
+		//    return item.ToDto();
+		//}
 
 		Resource GetResource(int id)
 		{
@@ -90,14 +90,14 @@ namespace cms.data.EF
 			return db.Resources.Where(x => x.Culture == CurrentCulture || x.Culture == null);
 		}
 
-		public override ResourceDto GetResourceDto(Guid elementId, string key, string culture)
-		{
-			//var r = GetResource(elementIdt, key, culture);
-			//if (r != null) 
-			//    return r.ToDto();
-			//throw new ObjectNotFoundException(string.Format("resource {0} not found {1}", key, culture));
-			throw new NotImplementedException();
-		}
+		//public override ResourceDto GetResourceDto(Guid elementId, string key, string culture)
+		//{
+		//    //var r = GetResource(elementIdt, key, culture);
+		//    //if (r != null) 
+		//    //    return r.ToDto();
+		//    //throw new ObjectNotFoundException(string.Format("resource {0} not found {1}", key, culture));
+		//    throw new NotImplementedException();
+		//}
 
 		public override sealed ApplicationSetting GetApplication(Guid id)
 		{
@@ -199,10 +199,10 @@ namespace cms.data.EF
 						if (res.Owner != currentEl.Id)
 						{
 							//pridat referenci 
-							if (ReferenceExist(currentEl, resUpdate.Key, resUpdate.Value.Culture))
+							if (ReferenceExist(currentEl, resUpdate.Key, CurrentCulture))
 							{
 								//oddelat puvodni a pridat novou 
-								currentEl.Resources.Remove(GetResource(currentEl, resUpdate.Key, resUpdate.Value.Culture));
+								currentEl.Resources.Remove(GetResource(currentEl, resUpdate.Key, CurrentCulture));
 							}
 							currentEl.Resources.Add(res);
 						}
@@ -210,13 +210,13 @@ namespace cms.data.EF
 					
 					else
 					{
-						if (ReferenceExist(currentEl, resUpdate.Key, resUpdate.Value.Culture))
+						if (ReferenceExist(currentEl, resUpdate.Key, CurrentCulture))
 							throw new ArgumentException("link exists");
 
 						var newres = new Resource()
 						             	{
 						             		Owner = item.Id,
-						             		Culture = resUpdate.Value.Culture,
+											Culture = CurrentCulture,
 						             		Key = resUpdate.Key,
 						             		Value = resUpdate.Value.Value
 						             	};
@@ -254,7 +254,7 @@ namespace cms.data.EF
 			{
 				if (item.ResourceDto.Id != 0)
 				{
-					db.Resources.Single(x => x.Id == item.ResourceDto.Id).UpdateValues(item.ResourceDto);
+					db.Resources.Single(x => x.Id == item.ResourceDto.Id).Value = item.ResourceDto.Value;
 				}
 			}
 			var grid = GetGrid(item.Id);
@@ -288,7 +288,7 @@ namespace cms.data.EF
 			var item = newitem.ToGrid();
 			if (newitem.ResourceDto == null)
 			{
-				newitem.ResourceDto = new ResourceDto { Value = item.Name.Replace(" ", string.Empty) };
+				newitem.ResourceDto = new ResourceDtoLoc { Value = item.Name.Replace(" ", string.Empty) };
 			}
 
 			CheckIfLinkExist(newitem);

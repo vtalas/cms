@@ -62,6 +62,7 @@
     <Compile Include="Dtos\ResourceDto.cs" />
     <Compile Include="EF\Bootstrap\Bootstrapgenerator.cs" />
     <Compile Include="EF\Bootstrap\IBootStrapGenerator.cs" />
+    <Compile Include="EF\Copy of JsonDataEf.cs" />
     <Compile Include="EF\Initializers\MigrateInitalizer.cs" />
     <Compile Include="EF\SessionProvider.cs" />
     <Compile Include="EF\Initializers\DropAndCreate.cs" />
