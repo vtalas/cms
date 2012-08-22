@@ -5,41 +5,20 @@ namespace cms.data.EF
 {
 	public class SessionProvider : IDataProvider
 	{
-		Lazy<JsonDataEf> db;
+		private readonly Func<JsonDataProvider> _createInstanceFunction;
 
-
-		public SessionProvider(Guid applicationId)
+		public SessionProvider(Func<JsonDataProvider> createInstanceFunction )
 		{
-//			var x = new Action<string>(() => new JsonDataEf(applicationId));
-
-			db = new Lazy<JsonDataEf>(() => new JsonDataEf(applicationId));
+			_createInstanceFunction = createInstanceFunction;
 		}
 
-		public SessionProvider(string applicationName)
-		{
-			db = new Lazy<JsonDataEf>(() => new JsonDataEf(applicationName));
-		}
-
-		public SessionProvider(string applicationName, IDatabaseInitializer<EfContext> initializer)
-			: this(applicationName)
+		public SessionProvider(Func<JsonDataProvider> createInstanceFunction, IDatabaseInitializer<EfContext> initializer)
+			:this(createInstanceFunction)
 		{
 			Database.SetInitializer(initializer);
 		}
 
-		public SessionProvider(Guid applicationId, IDatabaseInitializer<EfContext> initializer)
-			: this(applicationId)
-		{
-			Database.SetInitializer(initializer);
-		}
+		public JsonDataProvider CreateSession { get { return _createInstanceFunction.Invoke(); } }
 
-		public JsonDataEf CreateSession { get { return new JsonDataEf("test1"); } }
-
-		public void Dispose()
-		{
-			if(db.IsValueCreated)
-			{
-				db.Value.Dispose();
-			}
-		}
 	}
 }

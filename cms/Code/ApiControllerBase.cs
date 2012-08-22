@@ -18,7 +18,7 @@ namespace cms.Code
 			var a = this.RouteData;
 
 			ApplicationId = new Guid( a.Values["applicationId"].ToString());
-			SessionProvider = new SessionProvider(ApplicationId, new MigrateInitalizer());
+			SessionProvider = new SessionProvider(()=>new JsonDataEf(ApplicationId), new MigrateInitalizer());
 		}
 
 		protected override void OnActionExecuted(ActionExecutedContext filterContext)

@@ -45,6 +45,7 @@ namespace cms.data
 
 		
 		public abstract void Dispose();
+		public abstract IEnumerable<ApplicationSettingDto> Applications();
 	}
 
 	public interface IMenu

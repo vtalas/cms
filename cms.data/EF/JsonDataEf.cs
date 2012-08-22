@@ -37,7 +37,7 @@ namespace cms.data.EF
 
 		public override ApplicationSetting CurrentApplication { get { return db.ApplicationSettings.Single(x => x.Name == ApplicationName); } }
 
-		public IEnumerable<ApplicationSettingDto> Applications()
+		public override IEnumerable<ApplicationSettingDto> Applications()
 		{
 			return db.ApplicationSettings.ToList().ToDtos();
 		}

@@ -31,7 +31,8 @@ namespace cms.Code
 			Application = a.Values["application"].ToString();
 
 				
-			SessionProvider = new SessionProvider(Application, new MigrateInitalizer());
+			//SessionProvider = new SessionProvider(Application, new MigrateInitalizer());
+			SessionProvider = new SessionProvider(()=> new JsonDataEf(Application), new MigrateInitalizer());
 
 			using (var db = SessionProvider.CreateSession)
 			{
