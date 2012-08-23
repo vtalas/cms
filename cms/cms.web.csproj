@@ -47,8 +47,9 @@
     <Reference Include="EcmaScript.NET.modified">
       <HintPath>..\packages\YUICompressor.NET.1.7.1.0\lib\net35\EcmaScript.NET.modified.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Jurassic">
       <HintPath>..\packages\Jurassic.2.1.1\lib\Jurassic.dll</HintPath>
@@ -103,9 +104,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\ApiControllerBase.cs" />
+    <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
+    <Compile Include="Controllers\Api\MenuApiController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Models\TemplateSettings.cs" />
@@ -120,9 +122,9 @@
     </Compile>
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Code\CmsControllerBase.cs" />
-    <Compile Include="Controllers\ClientApiController.cs" />
+    <Compile Include="Controllers\Api\ClientApiController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\AdminApiController.cs" />
+    <Compile Include="Controllers\Api\AdminApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -172,7 +174,6 @@
     </None>
     <None Include="Service References\ServiceReference1\Client1.disco" />
     <Content Include="Scripts\Admin\cmsapi.js" />
-    <Content Include="Scripts\Admin\EditCtrl.js" />
     <Content Include="Scripts\Admin\GridListController.js" />
     <Content Include="Scripts\Admin\GridPageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
@@ -276,7 +277,7 @@
     <Content Include="Views\Admin\Grids.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\template\list.cshtml" />
+    <Content Include="Views\Admin\template\gridpages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\template\gridpage.cshtml" />
@@ -289,6 +290,7 @@
     <Content Include="Views\Shared\_GridElementTmpl\reference_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\textlocalized_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\textlocalized_View.cshtml" />
+    <Content Include="Views\Admin\template\menu.cshtml" />
     <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />

@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.Code;
-using cms.data;
 using cms.data.Dtos;
-using cms.data.EF;
 using cms.data.Shared.Models;
 
-namespace cms.Controllers
+namespace cms.Controllers.Api
 {
 	//AJAX ax=kce
 	public class AdminApiController : ApiControllerBase

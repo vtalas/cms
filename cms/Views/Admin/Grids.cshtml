@@ -13,10 +13,9 @@
 	 class="gridsmodule"
 	>
 	<div ng-controller="cultureCtrl">
-		.@SharedLayer.Culture .
 		<button ng-click="setCulture('cs')" >cs</button>
 		<button ng-click="setCulture('en')" >en</button>
-
+		{{currentCulture }}
 	</div>
 	
 	<div ng-view>

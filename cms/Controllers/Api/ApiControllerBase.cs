@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using cms.data.EF;
 using cms.data.EF.Initializers;
 
-namespace cms.Code
+namespace cms.Controllers.Api
 {
 	public class ApiControllerBase : Controller
 	{

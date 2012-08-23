@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using cms.Code;
 
-namespace cms.Controllers
+namespace cms.Controllers.Api
 {
     public class ClientApiController : ApiControllerBase
     {

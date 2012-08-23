@@ -10,7 +10,7 @@ namespace cms.data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-		}
+        }
 
         protected override void Seed(cms.data.EF.EfContext context)
         {

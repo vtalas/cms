@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
@@ -62,7 +63,6 @@
     <Compile Include="Dtos\ResourceDto.cs" />
     <Compile Include="EF\Bootstrap\Bootstrapgenerator.cs" />
     <Compile Include="EF\Bootstrap\IBootStrapGenerator.cs" />
-    <Compile Include="EF\Copy of JsonDataEf.cs" />
     <Compile Include="EF\Initializers\MigrateInitalizer.cs" />
     <Compile Include="EF\SessionProvider.cs" />
     <Compile Include="EF\Initializers\DropAndCreate.cs" />
@@ -74,10 +74,6 @@
     <Compile Include="IDataProvider.cs" />
     <Compile Include="EF\EfContext.cs" />
     <Compile Include="JsonDataProvider.cs" />
-    <Compile Include="Migrations\201208181646300_sss.cs" />
-    <Compile Include="Migrations\201208181646300_sss.Designer.cs">
-      <DependentUpon>201208181646300_sss.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Shared\Models\Grid.cs" />
     <Compile Include="Shared\Models\GridElement.cs" />
@@ -88,6 +84,7 @@
     <Compile Include="Shared\Models\TemplateType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

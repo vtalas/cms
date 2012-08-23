@@ -21,7 +21,6 @@ namespace cms.data.EF
 		public DbSet<GridElement> GridElements { get; set; }
 		public DbSet<TemplateType> TemplateTypes { get; set; }
 		public DbSet<Resource> Resources { get; set; }
-		public DbSet<Menu> Menus { get; set; }
 		//public DbSet<Bootstrapgenerator> Bootstrapgenerators { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
