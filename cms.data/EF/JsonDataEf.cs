@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
+using cms.shared;
 
 namespace cms.data.EF
 {
@@ -42,15 +43,26 @@ namespace cms.data.EF
 			return db.ApplicationSettings.ToList().ToDtos();
 		}
 
-		IQueryable<Grid> AvailableGrids()
+		IQueryable<Grid> AvailableGridsPage()
 		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId);
+			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId && x.Category == CategoryEnum.Page);
+			return a;
+		}
+		IQueryable<Grid> AvailableGridsMenu()
+		{
+			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId && x.Category == CategoryEnum.Menu);
 			return a;
 		}
 
-		public override IEnumerable<GridPageDto> GridPages()
+		public override IEnumerable<GridPageDto> Pages()
 		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Name == ApplicationName).ToList();
+			var a = db.Grids.Where(x => x.ApplicationSettings.Name == ApplicationName && x.Category == CategoryEnum.Page).ToList();
+			return a.Select(grid => grid.ToGridPageDto()).ToList();
+		}
+
+		public override IEnumerable<GridPageDto> Menus()
+		{
+			var a = db.Grids.Where(x => x.ApplicationSettings.Name == ApplicationName && x.Category == CategoryEnum.Menu).ToList();
 			return a.Select(grid => grid.ToGridPageDto()).ToList();
 		}
 
@@ -111,17 +123,23 @@ namespace cms.data.EF
 
 		public override Grid GetGrid(Guid id)
 		{
-			return AvailableGrids().Single(x => x.Id == id);
+			return AvailableGridsPage().Single(x => x.Id == id);
 		}
 
-		public override GridPageDto GetGridPage(Guid id)
+		public override GridPageDto GetPage(Guid id)
 		{
-			var grid = AvailableGrids().Single(x => x.Id == id );
-
+			var grid = AvailableGridsPage().Single(x => x.Id == id );
 			return grid.ToGridPageDto();
 		}
+		
+		public override GridPageDto GetMenu(Guid id)
+		{
+			var grid = AvailableGridsMenu().Single(x => x.Id == id);
+			return grid.ToGridPageDto();
+		}
+		
 		//TODO: pokud nenanjde melo by o vracet homepage
-		public override GridPageDto GetGridPage(string link)
+		public override GridPageDto GetPage(string link)
 		{
 			var a = db.Grids.FirstOrDefault(x => x.ApplicationSettings.Name == ApplicationName && x.Resource.Value == link);
 			//var a = Grids().FirstOrDefault(x => x.Resource.Value == link);
@@ -275,7 +293,7 @@ namespace cms.data.EF
 		
 		void CheckIfLinkExist(GridPageDto newitem)
 		{
-			var linkExist = AvailableGrids().Any(x => x.Resource.Value == newitem.ResourceDto.Value);
+			var linkExist = AvailableGridsPage().Any(x => x.Resource.Value == newitem.ResourceDto.Value);
 			if (linkExist)
 			{
 				throw new ArgumentException("link exists");
@@ -286,6 +304,7 @@ namespace cms.data.EF
 		public override GridPageDto Add(GridPageDto newitem)
 		{
 			var item = newitem.ToGrid();
+
 			if (newitem.ResourceDto == null)
 			{
 				newitem.ResourceDto = new ResourceDtoLoc { Value = item.Name.Replace(" ", string.Empty) };

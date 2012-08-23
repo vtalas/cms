@@ -83,6 +83,7 @@ namespace cms.data.Dtos
 			{
 				Name = source.Name,
 				Home = source.Home,
+				Category = source.Category,
 				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id
 			};
 			return a;

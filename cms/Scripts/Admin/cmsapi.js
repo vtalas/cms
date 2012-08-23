@@ -24,4 +24,18 @@
         };
 
     	return project;
-    }]);
+    } ])
+
+	.factory('apimenu', ['$resource', 'appSettings', function ($resource, appSettings) {
+
+		var project = $resource('/api/:applicationId/:controller/:action/:Id',
+    		{ applicationId: appSettings.Id, controller: "menu" },
+            {
+            	list: { method: 'GET', isArray: true, params: { action: "list"} }
+            }
+		);
+
+		return project;
+	} ]);
+
+

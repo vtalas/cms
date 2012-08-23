@@ -9,7 +9,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var a = db.GetGridPage(link);
+				var a = db.GetPage(link);
 				return new Code.JSONNetResult(a);
 			}
 		}
@@ -18,7 +18,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var a = db.GetGridPage(id);
+				var a = db.GetPage(id);
 				return new Code.JSONNetResult(a);
 			}
 		}

@@ -1,3 +1,4 @@
+using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
@@ -7,15 +8,16 @@ namespace cms.data.EF.Initializers
 	{
 		public void InitializeDatabase(EfContext context)
 		{
+			var modelvalid = context.Database.CompatibleWithModel(true);
+			if (!modelvalid)
+			{
+				//TODO: obcas to spadne - DB is in use
+				//	context.Database.Delete();
+			}
 
 			if (!context.Database.Exists())
 			{
 				context.Database.Create();
-			}
-			var modelvalid = context.Database.CompatibleWithModel(true);
-			if (!modelvalid)
-			{
-				//???
 			}
 	
 			// remove all tables

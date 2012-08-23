@@ -37,6 +37,9 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotless.Core">
+      <HintPath>..\packages\dotless.1.3.0.5\lib\dotless.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
@@ -68,7 +71,7 @@
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
-    <Compile Include="Controllers\Api\MenuApiController.cs" />
+    <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Models\TemplateSettings.cs" />
@@ -106,6 +109,7 @@
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
+    <Content Include="Scripts\Admin\menuCtrl.js" />
     <Content Include="Scripts\angular-templates-ext.coffee" />
     <Content Include="Scripts\Apps\defaults\_GridElementScripts\textlocalized.coffee" />
     <Content Include="Scripts\Apps\defaults\_GridElementScripts\reference.coffee" />

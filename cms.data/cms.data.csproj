@@ -64,6 +64,7 @@
     <Compile Include="EF\EfContext.cs" />
     <Compile Include="JsonDataProvider.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Shared\Models\Category.cs" />
     <Compile Include="Shared\Models\Grid.cs" />
     <Compile Include="Shared\Models\GridElement.cs" />
     <Compile Include="Shared\Models\IEntity.cs" />
