@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6FB51109-0F29-451A-8C81-0DCBAC66E158}</ProjectGuid>
+    <ProjectGuid>{815F85FC-179F-4817-9634-8CE3C1FF5CE2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cms.data.tests</RootNamespace>
-    <AssemblyName>cms.data.tests</AssemblyName>
+    <RootNamespace>cms.data</RootNamespace>
+    <AssemblyName>cms.data</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -32,52 +32,67 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+<<<<<<< HEAD
+    <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.1\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+=======
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+>>>>>>> 6a42a5598eb7065b7f9a4a72ce4eb65fd994fe36
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\DtoTests.cs" />
-    <Compile Include="EF\SessionManager.cs" />
-    <Compile Include="LocalizationsTests.cs" />
-    <Compile Include="SampleData\CreateSampleDataTest.cs" />
-    <Compile Include="EF\JsonDataEfTest.cs" />
-    <Compile Include="JsonDataFilesTest.cs" />
+    <Compile Include="Dtos\ApplicationSettingDto.cs" />
+    <Compile Include="Dtos\DtoExtensons.cs" />
+    <Compile Include="Dtos\GridElementDto.cs" />
+    <Compile Include="Dtos\GridPageDto.cs" />
+    <Compile Include="Dtos\ResourceDto.cs" />
+    <Compile Include="EF\Bootstrap\Bootstrapgenerator.cs" />
+    <Compile Include="EF\Bootstrap\IBootStrapGenerator.cs" />
+    <Compile Include="EF\Initializers\MigrateInitalizer.cs" />
+    <Compile Include="EF\SessionProvider.cs" />
+    <Compile Include="EF\Initializers\DropAndCreate.cs" />
+    <Compile Include="EF\Initializers\DropAndCreateTables.cs" />
+    <Compile Include="EF\JsonDataEf.cs" />
+    <Compile Include="Files\JsonDataFiles.cs" />
+    <Compile Include="GridElementExt.cs" />
+    <Compile Include="GridPage.cs" />
+    <Compile Include="IDataProvider.cs" />
+    <Compile Include="EF\EfContext.cs" />
+    <Compile Include="JsonDataProvider.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Shared\Models\Category.cs" />
+    <Compile Include="Shared\Models\Grid.cs" />
+    <Compile Include="Shared\Models\GridElement.cs" />
+    <Compile Include="Shared\Models\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\Models\ApplicationSetting.cs" />
+    <Compile Include="Shared\Models\Resource.cs" />
+    <Compile Include="Shared\Models\TemplateType.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="default_bootstrap.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cms.data\cms.data.csproj">
-      <Project>{815F85FC-179F-4817-9634-8CE3C1FF5CE2}</Project>
-      <Name>cms.data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\cms.shared\cms.shared.csproj">
       <Project>{D1A23BEB-46D6-47A9-AE9D-D369A5134050}</Project>
       <Name>cms.shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cms\cms.web.csproj">
-      <Project>{DE7729CE-0050-4798-A6BA-A1E3ED191195}</Project>
-      <Name>cms.web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

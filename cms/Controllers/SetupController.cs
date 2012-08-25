@@ -12,9 +12,9 @@ namespace cms.Controllers
     {
 		public ActionResult DropAndCreateTables()
 		{
+			Database.SetInitializer(new DropAndCreateTables());
 			using (var a = new EfContext())
 			{
-				Database.SetInitializer(new DropAndCreateTables());
 				Response.Write(a.ApplicationSettings.ToList());
 			}
 			return View();

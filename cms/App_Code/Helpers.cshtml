@@ -3,7 +3,6 @@
 @using SquishIt.Framework.Css
 @using SquishIt.Framework.JavaScript
 
-
 @helper BundleJs(string renderto, Func<JavaScriptBundle, JavaScriptBundle> action)
 	{
 	@MvcHtmlString.Create(action(Bundle.JavaScript()).Render(renderto))

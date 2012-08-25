@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<packages>
+<<<<<<< HEAD
+  <package id="EntityFramework" version="4.3.1" />
+  <package id="EntityFramework" version="5.0.0" targetFramework="net40" />
+=======
+  <package id="EntityFramework" version="5.0.0" />
+>>>>>>> 6a42a5598eb7065b7f9a4a72ce4eb65fd994fe36
+  <package id="log4net" version="2.0.0" />
+  <package id="Newtonsoft.Json" version="4.5.4" />
+  <package id="Newtonsoft.Json" version="4.5.7" />
+  <package id="Newtonsoft.Json" version="4.5.8" targetFramework="net40" />
+</packages>
