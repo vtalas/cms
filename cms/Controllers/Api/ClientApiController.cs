@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using cms.Code;
 
-namespace cms.Controllers
+namespace cms.Controllers.Api
 {
     public class ClientApiController : ApiControllerBase
     {
@@ -10,7 +9,7 @@ namespace cms.Controllers
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var a = db.GetGridPage(link);
+				var a = db.GetPage(link);
 				return new Code.JSONNetResult(a);
 			}
 		}
@@ -19,7 +18,7 @@ namespace cms.Controllers
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var a = db.GetGridPage(id);
+				var a = db.GetPage(id);
 				return new Code.JSONNetResult(a);
 			}
 		}

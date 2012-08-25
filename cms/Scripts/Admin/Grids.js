@@ -13,25 +13,27 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 	});
     $provide.constant();
 	$routeProvider
-		.when('/list', { controller: GridListController, templateUrl: 'template/list' })
+		.when('/gridpages', { controller: GridListController, templateUrl: 'template/gridpages' })
+		.when('/menu', { controller: menuCtrl, templateUrl: 'template/menu' })
 		.when('/gridpage/:Id', { controller: GridPageCtrl, templateUrl: 'template/gridpage' })
-		.otherwise({ redirectTo: '/list' });
+		.otherwise({ redirectTo: '/gridpages' });
 } ]);
 
-module.controller("cultureCtrl",function($scope, appSettings,GridApi){
-    $scope.currentCulture = appSettings.Culture;
-    $scope.setCulture = function(culture){
+module.controller("cultureCtrl", function ($scope, appSettings, GridApi) {
+	$scope.currentCulture = appSettings.Culture;
+	$scope.setCulture = function (culture) {
 
-        if (culture != appSettings.Culture){
-            GridApi.setCulture({
-                culture: culture
-            },function(){
-                appSettings.Culture = culture;
-                $scope.$parent.$root.$broadcast("setCultureEvent")
-            })
-        }
-    }
-})
+		if (culture != appSettings.Culture) {
+			GridApi.setCulture({
+				culture: culture
+			}, function () {
+				appSettings.Culture = culture;
+				$scope.currentCulture = culture;
+				$scope.$parent.$root.$broadcast("setCultureEvent");
+			});
+		}
+	};
+});
 
 //module.directive("gridelement", ['$compile', "GridApi", "appSettings","$http",
 module.directive("gridelement", function ($compile, GridApi, appSettings, gridtemplate) {

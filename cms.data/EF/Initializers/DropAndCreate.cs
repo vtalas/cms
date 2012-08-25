@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using cms.data.Shared.Models;
+using cms.shared;
 
 namespace cms.data.EF.Initializers
 {
@@ -65,8 +66,18 @@ namespace cms.data.EF.Initializers
 			            		ApplicationSettings = application
 
 			            	};
+			var menu = new Grid
+			            	{
+								Id = new Guid("111ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+								Resource = new Resource { Value = "linkTestPage", Owner = new Guid("111ee05e-1115-480b-9ab7-a3ab3c0f6643") },
+			            		Name = "test menu",
+			            		ApplicationSettings = application,
+								Category =  CategoryEnum.Menu
+
+			            	};
 
 			Context.Grids.Add(grids);
+			Context.Grids.Add(menu);
 			Context.Grids.Add(new Grid
 			                  	{
 									Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),

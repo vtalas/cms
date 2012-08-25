@@ -29,23 +29,32 @@ namespace cms
 				"admin/{application}/{action}/{id}", // URL with parameters
 				new { controller = "admin", action = "Index", application="00000000-0000-0000-0000-000000000000", id = UrlParameter.Optional } // Parameter defaults
 			);
+			
+			//TODO: predelat api routes na tento 
+			routes.MapRoute(
+				"api", // Route name
+				"api/{applicationId}/{controller}/{action}/{id}", // URL with parameters
+				new { controller = "adminapi", action = "index", id = UrlParameter.Optional } // Parameter defaults
+			);
+
 			routes.MapRoute(
 				"adminapi", // Route name
 				"adminapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "adminapi", action = "error", id = UrlParameter.Optional } // Parameter defaults
 			);
 			
-			
 			routes.MapRoute(
 				"ViewPage", // Route name
 				"client/{application}/{link}", // URL with parameters
 				new { controller = "Client", action="ViewPage",link = UrlParameter.Optional } 
 			);
+			
 			routes.MapRoute(
 				"clientApiJson", // Route name
 				"client/json/{applicationId}/{link}", // URL with parameters
 				new { controller = "ClientApi", action = "ViewPageJson", link = UrlParameter.Optional } // Parameter defaults
 			);
+			
 			routes.MapRoute(
 				"clientApi", // Route name
 				"clientapi/{applicationId}/{action}/{id}", // URL with parameters

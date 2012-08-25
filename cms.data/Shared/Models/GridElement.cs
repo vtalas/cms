@@ -18,12 +18,12 @@ namespace cms.data.Shared.Models
 		public int Width { get; set; }
 		public int Position { get; set; }
 		public string Content { get; set; }
-
 		//public StatusWrapper Status { get; set; }
 	
 		public string Type { get; set; }
 		public string Skin { get; set; }
 
+		public virtual GridElement Parent { get; set; }
 		public virtual ICollection<Grid> Grid { get; set; }
 		public virtual ICollection<Resource> Resources { get; set; }
 

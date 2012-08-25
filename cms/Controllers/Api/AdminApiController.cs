@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.Code;
-using cms.data;
 using cms.data.Dtos;
-using cms.data.EF;
 using cms.data.Shared.Models;
+using cms.shared;
 
-namespace cms.Controllers
+namespace cms.Controllers.Api
 {
 	//AJAX ax=kce
 	public class AdminApiController : ApiControllerBase
@@ -40,15 +34,6 @@ namespace cms.Controllers
 			}
 		}
 
-		[HttpPost]
-		public ActionResult AddGrid(GridPageDto data)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				var newgrid = db.Add(data);
-				return new JSONNetResult(newgrid);
-			}
-		}
 
 		[HttpPost]
 		public ActionResult DeleteGridElement(GridElement data, Guid gridId)
@@ -60,43 +45,6 @@ namespace cms.Controllers
 			}
 		}
 
-		[HttpPost]
-		public ActionResult DeleteGrid(Guid id)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				db.DeleteGrid(id);
-				return new JSONNetResult(null);
-			}
-		}
-
-		[HttpPost]
-		public ActionResult UpdateGrid(GridPageDto data)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				var updated = db.Update(data);
-				return new JSONNetResult(updated);
-			}
-		}
-
-		public ActionResult Grids()
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				var g = db.GridPages();
-				return new JSONNetResult(g);
-			}
-		}
-
-		public ActionResult GetGrid(Guid? id)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				var g = db.GetGridPage(id.Value);
-				return new JSONNetResult(g);
-			}
-		}
 
 		[HttpPost]
 		[JObjectFilter(Param = "data")]
@@ -156,6 +104,64 @@ namespace cms.Controllers
 				}
 			}
 		}
+
+/// ////////////////////////////////////////////////////////////////////////////////////
+		//TODO: PRESUNOUT DO SAMOSTATNYHO CONTROLu
+
+		[HttpPost]
+		public ActionResult AddGrid(GridPageDto data)
+		{
+			using (var db = SessionProvider.CreateSession)
+			{
+				data.Category = CategoryEnum.Page;
+
+				var newgrid = db.Add(data);
+				return new JSONNetResult(newgrid);
+			}
+		}
+
+		[HttpPost]
+		public ActionResult DeleteGrid(Guid id)
+		{
+			using (var db = SessionProvider.CreateSession)
+			{
+				db.DeleteGrid(id);
+				return new JSONNetResult(null);
+			}
+		}
+
+		[HttpPost]
+		public ActionResult UpdateGrid(GridPageDto data)
+		{
+			using (var db = SessionProvider.CreateSession)
+			{
+				var updated = db.Update(data);
+				return new JSONNetResult(updated);
+			}
+		}
+
+		//TODO: prejmenovat na Pages
+		public ActionResult Grids()
+		{
+			using (var db = SessionProvider.CreateSession)
+			{
+				var g = db.Pages();
+				return new JSONNetResult(g);
+			}
+		}
+
+		//TODO: prejmenovat na GetPage
+		public ActionResult GetGrid(Guid? id)
+		{
+			using (var db = SessionProvider.CreateSession)
+			{
+				var g = db.GetPage(id.Value);
+				return new JSONNetResult(g);
+			}
+		}
+
+
+
 
 	}
 

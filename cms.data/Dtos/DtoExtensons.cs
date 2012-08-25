@@ -72,7 +72,7 @@ namespace cms.data.Dtos
 		 	       		Skin = source.Skin,
 		 	       		Type = source.Type,
 		 	       		Width = source.Width,
-		 	       		//Resources = source.Resources.ToDtos(),
+						ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
 		 	       		ResourcesLoc = source.Resources.ToDtos()
 					};
 		 }
@@ -83,6 +83,7 @@ namespace cms.data.Dtos
 			{
 				Name = source.Name,
 				Home = source.Home,
+				Category = source.Category,
 				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id
 			};
 			return a;

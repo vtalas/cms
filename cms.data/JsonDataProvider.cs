@@ -26,18 +26,18 @@ namespace cms.data
 		public abstract void DeleteApplication(Guid guid);
 		public abstract GridElement AddGridElementToGrid(GridElement gridElement, Guid gridId);
 		public abstract Grid GetGrid(Guid guid);
-		public abstract GridPageDto GetGridPage(Guid guid);
+		public abstract GridPageDto GetPage(Guid guid);
 		public abstract void DeleteGrid(Guid guid);
 		public abstract GridPageDto Add(GridPageDto newitem);
 		public abstract ApplicationSetting Add(ApplicationSetting newitem);
 		public abstract void DeleteGridElement(Guid guid, Guid gridid);
 		public abstract GridElement GetGridElement(Guid guid);
 		public abstract GridElementDto Update(GridElementDto item);
-		public abstract GridPageDto GetGridPage(string link);
+		public abstract GridPageDto GetPage(string link);
 		public abstract GridPageDto Update(GridPageDto item);
 		public abstract ApplicationSetting GetApplication(Guid id);
 		public abstract ApplicationSetting GetApplication(string name);
-		public abstract IEnumerable<GridPageDto> GridPages();
+		public abstract IEnumerable<GridPageDto> Pages();
 		
 		//public abstract ResourceDto Add(ResourceDto resource);
 		//public abstract ResourceDto GetResourceDto(Guid elementId, string key, string culture);
@@ -45,6 +45,9 @@ namespace cms.data
 
 		
 		public abstract void Dispose();
+		public abstract IEnumerable<ApplicationSettingDto> Applications();
+		public abstract IEnumerable<GridPageDto> Menus();
+		public abstract GridPageDto GetMenu(Guid id);
 	}
 
 	public interface IMenu
