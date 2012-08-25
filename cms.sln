@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cms.web", "cms\cms.web.csproj", "{DE7729CE-0050-4798-A6BA-A1E3ED191195}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cms.data", "cms.data\cms.data.csproj", "{815F85FC-179F-4817-9634-8CE3C1FF5CE2}"
