@@ -75,31 +75,9 @@ namespace cms.data
 
 		public static IEnumerable<MenuItemDto> ToChildren(this IEnumerable<GridElement> source)
 		{
-			var rootlist = source.Where(x => x.Parent == null);
-			var a = new List<MenuItemDto>();
-			var m = new MenuDto();
-
-			foreach (var item in rootlist)
-			{
-				m.Children = getchildren(item, source);
-				
-			}
-		
-			return a;
+			var rootlist = source.Where(x => x.Parent == null).Select(x=>x.ToMenuItemDto(source)).ToList();
+			return rootlist;
 		}
 
-		private static IEnumerable<MenuItemDto> getchildren(GridElement item, IEnumerable<GridElement> source)
-		{
-			var children = new List<MenuItemDto>();
-			if (source.Any(x => x.Parent.Id == item.Id))
-			{
-				children = source.Where(x => x.Parent.Id == item.Id);
-				foreach (var item in children)
-				{
-					
-				}
-			}
-
-		}
 	}
 }

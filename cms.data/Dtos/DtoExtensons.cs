@@ -66,6 +66,31 @@ namespace cms.data.Dtos
 					};
 		}
 
+		public static IEnumerable<MenuItemDto> getchildren(GridElement item, IEnumerable<GridElement> source)
+		{
+			var children = new List<MenuItemDto>();
+			if (source.Any(x => x.Parent != null && x.Parent.Id == item.Id))
+			{
+				children = source.Where(x => x.Parent != null && x.Parent.Id == item.Id).Select(x => x.ToMenuItemDto(source)).ToList();
+			}
+			return children;
+		}
+
+		public static MenuItemDto ToMenuItemDto(this GridElement source, IEnumerable<GridElement> allElements )
+		{
+			var a = new MenuItemDto
+				{
+					Id = source.Id,
+					Content = source.Content,
+					Line = source.Line,
+					Skin = source.Skin,
+					Type = source.Type,
+					ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
+					ResourcesLoc = source.Resources.ToDtos(),
+				};
+			a.Children = getchildren(source, allElements);
+			return a;
+		}
 		public static GridElementDto ToDto(this GridElement source)
 		{
 			return new GridElementDto
