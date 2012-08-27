@@ -131,7 +131,9 @@ namespace cms.data.Dtos
 						   Id = source.Id,
 						   ResourceDto = source.Resource == null ? source.Resource.ToDto() : new ResourceDtoLoc(),
 						   Name = source.Name,
+						   Category = source.Category,
 						   Children = source.GridElements.ToChildren()
+
 					   };
 		}
 		

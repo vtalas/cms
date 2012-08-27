@@ -4,7 +4,6 @@ using System.ComponentModel;
 using NUnit.Framework;
 using cms.data.Shared.Models;
 using cms.data.Dtos;
-using cms.shared;
 using System.Linq;
 
 namespace cms.data.tests.EF
@@ -25,8 +24,6 @@ namespace cms.data.tests.EF
 		{
 			var zeros = new Guid("00000000-0000-0000-0000-000000000000");
 			var to = Guid.NewGuid();
-
-
 
 			Console.WriteLine(to.CompareTo(to));
 			Console.WriteLine(to.CompareTo(zeros));

@@ -1,1 +1,16 @@
-﻿menu
+﻿
+{{data.Name}}
+
+<script type="text/ng-template"  id="tree_item_renderer.html">
+    <div gridelement="item" grid="data" ></div>
+	<ul>
+        <li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'">
+			..<div gridelement="item" grid="data" ></div>..
+		</li>
+    </ul>
+</script>
+
+<ul >
+    <li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'"></li>
+</ul>
+​

@@ -56,28 +56,13 @@ namespace cms.data.EF.Initializers
 			            		Name = "test page",
 			            		GridElements = new List<GridElement>
 			            		               	{
-													//new GridElement{Content = "aaa",Line = 0,Position = 0,Width = 3,Type = "text"},
-													//new GridElement{Content = "aaa",Line = 0,Position = 3,Width = 3,Type = "text"},
-													//new GridElement{Content = "aaa",Line = 0,Position = 6,Width = 3,Type = "text"},
-													//new GridElement{Content = "aaa",Line = 2,Position = 5,Width = 3,Type = "text"},
-													//new GridElement{Content = "aaa",Line = 3,Position = 0,Width = 12,Type = "text"}
 													new GridElement{Content = "aaaaaaaa aaa", Line = 0,Width = 12,Type = "text"}
 			            		               	},
 			            		ApplicationSettings = application
 
 			            	};
-			var menu = new Grid
-			            	{
-								Id = new Guid("111ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-								Resource = new Resource { Value = "linkTestPage", Owner = new Guid("111ee05e-1115-480b-9ab7-a3ab3c0f6643") },
-			            		Name = "test menu",
-			            		ApplicationSettings = application,
-								Category =  CategoryEnum.Menu
-
-			            	};
 
 			Context.Grids.Add(grids);
-			Context.Grids.Add(menu);
 			Context.Grids.Add(new Grid
 			                  	{
 									Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
@@ -112,6 +97,8 @@ namespace cms.data.EF.Initializers
 			Context.TemplateTypes.Add(new TemplateType {Name = "reference"});
 
 
+			GenerateMenus(application);
+
 			string defualtjsondata = ConfigurationManager.AppSettings.Get("DefaultJsonBootstrap");
 			//TODO pridat log4net
 			//if (!File.Exists(defualtjsondata))
@@ -130,6 +117,44 @@ namespace cms.data.EF.Initializers
 
 
 			Context.SaveChanges();
+
+		}
+
+		private void GenerateMenus(ApplicationSetting application)
+		{
+			var root = new GridElement()
+				           {
+					           Parent = null,
+					           Content = "",
+					           Id = Guid.NewGuid(),
+				           };
+			var rootchild = new GridElement()
+				           {
+					           Parent = root,
+					           Content = "",
+					           Id = Guid.NewGuid(),
+				           };
+			var rootchild2 = new GridElement()
+				           {
+					           Parent = root,
+					           Content = "",
+					           Id = Guid.NewGuid(),
+				           };
+			var menu = new Grid
+			{
+				Id = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"),
+				Resource = new Resource { Value = "linkTestPage", Owner = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643") },
+				Name = "test menu",
+				ApplicationSettings = application,
+				Category = CategoryEnum.Menu,
+				GridElements = new List<GridElement>
+				           {
+					           root,rootchild,rootchild2
+				           }
+
+			};
+
+			Context.Grids.Add(menu);
 
 		}
 
