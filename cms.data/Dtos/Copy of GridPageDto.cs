@@ -10,7 +10,7 @@ namespace cms.data.Dtos
 		public bool Home { get; set; }
 		public string Category { get; set; }
 		public ResourceDtoLoc ResourceDto { get; set; }
-		public IEnumerable<GridElementDto> Children{get; set; }
+		public IEnumerable<MenuItemDto> Children { get; set; }
 	}
 
 }

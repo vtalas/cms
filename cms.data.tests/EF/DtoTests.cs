@@ -79,10 +79,8 @@ namespace cms.data.tests.EF
 
 			var dto = menu.ToChildren().ToList();
 			
-
 			Assert.AreEqual(1,dto.Count);
-			Assert.AreEqual(1,dto[0].ch Count());
-
+			Assert.AreEqual(2,dto[0].Children.Count());
 
 		}
 
