@@ -5,8 +5,7 @@ using cms.data.Shared.Models;
 
 namespace cms.data
 {
-
-	public abstract class JsonDataProvider: IResources,IDisposable,IMenu
+	public abstract class JsonDataProvider :  IDisposable
 	{
 		public string ApplicationName { get; protected set; }
 		public Guid ApplicationId { get; protected set; }
@@ -23,43 +22,43 @@ namespace cms.data
 			ApplicationName = application;
 		}
 
+		public abstract MenuAbstract Menu { get; }
+		public abstract PageAbstract Page { get; }
+
 		public abstract void DeleteApplication(Guid guid);
 		public abstract GridElement AddGridElementToGrid(GridElement gridElement, Guid gridId);
 		public abstract Grid GetGrid(Guid guid);
-		public abstract GridPageDto GetPage(Guid guid);
 		public abstract void DeleteGrid(Guid guid);
-		public abstract GridPageDto Add(GridPageDto newitem);
 		public abstract ApplicationSetting Add(ApplicationSetting newitem);
 		public abstract void DeleteGridElement(Guid guid, Guid gridid);
 		public abstract GridElement GetGridElement(Guid guid);
 		public abstract GridElementDto Update(GridElementDto item);
-		public abstract GridPageDto GetPage(string link);
 		public abstract GridPageDto Update(GridPageDto item);
 		public abstract ApplicationSetting GetApplication(Guid id);
 		public abstract ApplicationSetting GetApplication(string name);
-		public abstract IEnumerable<GridPageDto> Pages();
-		
-		//public abstract ResourceDto Add(ResourceDto resource);
-		//public abstract ResourceDto GetResourceDto(Guid elementId, string key, string culture);
-		
-
-		
 		public abstract void Dispose();
 		public abstract IEnumerable<ApplicationSettingDto> Applications();
-		public abstract IEnumerable<GridPageDto> Menus();
-		public abstract GridPageDto GetMenu(Guid id);
+
 	}
 
-	public interface IMenu
+	public abstract class PageAbstract : DataProviderBase
 	{
-		//MenuDto GetGrid(Guid guid);
+		protected PageAbstract(Guid applicationId) : base(applicationId){}
+		
+		public abstract GridPageDto Get(string link);
+		public abstract GridPageDto Get(Guid id);
+		public abstract IEnumerable<GridPageDto> List();
+		public abstract GridPageDto Add(GridPageDto newitem);
 	}
 
-
-	public interface IResources
+	public abstract class MenuAbstract : DataProviderBase
 	{
-		//ResourceDto Add(ResourceDto resource);
-		//ResourceDto GetResourceDto(Guid elementId, string key, string culture);
+		protected MenuAbstract(Guid applicationId) : base(applicationId){}
+
+		public abstract MenuDto Get(Guid guid);
+		public abstract MenuDto Add(MenuDto newitem);
+		public abstract IEnumerable<MenuDto> List();
 	}
+
 }
 

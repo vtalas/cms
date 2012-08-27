@@ -10,7 +10,7 @@ namespace cms.Controllers
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var a = db.GetPage(link);
+				var a = db.Page.Get(link);
 				return View(ApplicationViewPath("Index"), a);
 			}
 		}

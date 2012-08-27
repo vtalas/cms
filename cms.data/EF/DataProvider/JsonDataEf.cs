@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Security;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 using cms.shared;
 
-namespace cms.data.EF
+namespace cms.data.EF.DataProvider
 {
-	
-	public partial class JsonDataEf : JsonDataProvider
+	public class JsonDataEf : JsonDataProvider
 	{
 		private EfContext db { get; set; }
 
@@ -48,68 +45,6 @@ namespace cms.data.EF
 			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId && x.Category == CategoryEnum.Page);
 			return a;
 		}
-		IQueryable<Grid> AvailableGridsMenu()
-		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId && x.Category == CategoryEnum.Menu);
-			return a;
-		}
-
-		public override IEnumerable<GridPageDto> Pages()
-		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Name == ApplicationName && x.Category == CategoryEnum.Page).ToList();
-			return a.Select(grid => grid.ToGridPageDto()).ToList();
-		}
-
-		public override IEnumerable<GridPageDto> Menus()
-		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Name == ApplicationName && x.Category == CategoryEnum.Menu).ToList();
-			return a.Select(grid => grid.ToGridPageDto()).ToList();
-		}
-
-		//public override ResourceDto Add(ResourceDto resource)
-		//{
-		//    var item = new Resource()
-		//                {
-		//                    Key = resource.Key,
-		//                    Value = resource.Value,
-		//                    Culture = resource.Culture,
-		//                };
-		//    db.Resources.Add(item);
-		//    db.SaveChanges();
-		//    return item.ToDto();
-		//}
-
-		Resource GetResource(int id)
-		{
-			return db.Resources.SingleOrDefault(x => x.Id == id);
-		}
-
-		Resource GetResource(Guid elementId, Resource resource)
-		{
-			var el = db.GridElements.Get( elementId, ApplicationId);
-			if (el.Resources != null)
-			{
-				return el.Resources.SingleOrDefault(x =>
-					(x.Key == resource.Key && x.Culture == resource.Culture)
-					|| resource.Id != 0 && x.Id == resource.Id
-				);
-			}
-			return null;
-		}
-
-		IQueryable<Resource> AvailableResources()
-		{
-			return db.Resources.Where(x => x.Culture == CurrentCulture || x.Culture == null);
-		}
-
-		//public override ResourceDto GetResourceDto(Guid elementId, string key, string culture)
-		//{
-		//    //var r = GetResource(elementIdt, key, culture);
-		//    //if (r != null) 
-		//    //    return r.ToDto();
-		//    //throw new ObjectNotFoundException(string.Format("resource {0} not found {1}", key, culture));
-		//    throw new NotImplementedException();
-		//}
 
 		public override sealed ApplicationSetting GetApplication(Guid id)
 		{
@@ -125,39 +60,6 @@ namespace cms.data.EF
 		{
 			return AvailableGridsPage().Single(x => x.Id == id);
 		}
-
-		public override GridPageDto GetPage(Guid id)
-		{
-			var grid = AvailableGridsPage().Single(x => x.Id == id );
-			return grid.ToGridPageDto();
-		}
-		
-		public override GridPageDto GetMenu(Guid id)
-		{
-			var grid = AvailableGridsMenu().Single(x => x.Id == id);
-			return grid.ToGridPageDto();
-		}
-		
-		//TODO: pokud nenanjde melo by o vracet homepage
-		public override GridPageDto GetPage(string link)
-		{
-			var a = db.Grids.FirstOrDefault(x => x.ApplicationSettings.Name == ApplicationName && x.Resource.Value == link);
-			//var a = Grids().FirstOrDefault(x => x.Resource.Value == link);
-			if (a == null)
-			{
-				throw new ObjectNotFoundException(string.Format("'{0}' not found", link));
-			}
-			//if (a.Count() > 1)
-			//{
-
-			//}
-			return a.ToGridPageDto();
-		}
-
-		//public override GridElement GetGridElement(Guid id)
-		//{
-		//    return db.GridElements.Single(x => x.Id == id);
-		//}
 
 		public override void DeleteGrid(Guid id)
 		{
@@ -285,42 +187,20 @@ namespace cms.data.EF
 			return grid.ToGridPageDto();
 		}
 
+		public override MenuAbstract Menu
+		{
+			get { return new MenuAbstractImpl(ApplicationId,db); }
+		}
+
+		public override PageAbstract Page
+		{
+			get { return new PageAbstractImpl(ApplicationId, db); }
+		}
+
 		public override void DeleteApplication(Guid id)
 		{
 			var delete = GetApplication(id);
 			db.ApplicationSettings.Remove(delete);
-		}
-		
-		void CheckIfLinkExist(GridPageDto newitem)
-		{
-			var linkExist = AvailableGridsPage().Any(x => x.Resource.Value == newitem.ResourceDto.Value);
-			if (linkExist)
-			{
-				throw new ArgumentException("link exists");
-			}
-			
-		}
-		
-		public override GridPageDto Add(GridPageDto newitem)
-		{
-			var item = newitem.ToGrid();
-
-			if (newitem.ResourceDto == null)
-			{
-				newitem.ResourceDto = new ResourceDtoLoc { Value = item.Name.Replace(" ", string.Empty) };
-			}
-
-			CheckIfLinkExist(newitem);
-
-			CurrentApplication.Grids.Add(item);
-			db.Grids.Add(item);
-
-			var res = db.Resources.Add(newitem.ResourceDto.ToResource());
-			res.Owner = item.Id;
-			item.Resource = res;
-
-			db.SaveChanges();
-			return item.ToGridPageDto();
 		}
 
 		public override GridElement AddGridElementToGrid(GridElement newitem, Guid gridId)

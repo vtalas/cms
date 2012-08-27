@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProviderBase.cs" />
     <Compile Include="Dtos\ApplicationSettingDto.cs" />
+    <Compile Include="Dtos\Copy of GridPageDto.cs" />
     <Compile Include="Dtos\DtoExtensons.cs" />
     <Compile Include="Dtos\GridElementDto.cs" />
     <Compile Include="Dtos\GridPageDto.cs" />
@@ -56,14 +58,16 @@
     <Compile Include="EF\SessionProvider.cs" />
     <Compile Include="EF\Initializers\DropAndCreate.cs" />
     <Compile Include="EF\Initializers\DropAndCreateTables.cs" />
-    <Compile Include="EF\JsonDataEf.cs" />
+    <Compile Include="EF\DataProvider\JsonDataEf.cs" />
     <Compile Include="Files\JsonDataFiles.cs" />
     <Compile Include="GridElementExt.cs" />
     <Compile Include="GridPage.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="EF\EfContext.cs" />
     <Compile Include="JsonDataProvider.cs" />
+    <Compile Include="EF\DataProvider\MenuAbstractImpl.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="EF\DataProvider\PageAbstractImpl.cs" />
     <Compile Include="Shared\Models\Category.cs" />
     <Compile Include="Shared\Models\Grid.cs" />
     <Compile Include="Shared\Models\GridElement.cs" />
@@ -83,6 +87,7 @@
       <Name>cms.shared</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

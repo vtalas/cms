@@ -2,6 +2,7 @@ using System;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using cms.data.EF;
+using cms.data.EF.DataProvider;
 using cms.data.EF.Initializers;
 
 namespace cms.Controllers.Api

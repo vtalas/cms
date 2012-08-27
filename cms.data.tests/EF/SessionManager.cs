@@ -1,5 +1,6 @@
 using System;
 using cms.data.EF;
+using cms.data.EF.DataProvider;
 
 namespace cms.data.tests.EF
 {

@@ -7,13 +7,13 @@ namespace cms.Controllers.Api
     public class MenuController : ApiControllerBase
     {
 		[HttpPost]
-		public ActionResult Add(GridPageDto data)
+		public ActionResult Add(MenuDto data)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				data.Category = shared.CategoryEnum.Menu;
 				
-				var newgrid = db.Add(data);
+				var newgrid = db.Menu.Add(data);
 				return new JSONNetResult(newgrid);
 			}
 		}
@@ -23,7 +23,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.GetPage(id.Value);
+				var g = db.Menu.Get(id.Value);
 				return new JSONNetResult(g);
 			}
 		}
@@ -54,7 +54,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.Menus();
+				var g = db.Menu.List();
 				return new JSONNetResult(g);
 			}
 		}

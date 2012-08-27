@@ -6,8 +6,10 @@ using System.Linq;
 using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF;
+using cms.data.EF.DataProvider;
 using cms.data.EF.Initializers;
 using cms.data.Shared.Models;
+using cms.shared;
 
 namespace cms.data.tests.EF
 {
@@ -82,10 +84,11 @@ namespace cms.data.tests.EF
 					var a = new GridPageDto
 					{
 						Name = name,
-						ResourceDto = new ResourceDtoLoc { Value = link }
+						ResourceDto = new ResourceDtoLoc { Value = link },
+						Category = CategoryEnum.Page
 					};
 
-					var n = db.Add(a);
+					var n = db.Page.Add(a);
 					Assert.AreEqual(name, n.Name);
 					Assert.AreEqual(link, n.ResourceDto.Value);
 					return n;
@@ -97,7 +100,7 @@ namespace cms.data.tests.EF
 			{
 				using (var db = SessionManager.CreateSession)
 				{
-					var n = db.GetPage(id);
+					var n = db.Page.Get(id);
 					return n;
 				}
 			}
@@ -184,7 +187,7 @@ namespace cms.data.tests.EF
 			{
 				using (var db = SessionManager.CreateSession)
 				{
-					var a = db.GetPage(Helpers._defaultlink);
+					var a = db.Page.Get(Helpers._defaultlink);
 					Assert.IsNotNull(a);
 					Assert.AreEqual(Helpers._defaultlink, a.ResourceDto.Value);
 				}
@@ -195,7 +198,7 @@ namespace cms.data.tests.EF
 			{
 				using (var db = SessionManager.CreateSession)
 				{
-					Assert.Throws<ObjectNotFoundException>(() => db.GetPage("linkTestPageXXX"));
+					Assert.Throws<ObjectNotFoundException>(() => db.Page.Get("linkTestPageXXX"));
 				}
 			}
 
@@ -546,7 +549,7 @@ namespace cms.data.tests.EF
 				using (var db = SessionManager.CreateSession)
 				{
 
-					var gridpage = db.Add(new GridPageDto {Name = "addgridElement test Gridpage"});
+					var gridpage = db.Page.Add(new GridPageDto {Name = "addgridElement test Gridpage", Category = CategoryEnum.Page});
 					var gridDb = db.GetGrid(gridpage.Id);
 					Assert.AreEqual(0, db.GetGrid(gridpage.Id).GridElements.Count);
 
@@ -573,7 +576,7 @@ namespace cms.data.tests.EF
 				using (var db = SessionManager.CreateSession)
 				{
 
-					var gridpage = db.GetPage(Helpers._defaultlink);
+					var gridpage = db.Page.Get(Helpers._defaultlink);
 					var grid = db.GetGrid(gridpage.Id);
 
 					var gridelem = new GridElement
@@ -603,7 +606,7 @@ namespace cms.data.tests.EF
 			{
 				using (var db = SessionManager.CreateSession)
 				{
-					var gridpage = db.GetPage(Helpers._defaultlink);
+					var gridpage = db.Page.Get(Helpers._defaultlink);
 					var grid = db.GetGrid(gridpage.Id);
 					var resourcesCountBefore = _context.Resources.Count();
 					var existingsRes = _context.Resources.First();
@@ -639,10 +642,11 @@ namespace cms.data.tests.EF
 		[Test]
 		public void UpdateGridPage_test()
 		{
-			var gridpage = repo.Add(new GridPageDto
+			var gridpage = repo.Page.Add(new GridPageDto
 			{
 				Name = "addgridElement test Gridpage",
-				ResourceDto = new ResourceDtoLoc() { Value = "newlink" }
+				ResourceDto = new ResourceDtoLoc() { Value = "newlink" },
+				Category = CategoryEnum.Page
 			});
 			var resourcesCountBefore = _context.Resources.Count();
 			var gridpageResBefore = gridpage.ResourceDto;
@@ -650,7 +654,7 @@ namespace cms.data.tests.EF
 			gridpage.ResourceDto.Value = "XXXX";
 			repo.Update(gridpage);
 
-			var updated = repo.GetPage(gridpage.Id);
+			var updated = repo.Page.Get(gridpage.Id);
 			var resourcesCountAfter = _context.Resources.Count();
 			var gridpageResAfter = updated.ResourceDto;
 

@@ -7,9 +7,5 @@ namespace cms.data.Dtos
 	}
 
 
-	public class MenuDto
-	{
-		
-	}
 
 }

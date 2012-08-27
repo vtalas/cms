@@ -1,0 +1,24 @@
+﻿
+<table>
+	<tr ng-repeat="grid in data">
+		<td>
+			<a href="#/menu/{{grid.Id}}"> {{grid.Name}}</a> 
+		</td>
+		<td ng-hide="grid.Edit">
+			{{grid.ResourceDto.Value}}
+		</td>
+		<td ng-show="grid.Edit">
+			<input type="text" ng-model="grid.ResourceDto.Value"/>
+		</td>
+		<td>
+			<button ng-hide="grid.Edit" ng-click="edit(grid)">Edit</button>
+			<button ng-show="grid.Edit" ng-click="save(grid)">Ok</button>
+			<button ng-click="remove(grid)">Smazat</button>
+		</td>
+		<td>
+			<a href="/client/@ViewBag.Application/{{grid.ResourceDto.Value}}">viewhtml</a> |
+			<a href="/client/json/@ViewBag.ApplicationId/{{grid.ResourceDto.Value}}">viewJson</a>
+		</td>
+	</tr>
+</table>
+

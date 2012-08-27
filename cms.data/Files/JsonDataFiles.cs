@@ -68,7 +68,7 @@ namespace cms.data.Files
 	//        throw new System.NotImplementedException();
 	//    }
 
-	//    public override GridPageDto GetPage(string link)
+	//    public override GridPageDto Get(string link)
 	//    {
 	//        throw new System.NotImplementedException();
 	//    }
@@ -109,7 +109,7 @@ namespace cms.data.Files
 	//        return grid;
 	//    }
 
-	//    public override GridPageDto GetPage(int id)
+	//    public override GridPageDto Get(int id)
 	//    {
 	//        throw new System.NotImplementedException();
 	//    }

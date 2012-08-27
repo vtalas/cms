@@ -115,7 +115,7 @@ namespace cms.Controllers.Api
 			{
 				data.Category = CategoryEnum.Page;
 
-				var newgrid = db.Add(data);
+				var newgrid = db.Page.Add(data);
 				return new JSONNetResult(newgrid);
 			}
 		}
@@ -145,17 +145,17 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.Pages();
+				var g = db.Page.List();
 				return new JSONNetResult(g);
 			}
 		}
 
-		//TODO: prejmenovat na GetPage
+		//TODO: prejmenovat na Get
 		public ActionResult GetGrid(Guid? id)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.GetPage(id.Value);
+				var g = db.Page.Get(id.Value);
 				return new JSONNetResult(g);
 			}
 		}

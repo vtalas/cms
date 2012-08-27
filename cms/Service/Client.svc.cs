@@ -14,7 +14,7 @@
 //        public string GetGridpageAction(string application, string link)
 //        {
 //            var db = new JsonDataEf(application);
-//            var data = db.GetPage(link);
+//            var data = db.Get(link);
 
 //            var settings = new JsonSerializerSettings()
 //            {
@@ -31,7 +31,7 @@
 //            if (ApplicationName == null) throw new ArgumentNullException("ApplicationName");
 
 //            var db = new JsonDataEf(ApplicationName);
-//            return db.GetPage(Link);
+//            return db.Get(Link);
 //        }
 		
 //        public string EchoJson(string message)

@@ -15,7 +15,7 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 	$routeProvider
 		.when('/gridpages', { controller: GridListController, templateUrl: 'template/gridpages' })
 		.when('/menus', { controller: menusCtrl, templateUrl: 'template/menus' })
-		.when('/menu', { controller: menuCtrl, templateUrl: 'template/menu' })
+		.when('/menu/:Id', { controller: menuCtrl, templateUrl: 'template/menu' })
 		.when('/gridpage/:Id', { controller: GridPageCtrl, templateUrl: 'template/gridpage' })
 		.otherwise({ redirectTo: '/gridpages' });
 } ]);
