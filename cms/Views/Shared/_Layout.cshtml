@@ -2,6 +2,11 @@
 <html ng-app>	
 	<head>
 		<title>@ViewBag.Title</title>
+	
+			@Helpers.BundleCss("~/adminlayout#.css", x => x
+				.Add("~/Content/bootstrapdefault/less/bootstrap.less")
+			)
+
 	</head>
 	
 	<body>

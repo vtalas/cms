@@ -15,7 +15,7 @@ h3 {
 }
 .adminheader a {
   text-decoration: none;
-  color: $aMainmenu;
+  color: white;
 }
 .adminheader a:hover {
   color: coral;

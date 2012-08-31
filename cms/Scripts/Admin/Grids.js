@@ -2,12 +2,11 @@ var module = angular.module("gridsmodule", ['cmsapi', "templateExt"]);
 
 module.config(['$routeProvider', '$provide', function ($routeProvider, $provide) {
 	$provide.factory('appSettings', function () {
-		var e = angular.element(".gridsmodule");
-
-		var settings = {
-			Name: e.data("application-name"),
-			Id: e.data("application-id"),
-			Culture: e.data("application-culture")
+		var e = angular.element(".gridsmodule"),
+			settings = {
+				Name: e.data("application-name"),
+				Id: e.data("application-id"),
+				Culture: e.data("application-culture")
 		};
 		return settings;
 	});
@@ -43,67 +42,66 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 		var newitem = { Id: 0, Width: 12, Type: "text", Line: line, Edit: 0 };
 		return newitem;
 	}
-
-	var GridElementCtrl = function ($scope) {
-		$scope.add = function (item) {
-			GridApi.AddGridElement({
-				applicationId: appSettings.Id,
-				data: item,
-				gridId: $scope.grid.Id
-			}, function (data) {
-				if (data.Line >= $scope.grid.Lines.length - 1) {
-					var newitem = _newitem($scope.grid.Lines.length);
-					$scope.grid.Lines.push([newitem]);
-				}
-				$scope.grid.Lines[data.Line][data.Position] = data;
-				//TODO: nevyvola se broadcast
-				$scope.edit(data);
-
-			});
-		};
-
-		$scope.remove = function (item) {
-			var line = $scope.$parent.$parent.line;
-
-			GridApi.DeleteGridElement({ applicationId: appSettings.Id, data: item, gridId: $scope.grid.Id },
-				function () {
-					item.Id = 0; item.Edit = 0; item.Content = "";
-					//refresh - preopocitani poradi radku
-					if (line.length == 1) {
-						$scope.$emit("refreshgrid");
+	var directiveDefinitionObject,
+		gridElementCtrl = function ($scope) {
+			$scope.add = function (item) {
+				GridApi.AddGridElement({
+					applicationId: appSettings.Id,
+					data: item,
+					gridId: $scope.grid.Id
+				}, function (data) {
+					if (data.Line >= $scope.grid.Lines.length - 1) {
+						var newitem = _newitem($scope.grid.Lines.length);
+						$scope.grid.Lines.push([newitem]);
 					}
+					$scope.grid.Lines[data.Line][data.Position] = data;
+					//TODO: nevyvola se broadcast
+					$scope.edit(data);
 				});
-		};
+			};
 
-		$scope.edit = function (item) {
-			$scope.$broadcast("gridelement-edit");
-            item.Edit = 1;
-		};
+			$scope.remove = function (item) {
+				var line = $scope.$parent.$parent.line;
 
-		$scope.save = function (item) {
-			var copy = jQuery.extend(true, {}, item);
+				GridApi.DeleteGridElement({ applicationId: appSettings.Id, data: item, gridId: $scope.grid.Id },
+					function () {
+						item.Id = 0; item.Edit = 0; item.Content = "";
+						//refresh - preopocitani poradi radku
+						if (line.length === 1) {
+							$scope.$emit("refreshgrid");
+						}
+					});
+			};
 
-			if (angular.isObject(copy.Content))
-				copy.Content = JSON.stringify(copy.Content);
+			$scope.edit = function (item) {
+				$scope.$broadcast("gridelement-edit");
+				item.Edit = 1;
+			};
 
-			GridApi.UpdateGridElement({ applicationId: appSettings.Id, data: copy },
-				function () {
-                    item.Edit = 0;
-                });
-		};
+			$scope.save = function (item) {
+				var copy = jQuery.extend(true, {}, item);
+
+				if (angular.isObject(copy.Content)) {
+					copy.Content = JSON.stringify(copy.Content);
+				}
+
+				GridApi.UpdateGridElement({ applicationId: appSettings.Id, data: copy },
+					function () {
+						item.Edit = 0;
+					});
+			};
 
 	};
 
-	var directiveDefinitionObject = {
+	directiveDefinitionObject = {
 		scope: { grid: "=", gridelement: "=" },
-		controller: GridElementCtrl,
+		controller: gridElementCtrl,
 		link: function (scope, iElement, tAttrs, controller) {
-			scope.gui = {edit:0};
-            var sablona = gridtemplate(scope.gridelement.Type);
-			var compiled = $compile(sablona)(scope);
+			scope.gui = { edit: 0 };
+			var sablona = gridtemplate(scope.gridelement.Type),
+				compiled = $compile(sablona)(scope);
 			iElement.html(compiled);
 		}
 	};
 	return directiveDefinitionObject;
 });
-

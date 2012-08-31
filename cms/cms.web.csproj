@@ -119,19 +119,77 @@
     <None Include="App_Data\default_bootstrap.json" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
+    <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Content\bootstrapdefault\less\accordion.less" />
+    <None Include="Content\bootstrapdefault\less\alerts.less" />
+    <None Include="Content\bootstrapdefault\less\bootstrap.less" />
+    <None Include="Content\bootstrapdefault\less\breadcrumbs.less" />
+    <None Include="Content\bootstrapdefault\less\button-groups.less" />
+    <None Include="Content\bootstrapdefault\less\buttons.less" />
+    <None Include="Content\bootstrapdefault\less\carousel.less" />
+    <None Include="Content\bootstrapdefault\less\close.less" />
+    <None Include="Content\bootstrapdefault\less\code.less" />
+    <None Include="Content\bootstrapdefault\less\component-animations.less" />
+    <None Include="Content\bootstrapdefault\less\dropdowns.less" />
+    <None Include="Content\bootstrapdefault\less\forms.less" />
+    <None Include="Content\bootstrapdefault\less\grid.less" />
+    <None Include="Content\bootstrapdefault\less\hero-unit.less" />
+    <None Include="Content\bootstrapdefault\less\labels-badges.less" />
+    <None Include="Content\bootstrapdefault\less\layouts.less" />
+    <None Include="Content\bootstrapdefault\less\mixins.less" />
+    <None Include="Content\bootstrapdefault\less\modals.less" />
+    <None Include="Content\bootstrapdefault\less\navbar.less" />
+    <None Include="Content\bootstrapdefault\less\navs.less" />
+    <None Include="Content\bootstrapdefault\less\pager.less" />
+    <None Include="Content\bootstrapdefault\less\pagination.less" />
+    <None Include="Content\bootstrapdefault\less\popovers.less" />
+    <None Include="Content\bootstrapdefault\less\progress-bars.less" />
+    <None Include="Content\bootstrapdefault\less\reset.less" />
+    <None Include="Content\bootstrapdefault\less\responsive-1200px-min.less" />
+    <None Include="Content\bootstrapdefault\less\responsive-767px-max.less" />
+    <None Include="Content\bootstrapdefault\less\responsive-768px-979px.less" />
+    <None Include="Content\bootstrapdefault\less\responsive-navbar.less" />
+    <None Include="Content\bootstrapdefault\less\responsive-utilities.less" />
+    <None Include="Content\bootstrapdefault\less\responsive.less" />
+    <None Include="Content\bootstrapdefault\less\scaffolding.less" />
+    <None Include="Content\bootstrapdefault\less\sprites.less" />
+    <None Include="Content\bootstrapdefault\less\tables.less" />
+    <None Include="Content\bootstrapdefault\less\thumbnails.less" />
+    <None Include="Content\bootstrapdefault\less\tooltip.less" />
+    <None Include="Content\bootstrapdefault\less\type.less" />
+    <None Include="Content\bootstrapdefault\less\utilities.less" />
+    <None Include="Content\bootstrapdefault\less\variables.less" />
+    <None Include="Content\bootstrapdefault\less\wells.less" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
-    <Content Include="Scripts\angular-templates-ext.coffee" />
-    <Content Include="Scripts\Apps\defaults\_GridElementScripts\textlocalized.coffee" />
-    <Content Include="Scripts\Apps\defaults\_GridElementScripts\reference.coffee" />
-    <Content Include="Scripts\Apps\defaults\_GridElementScripts\simplehtml.coffee" />
-    <Content Include="Scripts\Apps\defaults\_GridElementScripts\novinka.coffee" />
-    <Content Include="Scripts\Apps\defaults\_GridElementScripts\text.coffee" />
+    <Content Include="Scripts\angular-templates-ext.coffee">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Scripts\angular-templates-ext.js">
+      <DependentUpon>angular-templates-ext.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\novinka.js">
+      <DependentUpon>novinka.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\textlocalized.coffee" />
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\reference.coffee" />
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\simplehtml.coffee" />
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\novinka.coffee">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <Bare>False</Bare>
+      <Iced>False</Iced>
+    </Content>
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\text.coffee" />
     <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
     <Content Include="Scripts\bootstrap.js" />
     <None Include="Service References\ServiceReference1\Client1.wsdl" />
