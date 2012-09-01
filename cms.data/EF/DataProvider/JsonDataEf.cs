@@ -91,61 +91,17 @@ namespace cms.data.EF.DataProvider
 			var item = db.GridElements.Get(guid,ApplicationId);
 			var localizedResources = item.Resources.Where(x => x.Culture == CurrentCulture || x.Culture == null);
 			item.Resources = localizedResources.ToList();
-
 			return item;
 		}
-
-		bool CanUpdateValues(GridElement element, Resource resource)
-		{
-			return (element.Resources.Any(x => x.Id == resource.Id) && resource.Owner == element.Id);
-		}
-
+		
 		public override GridElementDto Update(GridElementDto item)
 		{
-
 			if (item.ResourcesLoc != null)
 			{
-				var currentEl = db.GridElements.Get(item.Id, ApplicationId);
-				foreach (var resUpdate in item.ResourcesLoc)
-				{
-					if (db.Resources.Exist(resUpdate.Value.Id))
-					{
-						var res = db.Resources.Get(resUpdate.Value.Id);
-						if (CanUpdateValues(currentEl, res))
-						{
-							res.Value = resUpdate.Value.Value;
-						}
-
-						if (res.Owner != currentEl.Id)
-						{
-							//pridat referenci 
-							if (ReferenceExist(currentEl, resUpdate.Key, CurrentCulture))
-							{
-								//oddelat puvodni a pridat novou 
-								currentEl.Resources.Remove(GetResource(currentEl, resUpdate.Key, CurrentCulture));
-							}
-							currentEl.Resources.Add(res);
-						}
-					}
-					
-					else
-					{
-						if (ReferenceExist(currentEl, resUpdate.Key, CurrentCulture))
-							throw new ArgumentException("link exists");
-
-						var newres = new Resource()
-						             	{
-						             		Owner = item.Id,
-											Culture = CurrentCulture,
-						             		Key = resUpdate.Key,
-						             		Value = resUpdate.Value.Value
-						             	};
-						db.Resources.Add(newres);
-						db.GridElements.Get(item.Id, ApplicationId).Resources.Add(newres);
-					}
-				}
+				JsonDataEfHelpers.UpdateResource(item,db, CurrentCulture, ApplicationId);
 			}
-			var el = db.GridElements.Get( item.Id,ApplicationId);
+
+			var el = db.GridElements.Get(item.Id,ApplicationId);
 			//TODO:nahovno, udelat lip
 			el.Line = item.Line;
 			el.Position = item.Position;
@@ -156,16 +112,6 @@ namespace cms.data.EF.DataProvider
 
 			db.SaveChanges();
 			return item;
-		}
-
-		bool ReferenceExist(GridElement curEl, string key, string culture)
-		{
-			return curEl.Resources.Any(x => x.Key == key && x.Culture == culture);
-		}
-
-		Resource GetResource(GridElement curEl, string key, string culture)
-		{
-			return curEl.Resources.Single(x => x.Key == key && x.Culture == culture);
 		}
 
 		public override GridPageDto Update(GridPageDto item)

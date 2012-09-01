@@ -1263,13 +1263,13 @@ jasmine.Matchers.prototype.toHaveBeenCalled = function() {
   return this.actual.wasCalled;
 };
 
-/** @deprecated Use expect(xxx).toHaveBeenCalled() instead */
+/** @deprecated Use expect(UpdateResource).toHaveBeenCalled() instead */
 jasmine.Matchers.prototype.wasCalled = jasmine.Matchers.prototype.toHaveBeenCalled;
 
 /**
  * Matcher that checks to see if the actual, a Jasmine spy, was not called.
  *
- * @deprecated Use expect(xxx).not.toHaveBeenCalled() instead
+ * @deprecated Use expect(UpdateResource).not.toHaveBeenCalled() instead
  */
 jasmine.Matchers.prototype.wasNotCalled = function() {
   if (arguments.length > 0) {
@@ -1319,10 +1319,10 @@ jasmine.Matchers.prototype.toHaveBeenCalledWith = function() {
   return this.env.contains_(this.actual.argsForCall, expectedArgs);
 };
 
-/** @deprecated Use expect(xxx).toHaveBeenCalledWith() instead */
+/** @deprecated Use expect(UpdateResource).toHaveBeenCalledWith() instead */
 jasmine.Matchers.prototype.wasCalledWith = jasmine.Matchers.prototype.toHaveBeenCalledWith;
 
-/** @deprecated Use expect(xxx).not.toHaveBeenCalledWith() instead */
+/** @deprecated Use expect(UpdateResource).not.toHaveBeenCalledWith() instead */
 jasmine.Matchers.prototype.wasNotCalledWith = function() {
   var expectedArgs = jasmine.util.argsToArray(arguments);
   if (!jasmine.isSpy(this.actual)) {

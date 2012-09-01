@@ -34,6 +34,23 @@ namespace cms.data.EF.DataProvider
 			throw new NotImplementedException();
 		}
 
+		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
+		{
+			JsonDataEfHelpers.UpdateResource(item,db,CurrentCulture,ApplicationId);
+			var grid = AvailableGridsMenu().Single(x => x.Id == gridId);
+			var a = new GridElement
+				        {
+					        Line = item.Line,
+							Content = item.Content,
+							Type = item.Type,
+							Skin = item.Skin,
+							Parent = db.GridElements.Single(x=>x.Id ==  new Guid(item.ParentId)),
+				        };
+			grid.GridElements.Add(a);
+			db.SaveChanges();
+			return a.Id;
+		}
+
 		public override IEnumerable<MenuDto> List()
 		{
 			var a = AvailableGridsMenu().Where(x=>x.Category == CategoryEnum.Menu).ToList();

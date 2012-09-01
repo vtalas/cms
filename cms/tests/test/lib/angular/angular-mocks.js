@@ -1,4 +1,4 @@
-
+﻿
 /**
  * @license AngularJS v1.0.1
  * (c) 2010-2012 Google, Inc. http://angularjs.org
@@ -751,7 +751,7 @@ angular.mock.dump = function(object) {
      $httpBackend = $injector.get('$httpBackend');
 
      // backend definition common for all tests
-     $httpBackend.when('GET', '/auth.py').respond({userId: 'userX'}, {'A-Token': 'xxx'});
+     $httpBackend.when('GET', '/auth.py').respond({userId: 'userX'}, {'A-Token': 'UpdateResource'});
    }));
 
 
@@ -788,7 +788,7 @@ angular.mock.dump = function(object) {
      $httpBackend.expectPOST('/add-msg.py', undefined, function(headers) {
        // check if the header was send, if it wasn't the expectation won't
        // match the request and the test will fail
-       return headers['Authorization'] == 'xxx';
+       return headers['Authorization'] == 'UpdateResource';
      }).respond(201, '');
 
      var controller = scope.$new(MyController);

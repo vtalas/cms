@@ -17,6 +17,15 @@ namespace cms.Controllers.Api
 				return new JSONNetResult(newgrid);
 			}
 		}
+		[HttpPost]
+		public ActionResult AddMenuItem(MenuItemDto data, Guid gridid)
+		{
+			using (var db = SessionProvider.CreateSession)
+			{
+				var newgrid = db.Menu.AddMenuItem(data, gridid);
+				return new JSONNetResult(newgrid);
+			}
+		}
 
 		[HttpGet]
 		public ActionResult Get(Guid? id)

@@ -86,7 +86,7 @@ namespace cms.data.Dtos
 					Skin = source.Skin,
 					Type = source.Type,
 					ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
-					ResourcesLoc = source.Resources.ToDtos(),
+					ResourcesLoc = source.Resources.ToDtos()
 				};
 			a.Children = getchildren(source, allElements);
 			return a;

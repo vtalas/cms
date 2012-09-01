@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license AngularJS v1.0.1
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
@@ -10167,7 +10167,7 @@ var htmlAnchorDirective = valueFn({
         <a id="link-2" href="" ng-click="value = 2">link 2</a> (link, don't reload)<br />
         <a id="link-3" ng-href="/{{'123'}}">link 3</a> (link, reload!)<br />
         <a id="link-4" href="" name="xx" ng-click="value = 4">anchor</a> (link, don't reload)<br />
-        <a id="link-5" name="xxx" ng-click="value = 5">anchor</a> (no link)<br />
+        <a id="link-5" name="UpdateResource" ng-click="value = 5">anchor</a> (no link)<br />
         <a id="link-6" ng-href="{{value}}">link</a> (link, change location)
       </doc:source>
       <doc:scenario>
@@ -10905,7 +10905,7 @@ var inputType = {
           });
 
           it('should be invalid if not url', function() {
-            input('text').enter('xxx');
+            input('text').enter('UpdateResource');
             expect(binding('myForm.input.$valid')).toEqual('false');
           });
         </doc:scenario>
@@ -10968,7 +10968,7 @@ var inputType = {
           });
 
           it('should be invalid if not email', function() {
-            input('text').enter('xxx');
+            input('text').enter('UpdateResource');
             expect(binding('myForm.input.$valid')).toEqual('false');
           });
         </doc:scenario>

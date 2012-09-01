@@ -57,6 +57,7 @@ namespace cms.data
 
 		public abstract MenuDto Get(Guid guid);
 		public abstract MenuDto Add(MenuDto newitem);
+		public abstract Guid AddMenuItem(MenuItemDto newitem, Guid gridId);
 		public abstract IEnumerable<MenuDto> List();
 	}
 

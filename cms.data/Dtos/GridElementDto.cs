@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using cms.data.EF.DataProvider;
 
 namespace cms.data.Dtos
 {
-	public class GridElementDto 
+	public class GridElementDto : IResourceElement
 	{
 		public Guid Id { get; set; }
 		public int Line { get; set; }

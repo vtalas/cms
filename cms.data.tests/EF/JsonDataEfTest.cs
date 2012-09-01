@@ -345,7 +345,6 @@ namespace cms.data.tests.EF
 				Assert.AreEqual("text1", res1.Key);
 
 				res1.Value = "prd";
-				
 				res1.Culture = "cs";
 				res1.Key = "kkk";
 				using (var db = SessionManager.CreateSession)
@@ -454,38 +453,6 @@ namespace cms.data.tests.EF
 				}
 			}
 
-			[Test]
-			public void Update_Attached()
-			{
-				const string culture = "cs";
-				const string key = "text1";
-
-				var a = Helpers.AddDefaultGridElement();
-				var c = Helpers.AddDefaultGridElement();
-				var resourcesCountBefore = _context.Resources.Count();
-
-				using (var db = SessionManager.CreateSession)
-				{
-
-					var resa = a.Resources.getresource(culture, key);
-					var resb = a.Resources.First();
-
-					c.Resources = new List<Resource> { resa };
-					db.Update(c.ToDto());
-
-					var updated = db.GetGridElement(c.Id);
-					Assert.AreEqual(1, updated.Resources.Count);
-					Assert.AreEqual(resa.Id, updated.Resources.getresource(culture, key).Id);
-
-					c.Resources.Add(resb);
-					db.Update(c.ToDto());
-					updated = db.GetGridElement(c.Id);
-					Assert.AreEqual(1, updated.Resources.Count);
-					Assert.AreEqual(resb.Id, updated.Resources.getresource(culture, key).Id);
-				}
-
-				Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
-			}
 		}
 
 
@@ -498,15 +465,12 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSession)
 				{
-
 					var list = db.Applications();
-
 
 					foreach (var item in list)
 					{
 						Console.WriteLine(item.Name);
 					}
-
 					Assert.IsNotNull(list);
 					Assert.IsTrue(list.Any());
 				}
