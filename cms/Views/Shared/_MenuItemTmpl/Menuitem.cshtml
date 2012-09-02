@@ -1,0 +1,45 @@
+﻿@model cms.Models.TemplateSettings
+		   
+<div ng-controller="@Model.Type">
+	
+	<div ng-show="gridelement.Id==0">
+		<select ng-model="gridelement.Type">
+			<option value="text">text</option>
+			<option value="textlocalized">textlocalized</option>
+			<option value="novinka">novinka</option>
+			<option value="simplehtml">simple HTML</option>
+			<option value="reference">Reference</option>
+		</select>
+		<button ng-click="add(gridelement)">Create</button>
+	</div>
+
+	<div ng-show="gridelement.Id">
+		<button ng-click="edit(gridelement)">edit</button>
+		<button ng-click="remove(gridelement)">smazat</button>
+		<b>@Model.Type</b>
+@*		<span ng-show="gridelement.Edit" >
+			<input  type="checkbox" ng-model="preview" /> Zobrazit náhled
+		</span>
+*@	</div>
+	{{edit}}
+	<div ng-show="gridelement.Edit" >
+		@Html.Partial(Model.TemplateEdit)
+		<button ng-click="save(gridelement)">Uložit</button>
+	</div>
+	<div @*ng-show="preview || !gridelement.Edit"*@ >
+		@Html.Partial(Model.TemplateView)
+	</div>
+</div>
+
+
+
+
+
+@* 
+//NOTE: include static html file 
+<%= File.ReadAllText(Server.MapPath("~/Content/snippet.html")) %>
+*@
+
+
+
+

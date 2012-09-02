@@ -5,13 +5,19 @@
 		<title>@ViewBag.Title</title>
 		@Helpers.BundleCss("~/adminlayout#.css", x => x
 				.Add("~/Content/grid.css")
+				.Add("~/Scripts/select2/select2.css")
 				.Add("~/Content/admin.less")
-				.Add("~/Content/bootstrapdefault/less/bootstrap.less")
+				//.Add("~/Content/bootstrapdefault/less/bootstrap.less")
+				.Add("~/Content/bootstrap.css")
 			)
 		@Helpers.BundleJs("~/adminlayout#.js", x =>x
 				.Add("~/Scripts/jquery-1.7.2.js")
+				.Add("~/Scripts/jquery-ui.min.js")
 				.Add("~/Scripts/angular.js")
 				.Add("~/Scripts/angular-resource.js")
+				.Add("~/Scripts/angular-ui.js")
+				.Add("~/Scripts/angular-ui-ext.js")
+				.Add("~/Scripts/select2/select2.js")
 				.Add("~/Scripts/angular-templates-ext.coffee")
 				.Add("~/Scripts/Admin")
 				

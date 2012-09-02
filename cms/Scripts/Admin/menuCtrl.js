@@ -1,31 +1,47 @@
-var menusCtrl = function($scope, $http, $rootScope, appSettings, apimenu) {
-    menusCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings"];
-
-	$scope.$on("setCultureEvent", function() {
-	    console.log("menuCtrl set culture");
-	});
-
-
-	$scope.data = apimenu.list({ }, function(d) {
-		console.log(d);
-	});
-
-	$scope.addclick = function() {
-		$scope.createNew = true;
-	};
-	$scope.createNewCancel = function() {
-		$scope.createNew = false;
-	};
-	
-};
-
-var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams) {
-	menuCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings", "$routeParams"]
-	console.log("kasjvbdasjkbdjk")
+var menusCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, GridApi) {
+	menusCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings"];
 
 	$scope.$on("setCultureEvent", function () {
 		console.log("menuCtrl set culture");
 	});
+
+	$scope.data = apimenu.list({ }, function (d) {
+		console.log(d);
+	});
+	$scope.addclick = function () {
+		$scope.createNew = true;
+	};
+	$scope.createNewCancel = function () {
+		$scope.createNew = false;
+	};
+};
+
+var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams, GridApi) {
+	menuCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings", "$routeParams"];
+
+
+	$scope.$on("setCultureEvent", function () {
+		console.log("menuCtrl set culture");
+	});
+	$scope.showAdd = function (item) {
+		item.showAdd = 1;
+	};
+	$scope.hideAdd = function (item) {
+		item.showAdd = 0;
+	};
+	$scope.grids = GridApi.grids({}, function (data) {
+
+	});
+	$scope.add = function (item) {
+		console.log("add", item);
+		var menuitem = {
+			Line: 0,
+			ParentId: item.Id,
+			Type : "gridpagereference"
+		};
+
+	};
+
 
 	var params = { id: $routeParams.Id };
 
@@ -41,5 +57,4 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	$scope.getGrid();
 
 
-
-} 
+};

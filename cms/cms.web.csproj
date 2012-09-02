@@ -177,6 +177,7 @@
     <Content Include="Scripts\angular-templates-ext.js">
       <DependentUpon>angular-templates-ext.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\angular-ui.js" />
     <Content Include="Scripts\Apps\defaults\_gridElementScripts\novinka.js">
       <DependentUpon>novinka.coffee</DependentUpon>
     </Content>
@@ -219,6 +220,11 @@
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\colorPicker_src.js" />
+    <Content Include="Scripts\select2\select2.css" />
+    <Content Include="Scripts\select2\select2.js" />
+    <Content Include="Scripts\select2\select2.png" />
+    <Content Include="Scripts\select2\spinner.gif" />
+    <Content Include="Scripts\tmp\dragdrop.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
@@ -294,6 +300,9 @@
     <Content Include="Views\Admin\_Layout_Grids.cshtml" />
     <Content Include="Views\client\test1\Index.cshtml" />
     <Content Include="Content\Apps\test1\StaticContent.html" />
+    <Content Include="Views\Shared\_MenuItemTmpl\Menuitem.cshtml" />
+    <Content Include="Views\Shared\_MenuItemTmpl\text_Edit.cshtml" />
+    <Content Include="Views\Shared\_MenuItemTmpl\text_View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
@@ -334,6 +343,7 @@
     <Content Include="Views\Shared\_GridElementTmpl\textlocalized_View.cshtml" />
     <Content Include="Views\Admin\template\menus.cshtml" />
     <Content Include="Views\Admin\template\menu.cshtml" />
+    <Content Include="Views\Admin\template\test.cshtml" />
     <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />

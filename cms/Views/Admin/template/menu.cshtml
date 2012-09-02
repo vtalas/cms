@@ -1,22 +1,69 @@
-﻿
-{{data.Name}}
+﻿{{data.Name}}
 
-<script type="text/ng-template"  id="tree_item_renderer.html">
-    <div gridelement="item" grid="data" ></div>
-    {{item.Id}}
+<script type="text/ng-template" id="tree_item_renderer.html">
+	<div menuitem="item" grid="data" class="menuitem"></div> 
+	<ul ui-sortable ui-options="{ connectWith: 'ul'}" ng:model="item.Children" >
+        <li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'"></li>
 
-	<ul>
-        <li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'">
+		<li ng-show="item.showAdd" ng-hide="!item.showAdd">
+			<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
+				<option></option>
+				<option ng-repeat="g in grids" value="three" value="{{g.Id}}">{{g.Name}}</option>
+			</select>
+			<button ng-click="hideAdd(item)">cancel</button>
+			<button ng-click="add(item)">OK</button>
 		</li>
+		<li ng-show="!item.showAdd && item.Children.length > 0" ng-click="showAdd(item)" style="color:#eee" class="ui-sortable-disabled menuitem">přidat</li>
+
     </ul>
 </script>
 
-
-<style type="text/css">
+<style>
+	.ui-state-highlight {
+		border-bottom: 1px solid red;
+		width: 100%;
+		height: 0px;
+	}
+	.menuitem {
+		display: inline-block;
+		border: 1px solid gray;
+		padding: 10px;
+		margin-top: 4px;
+		margin-bottom: 4px;
+	}
+</style>
+<style>
 	
+
 </style>
 
-<ul >
-    <li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'"></li>
-</ul>
-​
+
+<div class="row-fluid">
+	<div class="span4">
+
+		<ul ui-sortable ui-options="{ connectWith: 'ul'}" ng:model="data.Children" class="xxx">
+			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'"></li>
+
+			<li ng-show="data.showAdd" ng-hide="!data.showAdd">
+				<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
+					<option></option>
+					<option ng-repeat="g in grids" value="three" value="{{g.Id}}">{{g.Name}}</option>
+				</select>
+				<button ng-click="hideAdd(data)">cancel</button>
+				<button ng-click="add()">OK</button>
+			</li>
+			<li ng-show="!data.showAdd" ng-click="showAdd(data)" style="color: #eee" class="ui-sortable-disabled menuitem">přidat</li>
+		</ul>
+	
+	</div>
+	<div class="span6">
+		
+		<ul>
+			<li ng-repeat="g in grids" >
+				<div class="menuitem draggable" ui-draggable ng-model="g">{{g.Name}}</div>
+			</li>
+		</ul>
+	
+	</div>
+</div>
+
