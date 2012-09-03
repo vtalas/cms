@@ -4,7 +4,6 @@
 	<div menuitem="item" grid="data" class="menuitem"></div> 
 	<ul ui-sortable ui-options="{ connectWith: 'ul'}" ng:model="item.Children" >
         <li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'"></li>
-
 		<li ng-show="item.showAdd" ng-hide="!item.showAdd">
 			<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
 				<option></option>
@@ -31,12 +30,8 @@
 		margin-top: 4px;
 		margin-bottom: 4px;
 	}
-</style>
-<style>
 	
-
 </style>
-
 
 <div class="row-fluid">
 	<div class="span4">
@@ -60,10 +55,20 @@
 		
 		<ul>
 			<li ng-repeat="g in grids" >
-				<div class="menuitem draggable" ui-draggable ng-model="g">{{g.Name}}</div>
+				<div class="menuitem draggable" ui-draggablehtml ng-model="g" draggable="true">{{g.Name}}</div>
 			</li>
 		</ul>
 	
 	</div>
 </div>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function (event) {
+		$(".xxx").click(function (e) {
+
+		});
+	});
+</script>
 

@@ -38,3 +38,23 @@ angular.module('ui.directives').directive('uiDraggable', [
 		};
 	}
 ]);
+	angular.module('ui.directives').directive('uiDraggablehtml', [
+	'ui.config', function (uiConfig) {
+		var options;
+		options = {};
+		if (uiConfig.draggablehtml !== null) {
+			angular.extend(options, uiConfig.draggablehtml);
+		}
+		return {
+			require: '?ngModel',
+			link: function (scope, element, attrs, ngModel) {
+				var onStart, onUpdate, opts, _start, _update;
+				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
+				$(element).on("dragstart", function (e) {
+					console.log("dragstart", $(this));
+					opts.ngstart(e, scope);
+				});
+			}
+		};
+	}
+]);

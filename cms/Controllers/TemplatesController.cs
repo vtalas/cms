@@ -5,6 +5,16 @@ namespace cms.Controllers
 {
 	public class TemplatesController : Controller
 	{
+		public ActionResult Index(string id)
+		{
+			return View(id);
+		}
+
+		public ActionResult get(string template)
+		{
+			return View(template);
+		}
+
 		public ActionResult GridElementTmpl(string type, string skin)
 		{
 			//TODO: type_edit.cshtml, view.cshtml ... melo by to byt nejak lip

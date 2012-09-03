@@ -4,6 +4,11 @@ module.value('ui.config', {
 	select2: {
 		allowClear: true
 	},
+	draggablehtml: {
+		ngstart: function (e, scope) {
+			console.log("xxx",scope);
+		}
+	},
 	draggable: {
 		revert: "invalid",
 		helper: "clone",
