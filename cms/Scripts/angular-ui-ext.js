@@ -51,8 +51,32 @@ angular.module('ui.directives').directive('uiDraggable', [
 				var onStart, onUpdate, opts, _start, _update;
 				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 				$(element).on("dragstart", function (e) {
-					console.log("dragstart", $(this));
-					opts.ngstart(e, scope);
+					opts.ngstart(e, scope, ngModel.$modelValue);
+				});
+			}
+		};
+	}
+]);
+	angular.module('ui.directives').directive('uiDropableHtml', [
+	'ui.config', function (uiConfig) {
+		var options;
+		options = {};
+		if (uiConfig.draggablehtml !== null) {
+			angular.extend(options, uiConfig.draggablehtml);
+		}
+		return {
+			require: '?ngModel',
+			link: function (scope, element, attrs, ngModel) {
+				var onStart, onUpdate, opts, _start, _update;
+				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
+				$(element).on("dragover", function (e) {
+					e.stopPropagation();
+					e.preventDefault();
+					//opts.ngstart(e, scope);
+				});
+				$(element).on("drop", function (e) {
+					console.log("drop ui", scope);
+					opts.ngdrop(e, scope);
 				});
 			}
 		};

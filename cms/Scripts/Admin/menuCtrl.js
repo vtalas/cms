@@ -23,6 +23,7 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	$scope.$on("setCultureEvent", function () {
 		console.log("menuCtrl set culture");
 	});
+
 	$scope.showAdd = function (item) {
 		item.showAdd = 1;
 	};
@@ -37,7 +38,7 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 		var menuitem = {
 			Line: 0,
 			ParentId: item.Id,
-			Type : "gridpagereference"
+			Type: "gridpagereference"
 		};
 
 	};

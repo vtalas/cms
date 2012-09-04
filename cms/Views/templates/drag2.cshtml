@@ -1,0 +1,131 @@
+﻿@{
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+		
+}
+
+<style>
+	.ui-state-highlight {
+		border-bottom: 1px solid red;
+		width: 100%;
+		height: 0px;
+	}
+	.menuitem {
+		display: inline-block;
+		border: 1px solid gray;
+		padding: 10px;
+	}
+	
+	.column {
+		background-color: #aaa;
+		width: 100%;
+		height: 100px;
+	}
+	.xx {
+		background-color: #eee;
+	}
+	
+	.dragover {
+		background-color: red;
+		height: 100px; 
+	}
+	#columns {
+		width: 100px;
+		padding: 100px;
+	}
+	.dropplaceholder {
+		width: 100%;
+	}
+	
+	.xx {
+		border: 1px solid black;
+	}
+	
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function (event) {
+		$(".dropable").on("dragover", function (e) {
+			e.stopPropagation();
+			e.preventDefault();
+			console.log("dragover");
+		});
+		$(".dropable").on("drop", function (e) {
+			e.stopPropagation();
+			e.preventDefault();
+			console.log("drop", $(this));
+		});
+	});
+</script>
+
+
+
+
+<ul style="width: 300px;">
+<li class="dropable">...</li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div>
+		<ul>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		</ul>
+	</li>
+<li class="dropable">...</li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div>
+<li class="dropable">...</li>
+	<ul>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+	</ul>
+	</li>
+<li class="dropable">...</li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+<li class="dropable">...</li>
+</ul>
+
+
+@*
+<ul style="width: 300px;">
+	<li><div class="xx" draggable="true">AAAAAAAA</div>
+		<ul>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		</ul>
+	</li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div>
+	<ul>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+		<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+	</ul>
+	</li>
+	<li><div class="xx" draggable="true">AAAAAAAA</div></li>
+</ul>
+*@

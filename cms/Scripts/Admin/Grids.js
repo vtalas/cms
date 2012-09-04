@@ -5,8 +5,12 @@ module.value('ui.config', {
 		allowClear: true
 	},
 	draggablehtml: {
-		ngstart: function (e, scope) {
-			console.log("xxx",scope);
+		ngstart: function (e, scope, item) {
+			scope.$root.draggeditem = item;
+			console.log("draggeditem", item);
+		},
+		ngdrop: function (e, scope) {
+			console.log("drop ng - draggeditem", scope.$root.draggeditem);
 		}
 	},
 	draggable: {

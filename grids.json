@@ -1,0 +1,71 @@
+[
+  {
+    "Id": "aa8ee05e-1115-480b-9ab7-a3ab3c0f6643",
+    "Name": "grid Bez elementu",
+    "Home": false,
+    "Category": null,
+    "ResourceDto": {
+      "Id": 2,
+      "Value": "bezelementu"
+    },
+    "Lines": []
+  },
+  {
+    "Id": "ab8ee05e-1115-480b-9ab7-a3ab3c0f6643",
+    "Name": "gallery 1 ",
+    "Home": false,
+    "Category": null,
+    "ResourceDto": {
+      "Id": 3,
+      "Value": "s"
+    },
+    "Lines": []
+  },
+  {
+    "Id": "ac8ee05e-1115-480b-9ab7-a3ab3c0f6643",
+    "Name": "gallery 1 sub 1",
+    "Home": false,
+    "Category": null,
+    "ResourceDto": {
+      "Id": 4,
+      "Value": "ss1"
+    },
+    "Lines": []
+  },
+  {
+    "Id": "bc8ee05e-1115-480b-9ab7-a3ab3c0f6643",
+    "Name": "gallery 1 sub 2 ",
+    "Home": false,
+    "Category": null,
+    "ResourceDto": {
+      "Id": 5,
+      "Value": "ss2"
+    },
+    "Lines": []
+  },
+  {
+    "Id": "c78ee05e-1115-480b-9ab7-a3ab3c0f6643",
+    "Name": "test page",
+    "Home": false,
+    "Category": null,
+    "ResourceDto": {
+      "Id": 1,
+      "Value": "linkTestPage"
+    },
+    "Lines": [
+      [
+        {
+          "Id": "8af91a66-26e5-4932-99a3-8a891b3cf621",
+          "Line": 0,
+          "Width": 12,
+          "Position": 0,
+          "Content": "aaaaaaaa aaa",
+          "Type": "text",
+          "Skin": null,
+          "ParentId": "",
+          "ResourcesLoc": {}
+        }
+      ]
+    ]
+  }
+]

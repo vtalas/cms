@@ -1,0 +1,63 @@
+{
+  "Id": "eeeee05e-1115-480b-9ab7-a3ab3c0f6643",
+  "Name": "test menu",
+  "Home": false,
+  "Category": "Menu",
+  "ResourceDto": {
+    "Id": 0,
+    "Value": null
+  },
+  "Children": [
+    {
+      "Id": "e809f9ca-2b97-402c-a5c6-354db1af1990",
+      "Line": 0,
+      "Content": "",
+      "Type": "text",
+      "Skin": null,
+      "ParentId": "",
+      "Children": [],
+      "ResourcesLoc": {}
+    },
+    {
+      "Id": "f0136ee3-caf7-4449-b325-6264d912e415",
+      "Line": 0,
+      "Content": "",
+      "Type": "text",
+      "Skin": null,
+      "ParentId": "",
+      "Children": [
+        {
+          "Id": "b888466a-7758-4e32-8481-6e174bffeb59",
+          "Line": 0,
+          "Content": "",
+          "Type": "text",
+          "Skin": null,
+          "ParentId": "f0136ee3-caf7-4449-b325-6264d912e415",
+          "Children": [],
+          "ResourcesLoc": {}
+        },
+        {
+          "Id": "3b77bc96-02d6-489d-bb86-d1ecf1a88095",
+          "Line": 0,
+          "Content": "",
+          "Type": "text",
+          "Skin": null,
+          "ParentId": "f0136ee3-caf7-4449-b325-6264d912e415",
+          "Children": [],
+          "ResourcesLoc": {}
+        }
+      ],
+      "ResourcesLoc": {}
+    },
+    {
+      "Id": "693edd71-1d90-41bb-8178-8ed5bf0c94a6",
+      "Line": 0,
+      "Content": "",
+      "Type": "text",
+      "Skin": null,
+      "ParentId": "",
+      "Children": [],
+      "ResourcesLoc": {}
+    }
+  ]
+}
