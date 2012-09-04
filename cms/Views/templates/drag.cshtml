@@ -35,6 +35,12 @@
 	.dropplaceholder {
 		width: 100%;
 	}
+	.column, #columns {
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+	}
 	
 </style>
 
@@ -64,12 +70,20 @@
 
 
 <script type="text/javascript">
+
 	$(document).ready(function (event) {
+
+
 		var dragoverClass;
 		dragoverClass = "dragover";
 
 		$(".column").on("dragstart", function (e) {
-			console.log("dragstart", $(this));
+			var event = e.originalEvent;
+			this.style.opacity = '0.4';
+
+			event.dataTransfer.effectAllowed = 'move';
+			//event.dataTransfer.setData('text/html', this.innerHTML);
+			console.log("dragstart", $(this), e);
 		});
 
 		$(".column").on("drag", function (e) {

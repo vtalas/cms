@@ -7,7 +7,7 @@
 	</div>
 	<li ui-dropable-html ng-show="item.Children.length > 0">placeholderen</li>
 
-	<ul ui-sortableXX ui-options="{ connectWith: 'ul'}" ng-model="item.Children" >
+	<ul >
 		<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
 		<li ui-dropable-html ng-show="item.Children.length > 0">placeholderen</li>
 		
@@ -45,7 +45,7 @@
 <div class="row-fluid">
 	<div class="span4">
 
-		<ul ui-sortableXX ui-options="{ connectWith: 'ul'}" ng:model="data.Children" class="xxx">
+		<ul class="xxx">
 			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'" ></li>
 			<li>placeholderpp</li>
 
