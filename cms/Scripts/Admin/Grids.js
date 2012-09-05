@@ -4,10 +4,7 @@ module.value('ui.config', {
 	select2: {
 		allowClear: true
 	},
-	draggablehtml: {
-		ngstart: function (e, uioptions, scope, draggedItem) {
-			scope.$root.draggeditem = draggedItem;
-		},
+	dropablehtml: {
 		ngdrop: function (e, uioptions, scope, placeholderitem) {
 			var collection,
 			    item,
@@ -22,11 +19,24 @@ module.value('ui.config', {
 			} else {
 				collection.splice(index, 0, item);
 			}
-			scope.$emit("itemad",item);
-			
+			scope.$emit("itemad", item);
+
 			scope.$apply();
 			scope.$root.draggeditem = {};
-
+		}
+	},
+	draggablehtml: {
+		pageslist: {
+			ngstart: function (e, uioptions, scope, draggedItem) {
+				scope.$root.draggeditem = draggedItem;
+				console.log("pageslist");
+			}
+		},
+		sortable: {
+			ngstart: function (e, uioptions, scope, draggedItem) {
+				scope.$root.draggeditem = draggedItem;
+				console.log("sortable");
+			}
 		}
 	},
 	draggable: {

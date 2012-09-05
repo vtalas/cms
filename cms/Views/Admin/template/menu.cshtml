@@ -2,7 +2,7 @@
 
 <script type="text/ng-template" id="tree_item_renderer.html">
 	<div ui-dropable-html ng-model="item" >XXXXXXXXXXXXXXXXXX</div>
-	<div ui-draggablehtml draggable="true" ng-model="item" ng-hide="item.hidden">
+	<div ui-draggablehtml="sortable" draggable="true" ng-model="item" ng-hide="item.hidden">
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
 	</div>
 	
@@ -58,7 +58,6 @@
 				<button ng-click="add()">OK</button>
 			</li>
 			<li ng-show="!data.showAdd" ng-click="showAdd(data)" style="color: #eee" class="ui-sortable-disabled menuitem">přidat</li>
-
 *@			
 		</ul>
 	
@@ -67,7 +66,7 @@
 		
 		<ul>
 			<li ng-repeat="g in grids" >
-				<div class="menuitem" ui-draggablehtml ng-model="g" draggable="true">{{g.Name}}.. {{g.Id}}</div>
+				<div class="menuitem" ui-draggablehtml="pageslist" ng-model="g" draggable="true">{{g.Name}}.. {{g.Id}}</div>
 			</li>
 		</ul>
 	
