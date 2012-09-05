@@ -177,6 +177,7 @@
     <Content Include="Scripts\angular-templates-ext.js">
       <DependentUpon>angular-templates-ext.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\angular-ui-ext.js" />
     <Content Include="Scripts\angular-ui.js" />
     <Content Include="Scripts\Apps\defaults\_gridElementScripts\novinka.js">
       <DependentUpon>novinka.coffee</DependentUpon>
@@ -303,6 +304,7 @@
     <Content Include="Views\Shared\_MenuItemTmpl\Menuitem.cshtml" />
     <Content Include="Views\Shared\_MenuItemTmpl\text_Edit.cshtml" />
     <Content Include="Views\Shared\_MenuItemTmpl\text_View.cshtml" />
+    <Content Include="Views\templates\drag2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />

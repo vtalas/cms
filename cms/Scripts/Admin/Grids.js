@@ -6,11 +6,32 @@ module.value('ui.config', {
 	},
 	draggablehtml: {
 		ngstart: function (e, scope, item) {
+
+			//			var event = e.originalEvent;
+			//			event.dataTransfer.effectAllowed = 'move';
+			//			//			item.hidden = true;
+			//			scope.$apply();
+
 			scope.$root.draggeditem = item;
-			console.log("draggeditem", item);
 		},
-		ngdrop: function (e, scope) {
-			console.log("drop ng - draggeditem", scope.$root.draggeditem);
+		ngdrop: function (e, scope, model) {
+
+			console.log(model)
+		
+			var collection = model === null ? scope.$parent.$collection : model.Children;
+
+			var item = scope.$root.draggeditem,
+				destinationafter = scope.$parent.item;
+
+			var index = collection.indexOf(destinationafter);
+
+			collection.splice(index, 0, item);
+
+			console.log(index, collection[0].Id, destinationafter)
+
+			scope.$apply();
+			scope.$root.draggeditem = {};
+
 		}
 	},
 	draggable: {

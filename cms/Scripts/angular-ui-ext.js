@@ -75,8 +75,10 @@ angular.module('ui.directives').directive('uiDraggable', [
 					//opts.ngstart(e, scope);
 				});
 				$(element).on("drop", function (e) {
-					console.log("drop ui", scope);
-					opts.ngdrop(e, scope);
+					if (ngModel) {
+						return opts.ngdrop(e, scope, ngModel.$modelValue);
+					}
+					return opts.ngdrop(e, scope, null);
 				});
 			}
 		};
