@@ -1,17 +1,17 @@
 ﻿{{data.Name}}
 
 <script type="text/ng-template" id="tree_item_renderer.html">
-	<li ui-dropable-html >placeholderenXXAAAAA {{item.Id}}  </li>
-
+	<div ui-dropable-html ng-model="item" >XXXXXXXXXXXXXXXXXX</div>
 	<div ui-draggablehtml draggable="true" ng-model="item" ng-hide="item.hidden">
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
 	</div>
-
-	<ul >
+	
+	<ul>
 		<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
-		<li ui-dropable-html ng-show="item.Children.length > 0" ng-model="item.Children">placeholder LAST </li>
 		
-		@*<li ng-show="item.showAdd" ng-hide="!item.showAdd">
+		@*
+		<li ui-dropable-html ng-show="item.Children.length > 0" ng-model="item.Children">placeholder LAST </li>
+		<li ng-show="item.showAdd" ng-hide="!item.showAdd">
 			<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
 				<option></option>
 				<option ng-repeat="g in grids" value="three" value="{{g.Id}}">{{g.Name}}</option>
@@ -19,10 +19,11 @@
 			<button ng-click="hideAdd(item)">cancel</button>
 			<button ng-click="add(item)">OK</button>
 		</li>
+		<li ng-show="!item.showAdd && item.Children.length > 0" ng-click="showAdd(item)" style="color:#eee" class="ui-sortable-disabled menuitem">přidat</li>
 		*@
 		
-		<li ng-show="!item.showAdd && item.Children.length > 0" ng-click="showAdd(item)" style="color:#eee" class="ui-sortable-disabled menuitem">přidat</li>
     </ul>
+	<div ui-dropable-html ng-show="$last " ui-config={last:true} >XXXXXXXXXXXXXXXXXX</div>
 
 </script>
 
@@ -47,9 +48,8 @@
 
 		<ul class="xxx">
 			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'" ></li>
-			<li ui-dropable-html ng-model="data.Children" >placeholder LAST 000 </li>
 
-@*			<li ng-show="data.showAdd" ng-hide="!data.showAdd">
+			@*			<li ng-show="data.showAdd" ng-hide="!data.showAdd">
 				<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
 					<option></option>
 					<option ng-repeat="g in grids" value="three" value="{{g.Id}}">{{g.Name}}</option>
@@ -57,7 +57,9 @@
 				<button ng-click="hideAdd(data)">cancel</button>
 				<button ng-click="add()">OK</button>
 			</li>
-*@			<li ng-show="!data.showAdd" ng-click="showAdd(data)" style="color: #eee" class="ui-sortable-disabled menuitem">přidat</li>
+			<li ng-show="!data.showAdd" ng-click="showAdd(data)" style="color: #eee" class="ui-sortable-disabled menuitem">přidat</li>
+
+*@			
 		</ul>
 	
 	</div>

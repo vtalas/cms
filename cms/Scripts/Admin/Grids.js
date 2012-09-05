@@ -5,30 +5,25 @@ module.value('ui.config', {
 		allowClear: true
 	},
 	draggablehtml: {
-		ngstart: function (e, scope, item) {
-
-			//			var event = e.originalEvent;
-			//			event.dataTransfer.effectAllowed = 'move';
-			//			//			item.hidden = true;
-			//			scope.$apply();
-
-			scope.$root.draggeditem = item;
+		ngstart: function (e, uioptions, scope, draggedItem) {
+			scope.$root.draggeditem = draggedItem;
 		},
-		ngdrop: function (e, scope, model) {
+		ngdrop: function (e, uioptions, scope, placeholderitem) {
+			var collection,
+			    item,
+			    index;
 
-			console.log(model)
-		
-			var collection = model === null ? scope.$parent.$collection : model.Children;
+			collection = scope.$parent.$collection;
+			item = scope.$root.draggeditem;
+			index = collection.indexOf(placeholderitem);
 
-			var item = scope.$root.draggeditem,
-				destinationafter = scope.$parent.item;
-
-			var index = collection.indexOf(destinationafter);
-
-			collection.splice(index, 0, item);
-
-			console.log(index, collection[0].Id, destinationafter)
-
+			if (placeholderitem === null || uioptions.last) {
+				collection.push(item);
+			} else {
+				collection.splice(index, 0, item);
+			}
+			scope.$emit("itemad",item);
+			
 			scope.$apply();
 			scope.$root.draggeditem = {};
 
@@ -168,7 +163,6 @@ module.directive("menuitem", function ($compile, GridApi, appSettings, menuItemT
 		controller: menuItemCtrl,
 		link: function (scope, iElement, tAttrs, controller) {
 			scope.gui = { edit: 0 };
-			console.log(scope.menuitem);
 			var sablona = menuItemTemplate(scope.menuitem.Type),
 			    compiled = $compile(sablona)(scope);
 			iElement.html(compiled);

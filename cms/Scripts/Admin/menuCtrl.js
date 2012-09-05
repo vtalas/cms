@@ -24,6 +24,10 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 		console.log("menuCtrl set culture");
 	});
 
+	$scope.$on("itemad", function (data, item) {
+		$scope.add(item);
+	});
+
 	$scope.showAdd = function (item) {
 		item.showAdd = 1;
 	};
@@ -47,6 +51,11 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	var params = { id: $routeParams.Id };
 
 	$scope.getGrid = function () {
+		$http({ method: 'GET', url: '/content/test/menu2.json' }).
+			success(function (data, status, headers, config) {
+				$scope.data = data;
+			});
+		return;
 		apimenu.get(params, function (data) {
 			$scope.data = data;
 			console.log(data);

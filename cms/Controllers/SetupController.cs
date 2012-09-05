@@ -1,10 +1,8 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Web.Mvc;
 using cms.data.EF;
 using System.Linq;
 using cms.data.EF.Initializers;
-using cms.data.Migrations;
 
 namespace cms.Controllers
 {
@@ -15,6 +13,7 @@ namespace cms.Controllers
 			Database.SetInitializer(new DropAndCreateTables());
 			using (var a = new EfContext())
 			{
+				
 				Response.Write(a.ApplicationSettings.ToList());
 			}
 			return View();
