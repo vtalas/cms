@@ -3,11 +3,12 @@
 <html>	
 	<head>
 		<title>@ViewBag.Title</title>
+		<link rel="stylesheet" type="text/css" href="/Content/bootstrapdefault/less/bootstrap.less" />
 		@Helpers.BundleCss("~/adminlayout#.css", x => x
 				.Add("~/Content/grid.css")
 				.Add("~/Scripts/select2/select2.css")
 				.Add("~/Content/admin.less")
-				//.Add("~/Content/bootstrapdefault/less/bootstrap.less")
+				.Add("~/Content/bootstrapdefault/less/bootstrap.less")
 				.Add("~/Content/bootstrap.css")
 			)
 		@Helpers.BundleJs("~/adminlayout#.js", x =>x

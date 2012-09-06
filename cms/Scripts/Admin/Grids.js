@@ -1,40 +1,70 @@
 var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui"]);
 
 module.value('ui.config', {
-	select2: {
-		allowClear: true
-	},
 	dropablehtml: {
 		pageslist: {
+			ngdragover: function (e, uiConfig, scope, ngModel, element) {
+				e.preventDefault();
+				e.stopPropagation();
+			},
 			ngdrop: function (e, uioptions, scope, placeholderitem) {
 				var collection,
-					item,
-					index;
-
+				    item;
+				
 				collection = scope.$parent.$collection;
 				item = scope.$root.draggeditem;
-				index = collection.indexOf(placeholderitem);
 
-				if (placeholderitem === null || uioptions.last) {
+
+				this.pushToIndexOrLast(item, collection, placeholderitem, uioptions.last);
+
+				scope.$emit("itemad", item);
+				scope.$apply();
+				scope.$root.draggeditem = {};
+			},
+			pushToIndexOrLast: function (item, collection, placeholderitem, islast) {
+				var index;
+
+				index = collection.indexOf(placeholderitem);
+				if (placeholderitem === null || islast || index === -1) {
 					collection.push(item);
 				} else {
 					collection.splice(index, 0, item);
 				}
-				scope.$emit("itemad", item);
-
-				item.hidden = 0;
-				scope.$apply();
-				scope.$root.draggeditem = {};
 			}
 		},
 		sortable: {
 			ngdragover: function (e, uiConfig, scope, ngModel, element) {
+				if (ngModel === scope.$root.draggeditem) {
+					return;
+				};
+				
 				e.preventDefault();
 				e.stopPropagation();
+				
 				element.css("border", "1px solid red");
 			},
 			ngdrop: function (e, uioptions, scope, placeholderitem) {
-				console.log("srotable drop[ ")
+				console.log("srotable drop ");
+				var collection,
+				    item;
+
+				collection = scope.$parent.$collection;
+				item = scope.$root.draggeditem;
+
+				this.pushToIndexOrLast(item, collection, placeholderitem, uioptions.last);
+				scope.$apply();
+				scope.$root.draggeditem = {};
+
+			},
+			pushToIndexOrLast: function (item, collection, placeholderitem, islast) {
+				var index;
+
+				index = collection.indexOf(placeholderitem);
+				if (placeholderitem === null || islast || index === -1) {
+					collection.push(item);
+				} else {
+					collection.splice(index, 0, item);
+				}
 			}
 		}
 	},
@@ -42,29 +72,28 @@ module.value('ui.config', {
 		pageslist: {
 			ngstart: function (e, uiConfig, scope, ngModel, element) {
 				scope.$root.dragging = true;
-				scope.$apply();
-				console.log("pageslist drag start");
+				e.originalEvent.dataTransfer.setData('object', ngModel);
+
+				console.log("pageslist drag start", e.originalEvent.dataTransfer);
+
 			}
 		},
 		sortable: {
-			ngstart: function (e, uioptions, scope, draggedItem) {
-				//				draggedItem.hidden = 1;
-				//				scope.$apply();
+			ngstart: function (e, uioptions, scope, draggedItem,element) {
+				var event = e.originalEvent;
+				event.dataTransfer.effectAllowed = 'move';
+				event.dataTransfer.setData('text/html', $("<b>aaa</b>").html());
+				console.log(event.dataTransfer.getData('text/html'))
 
-				//				scope.$parent.$collection.pop();
+				scope.$root.draggeditem.prdel = "aaa";
+
+				scope.$apply();
 				console.log("sortable drag start");
 			}
 		}
 	},
-	draggable: {
-		revert: "invalid",
-		helper: "clone",
-		connectToSortable: ".xxx"
-	},
-	sortable: {
-		placeholder: 'ui-state-highlight',
-		items: "li:not(.ui-sortable-disabled)",
-		forcePlaceholderSize: false
+	select2: {
+		allowClear: true
 	}
 });
 

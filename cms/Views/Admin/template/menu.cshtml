@@ -1,10 +1,11 @@
 ﻿{{data.Name}}  {{$root.dragging}}
 
+
+
 <script type="text/ng-template" id="tree_item_renderer.html">
 	<div ui-dropable-html="sortable,pageslist" ng-model="item" >sortable,pageslist</div>
-	<div ui-draggablehtml="sortable" draggable="true" ng-model="item" ng-hide="item.hidden">
+	<div ui-draggablehtml="sortable" draggable="true" ng-model="item" ng-hide="item.hidden" ng-class="item.prdel">
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
-	</div>
 	
 	<ul>
 		<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
@@ -24,10 +25,14 @@
 		
     </ul>
 	<div ui-dropable-html="sortable,pageslist" ng-show="$last " ui-config={last:true} >sortable</div>
+	</div>
 
 </script>
 
 <style>
+	.aaa {
+		color: red;
+	}
 	.ui-state-highlight {
 		border-bottom: 1px solid red;
 		width: 100%;
@@ -40,7 +45,6 @@
 		margin-top: 4px;
 		margin-bottom: 4px;
 	}
-	
 </style>
 
 <div class="row-fluid">

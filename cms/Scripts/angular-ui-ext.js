@@ -19,7 +19,6 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 					scope.$root.draggeditem = modelvalues;
 					scope.$root.draggeditem.namespace = namespace;
 					
-					console.log(scope.$root)
 					if (typeof (opts[namespace].ngstart) === "function") {
 						opts[namespace].ngstart(e, options, scope, modelvalues);
 					}
@@ -68,11 +67,11 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 						return opts[namespace].ngdragover(e, opts, scope, modelvalues, element);
 					}
 				});
-				
 				$(element).on("drop", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 					var namespace = getNamespace(scope, attrs);
+					console.log(namespace, opts[namespace])
 					if (namespace && typeof opts[namespace].ngdrop === "function") {
 						return opts[namespace].ngdrop(e, opts, scope, modelvalues);
 					}
