@@ -1,7 +1,7 @@
-﻿{{data.Name}}
+﻿{{data.Name}}  {{$root.dragging}}
 
 <script type="text/ng-template" id="tree_item_renderer.html">
-	<div ui-dropable-html ng-model="item" >XXXXXXXXXXXXXXXXXX</div>
+	<div ui-dropable-html="sortable,pageslist" ng-model="item" >sortable,pageslist</div>
 	<div ui-draggablehtml="sortable" draggable="true" ng-model="item" ng-hide="item.hidden">
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
 	</div>
@@ -23,7 +23,7 @@
 		*@
 		
     </ul>
-	<div ui-dropable-html ng-show="$last " ui-config={last:true} >XXXXXXXXXXXXXXXXXX</div>
+	<div ui-dropable-html="sortable,pageslist" ng-show="$last " ui-config={last:true} >sortable</div>
 
 </script>
 

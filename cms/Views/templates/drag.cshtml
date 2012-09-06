@@ -117,9 +117,10 @@
 			console.log("dragover");
 		});
 		$(".drop").on("drop", function (e) {
-			e.stopPropagation();
-			e.preventDefault();
 			console.log("drop", $(this));
+		});
+		$(".drop").on("dragend", function (e) {
+			console.log("dragendddd", $(this));
 		});
 
 
