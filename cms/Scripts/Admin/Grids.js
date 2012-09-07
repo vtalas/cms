@@ -10,7 +10,7 @@ module.value('ui.config', {
 			ngdrop: function (e, uioptions, scope, placeholderitem) {
 				var collection,
 				    item;
-				
+
 				collection = scope.$parent.$collection;
 				item = scope.$root.draggeditem;
 
@@ -37,10 +37,10 @@ module.value('ui.config', {
 				if (ngModel === scope.$root.draggeditem) {
 					return;
 				};
-				
+
 				e.preventDefault();
 				e.stopPropagation();
-				
+
 				element.css("border", "1px solid red");
 			},
 			ngdrop: function (e, uioptions, scope, placeholderitem) {
@@ -52,6 +52,8 @@ module.value('ui.config', {
 				item = scope.$root.draggeditem;
 
 				this.pushToIndexOrLast(item, collection, placeholderitem, uioptions.last);
+				scope.$root.draggeditem.prdel = "dropped";
+
 				scope.$apply();
 				scope.$root.draggeditem = {};
 
@@ -73,22 +75,22 @@ module.value('ui.config', {
 			ngstart: function (e, uiConfig, scope, ngModel, element) {
 				scope.$root.dragging = true;
 				e.originalEvent.dataTransfer.setData('object', ngModel);
-
 				console.log("pageslist drag start", e.originalEvent.dataTransfer);
-
 			}
 		},
 		sortable: {
-			ngstart: function (e, uioptions, scope, draggedItem,element) {
+			ngstart: function (e, uioptions, scope, draggedItem, element) {
 				var event = e.originalEvent;
+
 				event.dataTransfer.effectAllowed = 'move';
 				event.dataTransfer.setData('text/html', $("<b>aaa</b>").html());
 				console.log(event.dataTransfer.getData('text/html'))
 
-				scope.$root.draggeditem.prdel = "aaa";
+				scope.$root.draggeditem.prdel = "dragged";
+
 
 				scope.$apply();
-				console.log("sortable drag start");
+				console.log("sortable drag start", draggedItem.Id);
 			}
 		}
 	},

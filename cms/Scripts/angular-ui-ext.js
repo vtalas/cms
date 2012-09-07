@@ -7,25 +7,37 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 		}
 		return {
 			require: '?ngModel',
+			controller : function ($scope) {
+				console.log("aaaaaaaaaaaa", $scope, this)
+				
+//				$scope.$watch(function (s, a) {
+//			//		var dragged = ngModel.$modelValue;
+//					return dragged.prdel;
+
+//				}, function (newvalue, oldvalue) {
+//					console.log("!!watch ", newvalue, oldvalue);
+//				});
+			},
 			link: function (scope, element, attrs, ngModel) {
 				var opts,
 					namespace;
 				namespace = attrs.uiDraggablehtml;
 				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
-				
+				console.log(ngModel)
+
 				$(element).on("dragstart", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
-					
+
 					scope.$root.draggeditem = modelvalues;
 					scope.$root.draggeditem.namespace = namespace;
-					
+
 					if (typeof (opts[namespace].ngstart) === "function") {
 						opts[namespace].ngstart(e, options, scope, modelvalues);
 					}
 				});
 				$(element).on("dragend", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
-				
+
 					if (typeof (opts[namespace].ngdragend) === "function") {
 						opts[namespace].ngdragend(e, options, scope, modelvalues, element);
 					}
@@ -67,6 +79,7 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 						return opts[namespace].ngdragover(e, opts, scope, modelvalues, element);
 					}
 				});
+				
 				$(element).on("drop", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
 
