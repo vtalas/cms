@@ -6,7 +6,6 @@
 	<div ui-dropable-html="sortable,pageslist" ng-model="item" >sortable,pageslist</div>
 	<div ui-draggablehtml="sortable" draggable="true" ng-model="item" ng-hide="item.hidden" ng-class="item.prdel">
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
-	
 	<ul>
 		<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
 		

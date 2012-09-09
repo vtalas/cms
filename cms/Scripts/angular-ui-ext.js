@@ -1,3 +1,12 @@
+var xxx = function (sourceItem, sourceScope,  destinationItem, destinationScope) {
+	return {
+		sourceItem: sourceItem,
+		sourceScope: sourceScope,
+		destinationItem: destinationItem,
+		destinationScope: destinationScope
+	};
+};
+
 angular.module('ui.directives').directive('uiDraggablehtml', [
 	'ui.config', function (uiConfig) {
 		var options;
@@ -7,32 +16,21 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 		}
 		return {
 			require: '?ngModel',
-			controller : function ($scope) {
-				console.log("aaaaaaaaaaaa", $scope, this)
-				
-//				$scope.$watch(function (s, a) {
-//			//		var dragged = ngModel.$modelValue;
-//					return dragged.prdel;
-
-//				}, function (newvalue, oldvalue) {
-//					console.log("!!watch ", newvalue, oldvalue);
-//				});
-			},
 			link: function (scope, element, attrs, ngModel) {
 				var opts,
 					namespace;
 				namespace = attrs.uiDraggablehtml;
 				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
-				console.log(ngModel)
 
 				$(element).on("dragstart", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 					scope.$root.draggeditem = modelvalues;
+					scope.$root.draggedScope = scope;
 					scope.$root.draggeditem.namespace = namespace;
 
 					if (typeof (opts[namespace].ngstart) === "function") {
-						opts[namespace].ngstart(e, options, scope, modelvalues);
+						opts[namespace].ngstart(e, options, element, xxx(modelvalues,scope, modelvalues, scope));
 					}
 				});
 				$(element).on("dragend", function (e) {
@@ -73,20 +71,19 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 
 				$(element).on("dragover", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
-
+					
 					var namespace = getNamespace(scope, attrs);
 					if (namespace && typeof opts[namespace].ngdragover === "function") {
-						return opts[namespace].ngdragover(e, opts, scope, modelvalues, element);
+						return opts[namespace].ngdragover(e, opts, element, xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope));
 					}
 				});
 				
 				$(element).on("drop", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
-
 					var namespace = getNamespace(scope, attrs);
-					console.log(namespace, opts[namespace])
+					
 					if (namespace && typeof opts[namespace].ngdrop === "function") {
-						return opts[namespace].ngdrop(e, opts, scope, modelvalues);
+						return opts[namespace].ngdrop(e, opts, element, xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope));
 					}
 				});
 			}
