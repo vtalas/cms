@@ -24,8 +24,13 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 		console.log("menuCtrl set culture");
 	});
 
-	$scope.$on("itemad", function (data, item) {
-		$scope.add(item);
+	$scope.$on("sortablxxe-dragover", function (data, item) {
+		var element = $(item.element);
+		element.css("border", "1px solid red");
+	});
+
+	$scope.$on("drop", function (data, item) {
+		console.log(item);
 	});
 
 	$scope.showAdd = function (item) {

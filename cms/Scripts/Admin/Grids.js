@@ -3,22 +3,22 @@ var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui"]);
 module.value('ui.config', {
 	dropablehtml: {
 		pageslist: {
-			ngdragover: function (e, uiConfig, scope, ngModel, element) {
+			ngstart: function (e, uiConfig, scope, ngModel, element) {
+
+			},
+			ngdragover: function (e, uioptions, element, xxx) {
 				e.preventDefault();
 				e.stopPropagation();
+				xxx.destinationScope.$emit("pageslist-dragover", { element: element, destinationItem: xxx.destinationItem });
 			},
-			ngdrop: function (e, uioptions, scope, placeholderitem) {
+			ngdrop: function (e, uioptions, element, xxx) {
 				var collection,
 				    item;
-
-				collection = scope.$parent.$collection;
-				item = scope.$root.draggeditem;
-
-				this.pushToIndexOrLast(item, collection, placeholderitem, uioptions.last);
-
-				scope.$emit("itemad", item);
-				scope.$apply();
-				scope.$root.draggeditem = {};
+				collection = xxx.destinationScope.$parent.$collection;
+				item = xxx.sourceItem;
+				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
+				xxx.destinationScope.$apply();
+				xxx.destinationScope.$emit("pageslist-drop", { element: element, destinationItem: xxx.destinationItem });
 			},
 			pushToIndexOrLast: function (item, collection, placeholderitem, islast) {
 				var index;
@@ -32,12 +32,16 @@ module.value('ui.config', {
 			}
 		},
 		sortable: {
+			ngstart: function (e, uiConfig, scope, ngModel, element) {
+				e.stopPropagation();
+			},
 			ngdragover: function (e, uiConfig, element, xxx) {
 				if (xxx.sourceItem === xxx.destinationItem) {
 					return;
 				};
 				e.preventDefault();
 				e.stopPropagation();
+				xxx.destinationScope.$emit("sortable-dragover", { element: element, destinationItem: xxx.destinationItem });
 			},
 			ngdrop: function (e, uioptions, element, xxx) {
 				var destCollection,
@@ -49,8 +53,8 @@ module.value('ui.config', {
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
-				xxx.sourceItem.prdel = "dropped";
 				xxx.destinationScope.$apply();
+				xxx.destinationScope.$emit("sortable-drop", { element: element, destinationItem: xxx.destinationItem });
 			},
 			removeSource: function (item, collection) {
 				var index;
@@ -66,18 +70,6 @@ module.value('ui.config', {
 				} else {
 					collection.splice(index, 0, item);
 				}
-			}
-		}
-	},
-	draggablehtml: {
-		pageslist: {
-			ngstart: function (e, uiConfig, scope, ngModel, element) {
-			
-			}
-		},
-		sortable: {
-			ngstart: function (e, uioptions, element, xxx) {
-				e.stopPropagation();
 			}
 		}
 	},

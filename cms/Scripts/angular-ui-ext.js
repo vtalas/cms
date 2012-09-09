@@ -22,24 +22,24 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 				namespace = attrs.uiDraggablehtml;
 				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 
-				$(element).on("dragstart", function (e) {
-					var modelvalues = ngModel ? ngModel.$modelValue : null;
+//				$(element).on("dragstart", function (e) {
+//					var modelvalues = ngModel ? ngModel.$modelValue : null;
 
-					scope.$root.draggeditem = modelvalues;
-					scope.$root.draggedScope = scope;
-					scope.$root.draggeditem.namespace = namespace;
+//					scope.$root.draggeditem = modelvalues;
+//					scope.$root.draggedScope = scope;
+//					scope.$root.draggeditem.namespace = namespace;
 
-					if (typeof (opts[namespace].ngstart) === "function") {
-						opts[namespace].ngstart(e, options, element, xxx(modelvalues,scope, modelvalues, scope));
-					}
-				});
-				$(element).on("dragend", function (e) {
-					var modelvalues = ngModel ? ngModel.$modelValue : null;
+//					if (typeof (opts[namespace].ngstart) === "function") {
+//						opts[namespace].ngstart(e, options, element, xxx(modelvalues,scope, modelvalues, scope));
+//					}
+//				});
+//				$(element).on("dragend", function (e) {
+//					var modelvalues = ngModel ? ngModel.$modelValue : null;
 
-					if (typeof (opts[namespace].ngdragend) === "function") {
-						opts[namespace].ngdragend(e, options, scope, modelvalues, element);
-					}
-				});
+//					if (typeof (opts[namespace].ngdragend) === "function") {
+//						opts[namespace].ngdragend(e, options, scope, modelvalues, element);
+//					}
+//				});
 			}
 		};
 	}
@@ -71,21 +71,45 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 
 				$(element).on("dragover", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
-					
+
 					var namespace = getNamespace(scope, attrs);
 					if (namespace && typeof opts[namespace].ngdragover === "function") {
 						return opts[namespace].ngdragover(e, opts, element, xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope));
 					}
 				});
-				
+
 				$(element).on("drop", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
 					var namespace = getNamespace(scope, attrs);
-					
+
 					if (namespace && typeof opts[namespace].ngdrop === "function") {
 						return opts[namespace].ngdrop(e, opts, element, xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope));
 					}
 				});
+
+				$(element).on("dragstart", function (e) {
+					var modelvalues = ngModel ? ngModel.$modelValue : null;
+
+					scope.$root.draggeditem = modelvalues;
+					scope.$root.draggedScope = scope;
+					scope.$root.draggeditem.namespace = attrs.uiDropableHtml;
+
+					//var namespace = getNamespace(scope, attrs);
+					var namespace = attrs.uiDropableHtml;
+
+					if (typeof (opts[namespace].ngstart) === "function") {
+						opts[namespace].ngstart(e, options, element, xxx(modelvalues, scope, modelvalues, scope));
+					}
+				});
+				$(element).on("dragend", function (e) {
+					var modelvalues = ngModel ? ngModel.$modelValue : null;
+					var namespace = getNamespace(scope, attrs);
+
+					if (typeof (opts[namespace].ngdragend) === "function") {
+						opts[namespace].ngdragend(e, options, scope, modelvalues, element);
+					}
+				});
+
 			}
 		};
 	}
