@@ -24,8 +24,13 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 		console.log("menuCtrl set culture");
 	});
 
-	$scope.$on("itemad", function (data, item) {
+	$scope.$on("drop", function (data, item) {
+		console.log("drop-menujs");
 		$scope.add(item);
+	});
+
+	$scope.$on("dragover", function (data, item) {
+		console.log("dragover-menujs", item);
 	});
 
 	$scope.showAdd = function (item) {

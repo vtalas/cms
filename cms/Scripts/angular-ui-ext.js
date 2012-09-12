@@ -1,9 +1,10 @@
-var xxx = function (sourceItem, sourceScope,  destinationItem, destinationScope) {
+var xxx = function (sourceItem, sourceScope,  destinationItem, destinationScope, namespace) {
 	return {
 		sourceItem: sourceItem,
 		sourceScope: sourceScope,
 		destinationItem: destinationItem,
-		destinationScope: destinationScope
+		destinationScope: destinationScope,
+		namespace : namespace
 	};
 };
 
@@ -30,14 +31,14 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 					scope.$root.draggeditem.namespace = namespace;
 
 					if (typeof (opts[namespace].ngstart) === "function") {
-						opts[namespace].ngstart(e, options, element, xxx(modelvalues,scope, modelvalues, scope));
+						opts[namespace].ngstart(e, options, element, xxx(modelvalues, scope, modelvalues, scope, namespace));
 					}
 				});
 				$(element).on("dragend", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 					if (typeof (opts[namespace].ngdragend) === "function") {
-						opts[namespace].ngdragend(e, options, scope, modelvalues, element);
+						opts[namespace].ngdragend(e, options, element, xxx(modelvalues, scope, modelvalues, scope, namespace));
 					}
 				});
 			}
@@ -71,19 +72,21 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 
 				$(element).on("dragover", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
-					
+
 					var namespace = getNamespace(scope, attrs);
 					if (namespace && typeof opts[namespace].ngdragover === "function") {
-						return opts[namespace].ngdragover(e, opts, element, xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope));
+						var obj = xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope, namespace);
+						return opts[namespace].ngdragover(e, opts, element, obj);
 					}
 				});
-				
+
 				$(element).on("drop", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null;
 					var namespace = getNamespace(scope, attrs);
-					
+
 					if (namespace && typeof opts[namespace].ngdrop === "function") {
-						return opts[namespace].ngdrop(e, opts, element, xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope));
+						var obj = xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope, namespace);
+						return opts[namespace].ngdrop(e, opts, element, opts, obj);
 					}
 				});
 			}

@@ -1,24 +1,30 @@
 var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui"]);
 
+//var uiConfigUtils = {
+//	emitEventToScope : function(scope, name, data) {
+//		scope.$emit(name, { element: element, destinationItem: xxx.destinationItem });
+//	}	
+//};
+
 module.value('ui.config', {
+
 	dropablehtml: {
 		pageslist: {
-			ngdragover: function (e, uiConfig, scope, ngModel, element) {
+			ngdragover: function (e, uioptions, element, xxx) {
 				e.preventDefault();
 				e.stopPropagation();
+				xxx.destinationScope.$emit("dragover", xxx);
 			},
-			ngdrop: function (e, uioptions, scope, placeholderitem) {
+			ngdrop: function (e, uioptions, element, xxx) {
 				var collection,
 				    item;
+				collection = xxx.destinationScope.$parent.$collection;
+				item = xxx.sourceItem;
 
-				collection = scope.$parent.$collection;
-				item = scope.$root.draggeditem;
+				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
 
-				this.pushToIndexOrLast(item, collection, placeholderitem, uioptions.last);
-
-				scope.$emit("itemad", item);
-				scope.$apply();
-				scope.$root.draggeditem = {};
+				xxx.destinationScope.$apply();
+				xxx.destinationScope.$emit("drop", xxx);
 			},
 			pushToIndexOrLast: function (item, collection, placeholderitem, islast) {
 				var index;
@@ -38,6 +44,7 @@ module.value('ui.config', {
 				};
 				e.preventDefault();
 				e.stopPropagation();
+				xxx.destinationScope.$emit("dragover", xxx);
 			},
 			ngdrop: function (e, uioptions, element, xxx) {
 				var destCollection,
@@ -51,6 +58,7 @@ module.value('ui.config', {
 
 				xxx.sourceItem.prdel = "dropped";
 				xxx.destinationScope.$apply();
+				xxx.destinationScope.$emit("drop", xxx);
 			},
 			removeSource: function (item, collection) {
 				var index;
@@ -72,7 +80,7 @@ module.value('ui.config', {
 	draggablehtml: {
 		pageslist: {
 			ngstart: function (e, uiConfig, scope, ngModel, element) {
-			
+
 			}
 		},
 		sortable: {
