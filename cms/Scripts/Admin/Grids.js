@@ -11,6 +11,9 @@ module.value('ui.config', {
 	dropablehtml: {
 		pageslist: {
 			ngdragover: function (e, uioptions, element, xxx) {
+
+			},
+			ngdragover: function (e, uioptions, element, xxx) {
 				e.preventDefault();
 				e.stopPropagation();
 				xxx.destinationScope.$emit("dragover", xxx);
@@ -20,9 +23,8 @@ module.value('ui.config', {
 				    item;
 				collection = xxx.destinationScope.$parent.$collection;
 				item = xxx.sourceItem;
-
 				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
-
+				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
 				xxx.destinationScope.$apply();
 				xxx.destinationScope.$emit("drop", xxx);
 			},
@@ -38,6 +40,9 @@ module.value('ui.config', {
 			}
 		},
 		sortable: {
+			ngstart: function (e, uiConfig, scope, ngModel, element) {
+				e.stopPropagation();
+			},
 			ngdragover: function (e, uiConfig, element, xxx) {
 				if (xxx.sourceItem === xxx.destinationItem) {
 					return;
@@ -56,7 +61,6 @@ module.value('ui.config', {
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
-				xxx.sourceItem.prdel = "dropped";
 				xxx.destinationScope.$apply();
 				xxx.destinationScope.$emit("drop", xxx);
 			},
@@ -77,18 +81,7 @@ module.value('ui.config', {
 			}
 		}
 	},
-	draggablehtml: {
-		pageslist: {
-			ngstart: function (e, uiConfig, scope, ngModel, element) {
 
-			}
-		},
-		sortable: {
-			ngstart: function (e, uioptions, element, xxx) {
-				e.stopPropagation();
-			}
-		}
-	},
 	select2: {
 		allowClear: true
 	}
