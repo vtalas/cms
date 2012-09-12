@@ -45,7 +45,7 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 		};
 	}
 ]);
-	angular.module('ui.directives').directive('uiDropableHtml', [
+angular.module('ui.directives').directive('uiDropableHtml', [
 	'ui.config', function (uiConfig) {
 		var options;
 		options = {};
@@ -54,8 +54,8 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 		}
 
 		function getNamespace(scope, attrs) {
-			var validNamespaceIndex, validNamespace;
-			var namespaceArray = attrs.uiDropableHtml.split(",");
+			var validNamespaceIndex, validNamespace,
+				namespaceArray = attrs.uiDropableHtml.split(",");
 
 			if (scope.$root.draggeditem) {
 				validNamespaceIndex = namespaceArray.indexOf(scope.$root.draggeditem.namespace);
@@ -64,31 +64,30 @@ angular.module('ui.directives').directive('uiDraggablehtml', [
 			return validNamespace;
 		}
 
+		function registerDragEvent(dragevent, scope, attrs, element, ngModel, opts) {
+			$(element).on(dragevent, function (e) {
+				var namespace = getNamespace(scope, attrs),
+				    obj,
+					modelvalues = ngModel ? ngModel.$modelValue : null;
+
+				if (typeof (opts[namespace][dragevent]) === "function") {
+					obj = xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope, namespace);
+					opts[namespace][dragevent].call({}, e, opts, element, obj);
+				}
+			});
+		}
+
+
 		return {
 			require: '?ngModel',
 			link: function (scope, element, attrs, ngModel) {
 				var opts;
 				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 
-				$(element).on("dragover", function (e) {
-					var modelvalues = ngModel ? ngModel.$modelValue : null;
-
-					var namespace = getNamespace(scope, attrs);
-					if (namespace && typeof opts[namespace].ngdragover === "function") {
-						var obj = xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope, namespace);
-						return opts[namespace].ngdragover(e, opts, element, obj);
-					}
-				});
-
-				$(element).on("drop", function (e) {
-					var modelvalues = ngModel ? ngModel.$modelValue : null;
-					var namespace = getNamespace(scope, attrs);
-
-					if (namespace && typeof opts[namespace].ngdrop === "function") {
-						var obj = xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope, namespace);
-						return opts[namespace].ngdrop(e, opts, element, opts, obj);
-					}
-				});
+				registerDragEvent("dragenter", scope, attrs, element, ngModel, opts);
+				registerDragEvent("dragleave", scope, attrs, element, ngModel, opts);
+				registerDragEvent("dragover", scope, attrs, element, ngModel, opts);
+				registerDragEvent("drop", scope, attrs, element, ngModel, opts);
 			}
 		};
 	}
