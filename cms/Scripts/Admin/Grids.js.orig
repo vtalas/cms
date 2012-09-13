@@ -10,19 +10,21 @@ module.value('ui.config', {
 
 	dropablehtml: {
 		pageslist: {
-			dragover: function (e, uioptions, element, xxx) {
+			ngdragover: function (e, uioptions, element, xxx) {
+
+			},
+			ngdragover: function (e, uioptions, element, xxx) {
 				e.preventDefault();
 				e.stopPropagation();
 				xxx.destinationScope.$emit("dragover", xxx);
 			},
-			drop: function (e, uioptions, element, xxx) {
+			ngdrop: function (e, uioptions, element, xxx) {
 				var collection,
 				    item;
 				collection = xxx.destinationScope.$parent.$collection;
 				item = xxx.sourceItem;
-
 				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
-
+				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
 				xxx.destinationScope.$apply();
 				xxx.destinationScope.$emit("drop", xxx);
 			},
@@ -38,6 +40,12 @@ module.value('ui.config', {
 			}
 		},
 		sortable: {
+<<<<<<< HEAD
+			ngstart: function (e, uiConfig, scope, ngModel, element) {
+				e.stopPropagation();
+			},
+			ngdragover: function (e, uiConfig, element, xxx) {
+=======
 			dragleave: function (e, uiConfig, element, xxx) {
 				console.log("leave", e, uiConfig, element, xxx);
 
@@ -46,6 +54,7 @@ module.value('ui.config', {
 				console.log("enter", e, uiConfig, element, xxx);
 			},
 			dragover: function (e, uiConfig, element, xxx) {
+>>>>>>> cleanup
 				if (xxx.sourceItem === xxx.destinationItem) {
 					return;
 				}
@@ -60,7 +69,6 @@ module.value('ui.config', {
 				destCollection = xxx.destinationScope.$parent.$collection;
 				item = $.extend(true, {}, xxx.sourceItem);
 
-				console.log(this)
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
@@ -84,16 +92,13 @@ module.value('ui.config', {
 			}
 		}
 	},
-	draggablehtml: {
-		pageslist: {
-			dragstart: function (e, uioptions, element, xxx) {
-				//e.originalEvent.dataTransfer.setData('text/html', $(element).innerHtml);
+
+<<<<<<< HEAD
+=======
 			}
 		},
 		sortable: {
-			dragstart: function (e, uioptions, element, xxx) {
-				e.originalEvent.dataTransfer.effectAllowed = 'move';
-				e.originalEvent.dataTransfer.setData('text/html', $(element).html());
+			ngstart: function (e, uioptions, element, xxx) {
 				e.stopPropagation();
 			},
 			dragenter: function (e, uioptions, element, xxx) {
@@ -101,6 +106,7 @@ module.value('ui.config', {
 			}
 		}
 	},
+>>>>>>> cleanup
 	select2: {
 		allowClear: true
 	}

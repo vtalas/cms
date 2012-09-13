@@ -2,7 +2,7 @@
 
 <script type="text/ng-template" id="tree_item_renderer.html">
 	<div ui-dropable-html="sortable,pageslist" ng-model="item" >sortable,pageslist</div>
-	<div ui-dropable-html="sortable" draggable="true" ng-model="item" ng-hide="item.hidden" ng-class="item.prdel">
+	<div ui-draggable-html="sortable" draggable="true" ng-model="item" ng-hide="item.hidden" ng-class="item.prdel">
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
 	<ul>
 		<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
@@ -67,7 +67,7 @@
 		
 		<ul>
 			<li ng-repeat="g in grids" >
-				<div class="menuitem" ui-dropable-html="pageslist" ng-model="g" draggable="true">{{g.Name}}.. {{g.Id}}</div>
+				<div class="menuitem" ui-draggable-html="pageslist" ng-model="g" >{{g.Name}}.. {{g.Id}}</div>
 			</li>
 		</ul>
 	

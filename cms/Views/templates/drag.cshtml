@@ -82,7 +82,7 @@
 			this.style.opacity = '0.4';
 
 			event.dataTransfer.effectAllowed = 'move';
-			//event.dataTransfer.setData('text/html', this.innerHTML);
+			event.dataTransfer.setData('text/html', this.innerHTML);
 			console.log("dragstart", $(this), e);
 		});
 
