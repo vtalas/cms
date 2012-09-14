@@ -44,6 +44,8 @@ angular.module('ui.directives').directive('uiDraggableHtml', [
 		}
 		return {
 			require: '?ngModel',
+
+
 			link: function (scope, element, attrs, ngModel) {
 				var opts,
 					namespace = attrs.uiDraggableHtml,
