@@ -125,53 +125,33 @@ namespace cms.data.EF.Initializers
 
 		private void GenerateMenus(ApplicationSetting application)
 		{
-			var root = new GridElement
-				           {
-					           Parent = null,
-					           Content = "",
-					           Id = Guid.NewGuid(),
-				           };
-			var root2 = new GridElement
-				            {
-					            Parent = null,
-					            Content = "",
-					            Id = Guid.NewGuid(),
-				            };
-			var root3 = new GridElement
-				            {
-					            Parent = null,
-					            Content = "",
-					            Id = Guid.NewGuid(),
-				            };
-			var rootchild = new GridElement
-				                {
-					                Parent = root,
-					                Content = "",
-					                Id = Guid.NewGuid(),
-				                };
-			var rootchild2 = new GridElement
-				                 {
-					                 Parent = root,
-					                 Content = "",
-					                 Id = Guid.NewGuid(),
-				                 };
+			var items = new List<GridElement>();
+			
+			//add rootitems 
+			items.Add(new GridElement{Parent = null, Content = "", Id = Guid.NewGuid()});
+			items.Add(new GridElement{Parent = null, Content = "", Id = Guid.NewGuid()});
+			items.Add(new GridElement{Parent = null, Content = "", Id = Guid.NewGuid()});
+			items.Add(new GridElement{Parent = null, Content = "", Id = Guid.NewGuid()});
+	
+			var rootitem = new GridElement { Parent = null, Content = "", Id = Guid.NewGuid() };
+			items.Add(rootitem);
+
+			items.Add(new GridElement{Parent = rootitem,Content = "", Id = Guid.NewGuid()});
+			items.Add(new GridElement{Parent = rootitem,Content = "", Id = Guid.NewGuid()});
+			items.Add(new GridElement{Parent = rootitem,Content = "", Id = Guid.NewGuid()});
+			items.Add(new GridElement{Parent = rootitem,Content = "", Id = Guid.NewGuid()});
+			items.Add(new GridElement{Parent = rootitem,Content = "", Id = Guid.NewGuid()});
+
 			var menu = new Grid
-				           {
-					           Id = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"),
-					           Resource =
-						           new Resource {Value = "linkTestPage", Owner = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643")},
-					           Name = "test menu",
-					           ApplicationSettings = application,
-					           Category = CategoryEnum.Menu,
-					           GridElements = new List<GridElement>
-						                          {
-							                          root,
-							                          root2,
-							                          root3,
-							                          rootchild,
-							                          rootchild2
-						                          }
-				           };
+			           	{
+			           		Id = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"),
+			           		Resource =
+			           			new Resource {Value = "linkTestPage", Owner = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643")},
+			           		Name = "test menu",
+			           		ApplicationSettings = application,
+			           		Category = CategoryEnum.Menu,
+			           		GridElements = items
+			           	};
 
 			Context.Grids.Add(menu);
 		}

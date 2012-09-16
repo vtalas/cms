@@ -10,10 +10,9 @@ namespace cms.Controllers
     {
 		public ActionResult DropAndCreateTables()
 		{
-			Database.SetInitializer(new DropAndCreateTables());
 			using (var a = new EfContext())
 			{
-				
+				Database.SetInitializer(new DropAndCreateTables());
 				Response.Write(a.ApplicationSettings.ToList());
 			}
 			return View();
@@ -23,7 +22,7 @@ namespace cms.Controllers
 		{
 			using (var a = new EfContext())
 			{
-				Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext,data.Migrations.Configuration>());
+				Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext, data.Migrations.Configuration>());
 				Response.Write(a.ApplicationSettings.ToList());
 			}
 			return View();

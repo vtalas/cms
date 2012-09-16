@@ -34,3 +34,27 @@ h3 {
 .admincontent {
   margin: 1em;
 }
+ul {
+  list-style: none;
+}
+.menuitem {
+  width: 100%;
+}
+.xxx span.ng-scope {
+  display: block;
+  height: 0px;
+}
+.xxx .dropableCtrl {
+  height: 0px;
+}
+.xxx .dropableCtrl.dragging {
+  height: 20px;
+}
+.xxx .dropableCtrl.dragover {
+  background-color: #eeeeee;
+  border: 1px solid #aaaaaa;
+  height: 42px !important;
+}
+.xxx .draggableCtrl.dragged {
+  opacity: 0.4;
+}

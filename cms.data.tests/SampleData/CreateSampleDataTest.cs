@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using NUnit.Framework;
@@ -25,7 +23,6 @@ namespace cms.data.tests.SampleData
 			Repo = new JsonDataEf("aaa", context);
 		}
 
-
 		[Test]
 		[Ignore]
 		public void Create()
@@ -39,11 +36,5 @@ namespace cms.data.tests.SampleData
 				Console.WriteLine(a.Count());
 			}
 		}
-
-
-
-
-
-
 	}
 }

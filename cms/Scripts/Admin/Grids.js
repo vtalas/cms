@@ -8,6 +8,7 @@ module.value('ui.config', {
 				xxx.destinationScope.$emit("dragleave", xxx);
 			},
 			dragenter: function (e, uiConfig, element, xxx) {
+				e.preventDefault();
 				xxx.destinationScope.$emit("dragenter", xxx);
 			},
 			dragover: function (e, uioptions, element, xxx) {
@@ -16,16 +17,30 @@ module.value('ui.config', {
 				xxx.destinationScope.$emit("dragover", xxx);
 			},
 			drop: function (e, uioptions, element, xxx) {
-				var collection,
+				var destCollection,
 				    item;
-				collection = xxx.destinationScope.$parent.$collection;
-				item = xxx.sourceItem;
 
-				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
+				destCollection = xxx.destinationScope.$parent.$collection;
+				item = $.extend(true, {}, xxx.sourceItem);
+				console.log(xxx.sourceElement, xxx.destinationElement);
 
-				xxx.destinationScope.$apply();
+				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
+
 				xxx.destinationScope.$emit("drop", xxx);
+				xxx.destinationScope.$apply();
 			},
+
+			//			drop: function (e, uioptions, element, xxx) {
+			//				var collection,
+			//				    item;
+			//				collection = xxx.destinationScope.$parent.$collection;
+			//				item = xxx.sourceItem;
+
+			//				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
+
+			//				xxx.destinationScope.$apply();
+			//				xxx.destinationScope.$emit("drop", xxx);
+			//			},
 			pushToIndexOrLast: function (item, collection, placeholderitem, islast) {
 				var index;
 
@@ -42,6 +57,7 @@ module.value('ui.config', {
 				xxx.destinationScope.$emit("dragleave", xxx);
 			},
 			dragenter: function (e, uiConfig, element, xxx) {
+				//console.log("dragenter", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				e.preventDefault();
 				xxx.destinationScope.$emit("dragenter", xxx);
 			},
@@ -50,7 +66,6 @@ module.value('ui.config', {
 					return;
 				}
 				e.preventDefault();
-				e.stopPropagation();
 				xxx.destinationScope.$emit("dragover", xxx);
 			},
 			drop: function (e, uioptions, element, xxx) {
@@ -62,6 +77,8 @@ module.value('ui.config', {
 
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
+
+				console.log(xxx.sourceElement, xxx.destinationElement);
 
 				xxx.destinationScope.$emit("drop", xxx);
 				xxx.destinationScope.$apply();
@@ -91,18 +108,20 @@ module.value('ui.config', {
 				xxx.destinationScope.$emit("dragstart", xxx);
 			},
 			dragend: function (e, uiConfig, element, xxx) {
+				e.preventDefault();
 				xxx.destinationScope.$emit("dragend", xxx);
 			}
 		},
 		sortable: {
 			dragstart: function (e, uioptions, element, xxx) {
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
-				//e.originalEvent.dataTransfer.setData('text/html', element.innerHtml);
 				e.originalEvent.dataTransfer.setData('Text', xxx.sourceItem.Id);
 				e.stopPropagation();
+				//console.log("dragstart", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				xxx.destinationScope.$emit("dragstart", xxx);
 			},
 			dragend: function (e, uiConfig, element, xxx) {
+				e.preventDefault();
 				xxx.destinationScope.$emit("dragend", xxx);
 			}
 		}

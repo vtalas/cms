@@ -26,14 +26,15 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	});
 
 	$scope.$on("dragstart", function (data, xxx) {
+		//console.log("dragstart-xxx");
 		$(xxx.sourceElement).addClass("dragged");
 		setTimeout(function () {
 			$(".dropableCtrl").animate({ height: 20 }, 200);
 		}, 200);
 	});
 
-	$scope.$on("dragover", function (data, item) {
-		//console.log("dragover-menujs", item);
+	$scope.$on("dragover", function (data, xxx) {
+		//console.log("dragover-menujs", xxx.destinationItem.Id);
 	});
 
 	$scope.$on("dragenter", function (data, xxx) {
@@ -45,21 +46,23 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	});
 
 	$scope.$on("drop", function (data, xxx) {
-		console.log("drop", xxx.destinationElement);
-		//$scope.dragendAction(xxx);
+		//console.log("drop", xxx.sourceItem.Id, xxx.destinationItem.Id);
 		//$scope.add(item);
 	});
 
 	$scope.$on("dragend", function (data, xxx) {
-		console.log("dragend",xxx.destinationElement)
+		//console.log("dragend",xxx.sourceElement, xxx.destinationElement);
 		$scope.dragendAction(xxx);
 	});
 
 
 	$scope.dragendAction = function (xxx) {
 		$(".dropableCtrl").removeClass("dragover");
+
 		$(xxx.destinationElement).css("background-color", "#eee");
-		$(xxx.destinationElement).animate({ backgroundColor: "#fff" }, 1000);
+
+		//console.log($(xxx.destinationElement), "xx")
+		$(xxx.destinationElement).animate({ backgroundColor: "#fff" }, 2000);
 
 		$(xxx.destinationElement).removeClass("dragged");
 		$(".dropableCtrl").animate({ height: 0 }, 100);

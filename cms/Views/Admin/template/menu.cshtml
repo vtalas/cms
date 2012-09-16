@@ -1,55 +1,55 @@
-﻿{{data.Name}}  .{{dragging}}.
-
+﻿{{data.Name}} .{{dragging}}.
 <script type="text/ng-template" id="tree_item_renderer.html">
 	<div ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl" ></div>
 	<div ui-draggable-html="sortable" draggable="true" ng-model="item" ng-hide="item.hidden" ng-class="item.prdel" class="draggableCtrl">
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
-	<ul>
-		<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
+		<ul>
+			<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
 		
-		@*
-		<li ui-dropable-html ng-show="item.Children.length > 0" ng-model="item.Children">placeholder LAST </li>
-		<li ng-show="item.showAdd" ng-hide="!item.showAdd">
-			<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
-				<option></option>
-				<option ng-repeat="g in grids" value="three" value="{{g.Id}}">{{g.Name}}</option>
-			</select>
-			<button ng-click="hideAdd(item)">cancel</button>
-			<button ng-click="add(item)">OK</button>
-		</li>
-		<li ng-show="!item.showAdd && item.Children.length > 0" ng-click="showAdd(item)" style="color:#eee" class="ui-sortable-disabled menuitem">přidat</li>
-		*@
+			@*
+			<li ui-dropable-html ng-show="item.Children.length > 0" ng-model="item.Children">placeholder LAST </li>
+			<li ng-show="item.showAdd" ng-hide="!item.showAdd">
+				<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
+					<option></option>
+					<option ng-repeat="g in grids" value="three" value="{{g.Id}}">{{g.Name}}</option>
+				</select>
+				<button ng-click="hideAdd(item)">cancel</button>
+				<button ng-click="add(item)">OK</button>
+			</li>
+			<li ng-show="!item.showAdd && item.Children.length > 0" ng-click="showAdd(item)" style="color:#eee" class="ui-sortable-disabled menuitem">přidat</li>
+			*@
 		
-    </ul>
-	<div ui-dropable-html="sortable,pageslist" ng-show="$last " ui-config={last:true} class="dropableCtrl" ></div>
+		</ul>
+		<div ui-dropable-html="sortable,pageslist" ng-show="$last" ui-config={last:true} class="dropableCtrl"  ng-model="item"></div>
 	</div>
 
 </script>
-
 <style>
-	.aaa {
+	.aaa
+	{
 		color: red;
 	}
-	.ui-state-highlight {
+	
+	.ui-state-highlight
+	{
 		border-bottom: 1px solid red;
-		width: 100%;
 		height: 0px;
+		width: 100%;
 	}
-	.menuitem {
-		display: inline-block;
+	
+	.menuitem
+	{
 		border: 1px solid gray;
-		padding: 10px;
-		margin-top: 4px;
+		display: inline-block;
 		margin-bottom: 4px;
+		margin-top: 4px;
+		height: 42px;
 	}
 </style>
-
 <div class="row-fluid">
-	<div class="span4">
-
+	<div class="span3">
 		<ul class="xxx">
-			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'" ></li>
-
+			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'"></li>
 			@*			<li ng-show="data.showAdd" ng-hide="!data.showAdd">
 				<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
 					<option></option>
@@ -59,23 +59,18 @@
 				<button ng-click="add()">OK</button>
 			</li>
 			<li ng-show="!data.showAdd" ng-click="showAdd(data)" style="color: #eee" class="ui-sortable-disabled menuitem">přidat</li>
-*@			
+*@
 		</ul>
-	
 	</div>
-	<div class="span6">
-		
+	<div class="span3">
 		<ul>
-			<li ng-repeat="g in grids" >
-				<div class="menuitem" ui-draggable-html="pageslist" ng-model="g" >{{g.Name}}.. {{g.Id}}</div>
+			<li ng-repeat="g in grids">
+				<div class="menuitem" ui-draggable-html="pageslist" ng-model="g">
+					{{g.Name}}.. {{g.Id}}</div>
 			</li>
 		</ul>
-	
 	</div>
 </div>
-
-
-
 <script type="text/javascript">
 	$(document).ready(function (event) {
 		$(".xxx").click(function (e) {
@@ -83,4 +78,3 @@
 		});
 	});
 </script>
-
