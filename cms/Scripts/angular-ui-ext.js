@@ -1,10 +1,23 @@
-var xxx = function (sourceItem, sourceScope,  destinationItem, destinationScope, namespace) {
+//var xxx = function (sourceItem, sourceScope,  destinationItem, destinationScope, namespace) {
+//	return {
+//		sourceItem: sourceItem,
+//		sourceScope: sourceScope,
+//		//sourceElement : sourceEe
+//		destinationItem: destinationItem,
+//		destinationScope: destinationScope,
+//		namespace : namespace
+//	};
+//};
+
+var xxx = function (source, destination, namespace) {
 	return {
-		sourceItem: sourceItem,
-		sourceScope: sourceScope,
-		destinationItem: destinationItem,
-		destinationScope: destinationScope,
-		namespace : namespace
+		sourceItem: source.item,
+		sourceScope: source.scope,
+		sourceElement : source.element,
+		destinationItem: destination.item,
+		destinationScope: destination.scope,
+		destinationElement: destination.element,
+		namespace: namespace
 	};
 };
 
@@ -23,13 +36,17 @@ function registerDragEvent(dragevent, scope, namespaceArray, element, ngModel, o
 
 		var namespace = getNamespace(scope, namespaceArray),
 			obj,
+		    source,
+		    destination,
 			modelvalues = ngModel ? ngModel.$modelValue : null;
 		if (!opts[namespace]) {
 			console.log("namespace is not defined", opts[namespace]);
 			return;
 		}
 		if (typeof (opts[namespace][dragevent]) === "function") {
-			obj = xxx(scope.$root.draggeditem, scope.$root.draggedScope, modelvalues, scope, namespace);
+			source = { item: scope.$root.draggeditem, scope: scope.$root.draggedScope, element: scope.$root.draggedElement };
+			destination = { item: modelvalues, scope: scope, element: element };
+			obj = xxx(source, destination, namespace);
 			opts[namespace][dragevent](e, opts, element, obj);
 		}
 	});
@@ -45,7 +62,6 @@ angular.module('ui.directives').directive('uiDraggableHtml', [
 		return {
 			require: '?ngModel',
 
-
 			link: function (scope, element, attrs, ngModel) {
 				var opts,
 					namespace = attrs.uiDraggableHtml,
@@ -55,21 +71,28 @@ angular.module('ui.directives').directive('uiDraggableHtml', [
 				//registerDragEvent("dragend", scope, namespaceArray, element, ngModel, opts);
 
 				$(element).on("dragstart", function (e) {
-					var modelvalues = ngModel ? ngModel.$modelValue : null;
+					var modelvalues = ngModel ? ngModel.$modelValue : null,
+					    source, destination;
 
 					scope.$root.draggeditem = modelvalues;
 					scope.$root.draggedScope = scope;
+					scope.$root.draggedElement = element;
 					scope.$root.draggeditem.namespace = namespace;
 
 					if (typeof (opts[namespace].dragstart) === "function") {
-						opts[namespace].dragstart(e, options, element, xxx(modelvalues, scope, modelvalues, scope, namespace));
+						source = { item: scope.$root.draggeditem, scope: scope.$root.draggedScope, element: scope.$root.draggedElement };
+						destination = { item: modelvalues, scope: scope, element: element };
+						opts[namespace].dragstart(e, options, element, xxx(source, destination, namespace));
 					}
 				});
 				$(element).on("dragend", function (e) {
-					var modelvalues = ngModel ? ngModel.$modelValue : null;
+					var modelvalues = ngModel ? ngModel.$modelValue : null,
+					    source, destination;
 
 					if (typeof (opts[namespace].dragend) === "function") {
-						opts[namespace].dragend(e, options, element, xxx(modelvalues, scope, modelvalues, scope, namespace));
+						source = { item: scope.$root.draggeditem, scope: scope.$root.draggedScope, element: scope.$root.draggedElement };
+						destination = { item: modelvalues, scope: scope, element: element };
+						opts[namespace].dragend(e, options, element, xxx(source, destination, namespace));
 					}
 				});
 			}

@@ -1,15 +1,15 @@
 var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui"]);
 
-//var uiConfigUtils = {
-//	emitEventToScope : function(scope, name, data) {
-//		scope.$emit(name, { element: element, destinationItem: xxx.destinationItem });
-//	}	
-//};
-
 module.value('ui.config', {
 
 	dropablehtml: {
 		pageslist: {
+			dragleave: function (e, uiConfig, element, xxx) {
+				xxx.destinationScope.$emit("dragleave", xxx);
+			},
+			dragenter: function (e, uiConfig, element, xxx) {
+				xxx.destinationScope.$emit("dragenter", xxx);
+			},
 			dragover: function (e, uioptions, element, xxx) {
 				e.preventDefault();
 				e.stopPropagation();
@@ -39,11 +39,11 @@ module.value('ui.config', {
 		},
 		sortable: {
 			dragleave: function (e, uiConfig, element, xxx) {
-				console.log("leave", e, uiConfig, element, xxx);
-
+				xxx.destinationScope.$emit("dragleave", xxx);
 			},
 			dragenter: function (e, uiConfig, element, xxx) {
-				console.log("enter", e, uiConfig, element, xxx);
+				e.preventDefault();
+				xxx.destinationScope.$emit("dragenter", xxx);
 			},
 			dragover: function (e, uiConfig, element, xxx) {
 				if (xxx.sourceItem === xxx.destinationItem) {
@@ -60,12 +60,11 @@ module.value('ui.config', {
 				destCollection = xxx.destinationScope.$parent.$collection;
 				item = $.extend(true, {}, xxx.sourceItem);
 
-				console.log(this)
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
-				xxx.destinationScope.$apply();
 				xxx.destinationScope.$emit("drop", xxx);
+				xxx.destinationScope.$apply();
 			},
 			removeSource: function (item, collection) {
 				var index;
@@ -87,17 +86,24 @@ module.value('ui.config', {
 	draggablehtml: {
 		pageslist: {
 			dragstart: function (e, uioptions, element, xxx) {
-				//e.originalEvent.dataTransfer.setData('text/html', $(element).innerHtml);
+				e.originalEvent.dataTransfer.effectAllowed = 'move';
+				e.originalEvent.dataTransfer.setData('Text', xxx.sourceItem.Id);
+				xxx.destinationScope.$emit("dragstart", xxx);
+			},
+			dragend: function (e, uiConfig, element, xxx) {
+				xxx.destinationScope.$emit("dragend", xxx);
 			}
 		},
 		sortable: {
 			dragstart: function (e, uioptions, element, xxx) {
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
-				e.originalEvent.dataTransfer.setData('text/html', $(element).html());
+				//e.originalEvent.dataTransfer.setData('text/html', element.innerHtml);
+				e.originalEvent.dataTransfer.setData('Text', xxx.sourceItem.Id);
 				e.stopPropagation();
+				xxx.destinationScope.$emit("dragstart", xxx);
 			},
-			dragenter: function (e, uioptions, element, xxx) {
-				console.log("asdkhbaskdjb")
+			dragend: function (e, uiConfig, element, xxx) {
+				xxx.destinationScope.$emit("dragend", xxx);
 			}
 		}
 	},
