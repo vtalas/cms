@@ -29,6 +29,10 @@ module.value('ui.config', {
 				xxx.destinationScope.$emit("drop", xxx);
 				xxx.destinationScope.$apply();
 			},
+			dragend: function (e, uiConfig, element, xxx) {
+				e.preventDefault();
+				xxx.destinationScope.$emit("dragend", xxx);
+			},
 
 			//			drop: function (e, uioptions, element, xxx) {
 			//				var collection,
@@ -62,11 +66,17 @@ module.value('ui.config', {
 				xxx.destinationScope.$emit("dragenter", xxx);
 			},
 			dragover: function (e, uiConfig, element, xxx) {
+				//console.log("dragover", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				if (xxx.sourceItem === xxx.destinationItem) {
 					return;
 				}
 				e.preventDefault();
 				xxx.destinationScope.$emit("dragover", xxx);
+			},
+			dragend: function (e, uiConfig, element, xxx) {
+				console.log("dragend", xxx.sourceItem.Id, xxx.destinationItem.Id);
+				e.preventDefault();
+				xxx.destinationScope.$emit("dragend", xxx);
 			},
 			drop: function (e, uioptions, element, xxx) {
 				var destCollection,
@@ -78,7 +88,7 @@ module.value('ui.config', {
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
-				console.log(xxx.sourceElement, xxx.destinationElement);
+				//console.log("drop," , xxx.sourceElement, xxx.destinationElement);
 
 				xxx.destinationScope.$emit("drop", xxx);
 				xxx.destinationScope.$apply();
@@ -106,10 +116,6 @@ module.value('ui.config', {
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
 				e.originalEvent.dataTransfer.setData('Text', xxx.sourceItem.Id);
 				xxx.destinationScope.$emit("dragstart", xxx);
-			},
-			dragend: function (e, uiConfig, element, xxx) {
-				e.preventDefault();
-				xxx.destinationScope.$emit("dragend", xxx);
 			}
 		},
 		sortable: {
@@ -119,10 +125,6 @@ module.value('ui.config', {
 				e.stopPropagation();
 				//console.log("dragstart", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				xxx.destinationScope.$emit("dragstart", xxx);
-			},
-			dragend: function (e, uiConfig, element, xxx) {
-				e.preventDefault();
-				xxx.destinationScope.$emit("dragend", xxx);
 			}
 		}
 	},

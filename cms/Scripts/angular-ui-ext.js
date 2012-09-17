@@ -85,16 +85,16 @@ angular.module('ui.directives').directive('uiDraggableHtml', [
 						opts[namespace].dragstart(e, options, element, xxx(source, destination, namespace));
 					}
 				});
-				$(element).on("dragend", function (e) {
-					var modelvalues = ngModel ? ngModel.$modelValue : null,
-					    source, destination;
+//				$(element).on("dragend", function (e) {
+//					var modelvalues = ngModel ? ngModel.$modelValue : null,
+//					    source, destination;
 
-					if (typeof (opts[namespace].dragend) === "function") {
-						source = { item: scope.$root.draggeditem, scope: scope.$root.draggedScope, element: scope.$root.draggedElement };
-						destination = { item: modelvalues, scope: scope, element: element };
-						opts[namespace].dragend(e, options, element, xxx(source, destination, namespace));
-					}
-				});
+//					if (typeof (opts[namespace].dragend) === "function") {
+//						source = { item: scope.$root.draggeditem, scope: scope.$root.draggedScope, element: scope.$root.draggedElement };
+//						destination = { item: modelvalues, scope: scope, element: element };
+//						opts[namespace].dragend(e, options, element, xxx(source, destination, namespace));
+//					}
+//				});
 			}
 		};
 	}
@@ -119,6 +119,7 @@ angular.module('ui.directives').directive('uiDropableHtml', [
 				registerDragEvent("dragleave", scope, namespaceArray, element, ngModel, opts);
 				registerDragEvent("dragover", scope, namespaceArray, element, ngModel, opts);
 				registerDragEvent("drop", scope, namespaceArray, element, ngModel, opts);
+				registerDragEvent("dragend", scope, namespaceArray, element, ngModel, opts);
 			}
 		};
 	}

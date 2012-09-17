@@ -26,7 +26,7 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	});
 
 	$scope.$on("dragstart", function (data, xxx) {
-		//console.log("dragstart-xxx");
+		console.log("dragstart-xxx");
 		$(xxx.sourceElement).addClass("dragged");
 		setTimeout(function () {
 			$(".dropableCtrl").animate({ height: 20 }, 200);
