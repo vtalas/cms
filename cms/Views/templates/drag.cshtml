@@ -63,7 +63,7 @@
 	<div class="dropplaceholder drop">.</div>
 </div>
 
-<div class="drop">
+<div class="drop" draggable="true">
 	<h1>Drop</h1>
 </div>
 
@@ -72,8 +72,6 @@
 <script type="text/javascript">
 
 	$(document).ready(function (event) {
-
-
 		var dragoverClass;
 		dragoverClass = "dragover";
 
@@ -103,7 +101,7 @@
 		});
 
 		$(".column").on("dragend", function (e) {
-			console.log("dragend");
+			console.log("dragend......");
 		});
 
 		$(".column").on("dragover", function (e) {
@@ -114,13 +112,17 @@
 		$(".drop").on("dragover", function (e) {
 			e.stopPropagation();
 			e.preventDefault();
-			console.log("dragover");
+			console.log("dragover....");
 		});
 		$(".drop").on("drop", function (e) {
-			console.log("drop", $(this));
+			console.log("drop....", $(this));
+			e.preventDefault();
 		});
 		$(".drop").on("dragend", function (e) {
 			console.log("dragendddd", $(this));
+		});
+		$(window).on("dragend", function (e) {
+			console.log("window dragendddd", $(this));
 		});
 
 

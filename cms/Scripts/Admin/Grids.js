@@ -29,10 +29,6 @@ module.value('ui.config', {
 				xxx.destinationScope.$emit("drop", xxx);
 				xxx.destinationScope.$apply();
 			},
-			dragend: function (e, uiConfig, element, xxx) {
-				e.preventDefault();
-				xxx.destinationScope.$emit("dragend", xxx);
-			},
 
 			//			drop: function (e, uioptions, element, xxx) {
 			//				var collection,
@@ -73,15 +69,9 @@ module.value('ui.config', {
 				e.preventDefault();
 				xxx.destinationScope.$emit("dragover", xxx);
 			},
-			dragend: function (e, uiConfig, element, xxx) {
-				console.log("dragend", xxx.sourceItem.Id, xxx.destinationItem.Id);
-				e.preventDefault();
-				xxx.destinationScope.$emit("dragend", xxx);
-			},
 			drop: function (e, uioptions, element, xxx) {
 				var destCollection,
 				    item;
-
 				destCollection = xxx.destinationScope.$parent.$collection;
 				item = $.extend(true, {}, xxx.sourceItem);
 
@@ -91,7 +81,7 @@ module.value('ui.config', {
 				//console.log("drop," , xxx.sourceElement, xxx.destinationElement);
 
 				xxx.destinationScope.$emit("drop", xxx);
-				xxx.destinationScope.$apply();
+				//xxx.destinationScope.$apply();
 			},
 			removeSource: function (item, collection) {
 				var index;
@@ -125,7 +115,13 @@ module.value('ui.config', {
 				e.stopPropagation();
 				//console.log("dragstart", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				xxx.destinationScope.$emit("dragstart", xxx);
+			},
+			dragend: function (e, uiConfig, element, xxx) {
+				console.log("dragendd...", xxx.sourceItem.Id, xxx.destinationItem.Id);
+				e.preventDefault();
+				xxx.destinationScope.$emit("dragend", xxx);
 			}
+
 		}
 	},
 	select2: {
