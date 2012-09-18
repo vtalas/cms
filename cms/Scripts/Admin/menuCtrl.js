@@ -46,9 +46,9 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	});
 
 	$scope.$on("drop", function (data, xxx) {
-		$(xxx.destinationElement).css("background-color", "#eee");
-		$(xxx.destinationElement).animate({ backgroundColor: "#fff" }, 2000);
-		$(xxx.sourceElement).removeClass("dragged");
+		$(xxx.sourceElement).css("border", "1px solid red");
+		$(xxx.sourceElement).css("background-color", "#eee");
+		$(xxx.sourceElement).animate({ backgroundColor: "#fff" }, 2000);
 		console.log("drop", xxx.sourceElement, xxx.destinationElement);
 		//$scope.add(item);
 	});
@@ -61,6 +61,7 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 
 
 	$scope.dragendAction = function (xxx) {
+		$(".dragged").removeClass("dragged");
 		$(".dropableCtrl").removeClass("dragover");
 		$(".dropableCtrl").css("height",0);
 	};

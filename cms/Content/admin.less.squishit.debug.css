@@ -37,6 +37,9 @@ h3 {
 ul {
   list-style: none;
 }
+.menuitem {
+  width: 100%;
+}
 .xxx span.ng-scope {
   display: block;
   height: 0px;
@@ -49,6 +52,7 @@ ul {
 }
 .xxx .dropableCtrl.dragover {
   background-color: #eeeeee;
+  border: 1px solid #aaaaaa;
   height: 42px !important;
 }
 .xxx .draggableCtrl.dragged {

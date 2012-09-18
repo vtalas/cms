@@ -27,20 +27,8 @@ module.value('ui.config', {
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 
 				xxx.destinationScope.$emit("drop", xxx);
-				xxx.destinationScope.$apply();
 			},
 
-			//			drop: function (e, uioptions, element, xxx) {
-			//				var collection,
-			//				    item;
-			//				collection = xxx.destinationScope.$parent.$collection;
-			//				item = xxx.sourceItem;
-
-			//				this.pushToIndexOrLast(item, collection, xxx.destinationItem, uioptions.last);
-
-			//				xxx.destinationScope.$apply();
-			//				xxx.destinationScope.$emit("drop", xxx);
-			//			},
 			pushToIndexOrLast: function (item, collection, placeholderitem, islast) {
 				var index;
 
@@ -54,6 +42,7 @@ module.value('ui.config', {
 		},
 		sortable: {
 			dragleave: function (e, uiConfig, element, xxx) {
+				e.stopPropagation();
 				xxx.destinationScope.$emit("dragleave", xxx);
 			},
 			dragenter: function (e, uiConfig, element, xxx) {
@@ -66,6 +55,7 @@ module.value('ui.config', {
 				if (xxx.sourceItem === xxx.destinationItem) {
 					return;
 				}
+				e.stopPropagation();
 				e.preventDefault();
 				xxx.destinationScope.$emit("dragover", xxx);
 			},
@@ -78,7 +68,7 @@ module.value('ui.config', {
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
-				//console.log("drop," , xxx.sourceElement, xxx.destinationElement);
+				console.log("drop,", xxx.sourceItem.Id);
 
 				xxx.destinationScope.$emit("drop", xxx);
 				//xxx.destinationScope.$apply();
@@ -110,15 +100,22 @@ module.value('ui.config', {
 		},
 		sortable: {
 			dragstart: function (e, uioptions, element, xxx) {
+				var parent = $(xxx.sourceElement).data("id") !== $(e.target).data("id");
+
+				if (parent) {
+					//e.stopPropagation();
+					//e.preventDefault();
+					return;
+				}
+
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
 				e.originalEvent.dataTransfer.setData('Text', xxx.sourceItem.Id);
-				e.stopPropagation();
-				//console.log("dragstart", xxx.sourceItem.Id, xxx.destinationItem.Id);
+				console.log("dragstart", e, $(xxx.sourceElement).data("id") == $(e.target).data("id"), xxx.sourceElement);
+
 				xxx.destinationScope.$emit("dragstart", xxx);
 			},
 			dragend: function (e, uiConfig, element, xxx) {
 				console.log("dragendd...", xxx.sourceItem.Id, xxx.destinationItem.Id);
-				e.preventDefault();
 				xxx.destinationScope.$emit("dragend", xxx);
 			}
 
