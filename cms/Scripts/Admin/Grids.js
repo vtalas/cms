@@ -64,12 +64,12 @@ module.value('ui.config', {
 				    item;
 				destCollection = xxx.destinationScope.$parent.$collection;
 				item = $.extend(true, {}, xxx.sourceItem);
+				item.prdel = "xxxx";
 
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
 				console.log("drop,", xxx.sourceItem.Id);
-
 				xxx.destinationScope.$emit("drop", xxx);
 				//xxx.destinationScope.$apply();
 			},

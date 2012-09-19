@@ -20,6 +20,9 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	menuCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings", "$routeParams"];
 
 	$scope.dragging = false;
+	$scope.xxx = function () {
+		return new Date().getMilliseconds();
+	};
 
 	$scope.$on("setCultureEvent", function () {
 		console.log("menuCtrl set culture");
@@ -46,24 +49,26 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	});
 
 	$scope.$on("drop", function (data, xxx) {
-		$(xxx.sourceElement).css("border", "1px solid red");
-		$(xxx.sourceElement).css("background-color", "#eee");
-		$(xxx.sourceElement).animate({ backgroundColor: "#fff" }, 2000);
+
+		$(".xxxx").css("background-color", "#eee");
+		$(".xxxx").animate({ backgroundColor: "#fff" }, 2000, function () {
+			$(this).removeClass("xxxx");
+		});
 		console.log("drop", xxx.sourceElement, xxx.destinationElement);
-		//$scope.add(item);
 	});
 
 	$scope.$on("dragend", function (data, xxx) {
 		//console.log("dragend",xxx.sourceElement, xxx.destinationElement);
-		$scope.dragendAction(xxx);
 		$scope.$apply();
+		$scope.dragendAction(xxx);
+
 	});
 
 
 	$scope.dragendAction = function (xxx) {
 		$(".dragged").removeClass("dragged");
 		$(".dropableCtrl").removeClass("dragover");
-		$(".dropableCtrl").css("height",0);
+		$(".dropableCtrl").css("height", 0);
 	};
 
 	$scope.showAdd = function (item) {
