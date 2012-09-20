@@ -69,6 +69,14 @@ angular.module('ui.directives').directive('uiDraggableHtml', [
 				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 				$(element).attr("draggable", true);
 				//registerDragEvent("dragend", scope, namespaceArray, element, ngModel, opts);
+				$(element).hover(function (e) {
+					e.stopPropagation();
+					$(this).css("border", "1px solid red");
+				},
+					function (e) {
+						e.stopPropagation();
+						$(this).css("border", "none");
+					});
 
 				$(element).on("dragstart", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null,
