@@ -1,7 +1,17 @@
+
+
 var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui"]);
+var DROPPED = 0;
+
+function removeFromArray(item, collection) {
+	var index;
+	index = collection.indexOf(item);
+	collection.splice(index, 1);
+};
+
 
 module.value('ui.config', {
-
+	
 	dropablehtml: {
 		pageslist: {
 			dragleave: function (e, uiConfig, element, xxx) {
@@ -22,7 +32,7 @@ module.value('ui.config', {
 
 				destCollection = xxx.destinationScope.$parent.$collection;
 				item = $.extend(true, {}, xxx.sourceItem);
-				console.log(xxx.sourceElement, xxx.destinationElement);
+				//console.log(xxx.sourceElement, xxx.destinationElement);
 
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 
@@ -64,19 +74,15 @@ module.value('ui.config', {
 				    item;
 				destCollection = xxx.destinationScope.$parent.$collection;
 				item = $.extend(true, {}, xxx.sourceItem);
+				item.prdel = "xxxx";
 
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
-				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
+				xxx.sourceItem.status = DROPPED;
+				//this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
-				console.log("drop,", xxx.sourceItem.Id);
-
+				//console.log("drop,", xxx.sourceItem.Id);
+				xxx.destinationScope.$apply();
 				xxx.destinationScope.$emit("drop", xxx);
-				//xxx.destinationScope.$apply();
-			},
-			removeSource: function (item, collection) {
-				var index;
-				index = collection.indexOf(item);
-				collection.splice(index, 1);
 			},
 			pushToIndexOrLast: function (item, collection, placeholderitem, islast) {
 				var index;
@@ -103,19 +109,22 @@ module.value('ui.config', {
 				var parent = $(xxx.sourceElement).data("id") !== $(e.target).data("id");
 
 				if (parent) {
-					//e.stopPropagation();
 					//e.preventDefault();
-					return;
+				//	return;
 				}
+				e.stopPropagation();
 
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
 				e.originalEvent.dataTransfer.setData('Text', xxx.sourceItem.Id);
-				console.log("dragstart", e, $(xxx.sourceElement).data("id") == $(e.target).data("id"), xxx.sourceElement);
+				//console.log("dragstart", e, $(xxx.sourceElement).data("id") == $(e.target).data("id"), xxx.sourceElement);
 
 				xxx.destinationScope.$emit("dragstart", xxx);
 			},
 			dragend: function (e, uiConfig, element, xxx) {
-				console.log("dragendd...", xxx.sourceItem.Id, xxx.destinationItem.Id);
+				//console.log("dragendd...", xxx.sourceItem.Id, xxx.destinationItem.Id);
+				if (xxx.sourceItem.status === DROPPED) {
+					removeFromArray(xxx.sourceItem, xxx.sourceScope.$collection);
+				}
 				xxx.destinationScope.$emit("dragend", xxx);
 			}
 
