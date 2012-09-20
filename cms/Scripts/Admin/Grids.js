@@ -22,7 +22,7 @@ module.value('ui.config', {
 
 				destCollection = xxx.destinationScope.$parent.$collection;
 				item = $.extend(true, {}, xxx.sourceItem);
-				console.log(xxx.sourceElement, xxx.destinationElement);
+				//console.log(xxx.sourceElement, xxx.destinationElement);
 
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 
@@ -67,11 +67,12 @@ module.value('ui.config', {
 				item.prdel = "xxxx";
 
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
-				this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
+				xxx.sourceItem.hidden = true;
+				//this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
-				console.log("drop,", xxx.sourceItem.Id);
+				//console.log("drop,", xxx.sourceItem.Id);
+				xxx.destinationScope.$apply();
 				xxx.destinationScope.$emit("drop", xxx);
-				//xxx.destinationScope.$apply();
 			},
 			removeSource: function (item, collection) {
 				var index;
@@ -110,12 +111,12 @@ module.value('ui.config', {
 
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
 				e.originalEvent.dataTransfer.setData('Text', xxx.sourceItem.Id);
-				console.log("dragstart", e, $(xxx.sourceElement).data("id") == $(e.target).data("id"), xxx.sourceElement);
+				//console.log("dragstart", e, $(xxx.sourceElement).data("id") == $(e.target).data("id"), xxx.sourceElement);
 
 				xxx.destinationScope.$emit("dragstart", xxx);
 			},
 			dragend: function (e, uiConfig, element, xxx) {
-				console.log("dragendd...", xxx.sourceItem.Id, xxx.destinationItem.Id);
+				//console.log("dragendd...", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				xxx.destinationScope.$emit("dragend", xxx);
 			}
 

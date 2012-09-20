@@ -58,10 +58,8 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	});
 
 	$scope.$on("dragend", function (data, xxx) {
-		//console.log("dragend",xxx.sourceElement, xxx.destinationElement);
-		$scope.$apply();
+		console.log("dragendl---", xxx.sourceItem, xxx.sourceItem.hidden);
 		$scope.dragendAction(xxx);
-
 	});
 
 
