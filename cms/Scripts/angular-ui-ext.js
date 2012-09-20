@@ -1,14 +1,3 @@
-//var xxx = function (sourceItem, sourceScope,  destinationItem, destinationScope, namespace) {
-//	return {
-//		sourceItem: sourceItem,
-//		sourceScope: sourceScope,
-//		//sourceElement : sourceEe
-//		destinationItem: destinationItem,
-//		destinationScope: destinationScope,
-//		namespace : namespace
-//	};
-//};
-
 var xxx = function (source, destination, namespace) {
 	return {
 		sourceItem: source.item,
@@ -33,7 +22,7 @@ function getNamespace(scope, namespaceArray) {
 
 function registerDragEvent(dragevent, scope, namespaceArray, element, ngModel, opts) {
 	$(element).on(dragevent, function (e) {
-		
+
 		var namespace = getNamespace(scope, namespaceArray),
 			obj,
 		    source,
@@ -63,20 +52,10 @@ angular.module('ui.directives').directive('uiDraggableHtml', [
 			require: '?ngModel',
 
 			link: function (scope, element, attrs, ngModel) {
-				var opts,
-					namespace = attrs.uiDraggableHtml,
+				var namespace = attrs.uiDraggableHtml,
+					opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 
-				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 				$(element).attr("draggable", true);
-				//registerDragEvent("dragend", scope, namespaceArray, element, ngModel, opts);
-				$(element).hover(function (e) {
-					e.stopPropagation();
-					$(this).css("border", "1px solid red");
-				},
-					function (e) {
-						e.stopPropagation();
-						$(this).css("border", "none");
-					});
 
 				$(element).on("dragstart", function (e) {
 					var modelvalues = ngModel ? ngModel.$modelValue : null,
@@ -117,10 +96,8 @@ angular.module('ui.directives').directive('uiDropableHtml', [
 		return {
 			require: '?ngModel',
 			link: function (scope, element, attrs, ngModel) {
-				var opts,
-					namespaceArray = attrs.uiDropableHtml.split(",");
-
-				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
+				var namespaceArray = attrs.uiDropableHtml.split(","),
+					opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 
 				registerDragEvent("dragenter", scope, namespaceArray, element, ngModel, opts);
 				registerDragEvent("dragleave", scope, namespaceArray, element, ngModel, opts);

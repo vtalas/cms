@@ -9,9 +9,7 @@ function removeFromArray(item, collection) {
 	collection.splice(index, 1);
 };
 
-
 module.value('ui.config', {
-	
 	dropablehtml: {
 		pageslist: {
 			dragleave: function (e, uiConfig, element, xxx) {
@@ -56,12 +54,10 @@ module.value('ui.config', {
 				xxx.destinationScope.$emit("dragleave", xxx);
 			},
 			dragenter: function (e, uiConfig, element, xxx) {
-				//console.log("dragenter", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				e.preventDefault();
 				xxx.destinationScope.$emit("dragenter", xxx);
 			},
 			dragover: function (e, uiConfig, element, xxx) {
-				//console.log("dragover", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				if (xxx.sourceItem === xxx.destinationItem) {
 					return;
 				}
@@ -78,9 +74,7 @@ module.value('ui.config', {
 
 				this.pushToIndexOrLast(item, destCollection, xxx.destinationItem, uioptions.last);
 				xxx.sourceItem.status = DROPPED;
-				//this.removeSource(xxx.sourceItem, xxx.sourceScope.$parent.$collection);
 
-				//console.log("drop,", xxx.sourceItem.Id);
 				xxx.destinationScope.$apply();
 				xxx.destinationScope.$emit("drop", xxx);
 			},
@@ -116,15 +110,14 @@ module.value('ui.config', {
 
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
 				e.originalEvent.dataTransfer.setData('Text', xxx.sourceItem.Id);
-				//console.log("dragstart", e, $(xxx.sourceElement).data("id") == $(e.target).data("id"), xxx.sourceElement);
-
 				xxx.destinationScope.$emit("dragstart", xxx);
 			},
 			dragend: function (e, uiConfig, element, xxx) {
-				//console.log("dragendd...", xxx.sourceItem.Id, xxx.destinationItem.Id);
 				if (xxx.sourceItem.status === DROPPED) {
 					removeFromArray(xxx.sourceItem, xxx.sourceScope.$collection);
 				}
+				e.stopPropagation();
+				xxx.destinationScope.$apply();
 				xxx.destinationScope.$emit("dragend", xxx);
 			}
 

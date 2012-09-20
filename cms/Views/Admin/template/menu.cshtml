@@ -3,7 +3,6 @@
 	
 	<div ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl" ></div>
 	<div ui-draggable-html="sortable" data-id="{{item.Id}}" draggable="true" ng-model="item" ng-hide="item.hidden" ng-class="item.prdel" class="draggableCtrl">
-		{{item.prdel}}
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
 	
 		<ul>
