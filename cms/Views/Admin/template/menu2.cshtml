@@ -1,0 +1,39 @@
+﻿<script type="text/ng-template" id="tree_item_renderer.html">
+	<div ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl" ></div>
+	<div ui-draggable-html="sortable" 
+		 draggable="true" ng-model="item" 
+		 ng-class="item.prdel" class="draggableCtrl">
+		<div menuitem="item" grid="data" ></div> 
+	</div>
+
+</script>
+<style>
+	.aaa
+	{
+		color: red;
+	}
+	
+	.ui-state-highlight
+	{
+		border-bottom: 1px solid red;
+		height: 0px;
+		width: 100%;
+	}
+	
+</style>
+<div class="row-fluid">
+	<div class="span6">
+		<ul class="ggg">
+			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'" ></li>
+
+		</ul>
+	</div>
+	<br clear="all" />
+	<div class="span3">
+		<ul>
+			<li ng-repeat="g in grids">
+				<div class="menuitem" ui-draggable-html="pageslist" ng-model="g">...</div>
+			</li>
+		</ul>
+	</div>
+</div>
