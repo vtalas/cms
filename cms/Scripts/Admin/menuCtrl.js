@@ -28,7 +28,7 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	$scope.$on("dragstart", function (data, xxx) {
 		$(xxx.sourceElement).addClass("dragged");
 		setTimeout(function () {
-			$(".dropableCtrl").animate({ height: 20 }, 200);
+			$(".dropableCtrl").animate({ height: 20 }, 200);	
 		}, 200);
 	});
 
@@ -107,6 +107,10 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 
 	$scope.dragging = false;
 
+
+	var timeout,
+		dropableStartWidth = 10,
+		draggableWidth = 170;
 	$scope.$on("setCultureEvent", function () {
 		console.log("menuCtrl set culture");
 	});
@@ -114,8 +118,10 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 	$scope.$on("dragstart", function (data, xxx) {
 		$(xxx.sourceElement).addClass("dragged");
 		setTimeout(function () {
-			$(".dropableCtrl").animate({ width: 70 }, 200);
-			$(".draggableCtrl").animate({ width: 75 }, 200);
+			$(xxx.sourceElement).animate({ width: 0 });
+			$(xxx.sourceElement).hide();
+			//$(".dropableCtrl").animate({ width: 20 }, 200);
+			//$(".draggableCtrl").animate({ width: 130 }, 200);
 		}, 200);
 	});
 
@@ -127,14 +133,19 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 
 	$scope.$on("dragenter", function (data, xxx) {
 		$(xxx.destinationElement).addClass("dragover");
+		timeout = setTimeout(function () {
+			$(xxx.destinationElement).animate({ width: draggableWidth + 2 * dropableStartWidth }, 200);
+		}, 500);
+
 	});
 
 	$scope.$on("dragleave", function (data, xxx) {
 		$(xxx.destinationElement).removeClass("dragover");
+		clearTimeout(timeout);
+		$(xxx.destinationElement).animate({ width: dropableStartWidth }, 100);
 	});
 
 	$scope.$on("drop", function (data, xxx) {
-		$scope.dragendAction(xxx);
 		//$scope.add(item);
 	});
 
@@ -144,10 +155,23 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 
 
 	$scope.dragendAction = function (xxx) {
+
+		clearTimeout(timeout);
+
 		$(".dropableCtrl").removeClass("dragover");
-		$(xxx.destinationElement).css("background-color", "#eee");
-		$(xxx.destinationElement).animate({ backgroundColor: "#fff" }, 1000);
+		$(".dropableCtrl").animate({ width: dropableStartWidth }, 200);
+		$(xxx.destinationElement).css("background-color", "red");
+
+		$(xxx.destinationElement).animate({ backgroundColor: "#aaa" }, 1000);
 		$(xxx.destinationElement).removeClass("dragged");
+		$(xxx.destinationElement).width(draggableWidth);
+		$(xxx.destinationElement).show();
+
+		setTimeout(function () {
+			//$(".draggableCtrl").animate({ width: 140}, 200);
+		}, 500);
+
+
 	};
 
 	$scope.showAdd = function (item) {

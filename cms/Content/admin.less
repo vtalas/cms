@@ -80,35 +80,37 @@ ul{
 	
 }
 
+.menu2{
+	border:1px solid #ededed
+}
+
+ul.ggg{
+	margin:0px;
+}
 .ggg{
-	li{
-		float:left;
-		margin:1px;
-		width:150px;
-	}
-		span.ng-scope{
+	@vyska: 90px;
+	span.ng-scope{
 		display:block;
-		height:0pxx;
+		height:0px;
 	}
 	.dropableCtrl{
-		width:0px;
+		width:10px;
+		height:@vyska;
 		float:left;
-		border:1px solid green;
+		background-color:#eee;
 	}
 	.dropableCtrl.dragging{
 	}
 	.dropableCtrl.dragover{
-		background-color:#eee;
-		border:1px solid red;
+		background-color: Yellow;
 	}
 	.draggableCtrl{
 		float:left;
-		border:1px solid gray;
-		width:150px;
-
+		width:170px;
+		background-color:#aaa;
 	}
 	.draggableCtrl{
-		height:70px;
+		height:@vyska;
 	}
 
 	.draggableCtrl.dragged{

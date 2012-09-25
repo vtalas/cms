@@ -55,31 +55,32 @@ ul {
 .xxx .draggableCtrl.dragged {
   opacity: 0.4;
 }
-.ggg li {
-  float: left;
-  margin: 1px;
-  width: 150px;
+.menu2 {
+  border: 1px solid #ededed;
+}
+ul.ggg {
+  margin: 0px;
 }
 .ggg span.ng-scope {
   display: block;
-  height: 0pxx;
+  height: 0px;
 }
 .ggg .dropableCtrl {
-  width: 0px;
+  width: 10px;
+  height: 90px;
   float: left;
-  border: 1px solid green;
+  background-color: #eeeeee;
 }
 .ggg .dropableCtrl.dragover {
-  background-color: #eeeeee;
-  border: 1px solid red;
+  background-color: Yellow;
 }
 .ggg .draggableCtrl {
   float: left;
-  border: 1px solid gray;
-  width: 150px;
+  width: 170px;
+  background-color: #aaaaaa;
 }
 .ggg .draggableCtrl {
-  height: 70px;
+  height: 90px;
 }
 .ggg .draggableCtrl.dragged {
   opacity: 0.4;
