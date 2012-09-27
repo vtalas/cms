@@ -134,7 +134,7 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 	$scope.$on("dragenter", function (data, xxx) {
 		$(xxx.destinationElement).addClass("dragover");
 		timeout = setTimeout(function () {
-			$(xxx.destinationElement).animate({ width: draggableWidth + 2 * dropableStartWidth }, 200);
+			//$(xxx.destinationElement).animate({ width: draggableWidth + 2 * dropableStartWidth }, 200);
 		}, 500);
 
 	});
@@ -164,7 +164,6 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 
 		$(xxx.destinationElement).animate({ backgroundColor: "#aaa" }, 1000);
 		$(xxx.destinationElement).removeClass("dragged");
-		$(xxx.destinationElement).width(draggableWidth);
 		$(xxx.destinationElement).show();
 
 		setTimeout(function () {

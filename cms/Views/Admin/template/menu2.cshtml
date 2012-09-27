@@ -9,26 +9,25 @@
 	<li ui-dropable-html="sortable,pageslist" ng-show="$last" ui-config={last:true} class="dropableCtrl"  ng-model="item"></li>
 </script>
 <script type="text/ng-template" id="tree_item_rendererdiv.html">
-	<div ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl" ></div>
+	<div ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl span1" ></div>
 	<div ui-draggable-html="sortable" 
 		 draggable="true" ng-model="item" 
-		 ng-class="item.prdel" class="draggableCtrl">
+		 ng-class="item.prdel" class="draggableCtrl span11">
 		<div menuitem="item" grid="data" ></div> 
 	</div>
-	<div ui-dropable-html="sortable,pageslist" ng-show="$last" ui-config={last:true} class="dropableCtrl"  ng-model="item"></div>
+	<div ui-dropable-html="sortable,pageslist" ng-show="$last" ui-config={last:true} ng-model="item" class="dropableCtrl span1"></div>
 </script>
-
 <style>
 	
 	
 </style>
 <div class="row-fluid " >
-	<div class="span4 menu2">
-		<ul class="ggg">
+	<div class=" menu2">
+		<ul class="ggg span4">
 			@*<ng-include  ng-repeat="item in data.Children" src="'tree_item_renderer.html'"  >
 
 			</ng-include>*@
-			<li  ng-repeat="item in data.Children" ng-include="'tree_item_rendererdiv.html'" >
+			<li  ng-repeat="item in data.Children" ng-include="'tree_item_rendererdiv.html'" class="span4" >
 
 			</li>
 
