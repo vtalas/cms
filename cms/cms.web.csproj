@@ -346,6 +346,7 @@
     <Content Include="Views\Admin\template\menu.cshtml" />
     <Content Include="Views\Admin\template\test.cshtml" />
     <Content Include="Views\templates\drag.cshtml" />
+    <Content Include="Views\Admin\template\menu2.cshtml" />
     <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />

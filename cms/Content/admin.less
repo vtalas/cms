@@ -49,9 +49,6 @@ ul{
 	list-style: none;
 }
 
-.menuitem{
-	width:100%;
-}
 	
 
 .xxx{
@@ -59,12 +56,15 @@ ul{
 	ul{
 	
 	}
+	.menuitem{
+		width:100%;
+	}
+
 	span.ng-scope{
 		display:block;
 		height:0px;
 	}
 	.dropableCtrl{
-		height:0px;
 	}
 	.dropableCtrl.dragging{
 		height:20px;
@@ -77,6 +77,40 @@ ul{
 	.draggableCtrl.dragged{
 		opacity:0.4;
 	}
-
 	
+}
+
+.menu2{
+	border:1px solid #ededed
+}
+
+ul.ggg{
+	margin:0px;
+}
+.ggg{
+	@vyska: 90px;
+	span.ng-scope{
+		display:block;
+		height:0px;
+	}
+	.dropableCtrl{
+		height:@vyska;
+		background-color:#eee;
+	}
+	.dropableCtrl.dragging{
+	}
+	.dropableCtrl.dragover{
+		background-color: Yellow;
+	}
+	.draggableCtrl{
+		background-color:#aaa;
+	}
+	.draggableCtrl{
+		height:@vyska;
+	}
+
+	.draggableCtrl.dragged{
+		opacity:0.4;
+	}
+
 }
