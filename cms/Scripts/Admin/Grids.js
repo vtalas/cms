@@ -14,6 +14,7 @@ function removeFromArray(item, collection) {
 module.value('ui.config', {
 	sortablehtml: {
 		sortableXXX: {
+
 			dragstart: function (e, uioptions, element, xxx) {
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
 				e.originalEvent.dataTransfer.setData('Text', xxx.source.item.Id);
@@ -23,6 +24,24 @@ module.value('ui.config', {
 				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
 			},
 			dragenter: function (e, uioptions, element, xxx) {
+				var collection = xxx.destination.scope.$parent.$collection;
+				
+				if (xxx.source.item !== xxx.destination.item) {
+					var oldposition = collection.indexOf(xxx.source.item);
+					
+					var currentposition = collection.indexOf(xxx.destination.item);
+
+					collection[oldposition] = xxx.destination.item;
+					collection[currentposition] = xxx.source.item;
+
+					collection[oldposition].prdel = "red";
+					collection[currentposition].prdel = "green";
+
+
+
+					xxx.destination.scope.$apply();
+				}
+
 				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
 			},
 			dragleave: function (e, uioptions, element, xxx) {

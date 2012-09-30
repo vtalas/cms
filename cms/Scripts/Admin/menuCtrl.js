@@ -115,14 +115,21 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 		console.log("menuCtrl set culture");
 	});
 
+	$scope.$on("statuschange", function (data, xxx) {
+		var old = (xxx.element).css("background-color");
+		(xxx.element).css("background-color", xxx.newvalue);
+		(xxx.element).animate({ backgroundColor: old }, 1000);
+	});
 	$scope.$on("dragstart-sortablehtml", function (data, xxx) {
-		console.log("start", xxx);
+		$(xxx.source.element).addClass("dragged");
+		console.log("start", xxx, $(xxx.source.element));
 	});
 	$scope.$on("dragend-sortablehtml", function (data, xxx) {
 		console.log("end", [xxx.destination.item.Id], xxx.destination.item);
 	});
 	$scope.$on("dragenter-sortablehtml", function (data, xxx) {
-		console.log("enter", [xxx.destination.item.Id], xxx.destination.item);
+		(xxx.source.element).css("color", "red");
+		console.log("enter", xxx.source.element, xxx.destination.element);
 	});
 	$scope.$on("dragleave-sortablehtml", function (data, xxx) {
 		console.log("leave", [xxx.destination.item.Id], xxx.destination.item);

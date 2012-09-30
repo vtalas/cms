@@ -76,6 +76,9 @@ angular.module('ui.directives').directive('uiSortableHtml', ['ui.config', '$drag
 
 			$(element).attr("draggable", true);
 
+			scope.$watch("item.prdel", function (newval, oldval) {
+				scope.$emit("statuschange", { oldvalue: oldval, newvalue: newval, element: element });
+			});
 			$(element).on("dragstart", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 
