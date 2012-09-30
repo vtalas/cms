@@ -20,7 +20,7 @@ function getNamespace(scope, namespaceArray) {
 	return validNamespace;
 }
 
-function registerDragEvent(dragevent, scope, namespaceArray, element, ngModel, opts) {
+function registerDragEventWithNamespace(dragevent, scope, namespaceArray, element, ngModel, opts) {
 	$(element).on(dragevent, function (e) {
 
 		var namespace = getNamespace(scope, namespaceArray),
@@ -39,7 +39,100 @@ function registerDragEvent(dragevent, scope, namespaceArray, element, ngModel, o
 			opts[namespace][dragevent](e, opts, element, obj);
 		}
 	});
+
 }
+
+//function registerDragEvent(dragevent, scope, type, element, ngModel, opts, draggeditem) {
+//	$(element).on(dragevent, function (e) {
+//		var modelvalues = ngModel ? ngModel.$modelValue : null;
+
+//		if (!opts[type]) {
+//			console.warn("type is not defined", opts[type]);
+//			return;
+//		}
+//		if (typeof (opts[type][dragevent]) === "function") {
+//			draggeditem.destination = { item: modelvalues, scope: scope, element: element };
+//			console.log(draggeditem.source.Id, draggeditem.destination.Id);
+			
+//			opts[type][dragevent](e, opts, element, draggeditem);
+//		}
+//	});
+//}
+
+angular.module('ui').value("$draggeditem", {source: {}, destination: {}});
+angular.module('ui.directives').directive('uiSortableHtml', ['ui.config', '$draggeditem', function (uiConfig, $draggeditem) {
+	var options;
+	options = {};
+	if (uiConfig.sortablehtml !== null) {
+		angular.extend(options, uiConfig.sortablehtml);
+	}
+
+	return {
+		require: '?ngModel',
+		link: function (scope, element, attrs, ngModel) {
+			var namespaceArray = attrs.uiSortableHtml.split(","),
+			    namespace = namespaceArray[0],
+				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
+
+			$(element).attr("draggable", true);
+
+			$(element).on("dragstart", function (e) {
+				var modelvalues = ngModel ? ngModel.$modelValue : null;
+
+				$draggeditem.source.item = modelvalues;
+				$draggeditem.source.scope = scope;
+				$draggeditem.source.element = element;
+				$draggeditem.source.namespace = namespace;
+				$draggeditem.destination = $draggeditem.source;
+
+				if (typeof (opts[namespace].dragstart) === "function") {
+					opts[namespace].dragstart(e, options, element, $draggeditem);
+				}
+			});
+
+			$(element).on("dragenter", function (e) {
+				var modelvalues = ngModel ? ngModel.$modelValue : null;
+
+				if (typeof (opts[namespace].dragenter) === "function") {
+					$draggeditem.destination = { item: modelvalues, scope: scope, element: element };
+					opts[namespace].dragenter(e, options, element, $draggeditem);
+				}
+			});
+			$(element).on("dragleave", function (e) {
+				var modelvalues = ngModel ? ngModel.$modelValue : null;
+
+				if (typeof (opts[namespace].dragleave) === "function") {
+					$draggeditem.destination = { item: modelvalues, scope: scope, element: element };
+					opts[namespace].dragleave(e, options, element, $draggeditem);
+				}
+			});
+			$(element).on("dragover", function (e) {
+				var modelvalues = ngModel ? ngModel.$modelValue : null;
+
+				if (typeof (opts[namespace].dragover) === "function") {
+					$draggeditem.destination = { item: modelvalues, scope: scope, element: element };
+					opts[namespace].dragover(e, options, element, $draggeditem);
+				}
+			});
+			$(element).on("drop", function (e) {
+				var modelvalues = ngModel ? ngModel.$modelValue : null;
+
+				if (typeof (opts[namespace].drop) === "function") {
+					$draggeditem.destination = { item: modelvalues, scope: scope, element: element };
+					opts[namespace].drop(e, options, element, $draggeditem);
+				}
+			});
+			//dragend nevi o koncovym elementu, proto se destination neupdatuje
+			$(element).on("dragend", function (e) {
+				if (typeof (opts[namespace].dragend) === "function") {
+					opts[namespace].dragend(e, options, element, $draggeditem);
+				}
+			});
+
+		}
+	};
+}
+]);
 
 angular.module('ui.directives').directive('uiDraggableHtml', [
 	'ui.config', function (uiConfig) {
@@ -99,10 +192,10 @@ angular.module('ui.directives').directive('uiDropableHtml', [
 				var namespaceArray = attrs.uiDropableHtml.split(","),
 					opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 
-				registerDragEvent("dragenter", scope, namespaceArray, element, ngModel, opts);
-				registerDragEvent("dragleave", scope, namespaceArray, element, ngModel, opts);
-				registerDragEvent("dragover", scope, namespaceArray, element, ngModel, opts);
-				registerDragEvent("drop", scope, namespaceArray, element, ngModel, opts);
+				registerDragEventWithNamespace("dragenter", scope, namespaceArray, element, ngModel, opts);
+				registerDragEventWithNamespace("dragleave", scope, namespaceArray, element, ngModel, opts);
+				registerDragEventWithNamespace("dragover", scope, namespaceArray, element, ngModel, opts);
+				registerDragEventWithNamespace("drop", scope, namespaceArray, element, ngModel, opts);
 			}
 		};
 	}

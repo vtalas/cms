@@ -115,6 +115,27 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 		console.log("menuCtrl set culture");
 	});
 
+	$scope.$on("dragstart-sortablehtml", function (data, xxx) {
+		console.log("start", xxx);
+	});
+	$scope.$on("dragend-sortablehtml", function (data, xxx) {
+		console.log("end", [xxx.destination.item.Id], xxx.destination.item);
+	});
+	$scope.$on("dragenter-sortablehtml", function (data, xxx) {
+		console.log("enter", [xxx.destination.item.Id], xxx.destination.item);
+	});
+	$scope.$on("dragleave-sortablehtml", function (data, xxx) {
+		console.log("leave", [xxx.destination.item.Id], xxx.destination.item);
+	});
+	$scope.$on("dragover-sortablehtml", function (data, xxx) {
+		console.log("over");
+	});
+	$scope.$on("drop-sortablehtml", function (data, xxx) {
+		console.log("drop", [xxx.destination.item.Id], xxx.destination.item);
+	});
+
+
+
 	$scope.$on("dragstart", function (data, xxx) {
 		$(xxx.sourceElement).addClass("dragged");
 		setTimeout(function () {

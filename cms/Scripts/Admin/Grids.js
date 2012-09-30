@@ -9,9 +9,37 @@ function removeFromArray(item, collection) {
 	collection.splice(index, 1);
 };
 
+
+
 module.value('ui.config', {
+	sortablehtml: {
+		sortableXXX: {
+			dragstart: function (e, uioptions, element, xxx) {
+				e.originalEvent.dataTransfer.effectAllowed = 'move';
+				e.originalEvent.dataTransfer.setData('Text', xxx.source.item.Id);
+				xxx.destination.scope.$emit("dragstart-sortablehtml", xxx);
+			},
+			dragend: function (e, uioptions, element, xxx) {
+				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
+			},
+			dragenter: function (e, uioptions, element, xxx) {
+				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
+			},
+			dragleave: function (e, uioptions, element, xxx) {
+				xxx.destination.scope.$emit("dragleave-sortablehtml", xxx);
+			},
+			dragover: function (e, uioptions, element, xxx) {
+				e.preventDefault();
+				e.stopPropagation();
+				xxx.destination.scope.$emit("dragover-sortablehtml", xxx);
+			},
+			drop: function (e, uioptions, element, xxx) {
+				xxx.destination.scope.$emit("drop-sortablehtml", xxx);
+			}
+		}
+	},
 	dropablehtml: {
-		pageslist: {
+	    pageslist: {
 			dragleave: function (e, uiConfig, element, xxx) {
 				xxx.destinationScope.$emit("dragleave", xxx);
 			},

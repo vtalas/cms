@@ -66,17 +66,13 @@ ul.ggg {
   height: 0px;
 }
 .ggg .dropableCtrl {
-  width: 10px;
   height: 90px;
-  float: left;
   background-color: #eeeeee;
 }
 .ggg .dropableCtrl.dragover {
   background-color: Yellow;
 }
 .ggg .draggableCtrl {
-  float: left;
-  width: 170px;
   background-color: #aaaaaa;
 }
 .ggg .draggableCtrl {
