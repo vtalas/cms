@@ -117,6 +117,7 @@
       "Content": "",
       "Type": "text",
       "Skin": null,
+	  "Width" : 2,
       "ParentId": "",
       "Children": [],
       "ResourcesLoc": {}
@@ -147,6 +148,7 @@
       "Content": "",
       "Type": "text",
       "Skin": null,
+	  "Width" : 3,
       "ParentId": "",
       "Children": [],
       "ResourcesLoc": {}
