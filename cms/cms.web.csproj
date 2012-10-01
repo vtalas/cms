@@ -106,10 +106,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\UserResources\ApplicationResources.cs" />
+    <Compile Include="Code\UserResources\HtmlTemplateResource.cs" />
+    <Compile Include="Code\UserResources\IResourceManager.cs" />
+    <Compile Include="Code\UserResources\PrdelTranslations.cs" />
+    <Compile Include="Code\UserResources\ResourceManager.cs" />
+    <Compile Include="Code\UserResources\ResourcesObject.cs" />
+    <Compile Include="Code\UserResources\ViewModeType.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
     <Compile Include="Controllers\Api\MenuController.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Models\TemplateSettings.cs" />
@@ -333,7 +341,6 @@
     <Content Include="Scripts\Admin\pageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\colorPicker_src.js" />
     <Content Include="Scripts\select2\select2.css" />
     <Content Include="Scripts\select2\select2.js" />
     <Content Include="Scripts\select2\select2.png" />
@@ -410,7 +417,7 @@
     <None Include="tests\test\lib\jasmine\MIT.LICENSE" />
     <Content Include="Views\setup\MigrateDatabaseToLatestVersion.cshtml" />
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
-    <Content Include="Views\Admin\_Layout_Grids.cshtml" />
+    <Content Include="Views\Admin\_Layout_Appllication.cshtml" />
     <Content Include="Views\client\test1\Index.cshtml" />
     <Content Include="Content\Apps\test1\StaticContent.html" />
     <Content Include="Views\Shared\_MenuItemTmpl\Menuitem.cshtml" />

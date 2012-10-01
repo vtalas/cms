@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Web.Mvc;
+using System.Web.Optimization;
+using BundleTransformer.Core.Translators;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using cms.Code;
@@ -12,7 +14,7 @@ namespace cms.Controllers.Api
 {
 	//AJAX akce
 	public class AdminApiController : ApiControllerBase
-	{
+	{ 
 
 		[HttpPost]
 		public ActionResult AddApplication(ApplicationSetting data)
@@ -147,6 +149,7 @@ namespace cms.Controllers.Api
 		//TODO: prejmenovat na Get
 		public ActionResult GetGrid(Guid? id)
 		{
+
 			using (var db = SessionProvider.CreateSession)
 			{
 				var g = db.Page.Get(id.Value);

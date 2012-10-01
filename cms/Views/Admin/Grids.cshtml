@@ -1,10 +1,16 @@
-﻿@using cms.shared
+﻿@using System.Web.Optimization
+@using cms.shared
 @{
 	ViewBag.Title = "Grids";
-	Layout = "_Layout_Grids.cshtml";
+	Layout = "_Layout_Appllication.cshtml";
 
 	var applicationName = ViewBag.Application;
 	var applicationId = ViewBag.ApplicationId;
+
+	var a = new Bundle("~/ssd");
+	a.IncludeDirectory("~/Scripts", "*.js");
+	BundleTable.Bundles.Add(a);
+	//a.GenerateBundleResponse()
 }
 
 <div ng-app="gridsmodule"

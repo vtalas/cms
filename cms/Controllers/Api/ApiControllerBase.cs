@@ -16,9 +16,8 @@ namespace cms.Controllers.Api
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
 			base.Initialize(requestContext);
-			var a = this.RouteData;
 
-			ApplicationId = new Guid( a.Values["applicationId"].ToString());
+			ApplicationId = new Guid( RouteData.Values["applicationId"].ToString());
 			SessionProvider = new SessionProvider(()=>new JsonDataEf(ApplicationId), new MigrateInitalizer());
 		}
 

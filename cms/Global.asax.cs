@@ -15,7 +15,7 @@ namespace cms
 
 	public class MvcApplication : System.Web.HttpApplication
 	{
-		
+
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
 			filters.Add(new HandleErrorAttribute());
@@ -28,9 +28,9 @@ namespace cms
 			routes.MapRoute(
 				"applicationAdmin", // Route name
 				"admin/{application}/{action}/{id}", // URL with parameters
-				new { controller = "admin", action = "Index", application="00000000-0000-0000-0000-000000000000", id = UrlParameter.Optional } // Parameter defaults
+				new { controller = "admin", action = "Index", application = "00000000-0000-0000-0000-000000000000", id = UrlParameter.Optional } // Parameter defaults
 			);
-			
+
 			//TODO: predelat api routes na tento 
 			routes.MapRoute(
 				"api", // Route name
@@ -43,27 +43,27 @@ namespace cms
 				"adminapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "adminapi", action = "error", id = UrlParameter.Optional } // Parameter defaults
 			);
-			
+
 			routes.MapRoute(
 				"ViewPage", // Route name
 				"client/{application}/{link}", // URL with parameters
-				new { controller = "Client", action="ViewPage",link = UrlParameter.Optional } 
+				new { controller = "Client", action = "ViewPage", link = UrlParameter.Optional }
 			);
-			
+
 			routes.MapRoute(
 				"clientApiJson", // Route name
 				"client/json/{applicationId}/{link}", // URL with parameters
 				new { controller = "ClientApi", action = "ViewPageJson", link = UrlParameter.Optional } // Parameter defaults
 			);
-			
+
 			routes.MapRoute(
 				"clientApi", // Route name
 				"clientapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "ClientApi", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 			);
-			
-			
-			
+
+
+
 			routes.MapRoute(
 				"Default", // Route name
 				"{controller}/{action}/{id}", // URL with parameters
@@ -71,9 +71,26 @@ namespace cms
 			);
 
 		}
-		
+
 		protected void Application_Start()
 		{
+			var transforms = new IBundleTransform[] {new JsMinify()};
+
+			var testbundle = new Bundle("~/Scripts/libs", transforms)
+				.Include("~/Scripts/angular.js")
+				.Include("~/Scripts/angular-ui.js")
+				.IncludeDirectory("~/Scripts/", "*.js")
+				.IncludeDirectory("~/Scripts/", "*.coffee")
+				.IncludeDirectory("~/Scripts/", "*.ts");
+
+			var adminBundle = new Bundle("~/Scripts/admin", transforms)
+				.IncludeDirectory("~/Scripts/Admin", "*.js")
+				.IncludeDirectory("~/Scripts/Admin", "*.coffee");
+
+
+			BundleTable.Bundles.Add(testbundle);
+			BundleTable.Bundles.Add(adminBundle);
+
 			AreaRegistration.RegisterAllAreas();
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);

@@ -4,7 +4,7 @@
 
 }
 <div ng-app>
-	<div ng-controller="index" data-model="@ViewBag.Json" >
+	<div ng-controller="index" data-model="@ViewBag.Json" class="container" >
 		<ul>
 			<li ng-repeat="item in data">
 				<a href="/admin/{{item.Name}}/grids">{{item.Name}}</a> |
@@ -12,9 +12,9 @@
 			</li>
 		</ul>
 	
-		<form ng-submit="add()">
+		<form ng-submit="add()" class="form-inline">
 			<input type="text" ng-model="newitem"  size="30" placeholder="pridat dalsi">
-			<input  type="submit" value="pridat">
+			<button class="btn" type="submit" >přidat</button>
 		</form>
 		<span>{{data.length}} total </span>
 	</div>

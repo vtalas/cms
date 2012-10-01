@@ -28,17 +28,27 @@ namespace cms.Code
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
 			base.Initialize(requestContext);
-			var a = this.RouteData;
-			Application = a.Values["application"].ToString();
+			object x = null;
 
-				
-			//SessionProvider = new SessionProvider(Application, new MigrateInitalizer());
-			SessionProvider = new SessionProvider(()=> new JsonDataEf(Application), new MigrateInitalizer());
-
-			using (var db = SessionProvider.CreateSession)
+			if (RouteData.Values.TryGetValue("application", out x  ))
 			{
-				ApplicationId = db.ApplicationId;
+				Application = x as string;
+
+				SessionProvider = new SessionProvider(() => new JsonDataEf(Application), new MigrateInitalizer());
+				using (var db = SessionProvider.CreateSession)
+				{
+					ApplicationId = db.ApplicationId;
+				}
 			}
+
+			if (RouteData.Values.TryGetValue("applicationId", out x  ))
+			{
+				Guid aaa;
+				if (Guid.TryParse(x as string, out aaa))
+					ApplicationId = aaa;
+			}
+	
+
 
 		}
 	}

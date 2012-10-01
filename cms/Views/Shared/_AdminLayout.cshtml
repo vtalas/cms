@@ -27,47 +27,25 @@
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/jetstrap/assets/ico/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/jetstrap/assets/ico/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="/Content/jetstrap/assets/ico/apple-touch-icon-57-precomposed.png">
-
-
+	
+	@Scripts.Render("~/Scripts/libs")
+	@Scripts.Render("~/Scripts/admin")
 	@Scripts.Render(
-				"~/Scripts/jquery-1.7.2.js",
-				"~/Scripts/jquery-ui.min.js",
-				"~/Scripts/angular.js",
-				"~/Scripts/angular-resource.js",
-				"~/Scripts/angular-ui.js",
-				"~/Scripts/angular-ui-ext-dndClass.js",
-				"~/Scripts/angular-ui-ext.js",
-				"~/Scripts/select2/select2.js",
-				"~/Scripts/showdown.js",
-
-				"~/Scripts/angular-templates-ext.coffee",
 				"~/Scripts/Apps/defaults/_gridElementScripts/novinka.coffee",
 				"~/Scripts/Apps/defaults/_gridElementScripts/text.coffee",
 				"~/Scripts/Apps/defaults/_gridElementScripts/simplehtml.coffee",
 				"~/Scripts/Apps/defaults/_gridElementScripts/reference.coffee",
 				"~/Scripts/Apps/defaults/_gridElementScripts/textlocalized.coffee"
 			)
-
-	@Scripts.Render(
-				"~/Scripts/Admin/cmsapi.js",
-				"~/Scripts/Admin/gridpagesCtrl.js",
-				"~/Scripts/Admin/Grids.js",
-				"~/Scripts/Admin/Index.js",
-				"~/Scripts/Admin/menuCtrl.js",
-				"~/Scripts/Admin/pageCtrl.js"
-		)
-
 	@Styles.Render(
 			//	"~/Content/fluid_grid.css",
 				//"~/Scripts/select2/select2.css",
 			//"~/Content/bootstrapdefault/less/bootstrap.less",
 				"~/Content/admin.less"
 			)
-
 </head>
 <body>
 	@RenderBody()
-
 	@Scripts.Render(
 				"~/Scripts/bootstrap.js"
 		)
