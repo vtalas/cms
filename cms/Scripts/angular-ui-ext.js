@@ -76,8 +76,8 @@ angular.module('ui.directives').directive('uiSortableHtml', ['ui.config', '$drag
 
 			$(element).attr("draggable", true);
 
-			scope.$watch("item.prdel", function (newval, oldval) {
-				scope.$emit("statuschange", { oldvalue: oldval, newvalue: newval, element: element });
+			scope.$watch("item.status", function (newval, oldval) {
+				scope.$emit("statuschange-sortablehtml", { oldvalue: oldval, newvalue: newval, element: element, item: ngModel.$modelValue });
 			});
 			$(element).on("dragstart", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
@@ -103,7 +103,6 @@ angular.module('ui.directives').directive('uiSortableHtml', ['ui.config', '$drag
 			});
 			$(element).on("dragleave", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
-
 				if (typeof (opts[namespace].dragleave) === "function") {
 					$draggeditem.destination = { item: modelvalues, scope: scope, element: element };
 					opts[namespace].dragleave(e, options, element, $draggeditem);

@@ -115,30 +115,44 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 		console.log("menuCtrl set culture");
 	});
 
-	$scope.$on("statuschange", function (data, xxx) {
+	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
 		var old = (xxx.element).css("background-color");
-		(xxx.element).css("background-color", xxx.newvalue);
-		(xxx.element).animate({ backgroundColor: old }, 1000);
+		switch (xxx.newvalue) {
+			case DRAGEND:
+				(xxx.element).removeClass("dragged");
+				break;
+			case DRAGGED:
+				$(xxx.element).addClass("dragged");
+				break;
+			case DROPPED:
+				(xxx.element).css("background-color", "green");
+				(xxx.element).animate({ backgroundColor: old }, 1000);
+				break;
+			case SWAPPED:
+				var width = (xxx.element).width();
+				(xxx.element).width(width - 50);
+				(xxx.element).css("margin-left", 25);
+				(xxx.element).animate({ width: width, marginLeft: 0 }, 200);
+				break;
+			default:
+		}
+
 	});
 	$scope.$on("dragstart-sortablehtml", function (data, xxx) {
-		$(xxx.source.element).addClass("dragged");
-		console.log("start", xxx, $(xxx.source.element));
 	});
 	$scope.$on("dragend-sortablehtml", function (data, xxx) {
-		console.log("end", [xxx.destination.item.Id], xxx.destination.item);
 	});
 	$scope.$on("dragenter-sortablehtml", function (data, xxx) {
-		(xxx.source.element).css("color", "red");
-		console.log("enter", xxx.source.element, xxx.destination.element);
+		//	console.log("enter", xxx.source.element, xxx.destination.element);
 	});
 	$scope.$on("dragleave-sortablehtml", function (data, xxx) {
-		console.log("leave", [xxx.destination.item.Id], xxx.destination.item);
+		//console.log("leave", xxx.destination.item.status, xxx.source.item.status);
 	});
 	$scope.$on("dragover-sortablehtml", function (data, xxx) {
-		console.log("over");
+		//console.log("over");
 	});
 	$scope.$on("drop-sortablehtml", function (data, xxx) {
-		console.log("drop", [xxx.destination.item.Id], xxx.destination.item);
+		//console.log("drop", [xxx.destination.item.Id], xxx.destination.item);
 	});
 
 

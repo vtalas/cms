@@ -1,7 +1,11 @@
 
 
 var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui"]);
-var DROPPED = 0;
+var DRAGGED = 1,
+	PRD = 0,
+	DRAGEND = 5,
+	DROPPED = 3,
+	SWAPPED = 2;
 
 function removeFromArray(item, collection) {
 	var index;
@@ -18,33 +22,36 @@ module.value('ui.config', {
 			dragstart: function (e, uioptions, element, xxx) {
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
 				e.originalEvent.dataTransfer.setData('Text', xxx.source.item.Id);
+				xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$emit("dragstart-sortablehtml", xxx);
 			},
 			dragend: function (e, uioptions, element, xxx) {
+				xxx.source.item.status = DRAGEND;
+				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
 			},
 			dragenter: function (e, uioptions, element, xxx) {
 				var collection = xxx.destination.scope.$parent.$collection;
-				
+
 				if (xxx.source.item !== xxx.destination.item) {
-					var oldposition = collection.indexOf(xxx.source.item);
-					
-					var currentposition = collection.indexOf(xxx.destination.item);
+					var sourceindex = collection.indexOf(xxx.source.item);
+					var destinationindex = collection.indexOf(xxx.destination.item);
 
-					collection[oldposition] = xxx.destination.item;
-					collection[currentposition] = xxx.source.item;
+					collection[sourceindex] = xxx.destination.item;
+					collection[destinationindex] = xxx.source.item;
 
-					collection[oldposition].prdel = "red";
-					collection[currentposition].prdel = "green";
-
-
+					xxx.destination.item.status = SWAPPED;
 
 					xxx.destination.scope.$apply();
 				}
-
+				xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
 			},
 			dragleave: function (e, uioptions, element, xxx) {
+
+				xxx.destination.item.status = PRD;
+				xxx.source.item.status = DRAGGED;
+				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragleave-sortablehtml", xxx);
 			},
 			dragover: function (e, uioptions, element, xxx) {
@@ -53,12 +60,14 @@ module.value('ui.config', {
 				xxx.destination.scope.$emit("dragover-sortablehtml", xxx);
 			},
 			drop: function (e, uioptions, element, xxx) {
+				xxx.source.item.status = DROPPED;
+				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("drop-sortablehtml", xxx);
 			}
 		}
 	},
 	dropablehtml: {
-	    pageslist: {
+		pageslist: {
 			dragleave: function (e, uiConfig, element, xxx) {
 				xxx.destinationScope.$emit("dragleave", xxx);
 			},
@@ -151,7 +160,7 @@ module.value('ui.config', {
 
 				if (parent) {
 					//e.preventDefault();
-				//	return;
+					//	return;
 				}
 				e.stopPropagation();
 
