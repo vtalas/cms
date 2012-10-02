@@ -1,6 +1,10 @@
 ﻿
 using System;
 using System.ComponentModel;
+using System.IO;
+using BundleTransformer.Core.Assets;
+using BundleTransformer.Core.FileSystem;
+using BundleTransformer.Core.Web;
 using Moq;
 using NUnit.Framework;
 using cms.Code.UserResources;
@@ -10,6 +14,8 @@ using System.Linq;
 
 namespace cms.web.tests
 {
+	
+
 	[TestFixture]
 	class CreatingNewApplicationResources
 	{
@@ -20,19 +26,43 @@ namespace cms.web.tests
 			Id = Guid.NewGuid()
 		};
 
+		IHttpApplicationInfo HttpApplicationInfoMock
+		{
+			get
+			{
+				var assetMock = new Mock<IHttpApplicationInfo>();
+				assetMock.Setup(x => x.RootPath).Returns(Path.GetFullPath("../../"));
+				return assetMock.Object;
+			}
+		}
+		IFileSystemWrapper FileSystemWrapperMock
+		{
+			get
+			{
+				var filesystemWrapper = new Mock<IFileSystemWrapper>();
+				filesystemWrapper.Setup(x => x.GetFileTextContent("js1.js")).Returns("console.log('hvshs js1. jsbjdsbjdb sjb')");
+				filesystemWrapper.Setup(x => x.GetFileTextContent("js2.js")).Returns("console.log('hvshs js22222222. jsbjdsbjdb sjb')");
+				filesystemWrapper.Setup(x => x.GetFileTextContent("js3.js")).Returns("console.log('hvshs js33333333. jsbjdsbjdb sjb')");
+				filesystemWrapper.Setup(x => x.FileExists(It.IsAny<string>())).Returns(true);
+				return filesystemWrapper.Object;
+			}
+		}
+
 		public ApplicationSetting CreateDefaultApp()
 		{
+		
 			var mock = new Mock<JsonDataProvider>("00000000-0000-0000-0000-000000000000");
 			mock.Setup(x => x.Add(It.IsAny<ApplicationSetting>()))
 				.Returns(defaultApp);
 			var db = mock.Object;
+
 			return db.Add(new ApplicationSetting());
 		}
 
-		public IResourceManager GetDefaultResourceManager()
+		public IResourceManager CreateDefaultResourceManager()
 		{
 			var app = CreateDefaultApp();
-			return ResourceManager.Create(app.Id);
+			return UserResourceManager.Create(app.Id, HttpApplicationInfoMock, FileSystemWrapperMock);
 		}
 
 		[TestFixtureSetUp]
@@ -45,49 +75,45 @@ namespace cms.web.tests
 		public void CreateAndCheckIfExists_test()
 		{
 			var app = CreateDefaultApp();
-			var res = ResourceManager.Create(app.Id);
+			var res = UserResourceManager.Get(app.Id, HttpApplicationInfoMock, FileSystemWrapperMock);
 			Assert.IsTrue(res.Exist(app.Id));
 		}
 
 		[Test]
-		public void GetAllAssets_test()
+		public void NoAssetsOnBeginning_test()
 		{
-			var resources = GetDefaultResourceManager();
-			var tmpl = resources.Assets();
-
-			Assert.IsNotNull(tmpl);
-			Assert.IsTrue(tmpl.Count > 0);
+			var resources = CreateDefaultResourceManager();
+			Assert.IsTrue(resources.Assets.Count == 0);
 		}
 
 		[Test]
-		public void Combine_scripts_test()
+		public void IncludeFile_test()
 		{
-			var resources = GetDefaultResourceManager();
-			var tmpl = resources.Javascripts();
-
-
-		}
-
-
-
-		[Test]
-		public void HtmlTemplate_test()
-		{
-			var resources = GetDefaultResourceManager();
-			var tmpl = resources.HtmlTemplate("text", ViewModeType.Admin);
-			Assert.IsNotNull(tmpl);
-			Assert.IsNotNullOrEmpty(tmpl.Path);
+			var resources = CreateDefaultResourceManager();
+			resources.Include("js1.js");
+			Assert.IsTrue(resources.Assets.Count == 1);
+			Assert.IsTrue(resources.Assets[0].Content.Length > 0);
+			Console.WriteLine(resources.Assets[0].Content );
 		}
 
 		[Test]
-		public void HtmlTemplateToHtml_test()
+		public void IncludeDirectory_test()
 		{
-			var resources = GetDefaultResourceManager();
-
-			var tmpl = resources.HtmlTemplate("text", ViewModeType.Admin);
-			Console.WriteLine(tmpl.ToHtml());
-			Assert.IsNotNull(tmpl.ToHtml());
+			var resources = CreateDefaultResourceManager();
+			resources.IncludeDirectory("js");
+			Assert.IsTrue(resources.Assets.Count == 3);
 		}
+
+		[Test]
+		public void Combine_multiple_test()
+		{
+			var resources = CreateDefaultResourceManager();
+			resources.Include("js1.js");
+			resources.Include("js2.js");
+			
+			Assert.AreEqual(resources.Assets.Sum(x => x.Content.Length),  resources.Combine().Length );
+		}
+
 	
 	}
 }

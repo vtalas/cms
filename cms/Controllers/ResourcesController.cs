@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Resources;
+using System.Web.Mvc;
 using BundleTransformer.Core.Assets;
+using cms.Code.UserResources;
 using cms.Controllers.Api;
 
 namespace cms.Controllers
@@ -11,7 +13,9 @@ namespace cms.Controllers
 		{
 			var x = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
 			var xxx = x.Translate(new Asset(Server.MapPath("~/Scripts/angular-templates-ext.coffee")));
-			
+
+			var res = UserResourceManager.Get(ApplicationId);
+
 
 
 			Response.ContentType = "text/javascript";
