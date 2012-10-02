@@ -75,5 +75,6 @@ ul {
 }
 .ggg .draggableCtrl,
 .ggg .sortableCtrl {
+  margin-top: 10px;
   height: 70px;
 }

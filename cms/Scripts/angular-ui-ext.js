@@ -42,23 +42,6 @@ function registerDragEventWithNamespace(dragevent, scope, namespaceArray, elemen
 
 }
 
-//function registerDragEvent(dragevent, scope, type, element, ngModel, opts, draggeditem) {
-//	$(element).on(dragevent, function (e) {
-//		var modelvalues = ngModel ? ngModel.$modelValue : null;
-
-//		if (!opts[type]) {
-//			console.warn("type is not defined", opts[type]);
-//			return;
-//		}
-//		if (typeof (opts[type][dragevent]) === "function") {
-//			draggeditem.destination = { item: modelvalues, scope: scope, element: element };
-//			console.log(draggeditem.source.Id, draggeditem.destination.Id);
-			
-//			opts[type][dragevent](e, opts, element, draggeditem);
-//		}
-//	});
-//}
-
 angular.module('ui').value("$draggeditem", {source: {}, destination: {}});
 angular.module('ui.directives').directive('uiSortableHtml', ['ui.config', '$draggeditem', function (uiConfig, $draggeditem) {
 	var options;

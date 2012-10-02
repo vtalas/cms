@@ -1,103 +1,11 @@
-﻿<script type="text/ng-template" id="tree_item_renderer.html">
-	<li ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl" >.</li>
-	<li ui-dropable-html="sortable,pageslist" ng-show="$index % 3 == 0 && !$first" ng-model="item" class="dropableCtrl" >-</li>
-	<li ui-draggable-html="sortable" 
-		 draggable="true" ng-model="item" 
-		 ng-class="item.prdel" class="draggableCtrl">
-		<div menuitem="item" grid="data" ></div> 
-	</li>
-	<li ui-dropable-html="sortable,pageslist" ng-show="$last" ui-config={last:true} class="dropableCtrl"  ng-model="item"></li>
-</script>
-<script type="text/ng-template" id="tree_item_rendererdiv.html">
-	<div ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl span1" ></div>
-	<div ui-draggable-html="sortable" 
-		 draggable="true" ng-model="item" 
-		 ng-class="item.prdel" class="draggableCtrl span11">
-		<div menuitem="item" grid="data" ></div> 
-	</div>
-	<div ui-dropable-html="sortable,pageslist" ng-show="$last" ui-config={last:true} ng-model="item" class="dropableCtrl span1"></div>
-</script>
-<script type="text/ng-template" id="tree_item_rendereSortable.html">
-	<div ui-sortable-html="sortableXXX" 
-		 ng-model="item" 
-		 ng-class="item.prdel" class="sortableCtrl">
+﻿<script type="text/ng-template" id="tree_item_rendereSortable.html">
+	<div ui-sortable-html="sortable" ng-model="item" class="sortableCtrl">
 		<div menuitem="item" grid="data" ></div> 
 	</div>
 </script>
-<style>
-	.sortableCtrl {
-		margin-top: 10px;
-	}
-</style>
 <ul class="ggg container_12 container ">
-	@*<ng-include  ng-repeat="item in data.Children" src="'tree_item_renderer.html'"  >
-
-	</ng-include>*@
 	<li  ng-repeat="item in data.Children" ng-include="'tree_item_rendereSortable.html'" class="grid_{{item.Width * 4 || 4 }}" >
 
 	</li>
 </ul>
 
-<div class="container container_12 aa">
-	<div class="grid_2">.</div>
-	<div class="grid_2">.</div>
-	<div class="grid_2">.</div>
-	<div class="grid_2">.</div>
-	<div class="grid_2">.</div>
-	<div class="grid_2">.</div>
-
-	<div class="grid_2">.</div>
-	<div class="grid_2">.</div>
-	<div class="grid_2">.</div>
-	<div class="grid_2">.</div>
-</div>
-
-<ul class="container container_12 aa">
-	<li class="grid_2">.</li>
-	<li class="grid_2">.</li>
-	<li class="grid_2">.</li>
-	<li class="grid_2">.</li>
-	<li class="grid_2">.</li>
-	<li class="grid_2">.</li>
-
-	<li class="grid_2">.</li>
-	<li class="grid_2">.</li>
-	<li class="grid_2">.</li>
-	<li class="grid_2">.</li>
-
-</ul>
-
-
-
-@*
-<div class="row aa span12">
-	<div class="span4">...</div>
-	<div class="span4">...</div>
-	<div class="span4">...</div>
-</div>
-<div class="row aa">
-	<div class="span12">
-		<div class="row">
-		<div class="span4 x">...</div>
-		<div class="span4 x">...</div>
-		<div class="span4 x">...</div>
-	</div>
-	</div>
-</div>
-<div class="clearfix"></div>
-
-<ul class="row aa" >
-	<div class="span6">...</div>
-	<div class="span6">...</div>
-</ul>
-
-
-<div class="row aa">
-  <div class="span9">
-    Level 1 column
-    <div class="row">
-      <div class="span6">Level 2</div>
-      <div class="span3">Level 2</div>
-    </div>
-  </div>
-</div>*@

@@ -1,4 +1,4 @@
-var menusCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, GridApi) {
+﻿var menusCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, GridApi) {
 	menusCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings"];
 
 	$scope.$on("setCultureEvent", function () {
@@ -28,7 +28,7 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	$scope.$on("dragstart", function (data, xxx) {
 		$(xxx.sourceElement).addClass("dragged");
 		setTimeout(function () {
-			$(".dropableCtrl").animate({ height: 20 }, 200);	
+			$(".dropableCtrl").animate({ height: 20 }, 200);
 		}, 200);
 	});
 
@@ -67,7 +67,7 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 	$scope.hideAdd = function (item) {
 		item.showAdd = 0;
 	};
-	$scope.grids = GridApi.grids({}, function (data) {
+	$scope.grids = GridApi.grids({ }, function (data) {
 
 	});
 	$scope.add = function (item) {
@@ -107,10 +107,6 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 
 	$scope.dragging = false;
 
-
-	var timeout,
-		dropableStartWidth = 10,
-		draggableWidth = 170;
 	$scope.$on("setCultureEvent", function () {
 		console.log("menuCtrl set culture");
 	});
@@ -118,30 +114,30 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
 		var old = (xxx.element).css("background-color");
 		switch (xxx.newvalue) {
-			case DRAGEND:
-				break;
-			case DRAGGED:
-				(xxx.element).css("opacity", 1);
-				break;
-			case DROPPED:
-				(xxx.element).css("background-color", "green");
-				(xxx.element).animate({ backgroundColor: old }, 1000);
-				break;
-			case SWAPPED:
-				(xxx.element).css("opacity", 1);
-				setTimeout(function () {
-					(xxx.element).animate({ opacity: 0.4 }, 1000);
-				},200)
-				break;
-			default:
+		case DRAGEND:
+			(xxx.element).css("background-color", "green");
+			$(".sortableCtrl").stop(true,true).css("opacity", "1");
+			(xxx.element).animate({ backgroundColor: old }, 1000);
+			break;
+		case DRAGGED:
+			(xxx.element).css("opacity", 1);
+			break;
+		case DROPPED:
+			break;
+		case SWAPPED:
+			(xxx.element).css("opacity", 1);
+			setTimeout(function () {
+				(xxx.element).animate({ opacity: 0.4 }, 1000);
+			}, 200);
+			break;
+		default:
 		}
-
 	});
 	$scope.$on("dragstart-sortablehtml", function (data, xxx) {
 		$(".sortableCtrl").css("opacity", "0.4");
 	});
 	$scope.$on("dragend-sortablehtml", function (data, xxx) {
-		$(".sortableCtrl").stop(true,true).css("opacity", "1");
+		//$(".sortableCtrl").stop(true).css("opacity", "1");
 	});
 	$scope.$on("dragenter-sortablehtml", function (data, xxx) {
 		//	console.log("enter", xxx.source.element, xxx.destination.element);
@@ -163,7 +159,7 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 	$scope.hideAdd = function (item) {
 		item.showAdd = 0;
 	};
-	$scope.grids = GridApi.grids({}, function (data) {
+	$scope.grids = GridApi.grids({ }, function (data) {
 
 	});
 

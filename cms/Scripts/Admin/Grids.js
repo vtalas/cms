@@ -13,15 +13,18 @@ function removeFromArray(item, collection) {
 	collection.splice(index, 1);
 };
 
-
+jQuery.fn.isChildOf = function (b) {
+	return (this.parents().find(b).length > 0);
+};
 
 module.value('ui.config', {
 	sortablehtml: {
-		sortableXXX: {
-
+		sortable: {
 			dragstart: function (e, uioptions, element, xxx) {
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
 				e.originalEvent.dataTransfer.setData('Text', xxx.source.item.Id);
+				e.stopPropagation(); //pro pripad ze je sortable v sortable 
+
 				xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$emit("dragstart-sortablehtml", xxx);
 			},
@@ -31,23 +34,35 @@ module.value('ui.config', {
 				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
 			},
 			dragenter: function (e, uioptions, element, xxx) {
-				var collection = xxx.destination.scope.$parent.$collection;
+				e.stopPropagation(); //pro pripad ze je sortable v sortable 
+
+				var destinationIsChild = (xxx.source.element).find(xxx.destination.element).length > 0;
+
+				//console.log("enter", destinationIsChild);
+				//console.log("enter", nestedSortable,  xxx.source.item.Id, xxx.destination.item.Id, xxx.source.element, xxx.destination.element);
+				
+				if (destinationIsChild) {
+					return;
+				}
+
+				var collectiondest = xxx.destination.scope.$parent.$collection;
+				var collectionsrc = xxx.source.scope.$parent.$collection;
 
 				if (xxx.source.item !== xxx.destination.item) {
-					var sourceindex = collection.indexOf(xxx.source.item);
-					var destinationindex = collection.indexOf(xxx.destination.item);
+					var sourceindex = collectionsrc.indexOf(xxx.source.item);
+					var destinationindex = collectiondest.indexOf(xxx.destination.item);
 
-					collection[sourceindex] = xxx.destination.item;
-					collection[destinationindex] = xxx.source.item;
+					collectionsrc[sourceindex] = xxx.destination.item;
+					collectiondest[destinationindex] = xxx.source.item;
 
 					xxx.destination.item.status = SWAPPED;
-
 					xxx.destination.scope.$apply();
 				}
 				xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
 			},
 			dragleave: function (e, uioptions, element, xxx) {
+				console.log("leave")
 
 				xxx.destination.item.status = PRD;
 				xxx.source.item.status = DRAGGED;
@@ -55,6 +70,7 @@ module.value('ui.config', {
 				xxx.destination.scope.$emit("dragleave-sortablehtml", xxx);
 			},
 			dragover: function (e, uioptions, element, xxx) {
+				console.log("over")
 				e.preventDefault();
 				e.stopPropagation();
 				xxx.destination.scope.$emit("dragover-sortablehtml", xxx);
