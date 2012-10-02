@@ -1,6 +1,11 @@
-﻿using System.Resources;
+﻿using System.IO;
+using System.Resources;
+using System.Web;
 using System.Web.Mvc;
+using BundleTransformer.Core;
 using BundleTransformer.Core.Assets;
+using BundleTransformer.Core.FileSystem;
+using BundleTransformer.Core.Web;
 using cms.Code.UserResources;
 using cms.Controllers.Api;
 
@@ -11,15 +16,18 @@ namespace cms.Controllers
 
 		public ActionResult Index()
 		{
-			var x = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
-			var xxx = x.Translate(new Asset(Server.MapPath("~/Scripts/angular-templates-ext.coffee")));
+			
+			var applicationInfo = new HttpApplicationInfo(VirtualPathUtility.ToAbsolute("~/"), 
+				Path.Combine(Server.MapPath("~/"), "App_Data\\ApplicationData"));
+			
+			var files = (IFileSystemWrapper) BundleTransformerContext.Current.GetFileSystemWrapper();
 
-			var res = UserResourceManager.Get(ApplicationId);
-
-
+			var res = UserResourceManager.Get(ApplicationId, applicationInfo, files);
+			
+			res.Include("aaa.js");
 
 			Response.ContentType = "text/javascript";
-			Response.Write("alert('landlans')");
+			Response.Write(res.Combine());
 			return new EmptyResult();
 		}
 		public ActionResult Js()

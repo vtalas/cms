@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using BundleTransformer.Core;
 using BundleTransformer.Core.Assets;
@@ -61,7 +62,8 @@ namespace cms.Code.UserResources
 		
 		public bool Exist(Guid id)
 		{
-			return false;
+			var appResourcesPath = Path.Combine(HttpAppInfo.RootPath, id.ToString());
+			return FileSystemWrapper.DirectoryExists(appResourcesPath);
 		}
 
 		private void CreateNewApplication(Guid id)
@@ -76,11 +78,13 @@ namespace cms.Code.UserResources
 
 		public void Include(string path)
 		{
-			AssetsValues.Add(new Asset(path, HttpAppInfo, FileSystemWrapper));
+			var asset = new Asset(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper);
+			AssetsValues.Add(asset);
 		}
 
 		public string Combine()
 		{
+		
 			var s = new StringBuilder();
 			foreach (var asset in AssetsValues)
 			{
@@ -90,7 +94,9 @@ namespace cms.Code.UserResources
 						s.Append(asset.Content);
 						break;
 					case AssetType.CoffeeScript :
-						//TODO: udelej translaci
+						//translator udelat singleton 
+						var x = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
+						s.Append(x.Translate(asset));
 						break;
 				}
 			}
