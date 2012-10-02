@@ -121,6 +121,7 @@
     <None Include="App_Data\bootstrap\less\variables.less" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
+    <Content Include="Content\fluid_grid.css" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
     </Content>

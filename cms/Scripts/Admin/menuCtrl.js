@@ -119,28 +119,29 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 		var old = (xxx.element).css("background-color");
 		switch (xxx.newvalue) {
 			case DRAGEND:
-				(xxx.element).removeClass("dragged");
 				break;
 			case DRAGGED:
-				$(xxx.element).addClass("dragged");
+				(xxx.element).css("opacity", 1);
 				break;
 			case DROPPED:
 				(xxx.element).css("background-color", "green");
 				(xxx.element).animate({ backgroundColor: old }, 1000);
 				break;
 			case SWAPPED:
-				var width = (xxx.element).width();
-				(xxx.element).width(width - 50);
-				(xxx.element).css("margin-left", 25);
-				(xxx.element).animate({ width: width, marginLeft: 0 }, 200);
+				(xxx.element).css("opacity", 1);
+				setTimeout(function () {
+					(xxx.element).animate({ opacity: 0.4 }, 1000);
+				},200)
 				break;
 			default:
 		}
 
 	});
 	$scope.$on("dragstart-sortablehtml", function (data, xxx) {
+		$(".sortableCtrl").css("opacity", "0.4");
 	});
 	$scope.$on("dragend-sortablehtml", function (data, xxx) {
+		$(".sortableCtrl").stop(true,true).css("opacity", "1");
 	});
 	$scope.$on("dragenter-sortablehtml", function (data, xxx) {
 		//	console.log("enter", xxx.source.element, xxx.destination.element);
@@ -156,65 +157,6 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 	});
 
 
-
-	$scope.$on("dragstart", function (data, xxx) {
-		$(xxx.sourceElement).addClass("dragged");
-		setTimeout(function () {
-			$(xxx.sourceElement).animate({ width: 0 });
-			$(xxx.sourceElement).hide();
-			//$(".dropableCtrl").animate({ width: 20 }, 200);
-			//$(".draggableCtrl").animate({ width: 130 }, 200);
-		}, 200);
-	});
-
-	$scope.$on("dragover", function (data, xxx) {
-		if (!$(xxx.destinationElement).hasClass("dragover")) {
-			$(xxx.destinationElement).addClass("dragover");
-		}
-	});
-
-	$scope.$on("dragenter", function (data, xxx) {
-		$(xxx.destinationElement).addClass("dragover");
-		timeout = setTimeout(function () {
-			//$(xxx.destinationElement).animate({ width: draggableWidth + 2 * dropableStartWidth }, 200);
-		}, 500);
-
-	});
-
-	$scope.$on("dragleave", function (data, xxx) {
-		$(xxx.destinationElement).removeClass("dragover");
-		clearTimeout(timeout);
-		$(xxx.destinationElement).animate({ width: dropableStartWidth }, 100);
-	});
-
-	$scope.$on("drop", function (data, xxx) {
-		//$scope.add(item);
-	});
-
-	$scope.$on("dragend", function (data, xxx) {
-		$scope.dragendAction(xxx);
-	});
-
-
-	$scope.dragendAction = function (xxx) {
-
-		clearTimeout(timeout);
-
-		$(".dropableCtrl").removeClass("dragover");
-		$(".dropableCtrl").animate({ width: dropableStartWidth }, 200);
-		$(xxx.destinationElement).css("background-color", "red");
-
-		$(xxx.destinationElement).animate({ backgroundColor: "#aaa" }, 1000);
-		$(xxx.destinationElement).removeClass("dragged");
-		$(xxx.destinationElement).show();
-
-		setTimeout(function () {
-			//$(".draggableCtrl").animate({ width: 140}, 200);
-		}, 500);
-
-
-	};
-
 	$scope.showAdd = function (item) {
 		item.showAdd = 1;
 	};
@@ -224,6 +166,7 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 	$scope.grids = GridApi.grids({}, function (data) {
 
 	});
+
 	$scope.add = function (item) {
 		console.log("add", item);
 		var menuitem = {

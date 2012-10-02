@@ -85,10 +85,11 @@ ul{
 }
 
 ul.ggg{
-	margin:0px;
+}
+ul.ggg li {
 }
 .ggg{
-	@vyska: 90px;
+	@vyska: 70px;
 	span.ng-scope{
 		display:block;
 		height:0px;
@@ -102,15 +103,16 @@ ul.ggg{
 	.dropableCtrl.dragover{
 		background-color: Yellow;
 	}
-	.draggableCtrl{
+	.draggableCtrl, .sortableCtrl{
 		background-color:#aaa;
 	}
-	.draggableCtrl{
+	.draggableCtrl, .sortableCtrl{
 		height:@vyska;
 	}
 
-	.draggableCtrl.dragged{
-		opacity:0.4;
+	.draggableCtrl.dragged, .sortableCtrl.dragged{
 	}
 
 }
+
+
