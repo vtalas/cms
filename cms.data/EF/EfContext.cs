@@ -16,12 +16,12 @@ namespace cms.data.EF
 		{
 		}
 		
-		public DbSet<ApplicationSetting> ApplicationSettings { get; set; }
-		public DbSet<Grid> Grids { get; set; }
-		public DbSet<GridElement> GridElements { get; set; }
-		public DbSet<TemplateType> TemplateTypes { get; set; }
-		public DbSet<Resource> Resources { get; set; }
-		public DbSet<UserProfile> UserProfile { get; set; }
+		public virtual IDbSet<ApplicationSetting> ApplicationSettings { get; set; }
+		public virtual IDbSet<Grid> Grids { get; set; }
+		public virtual IDbSet<GridElement> GridElements { get; set; }
+		public virtual IDbSet<TemplateType> TemplateTypes { get; set; }
+		public virtual IDbSet<Resource> Resources { get; set; }
+		public virtual IDbSet<UserProfile> UserProfile { get; set; }
 
 		//public DbSet<Bootstrapgenerator> Bootstrapgenerators { get; set; }
 
@@ -34,12 +34,12 @@ namespace cms.data.EF
 
 	public static class EfContextExt
 	{
-		public static bool Exist(this DbSet<Resource> context, int id  )
+		public static bool Exist(this IDbSet<Resource> context, int id  )
 		{
 			return context.Any(x => x.Id == id);
 		}
 
-		public static GridElement Get(this DbSet<GridElement> context, Guid guid, Guid applicationId)
+		public static GridElement Get(this IDbSet<GridElement> context, Guid guid, Guid applicationId)
 		{
 			var item = context.Single(x => x.Id == guid);
 			
@@ -49,7 +49,7 @@ namespace cms.data.EF
 			return item;
 		}
 
-		public static Resource Get(this DbSet<Resource> context, int id)
+		public static Resource Get(this IDbSet<Resource> context, int id)
 		{
 			return context.Single(x => x.Id == id);
 		}

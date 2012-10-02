@@ -10,7 +10,6 @@ namespace cms.data.EF.DataProvider
 {
 	public class DataEf : data.DataProvider
 	{
-		private UserProfile CurrentUser { get; set; }
 		private EfContext db { get; set; }
 
 		public override sealed ApplicationSetting CurrentApplication { get; protected set; } 
@@ -21,7 +20,6 @@ namespace cms.data.EF.DataProvider
 			ApplicationId = app.Id;
 			ApplicationName = app.Name;
 			CurrentApplication = app;
-			CurrentUser = db.UserProfile.Single(x => x.Id == userId);
 		}
 
 		public DataEf(string applicationName, EfContext context, int userId)

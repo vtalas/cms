@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace cms.data.Shared.Models
 {
@@ -8,6 +9,7 @@ namespace cms.data.Shared.Models
 		public ApplicationSetting()
 		{
 			Id = Guid.NewGuid();
+			Users = new Collection<UserProfile>();
 		}
 
 		public Guid Id { get; set; }

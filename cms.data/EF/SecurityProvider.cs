@@ -12,7 +12,6 @@ namespace cms.data.EF
 
 		public static void EnsureInitialized(bool createTables = false)
 		{
-		
 			_createTables = createTables;
 			LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
 		}

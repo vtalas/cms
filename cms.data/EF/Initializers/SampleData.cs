@@ -4,6 +4,7 @@ using System.Configuration;
 using WebMatrix.WebData;
 using cms.data.Shared.Models;
 using cms.shared;
+using System.Linq;
 
 namespace cms.data.EF.Initializers
 {
@@ -22,52 +23,15 @@ namespace cms.data.EF.Initializers
 		public void Generate()
 		{
 			var application = new ApplicationSetting { Name = "test1", Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643") };
+			
+			GenerateUsers();
 
 			Context.ApplicationSettings.Add(application);
+			var userid = WebSecurity.GetUserId("admin");
+			var user = Context.UserProfile.Single(x => x.Id == userid);
+			application.Users.Add(user);
 
-			var grids = new Grid
-							{
-								Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-								Resource =
-									new Resource { Value = "linkTestPage", Owner = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643") },
-								Name = "test page",
-								GridElements = new List<GridElement>
-						                           {
-							                           new GridElement {Content = "aaaaaaaa aaa", Line = 0, Width = 12, Type = "text"}
-						                           },
-								ApplicationSettings = application
-							};
-
-			Context.Grids.Add(grids);
-			Context.Grids.Add(new Grid
-								  {
-									  Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-									  Name = "grid Bez elementu",
-									  ApplicationSettings = application,
-									  Resource =
-										  new Resource { Value = "bezelementu", Owner = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
-								  });
-			Context.Grids.Add(new Grid
-								  {
-									  Id = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-									  Name = "gallery 1 ",
-									  ApplicationSettings = application,
-									  Resource = new Resource { Value = "s", Owner = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
-								  });
-			Context.Grids.Add(new Grid
-								  {
-									  Id = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-									  Name = "gallery 1 sub 1",
-									  ApplicationSettings = application,
-									  Resource = new Resource { Value = "ss1", Owner = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
-								  });
-			Context.Grids.Add(new Grid
-								  {
-									  Id = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-									  Name = "gallery 1 sub 2 ",
-									  ApplicationSettings = application,
-									  Resource = new Resource { Value = "ss2", Owner = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643") }
-								  });
+			GenerateGrids(application);
 
 			Context.TemplateTypes.Add(new TemplateType { Name = "novinka" });
 			Context.TemplateTypes.Add(new TemplateType { Name = "text" });
@@ -95,15 +59,60 @@ namespace cms.data.EF.Initializers
 
 			Context.SaveChanges();
 
-			GenerateUsers(application);
 		}
 
-		private void GenerateUsers(ApplicationSetting application)
+		private void GenerateGrids(ApplicationSetting application)
+		{
+			var grids = new Grid
+				            {
+					            Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+					            Resource =
+						            new Resource {Value = "linkTestPage", Owner = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643")},
+					            Name = "test page",
+					            GridElements = new List<GridElement>
+						                           {
+							                           new GridElement {Content = "aaaaaaaa aaa", Line = 0, Width = 12, Type = "text"}
+						                           },
+					            ApplicationSettings = application
+				            };
+
+			Context.Grids.Add(grids);
+			Context.Grids.Add(new Grid
+				                  {
+					                  Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+					                  Name = "grid Bez elementu",
+					                  ApplicationSettings = application,
+					                  Resource =
+						                  new Resource {Value = "bezelementu", Owner = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643")}
+				                  });
+			Context.Grids.Add(new Grid
+				                  {
+					                  Id = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+					                  Name = "gallery 1 ",
+					                  ApplicationSettings = application,
+					                  Resource = new Resource {Value = "s", Owner = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643")}
+				                  });
+			Context.Grids.Add(new Grid
+				                  {
+					                  Id = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+					                  Name = "gallery 1 sub 1",
+					                  ApplicationSettings = application,
+					                  Resource = new Resource {Value = "ss1", Owner = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643")}
+				                  });
+			Context.Grids.Add(new Grid
+				                  {
+					                  Id = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+					                  Name = "gallery 1 sub 2 ",
+					                  ApplicationSettings = application,
+					                  Resource = new Resource {Value = "ss2", Owner = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643")}
+				                  });
+		}
+
+		private void GenerateUsers()
 		{
 			SecurityProvider.EnsureInitialized(true);
 
 			WebSecurity.CreateUserAndAccount("admin", "a");
-			WebSecurity.Login("admin", "a");
 
 			SecurityProvider.Destroy();
 		}
