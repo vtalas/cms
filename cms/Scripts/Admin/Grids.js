@@ -65,6 +65,7 @@ module.value('ui.config', {
 						destinationindex = collectiondest.indexOf(xxx.destination.item);
 						removeFromArray(xxx.source.item, collectionsrc);
 						pushToIndex(xxx.source.item, collectiondest, destinationindex);
+						xxx.source.scope = xxx.destination.scope;
 					}
 					xxx.destination.item.status = SWAPPED;
 					xxx.destination.scope.$apply();
