@@ -13,9 +13,10 @@ function removeFromArray(item, collection) {
 	collection.splice(index, 1);
 };
 
-jQuery.fn.isChildOf = function (b) {
-	return (this.parents().find(b).length > 0);
-};
+function pushToIndex(item, collection, index) {
+	collection.splice(index, 0, item);
+}
+
 
 module.value('ui.config', {
 	sortablehtml: {
@@ -35,26 +36,36 @@ module.value('ui.config', {
 			},
 			dragenter: function (e, uioptions, element, xxx) {
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
-
 				var destinationIsChild = (xxx.source.element).find(xxx.destination.element).length > 0;
-
 				//console.log("enter", destinationIsChild);
 				//console.log("enter", nestedSortable,  xxx.source.item.Id, xxx.destination.item.Id, xxx.source.element, xxx.destination.element);
-				
 				if (destinationIsChild) {
 					return;
 				}
+				var swapItems = function (collection, sourceIndex, destinationIndex) {
+					var tempSource = collection[sourceIndex];
 
-				var collectiondest = xxx.destination.scope.$parent.$collection;
-				var collectionsrc = xxx.source.scope.$parent.$collection;
+					collection[sourceIndex] = collection[destinationIndex];
+					collection[destinationIndex] = tempSource;
+				};
+				console.log(xxx.source.scope.$parent.$collection[0].Id, xxx.destination.scope.$parent.$collection[0].Id);
+				var collectiondest = xxx.destination.scope.$parent.$collection,
+					collectionsrc = xxx.source.scope.$parent.$collection,
+					areInSameCollection,
+					sourceindex = collectionsrc.indexOf(xxx.source.item),
+					destinationindex = collectionsrc.indexOf(xxx.destination.item);
 
 				if (xxx.source.item !== xxx.destination.item) {
-					var sourceindex = collectionsrc.indexOf(xxx.source.item);
-					var destinationindex = collectiondest.indexOf(xxx.destination.item);
+					areInSameCollection = (destinationindex !== -1);
 
-					collectionsrc[sourceindex] = xxx.destination.item;
-					collectiondest[destinationindex] = xxx.source.item;
-
+					if (areInSameCollection) {
+						swapItems(collectionsrc, sourceindex, destinationindex);
+					} else {
+				//		console.log("xxxxxxxxxxxxxx notinSAME", xxx.source.scope.$parent.$collection.length, xxx.destination.scope.$parent.$collection.length);
+						destinationindex = collectiondest.indexOf(xxx.destination.item);
+						removeFromArray(xxx.source.item, collectionsrc);
+						pushToIndex(xxx.source.item, collectiondest, destinationindex);
+					}
 					xxx.destination.item.status = SWAPPED;
 					xxx.destination.scope.$apply();
 				}
@@ -62,15 +73,12 @@ module.value('ui.config', {
 				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
 			},
 			dragleave: function (e, uioptions, element, xxx) {
-				console.log("leave")
-
 				xxx.destination.item.status = PRD;
 				xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragleave-sortablehtml", xxx);
 			},
 			dragover: function (e, uioptions, element, xxx) {
-				console.log("over")
 				e.preventDefault();
 				e.stopPropagation();
 				xxx.destination.scope.$emit("dragover-sortablehtml", xxx);
