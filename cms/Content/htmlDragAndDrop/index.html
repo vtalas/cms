@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html ng-app="dragenddropapp">
+<head>
+	<title>html drag and drop</title>
+	<link rel="stylesheet" type="text/css" href="/Content/fluid_grid.css" />
+	<link rel="stylesheet" type="text/css" href="base.css" />
+
+	<script src="../../Scripts/jquery-1.7.2.js"></script>
+	<script src="../../Scripts/angular.js"></script>
+	<script src="../../Scripts/angular-ui.js"></script>
+	<script src="../../Scripts/angular-ui-ext.js"></script>
+
+	<script src="dragendDropModule.js"></script>
+	<script src="sortableCtrl.js"></script>
+
+</head>
+<body>
+		<div ng-controller="sortableNestedCtrl" class="sortableNested">
+		<h1>Sortable - nested</h1>
+		<script type="text/ng-template" id="tree_item_renderer.html">
+			<div ui-draganddrop-html="sortable" ng-model="item" >
+					<div class="nestedItem"><h2>{{item.Id}}</h2></div>
+				<ul>
+					<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
+				</ul>
+			</div>
+		</script>
+		<ul>
+			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'"></li>
+		</ul>
+	</div>
+	<div class="clearfix"></div>
+
+	<div ng-controller="sortableCtrl">
+		<h1>Sortable - grid</h1>
+		<script type="text/ng-template" id="tree_item_rendereSortable.html">
+			<div ui-draganddrop-html="sortable" ng-model="item" class="sortableCtrl">
+				<h1>{{item.Id}}</h1>
+			</div>
+		</script>
+		<ul class="container_12 container ">
+			<li ng-repeat="item in data.Children" ng-include="'tree_item_rendereSortable.html'" class="grid_{{item.Width * 4 || 4 }}"></li>
+		</ul>
+	</div>
+	<div class="clearfix"></div>
+
+</body>
+
+
+<style>
+
+
+	.container
+	{
+		width: 960px;
+	}
+
+	.sortableCtrl
+	{
+		border: 1px solid red;
+		margin: 5px;
+		background-color: #aaa;
+	}
+
+
+	.sortableNested {
+		width: 600px;
+	}
+	.nestedItem {
+		background-color: greenyellow;
+		width: 100%;
+		margin: 5px;
+	}
+
+</style>
+</html>
+
+

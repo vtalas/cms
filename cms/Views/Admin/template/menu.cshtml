@@ -2,7 +2,7 @@
 <script type="text/ng-template" id="tree_item_renderer.html">
 	
 	<div ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl" ></div>
-	<div ui-sortable-html="sortable" 
+	<div ui-draganddrop-html="sortable" 
 		ng-model="item" 
 		class="draggableCtrl">
 		<div menuitem="item" grid="data" class="menuitem" ></div> 
@@ -29,14 +29,6 @@
 
 </script>
 <style>
-	.aaa
-	{
-		color: red;
-	}
-	.xxxx {
-		border: 1px solid green;
-	}
-	
 	.ui-state-highlight
 	{
 		border-bottom: 1px solid red;

@@ -1,59 +1,21 @@
-var xxx = function (source, destination, namespace) {
-	return {
-		sourceItem: source.item,
-		sourceScope: source.scope,
-		sourceElement : source.element,
-		destinationItem: destination.item,
-		destinationScope: destination.scope,
-		destinationElement: destination.element,
-		namespace: namespace
-	};
-};
+var DRAGGED = 1,
+	PRD = 0,
+	DRAGEND = 5,
+	DROPPED = 3,
+	SWAPPED = 2;
 
-function getNamespace(scope, namespaceArray) {
-	var validNamespaceIndex, validNamespace;
-
-	if (scope.$root.draggeditem) {
-		validNamespaceIndex = namespaceArray.indexOf(scope.$root.draggeditem.namespace);
-		validNamespace = namespaceArray[validNamespaceIndex];
-	}
-	return validNamespace;
-}
-
-function registerDragEventWithNamespace(dragevent, scope, namespaceArray, element, ngModel, opts) {
-	$(element).on(dragevent, function (e) {
-
-		var namespace = getNamespace(scope, namespaceArray),
-			obj,
-		    source,
-		    destination,
-			modelvalues = ngModel ? ngModel.$modelValue : null;
-		if (!opts[namespace]) {
-			console.log("namespace is not defined", opts[namespace]);
-			return;
-		}
-		if (typeof (opts[namespace][dragevent]) === "function") {
-			source = { item: scope.$root.draggeditem, scope: scope.$root.draggedScope, element: scope.$root.draggedElement };
-			destination = { item: modelvalues, scope: scope, element: element };
-			obj = xxx(source, destination, namespace);
-			opts[namespace][dragevent](e, opts, element, obj);
-		}
-	});
-
-}
-
-angular.module('ui').value("$draggeditem", {source: {}, destination: {}});
-angular.module('ui.directives').directive('uiSortableHtml', ['ui.config', '$draggeditem', function (uiConfig, $draggeditem) {
+angular.module('ui').value("$draggeditem", { source: {}, destination: {} });
+angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$draggeditem', function (uiConfig, $draggeditem) {
 	var options;
 	options = {};
-	if (uiConfig.sortablehtml !== null) {
-		angular.extend(options, uiConfig.sortablehtml);
+	if (uiConfig.draganddrophtml !== null) {
+		angular.extend(options, uiConfig.draganddrophtml);
 	}
 
 	return {
 		require: '?ngModel',
 		link: function (scope, element, attrs, ngModel) {
-			var namespaceArray = attrs.uiSortableHtml.split(","),
+			var namespaceArray = attrs.uiDraganddropHtml.split(","),
 			    namespace = namespaceArray[0],
 				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 
@@ -118,6 +80,52 @@ angular.module('ui.directives').directive('uiSortableHtml', ['ui.config', '$drag
 	};
 }
 ]);
+
+
+
+var xxx = function (source, destination, namespace) {
+	return {
+		sourceItem: source.item,
+		sourceScope: source.scope,
+		sourceElement: source.element,
+		destinationItem: destination.item,
+		destinationScope: destination.scope,
+		destinationElement: destination.element,
+		namespace: namespace
+	};
+};
+
+function getNamespace(scope, namespaceArray) {
+	var validNamespaceIndex, validNamespace;
+
+	if (scope.$root.draggeditem) {
+		validNamespaceIndex = namespaceArray.indexOf(scope.$root.draggeditem.namespace);
+		validNamespace = namespaceArray[validNamespaceIndex];
+	}
+	return validNamespace;
+}
+
+function registerDragEventWithNamespace(dragevent, scope, namespaceArray, element, ngModel, opts) {
+	$(element).on(dragevent, function (e) {
+
+		var namespace = getNamespace(scope, namespaceArray),
+			obj,
+		    source,
+		    destination,
+			modelvalues = ngModel ? ngModel.$modelValue : null;
+		if (!opts[namespace]) {
+			console.log("namespace is not defined", opts[namespace]);
+			return;
+		}
+		if (typeof (opts[namespace][dragevent]) === "function") {
+			source = { item: scope.$root.draggeditem, scope: scope.$root.draggedScope, element: scope.$root.draggedElement };
+			destination = { item: modelvalues, scope: scope, element: element };
+			obj = xxx(source, destination, namespace);
+			opts[namespace][dragevent](e, opts, element, obj);
+		}
+	});
+
+}
 
 angular.module('ui.directives').directive('uiDraggableHtml', [
 	'ui.config', function (uiConfig) {

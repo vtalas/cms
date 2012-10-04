@@ -1,11 +1,4 @@
-
-
 var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui"]);
-var DRAGGED = 1,
-	PRD = 0,
-	DRAGEND = 5,
-	DROPPED = 3,
-	SWAPPED = 2;
 
 function removeFromArray(item, collection) {
 	var index;
@@ -19,7 +12,7 @@ function pushToIndex(item, collection, index) {
 
 
 module.value('ui.config', {
-	sortablehtml: {
+	draganddrophtml: {
 		sortable: {
 			dragstart: function (e, uioptions, element, xxx) {
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
@@ -35,25 +28,26 @@ module.value('ui.config', {
 				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
 			},
 			dragenter: function (e, uioptions, element, xxx) {
+				var swapItems,
+				    areInSameCollection,
+				    collectiondest = xxx.destination.scope.$parent.$collection,
+				    collectionsrc = xxx.source.scope.$parent.$collection,
+				    sourceindex,
+				    destinationindex,
+					destinationIsChild = (xxx.source.element).find(xxx.destination.element).length > 0;
+
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
-				var destinationIsChild = (xxx.source.element).find(xxx.destination.element).length > 0;
-				//console.log("enter", destinationIsChild);
-				//console.log("enter", nestedSortable,  xxx.source.item.Id, xxx.destination.item.Id, xxx.source.element, xxx.destination.element);
 				if (destinationIsChild) {
 					return;
 				}
-				var swapItems = function (collection, sourceIndex, destinationIndex) {
+				swapItems = function (collection, sourceIndex, destinationIndex) {
 					var tempSource = collection[sourceIndex];
-
 					collection[sourceIndex] = collection[destinationIndex];
 					collection[destinationIndex] = tempSource;
 				};
-				console.log(xxx.source.scope.$parent.$collection[0].Id, xxx.destination.scope.$parent.$collection[0].Id);
-				var collectiondest = xxx.destination.scope.$parent.$collection,
-					collectionsrc = xxx.source.scope.$parent.$collection,
-					areInSameCollection,
-					sourceindex = collectionsrc.indexOf(xxx.source.item),
-					destinationindex = collectionsrc.indexOf(xxx.destination.item);
+
+				sourceindex = collectionsrc.indexOf(xxx.source.item),
+				destinationindex = collectionsrc.indexOf(xxx.destination.item);
 
 				if (xxx.source.item !== xxx.destination.item) {
 					areInSameCollection = (destinationindex !== -1);
@@ -61,7 +55,6 @@ module.value('ui.config', {
 					if (areInSameCollection) {
 						swapItems(collectionsrc, sourceindex, destinationindex);
 					} else {
-				//		console.log("xxxxxxxxxxxxxx notinSAME", xxx.source.scope.$parent.$collection.length, xxx.destination.scope.$parent.$collection.length);
 						destinationindex = collectiondest.indexOf(xxx.destination.item);
 						removeFromArray(xxx.source.item, collectionsrc);
 						pushToIndex(xxx.source.item, collectiondest, destinationindex);
