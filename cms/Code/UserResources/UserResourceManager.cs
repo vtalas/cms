@@ -12,21 +12,21 @@ namespace cms.Code.UserResources
 {
 	public interface IResourceManager
 	{
+		Guid Id { get; }
 		IList<IAssetExt> Assets { get; }
 		void IncludeDirectory(string path);
 		void Include(string path);
 	
 		string Combine();
+		bool Exist();
 		string RenderScripts();
 		string RenderStyleSheets();
 		string RenderHtmlTemplates();
-
-		bool Exist(Guid id);
 	}
 
 	public class UserResourceManager: IResourceManager
 	{
-		private Guid Id { get; set; }
+		public Guid Id { get; private set; }
 		private IList<IAssetExt> AssetsValues { get; set; }
 		private string BaseDir { get; set; }
 
@@ -54,7 +54,12 @@ namespace cms.Code.UserResources
 
 		public static IResourceManager Get(Guid id, IHttpApplicationInfo httpApp, IFileSystemWrapper fileSystemWrapper)
 		{
-			return new UserResourceManager(id, httpApp, fileSystemWrapper);
+			var resourceobj = new UserResourceManager(id, httpApp, fileSystemWrapper);
+			if (!resourceobj.Exist())
+			{
+				throw new DirectoryNotFoundException();
+			}
+			return resourceobj;
 		}
 
 		public static IResourceManager Create(Guid id, IHttpApplicationInfo httpApp, IFileSystemWrapper fileSystemWrapper)
@@ -69,9 +74,9 @@ namespace cms.Code.UserResources
 			return Create(id, BundleTransformerContext.Current.GetApplicationInfo(), (IFileSystemWrapper)BundleTransformerContext.Current.GetFileSystemWrapper());
 		}
 		
-		public bool Exist(Guid id)
+		public bool Exist()
 		{
-			var appResourcesPath = Path.Combine(HttpAppInfo.RootPath, id.ToString());
+			var appResourcesPath = Path.Combine(HttpAppInfo.RootPath, Id.ToString());
 			return FileSystemWrapper.DirectoryExists(appResourcesPath);
 		}
 
@@ -91,17 +96,16 @@ namespace cms.Code.UserResources
 
 		public void Include(string path)
 		{
-			var asset = new AssetExtended(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper);
+			var asset = new AssetDecorator(new Asset(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper));
 			AssetsValues.Add(asset);
 		}
 
 		public string Combine()
 		{
-		
 			var s = new StringBuilder();
 			foreach (var asset in AssetsValues)
 			{
-				switch (asset.AssetType)
+				switch (asset.AssetTypeExtended)
 				{
 					case AssetTypeExtened.JavaScript :
 						s.Append(asset.Content);
