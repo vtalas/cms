@@ -17,12 +17,12 @@ namespace cms.Code
 			return string.Format("{0}/{1}", Application, view);
 		}
 		public string Application { get;  private set; }
+		
 		public Guid ApplicationId { get;  private set; }
 
 		protected override void OnActionExecuted(ActionExecutedContext filterContext)
 		{
 			base.OnActionExecuted(filterContext);
-			ViewBag.Application = Application;
 			ViewBag.ApplicationId = ApplicationId;
 		}
 
@@ -33,23 +33,21 @@ namespace cms.Code
 
 			SecurityProvider.EnsureInitialized();
 
-			if (RouteData.Values.TryGetValue("application", out x  ))
-			{
-				Application = x as string;
-
-				SessionProvider = new SessionProvider(() => new DataEf(Application, WebSecurity.CurrentUserId));
-				using (var db = SessionProvider.CreateSession)
-				{
-					ApplicationId = db.ApplicationId;
-				}
-			}
-
 			if (RouteData.Values.TryGetValue("applicationId", out x  ))
 			{
 				Guid aaa;
 				if (Guid.TryParse(x as string, out aaa))
+				{
 					ApplicationId = aaa;
+				}
 			}
+			else
+			{
+				ApplicationId = new Guid("00000000-0000-0000-0000-000000000000");
+			}
+
+			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId, WebSecurity.CurrentUserId));
+
 	
 
 

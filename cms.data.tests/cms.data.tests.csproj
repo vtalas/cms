@@ -65,7 +65,7 @@
     <Compile Include="EF\SessionManager.cs" />
     <Compile Include="LocalizationsTests.cs" />
     <Compile Include="SampleData\CreateSampleDataTest.cs" />
-    <Compile Include="EF\JsonDataEfTest.cs" />
+    <Compile Include="EF\DataEfTest.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

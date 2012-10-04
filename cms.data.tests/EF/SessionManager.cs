@@ -6,13 +6,22 @@ namespace cms.data.tests.EF
 {
 	public class SessionManager : IDisposable
 	{
-		private static DataEf Context { get; set; }
+		private static DataEfAuthorized Context { get; set; }
 
-		public static DataEf CreateSession
+		public static DataEfAuthorized CreateSessionWithSampleData
 		{
 			get
 			{
-				Context = new DataEf(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), 1);
+				Context = new DataEfAuthorized(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), 1);
+				return Context;
+			}
+		}
+
+		public static DataEfAuthorized CreateSessionWithInvalidUser
+		{
+			get
+			{
+				Context = new DataEfAuthorized(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), 0);
 				return Context;
 			}
 		}

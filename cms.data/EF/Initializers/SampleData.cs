@@ -111,10 +111,10 @@ namespace cms.data.EF.Initializers
 		private void GenerateUsers()
 		{
 			SecurityProvider.EnsureInitialized(true);
-
 			WebSecurity.CreateUserAndAccount("admin", "a");
-
-			SecurityProvider.Destroy();
+			WebSecurity.CreateUserAndAccount("lades", "a");
+			WebSecurity.CreateUserAndAccount("pepa", "a");
+		
 		}
 
 		private void GenerateMenus(ApplicationSetting application)

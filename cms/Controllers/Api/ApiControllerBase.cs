@@ -19,7 +19,7 @@ namespace cms.Controllers.Api
 			base.Initialize(requestContext);
 			
 			ApplicationId = new Guid( RouteData.Values["applicationId"].ToString());
-			SessionProvider = new SessionProvider(()=>new DataEf(ApplicationId,WebSecurity.CurrentUserId ), new MigrateInitalizer());
+			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId, WebSecurity.CurrentUserId ), new MigrateInitalizer());
 		}
 
 		protected override void OnActionExecuted(ActionExecutedContext filterContext)

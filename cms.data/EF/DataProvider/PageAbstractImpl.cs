@@ -11,19 +11,18 @@ namespace cms.data.EF.DataProvider
 	public class PageAbstractImpl : PageAbstract
 	{
 		private EfContext db { get; set; }
-		
-		public PageAbstractImpl(Guid applicationId) : base(applicationId){}
-		public PageAbstractImpl(Guid applicationId, EfContext context) : base(applicationId)
+
+		public PageAbstractImpl(ApplicationSetting application) : base(application) { }
+		public PageAbstractImpl(ApplicationSetting application, EfContext context) : base(application)
 		{
 			db = context;
 		}
 
 		IQueryable<Grid> AvailableGridsPage()
 		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId && x.Category == CategoryEnum.Page);
+			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Page);
 			return a;
 		}
-		ApplicationSetting CurrentApplication { get { return db.ApplicationSettings.Single(x => x.Id == ApplicationId); } }
 
 		public override IEnumerable<GridPageDto> List()
 		{
@@ -84,5 +83,23 @@ namespace cms.data.EF.DataProvider
 			return item.ToGridPageDto();
 		}
 
+		public override GridPageDto Update(GridPageDto item)
+		{
+			if (item.ResourceDto != null)
+			{
+				if (item.ResourceDto.Id != 0)
+				{
+					db.Resources.Single(x => x.Id == item.ResourceDto.Id).Value = item.ResourceDto.Value;
+				}
+			}
+			var grid = Get(item.Id);
+
+			grid.Name = item.Name;
+			grid.Home = item.Home;
+
+			db.Entry(grid).State = EntityState.Modified;
+			db.SaveChanges();
+			return grid;
+		}
 	}
 }

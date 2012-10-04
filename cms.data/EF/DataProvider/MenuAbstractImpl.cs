@@ -11,15 +11,15 @@ namespace cms.data.EF.DataProvider
 	{
 		private EfContext db { get; set; }
 		
-		public MenuAbstractImpl(Guid applicationId) : base(applicationId){}
-		public MenuAbstractImpl(Guid applicationId, EfContext context) : base(applicationId)
+		public MenuAbstractImpl(ApplicationSetting application) : base(application){}
+		public MenuAbstractImpl(ApplicationSetting application, EfContext context) : base(application)
 		{
 			db = context;
 		}
 
 		IQueryable<Grid> AvailableGridsMenu()
 		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId && x.Category == CategoryEnum.Menu);
+			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Menu);
 			return a;
 		}
 
@@ -36,7 +36,7 @@ namespace cms.data.EF.DataProvider
 
 		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
 		{
-			JsonDataEfHelpers.UpdateResource(item,db,CurrentCulture,ApplicationId);
+			JsonDataEfHelpers.UpdateResource(item,db,CurrentCulture,CurrentApplication.Id);
 			var grid = AvailableGridsMenu().Single(x => x.Id == gridId);
 			var a = new GridElement
 				        {

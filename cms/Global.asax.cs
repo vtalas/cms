@@ -27,8 +27,8 @@ namespace cms
 
 			routes.MapRoute(
 				"applicationAdmin", // Route name
-				"admin/{application}/{action}/{id}", // URL with parameters
-				new { controller = "admin", action = "Index", application = "00000000-0000-0000-0000-000000000000", id = UrlParameter.Optional } // Parameter defaults
+				"admin/{applicationId}/{action}/{id}", // URL with parameters
+				new { controller = "admin", action = "Index", applicationId = "00000000-0000-0000-0000-000000000000", id = UrlParameter.Optional } // Parameter defaults
 			);
 
 			//TODO: predelat api routes na tento 

@@ -135,7 +135,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var updated = db.Update(data);
+				var updated = db.Page.Update(data);
 				return new JSONNetResult(updated);
 			}
 		}

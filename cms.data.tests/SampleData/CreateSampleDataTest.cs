@@ -12,7 +12,7 @@ namespace cms.data.tests.SampleData
 	[TestFixture]
 	public class CreateSampleDataTest
 	{
-		private DataEf Repo { get; set; }
+		private DataEfAuthorized Repo { get; set; }
 
 		[SetUp]
 		[Ignore]
@@ -20,14 +20,14 @@ namespace cms.data.tests.SampleData
 		{
 			var context = new EfContext("EfContextSampleData");
 			Database.SetInitializer(new DropAndCreate());
-			Repo = new DataEf("aaa",  context, 1);
+			Repo = new DataEfAuthorized("aaa",  context, 1);
 		}
 
 		[Test]
 		[Ignore]
 		public void Create()
 		{
-			using (var db = SessionManager.CreateSession)
+			using (var db = SessionManager.CreateSessionWithSampleData)
 			{
 				var a = db.Applications();
 

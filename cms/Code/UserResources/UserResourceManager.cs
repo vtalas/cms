@@ -59,7 +59,7 @@ namespace cms.Code.UserResources
 			var resourceobj = new UserResourceManager(id, httpApp, fileSystemWrapper);
 			if (!resourceobj.Exist())
 			{
-				throw new DirectoryNotFoundException();
+				throw new DirectoryNotFoundException(Path.Combine(httpApp.RootPath, id.ToString()));
 			}
 			return resourceobj;
 		}
@@ -78,8 +78,7 @@ namespace cms.Code.UserResources
 		
 		public bool Exist()
 		{
-			var appResourcesPath = Path.Combine(HttpAppInfo.RootPath, Id.ToString());
-			return FileSystemWrapper.DirectoryExists(appResourcesPath);
+			return FileSystemWrapper.DirectoryExists(BaseDir);
 		}
 
 		private void CreateNewApplication()

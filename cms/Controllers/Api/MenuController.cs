@@ -54,7 +54,7 @@ namespace cms.Controllers.Api
 			{
 				data.Category = shared.CategoryEnum.Menu;
 				
-				var updated = db.Update(data);
+				var updated = db.Page.Update(data);
 				return new JSONNetResult(updated);
 			}
 		}

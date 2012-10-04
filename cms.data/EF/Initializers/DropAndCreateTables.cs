@@ -16,6 +16,7 @@ namespace cms.data.EF.Initializers
 			}
 			catch (Exception)
 			{
+				
 			}
 
 			if (!modelvalid)
@@ -30,7 +31,7 @@ namespace cms.data.EF.Initializers
 			}
 	
 			// remove all tables
-			context.Database.ExecuteSqlCommand("EXEC sp_MSforeachtable @command1 = \"DROP TABLE ?\"");
+			context.Database.ExecuteSqlCommand("EXEC sp_MSforeachtable @command1 = \" DROP TABLE ?\"");
 
 			// create all tables
 			var dbCreationScript = ((IObjectContextAdapter)context).ObjectContext.CreateDatabaseScript();

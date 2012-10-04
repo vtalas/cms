@@ -8,14 +8,10 @@ namespace cms.data.EF
 {
 	public class EfContext :DbContext, IBootStrapGenerator
 	{
-		public EfContext(string nameOrConnectionString) : base(nameOrConnectionString)
-		{
-		}
+		public EfContext(string nameOrConnectionString) : base(nameOrConnectionString){}
 
-		public EfContext()
-		{
-		}
-		
+		public EfContext(){}
+
 		public virtual IDbSet<ApplicationSetting> ApplicationSettings { get; set; }
 		public virtual IDbSet<Grid> Grids { get; set; }
 		public virtual IDbSet<GridElement> GridElements { get; set; }
@@ -31,6 +27,7 @@ namespace cms.data.EF
 			//modelBuilder.Entity<Bootstrapgenerator>().Ignore(p => p.Status);
 		}
 	}
+
 
 	public static class EfContextExt
 	{
