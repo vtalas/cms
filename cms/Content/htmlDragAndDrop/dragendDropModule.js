@@ -45,7 +45,7 @@ module.value('ui.config', {
 					collection[destinationIndex] = tempSource;
 				};
 
-				sourceindex = collectionsrc.indexOf(xxx.source.item),
+				sourceindex = collectionsrc.indexOf(xxx.source.item);
 				destinationindex = collectionsrc.indexOf(xxx.destination.item);
 
 				if (xxx.source.item !== xxx.destination.item) {

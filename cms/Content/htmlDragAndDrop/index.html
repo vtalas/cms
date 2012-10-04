@@ -17,8 +17,9 @@
 <body>
 		<div ng-controller="sortableNestedCtrl" class="sortableNested">
 		<h1>Sortable - nested</h1>
-		<script type="text/ng-template" id="tree_item_renderer.html">
-			<div ui-draganddrop-html="sortable" ng-model="item" >
+			<script type="text/ng-template" id="tree_item_renderer.html">
+			<div ui-draganddrop-html="sortable" ng-model="item"
+				class="sortableNestedCtrl" >
 					<div class="nestedItem"><h2>{{item.Id}}</h2></div>
 				<ul>
 					<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
@@ -69,7 +70,7 @@
 	.nestedItem {
 		background-color: greenyellow;
 		width: 100%;
-		margin: 5px;
+		margin: 2px;
 	}
 
 </style>

@@ -66,12 +66,8 @@ var sortableNestedCtrl = function ($scope, $http) {
 	sortableNestedCtrl.$inject = ["$scope", "$http"];
 
 	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
-		var old = (xxx.element).css("background-color");
 		switch (xxx.newvalue) {
 		case DRAGEND:
-			(xxx.element).css("background-color", "red");
-			$(".sortableNestedCtrl").stop(true, true).css("opacity", "1");
-			(xxx.element).animate({ backgroundColor: old }, 1000);
 			break;
 		case DRAGGED:
 			(xxx.element).css("opacity", 1);
@@ -92,7 +88,7 @@ var sortableNestedCtrl = function ($scope, $http) {
 		$(".sortableNestedCtrl").css("opacity", "0.4");
 	});
 	$scope.$on("dragend-sortablehtml", function (data, xxx) {
-		//$(".sortableCtrl").stop(true).css("opacity", "1");
+		$(".sortableNestedCtrl").stop(true).css("opacity", "1");
 	});
 	$scope.$on("dragenter-sortablehtml", function (data, xxx) {
 		//	console.log("enter", xxx.source.element, xxx.destination.element);
