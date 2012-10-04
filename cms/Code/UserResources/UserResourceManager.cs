@@ -6,26 +6,32 @@ using BundleTransformer.Core;
 using BundleTransformer.Core.Assets;
 using BundleTransformer.Core.FileSystem;
 using BundleTransformer.Core.Web;
+using System.Linq;
 
 namespace cms.Code.UserResources
 {
 	public interface IResourceManager
 	{
-		IList<IAsset> Assets { get; }
+		IList<IAssetExt> Assets { get; }
 		void IncludeDirectory(string path);
 		void Include(string path);
+	
 		string Combine();
+		string RenderScripts();
+		string RenderStyleSheets();
+		string RenderHtmlTemplates();
+
 		bool Exist(Guid id);
 	}
 
 	public class UserResourceManager: IResourceManager
 	{
 		private Guid Id { get; set; }
-		private IList<IAsset> AssetsValues { get; set; }
+		private IList<IAssetExt> AssetsValues { get; set; }
 		private string BaseDir { get; set; }
 
 		public IFileSystemWrapper AssetsFilesystem { get; private set; }
-		public IList<IAsset> Assets
+		public IList<IAssetExt> Assets
 		{
 			get { return AssetsValues; }
 		}
@@ -37,7 +43,7 @@ namespace cms.Code.UserResources
 			HttpAppInfo = httpApp;
 			FileSystemWrapper = fileSystemWrapper;
 			Id = id;
-			AssetsValues = new List<IAsset>();
+			AssetsValues = new List<IAssetExt>();
 			BaseDir = Path.Combine( HttpAppInfo.RootPath, Id.ToString());
 		}
 
@@ -85,7 +91,7 @@ namespace cms.Code.UserResources
 
 		public void Include(string path)
 		{
-			var asset = new Asset(Path.Combine(BaseDir, path), HttpAppInfo, FileSystemWrapper);
+			var asset = new AssetExtended(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper);
 			AssetsValues.Add(asset);
 		}
 
@@ -97,16 +103,34 @@ namespace cms.Code.UserResources
 			{
 				switch (asset.AssetType)
 				{
-					case AssetType.JavaScript :
+					case AssetTypeExtened.JavaScript :
 						s.Append(asset.Content);
 						break;
-					case AssetType.CoffeeScript :
+					case AssetTypeExtened.CoffeeScript:
 						//translator udelat singleton 
 						var x = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
 						s.Append(x.Translate(asset));
 						break;
 				}
 			}
+			return s.ToString();
+		}
+
+		public string RenderScripts()
+		{
+//			var contentToRender = Assets.Select()
+			var s = new StringBuilder();
+			return s.ToString();
+		}
+
+		public string RenderStyleSheets()
+		{
+			var s = new StringBuilder();
+			return s.ToString();
+		}
+		public string RenderHtmlTemplates()
+		{
+			var s = new StringBuilder();
 			return s.ToString();
 		}
 	}
