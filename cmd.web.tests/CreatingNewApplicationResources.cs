@@ -19,55 +19,56 @@ namespace cms.web.tests
 	[TestFixture]
 	class CreatingNewApplicationResources
 	{
-		readonly ApplicationSetting defaultApp = new ApplicationSetting
+		private static readonly Guid Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
+		private string RootDir { get; set; }
+
+		readonly ApplicationSetting _defaultApp = new ApplicationSetting
 		{
 			Name = "prdel",
 			DefaultLanguage = "cs",
-			Id = Guid.NewGuid()
+			Id = Id
 		};
-
-		IHttpApplicationInfo HttpApplicationInfoMock
-		{
-			get
-			{
-				var assetMock = new Mock<IHttpApplicationInfo>();
-				assetMock.Setup(x => x.RootPath).Returns(Path.GetFullPath("../../"));
-				return assetMock.Object;
-			}
-		}
-		IFileSystemWrapper FileSystemWrapperMock
-		{
-			get
-			{
-				var filesystemWrapper = new Mock<IFileSystemWrapper>();
-				filesystemWrapper.Setup(x => x.GetFileTextContent("js1.js")).Returns("console.log('hvshs js1. jsbjdsbjdb sjb')");
-				filesystemWrapper.Setup(x => x.GetFileTextContent("js2.js")).Returns("console.log('hvshs js22222222. jsbjdsbjdb sjb')");
-				filesystemWrapper.Setup(x => x.GetFileTextContent("js3.js")).Returns("console.log('hvshs js33333333. jsbjdsbjdb sjb')");
-				filesystemWrapper.Setup(x => x.FileExists(It.IsAny<string>())).Returns(true);
-				return filesystemWrapper.Object;
-			}
-		}
 
 		public ApplicationSetting CreateDefaultApp()
 		{
 		
 			var mock = new Mock<JsonDataProvider>("00000000-0000-0000-0000-000000000000");
 			mock.Setup(x => x.Add(It.IsAny<ApplicationSetting>()))
-				.Returns(defaultApp);
+				.Returns(_defaultApp);
 			var db = mock.Object;
 
 			return db.Add(new ApplicationSetting());
 		}
 
+		IHttpApplicationInfo HttpApplicationInfoObject()
+		{
+			return new HttpApplicationInfo(RootDir, RootDir);
+		}
+
+		IFileSystemWrapper FileSystemWrapperObject()
+		{
+			return new FileSystemWrapper();
+		}
+
 		public IResourceManager CreateDefaultResourceManager()
 		{
 			var app = CreateDefaultApp();
-			return UserResourceManager.Create(app.Id, HttpApplicationInfoMock, FileSystemWrapperMock);
+			return UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject());
 		}
-
+		
 		[TestFixtureSetUp]
 		public void Setup()
 		{
+			RootDir = Path.GetFullPath("../../Content" );
+		}
+
+		[TestFixtureTearDown]
+		public void Cleanup()
+		{
+			if (Directory.Exists(RootDir))
+			{
+				Directory.Delete(RootDir, true);
+			}
 		}
 
 
@@ -75,8 +76,29 @@ namespace cms.web.tests
 		public void CreateAndCheckIfExists_test()
 		{
 			var app = CreateDefaultApp();
-			var res = UserResourceManager.Get(app.Id, HttpApplicationInfoMock, FileSystemWrapperMock);
+			var res = UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), new FileSystemWrapper());
 			Assert.IsTrue(res.Exist(app.Id));
+			Console.WriteLine(RootDir);
+			Cleanup();
+		}
+
+		[Test]
+		public void TryCreateWithSameName_test()
+		{
+			var app = CreateDefaultApp();
+			var res = UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject());
+//			Assert.Throws<Exception>(x =>  UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject()));
+			Assert.IsTrue(false);
+			Cleanup();
+		}
+
+		[Test]
+		public void GetApp_test()
+		{
+			var app = CreateDefaultApp();
+			var res = UserResourceManager.Get(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject());
+			Assert.IsTrue(res.Exist(app.Id));
+			Cleanup();
 		}
 
 		[Test]

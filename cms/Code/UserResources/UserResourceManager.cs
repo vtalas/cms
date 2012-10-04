@@ -22,6 +22,8 @@ namespace cms.Code.UserResources
 	{
 		private Guid Id { get; set; }
 		private IList<IAsset> AssetsValues { get; set; }
+		private string BaseDir { get; set; }
+
 		public IFileSystemWrapper AssetsFilesystem { get; private set; }
 		public IList<IAsset> Assets
 		{
@@ -36,6 +38,7 @@ namespace cms.Code.UserResources
 			FileSystemWrapper = fileSystemWrapper;
 			Id = id;
 			AssetsValues = new List<IAsset>();
+			BaseDir = Path.Combine( HttpAppInfo.RootPath, Id.ToString());
 		}
 
 		public static IResourceManager Get(Guid id)
@@ -50,8 +53,8 @@ namespace cms.Code.UserResources
 
 		public static IResourceManager Create(Guid id, IHttpApplicationInfo httpApp, IFileSystemWrapper fileSystemWrapper)
 		{
-			var r =  new UserResourceManager(id, httpApp, fileSystemWrapper);
-			r.CreateNewApplication(id);
+			var r = new UserResourceManager(id, httpApp, fileSystemWrapper);
+			r.CreateNewApplication();
 			return r;
 		}
 
@@ -66,9 +69,13 @@ namespace cms.Code.UserResources
 			return FileSystemWrapper.DirectoryExists(appResourcesPath);
 		}
 
-		private void CreateNewApplication(Guid id)
+		private void CreateNewApplication()
 		{
-
+			if (FileSystemWrapper.DirectoryExists(BaseDir))
+			{
+				throw new Exception("directory exists");
+			}
+			FileSystemWrapper.CreateDirectory(BaseDir);
 		}
 
 		public void IncludeDirectory(string path)
@@ -78,7 +85,7 @@ namespace cms.Code.UserResources
 
 		public void Include(string path)
 		{
-			var asset = new Asset(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper);
+			var asset = new Asset(Path.Combine(BaseDir, path), HttpAppInfo, FileSystemWrapper);
 			AssetsValues.Add(asset);
 		}
 
