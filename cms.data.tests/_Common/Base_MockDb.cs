@@ -70,6 +70,8 @@ namespace cms.data.tests._Common
 				});
 
 			repo.Setup(x => x.Remove(It.IsAny<Grid>())).Callback((Grid input)=> _allGrids.Remove(input));
+			repo.Setup(x => x.Remove(It.IsAny<GridElement>())).Callback((GridElement input) => _gridElements.Remove(input));
+			repo.Setup(x => x.Remove(It.IsAny<Resource>())).Callback((Resource input) => _allResources.Remove(input));
 
 			return repo.Object;
 		}

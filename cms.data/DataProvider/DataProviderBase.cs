@@ -92,7 +92,7 @@ namespace cms.data.DataProvider
 		public void Delete(Guid guid, Guid gridid)
 		{
 			var itemDb = GetGridElement(guid);
-			itemDb.Resources.ToList().ForEach(resource => itemDb.Resources.Remove(resource));
+			itemDb.Resources.ToList().ForEach(resource => Repository.Remove(resource));
 			Repository.Remove(itemDb);
 			Repository.SaveChanges();
 		}
