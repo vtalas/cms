@@ -505,6 +505,12 @@ namespace cms.data.tests.EF
 		[TestFixture]
 		public class Applications_MethodTest
 		{
+			[SetUp]
+			public void SetInit()
+			{
+				Database.SetInitializer(new DropAndCreate());
+			}
+
 			[Test]
 			public void Application_add_test()
 			{
@@ -516,7 +522,7 @@ namespace cms.data.tests.EF
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
 					Assert.AreEqual(1, db.Applications().Count());
-					
+	
 					var newitem = db.Add(a, 1);
 					var list = db.Applications();
 					
