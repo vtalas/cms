@@ -1,10 +1,8 @@
 using System;
-using System.Data.Entity;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using cms.data.EF;
 using cms.data.EF.DataProvider;
-using cms.data.EF.Initializers;
 
 namespace cms.Code
 {

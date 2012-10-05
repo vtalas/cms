@@ -1,6 +1,6 @@
 ﻿<script type="text/ng-template" id="tree_item_renderer.html">
 	<div ui-draganddrop-html="sortable" ng-model="item" class="sortableNestedCtrl {{item.statusclass}}" ng-show="!item.hidden"  >
-				<div menuitem="item" grid="data" class="menuitem" ></div> 
+				<div gridelement="item" grid="data" class="menuitem" ></div> 
 			<ul>
 			<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
 		</ul>

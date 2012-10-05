@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>cms</RootNamespace>
     <AssemblyName>cms</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
@@ -26,6 +26,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <JSLintSkip>\App_Data\ApplicationData\_default\gridelements\simplehtml\simplehtml.js|\App_Data\ApplicationData\_default\gridelements\simplehtml\simplehtml.min.js</JSLintSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -154,21 +155,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\simplehtml\simplehtml.coffee" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\simplehtml\simplehtml.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\simplehtml\simplehtml_admin.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\reference\reference.coffee" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\reference\reference.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\reference\reference_admin.coffee" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\reference\reference_admin.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\text\text.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\text\text_admin.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\textlocalized\textlocalized.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\textlocalized\textlocalized_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\menuElements\text\text.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\menuElements\text\text_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\text\text.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\text\text_admin.thtml" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\text\text.js" />
-    <Content Include="App_Data\ApplicationData\_default\gridelements\text\text_admin.js" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
     <Content Include="Content\fluid_grid.css" />
@@ -318,6 +317,9 @@
     <Content Include="Scripts\angular-templates-ext.js">
       <DependentUpon>angular-templates-ext.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\angular-templates-ext.min.js">
+      <DependentUpon>angular-templates-ext.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular-ui-ext-dndClass.js">
       <DependentUpon>angular-ui-ext-dndClass.ts</DependentUpon>
     </Content>
@@ -339,11 +341,6 @@
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\Controllers\GridElementCtrl.js" />
-    <Content Include="Scripts\select2\select2.css" />
-    <Content Include="Scripts\select2\select2.js" />
-    <Content Include="Scripts\select2\select2.png" />
-    <Content Include="Scripts\select2\spinner.gif" />
-    <Content Include="Scripts\tmp\dragdrop.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
@@ -466,7 +463,6 @@
   <ItemGroup>
     <Folder Include="App_Start\" />
     <Folder Include="App_Themes\" />
-    <Folder Include="Scripts\Apps\test1\_GridElementScripts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cms.data\cms.data.csproj">

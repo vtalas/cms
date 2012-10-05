@@ -14,7 +14,6 @@ namespace cms.data.Shared.Models
 		}
 
 		public Guid Id { get; set; }
-		public int Line { get; set; }
 		public int Width { get; set; }
 		public int Position { get; set; }
 		public string Content { get; set; }

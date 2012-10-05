@@ -1,3 +1,0 @@
-﻿<div>
-	<textarea class="span{{gridelement.Width}}" ng-model="gridelement.Content"  rows="2" ></textarea>
-</div>

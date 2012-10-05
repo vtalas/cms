@@ -7,7 +7,6 @@ namespace cms.data.Dtos
 	public class GridElementDto : IResourceElement
 	{
 		public Guid Id { get; set; }
-		public int Line { get; set; }
 		public int Width { get; set; }
 		public int Position { get; set; }
 		public string Content { get; set; }

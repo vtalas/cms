@@ -5,7 +5,7 @@
 ###
 
 simplehtml = ($scope, $http) ->
-	text.$inject = [ "$scope", "$http" ]
+	simplehtml.$inject = [ "$scope", "$http" ]
 
 	converter = new Showdown.converter()
 

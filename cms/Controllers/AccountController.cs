@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
 using cms.Controllers.Attributes;
-using cms.data.EF;
 
 namespace MvcApplication1.Controllers
 {
@@ -22,7 +21,6 @@ namespace MvcApplication1.Controllers
 
 		//
 		// POST: /Account/Login
-
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
@@ -423,7 +421,7 @@ namespace MvcApplication1.Controllers
 
 		[DataType(DataType.Password)]
 		[Display(Name = "Confirm new password")]
-		[Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+		[System.ComponentModel.DataAnnotations.Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
 		public string ConfirmPassword { get; set; }
 	}
 
@@ -456,7 +454,7 @@ namespace MvcApplication1.Controllers
 
 		[DataType(DataType.Password)]
 		[Display(Name = "Confirm password")]
-		[Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+		[System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
 		public string ConfirmPassword { get; set; }
 	}
 

@@ -1,0 +1,4 @@
+﻿<div>
+ menu template admin
+	<textarea class="span{{gridelement.Width}}" ng-model="gridelement.ResourcesLoc.text.Value" rows="2" ></textarea>
+</div>

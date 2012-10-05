@@ -14,7 +14,7 @@ namespace cms.data.Dtos
 		{
 			get
 			{
-				return shared.SharedLayer.Culture;
+				return SharedLayer.Culture;
 			}
 		}
 
@@ -44,6 +44,11 @@ namespace cms.data.Dtos
 		}
 
 		public static IList<ApplicationSettingDto> ToDtos(this IList<ApplicationSetting> source)
+		{
+			return source.Select(item => item.ToDto()).ToList();
+		}
+
+		public static IList<GridElementDto> ToDtos(this ICollection<GridElement> source)
 		{
 			return source.Select(item => item.ToDto()).ToList();
 		}
@@ -82,7 +87,7 @@ namespace cms.data.Dtos
 				{
 					Id = source.Id,
 					Content = source.Content,
-					Line = source.Line,
+					
 					Skin = source.Skin,
 					Type = source.Type,
 					ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
@@ -97,7 +102,6 @@ namespace cms.data.Dtos
 					{
 						Id = source.Id,
 						Content = source.Content,
-						Line = source.Line,
 						Position = source.Position,
 						Skin = source.Skin,
 						Type = source.Type,
@@ -137,11 +141,13 @@ namespace cms.data.Dtos
 					   };
 		}
 		
+		
+
 		public static GridPageDto ToGridPageDto(this Grid source)
 		{
 			return new GridPageDto
 			{
-				Lines = source.GridElements.ToLines(),
+				GridElements = source.GridElements.ToDtos(),
 				Home = source.Home,
 				Id = source.Id,
 				ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDtoLoc(),

@@ -17,15 +17,22 @@ namespace cms.data.EF.DataProvider
 			db = context;
 		}
 
-		IQueryable<Grid> AvailableGridsMenu()
+		IQueryable<Grid> AvailableGrids()
 		{
 			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Menu);
 			return a;
 		}
 
+		public override void Delete(Guid guid)
+		{
+			var delete = AvailableGrids().Single(x => x.Id == guid);
+			db.Grids.Remove(delete);
+			db.SaveChanges();
+		}
+
 		public override MenuDto Get(Guid guid)
 		{
-			var grid = AvailableGridsMenu().Single(x => x.Id == guid);
+			var grid = AvailableGrids().Single(x => x.Id == guid);
 			return grid.ToMenuDto();
 		}
 
@@ -37,14 +44,14 @@ namespace cms.data.EF.DataProvider
 		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
 		{
 			JsonDataEfHelpers.UpdateResource(item,db,CurrentCulture,CurrentApplication.Id);
-			var grid = AvailableGridsMenu().Single(x => x.Id == gridId);
+			var grid = AvailableGrids().Single(x => x.Id == gridId);
 			var a = new GridElement
 				        {
-					        Line = item.Line,
+					        Position = item.Position,
 							Content = item.Content,
 							Type = item.Type,
 							Skin = item.Skin,
-							Parent = db.GridElements.Single(x=>x.Id ==  new Guid(item.ParentId)),
+							Parent = db.GridElements.Single(x => x.Id ==  new Guid(item.ParentId)),
 				        };
 			grid.GridElements.Add(a);
 			db.SaveChanges();
@@ -53,7 +60,7 @@ namespace cms.data.EF.DataProvider
 
 		public override IEnumerable<MenuDto> List()
 		{
-			var a = AvailableGridsMenu().Where(x=>x.Category == CategoryEnum.Menu).ToList();
+			var a = AvailableGrids().Where(x=>x.Category == CategoryEnum.Menu).ToList();
 			return a.Select(grid => grid.ToMenuDto()).ToList();
 		}
 	}

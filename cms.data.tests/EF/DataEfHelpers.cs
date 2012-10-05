@@ -24,7 +24,7 @@ namespace cms.data.tests.EF
 					        {
 						        Content = "oldcontent",
 						        Width = 12,
-						        Line = 0,
+						        Position = 0,
 						        Skin = "xxx",
 						        Resources = new List<Resource>
 							                    {
@@ -32,7 +32,7 @@ namespace cms.data.tests.EF
 								                    new Resource{ Culture = "en", Value = "englicky", Key = "text1"},
 							                    }
 					        };
-				var newitem = db.AddGridElementToGrid(a, guid);
+				var newitem = db.GridElement.AddToGrid(a, guid);
 				Assert.True(!newitem.Id.IsEmpty());
 				return newitem;
 			}

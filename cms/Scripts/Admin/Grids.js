@@ -177,25 +177,6 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 	return directiveDefinitionObject;
 });
 
-module.directive("menuitem", function ($compile, GridApi, appSettings, menuItemTemplate) {
-	var menuItemCtrl = function ($scope) {
-		$scope.add = function (item) {
-		};
-		$scope.remove = function (item) {
-		};
-	};
-
-	return {
-		scope: {grid: "=", menuitem: "="},
-		controller: menuItemCtrl,
-		link: function (scope, iElement, tAttrs, controller) {
-			scope.gui = {edit: 0};
-			var sablona = menuItemTemplate(scope.menuitem.Type),
-				compiled = $compile(sablona)(scope);
-			iElement.html(compiled);
-		}
-	};
-});
 
 module.directive("ngcHover", function () {
 	return {
