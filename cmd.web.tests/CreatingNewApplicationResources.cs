@@ -21,10 +21,12 @@ namespace cms.web.tests
 	{
 		private static readonly Guid Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
 		private string RootDir { get; set; }
+		private string IntegrationRootDir { get; set; }
 
 		public CreatingNewApplicationResources()
 		{
 			RootDir = Path.GetFullPath("../../Content");
+			IntegrationRootDir = Path.GetFullPath("../../Integration");
 		}
 
 		readonly ApplicationSetting _defaultApp = new ApplicationSetting
@@ -49,6 +51,10 @@ namespace cms.web.tests
 		{
 			return new HttpApplicationInfo(RootDir, RootDir);
 		}
+		IHttpApplicationInfo HttpApplicationInfoIntegratonObject()
+		{
+			return new HttpApplicationInfo(IntegrationRootDir, IntegrationRootDir);
+		}
 
 		IFileSystemWrapper FileSystemWrapperObject()
 		{
@@ -67,7 +73,7 @@ namespace cms.web.tests
 			return mock.Object;
 		}
 
-		public IResourceManager CreateDefaultResourceManager()
+		public IResourceManager CreateDefaultResourceManagerFilesMocked()
 		{
 			var app = CreateDefaultApp();
 			return UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperMock());
@@ -91,8 +97,6 @@ namespace cms.web.tests
 				Directory.Delete(apppath, true);
 			}
 		}
-
-
 
 		[Test]
 		public void CreateAndCheckIfExists_test()
@@ -134,42 +138,43 @@ namespace cms.web.tests
 		[Test]
 		public void NoAssetsOnBeginning_test()
 		{
-			var resources = CreateDefaultResourceManager();
+			var resources = CreateDefaultResourceManagerFilesMocked();
 			Assert.IsTrue(resources.Assets.Count == 0);
 		}
 
 		[Test]
 		public void IncludeFile_test()
 		{
-			var resources = CreateDefaultResourceManager();
+			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("js1.js");
 			Assert.IsTrue(resources.Assets.Count == 1);
 			Assert.IsTrue(resources.Assets[0].Content.Length > 0);
 			Console.WriteLine(resources.Assets[0].Content );
 		}
 
+
 		[Test]
 		public void IncludeDirectory_test()
 		{
-			var resources = CreateDefaultResourceManager();
+			var resources = UserResourceManager.Get(Id, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
 			resources.IncludeDirectory("js");
-			Assert.IsTrue(resources.Assets.Count == 3);
+			Assert.AreEqual(3, resources.Assets.Count);
 		}
 
 		[Test]
-		public void Combine_multiple_test()
+		public void RenderScripts_test()
 		{
-			var resources = CreateDefaultResourceManager();
+			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("js1.js");
 			resources.Include("js2.js");
 			
-			Assert.AreEqual(resources.Assets.Sum(x => x.Content.Length),  resources.Combine().Length );
+			Assert.AreEqual(resources.Assets.Sum(x => x.Content.Length),  resources.RenderScripts().Length );
 		}
 
 		[Test]
 		public void CheckAssetType_Script_test()
 		{
-			var resources = CreateDefaultResourceManager();
+			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("js1.js");
 			resources.Include("coffee1.coffee");
 			resources.Include("ts1.ts");
@@ -187,11 +192,14 @@ namespace cms.web.tests
 		[Test]
 		public void CheckAssetType_HtmlTemplate_test()
 		{
-			var resources = CreateDefaultResourceManager();
+			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("template1.thtml");
+			resources.Include("templatexxx");
 
 			Assert.IsTrue(resources.Assets.Single(x=>x.AssetTypeExtended == AssetTypeExtened.HtmlTemplate).IsHtmlTemplate);
 			Assert.IsTrue(resources.Assets.Single(x => x.AssetTypeExtended == AssetTypeExtened.HtmlTemplate).Path.Contains("template1.thtml"));
+
+			Assert.IsTrue(resources.Assets.Single(x => x.AssetTypeExtended == AssetTypeExtened.Unknown).Path.Contains("templatexxx"));
 		}
 	
 	}

@@ -17,7 +17,6 @@ namespace cms.Code.UserResources
 		void IncludeDirectory(string path);
 		void Include(string path);
 	
-		string Combine();
 		bool Exist();
 		string RenderScripts();
 		string RenderStyleSheets();
@@ -49,7 +48,7 @@ namespace cms.Code.UserResources
 
 		public static IResourceManager Get(Guid id)
 		{
-			return new UserResourceManager(id, BundleTransformerContext.Current.GetApplicationInfo(), (IFileSystemWrapper)BundleTransformerContext.Current.GetFileSystemWrapper());
+			return new UserResourceManager(id, BundleTransformerContext.Current.GetApplicationInfo(), BundleTransformerContext.Current.GetFileSystemWrapper());
 		}
 
 		public static IResourceManager Get(Guid id, IHttpApplicationInfo httpApp, IFileSystemWrapper fileSystemWrapper)
@@ -71,7 +70,7 @@ namespace cms.Code.UserResources
 
 		public static IResourceManager Create(Guid id)
 		{
-			return Create(id, BundleTransformerContext.Current.GetApplicationInfo(), (IFileSystemWrapper)BundleTransformerContext.Current.GetFileSystemWrapper());
+			return Create(id, BundleTransformerContext.Current.GetApplicationInfo(), BundleTransformerContext.Current.GetFileSystemWrapper());
 		}
 		
 		public bool Exist()
@@ -91,7 +90,17 @@ namespace cms.Code.UserResources
 
 		public void IncludeDirectory(string path)
 		{
-			throw new NotImplementedException();
+			var fullPath = Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path);
+			if (!FileSystemWrapper.DirectoryExists(fullPath))
+			{
+				return;
+			}
+
+			var files = Directory.GetFiles(fullPath, "*.*", SearchOption.AllDirectories);
+			foreach (var file in files)
+			{
+				Include(file);
+			}
 		}
 
 		public void Include(string path)
@@ -100,41 +109,64 @@ namespace cms.Code.UserResources
 			AssetsValues.Add(asset);
 		}
 
-		public string Combine()
+		public string RenderScripts()
 		{
+			var contentToRender = Assets.Where(x => x.IsScript).ToList();
 			var s = new StringBuilder();
-			foreach (var asset in AssetsValues)
+			foreach (var asset in contentToRender)
 			{
 				switch (asset.AssetTypeExtended)
 				{
-					case AssetTypeExtened.JavaScript :
+					case AssetTypeExtened.TypeScript:
+					case AssetTypeExtened.JavaScript:
 						s.Append(asset.Content);
 						break;
 					case AssetTypeExtened.CoffeeScript:
-						//translator udelat singleton 
 						var x = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
 						s.Append(x.Translate(asset));
 						break;
 				}
+				
 			}
-			return s.ToString();
-		}
-
-		public string RenderScripts()
-		{
-//			var contentToRender = Assets.Select()
-			var s = new StringBuilder();
 			return s.ToString();
 		}
 
 		public string RenderStyleSheets()
 		{
+			var contentToRender = Assets.Where(x => x.IsStylesheet).ToList();
 			var s = new StringBuilder();
+			foreach (var asset in contentToRender)
+			{
+				switch (asset.AssetTypeExtended)
+				{
+					case AssetTypeExtened.Css:
+						s.Append(asset.Content);
+						break;
+					case AssetTypeExtened.Sass:
+					case AssetTypeExtened.Scss:
+					case AssetTypeExtened.Less:
+						var x = new BundleTransformer.Less.Translators.LessTranslator();
+						s.Append(x.Translate(asset));
+						break;
+				}
+
+			}
 			return s.ToString();
 		}
+
 		public string RenderHtmlTemplates()
 		{
+			var contentToRender = Assets.Where(x => x.IsHtmlTemplate).ToList();
 			var s = new StringBuilder();
+			foreach (var asset in contentToRender)
+			{
+				switch (asset.AssetTypeExtended)
+				{
+					case AssetTypeExtened.HtmlTemplate:
+						s.Append(asset.Content);
+						break;
+				}
+			}
 			return s.ToString();
 		}
 	}

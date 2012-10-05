@@ -107,7 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\UserResources\Class1.cs" />
-    <Compile Include="Code\UserResources\IContentLoader.cs" />
     <Compile Include="Code\UserResources\IResourceManager.cs" />
     <Compile Include="Code\UserResources\UserResourceManager.cs" />
     <Compile Include="Code\UserResources\ViewModeType.cs" />
