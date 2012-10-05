@@ -116,7 +116,7 @@ var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $rout
 		switch (xxx.newvalue) {
 		case DRAGEND:
 			(xxx.element).css("background-color", "green");
-			$(".sortableCtrl").stop(true,true).css("opacity", "1");
+			$(".sortableCtrl").stop(true, true).css("opacity", "1");
 			(xxx.element).animate({ backgroundColor: old }, 1000);
 			break;
 		case DRAGGED:

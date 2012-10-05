@@ -9,6 +9,7 @@
 			(xxx.element).css("background-color", "green");
 			$(".sortableCtrl").stop(true, true).css("opacity", "1");
 			(xxx.element).animate({ backgroundColor: old }, 1000);
+			console.log("xxxx", xxx.element);
 			break;
 		case DRAGGED:
 			(xxx.element).css("opacity", 1);
@@ -68,16 +69,18 @@ var sortableNestedCtrl = function ($scope, $http) {
 	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
 		switch (xxx.newvalue) {
 		case DRAGEND:
+			(xxx.element).css("opacity", 1);
+			console.log("xx", xxx.element);
 			break;
 		case DRAGGED:
-			(xxx.element).css("opacity", 1);
+			(xxx.element).css("opacity", 0.5);
 			break;
 		case DROPPED:
 			break;
 		case SWAPPED:
-			(xxx.element).css("opacity", 1);
+	//		(xxx.element).css("opacity", 1);
 			setTimeout(function () {
-				(xxx.element).animate({ opacity: 0.4 }, 1000);
+//				(xxx.element).animate({ opacity: 0.4 }, 1000);
 			}, 200);
 			break;
 		default:
@@ -85,10 +88,10 @@ var sortableNestedCtrl = function ($scope, $http) {
 	});
 	
 	$scope.$on("dragstart-sortablehtml", function (data, xxx) {
-		$(".sortableNestedCtrl").css("opacity", "0.4");
+		//$(".sortableNestedCtrl").css("opacity", "0.4");
 	});
 	$scope.$on("dragend-sortablehtml", function (data, xxx) {
-		$(".sortableNestedCtrl").stop(true).css("opacity", "1");
+		//$(".sortableNestedCtrl").stop(true).css("opacity", "1");
 	});
 	$scope.$on("dragenter-sortablehtml", function (data, xxx) {
 		//	console.log("enter", xxx.source.element, xxx.destination.element);

@@ -76,6 +76,8 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 				}
 			});
 
+
+
 		}
 	};
 }

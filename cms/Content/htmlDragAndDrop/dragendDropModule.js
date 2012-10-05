@@ -10,6 +10,10 @@ function pushToIndex(item, collection, index) {
 	collection.splice(index, 0, item);
 }
 
+function hideItem(item) {
+	item.hidden = true;
+}
+
 module.value('ui.config', {
 	draganddrophtml: {
 		sortable: {
@@ -18,10 +22,12 @@ module.value('ui.config', {
 				e.originalEvent.dataTransfer.setData('Text', xxx.source.item.Id);
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 
+				console.log(e.originalEvent.dataTransfer);
 				xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$emit("dragstart-sortablehtml", xxx);
 			},
 			dragend: function (e, uioptions, element, xxx) {
+				console.log("end", xxx);
 				xxx.source.item.status = DRAGEND;
 				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
@@ -55,12 +61,13 @@ module.value('ui.config', {
 						swapItems(collectionsrc, sourceindex, destinationindex);
 					} else {
 						destinationindex = collectiondest.indexOf(xxx.destination.item);
-						removeFromArray(xxx.source.item, collectionsrc);
+						hideItem(xxx.source.item)
 						pushToIndex(xxx.source.item, collectiondest, destinationindex);
+						//removeFromArray(xxx.source.item, collectionsrc);
+						console.log("xxxxxxxxxxx---");
+						//xxx.destination.scope.$apply();
 						xxx.source.scope = xxx.destination.scope;
 					}
-					xxx.destination.item.status = SWAPPED;
-					xxx.destination.scope.$apply();
 				}
 				xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
@@ -77,6 +84,9 @@ module.value('ui.config', {
 				xxx.destination.scope.$emit("dragover-sortablehtml", xxx);
 			},
 			drop: function (e, uioptions, element, xxx) {
+				console.log("drop" );
+				e.stopPropagation(); //nested list 
+
 				xxx.source.item.status = DROPPED;
 				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("drop-sortablehtml", xxx);

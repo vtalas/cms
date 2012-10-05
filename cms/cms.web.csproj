@@ -122,6 +122,10 @@
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
     <Content Include="Content\fluid_grid.css" />
+    <Content Include="Content\htmlDragAndDrop\base.css" />
+    <Content Include="Content\htmlDragAndDrop\dragendDropModule.js" />
+    <Content Include="Content\htmlDragAndDrop\index.html" />
+    <Content Include="Content\htmlDragAndDrop\sortableCtrl.js" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
     </Content>
@@ -165,6 +169,7 @@
     <None Include="Content\bootstrapdefault\less\utilities.less" />
     <None Include="Content\bootstrapdefault\less\variables.less" />
     <None Include="Content\bootstrapdefault\less\wells.less" />
+    <Content Include="Content\htmlDragAndDrop\sortableData.json" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
