@@ -513,11 +513,7 @@ namespace cms.data.tests.EF
 			[Test]
 			public void Application_add_test()
 			{
-				var a = new ApplicationSetting
-				{
-					Name = "xxx",
-				};
-
+				var a = new ApplicationSetting{Name = "xxx"};
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
 					Assert.AreEqual(1, db.Applications().Count());
@@ -525,13 +521,10 @@ namespace cms.data.tests.EF
 					var newitem = db.Add(a, 1);
 					var list = db.Applications();
 					
-					Assert.AreEqual(2,list.Count());
+					Assert.AreEqual(2, list.Count());
 					Assert.IsTrue(list.Any(x=>x.Id == newitem.Id));
-					
 				}
-
 			}
-
 		}
 
 		[TestFixture]
@@ -638,8 +631,6 @@ namespace cms.data.tests.EF
 			}
 		}
 
-
-
 		[Test]
 		public void UpdateGridPage_test()
 		{
@@ -664,7 +655,5 @@ namespace cms.data.tests.EF
 			Assert.AreEqual(resourcesCountBefore, resourcesCountAfter);
 			Assert.AreEqual(gridpageResBefore.Id, gridpageResAfter.Id);
 		}
-
-
 	}
 }
