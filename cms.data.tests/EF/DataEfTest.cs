@@ -515,9 +515,14 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
+					Assert.AreEqual(1, db.Applications().Count());
+					
 					var newitem = db.Add(a, 1);
-					Console.WriteLine(newitem.Name);
-					//Assert.IsNotNull(db.GetApplication(newitem.Id));
+					var list = db.Applications();
+					
+					Assert.AreEqual(2,list.Count());
+					Assert.IsTrue(list.Any(x=>x.Id == newitem.Id));
+					
 				}
 
 			}

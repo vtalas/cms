@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebMatrix.WebData;
 using cms.Code;
+using cms.Code.UserResources;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -25,6 +26,7 @@ namespace cms.Controllers.Api
 			using (var db = SessionProvider.CreateSession)
 			{
 				var a = db.Add(data, WebSecurity.CurrentUserId);
+				UserResourcesManagerProvider.CreateApplication(a.Id);
 				return new JSONNetResult(a);
 			}
 		}
@@ -90,7 +92,6 @@ namespace cms.Controllers.Api
 
 		public class JObjectFilter : ActionFilterAttribute
 		{
-
 			public string Param { get; set; }
 			public override void OnActionExecuting(ActionExecutingContext filterContext)
 			{

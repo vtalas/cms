@@ -19,8 +19,8 @@ namespace cms.web.tests.Code
 		public ApplicationSetting CreateDefaultApp()
 		{
 
-			var mock = new Mock<DataProvider>("00000000-0000-0000-0000-000000000000");
-			mock.Setup(x => x.Add(It.IsAny<ApplicationSetting>(),1))
+			var mock = new Mock<DataProvider>(new Guid("00000000-0000-0000-0000-000000000000"), 1);
+			mock.Setup(x => x.Add(It.IsAny<ApplicationSetting>(), 1))
 				.Returns(_defaultApp);
 			var db = mock.Object;
 

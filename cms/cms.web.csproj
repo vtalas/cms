@@ -117,6 +117,7 @@
     <Compile Include="Code\UserResources\Class1.cs" />
     <Compile Include="Code\UserResources\IResourceManager.cs" />
     <Compile Include="Code\UserResources\UserResourceManager.cs" />
+    <Compile Include="Code\UserResources\UserResourcesManagerProvider.cs" />
     <Compile Include="Code\UserResources\ViewModeType.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
@@ -424,6 +425,7 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />

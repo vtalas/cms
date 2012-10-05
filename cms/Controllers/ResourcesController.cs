@@ -18,11 +18,7 @@ namespace cms.Controllers
 		{
 			base.Initialize(requestContext);
 
-			ApplicationInfo = new HttpApplicationInfo(VirtualPathUtility.ToAbsolute("~/"),
-				Path.Combine(Server.MapPath("~/"), "App_Data\\ApplicationData"));
-
-			var files = (IFileSystemWrapper)BundleTransformerContext.Current.GetFileSystemWrapper();
-			Resources = UserResourceManager.Get(ApplicationId, ApplicationInfo, files);
+			Resources = UserResourcesManagerProvider.GetApplication(ApplicationId);
 
 			Resources.IncludeDirectory("gridelements");
 			Resources.IncludeDirectory("../_default/gridelements");

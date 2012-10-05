@@ -1,4 +1,5 @@
-﻿using BundleTransformer.Core.Assets;
+﻿
+using BundleTransformer.Core.Assets;
 
 namespace cms.Code.UserResources
 {
