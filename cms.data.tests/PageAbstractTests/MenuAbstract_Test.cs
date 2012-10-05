@@ -26,33 +26,35 @@ namespace cms.data.tests.PageAbstractTests
 		[SetUp]
 		public void Setup()
 		{
-			Repository = RepositoryCreator();
 
-			var app1 = AApplication("prd App")
-				.WithGrid(
-					AGrid().WithCategory(CategoryEnum.Menu)
-					                   .WithResource(SpecialResourceEnum.Link, "aaa")
-				)
-				.WithGrid(
-					AGrid(_gridId)
-						.WithCategory(CategoryEnum.Menu)
-						.WithResource(SpecialResourceEnum.Link, "bbb")
-						.WithResource("name", "xxx")
-						.WithResource("name", "xxxEn", CultureEn)
-				).AddTo(Repository);
-			_implemtation = new MenuAbstractImpl(app1, Repository);
+			using (var repository = RepositoryCreator())
+			{
+				var app1 = AApplication("prd App")
+					.WithGrid(
+						AGrid().WithCategory(CategoryEnum.Menu)
+							.WithResource(SpecialResourceEnum.Link, "aaa")
+					)
+					.WithGrid(
+						AGrid(GridId)
+							.WithCategory(CategoryEnum.Menu)
+							.WithResource(SpecialResourceEnum.Link, "bbb")
+							.WithResource("name", "xxx")
+							.WithResource("name", "xxxEn", CultureEn)
+					).AddTo(repository);
+				_implemtation = new MenuAbstractImpl(app1, repository);
+			}
 		}
 
 		[Test]
 		public void Get_ById_test()
 		{
-			var menu = _implemtation.Get(_gridId);
+			var menu = _implemtation.Get(GridId);
 			Assert.AreEqual(CategoryEnum.Menu, menu.Category );
 			Assert.AreEqual("xxx", menu.Name);
 			Assert.AreEqual("bbb", menu.Link);
 			SetCulture(CultureEn);
 
-			menu = _implemtation.Get(_gridId);
+			menu = _implemtation.Get(GridId);
 			Assert.AreEqual("bbb", menu.Link);
 			Assert.AreEqual("xxxEn", menu.Name);
 		}
@@ -61,13 +63,13 @@ namespace cms.data.tests.PageAbstractTests
 		public void AddMenuItem_XXX_test()
 		{
 
-			var menu = _implemtation.Get(_gridId);
+			var menu = _implemtation.Get(GridId);
 			Assert.AreEqual(CategoryEnum.Menu, menu.Category );
 			Assert.AreEqual("xxx", menu.Name);
 			Assert.AreEqual("bbb", menu.Link);
 			SetCulture(CultureEn);
 
-			menu = _implemtation.Get(_gridId);
+			menu = _implemtation.Get(GridId);
 			Assert.AreEqual("bbb", menu.Link);
 			Assert.AreEqual("xxxEn", menu.Name);
 		}

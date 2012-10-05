@@ -74,6 +74,7 @@
     <Compile Include="PageAbstractTests\MenuAbstract_Test.cs" />
     <Compile Include="PageAbstractTests\PageAbstract_Test.cs" />
     <Compile Include="PageAbstractTests\PageAbstract_Test_EntityFrameworkDB.cs" />
+    <Compile Include="_Common\PrintHelpers.cs" />
     <Compile Include="SampleData\CreateSampleDataTest.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,7 +16,7 @@ namespace cms.data.EF.DataProviderImplementation
 		public PageAbstractImpl(ApplicationSetting application, IRepository context)
 			: base(application, context)
 		{
-			db = context;
+			Repository = context;
 		}
 
 		public override IEnumerable<GridPageDto> List()
@@ -54,8 +54,8 @@ namespace cms.data.EF.DataProviderImplementation
 			ValidateLink(newitem.Link);
 
 			CurrentApplication.Grids.Add(item);
-			db.Add(item);
-			db.SaveChanges();
+			Repository.Add(item);
+			Repository.SaveChanges();
 			return item.ToGridPageDto();
 		}
 
@@ -72,7 +72,7 @@ namespace cms.data.EF.DataProviderImplementation
 			resLink.Value = item.Link;
 			resName.Value = item.Name;
 
-			db.SaveChanges();
+			Repository.SaveChanges();
 			return grid.ToGridPageDto();
 		}
 
@@ -84,8 +84,8 @@ namespace cms.data.EF.DataProviderImplementation
 				throw new ObjectNotFoundException(string.Format(" '{0}' not found", guid));
 			}
 
-			db.Remove(delete);
-			db.SaveChanges();
+			Repository.Remove(delete);
+			Repository.SaveChanges();
 		}
 
 

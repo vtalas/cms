@@ -69,9 +69,8 @@ namespace cms.data.EF.Initializers
 												)
 										.WithResource(SpecialResourceEnum.Link, "testPage_link")
 										.WithResource("name", "testovaci stranka", CultureCs)
-										.WithResource("name", "Test Page", CultureEn)  as Grid 
+										.WithResource("name", "Test Page", CultureEn)
 								);
-
 
 			Context.Grids.Add(AGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "bezelementu")

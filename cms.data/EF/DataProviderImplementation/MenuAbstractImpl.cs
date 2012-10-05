@@ -15,14 +15,14 @@ namespace cms.data.EF.DataProviderImplementation
 		public MenuAbstractImpl(ApplicationSetting application, IRepository context)
 			: base(application, context)
 		{
-			db = context;
+			Repository = context;
 		}
 
 		public override void Delete(Guid guid)
 		{
 			var delete = GetGrid(guid);
-			db.Remove(delete);
-			db.SaveChanges();
+			Repository.Remove(delete);
+			Repository.SaveChanges();
 		}
 
 		public override MenuDto Get(Guid guid)
@@ -45,7 +45,7 @@ namespace cms.data.EF.DataProviderImplementation
 		{
 			var grid = GetGrid(gridId);
 
-			grid.UpdateResourceList(item.ResourcesLoc, CurrentCulture, db);
+			grid.UpdateResourceList(item.ResourcesLoc, CurrentCulture, Repository);
 
 			var a = new GridElement
 						{
@@ -53,10 +53,10 @@ namespace cms.data.EF.DataProviderImplementation
 							Content = item.Content,
 							Type = item.Type,
 							Skin = item.Skin,
-							Parent = db.GridElements.Single(x => x.Id == new Guid(item.ParentId)),
+							Parent = Repository.GridElements.Single(x => x.Id == new Guid(item.ParentId)),
 						};
 			grid.GridElements.Add(a);
-			db.SaveChanges();
+			Repository.SaveChanges();
 			return a.ToMenuItemDto(grid.GridElements);
 		}
 

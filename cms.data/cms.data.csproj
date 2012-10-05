@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DataProvider\DataProviderAbstract.cs" />
     <Compile Include="DataProvider\DataProviderBase.cs" />
+    <Compile Include="DataProvider\GridElementHandler.cs" />
     <Compile Include="EF\Initializers\ObjectBuilder.cs" />
     <Compile Include="EF\Initializers\Xxx.cs" />
     <Compile Include="EF\RepositoryImplementation\EfRepository.cs" />

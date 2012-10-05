@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
 using NUnit.Framework;
 using cms.data.DataProvider;
+using cms.data.Dtos;
 using cms.data.Extensions;
 using cms.data.Repository;
 using cms.data.Shared.Models;
@@ -13,107 +13,81 @@ using System.Linq;
 namespace cms.data.tests.PageAbstractTests
 {
 	[TestFixture]
-	public class DataProvider_GridElement_Test : InjectableBase_Test
+	public class DataProvider_GridElement_Test : DataProvider_GridElement_Test_base
 	{
-		private DataProviderBase _dataProvider;
-		private const string SubElement1Content = "s1";
-		private const string SubElement2Content = "s2";
-		private int gridElementsBefore;
 
-		public DataProvider_GridElement_Test(Func<IRepository> repositoryCreator) : base(repositoryCreator)
+		public DataProvider_GridElement_Test(Func<IRepository> repositoryCreator)
+			: base(repositoryCreator)
 		{
 		}
 
 		public DataProvider_GridElement_Test()
-			: this(new Base_MockDb().GetRepositoryMock)
+			: base(new Base_MockDb().GetRepositoryMock)
 		{
 		}
-
-		[SetUp]
-		public void Setup()
-		{
-			Repository = RepositoryCreator();
-			
-
-			var subGridElement = AGridElement("text", 3) .WithContent(SubElement1Content);
-			var subGridElement2 = AGridElement("text", 4).WithContent(SubElement2Content);
-			
-			var application = AApplication("prd App")
-				.WithGrid(
-					AGrid(_gridId)
-						.WithResource(SpecialResourceEnum.Link, "aaa")
-						.WithResource("name", "NAME AAAA", CultureCs, 111)
-						.WithGridElement(AGridElement("text", 0))
-						.WithGridElement(AGridElement("text", 1))
-						.WithGridElement(AGridElement("text", 2))
-						.WithGridElement(subGridElement)
-						.WithGridElement(AGridElement("text", 0).WithParent(subGridElement))
-						.WithGridElement(AGridElement("text", 1).WithContent("chujs").WithParent(subGridElement))
-						.WithGridElement(subGridElement2)
-						.WithGridElement(AGridElement("text", 0).WithParent(subGridElement2))
-				).AddTo(Repository);
-			
-			_dataProvider = new DataProviderBase(application, Repository);
-			Assert.IsNotNull(_dataProvider);
-
-			gridElementsBefore = Repository.GridElements.Count();
-			Repository.TotalGridElementsCount_Check(gridElementsBefore);
-			Assert.AreEqual(1, Repository.ApplicationSettings.Count());
-			Assert.AreEqual(1, Repository.Grids.Count());
-		}
-
 
 		[Test]
 		public void AddGridElement_CheckCountAndCorrectPosition_test()
 		{
-			var gridelement = AGridElement("text",  1).WithContent("prdel");
-			_dataProvider.AddToGrid(gridelement, _gridId);
-			var grid = Repository.Grids.Get(_gridId);
-
-			foreach (var element in grid.GridElements.Where(x => x.Parent == null).OrderBy(x => x.Position))
+			var repository = RepositorySeed();
+			using (var dataProvider = new DataProviderBase(Application, repository))
 			{
-				Console.WriteLine(element.Position + " " + element.Content + " parent: " + element.Parent);
-			}
+				var gridelement = AGridElement("text", 1).WithContent("prdel");
+				dataProvider.AddToGrid(gridelement, GridId);
+				var grid = dataProvider.Repository.Grids.Get(GridId);
 
-			grid.Check()
-				.HasGridElementsCountAndValid(9)
-				.HasGridElementIndex(null, 1);
+				foreach (var element in grid.GridElements.Where(x => x.Parent == null).OrderBy(x => x.Position))
+				{
+					Console.WriteLine(element.Position + " " + element.Content + " parent: " + element.Parent);
+				}
+
+				grid.Check()
+					.HasGridElementsCountAndValid(9)
+					.HasGridElementIndex(null, 1);
+			}
 		}
 
 		[Test]
 		public void AddGridElement_AddExistingGridElement_test()
 		{
-			var gridelement = AGridElement("text", 1);
-			Repository.Add(gridelement);
-			Repository.SaveChanges();
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
+			{
+				var gridelement = AGridElement("text", 1);
+				db.Repository.Add(gridelement);
+				db.Repository.SaveChanges();
 
-			Repository.TotalGridElementsCount_Check(gridElementsBefore + 1);
+				db.Repository.TotalGridElementsCount_Check(GridElementsBefore + 1);
 
-			_dataProvider.AddToGrid(gridelement, _gridId);
-			var x = Repository.Grids.Get(_gridId);
-			x.Check()
-				.HasGridElementsCountAndValid(9)
-				.HasGridElementIndex(null, 1);
+				db.AddToGrid(gridelement, GridId);
+				var x = db.Repository.Grids.Get(GridId);
+				x.Check()
+					.HasGridElementsCountAndValid(9)
+					.HasGridElementIndex(null, 1);
 
-			Repository.TotalGridElementsCount_Check(gridElementsBefore + 1);
+				db.Repository.TotalGridElementsCount_Check(GridElementsBefore + 1);
+			}
 		}
 
 		[Test]
 		public void TryAddToNonExistingGrid_test()
 		{
-			var gridelement = AGridElement("text",  1);
-			Assert.Throws<ObjectNotFoundException>(() => _dataProvider.AddToGrid(gridelement, Guid.NewGuid()));
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
+			{
+				var gridelement = AGridElement("text", 1);
+				Assert.Throws<ObjectNotFoundException>(() => db.AddToGrid(gridelement, Guid.NewGuid()));
+			}
 		}
 
-
-		public void UpdatePosition_UpdateBy(GridElement update)
+		public void UpdatePosition_UpdateBy(GridElement update, Guid gridId, DataProviderBase db)
 		{
 			var gridElementId = update.Id;
 			var newPosition = update.Position;
 
-			_dataProvider.Update(update);
+			db.Update(update.ToDto());
 
-			var gridAfter = Repository.Grids.Get(update.Grid.Id);
+			var gridAfter = db.Repository.Grids.Get(gridId);
 
 			gridAfter.GridElements
 				.Where(x => x.Parent == update.Parent)
@@ -126,152 +100,217 @@ namespace cms.data.tests.PageAbstractTests
 			var updateAfter = gridAfter.GridElement(gridElementId);
 			Assert.AreEqual("new position", updateAfter.Content);
 			Assert.AreEqual(newPosition, updateAfter.Position);
+			Assert.AreEqual(GridElementsBefore, db.Repository.GridElements.Count());
+
 		}
 
 		public void UpdatePosition_withSameParents_testHelper(int itemFromPosition, int newPosition)
 		{
-			var grid = Repository.Grids.Get(_gridId);
-			var gridElements = grid.GridElements.Where(x=>x.Parent == null);
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
+			{
+				var grid = db.Repository.Grids.Get(GridId);
+				var gridElements = grid.GridElements.Where(x => x.Parent == null);
 
-			Console.WriteLine("puvodni " + itemFromPosition + "  nova :" + newPosition);
+				Console.WriteLine("puvodni " + itemFromPosition + "  nova :" + newPosition);
 
-			var gridElement = gridElements.Single(x => x.Position == itemFromPosition );
-			gridElements.PrintGridElementsPositons(gridElement.Id);
+				var gridElement = gridElements.Single(x => x.Position == itemFromPosition);
+				gridElements.PrintGridElementsPositons(gridElement.Id);
 
-			var update = AGridElement("text", gridElement.Id, newPosition)
-								.WithContent("new position")
-								.IsPropertyOf(grid);
+				var update = AGridElement("text", gridElement.Id, newPosition)
+					.WithContent("new position")
+					.IsPropertyOf(grid);
 
-			UpdatePosition_UpdateBy(update);
+				UpdatePosition_UpdateBy(update, GridId, db);
+			}
 		}
 
 		[Test]
 		public void UpdatePosition_withDifferentParents_moveUpPosition_test()
 		{
-			const int fromPosition = 0;
-			const int toPosition = 1;
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
+			{
+				const int fromPosition = 0;
+				const int toPosition = 1;
 
-			var gridId = _gridId;
-			var grid = Repository.Grids.Get(gridId);
-			
-			var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
-			var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
+				var gridId = GridId;
+				var grid = db.Repository.Grids.Get(gridId);
 
-			UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent);
+				var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
+				var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
+
+				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db);
+			}
 		}
 
 		[Test]
 		public void UpdatePosition_withDifferentParents_samePosition_test()
 		{
-			const int fromPosition = 1;
-			const int toPosition = 1;
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
+			{
+				const int fromPosition = 1;
+				const int toPosition = 1;
 
-			var gridId = _gridId;
-			var grid = Repository.Grids.Get(gridId);
-			
-			var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
-			var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
+				var gridId = GridId;
+				var grid = db.Repository.Grids.Get(gridId);
 
-			UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent);
+				var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
+				var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
+
+				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db);
+			}
 		}
 
 		[Test]
 		public void UpdatePosition_withDifferentParents_moveDownPosition_test()
 		{
-			const int fromPosition = 4;
-			const int toPosition = 1;
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
+			{
+				const int fromPosition = 4;
+				const int toPosition = 1;
 
-			var gridId = _gridId;
-			var grid = Repository.Grids.Get(gridId);
-			
-			var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
-			var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
+				var gridId = GridId;
+				var grid = db.Repository.Grids.Get(gridId);
 
-			UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent);
+				var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
+				var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
+
+				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db);
+			}
 		}
 
-		public void UpdatePosition_withDifferentParents(Guid gridId, GridElement gridElement, int newPosition, GridElement newparent)
+		public void UpdatePosition_withDifferentParents(Guid gridId, GridElement gridElement, int newPosition, GridElement newparent, DataProviderBase db)
 		{
+			var gridBefore = db.Repository.Grids.Get(gridId);
 
-			var gridBefore = Repository.Grids.Get(gridId);
-			
 			Console.WriteLine("puvodni " + gridElement.Position + "  nova :" + newPosition);
 
 			var update = AGridElement("text", gridElement.Id, newPosition)
-								.WithContent("new position")
-								.IsPropertyOf(gridElement.Grid)
-								.WithParent(newparent);
+				.WithContent("new position")
+				.IsPropertyOf(gridElement.Grid)
+				.WithParent(newparent);
 
 			gridBefore.GridElements
 				.Where(x => x.Parent == gridElement.Parent)
 				.PrintGridElementsPositons(gridElement.Id);
 
-			UpdatePosition_UpdateBy(update);
+			UpdatePosition_UpdateBy(update, gridId, db);
 		}
 
 		[Test]
-		public void UpdatePosition_withSameParents_test()
+		public void UpdatePosition_withSameParents_down_1_0_test()
 		{
 			UpdatePosition_withSameParents_testHelper(1, 0);
-			Setup();
+		}
 
+		[Test]
+		public void UpdatePosition_withSameParents_down_4_0_test()
+		{
 			UpdatePosition_withSameParents_testHelper(4, 0);
-			Setup();
+		}
 
+		[Test]
+		public void UpdatePosition_withSameParents_up_test()
+		{
 			UpdatePosition_withSameParents_testHelper(4, 2);
-			Setup();
+		}
 
+		[Test]
+		public void UpdatePosition_withSameParents_up_2_4_test()
+		{
 			UpdatePosition_withSameParents_testHelper(2, 4);
-			Setup();
+		}
 
+		[Test]
+		public void UpdatePosition_withSameParents_up_0_1_test()
+		{
 			UpdatePosition_withSameParents_testHelper(0, 1);
-			Setup();
 		}
 
 		[Test]
 		public void TryUpadteNonExisting_test()
 		{
-			var update = AGridElement("text", Guid.NewGuid(), 6);
-			update.Content = "xxx";
-			Assert.Throws<ObjectNotFoundException>(() => _dataProvider.Update(update));
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
+			{
+				var update = AGridElement("text", Guid.NewGuid(), 6);
+				update.Content = "xxx";
+				Assert.Throws<ObjectNotFoundException>(() => db.Update(update.ToDto()));
+			}
 		}
 
 		[Test]
 		public void TryUpdate_otherOwner_test()
 		{
-			var gridEelemOtherApp = AGridElement("text", 2);
-			AApplication("prd App")
-				.WithGrid(
-					AGrid()
-						.WithGridElement(gridEelemOtherApp)
-				).AddTo(Repository);
-			Assert.Throws<ObjectNotFoundException >( ()=>_dataProvider.Update(gridEelemOtherApp));
-		}
-
-	}
-	public static class PrintHelpers
-	{
-		public static void PrintGridElements(this IEnumerable<GridElement> gridElements, Func<GridElement,string> print )
-		{
-			foreach (var element in gridElements)
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
 			{
-				Console.WriteLine(print(element));
+				var gridEelemOtherApp = AGridElement("text", 2);
+				AApplication("prd App")
+					.WithGrid(
+						AGrid()
+							.WithGridElement(gridEelemOtherApp)
+					).AddTo(db.Repository);
+				Assert.Throws<ObjectNotFoundException>(() => db.Update(gridEelemOtherApp.ToDto()));
 			}
 		}
 
-		public static void PrintGridElementsPositons(this IEnumerable<GridElement> gridElements , Guid itemToHighlight, string message = "")
+		[Test]
+		public void Delete_test()
 		{
-			Func<GridElement, string> contenFormat =
-				x => itemToHighlight == x.Id ? "[" + x.Position + "]" : x.Position.ToString();
-
-			Console.WriteLine(message + gridElements.OrderBy(x => x.Position).Select(contenFormat)
-				.Aggregate((x, y) => x + ", " + y));
+			var repository = RepositorySeed();
+			using (var db = new DataProviderBase(Application, repository))
+			{
+				db.Delete(GridElementId, GridId);
+			}
 		}
 
-		public static string Serialize(this IEnumerable<GridElement> gridElements, string message = "")
-		{
-			return message + gridElements.OrderBy(x => x.Position).Select(x => x.Position.ToString()).Aggregate((x, y) => x + ", " + y);
-		}
 	}
 
+	public class DataProvider_GridElement_Test_base : InjectableBase_Test
+	{
+		protected const string SubElement1Content = "s1";
+		protected const string SubElement2Content = "s2";
+		protected int GridElementsBefore;
+		protected int ResourcesBefore;
+		protected ApplicationSetting Application { get; set; }
+
+		public DataProvider_GridElement_Test_base(Func<IRepository> repositoryCreator)
+			: base(repositoryCreator)
+		{
+		}
+
+		protected IRepository RepositorySeed()
+		{
+			var repository = RepositoryCreator();
+			var subGridElement = AGridElement("text", 3).WithContent(SubElement1Content);
+			var subGridElement2 = AGridElement("text", 4).WithContent(SubElement2Content);
+
+			Application = AApplication("prd App")
+				.WithGrid(
+					AGrid(GridId)
+						.WithResource(SpecialResourceEnum.Link, "aaa")
+						.WithResource("name", "NAME AAAA", CultureCs, 111)
+						.WithGridElement(AGridElement("text",GridElementId, 0).WithResource("link", "xxx"))
+						.WithGridElement(AGridElement("text", 1))
+						.WithGridElement(AGridElement("text", 2))
+						.WithGridElement(subGridElement)
+						.WithGridElement(AGridElement("text", 0).WithParent(subGridElement))
+						.WithGridElement(AGridElement("text", 1).WithContent("chujs").WithParent(subGridElement))
+						.WithGridElement(subGridElement2)
+						.WithGridElement(AGridElement("text", 0).WithParent(subGridElement2))
+				).AddTo(repository);
+
+			GridElementsBefore = repository.GridElements.Count();
+			repository.TotalGridElementsCount_Check(GridElementsBefore);
+			Assert.AreEqual(1, repository.ApplicationSettings.Count(), "There should be an application ");
+			Assert.AreEqual(1, repository.Grids.Count());
+			ResourcesBefore = repository.Resources.Count();
+			return repository;
+		}
+
+	}
 }

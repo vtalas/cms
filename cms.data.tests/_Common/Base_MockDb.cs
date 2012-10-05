@@ -18,12 +18,9 @@ namespace cms.data.tests._Common
 
 		public IRepository GetRepositoryMock()
 		{
-			_allResources = new List<Resource>();
-			_allGrids = new List<Grid>();
-			_applicationSettings = new List<ApplicationSetting>();
-			_gridElements = new List<GridElement>();
-
+			CleanUpDatabase();
 			var repo = new Mock<IRepository>();
+
 			repo.Setup(x => x.Resources).Returns(_allResources.AsQueryable());
 			repo.Setup(x => x.GridElements).Returns(_gridElements.AsQueryable());
 			repo.Setup(x => x.Grids).Returns(_allGrids.AsQueryable());
@@ -76,6 +73,15 @@ namespace cms.data.tests._Common
 
 			return repo.Object;
 		}
+
+		public void CleanUpDatabase()
+		{
+			_allResources = new List<Resource>();
+			_allGrids = new List<Grid>();
+			_applicationSettings = new List<ApplicationSetting>();
+			_gridElements = new List<GridElement>();
+		}
+
 	}
 
 }

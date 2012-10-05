@@ -1,9 +1,10 @@
+using System;
 using System.Linq;
 using cms.data.Shared.Models;
 
 namespace cms.data.Repository
 {
-	public interface IRepository
+	public interface IRepository : IDisposable
 	{
 		IQueryable<Resource> Resources { get; }
 		IQueryable<Grid> Grids { get; }

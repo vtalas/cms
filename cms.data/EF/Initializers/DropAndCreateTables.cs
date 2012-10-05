@@ -22,7 +22,7 @@ namespace cms.data.EF.Initializers
 
 			if (!modelvalid)
 			{
-				//TODO: obcas to spadne - DB is in use
+				//TODO: obcas to spadne - Repository is in use
 				//	context.Database.Delete();
 			}
 

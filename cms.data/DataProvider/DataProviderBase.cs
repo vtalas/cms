@@ -12,7 +12,7 @@ using cms.shared;
 namespace cms.data.DataProvider
 {
 
-	public class DataProviderBase
+	public class DataProviderBase : IDisposable
 	{
 		protected ApplicationSetting CurrentApplication { get; set; }
 
@@ -21,19 +21,19 @@ namespace cms.data.DataProvider
 			get { return SharedLayer.Culture; }
 		}
 
-		protected IRepository db { get; set; }
+		public IRepository Repository { get; set; }
 
 		public DataProviderBase(ApplicationSetting application, IRepository repository)
 		{
 			CurrentApplication = application;
-			db = repository;
+			Repository = repository;
 		}
 
 		protected IQueryable<Grid> AvailableGrids
 		{
 			get
 			{
-				var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id);
+				var a = Repository.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id);
 				return a;
 			}
 		}
@@ -53,7 +53,7 @@ namespace cms.data.DataProvider
 
 		protected GridElement GetGridElement(Guid id)
 		{
-			var gridElement = db.GridElements.SingleOrDefault(x => x.Id == id);
+			var gridElement = Repository.GridElements.SingleOrDefault(x => x.Id == id);
 
 			if (gridElement == null || !AvailableGrids.Any(x => x.Id == gridElement.Grid.Id))
 			{
@@ -85,62 +85,42 @@ namespace cms.data.DataProvider
 			}
 
 			grid.GridElements.AddToCorrectPosition(gridElement);
-			db.SaveChanges();
+			Repository.SaveChanges();
 			return gridElement;
 		}
 
 		public void Delete(Guid guid, Guid gridid)
 		{
-			throw new NotImplementedException();
+			var itemDb = GetGridElement(guid);
+			itemDb.Resources.ToList().ForEach(resource => itemDb.Resources.Remove(resource));
+			Repository.Remove(itemDb);
+			Repository.SaveChanges();
 		}
 
 		public GridElementDto Update(GridElementDto item)
 		{
-			throw new NotImplementedException();
+			var itemDb = GetGridElement(item.Id);
+			var newParent = string.IsNullOrEmpty(item.ParentId) ? null : GetGridElement(new Guid(item.ParentId));
+
+			itemDb.RefreshPositions(item, newParent);
+			itemDb.UpdateResourceList(item.ResourcesLoc, CurrentCulture, Repository);
+			itemDb.Content = item.Content;
+			itemDb.Parent = newParent;
+			itemDb.Skin = item.Skin;
+			Repository.SaveChanges();
+			return itemDb.ToDto();
 		}
 
-
-
-		public GridElement Update(GridElement item)
+		public void Dispose()
 		{
-			var itemBefore = GetGridElement(item.Id);
-			if (item.Grid == null)
+			if (Repository != null)
 			{
-				throw new ObjectNotFoundException("grid element owner not found");
+				Repository.Dispose();
 			}
-
-			var groupDestination = item.Grid.GridElements.Where(x => GridElement.EqualsById(x.Parent, item.Parent));
-			if (Equals(itemBefore.Parent, item.Parent))
-			{
-				var oldPosition = itemBefore.Position;
-				var newPosition = item.Position;
-				groupDestination.CorrectPostion(oldPosition, newPosition);
-			}
-			else
-			{
-				var groupSource = item.Grid.GridElements.Where(x => GridElement.EqualsById(x.Parent, itemBefore.Parent));
-
-				groupSource.CorrectPostionSoftRemove(itemBefore.Position);
-				groupDestination.CorrectPostionSoftAdd(item.Position);
-				
-
-
-			}
-			var parentsCount = groupDestination.Count();
-			itemBefore.Content = item.Content;
-			itemBefore.Grid = item.Grid;
-			itemBefore.Parent = item.Parent;
-			itemBefore.Position = item.Position > parentsCount && parentsCount > 0 ? parentsCount - 1 : item.Position;
-			itemBefore.Resources = item.Resources;
-			itemBefore.Skin = item.Skin;
-
-			db.SaveChanges();
-
-			return itemBefore;
 		}
 	}
 
-	public static class Chghjshd
+	public static class PositionOnGridElementExtension
 	{
 		public static void AddToCorrectPosition(this ICollection<GridElement> allGridElements, GridElement newitem)
 		{
@@ -170,7 +150,6 @@ namespace cms.data.DataProvider
 					current.Position++;
 				}
 			}
-
 		}
 
 		public static void CorrectPostionSoftAdd(this IEnumerable<GridElement> allGridElements, int newPosition)

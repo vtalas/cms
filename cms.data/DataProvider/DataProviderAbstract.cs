@@ -6,7 +6,7 @@ using cms.data.Shared.Models;
 
 namespace cms.data.DataProvider
 {
-	public abstract class DataProviderAbstract :  IDisposable
+	public abstract class DataProviderAbstract : IDisposable
 	{
 		protected int UserId { get; set; }
 		protected string CurrentCulture { get { return shared.SharedLayer.Culture; } }
@@ -35,7 +35,6 @@ namespace cms.data.DataProvider
 		public abstract void DeleteApplication(Guid guid);
 		public abstract IEnumerable<ApplicationSetting> Applications();
 		public abstract void Dispose();
-
 	}
 
 	public abstract class PageAbstract : DataProviderBase

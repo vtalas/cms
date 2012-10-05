@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.Repository;
 using cms.data.Shared.Models;
@@ -56,27 +57,71 @@ namespace cms.data.Extensions
 			return grid.GridElements.Single(x => x.Id == id);
 		}
 
+		public static void RefreshPositions(this GridElement itemDb, GridElementDto newValues, GridElement newParent)
+		{
+			var maxPosiblePosition = 0;
+			var groupDestination = itemDb.Grid.GridElements.Where(x => Shared.Models.GridElement.EqualsById(x.Parent, newParent));
+			maxPosiblePosition = groupDestination.Count();
+			
+			if (Shared.Models.GridElement.EqualsById(itemDb.Parent, newParent))
+			{
+				groupDestination.CorrectPostion(itemDb.Position, newValues.Position);
+			}
+			else
+			{
+				var groupSource = itemDb.Grid.GridElements.Where(x => Shared.Models.GridElement.EqualsById(x.Parent, itemDb.Parent));
+				groupSource.CorrectPostionSoftRemove(itemDb.Position);
+				groupDestination.CorrectPostionSoftAdd(newValues.Position);
+			}
+			itemDb.Position = newValues.Position > maxPosiblePosition && maxPosiblePosition > 0  ? maxPosiblePosition - 1  : newValues.Position;
+		}
 
 		public static void UpdateResourceList(this IEntityWithResource currentItem, IDictionary<string, ResourceDtoLoc> resourcesDto, string culture, IRepository repo)
 		{
+			if (resourcesDto == null)
+			{
+				return;
+			}
 			foreach (var i in resourcesDto)
 			{
 				var cultureCorrected = CorrectCulture(i.Key, culture);
 				var resourceByKey = GetByKey(currentItem.Resources, i.Key, cultureCorrected);
-				var resourceById = i.Value.Id != 0 ? GetById(repo.Resources, i.Value.Id, cultureCorrected) : null;
 
-				if (resourceByKey != null)
+				if (i.Value.Id == 0)
 				{
-					currentItem.Resources.Remove(resourceByKey);
-				}
-
-				if (resourceById != null)
-				{
-					currentItem.Resources.Add(resourceById);
+					if (resourceByKey != null && resourceByKey.Owner == currentItem.Id)
+					{
+						resourceByKey.Value = i.Value.Value;
+					}
+					if (resourceByKey == null)
+					{
+						currentItem.AddNewResource(i.Key, i.Value, cultureCorrected, repo);
+					}
+					if (resourceByKey != null && resourceByKey.Owner != currentItem.Id)
+					{
+						currentItem.Resources.Remove(resourceByKey);
+						currentItem.AddNewResource(i.Key, i.Value, cultureCorrected, repo);
+					}
 				}
 				else
 				{
-					currentItem.AddNewResource(i.Key, i.Value, cultureCorrected, repo);
+					var resourceById = GetById(repo.Resources, i.Value.Id, cultureCorrected);
+					if (resourceById != null )
+					{
+						if (resourceById.Owner == currentItem.Id)
+						{
+							resourceById.Value = i.Value.Value;
+						}
+						if (resourceByKey != null)
+						{
+							currentItem.Resources.Remove(resourceByKey);
+							currentItem.Resources.Add(resourceById);
+						}
+						if (resourceByKey == null)
+						{
+							currentItem.Resources.Add(resourceById);
+						}
+					}
 				}
 			}
 		}

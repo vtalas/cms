@@ -29,34 +29,35 @@ namespace cms.data.tests.PageAbstractTests
 		[SetUp]
 		public void Setup()
 		{
-			Repository = RepositoryCreator();
+			using (var repository = RepositoryCreator())
+			{
+				var app1 = AApplication("prd App")
+					.WithGrid(
+						AGrid()
+							.WithResource(SpecialResourceEnum.Link, "aaa")
+							.WithResource("name", "NAME AAAA", CultureCs, 111)
+					)
+					.WithGrid(
+						AGrid(GridId)
+							.WithResource(SpecialResourceEnum.Link, "bbb")
+							.WithResource("name", "NAME BBB", CultureCs, 221)
+							.WithResource("name", "NAME BBB EN", CultureEn, 222)
+					).AddTo(repository);
 
-			var app1 = AApplication("prd App")
-				.WithGrid(
-					AGrid()
-						.WithResource(SpecialResourceEnum.Link, "aaa")
-						.WithResource("name", "NAME AAAA", CultureCs, 111)
-				)
-				.WithGrid(
-					AGrid(_gridId)
-						.WithResource(SpecialResourceEnum.Link, "bbb")
-						.WithResource("name", "NAME BBB", CultureCs, 221)
-						.WithResource("name", "NAME BBB EN", CultureEn, 222)
-				).AddTo(Repository);
+				AApplication("almost the same as app1")
+					.WithGrid(
+						AGrid(_gridIdFromApp2)
+							.WithResource(SpecialResourceEnum.Link, "bbb")
+							.WithResource("name", "NAME AAAA", CultureCs, 111)
+					).AddTo(repository);
 
-			AApplication("almost the same as app1")
-				.WithGrid(
-					AGrid(_gridIdFromApp2)
-						.WithResource(SpecialResourceEnum.Link, "bbb")
-						.WithResource("name", "NAME AAAA", CultureCs, 111)
-				).AddTo(Repository);
-
-			Page = new PageAbstractImpl(app1, Repository);
-			Assert.That(Repository.ApplicationSettings.Any());
-			Assert.That(Repository.Grids.Any());
-			Assert.That(Repository.Resources.Any());
-			_gridsCountBefore = Repository.Grids.Count();
-			_resourcesCountBefore = Repository.Resources.Count();
+				Page = new PageAbstractImpl(app1, repository);
+				Assert.That(repository.ApplicationSettings.Any());
+				Assert.That(repository.Grids.Any());
+				Assert.That(repository.Resources.Any());
+				_gridsCountBefore = repository.Grids.Count();
+				_resourcesCountBefore = repository.Resources.Count();
+			}
 		}
 
 		[Test]
@@ -64,37 +65,37 @@ namespace cms.data.tests.PageAbstractTests
 		{
 			var gridpage = Page.Get("bbb");
 			Assert.IsNotNull(gridpage);
-			Assert.AreEqual(gridpage.Id, _gridId);
+			Assert.AreEqual(gridpage.Id, GridId);
 
 			SetCulture(CultureEn);
 
 			gridpage = Page.Get("bbb");
 			Assert.IsNotNull(gridpage);
-			Assert.AreEqual(gridpage.Id, _gridId);
+			Assert.AreEqual(gridpage.Id, GridId);
 			Assert.AreEqual(gridpage.Name, "NAME BBB EN");
 		}
 
 		[Test]
 		public void Get_ById_test()
 		{
-			var gridpage = Page.Get(_gridId);
+			var gridpage = Page.Get(GridId);
 			Assert.IsNotNull(gridpage);
-			Assert.AreEqual(gridpage.Id, _gridId);
+			Assert.AreEqual(gridpage.Id, GridId);
 		}
 
 		[Test]
 		public void Get_ById_LanguageSet_test()
 		{
-			var gridpage = Page.Get(_gridId);
+			var gridpage = Page.Get(GridId);
 			Assert.IsNotNull(gridpage);
-			Assert.AreEqual(gridpage.Id, _gridId);
+			Assert.AreEqual(gridpage.Id, GridId);
 			Assert.AreEqual(gridpage.Name, "NAME BBB");
 
 			SharedLayer.SetCulture(CultureEn);
-			gridpage = Page.Get(_gridId);
+			gridpage = Page.Get(GridId);
 
 			Assert.IsNotNull(gridpage);
-			Assert.AreEqual(gridpage.Id, _gridId);
+			Assert.AreEqual(gridpage.Id, GridId);
 			Assert.AreEqual(gridpage.Name, "NAME BBB EN");
 		}
 
@@ -108,30 +109,39 @@ namespace cms.data.tests.PageAbstractTests
 		[Test]
 		public void List_NoItems_test()
 		{
-			var xx = new PageAbstractImpl(AApplication("applikace with no grids"), Repository);
-			Assert.IsFalse(xx.List().Any());
+			using (var repository = RepositoryCreator())
+			{
+				var xx = new PageAbstractImpl(AApplication("applikace with no grids"), repository);
+				Assert.IsFalse(xx.List().Any());
+			}
 		}
 
 		[Test]
 		public void Add_test()
 		{
-			var gridpage = AGridpageDto("gridpagename", "xxxlink");
-			var saved = Page.Add(gridpage);
+			using (var Repository = RepositoryCreator())
+			{
+				var gridpage = AGridpageDto("gridpagename", "xxxlink");
+				var saved = Page.Add(gridpage);
 
-			Assert.AreEqual("xxxlink", saved.Link);
-			Assert.AreEqual("gridpagename", saved.Name);
-			Assert.AreEqual(_gridsCountBefore + 1, Repository.Grids.Count());
+				Assert.AreEqual("xxxlink", saved.Link);
+				Assert.AreEqual("gridpagename", saved.Name);
+				Assert.AreEqual(_gridsCountBefore + 1, Repository.Grids.Count());
 
+			}
 		}
 
 		[Test]
 		public void Add_TryAddExistingLink_test()
 		{
-			Assert.AreEqual(_gridsCountBefore, Repository.Grids.Count());
-			Assert.AreEqual(2, Repository.Resources.Count(x => x.Key == SpecialResourceEnum.Link && x.Value == "bbb"));
-			var gridpage = AGridpageDto("gridpagename", "bbb");
-			Assert.Throws<Exception>(() => Page.Add(gridpage));
-			Assert.AreEqual(_gridsCountBefore, Repository.Grids.Count());
+			using (var Repository = RepositoryCreator())
+			{
+				Assert.AreEqual(_gridsCountBefore, Repository.Grids.Count());
+				Assert.AreEqual(2, Repository.Resources.Count(x => x.Key == SpecialResourceEnum.Link && x.Value == "bbb"));
+				var gridpage = AGridpageDto("gridpagename", "bbb");
+				Assert.Throws<Exception>(() => Page.Add(gridpage));
+				Assert.AreEqual(_gridsCountBefore, Repository.Grids.Count());
+			}
 		}
 
 		[Test]
@@ -151,14 +161,14 @@ namespace cms.data.tests.PageAbstractTests
 				{
 					Category = CategoryEnum.Page,
 					Home = true,
-					Id = _gridId,
+					Id = GridId,
 					Link = "new link",
 					Name = "new name"
 				};
 			var gridpage = Page.Update(a);
 
 			Assert.IsNotNull(gridpage);
-			Assert.AreEqual(_gridId, gridpage.Id);
+			Assert.AreEqual(GridId, gridpage.Id);
 			Assert.AreEqual("new name", gridpage.Name);
 			Assert.AreEqual("new link", gridpage.Link);
 			Assert.IsTrue(gridpage.Home);
@@ -167,16 +177,18 @@ namespace cms.data.tests.PageAbstractTests
 		[Test]
 		public void Delete_test()
 		{
-			Page.Delete(_gridId);
-			Assert.AreEqual(_gridsCountBefore - 1, Repository.Grids.Count());
-			Assert.AreEqual(_resourcesCountBefore, Repository.Resources.Count());
+			using (var Repository = RepositoryCreator())
+			{
+				Page.Delete(GridId);
+				Assert.AreEqual(_gridsCountBefore - 1, Repository.Grids.Count());
+				Assert.AreEqual(_resourcesCountBefore, Repository.Resources.Count());
+			}
 		}
 
 		[Test]
 		public void Delete_IsNotOwner_TryToDelete_test()
 		{
 			Assert.Throws<ObjectNotFoundException>(() => Page.Delete(_gridIdFromApp2));
-
 		}
 
 

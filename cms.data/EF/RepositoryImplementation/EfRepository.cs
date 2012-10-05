@@ -13,6 +13,10 @@ namespace cms.data.EF.RepositoryImplementation
 			this.db = db;
 		}
 
+		public EfRepository() :this(new EfContext())
+		{
+		}
+
 		public IQueryable<Resource> Resources{ get { return db.Resources;}}
 		public IQueryable<Grid> Grids { get { return db.Grids; } }
 		public IQueryable<ApplicationSetting> ApplicationSettings { get { return db.ApplicationSettings;} }
@@ -64,5 +68,12 @@ namespace cms.data.EF.RepositoryImplementation
 			db.SaveChanges();
 		}
 
+		public void Dispose()
+		{
+			if (db != null )
+			{
+				db.Dispose();
+			}
+		}
 	}
 }
