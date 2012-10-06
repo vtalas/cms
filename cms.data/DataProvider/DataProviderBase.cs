@@ -83,7 +83,6 @@ namespace cms.data.DataProvider
 			{
 				throw new ObjectNotFoundException("grid not found");
 			}
-
 			grid.GridElements.AddToCorrectPosition(gridElement);
 			Repository.SaveChanges();
 			return gridElement;

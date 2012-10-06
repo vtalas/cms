@@ -13,7 +13,7 @@
 //    {
 //        private JsonDataFiles db { get; set; }
 //        [TestFixtureSetUp]
-//        public void Setup()
+//        public void RepositorySeed()
 //        {
 //            db = new JsonDataFiles("aaa");
 //        }

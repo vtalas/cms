@@ -28,12 +28,8 @@ namespace cms.data.tests.PageAbstractTests
 
 		public void RunTestDelegate(Action<PageAbstract_Test> test)
 		{
-			using (var db = new EfContext())
-			{
-				var testsInstance = new PageAbstract_Test(() => new EfRepository(db));
-				testsInstance.Setup();
-				test(testsInstance);
-			}
+			var testsInstance = new PageAbstract_Test(() => new EfRepository());
+			test(testsInstance);
 		}
 
 		[Test]

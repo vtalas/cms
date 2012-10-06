@@ -7,9 +7,7 @@ namespace cms.data.Shared.Models
 	{
 		public GridElement()
 		{
-			//Status = DomainModels.Status.Private;
 			Id = Guid.NewGuid();
-			//Grid = new List<Grid>();
 			Resources = new List<Resource>();
 			Type = "text";
 		}
@@ -18,7 +16,6 @@ namespace cms.data.Shared.Models
 		public int Width { get; set; }
 		public int Position { get; set; }
 		public string Content { get; set; }
-		//public StatusWrapper Status { get; set; }
 	
 		public string Type { get; set; }
 		public string Skin { get; set; }

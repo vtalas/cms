@@ -22,7 +22,7 @@ namespace cms.data.tests.EF
 				var a = new GridPageDto
 					        {
 						        Name = name,
-						        //ResourceDto = new ResourceDtoLoc { Value = link },
+						        Link = link,
 						        Category = CategoryEnum.Page
 					        };
 
@@ -68,7 +68,7 @@ namespace cms.data.tests.EF
 			const string link = "AddGridpage_Basic_linkExists";
 
 			AddGridpage(name, link);
-			Assert.Throws<ArgumentException>(() => AddGridpage(name + name, link));
+			Assert.Throws<Exception>(() => AddGridpage(name + name, link));
 
 		}
 	}
