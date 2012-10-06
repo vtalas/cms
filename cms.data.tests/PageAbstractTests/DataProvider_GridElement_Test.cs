@@ -34,7 +34,7 @@ namespace cms.data.tests.PageAbstractTests
 			{
 				var gridelement = AGridElement("text", 1).WithContent("prdel");
 				dataProvider.AddToGrid(gridelement, GridId);
-				var grid = dataProvider.Repository.Grids.Get(GridId);
+				var grid = repository.Grids.Get(GridId);
 
 				foreach (var element in grid.GridElements.Where(x => x.Parent == null).OrderBy(x => x.Position))
 				{
@@ -54,18 +54,18 @@ namespace cms.data.tests.PageAbstractTests
 			using (var db = new DataProviderBase(Application, repository))
 			{
 				var gridelement = AGridElement("text", 1);
-				db.Repository.Add(gridelement);
-				db.Repository.SaveChanges();
+				repository.Add(gridelement);
+				repository.SaveChanges();
 
-				db.Repository.TotalGridElementsCount_Check(GridElementsBefore + 1);
+				repository.TotalGridElementsCount_Check(GridElementsBefore + 1);
 
 				db.AddToGrid(gridelement, GridId);
-				var x = db.Repository.Grids.Get(GridId);
+				var x = repository.Grids.Get(GridId);
 				x.Check()
 					.HasGridElementsCountAndValid(9)
 					.HasGridElementIndex(null, 1);
 
-				db.Repository.TotalGridElementsCount_Check(GridElementsBefore + 1);
+				repository.TotalGridElementsCount_Check(GridElementsBefore + 1);
 			}
 		}
 
@@ -80,14 +80,14 @@ namespace cms.data.tests.PageAbstractTests
 			}
 		}
 
-		public void UpdatePosition_UpdateBy(GridElement update, Guid gridId, DataProviderBase db)
+		public void UpdatePosition_UpdateBy(GridElement update, Guid gridId, DataProviderBase db, IRepository repository)
 		{
 			var gridElementId = update.Id;
 			var newPosition = update.Position;
 
 			db.Update(update.ToDto());
 
-			var gridAfter = db.Repository.Grids.Get(gridId);
+			var gridAfter = repository.Grids.Get(gridId);
 
 			gridAfter.GridElements
 				.Where(x => x.Parent == update.Parent)
@@ -100,7 +100,7 @@ namespace cms.data.tests.PageAbstractTests
 			var updateAfter = gridAfter.GridElement(gridElementId);
 			Assert.AreEqual("new position", updateAfter.Content);
 			Assert.AreEqual(newPosition, updateAfter.Position);
-			Assert.AreEqual(GridElementsBefore, db.Repository.GridElements.Count());
+			Assert.AreEqual(GridElementsBefore, repository.GridElements.Count());
 
 		}
 
@@ -109,7 +109,7 @@ namespace cms.data.tests.PageAbstractTests
 			var repository = RepositorySeed();
 			using (var db = new DataProviderBase(Application, repository))
 			{
-				var grid = db.Repository.Grids.Get(GridId);
+				var grid = repository.Grids.Get(GridId);
 				var gridElements = grid.GridElements.Where(x => x.Parent == null);
 
 				Console.WriteLine("puvodni " + itemFromPosition + "  nova :" + newPosition);
@@ -121,7 +121,7 @@ namespace cms.data.tests.PageAbstractTests
 					.WithContent("new position")
 					.IsPropertyOf(grid);
 
-				UpdatePosition_UpdateBy(update, GridId, db);
+				UpdatePosition_UpdateBy(update, GridId, db, repository);
 			}
 		}
 
@@ -135,12 +135,12 @@ namespace cms.data.tests.PageAbstractTests
 				const int toPosition = 1;
 
 				var gridId = GridId;
-				var grid = db.Repository.Grids.Get(gridId);
+				var grid = repository.Grids.Get(gridId);
 
 				var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
 				var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
 
-				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db);
+				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db, repository);
 			}
 		}
 
@@ -154,12 +154,12 @@ namespace cms.data.tests.PageAbstractTests
 				const int toPosition = 1;
 
 				var gridId = GridId;
-				var grid = db.Repository.Grids.Get(gridId);
+				var grid = repository.Grids.Get(gridId);
 
 				var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
 				var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
 
-				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db);
+				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db, repository);
 			}
 		}
 
@@ -173,18 +173,18 @@ namespace cms.data.tests.PageAbstractTests
 				const int toPosition = 1;
 
 				var gridId = GridId;
-				var grid = db.Repository.Grids.Get(gridId);
+				var grid = repository.Grids.Get(gridId);
 
 				var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
 				var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
 
-				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db);
+				UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent, db, repository);
 			}
 		}
 
-		public void UpdatePosition_withDifferentParents(Guid gridId, GridElement gridElement, int newPosition, GridElement newparent, DataProviderBase db)
+		public void UpdatePosition_withDifferentParents(Guid gridId, GridElement gridElement, int newPosition, GridElement newparent, DataProviderBase db, IRepository repository)
 		{
-			var gridBefore = db.Repository.Grids.Get(gridId);
+			var gridBefore = repository.Grids.Get(gridId);
 
 			Console.WriteLine("puvodni " + gridElement.Position + "  nova :" + newPosition);
 
@@ -197,7 +197,7 @@ namespace cms.data.tests.PageAbstractTests
 				.Where(x => x.Parent == gridElement.Parent)
 				.PrintGridElementsPositons(gridElement.Id);
 
-			UpdatePosition_UpdateBy(update, gridId, db);
+			UpdatePosition_UpdateBy(update, gridId, db, repository);
 		}
 
 		[Test]
@@ -253,7 +253,7 @@ namespace cms.data.tests.PageAbstractTests
 					.WithGrid(
 						AGrid()
 							.WithGridElement(gridEelemOtherApp)
-					).AddTo(db.Repository);
+					).AddTo(repository);
 				Assert.Throws<ObjectNotFoundException>(() => db.Update(gridEelemOtherApp.ToDto()));
 			}
 		}
@@ -265,8 +265,8 @@ namespace cms.data.tests.PageAbstractTests
 			using (var db = new DataProviderBase(Application, repository))
 			{
 				db.Delete(GridElementId, GridId);
-				Assert.AreEqual(GridElementsBefore - 1, db.Repository.GridElements.Count());
-				Assert.AreEqual(ResourcesBefore - 1, db.Repository.Resources.Count());
+				Assert.AreEqual(GridElementsBefore - 1, repository.GridElements.Count());
+				Assert.AreEqual(ResourcesBefore - 1, repository.Resources.Count());
 			}
 		}
 

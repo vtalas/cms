@@ -136,7 +136,8 @@ namespace cms.data.tests.UpdateResourceList
 					.OwnerIs(g1.Id);
 
 				Assert.AreEqual(1, g2.Resources.Count);
-
+				Assert.AreEqual(1, g1.Resources.Count);
+				Assert.AreEqual(_totalResourcesCountBefore + 1, repository.Resources.Count());
 			}
 		}
 

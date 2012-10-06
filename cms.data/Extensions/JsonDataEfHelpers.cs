@@ -45,10 +45,9 @@ namespace cms.data.Extensions
 			return resources.SingleOrDefault(a => a.Id == id );
 		}
 
-		private static void AddNewResource(this IEntityWithResource currentItem, string key, ResourceDtoLoc i, string culture, Grid grid, IRepository repo)
+		private static void AddNewResource(this IEntityWithResource currentItem, string key, ResourceDtoLoc i, string culture, IRepository repo)
 		{
 			var resource = repo.Add(i.ToResource(key, currentItem.Id, culture));
-			grid.Resources.Add(resource);
 			repo.SaveChanges();
 			currentItem.Resources.Add(resource);
 		}
@@ -96,12 +95,12 @@ namespace cms.data.Extensions
 					}
 					if (resourceByKey == null)
 					{
-						currentItem.AddNewResource(i.Key, i.Value, cultureCorrected, null, repo);
+						currentItem.AddNewResource(i.Key, i.Value, cultureCorrected, repo);
 					}
 					if (resourceByKey != null && resourceByKey.Owner != currentItem.Id)
 					{
 						currentItem.Resources.Remove(resourceByKey);
-						currentItem.AddNewResource(i.Key, i.Value, cultureCorrected, null, repo);
+						currentItem.AddNewResource(i.Key, i.Value, cultureCorrected, repo);
 					}
 				}
 				else

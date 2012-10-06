@@ -4,8 +4,8 @@ using NUnit.Framework;
 using cms.data.EF;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.EF.Initializers;
-using cms.data.tests.EF;
 using cms.data.tests._Common;
+using cms.shared;
 
 namespace cms.data.tests.UpdateResourceList
 {
@@ -16,22 +16,15 @@ namespace cms.data.tests.UpdateResourceList
 		public UpdateResourceList_Test_WithDB()
 		{
 			Database.SetInitializer(new DropAndCreateAlwaysForce());
+			Xxx.DeleteDatabaseData();
+			SecurityProvider.EnsureInitialized(true);
+			SharedLayer.Init();
 		}
 
 		public void RunTestDelegate(Action<UpdateResourceList_Test_NoDB> test)
 		{
-			using (var db = new EfContext())
-			{
-				var testsInstance = new UpdateResourceList_Test_NoDB(() => new EfRepository(db));
-				testsInstance.Setup();
-				test(testsInstance);
-			}
-		}
-
-		[SetUp]
-		public void SetUp()
-		{
-			Xxx.DeleteDatabaseDataGenereateSampleData();
+			var testsInstance = new UpdateResourceList_Test_NoDB(() => new EfRepository());
+			test(testsInstance);
 		}
 
 		[Test]

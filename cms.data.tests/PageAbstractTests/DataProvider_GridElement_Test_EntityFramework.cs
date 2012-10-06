@@ -120,8 +120,8 @@ namespace cms.data.tests.PageAbstractTests
 			using (var db = new DataProviderBase(Application, repository))
 			{
 				db.Delete(GridElementId, GridId);
-				Assert.AreEqual(GridElementsBefore - 1 , db.Repository.GridElements.Count());
-				Assert.AreEqual(ResourcesBefore - 1 , db.Repository.Resources.Count());
+				Assert.AreEqual(GridElementsBefore - 1 , repository.GridElements.Count());
+				Assert.AreEqual(ResourcesBefore - 1 , repository.Resources.Count());
 			}
 		
 		}

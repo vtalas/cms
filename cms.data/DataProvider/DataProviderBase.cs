@@ -21,7 +21,7 @@ namespace cms.data.DataProvider
 			get { return SharedLayer.Culture; }
 		}
 
-		public IRepository Repository { get; set; }
+		protected IRepository Repository { get; set; }
 
 		public DataProviderBase(ApplicationSetting application, IRepository repository)
 		{

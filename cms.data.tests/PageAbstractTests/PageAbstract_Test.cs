@@ -141,7 +141,7 @@ namespace cms.data.tests.PageAbstractTests
 
 				Assert.AreEqual("xxxlink", saved.Link);
 				Assert.AreEqual("gridpagename", saved.Name);
-				Assert.AreEqual(_gridsCountBefore + 1, page.Repository.Grids.Count());
+				Assert.AreEqual(_gridsCountBefore + 1, repo.Grids.Count());
 
 			}
 		}
@@ -152,11 +152,11 @@ namespace cms.data.tests.PageAbstractTests
 			var repo = RepositorySeed();
 			using (var page = new PageAbstractImpl(_application, repo))
 			{
-				Assert.AreEqual(_gridsCountBefore, page.Repository.Grids.Count());
-				Assert.AreEqual(2, page.Repository.Resources.Count(x => x.Key == SpecialResourceEnum.Link && x.Value == "bbb"));
+				Assert.AreEqual(_gridsCountBefore, repo.Grids.Count());
+				Assert.AreEqual(2, repo.Resources.Count(x => x.Key == SpecialResourceEnum.Link && x.Value == "bbb"));
 				var gridpage = AGridpageDto("gridpagename", "bbb");
 				Assert.Throws<Exception>(() => page.Add(gridpage));
-				Assert.AreEqual(_gridsCountBefore, page.Repository.Grids.Count());
+				Assert.AreEqual(_gridsCountBefore, repo.Grids.Count());
 			}
 		}
 
