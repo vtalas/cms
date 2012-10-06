@@ -23,6 +23,9 @@ namespace cms.Controllers
 
 			var files = (IFileSystemWrapper)BundleTransformerContext.Current.GetFileSystemWrapper();
 			Resources = UserResourceManager.Get(ApplicationId, ApplicationInfo, files);
+
+			Resources.IncludeDirectory("gridelements");
+			Resources.IncludeDirectory("../_default/gridelements");
 		}
 
 
@@ -39,8 +42,6 @@ namespace cms.Controllers
 
 		public ActionResult Scripts()
 		{
-			Resources.IncludeDirectory("gridelements");
-
 			Response.ContentType = "text/javascript";
 			Response.Write(Resources.RenderScripts());
 			return new EmptyResult();
@@ -48,8 +49,6 @@ namespace cms.Controllers
 
 		public ActionResult HtmlTemplates()
 		{
-			Resources.IncludeDirectory("gridelements");
-
 			Response.Write(Resources.RenderHtmlTemplates());
 			return new EmptyResult();
 		}

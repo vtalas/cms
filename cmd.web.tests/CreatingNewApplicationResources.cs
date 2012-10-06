@@ -1,8 +1,5 @@
-﻿
-using System;
-using System.ComponentModel;
+﻿using System;
 using System.IO;
-using BundleTransformer.Core.Assets;
 using BundleTransformer.Core.FileSystem;
 using BundleTransformer.Core.Web;
 using Moq;
@@ -26,7 +23,7 @@ namespace cms.web.tests
 		public CreatingNewApplicationResources()
 		{
 			RootDir = Path.GetFullPath("../../Content");
-			IntegrationRootDir = Path.GetFullPath("../../Integration");
+			IntegrationRootDir = Path.GetFullPath("c:/lades/web/cms/cmd.web.tests/Integration");
 		}
 
 		readonly ApplicationSetting _defaultApp = new ApplicationSetting
@@ -66,9 +63,11 @@ namespace cms.web.tests
 			var mock = new Mock<IFileSystemWrapper>();
 			mock.Setup(x => x.FileExists(It.IsAny<string>())).Returns(true);
 
-			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js1.js"))).Returns("alert('kabdkjsa js1 1111111')");
-			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js2.js"))).Returns("alert('kabdkjsa js2 222222')");
-			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "t1.thtml"))).Returns("<span>template1</span>");
+			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js1.js"))).Returns("alert('js1client')");
+			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "default/js1.js"))).Returns("alert('js1defaltclient')");
+			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js2.js"))).Returns("alert('js2client')");
+			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js2_admin.js"))).Returns("alert('js2admin')");
+			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "t1.thtml"))).Returns("<span>template1client</span>");
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "css1.css"))).Returns("body{color:red;}");
 			
 			//mock.Setup(x => x.DirectoryExists(Path.Combine(RootDir, Id.ToString()))).Returns(true);
@@ -158,9 +157,26 @@ namespace cms.web.tests
 		[Test]
 		public void IncludeDirectory_test()
 		{
-			var resources = UserResourceManager.Get(Id, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
+			var httpinfo = HttpApplicationInfoIntegratonObject();
+			var fswrapper = FileSystemWrapperObject();
+
+			Console.WriteLine(httpinfo.RootPath);
+			var resources = UserResourceManager.Get(Id, httpinfo, fswrapper);
 			resources.IncludeDirectory("js");
 			Assert.AreEqual(3, resources.Assets.Count);
+		}
+
+		[Test]
+		public void IsAdmin_test()
+		{
+			var resources = CreateDefaultResourceManagerFilesMocked();
+			resources.Include("js2.js");
+			resources.Include("js2_admin.js");
+
+			Assert.IsTrue(resources.Assets.Single(x => x.Content.Contains("js2admin")).IsAdmin);
+			Assert.IsFalse(resources.Assets.Single(x => x.Content.Contains("js2client")).IsAdmin);
+
+			Console.WriteLine(resources.Assets.Single(x => x.Content.Contains("js2admin")).FileName);
 		}
 
 		[Test]
@@ -175,7 +191,19 @@ namespace cms.web.tests
 			Assert.AreEqual(resources.Assets.Where(x=>x.IsScript).Sum(x => x.Content.Length),  resources.RenderScripts().Length );
 			Assert.IsTrue(resources.RenderHtmlTemplates().Contains("<span>") );
 			Assert.AreEqual(resources.Assets.Where(x=>x.IsStylesheet).Sum(x => x.Content.Length),  resources.RenderStyleSheets().Length );
-		
+		}
+
+		[Test]
+		public void Render_Withoverwriting_test()
+		{
+			var resources = CreateDefaultResourceManagerFilesMocked();
+			resources.Include("js1.js");
+			resources.Include("default/js1.js");
+
+			var render = resources.RenderScripts();
+			var asset1Default = resources.Assets.Single(x => x.Content.Contains("js1defaultclient"));
+			Assert.AreEqual(asset1Default, render);
+			Assert.AreEqual(1, resources.Assets.Count);
 		}
 
 		[Test]

@@ -9,6 +9,8 @@ namespace cms.Code.UserResources
 	{
 		AssetTypeExtened AssetTypeExtended { get; }
 		bool IsHtmlTemplate { get; }
+		bool IsAdmin { get; }
+		string FileName { get; }
 	}
 
 	public enum AssetTypeExtened
@@ -30,12 +32,14 @@ namespace cms.Code.UserResources
 		public AssetDecorator(Asset asset)
 		{
 			AssetObject = asset;
-			AssetTypeExtended = GetAssetType(asset.Path);
+			FileName = System.IO.Path.GetFileName(asset.Path.ToLower());
+			AssetTypeExtended = GetAssetType();
+			IsAdmin = FileName.Contains("_admin.");
 		}
 
-		private AssetTypeExtened GetAssetType(string path)
+		private AssetTypeExtened GetAssetType()
 		{
-			var extension = System.IO.Path.GetExtension(path.ToLower());
+			var extension = System.IO.Path.GetExtension(FileName);
 			switch (extension)
 			{
 				case ".coffee" : 
@@ -74,6 +78,8 @@ namespace cms.Code.UserResources
 		public bool IsScript { get { return AssetObject.IsScript; }  }
 
 		public bool IsHtmlTemplate { get { return AssetTypeExtended == AssetTypeExtened.HtmlTemplate; } }
+		public bool IsAdmin { get; private set; }
+		public string FileName { get; private set; }
 		public AssetTypeExtened AssetTypeExtended { get; private set; }
 	}
 }

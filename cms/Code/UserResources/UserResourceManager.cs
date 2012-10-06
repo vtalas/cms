@@ -13,7 +13,7 @@ namespace cms.Code.UserResources
 	public interface IResourceManager
 	{
 		Guid Id { get; }
-		IList<IAssetExt> Assets { get; }
+		IDictionary<string, IAssetExt> Assets { get; }
 		void IncludeDirectory(string path);
 		void Include(string path);
 	
@@ -26,11 +26,11 @@ namespace cms.Code.UserResources
 	public class UserResourceManager: IResourceManager
 	{
 		public Guid Id { get; private set; }
-		private IList<IAssetExt> AssetsValues { get; set; }
+		private IDictionary<string, IAssetExt> AssetsValues { get; set; }
 		private string BaseDir { get; set; }
 
 		public IFileSystemWrapper AssetsFilesystem { get; private set; }
-		public IList<IAssetExt> Assets
+		public IDictionary<string, IAssetExt> Assets
 		{
 			get { return AssetsValues; }
 		}
@@ -42,7 +42,7 @@ namespace cms.Code.UserResources
 			HttpAppInfo = httpApp;
 			FileSystemWrapper = fileSystemWrapper;
 			Id = id;
-			AssetsValues = new List<IAssetExt>();
+			AssetsValues = new Dictionary<string, IAssetExt>();
 			BaseDir = Path.Combine( HttpAppInfo.RootPath, Id.ToString());
 		}
 
@@ -109,36 +109,22 @@ namespace cms.Code.UserResources
 			AssetsValues.Add(asset);
 		}
 
-		public string RenderScripts()
+		private string Render(IEnumerable<KeyValuePair<string, IAssetExt>> contentToRender)
 		{
-			var contentToRender = Assets.Where(x => x.IsScript).ToList();
 			var s = new StringBuilder();
 			foreach (var asset in contentToRender)
 			{
-				switch (asset.AssetTypeExtended)
+				switch (asset.Value.AssetTypeExtended)
 				{
 					case AssetTypeExtened.TypeScript:
 					case AssetTypeExtened.JavaScript:
 						s.Append(asset.Content);
 						break;
 					case AssetTypeExtened.CoffeeScript:
-						var x = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
-						s.Append(x.Translate(asset));
+						var xx = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
+						s.Append(xx.Translate(asset));
 						break;
-				}
-				
-			}
-			return s.ToString();
-		}
 
-		public string RenderStyleSheets()
-		{
-			var contentToRender = Assets.Where(x => x.IsStylesheet).ToList();
-			var s = new StringBuilder();
-			foreach (var asset in contentToRender)
-			{
-				switch (asset.AssetTypeExtended)
-				{
 					case AssetTypeExtened.Css:
 						s.Append(asset.Content);
 						break;
@@ -148,26 +134,35 @@ namespace cms.Code.UserResources
 						var x = new BundleTransformer.Less.Translators.LessTranslator();
 						s.Append(x.Translate(asset));
 						break;
-				}
-
-			}
-			return s.ToString();
-		}
-
-		public string RenderHtmlTemplates()
-		{
-			var contentToRender = Assets.Where(x => x.IsHtmlTemplate).ToList();
-			var s = new StringBuilder();
-			foreach (var asset in contentToRender)
-			{
-				switch (asset.AssetTypeExtended)
-				{
 					case AssetTypeExtened.HtmlTemplate:
 						s.Append(asset.Content);
 						break;
 				}
 			}
 			return s.ToString();
+		}
+
+		public string RenderScripts()
+		{
+			var contentToRender = Assets.Where(x => x.IsScript).ToList();
+			return Render(contentToRender);
+		}
+
+		public string RenderStyleSheets()
+		{
+			var contentToRender = Assets.Where(x => x.IsStylesheet).ToList();
+			return Render(contentToRender);
+		}
+
+		public string RenderHtmlTemplates(Func<IAssetExt, bool> restriction )
+		{
+			return Render(Assets.Where(x => x.IsHtmlTemplate && restriction(x)).ToList());
+		}
+
+		public string RenderHtmlTemplates()
+		{
+			var contentToRender = Assets.Where(x => x.IsHtmlTemplate).ToList();
+			return Render(contentToRender);
 		}
 	}
 
