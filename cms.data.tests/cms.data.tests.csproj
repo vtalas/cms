@@ -60,12 +60,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EF\AddGridElementMethodTest.cs" />
+    <Compile Include="EF\AddGridPageMethodTest.cs" />
+    <Compile Include="EF\ApplicationsMethodTest.cs" />
     <Compile Include="EF\DataEfHelpers.cs" />
+    <Compile Include="EF\DataEfTestNEW.cs" />
     <Compile Include="EF\DtoTests.cs" />
+    <Compile Include="EF\GetGridElementMethodTest.cs" />
+    <Compile Include="EF\GetGridPageMethodTest.cs" />
+    <Compile Include="EF\PageAbstractTest.cs" />
     <Compile Include="EF\SessionManager.cs" />
+    <Compile Include="EF\UpdateGridElementMethodTest.cs" />
     <Compile Include="LocalizationsTests.cs" />
     <Compile Include="SampleData\CreateSampleDataTest.cs" />
-    <Compile Include="EF\DataEfTest.cs" />
+    <Compile Include="EF\Xxx.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

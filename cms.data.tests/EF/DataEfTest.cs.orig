@@ -508,8 +508,17 @@ namespace cms.data.tests.EF
 			[Test]
 			public void Application_add_test()
 			{
+<<<<<<< HEAD
 				var a = new ApplicationSetting{Name = "xxx"};
+				using (var db = SessionManager.CreateSessionWithSampleData)
+=======
+				var a = new ApplicationSetting
+				{
+					Name = "xxx",
+				};
+
 				using (var db = new SessionManager().CreateSessionWithSampleData)
+>>>>>>> 50d1bccd4893969077ba9beceee8d7dfc5d7460d
 				{
 					Assert.AreEqual(1, db.Applications().Count());
 	
@@ -619,6 +628,34 @@ namespace cms.data.tests.EF
 			}
 		}
 
+<<<<<<< HEAD
+		[Test]
+		public void UpdateGridPage_test()
+		{
+			var gridpage = repo.Page.Add(new GridPageDto
+			{
+				Name = "addgridElement test Gridpage",
+				ResourceDto = new ResourceDtoLoc() { Value = "newlink" },
+				Category = CategoryEnum.Page
+			});
+			var resourcesCountBefore = _context.Resources.Count();
+			var gridpageResBefore = gridpage.ResourceDto;
+
+			gridpage.ResourceDto.Value = "XXXX";
+			repo.Page.Update(gridpage);
+
+			var updated = repo.Page.Get(gridpage.Id);
+			var resourcesCountAfter = _context.Resources.Count();
+			var gridpageResAfter = updated.ResourceDto;
+
+			Assert.AreEqual("XXXX", updated.ResourceDto.Value);
+			//check esli se nepridalo neco novyho 
+			Assert.AreEqual(resourcesCountBefore, resourcesCountAfter);
+			Assert.AreEqual(gridpageResBefore.Id, gridpageResAfter.Id);
+		}
+=======
+
+
 		//[Test]
 		//public void UpdateGridPage_test()
 		//{
@@ -643,5 +680,8 @@ namespace cms.data.tests.EF
 		//	Assert.AreEqual(resourcesCountBefore, resourcesCountAfter);
 		//	Assert.AreEqual(gridpageResBefore.Id, gridpageResAfter.Id);
 		//}
+
+
+>>>>>>> 50d1bccd4893969077ba9beceee8d7dfc5d7460d
 	}
 }

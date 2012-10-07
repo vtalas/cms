@@ -6,6 +6,7 @@ namespace cms.data.EF.Initializers
 {
 	public class DropAndCreateTables : IDatabaseInitializer<EfContext>
 	{
+	
 		public void InitializeDatabase(EfContext context)
 		{
 		

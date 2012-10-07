@@ -9,6 +9,22 @@ namespace cms.data.EF.Initializers
 	
 		public void InitializeDatabase(EfContext context)
 		{
+			if (!context.Database.Exists())
+			{
+				context.Database.Create();
+			}
+
+			context.SaveChanges();
+		}
+
+	}
+
+	public class DropAndCreateAndSampleData : IDatabaseInitializer<EfContext>
+	{
+		private static readonly ILog Log = LogManager.GetLogger(typeof (DropAndCreate));
+	
+		public void InitializeDatabase(EfContext context)
+		{
 			if (context.Database.Exists())
 			{
 				Database.SetInitializer<EfContext>(null);

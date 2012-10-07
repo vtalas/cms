@@ -18,7 +18,7 @@ namespace cms.data.tests.EF
 	
 		public static GridElement AddDefaultGridElement()
 		{
-			using (var db = new SessionManager().CreateSessionWithSampleData)
+			using (var db = new SessionManager().CreateSession)
 			{
 				var a = new GridElement
 					        {

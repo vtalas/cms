@@ -114,7 +114,6 @@ namespace cms.data.EF.Initializers
 			WebSecurity.CreateUserAndAccount("admin", "a");
 			WebSecurity.CreateUserAndAccount("lades", "a");
 			WebSecurity.CreateUserAndAccount("pepa", "a");
-		
 		}
 
 		private void GenerateMenus(ApplicationSetting application)
