@@ -53,7 +53,6 @@
 		$http({ method: 'GET', url: '/Content/htmlDragAndDrop/sortableData.json' }).
 			success(function (data, status, headers, config) {
 				$scope.data = data;
-				console.log(data);
 			});
 		return;
 	};
@@ -76,6 +75,11 @@ var sortableNestedCtrl = function ($scope, $http) {
 			(xxx.element).css("opacity", 0.5);
 			break;
 		case DROPPED:
+			break;
+		case DRAGOLD:
+			console.log("dragold");
+			xxx.item.Id += "XXX";
+			//xxx.element.css("border", "2px solid red");
 			break;
 		case SWAPPED:
 	//		(xxx.element).css("opacity", 1);
@@ -114,7 +118,6 @@ var sortableNestedCtrl = function ($scope, $http) {
 		$http({ method: 'GET', url: '/Content/htmlDragAndDrop/sortableNestedData.json' }).
 			success(function (data, status, headers, config) {
 				$scope.data = data;
-				console.log(data);
 			});
 		return;
 	};

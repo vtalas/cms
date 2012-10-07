@@ -1,6 +1,7 @@
 var DRAGGED = 1,
 	PRD = 0,
 	DRAGEND = 5,
+	DRAGOLD = 9,
 	DROPPED = 3,
 	SWAPPED = 2;
 
@@ -19,26 +20,38 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 			    namespace = namespaceArray[0],
 				opts = angular.extend({}, options, scope.$eval(attrs.uiOptions));
 
-			$(element).attr("draggable", true);
+			(element).attr("draggable", true);
 
 			scope.$watch("item.status", function (newval, oldval) {
 				scope.$emit("statuschange-sortablehtml", { oldvalue: oldval, newvalue: newval, element: element, item: ngModel.$modelValue });
 			});
+
 			$(element).on("dragstart", function (e) {
-				var modelvalues = ngModel ? ngModel.$modelValue : null;
+				var modelvalues = ngModel ? ngModel.$modelValue : null,
+					itemcopy = angular.extend({}, modelvalues);
+
+				var clone = $(element).clone();
+				$(clone).removeAttr("ui-draganddrop-html");
+				$(clone).removeAttr("ng-model");
+				$(clone).removeAttr("ng-show");
+				//console.log(clone)
+				//$(".xxx").append($(element).clone())
+
 
 				$draggeditem.source.item = modelvalues;
+				//$draggeditem.source.item = itemcopy;
 				$draggeditem.source.scope = scope;
-				$draggeditem.source.element = element;
+				$draggeditem.source.element = clone;
 				$draggeditem.source.namespace = namespace;
 				$draggeditem.destination = $draggeditem.source;
 
 				if (typeof (opts[namespace].dragstart) === "function") {
-					opts[namespace].dragstart(e, options, element, $draggeditem);
+					opts[namespace].dragstart(e, options, $draggeditem);
 				}
+				//modelvalues.status = DRAGOLD;
 			});
 
-			$(element).on("dragenter", function (e) {
+			(element).bind("dragenter", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 				if (typeof (opts[namespace].dragenter) === "function") {
@@ -46,14 +59,14 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 					opts[namespace].dragenter(e, options, element, $draggeditem);
 				}
 			});
-			$(element).on("dragleave", function (e) {
+			(element).bind("dragleave", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 				if (typeof (opts[namespace].dragleave) === "function") {
 					$draggeditem.destination = { item: modelvalues, scope: scope, element: element };
 					opts[namespace].dragleave(e, options, element, $draggeditem);
 				}
 			});
-			$(element).on("dragover", function (e) {
+			(element).bind("dragover", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 				if (typeof (opts[namespace].dragover) === "function") {
@@ -61,7 +74,7 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 					opts[namespace].dragover(e, options, element, $draggeditem);
 				}
 			});
-			$(element).on("drop", function (e) {
+			(element).bind("drop", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 				if (typeof (opts[namespace].drop) === "function") {
@@ -70,7 +83,7 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 				}
 			});
 			//dragend nevi o koncovym elementu, proto se destination neupdatuje
-			$(element).on("dragend", function (e) {
+			(element).bind("dragend", function (e) {
 				if (typeof (opts[namespace].dragend) === "function") {
 					opts[namespace].dragend(e, options, element, $draggeditem);
 				}
