@@ -27,7 +27,7 @@ namespace cms.data.tests.SampleData
 		[Ignore]
 		public void Create()
 		{
-			using (var db = SessionManager.CreateSessionWithSampleData)
+			using (var db = new SessionManager().CreateSessionWithSampleData)
 			{
 				var a = db.Applications();
 
