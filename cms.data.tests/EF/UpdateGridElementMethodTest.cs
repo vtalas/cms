@@ -11,14 +11,19 @@ using cms.shared;
 
 namespace cms.data.tests.EF
 {
+
+	
 	[TestFixture]
 	public class UpdateGridElementMethodTest
 	{
+		public UpdateGridElementMethodTest()
+		{
+			Database.SetInitializer(new DropAndCreate());
+		}
 
 		[SetUp]
 		public void Setup()
 		{
-			Database.SetInitializer(new DropAndCreate());
 			Xxx.DeleteDatabaseData();
 			SharedLayer.Init();
 		}
@@ -70,7 +75,6 @@ namespace cms.data.tests.EF
 				}
 			}
 		}
-
 
 		[Test]
 		public void UpdateGridElement_AddNewResources()

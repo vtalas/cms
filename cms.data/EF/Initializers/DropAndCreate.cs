@@ -13,7 +13,6 @@ namespace cms.data.EF.Initializers
 			{
 				context.Database.Create();
 			}
-
 			context.SaveChanges();
 		}
 
