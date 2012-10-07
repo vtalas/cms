@@ -110,6 +110,10 @@ var sortableNestedCtrl = function ($scope, $http) {
 		//console.log("drop", [xxx.destination.item.Id], xxx.destination.item);
 	});
 
+	$scope.json = function () {
+		return JSON.stringify($scope.data);
+	};
+
 	$scope.add = function (item) {
 		console.log("add item", item);
 	};
@@ -118,7 +122,7 @@ var sortableNestedCtrl = function ($scope, $http) {
 		$http({ method: 'GET', url: '/Content/htmlDragAndDrop/sortableNestedData.json' }).
 			success(function (data, status, headers, config) {
 				$scope.data = data;
-			});
+				});
 		return;
 	};
 

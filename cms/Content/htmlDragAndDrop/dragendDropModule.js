@@ -10,8 +10,17 @@ function pushToIndex(item, collection, index) {
 	collection.splice(index, 0, item);
 }
 
+function findByStatusClass(collection, statusclass) {
+	var len = collection.length;
+	for (var i = 0; i < len; i++) {
+		if(collection[i].statusclass === statusclass) {
+			return i;
+		}
+	}
+	return -1;
+}
 function hideItem(item) {
-	item.hidden = true;
+	item.statusclass = "pseudohidden";
 }
 
 module.value('ui.config', {
@@ -27,10 +36,6 @@ module.value('ui.config', {
 			},
 			dragend: function (e, uioptions, element, xxx) {
 				console.log("end", xxx.source.item.status);
-				return false;
-
-				if (xxx.source.item.status === DROPPED) {
-				}
 				xxx.source.item.status = DRAGEND;
 				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
@@ -43,13 +48,6 @@ module.value('ui.config', {
 				    sourceindex,
 				    destinationindex,
 				    destinationIsChild = (xxx.source.element).find(xxx.destination.element).length > 0;
-
-
-				//var x = collectionsrc.indexOf(xxx.source.item);
-				//if (x === -1 && xxx.destination.item.status !== DRAGOLD) {
-				//	collectionsrc.push(xxx.source.item);
-				//	xxx.source.scope.$apply();
-				//}
 
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 				if (destinationIsChild) {
@@ -65,27 +63,35 @@ module.value('ui.config', {
 				destinationindex = collectionsrc.indexOf(xxx.destination.item);
 
 				///console.log(x.target, x.dataTransfer, x.dataTransfer.items, x.dataTransfer.items.item());
-				if (xxx.source.item !== xxx.destination.item && xxx.destination.item.status !== DRAGOLD) {
+				if (xxx.source.item !== xxx.destination.item) {
 					areInSameCollection = (destinationindex !== -1);
 
 					if (areInSameCollection) {
 						swapItems(collectionsrc, sourceindex, destinationindex);
 					} else {
 						destinationindex = collectiondest.indexOf(xxx.destination.item);
-						pushToIndex(xxx.source.item, collectiondest, destinationindex);
-						removeFromArray(xxx.source.item, collectionsrc);
+						var clone = angular.extend({ }, xxx.source.item);
+						clone.status = CLONE;
+
+						pushToIndex(clone, collectiondest, destinationindex);
+
+						//remove or hide
+						if (xxx.source.item.status === CLONE) {
+							removeFromArray(xxx.source.item, collectionsrc);
+						} else {
+							hideItem(xxx.source.item);
+						}
 						xxx.source.scope = xxx.destination.scope;
+						xxx.source.item = clone;
 					}
-
-
 				}
 				//console.log($(xxx.source.element));
-				xxx.source.item.status = DRAGGED;
+				//xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
 			},
 			dragleave: function (e, uioptions, element, xxx) {
-				xxx.destination.item.status = PRD;
-				xxx.source.item.status = DRAGGED;
+				//xxx.destination.item.status = PRD;
+				//xxx.source.item.status = DRAGGED;
 				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragleave-sortablehtml", xxx);
 			},

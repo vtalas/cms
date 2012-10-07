@@ -16,11 +16,11 @@
 </head>
 <body>
 	<div ng-controller="sortableNestedCtrl" class="sortableNested">
-			<div class="xxx" draggable="true">XXX</div>
-			{{draggedID}}
+		<div class="xxx" draggable="true">XXX</div>
+		{{draggedID}}
 		<h1>Sortable - nested</h1>
-			<script type="text/ng-template" id="tree_item_renderer.html">
-			<div ui-draganddrop-html="sortable" ng-model="item" class="sortableNestedCtrl" ng-show="!item.hidden" >
+		<script type="text/ng-template" id="tree_item_renderer.html">
+			<div ui-draganddrop-html="sortable" ng-model="item" class="sortableNestedCtrl {{item.statusclass}}" ng-show="!item.hidden"  >
 					<div class="nestedItem"><h2>{{item.Id}}</h2></div>
 				<ul>
 					<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
@@ -30,10 +30,17 @@
 		<ul>
 			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'"></li>
 		</ul>
+		<div style="position: absolute;left:800px;top:100px;width:100px;">
+			<div>
+				---{{data.Children.length}}
+			</div>
+			{{json()}}
 	</div>
+
+	</div>
+	
 	<div class="clearfix"></div>
 		
-	</div>
 	<div ng-controller="sortableCtrl">
 		<h1>Sortable - grid</h1>
 		<script type="text/ng-template" id="tree_item_rendereSortable.html">
@@ -86,7 +93,13 @@
 		margin: 0px;
 		padding: 0px;
 	}
+	.pseudohidden {
+		border: 1px solid red;
+		position: absolute;
+		top: -1000px;
 
+	}
+	
 </style>
 	<script>
 	</script>

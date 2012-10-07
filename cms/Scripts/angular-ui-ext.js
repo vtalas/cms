@@ -3,6 +3,7 @@ var DRAGGED = 1,
 	DRAGEND = 5,
 	DRAGOLD = 9,
 	DROPPED = 3,
+	CLONE = 333,
 	SWAPPED = 2;
 
 angular.module('ui').value("$draggeditem", { source: {}, destination: {} });
