@@ -91,7 +91,8 @@ var sortableNestedCtrl = function ($scope, $http) {
 		}
 	});
 	
-	$scope.$on("dragstart-sortablehtml", function (data, xxx) {
+	$scope.$on("dragstart-sortablehtmlPico", function (data, dndObj) {
+		console.log(dndObj)
 		//$(".sortableNestedCtrl").css("opacity", "0.4");
 	});
 	$scope.$on("dragend-sortablehtml", function (data, xxx) {

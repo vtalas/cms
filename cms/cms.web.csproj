@@ -170,6 +170,7 @@
     <None Include="Content\bootstrapdefault\less\variables.less" />
     <None Include="Content\bootstrapdefault\less\wells.less" />
     <Content Include="Content\htmlDragAndDrop\sortableData.json" />
+    <Content Include="Content\htmlDragAndDrop\sortableNestedData.json" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />

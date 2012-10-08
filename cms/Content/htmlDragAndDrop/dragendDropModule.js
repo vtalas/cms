@@ -2,6 +2,9 @@ var module = angular.module("dragenddropapp", ["ui"]);
 
 function removeFromArray(item, collection) {
 	var index;
+	if (!item) {
+		return;
+	}
 	index = collection.indexOf(item);
 	collection.splice(index, 1);
 };
@@ -10,15 +13,16 @@ function pushToIndex(item, collection, index) {
 	collection.splice(index, 0, item);
 }
 
-function findByStatusClass(collection, statusclass) {
+function findByStatus(collection, status) {
 	var len = collection.length;
 	for (var i = 0; i < len; i++) {
-		if(collection[i].status === statusclass) {
+		if(collection[i].status === status) {
 			return i;
 		}
 	}
 	return -1;
 }
+
 function hideItem(item) {
 	item.statusclass = "pseudohidden";
 	item.status = PSEUDOHIDDEN;
@@ -28,29 +32,52 @@ function showItem(item, newstatus) {
 	item.status = newstatus;
 }
 
+function showOrPush(collectiondest, dndObject) {
+
+	var destinationindex = collectiondest.indexOf(dndObject.destination.item);
+	var clonedindexdest = findByStatus(collectiondest, PSEUDOHIDDEN);
+
+	if (clonedindexdest !== -1) {
+		showItem(collectiondest[clonedindexdest], DRAGGED);
+		dndObject.pseudohidden.item = null;
+		dndObject.source.item = collectiondest[clonedindexdest];
+	} else {
+		var clone = angular.extend({}, dndObject.source.item);
+		clone.status = DRAGGED;
+		clone.statusclass = "";
+		clone.isClone = true;
+		dndObject.source.item = clone;
+		pushToIndex(clone, collectiondest, destinationindex);
+	}
+};
+
+
 module.value('ui.config', {
 	draganddrophtml: {
 		sortable: {
-			dragstart: function (e, uioptions, xxx) {
+			dragstart: function (e, uioptions,  dndobj) {
 				e.originalEvent.dataTransfer.effectAllowed = 'move';
-				e.originalEvent.dataTransfer.setData('Text', xxx.source.item.Id);
+				e.originalEvent.dataTransfer.setData('Text', dndobj.source.item.Id);
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 
-				xxx.source.item.status = DRAGGED;
-				xxx.destination.scope.$emit("dragstart-sortablehtml", xxx);
+				dndobj.setSourceStatus(DRAGGED);
+				dndobj.$emit("dragstart-sortablehtml");
 			},
 			dragend: function (e, uioptions, element, xxx) {
 				console.log("end", xxx.source.item.status);
-				xxx.source.item.status = DRAGEND;
+				xxx.setSourceStatus(DRAGEND);
 				xxx.source.item.isClone = false;
 
+				removeFromArray(xxx.pseudohidden.item, xxx.pseudohidden.collection);
+
 				xxx.destination.scope.$apply();
-				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
+				xxx.$emit("dragend-sortablehtml");
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 			},
 			dragenter: function (e, uioptions, element, xxx) {
 				var swapItems,
-				    areInSameCollection,
+					//removeOrHide,
+					areInSameCollection,
 				    collectiondest = xxx.destination.scope.$parent.$collection,
 				    collectionsrc = xxx.source.scope.$parent.$collection,
 				    sourceindex,
@@ -70,7 +97,6 @@ module.value('ui.config', {
 				sourceindex = collectionsrc.indexOf(xxx.source.item);
 				destinationindex = collectionsrc.indexOf(xxx.destination.item);
 
-				///console.log(x.target, x.dataTransfer, x.dataTransfer.items, x.dataTransfer.items.item());
 				if (xxx.source.item !== xxx.destination.item) {
 					areInSameCollection = (destinationindex !== -1);
 
@@ -82,31 +108,16 @@ module.value('ui.config', {
 							removeFromArray(xxx.source.item, collectionsrc);
 						} else {
 							hideItem(xxx.source.item);
-							//xxx.pseudohidden = xxx.source.item;
+							
+							xxx.pseudohidden.item = xxx.source.item;
+							xxx.pseudohidden.collection = collectionsrc;
 						}
-
-						destinationindex = collectiondest.indexOf(xxx.destination.item);
-
-						var clonedindexdest = findByStatusClass(collectiondest, PSEUDOHIDDEN);
-
-						//show or push 
-						if (clonedindexdest !== -1) {
-							showItem(collectiondest[clonedindexdest], DRAGGED);
-							xxx.source.item = collectiondest[clonedindexdest];
-						} else {
-							var clone = angular.extend({}, xxx.source.item);
-							clone.status = DRAGGED;
-							clone.statusclass = "";
-							clone.isClone = true;
-							xxx.source.item = clone;
-							pushToIndex(clone, collectiondest, destinationindex);
-						}
-
+						showOrPush(collectiondest, xxx);
 						xxx.source.scope = xxx.destination.scope;
 					}
 				}
 				xxx.destination.scope.$apply();
-				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
+				xxx.$emit("dragenter-sortablehtml");
 			},
 			dragleave: function (e, uioptions, element, xxx) {
 				xxx.destination.scope.$emit("dragleave-sortablehtml", xxx);
@@ -114,13 +125,13 @@ module.value('ui.config', {
 			dragover: function (e, uioptions, element, xxx) {
 				e.preventDefault();
 				e.stopPropagation();
-				xxx.destination.scope.$emit("dragover-sortablehtml", xxx);
+				xxx.$emit("dragover-sortablehtml");
 			},
 			drop: function (e, uioptions, element, xxx) {
 				console.log("drop");
-				xxx.source.item.status = DROPPED;
+				xxx.setSourceStatus(DROPPED);
 				xxx.destination.scope.$apply();
-				xxx.destination.scope.$emit("drop-sortablehtml", xxx);
+				xxx.$emit("drop-sortablehtml");
 				e.stopPropagation(); //nested list 
 			}
 		}
