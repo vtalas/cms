@@ -31,7 +31,7 @@ var gridElementCtrl = function ($scope, GridApi, appSettings) {
 
 	$scope.edit = function (item) {
 		$scope.$broadcast("gridelement-edit");
-		if (item.Id !== 0) {
+        if (item.Id !== 0) {
 			item.Edit = 1;
 		}
 	};

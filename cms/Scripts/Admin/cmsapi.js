@@ -1,6 +1,5 @@
 ﻿angular.module('cmsapi', ['ngResource'])
 	.factory('GridApi', ['$resource', 'appSettings', function ($resource, appSettings) {
-
 		var project = $resource('/adminApi/:applicationId/:action/:Id',
 			{ applicationId: appSettings.Id },
 			{

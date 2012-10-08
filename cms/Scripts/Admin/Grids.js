@@ -27,7 +27,7 @@ module.value('ui.config', {
 			},
 			drop: function (e, uioptions, element, xxx) {
 				var destCollection,
-				    item;
+                    item;
 
 				destCollection = xxx.destinationScope.$parent.$collection;
 				item = $.extend(true, {}, xxx.sourceItem);

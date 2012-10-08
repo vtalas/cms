@@ -15,11 +15,10 @@ reference = ($scope, $http, GridApi, appSettings) ->
     GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
       $scope.destination = data
     )
-
   # ADmin only
   # load grid list
   $scope.$on("gridelement-edit",()->
-    if $scope.grids.length==0
+    if $scope.grids.length == 0
       $scope.grids()
   )
 
@@ -27,9 +26,6 @@ reference = ($scope, $http, GridApi, appSettings) ->
     $scope.destination = grid;
     $scope.gridelement.Content.Id = grid.Id;
     $scope.gridelement.Content.Link = grid.Link;
-
-    $scope.gridelement.Resources = []
-    $scope.gridelement.Resources.push({Id : grid.ResourceDto.Id})
 
     $scope.$parent.Edit = 0
     $scope.$parent.save($scope.gridelement)
