@@ -37,6 +37,7 @@ module.value('ui.config', {
 			dragend: function (e, uioptions, element, xxx) {
 				console.log("end", xxx.source.item.status);
 				xxx.source.item.status = DRAGEND;
+				xxx.source.item.isClone = false;
 				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
 			},
@@ -69,29 +70,32 @@ module.value('ui.config', {
 					if (areInSameCollection) {
 						swapItems(collectionsrc, sourceindex, destinationindex);
 					} else {
+						//remove or hide
+						if (xxx.source.item.isClone) {
+							removeFromArray(xxx.source.item, collectionsrc);
+						} else {
+							hideItem(xxx.source.item);
+							xxx.source.item.status = PSEUDOHIDDEN;
+						}
+
 						destinationindex = collectiondest.indexOf(xxx.destination.item);
-						var clone = angular.extend({ }, xxx.source.item);
-						clone.status = DRAGGED;
-						var clonedindexdest = findByStatusClass(collectiondest, CLONE);
+						
+						var clonedindexdest = findByStatusClass(collectiondest, PSEUDOHIDDEN);
 
 						if (clonedindexdest !== -1) {
 							collectiondest[clonedindexdest].status = DRAGGED;
 							collectiondest[clonedindexdest].statusclass = "";
+							xxx.source.item = collectiondest[clonedindexdest];
 						} else {
+							var clone = angular.extend({}, xxx.source.item);
+							clone.status = DRAGGED;
+							clone.statusclass = "";
+							clone.isClone = true;
+							xxx.source.item = clone;
 							pushToIndex(clone, collectiondest, destinationindex);
 						}
 
-						var clonedindex = findByStatusClass(collectionsrc, CLONE);
-						console.log(clonedindex, collectionsrc)
-						//remove or hide
-						if (clonedindex !== -1) {
-							removeFromArray(xxx.source.item, collectionsrc);
-						} else {
-							hideItem(xxx.source.item);
-							xxx.source.item.status = CLONE;
-						}
 						xxx.source.scope = xxx.destination.scope;
-						xxx.source.item = clone;
 					}
 				}
 				//console.log($(xxx.source.element));
@@ -110,7 +114,7 @@ module.value('ui.config', {
 				xxx.destination.scope.$emit("dragover-sortablehtml", xxx);
 			},
 			drop: function (e, uioptions, element, xxx) {
-				console.log("drop" );
+				console.log("drop");
 				xxx.source.item.status = DROPPED;
 				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("drop-sortablehtml", xxx);
