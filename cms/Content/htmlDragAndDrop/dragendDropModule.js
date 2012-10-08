@@ -21,6 +21,11 @@ function findByStatusClass(collection, statusclass) {
 }
 function hideItem(item) {
 	item.statusclass = "pseudohidden";
+	item.status = PSEUDOHIDDEN;
+}
+function showItem(item, newstatus) {
+	item.statusclass = "";
+	item.status = newstatus;
 }
 
 module.value('ui.config', {
@@ -38,8 +43,10 @@ module.value('ui.config', {
 				console.log("end", xxx.source.item.status);
 				xxx.source.item.status = DRAGEND;
 				xxx.source.item.isClone = false;
+
 				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragend-sortablehtml", xxx);
+				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 			},
 			dragenter: function (e, uioptions, element, xxx) {
 				var swapItems,
@@ -75,16 +82,16 @@ module.value('ui.config', {
 							removeFromArray(xxx.source.item, collectionsrc);
 						} else {
 							hideItem(xxx.source.item);
-							xxx.source.item.status = PSEUDOHIDDEN;
+							//xxx.pseudohidden = xxx.source.item;
 						}
 
 						destinationindex = collectiondest.indexOf(xxx.destination.item);
-						
+
 						var clonedindexdest = findByStatusClass(collectiondest, PSEUDOHIDDEN);
 
+						//show or push 
 						if (clonedindexdest !== -1) {
-							collectiondest[clonedindexdest].status = DRAGGED;
-							collectiondest[clonedindexdest].statusclass = "";
+							showItem(collectiondest[clonedindexdest], DRAGGED);
 							xxx.source.item = collectiondest[clonedindexdest];
 						} else {
 							var clone = angular.extend({}, xxx.source.item);
@@ -98,14 +105,10 @@ module.value('ui.config', {
 						xxx.source.scope = xxx.destination.scope;
 					}
 				}
-				//console.log($(xxx.source.element));
-				//xxx.source.item.status = DRAGGED;
+				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragenter-sortablehtml", xxx);
 			},
 			dragleave: function (e, uioptions, element, xxx) {
-				//xxx.destination.item.status = PRD;
-				//xxx.source.item.status = DRAGGED;
-				xxx.destination.scope.$apply();
 				xxx.destination.scope.$emit("dragleave-sortablehtml", xxx);
 			},
 			dragover: function (e, uioptions, element, xxx) {

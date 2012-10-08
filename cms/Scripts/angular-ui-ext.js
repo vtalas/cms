@@ -6,7 +6,7 @@ var DRAGGED = 1,
 	PSEUDOHIDDEN = 333,
 	SWAPPED = 2;
 
-angular.module('ui').value("$draggeditem", { source: {}, destination: {} });
+angular.module('ui').value("$draggeditem", { source: {}, destination: {}, pseudohidden: {} });
 angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$draggeditem', function (uiConfig, $draggeditem) {
 	var options;
 	options = {};
