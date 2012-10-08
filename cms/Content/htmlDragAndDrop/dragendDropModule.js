@@ -13,7 +13,7 @@ function pushToIndex(item, collection, index) {
 function findByStatusClass(collection, statusclass) {
 	var len = collection.length;
 	for (var i = 0; i < len; i++) {
-		if(collection[i].statusclass === statusclass) {
+		if(collection[i].status === statusclass) {
 			return i;
 		}
 	}
@@ -71,15 +71,24 @@ module.value('ui.config', {
 					} else {
 						destinationindex = collectiondest.indexOf(xxx.destination.item);
 						var clone = angular.extend({ }, xxx.source.item);
-						clone.status = CLONE;
+						clone.status = DRAGGED;
+						var clonedindexdest = findByStatusClass(collectiondest, CLONE);
 
-						pushToIndex(clone, collectiondest, destinationindex);
+						if (clonedindexdest !== -1) {
+							collectiondest[clonedindexdest].status = DRAGGED;
+							collectiondest[clonedindexdest].statusclass = "";
+						} else {
+							pushToIndex(clone, collectiondest, destinationindex);
+						}
 
+						var clonedindex = findByStatusClass(collectionsrc, CLONE);
+						console.log(clonedindex, collectionsrc)
 						//remove or hide
-						if (xxx.source.item.status === CLONE) {
+						if (clonedindex !== -1) {
 							removeFromArray(xxx.source.item, collectionsrc);
 						} else {
 							hideItem(xxx.source.item);
+							xxx.source.item.status = CLONE;
 						}
 						xxx.source.scope = xxx.destination.scope;
 						xxx.source.item = clone;
