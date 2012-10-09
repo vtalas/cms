@@ -1,0 +1,1 @@
+tsc -w --out Scripts/aaa.js Scripts/aaa.ts
