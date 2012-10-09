@@ -27,7 +27,7 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 	if (uiConfig.draganddrophtml !== null) {
 		angular.extend(options, uiConfig.draganddrophtml);
 	}
-	var dndobj = new DragAndDropObj();
+	var dndobj = new DragAndDropObjts();
 
 	return {
 		require: '?ngModel',
@@ -45,11 +45,8 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 			element.on("dragstart", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 
-				dndobj.source.item = modelvalues;
-				dndobj.source.scope = scope;
-				dndobj.source.element = element;
-				dndobj.source.namespace = namespace;
-				dndobj.destination = dndobj.source;
+				var sourceitem = new DndItem(modelvalues, scope, element, namespace);
+				dndobj.load(sourceitem, sourceitem);
 
 				if (typeof (opts[namespace].dragstart) === "function") {
 					opts[namespace].dragstart(e, options, dndobj);
@@ -60,14 +57,14 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 				if (typeof (opts[namespace].dragenter) === "function") {
-					dndobj.destination = { item: modelvalues, scope: scope, element: element };
+					dndobj.destination = new DndItem(modelvalues, scope, element);
 					opts[namespace].dragenter(e, options, element, dndobj);
 				}
 			});
 			element.on("dragleave", function (e) {
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 				if (typeof (opts[namespace].dragleave) === "function") {
-					dndobj.destination = { item: modelvalues, scope: scope, element: element };
+					dndobj.destination = new DndItem(modelvalues, scope, element);
 					opts[namespace].dragleave(e, options, element, dndobj);
 				}
 			});
@@ -75,7 +72,7 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 				if (typeof (opts[namespace].dragover) === "function") {
-					dndobj.destination = { item: modelvalues, scope: scope, element: element };
+					dndobj.destination = new DndItem(modelvalues, scope, element);
 					opts[namespace].dragover(e, options, element, dndobj);
 				}
 			});
@@ -83,7 +80,7 @@ angular.module('ui.directives').directive('uiDraganddropHtml', ['ui.config', '$d
 				var modelvalues = ngModel ? ngModel.$modelValue : null;
 
 				if (typeof (opts[namespace].drop) === "function") {
-					dndobj.destination = { item: modelvalues, scope: scope, element: element };
+					dndobj.destination = new DndItem(modelvalues, scope, element);
 					opts[namespace].drop(e, options, element, dndobj);
 				}
 			});

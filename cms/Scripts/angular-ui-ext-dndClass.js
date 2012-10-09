@@ -6,22 +6,32 @@ var DndItem = (function () {
         };
         this.element = {
         };
+        this.item = item;
+        this.scope = scope , this.element = element , this.namespace = namespace;
     }
     DndItem.prototype.collection = function () {
         return this.scope.$parent.$collection;
     };
     return DndItem;
 })();
-var DragAndDropObj = (function () {
-    function DragAndDropObj() {
+var DragAndDropObjts = (function () {
+    function DragAndDropObjts() {
         this.pseudohidden = {
         };
     }
-    DragAndDropObj.prototype.setSourceStatus = function (newstatus) {
+    DragAndDropObjts.prototype.load = function (sourceItem, destinationItem) {
+        this.source = sourceItem;
+        this.destination = destinationItem;
+    };
+    DragAndDropObjts.prototype.sameCollection = function () {
+        console.log("-------------------------SAME");
+        return this.source.collection().indexOf(this.destination.item) !== -1;
+    };
+    DragAndDropObjts.prototype.setSourceStatus = function (newstatus) {
         this.source.item.status = newstatus;
     };
-    DragAndDropObj.prototype.$emit = function (eventName) {
+    DragAndDropObjts.prototype.$emit = function (eventName) {
+        this.source.scope.$emit(eventName, this);
     };
-    return DragAndDropObj;
+    return DragAndDropObjts;
 })();
-; ;

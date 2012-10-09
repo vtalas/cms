@@ -11,7 +11,6 @@ function removeFromArray(item, collection) {
 
 function pushToIndex(item, collection, index) {
 
-
 	collection.splice(index, 0, item);
 }
 
@@ -77,14 +76,14 @@ module.value('ui.config', {
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 			},
 			dragenter: function (e, uioptions, element, xxx) {
+				console.log(xxx);
 				var swapItems,
-					//removeOrHide,
 					areInSameCollection,
-				    collectiondest = xxx.destination.scope.$parent.$collection,
-				    collectionsrc = xxx.source.scope.$parent.$collection,
-				    sourceindex,
-				    destinationindex,
-				    destinationIsChild = (xxx.source.element).find(xxx.destination.element).length > 0;
+					collectionsrc = xxx.source.collection(),
+					collectiondest = xxx.destination.collection(),
+					sourceindex,
+					destinationindex,
+					destinationIsChild = (xxx.source.element).find(xxx.destination.element).length > 0;
 
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 				if (destinationIsChild) {
@@ -100,7 +99,7 @@ module.value('ui.config', {
 				destinationindex = collectionsrc.indexOf(xxx.destination.item);
 
 				if (xxx.source.item !== xxx.destination.item) {
-					areInSameCollection = (destinationindex !== -1);
+					areInSameCollection = xxx.sameCollection();
 
 					if (areInSameCollection) {
 						swapItems(collectionsrc, sourceindex, destinationindex);
@@ -122,7 +121,7 @@ module.value('ui.config', {
 				xxx.$emit("dragenter-sortablehtml");
 			},
 			dragleave: function (e, uioptions, element, xxx) {
-				xxx.destination.scope.$emit("dragleave-sortablehtml", xxx);
+				xxx.$emit("dragleave-sortablehtml", xxx);
 			},
 			dragover: function (e, uioptions, element, xxx) {
 				e.preventDefault();
