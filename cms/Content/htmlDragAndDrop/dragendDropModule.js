@@ -10,6 +10,8 @@ function removeFromArray(item, collection) {
 };
 
 function pushToIndex(item, collection, index) {
+
+
 	collection.splice(index, 0, item);
 }
 
