@@ -1,1 +1,3 @@
-﻿{{gridelement.ResourcesLoc.text.Value}}
+﻿<div>
+	{{gridelement.ResourcesLoc.text.Value}}
+</div>

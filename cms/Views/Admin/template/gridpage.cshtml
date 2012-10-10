@@ -6,7 +6,8 @@
 			class="span{{gridelement.Width}}" 
 			ng-controller="gridElementCtrl" 
 			ng-click="edit(gridelement)" 
-			ng-class="{contentitem: gridelement.Id != 0}">
+			 ng-class="{contentitem: gridelement.Id != 0}"
+			title="{{gridelement.Type}}">
 
 			<div ng-show="gridelement.Id == 0">
 				<div class="btn-group">
@@ -26,14 +27,15 @@
 
 			<div ng-show="gridelement.Id">
 				<button ng-click="remove(gridelement, data.Id)" class="btn btn-mini font-icon delete" />
-				<b>{{gridelement.Type}}</b>
 				<div gridelement="gridelement" grid="data"></div>
 			</div>
+
 			<div ng-show="gridelement.Edit">
 				<div gridelement="gridelement" grid="data" admin="1"></div>
 				<button class="btn btn-small" ng-click="save(gridelement)">Uložit</button>
 				<p></p>
 			</div>
+
 		</div>
 	</div>
 </div>
