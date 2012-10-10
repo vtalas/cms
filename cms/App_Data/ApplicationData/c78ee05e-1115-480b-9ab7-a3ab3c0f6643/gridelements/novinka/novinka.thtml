@@ -1,3 +1,5 @@
-﻿<div ng-bind-html-unsafe="headerHtml()"> </div>
-{{thumb() }}
-<div ng-bind-html-unsafe="textHtml()"> </div>
+﻿<div ng-controller="novinka">
+	<div ng-bind-html-unsafe="headerHtml()"> </div>
+		{{thumb() }}
+	<div ng-bind-html-unsafe="textHtml()"> </div>
+</div>

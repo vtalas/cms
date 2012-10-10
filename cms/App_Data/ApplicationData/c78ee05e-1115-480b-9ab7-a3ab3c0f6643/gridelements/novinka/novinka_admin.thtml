@@ -1,7 +1,7 @@
-﻿<div>
-	<textarea ng-model="gridelement.Content.header" cols="10" rows="2"></textarea>
-</div>
+﻿	<div>
+		<textarea ng-model="gridelement.Content.header" cols="10" rows="2" class="span{{gridelement.Width}}"></textarea>
+	</div>
 
-<div>
-	<textarea ng-model="gridelement.Content.text"></textarea>
-</div>
+	<div>
+		<textarea ng-model="gridelement.Content.text" class="span{{gridelement.Width}}"></textarea>
+	</div>

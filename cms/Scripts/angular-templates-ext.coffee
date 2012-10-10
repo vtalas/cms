@@ -9,16 +9,6 @@ module.config ($provide )->
 	$provide.factory "gridtemplate", ($templateCache) ->
 		(type)->
 			elementType = type ? type : "text";
-			console.log(elementType)
-
-			if (!$templateCache.get(elementType))
-				$.ajax(
-					url: '/Templates/GridElementTmpl'
-					data: { type: elementType }
-					async: false
-					success: (data) ->
-						$templateCache.put(elementType, data);
-				)
 			$templateCache.get(elementType)
 
 	$provide.factory "menuItemTemplate", ($templateCache) ->
