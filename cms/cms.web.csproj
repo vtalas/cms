@@ -144,9 +144,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\simplehtml\simplehtml.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\simplehtml\simplehtml.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\simplehtml\simplehtml_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\reference\reference.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\reference\reference.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\reference\reference_admin.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\reference\reference_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\text\text.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\text\text_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\textlocalized\textlocalized.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\textlocalized\textlocalized_admin.thtml" />
     <None Include="App_Data\default_bootstrap.json" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\text\text.js" />
+    <Content Include="App_Data\ApplicationData\_default\gridelements\text\text_admin.js" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
     <Content Include="Content\fluid_grid.css" />
@@ -296,36 +309,13 @@
     <Content Include="Scripts\angular-templates-ext.js">
       <DependentUpon>angular-templates-ext.coffee</DependentUpon>
     </Content>
-    <Content Include="Scripts\angular-ui-dnd.js" />
     <Content Include="Scripts\angular-ui-ext-dndClass.js">
       <DependentUpon>angular-ui-ext-dndClass.ts</DependentUpon>
     </Content>
     <Content Include="Scripts\angular-ui-ext-dndClass.ts" />
     <Content Include="Scripts\angular-ui-ext.js" />
     <Content Include="Scripts\angular-ui.js" />
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\novinka.js">
-      <DependentUpon>novinka.coffee</DependentUpon>
-    </Content>
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\simplehtml.js">
-      <DependentUpon>simplehtml.coffee</DependentUpon>
-    </Content>
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\text.js">
-      <DependentUpon>text.coffee</DependentUpon>
-    </Content>
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\textlocalized.coffee" />
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\reference.coffee" />
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\simplehtml.coffee" />
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\novinka.coffee">
-      <Compile>True</Compile>
-      <Minify>True</Minify>
-      <Bare>False</Bare>
-      <Iced>False</Iced>
-    </Content>
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\text.coffee" />
     <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
-    <Content Include="Scripts\Apps\defaults\_gridElementScripts\textlocalized.js">
-      <DependentUpon>textlocalized.coffee</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
@@ -444,24 +434,11 @@
     <Content Include="Views\Admin\template\gridpage.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Shared\_GridElementTmpl\text_View.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\simplehtml_Edit.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\simplehtml_View.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\reference_Edit.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\reference_View.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\textlocalized_Edit.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\textlocalized_View.cshtml" />
     <Content Include="Views\Admin\template\menu.cshtml" />
     <Content Include="Views\Admin\template\test.cshtml" />
     <Content Include="Views\templates\drag.cshtml" />
     <Content Include="Views\Admin\template\menu2.cshtml" />
     <Content Include="Views\Admin\_navbar.cshtml" />
-    <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />
-    <Content Include="Views\Shared\_GridElementTmpl\GridElement.cshtml">
-      <SubType>Code</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
