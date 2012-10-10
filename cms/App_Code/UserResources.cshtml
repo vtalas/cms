@@ -1,0 +1,15 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using System.Web.Routing
+
+@helper RenderHtmlTemplates(HtmlHelper<dynamic> html, object applicationId)
+{
+	var x = new Dictionary<string, object> { { "applicationId", applicationId } };
+	@html.Action("HtmlTemplates", "Resources", new RouteValueDictionary(x))
+}
+
+@helper RenderScripts(HtmlHelper<dynamic> html, object applicationId)
+{
+	var x = new Dictionary<string, object> { { "applicationId", applicationId } };
+	@html.Action("Scripts", "Resources", new RouteValueDictionary(x))
+}

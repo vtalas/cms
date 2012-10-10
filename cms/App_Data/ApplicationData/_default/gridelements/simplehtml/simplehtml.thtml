@@ -1,1 +1,3 @@
-﻿<div ng-bind-html-unsafe="ContentToHtml()"> </div>
+﻿<div  ng-controller="simplehtml">
+	<div ng-bind-html-unsafe="ContentToHtml()"> </div>
+</div>
