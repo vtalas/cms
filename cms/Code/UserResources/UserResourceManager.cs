@@ -31,9 +31,6 @@ namespace cms.Code.UserResources
 		public Guid Id { get; private set; }
 		private IDictionary<string, IAssetExt> AssetsValues { get; set; }
 		private string BaseDir { get; set; }
-		private static readonly Lazy<LessTranslator> LessTranslatorObject =new Lazy<LessTranslator>(() => new LessTranslator());
-		private static readonly Lazy<CoffeeScriptTranslator> CoffeeTranslatorObject = new Lazy<CoffeeScriptTranslator>(() => new CoffeeScriptTranslator());
-
 
 		public IFileSystemWrapper AssetsFilesystem { get; private set; }
 		public IDictionary<string, IAssetExt> Assets
@@ -112,6 +109,7 @@ namespace cms.Code.UserResources
 		public void Include(string path)
 		{
 			var asset = new AssetDecorator(new Asset(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper));
+			
 			if (AssetsValues.ContainsKey(asset.FileName))
 			{
 				AssetsValues[asset.FileName] = asset;
@@ -129,27 +127,7 @@ namespace cms.Code.UserResources
 			var s = new StringBuilder();
 			foreach (var asset in contentToRender)
 			{
-				switch (asset.Value.AssetTypeExtended)
-				{
-					case AssetTypeExtened.TypeScript:
-					case AssetTypeExtened.JavaScript:
-						s.Append(asset.Value.Content);
-						break;
-					case AssetTypeExtened.CoffeeScript:
-						s.Append(CoffeeTranslatorObject.Value.Translate(asset.Value).Content);
-						break;
-					case AssetTypeExtened.Css:
-						s.Append(asset.Value.Content);
-						break;
-					case AssetTypeExtened.Sass:
-					case AssetTypeExtened.Scss:
-					case AssetTypeExtened.Less:
-						s.Append(LessTranslatorObject.Value.Translate(asset.Value).Content);
-						break;
-					case AssetTypeExtened.HtmlTemplate:
-						s.Append(asset.Value.Content);
-						break;
-				}
+				s.Append(asset.Value.Content);
 			}
 			return s.ToString();
 		}

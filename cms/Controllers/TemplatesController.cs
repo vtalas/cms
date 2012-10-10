@@ -15,6 +15,19 @@ namespace cms.Controllers
 			return View(template);
 		}
 
+		public ActionResult tmpl()
+		{
+			var type = "text";
+			//TODO: type_edit.cshtml, view.cshtml ... melo by to byt nejak lip
+			var settings = new TemplateSettings
+			{
+				TemplateEdit = string.Format("_GridElementTmpl/{0}_edit", type),
+				TemplateView = string.Format("_GridElementTmpl/{0}_view", type),
+				Type = type
+			};
+			return View("_GridElementTmpl/GridElement", settings);
+			
+		}
 		public ActionResult GridElementTmpl(string type, string skin)
 		{
 			//TODO: type_edit.cshtml, view.cshtml ... melo by to byt nejak lip

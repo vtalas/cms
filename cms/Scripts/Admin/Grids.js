@@ -163,80 +163,87 @@ module.controller("cultureCtrl", function ($scope, appSettings, GridApi) {
 	};
 });
 
+var gridElementCtrl = function ($scope, GridApi, appSettings) {
+	$scope.addWithType = function (item, newtype, event) {
+		event.preventDefault();
+		item.Type = newtype;
+		$scope.add(item);
+	};
+	$scope.add = function (item) {
+		GridApi.AddGridElement({
+			applicationId: appSettings.Id,
+			data: item,
+			gridId: $scope.grid.Id
+		}, function (data) {
+			if (data.Line >= $scope.grid.Lines.length - 1) {
+				var newitem = _newitem($scope.grid.Lines.length, item.Type);
+				$scope.grid.Lines.push([newitem]);
+			}
+			$scope.grid.Lines[data.Line][data.Position] = data;
+			//TODO: nevyvola se broadcast
+			$scope.edit(data);
+		});
+	};
+
+	$scope.remove = function (item, gridId) {
+		var line = $scope.$parent.$parent.line;
+		GridApi.DeleteGridElement({ applicationId: appSettings.Id, data: item, gridId: gridId },
+			function () {
+				item.Id = 0;
+				item.Edit = 0;
+				item.Content = "";
+				//refresh - preopocitani poradi radku
+				if (line.length === 1) {
+					$scope.$emit("refreshgrid");
+				}
+			});
+	};
+
+	$scope.edit = function (item) {
+		$scope.$broadcast("gridelement-edit");
+		if (item.Id !== 0) {
+			item.Edit = 1;
+		}
+	};
+
+	$scope.save = function (item) {
+		var copy = jQuery.extend(true, {}, item);
+
+		if (angular.isObject(copy.Content)) {
+			copy.Content = JSON.stringify(copy.Content);
+		}
+		GridApi.UpdateGridElement({ applicationId: appSettings.Id, data: copy },
+			function () {
+				item.Edit = 0;
+			});
+	};
+
+};
+
 //module.directive("gridelement", ['$compile', "GridApi", "appSettings","$http",
-module.directive("gridelement", function ($compile, GridApi, appSettings, gridtemplate) {
+module.directive("gridelement", function ($compile, GridApi, appSettings, gridtemplate, $templateCache) {
 
 	function _newitem(line, type) {
 		var newitem = {Id: 0, Width: 12, Type: type, Line: line, Edit: 0};
 		return newitem;
 	}
 
-	var directiveDefinitionObject,
-		gridElementCtrl = function ($scope) {
-			$scope.addWithType = function (item, newtype, event) {
-				event.preventDefault();
-				item.Type = newtype;
-				$scope.add(item);
-			};
-			$scope.add = function (item) {
-				GridApi.AddGridElement({
-					applicationId: appSettings.Id,
-					data: item,
-					gridId: $scope.grid.Id
-				}, function (data) {
-					if (data.Line >= $scope.grid.Lines.length - 1) {
-						var newitem = _newitem($scope.grid.Lines.length, item.Type);
-						$scope.grid.Lines.push([newitem]);
-					}
-					$scope.grid.Lines[data.Line][data.Position] = data;
-					//TODO: nevyvola se broadcast
-					$scope.edit(data);
-				});
-			};
+	var directiveDefinitionObject
 
-			$scope.remove = function (item) {
-				var line = $scope.$parent.$parent.line;
-				GridApi.DeleteGridElement({applicationId: appSettings.Id, data: item, gridId: $scope.grid.Id},
-					function () {
-						item.Id = 0;
-						item.Edit = 0;
-						item.Content = "";
-						//refresh - preopocitani poradi radku
-						if (line.length === 1) {
-							$scope.$emit("refreshgrid");
-						}
-					});
-			};
-
-			$scope.edit = function (item) {
-				$scope.$broadcast("gridelement-edit");
-				if (item.Id !== 0) {
-					item.Edit = 1;
-				}
-			};
-
-			$scope.save = function (item) {
-				var copy = jQuery.extend(true, {}, item);
-
-				if (angular.isObject(copy.Content)) {
-					copy.Content = JSON.stringify(copy.Content);
-				}
-				GridApi.UpdateGridElement({applicationId: appSettings.Id, data: copy},
-					function () {
-						item.Edit = 0;
-					});
-			};
-
-		};
 
 	directiveDefinitionObject = {
-		scope: {grid: "=", gridelement: "="},
+		scope: { grid: "=", gridelement: "=" },
 		controller: gridElementCtrl,
+		//templateUrl: "/templates/tmpl",
 		link: function (scope, iElement, tAttrs, controller) {
-			scope.gui = {edit: 0};
-			var sablona = gridtemplate(scope.gridelement.Type),
-				compiled = $compile(sablona)(scope);
-			iElement.html(compiled);
+			scope.gui = { edit: 0 };
+			var adminTemplate = gridtemplate(scope.gridelement.Type + "_admin.thtml"),
+			    clientTemplate = gridtemplate(scope.gridelement.Type + ".thtml"),
+			    adminCompiled = $compile(adminTemplate)(scope),
+			    clientCompiled = $compile(clientTemplate)(scope);
+			    
+			iElement.find(".contentAdmin").html(adminCompiled);
+			iElement.find(".contentClient").html(clientCompiled);
 		}
 	};
 	return directiveDefinitionObject;

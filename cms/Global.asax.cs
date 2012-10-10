@@ -80,8 +80,8 @@ namespace cms
 				.Include("~/Scripts/angular.js")
 				.Include("~/Scripts/angular-ui.js")
 				.IncludeDirectory("~/Scripts/", "*.js")
-				.IncludeDirectory("~/Scripts/", "*.coffee")
-				.IncludeDirectory("~/Scripts/", "*.ts");
+				.IncludeDirectory("~/Scripts/", "*.coffee");
+				//.IncludeDirectory("~/Scripts/", "*.ts");
 
 			var adminBundle = new Bundle("~/Scripts/admin", transforms)
 				.IncludeDirectory("~/Scripts/Admin", "*.js")

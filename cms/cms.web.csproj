@@ -106,6 +106,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\Class1.cs" />
     <Compile Include="Code\UserResources\IResourceManager.cs" />
     <Compile Include="Code\UserResources\UserResourceManager.cs" />
@@ -348,7 +349,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Admin\Grids.js" />
     <Content Include="Scripts\Admin\Index.js" />
-    <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\showdown.js" />
     <Content Include="tests\config\jstd-scenario-adapter-config.js" />
     <Content Include="tests\scripts\web-server.js" />
@@ -379,14 +379,10 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.js" />
-    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>

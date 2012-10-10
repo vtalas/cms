@@ -82,15 +82,10 @@ namespace cms.web.tests
 		{
 			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("coffee.coffee");
-			
-			Console.WriteLine(resources.Assets["coffee.coffee"].Content);
-			Console.WriteLine(resources.RenderScripts());
-			Console.WriteLine(resources.Assets["coffee.coffee"].Content);
-			Console.WriteLine("kjabsdjkas");
-			Console.WriteLine(resources.RenderScripts());
-			Console.WriteLine(resources.RenderScripts());
+
 			// coffee se prelozil
-			//Assert.IsTrue(resources.RenderScripts().Contains("return console.log('coffee')"));
+			Assert.IsTrue(resources.Assets["coffee.coffee"].Content.Contains("return console.log('coffee')"));
+			Assert.IsTrue(resources.RenderScripts().Contains("return console.log('coffee')"));
 
 		}
 
@@ -104,7 +99,7 @@ namespace cms.web.tests
 			resources.Include("css1.css");
 
 			Assert.AreEqual(resources.Assets.Where(x => x.Value.IsScript).Sum(x => x.Value.Content.Length), resources.RenderScripts().Length);
-			Assert.IsTrue(resources.RenderHtmlTemplates().Contains("<span>") );
+			Assert.IsTrue(resources.RenderHtmlTemplates().Contains("span") );
 			Assert.AreEqual(resources.Assets.Where(x => x.Value.IsStylesheet).Sum(x => x.Value.Content.Length), resources.RenderStyleSheets().Length);
 		}
 

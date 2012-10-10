@@ -1,0 +1,3 @@
+﻿<div ng-repeat="grid in grids">
+	 <a ng-click="choose(grid)">{{grid.Name}} / {{grid.Link}}</a> 
+</div>

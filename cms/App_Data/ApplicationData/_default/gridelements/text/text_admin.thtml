@@ -1,0 +1,5 @@
+﻿<div>
+
+lkansdlknalkdnkasnkldnlk
+	<textarea class="span{{gridelementadmin.Width}}" ng-model="gridelementadmin.Content"  rows="2" ></textarea>
+</div>

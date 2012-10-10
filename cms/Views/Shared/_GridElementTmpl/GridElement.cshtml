@@ -1,4 +1,5 @@
 ﻿@model cms.Models.TemplateSettings
+
 <div ng-controller="@Model.Type" ng-click="edit(gridelement)" class="" ng-class="{contentitem: gridelement.Id != 0}">
 	<div ng-show="gridelement.Id == 0">
 		<div class="btn-group">
@@ -25,10 +26,12 @@
 		<button class="btn btn-small" ng-click="save(gridelement)">Uložit</button>
 		<p></p>
 	</div>
+
 	<div ng-show="!gridelement.Edit" >
 		@Html.Partial(Model.TemplateView)
 	</div>
 </div>
+<script type="text/html"></script>
 
 @* 
 //NOTE: include static html file 

@@ -13,6 +13,9 @@
 	 data-application-culture="@SharedLayer.Culture"
 	 class="gridsmodule"
 	>
+	
+	@HtmlTemplates.Render(Html, applicationId)
+
 	<div ng-controller="cultureCtrl">
 		<div class="btn-group" >
 			<button class="btn" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>

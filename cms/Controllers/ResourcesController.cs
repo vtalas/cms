@@ -32,8 +32,6 @@ namespace cms.Controllers
 		public ActionResult Index()
 		{
 			
-			Resources.Include("aaa.js");
-
 			Response.ContentType = "text/javascript";
 			Response.Write(Resources.RenderScripts());
 			return new EmptyResult();
@@ -49,7 +47,8 @@ namespace cms.Controllers
 
 		public ActionResult HtmlTemplates()
 		{
-			Response.Write(Resources.RenderHtmlTemplates());
+			var response = Resources.RenderHtmlTemplates();
+			Response.Write(response);
 			return new EmptyResult();
 		}
 
