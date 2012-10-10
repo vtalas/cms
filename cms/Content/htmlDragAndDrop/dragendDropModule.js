@@ -102,7 +102,7 @@ module.value('ui.config', {
 					areInSameCollection = xxx.sameCollection();
 
 					if (areInSameCollection) {
-						swapItems(collectionsrc, sourceindex, destinationindex);
+						xxx.swapItems();
 					} else {
 						//remove or hide
 						if (xxx.source.item.isClone) {

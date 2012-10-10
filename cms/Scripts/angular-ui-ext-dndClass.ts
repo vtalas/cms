@@ -29,6 +29,16 @@ class DragAndDropObjts {
 		this.destination = destinationItem;
     }
 
+	swapItems() {
+	    var collection = this.source.collection();
+	    var sourceindex = collection.indexOf(this.source.item);
+    	var destinationindex = collection.indexOf(this.destination.item);
+
+        var tempSource = collection[sourceindex];
+		collection[sourceindex] = collection[destinationindex];
+		collection[destinationindex] = tempSource;
+    }
+
 	sameCollection() {
 		console.log("-------------------------SAME")
 		return this.source.collection().indexOf(this.destination.item) !== -1;

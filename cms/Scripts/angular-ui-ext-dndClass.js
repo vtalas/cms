@@ -23,6 +23,14 @@ var DragAndDropObjts = (function () {
         this.source = sourceItem;
         this.destination = destinationItem;
     };
+    DragAndDropObjts.prototype.swapItems = function () {
+        var collection = this.source.collection();
+        var sourceindex = collection.indexOf(this.source.item);
+        var destinationindex = collection.indexOf(this.destination.item);
+        var tempSource = collection[sourceindex];
+        collection[sourceindex] = collection[destinationindex];
+        collection[destinationindex] = tempSource;
+    };
     DragAndDropObjts.prototype.sameCollection = function () {
         console.log("-------------------------SAME");
         return this.source.collection().indexOf(this.destination.item) !== -1;

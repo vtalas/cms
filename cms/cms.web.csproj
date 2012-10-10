@@ -184,6 +184,9 @@
     <Content Include="Scripts\angular-templates-ext.js">
       <DependentUpon>angular-templates-ext.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\angular-ui-ext-dndClass.js">
+      <DependentUpon>angular-ui-ext-dndClass.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\angular-ui-ext-dndClass.ts" />
     <Content Include="Scripts\angular-ui-ext.js" />
     <Content Include="Scripts\angular-ui.js" />
