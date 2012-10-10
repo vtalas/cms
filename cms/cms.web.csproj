@@ -143,7 +143,7 @@
     <Compile Include="Service\JsonFault.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\HtmlTemplates.cshtml" />
+    <Content Include="App_Code\UserResources.cshtml" />
     <None Include="App_Data\default_bootstrap.json" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
