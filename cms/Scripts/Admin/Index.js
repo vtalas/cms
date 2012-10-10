@@ -1,9 +1,7 @@
 
 var index = ['$scope', '$http', '$element', function ($scope, $http, $element) {
 	var self = this;
-
 	$scope.data = $element.data("model");
-
 	$scope.add = function () {
 		var newitem = { Name: $scope.newitem };
 		$scope.data.push(newitem);

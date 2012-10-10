@@ -328,6 +328,7 @@
     <Content Include="Scripts\Admin\pageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\Controllers\GridElementCtrl.js" />
     <Content Include="Scripts\select2\select2.css" />
     <Content Include="Scripts\select2\select2.js" />
     <Content Include="Scripts\select2\select2.png" />

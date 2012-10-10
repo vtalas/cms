@@ -86,10 +86,15 @@ namespace cms
 			var adminBundle = new Bundle("~/Scripts/admin", transforms)
 				.IncludeDirectory("~/Scripts/Admin", "*.js")
 				.IncludeDirectory("~/Scripts/Admin", "*.coffee");
+			
+			var controllers = new Bundle("~/Scripts/Controllers", transforms)
+				.IncludeDirectory("~/Scripts/Controllers", "*.js")
+				.IncludeDirectory("~/Scripts/Controllers", "*.coffee");
 
 
 			BundleTable.Bundles.Add(testbundle);
 			BundleTable.Bundles.Add(adminBundle);
+			BundleTable.Bundles.Add(controllers);
 
 			AreaRegistration.RegisterAllAreas();
 			RegisterGlobalFilters(GlobalFilters.Filters);
