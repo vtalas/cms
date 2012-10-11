@@ -43,7 +43,7 @@ namespace cms.data.EF.DataProvider
 
 		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
 		{
-			JsonDataEfHelpers.UpdateResource(item,db,CurrentCulture,CurrentApplication.Id);
+			JsonDataEfHelpers.UpdateResources(item,db,CurrentCulture,CurrentApplication.Id);
 			var grid = AvailableGrids().Single(x => x.Id == gridId);
 			var a = new GridElement
 				        {

@@ -45,7 +45,7 @@ namespace cms.data.tests.EF
 		[SetUp]
 		public void Setup()
 		{
-			Xxx.DeleteDatabaseData();
+			Xxx.DeleteDatabaseDataGenereateSampleData();
 		}
 
 		[Test]

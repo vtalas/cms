@@ -13,7 +13,7 @@ namespace cms.data.tests.EF
 		[SetUp]
 		public void SetInit()
 		{
-			Xxx.DeleteDatabaseData();
+			Xxx.DeleteDatabaseDataGenereateSampleData();
 			Database.SetInitializer(new DropAndCreate());
 		}
 

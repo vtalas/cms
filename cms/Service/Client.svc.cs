@@ -36,7 +36,7 @@
 		
 //        public string EchoJson(string message)
 //        {
-//            return "UpdateResource" + message;
+//            return "UpdateResources" + message;
 //        }
 
 //        public string Echo()

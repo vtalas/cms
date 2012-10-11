@@ -18,7 +18,6 @@ namespace cms.data
 			db = context;
 		}
 
-
 		public override GridElement AddToGrid(GridElement gridElement, Guid gridId)
 		{
 			var grid = GetGrid(gridId);

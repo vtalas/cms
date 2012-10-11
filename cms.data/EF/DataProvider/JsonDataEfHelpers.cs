@@ -6,7 +6,7 @@ namespace cms.data.EF.DataProvider
 {
 	public class JsonDataEfHelpers
 	{
-		public static void UpdateResource(IResourceElement item, EfContext db, string currentCulture, Guid applicationId)
+		public static void UpdateResources(IResourceElement item, EfContext db, string currentCulture, Guid applicationId)
 		{
 			var currentEl = db.GridElements.Get(item.Id, applicationId);
 			foreach (var resUpdate in item.ResourcesLoc)

@@ -10,7 +10,7 @@ namespace cms.data.tests.EF
 		[SetUp]
 		public void Init()
 		{
-			Xxx.DeleteDatabaseData();
+			Xxx.DeleteDatabaseDataGenereateSampleData();
 			SharedLayer.Init();
 
 		}

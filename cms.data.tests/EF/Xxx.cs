@@ -4,7 +4,7 @@ namespace cms.data.tests.EF
 {
 	public class Xxx
 	{
-		public static void DeleteDatabaseData()
+		public static void DeleteDatabaseDataGenereateSampleData()
 		{
 			using (var db = new EfContext())
 			{

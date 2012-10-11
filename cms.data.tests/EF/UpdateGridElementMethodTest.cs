@@ -5,14 +5,13 @@ using System.Linq;
 using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF;
+using cms.data.EF.DataProvider;
 using cms.data.EF.Initializers;
 using cms.data.Shared.Models;
 using cms.shared;
 
 namespace cms.data.tests.EF
 {
-
-	
 	[TestFixture]
 	public class UpdateGridElementMethodTest
 	{
@@ -24,7 +23,7 @@ namespace cms.data.tests.EF
 		[SetUp]
 		public void Setup()
 		{
-			Xxx.DeleteDatabaseData();
+			Xxx.DeleteDatabaseDataGenereateSampleData();
 			SharedLayer.Init();
 		}
 
@@ -190,10 +189,10 @@ namespace cms.data.tests.EF
 				var g1 = DataEfHelpers.AddDefaultGridElement();
 				var resourcesCountBefore = checkdb.Resources.Count();
 				var a = new Resource
-					        {
-						        Value = "xxx",
-						        Key = "key1"
-					        };
+							{
+								Value = "xxx",
+								Key = "key1"
+							};
 				g1.Resources.Add(a);
 
 				using (var db = new SessionManager().CreateSession)
@@ -279,6 +278,39 @@ namespace cms.data.tests.EF
 				}
 			}
 		}
+
+
+
+		[TestFixture]
+		public class JsonDataEfHelpersTest
+		{
+			[SetUp]
+			public void Setup()
+			{
+				Xxx.DeleteDatabaseDataGenereateSampleData();
+				SharedLayer.Init();
+			}
+
+			[Test]
+			public void UpdateResourceTest()
+			{
+				using (var db = new SessionManager().CreateSession)
+				{
+					var gridpage = new GridPageDto()
+									   {
+										   Category = "page",
+										   Name = "prd"
+									   };
+					var x = db.Page.Add(gridpage);
+
+					Assert.NotNull(x.Id);Console.WriteLine(x.Id);
+				
+					JsonDataEfHelpers.UpdateResource();
+
+				}
+			}
+		}
+
 
 	}
 }

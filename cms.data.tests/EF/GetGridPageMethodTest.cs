@@ -10,7 +10,7 @@ namespace cms.data.tests.EF
 		[SetUp]
 		public void init()
 		{
-			Xxx.DeleteDatabaseData();
+			Xxx.DeleteDatabaseDataGenereateSampleData();
 			SharedLayer.Init();
 			Assert.AreEqual("cs", shared.SharedLayer.Culture);
 		}

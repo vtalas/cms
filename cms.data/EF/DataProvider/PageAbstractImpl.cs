@@ -65,6 +65,8 @@ namespace cms.data.EF.DataProvider
 		{
 			var item = newitem.ToGrid();
 
+			//JsonDataEfHelpers.UpdateResource(item, db, CurrentCulture, CurrentApplication.Id);
+
 			if (newitem.ResourceDto == null)
 			{
 				newitem.ResourceDto = new ResourceDtoLoc { Value = item.Name.Replace(" ", string.Empty) };
