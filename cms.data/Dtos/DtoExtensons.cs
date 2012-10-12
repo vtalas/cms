@@ -62,11 +62,14 @@ namespace cms.data.Dtos
 				.ToDictionary(x => x.Key, v => v.ToDto());
 		}
 
-		public static Resource ToResource(this ResourceDtoLoc s)
+		public static Resource ToResource(this ResourceDtoLoc s, string key, Guid owner, string culture)
 		{
 			return new Resource
 					{
 						Id = s.Id,
+						Key = key,
+						Owner = owner,
+						Culture = culture,
 						Value = s.Value
 					};
 		}

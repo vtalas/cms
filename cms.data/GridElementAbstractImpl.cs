@@ -65,7 +65,7 @@ namespace cms.data
 		{
 			if (item.ResourcesLoc != null)
 			{
-				JsonDataEfHelpers.UpdateResource(item, db, CurrentCulture, CurrentApplication.Id);
+				JsonDataEfHelpers.UpdateResources(item, db, CurrentCulture, CurrentApplication.Id);
 			}
 
 			var el = db.GridElements.Get(item.Id, CurrentApplication.Id);

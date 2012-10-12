@@ -9,10 +9,15 @@ namespace cms.data.EF.Initializers
 	
 		public void InitializeDatabase(EfContext context)
 		{
-			if (!context.Database.Exists())
+			if (context.Database.Exists())
 			{
-				context.Database.Create();
+				Database.SetInitializer<EfContext>(null);
+				context.Database.ExecuteSqlCommand("ALTER DATABASE " + context.Database.Connection.Database + " SET SINGLE_USER WITH ROLLBACK IMMEDIATE");
+				context.Database.Delete();
+				Log.Info("Database deleted");
 			}
+
+			context.Database.Create();
 			context.SaveChanges();
 		}
 

@@ -4,7 +4,7 @@ using cms.shared;
 
 namespace cms.data.Shared.Models
 {
-	public class Grid :IEntity
+	public class Grid :IEntity, IEntityWithResource
 	{
 		public Grid()
 		{

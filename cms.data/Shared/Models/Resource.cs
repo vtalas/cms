@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using cms.data.Dtos;
 
 namespace cms.data.Shared.Models
 {

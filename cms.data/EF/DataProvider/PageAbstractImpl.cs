@@ -65,7 +65,7 @@ namespace cms.data.EF.DataProvider
 		{
 			var item = newitem.ToGrid();
 
-			//JsonDataEfHelpers.UpdateResource(item, db, CurrentCulture, CurrentApplication.Id);
+			//JsonDataEfHelpers.UpdateResources(item, db, CurrentCulture, CurrentApplication.Id);
 
 			if (newitem.ResourceDto == null)
 			{
@@ -77,8 +77,7 @@ namespace cms.data.EF.DataProvider
 			CurrentApplication.Grids.Add(item);
 			db.Grids.Add(item);
 
-			var res = db.Resources.Add(newitem.ResourceDto.ToResource());
-			res.Owner = item.Id;
+			var res = db.Resources.Add(newitem.ResourceDto.ToResource("link", item.Id, CurrentCulture));
 			item.Resource = res;
 
 			db.SaveChanges();

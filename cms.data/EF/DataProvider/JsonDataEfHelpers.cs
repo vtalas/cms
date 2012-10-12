@@ -1,10 +1,14 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using cms.data.Dtos;
 using cms.data.Shared.Models;
+using log4net.Core;
 
 namespace cms.data.EF.DataProvider
 {
-	public class JsonDataEfHelpers
+	public static class JsonDataEfHelpers
 	{
 		public static void UpdateResources(IResourceElement item, EfContext db, string currentCulture, Guid applicationId)
 		{
@@ -56,5 +60,72 @@ namespace cms.data.EF.DataProvider
 			return curEl.Resources.Single(x => x.Key == key && x.Culture == culture);
 		}
 
+		public static Resource GetByKey(this IEnumerable<Resource> resources,  string key, string culture)
+		{
+			return resources.SingleOrDefault(a => a.Key == key && a.Culture == culture);
+		}
+
+		public static Resource GetById(this IEnumerable<Resource> resources, int id)
+		{
+			return resources.SingleOrDefault(a => a.Id == id);
+		}
+
+		private static void AddNewResource(this IEntityWithResource currentItem, string key, ResourceDtoLoc i, string culture)
+		{
+			currentItem.Resources.Add(i.ToResource(key, currentItem.Id, culture));
+		}
+
+		private static void UpdateResource(this Resource currentResource, string value)
+		{
+			currentResource.Value = value;
+		}
+
+		
+
+		public static void UpdateResourceList(this IEntityWithResource currentItem, IDictionary<string, ResourceDtoLoc> resourcesDto, string culture, IRepository db)
+		{
+			foreach (var i  in resourcesDto )
+			{
+				var rrr = i.Value.Id == 0 ? GetByKey(currentItem.Resources, i.Key, culture) : GetById(db.All(), i.Value.Id);
+				if (rrr == null)
+				{
+					currentItem.AddNewResource(i.Key, i.Value, culture);
+				}
+				else
+				{
+					if (rrr.Owner == currentItem.Id)
+					{
+						rrr.Value = i.Value.Value;
+					}
+				}
+				
+			}
+		}
+	}
+
+	public interface IRepository
+	{
+		void Attach(Resource itemToAttach);
+		IQueryable<Resource> All();
+	}
+
+	public class EfRepository : IRepository
+	{
+		private EfContext db { get; set; }
+
+		public EfRepository(EfContext db)
+		{
+			this.db = db;
+		}
+
+		public void Attach(Resource itemToAttach)
+		{
+			db.Resources.Attach(itemToAttach);
+		}
+
+		public IQueryable<Resource> All()
+		{
+			return db.Resources;
+		}
 	}
 }
