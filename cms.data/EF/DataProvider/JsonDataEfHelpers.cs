@@ -70,20 +70,18 @@ namespace cms.data.EF.DataProvider
 			return resources.SingleOrDefault(a => a.Id == id && a.Culture == culture);
 		}
 
-		private static void AddNewResource(this IEntityWithResource currentItem, string key, ResourceDtoLoc i, string culture)
+		private static void AddNewResource(this IEntityWithResource currentItem, string key, ResourceDtoLoc i, string culture, IRepository repo)
 		{
-			currentItem.Resources.Add(i.ToResource(key, currentItem.Id, culture));
+			var resource = repo.Add(i.ToResource(key, currentItem.Id, culture));
+			currentItem.Resources.Add(resource);
 		}
 
 		public static void UpdateResourceList(this IEntityWithResource currentItem, IDictionary<string, ResourceDtoLoc> resourcesDto, string culture, IRepository repo)
 		{
 			foreach (var i in resourcesDto)
 			{
-				var resourceByKey = GetByKey(currentItem.Resources, i.Key, culture);
+					var resourceByKey = GetByKey(currentItem.Resources, i.Key, culture);
 				var resourceById = i.Value.Id != 0 ? GetById(repo.Resources, i.Value.Id, culture) : null;
-
-			//	var rrr = i.Value.Id == 0 ? resourceByKey : resourceById;
-
 
 				if (resourceByKey != null)
 				{
@@ -96,37 +94,8 @@ namespace cms.data.EF.DataProvider
 				}
 				else
 				{
-					currentItem.AddNewResource(i.Key, i.Value, culture);
+					currentItem.AddNewResource(i.Key, i.Value, culture, repo);
 				}
-
-
-
-				//if (rrr == null)
-				//{
-				//	currentItem.AddNewResource(i.Key, i.Value, culture);
-				//}
-				//else if (rrr.Owner == currentItem.Id)
-				//{
-				//	rrr.Value = i.Value.Value;
-				//}
-
-				//else if (resourceByKey == null)
-				//	{
-				//		currentItem.Resources.Add(resourceById);
-				//	}
-				//	else
-				//	{
-				//		currentItem.Resources.Remove(resourceByKey);
-				//		if (resourceById != null)
-				//		{
-				//			currentItem.Resources.Add(resourceById);
-				//		}
-				//		else
-				//		{
-				//			currentItem.AddNewResource(i.Key, i.Value, culture);
-				//		}
-				//	}
-
 			}
 		}
 	}
@@ -134,6 +103,8 @@ namespace cms.data.EF.DataProvider
 	public interface IRepository
 	{
 		IQueryable<Resource> Resources { get; }
+		Resource Add(Resource itemToAttach);
+
 	}
 
 	public class EfRepository : IRepository
@@ -145,10 +116,11 @@ namespace cms.data.EF.DataProvider
 			this.db = db;
 		}
 
-		public void Attach(Resource itemToAttach)
+		public Resource Add(Resource itemToAdd)
 		{
-			db.Resources.Attach(itemToAttach);
+			var added =  db.Resources.Add(itemToAdd);
 			db.SaveChanges();
+			return added;
 		}
 
 		public IQueryable<Resource> Resources

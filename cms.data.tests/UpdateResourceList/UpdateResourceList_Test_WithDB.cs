@@ -40,6 +40,30 @@ namespace cms.data.tests.UpdateResourceList
 
 
 		[Test]
+		public void Value_AddNew_Test()
+		{
+			var grid1 = SimpleGridPage("prd").AddToDb();
+
+			var newResources = ResourcesHelper.EmptyResourcesDto()
+								  .WithResource("link", "newlinkvalue", 0);
+
+			using (var db = new EfContext())
+			{
+				var before = db.Resources.Count();
+				var repo = new EfRepository(db);
+
+				Assert.AreEqual(0, grid1.Resources.Count);
+				grid1.UpdateResourceList(newResources, CultureCs, repo);
+				Assert.AreEqual(1, grid1.Resources.Count);
+
+				grid1.CheckResource("link")
+					 .ValueIs("newlinkvalue")
+				     .OwnerIs(grid1.Id);
+
+				Assert.AreEqual(before + 1, db.Resources.Count());
+			}
+		}
+		[Test]
 		public void AddReference_Test()
 		{
 			var grid1 = SimpleGridPage("prd").AddToDb();
@@ -49,7 +73,7 @@ namespace cms.data.tests.UpdateResourceList
 
 			using (var db = new EfContext())
 			{
-				var before = db.Resources;
+				var before = db.Resources.Count();
 
 				var repo = new EfRepository(db);
 
@@ -62,13 +86,14 @@ namespace cms.data.tests.UpdateResourceList
 				grid1.CheckResource("link")
 				     .ValueIs("dbvalueLink222")
 				     .OwnerIs(grid2.Id);
-				Assert.AreEqual(before, db.Resources);
+
+				Assert.AreEqual(before, db.Resources.Count());
 
 			}
 		}
 
 		[Test]
-		public void ReplaceReference_byReference_Test()
+		public void Reference_Replace_byReference_Test()
 		{
 			var grid1 = SimpleGridPage("prd")
 				.WithResource("link", "dbvalueLink111").AddToDb();
@@ -94,6 +119,7 @@ namespace cms.data.tests.UpdateResourceList
 				grid2.CheckResource("link")
 				     .ValueIs("dbvalueLink222")
 				     .OwnerIs(grid2.Id);
+
 				Assert.AreEqual(before, db.Resources.Count());
 
 			}
@@ -110,7 +136,6 @@ namespace cms.data.tests.UpdateResourceList
 			var newResources = ResourcesHelper.EmptyResourcesDto()
 			                                  .WithResource("link", "newlinkvalue", 0);
 
-
 			using (var db = new EfContext())
 			{
 				var before = db.Resources.Count();
@@ -125,6 +150,10 @@ namespace cms.data.tests.UpdateResourceList
 				grid1.CheckResource("link")
 				     .ValueIs("newlinkvalue")
 				     .OwnerIs(grid1.Id);
+
+				grid2.CheckResource("link")
+					 .ValueIs("dbvalueLink222")
+				     .OwnerIs(grid2.Id);
 
 				Assert.AreEqual(before + 1, db.Resources.Count());
 

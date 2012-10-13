@@ -113,8 +113,8 @@ namespace cms.data.tests.UpdateResourceList
 				.WithResource(_allResources, "name", "dbvalueName", CultureCs, 2);
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
-			                                .WithResource("link", "linkvaluedto", 1)
-			                                .WithResource("name", "namevaluedto", 2);
+			                                .WithResource("link", "linkvaluedto", 12)
+			                                .WithResource("name", "namevaluedto", 23);
 
 			g.UpdateResourceList(gResources, CultureCs, _repository);
 			Assert.AreEqual(2, g.Resources.Count);
