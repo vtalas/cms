@@ -10,11 +10,13 @@ namespace cms.data.EF.DataProvider
 	public class MenuAbstractImpl : MenuAbstract
 	{
 		private EfContext db { get; set; }
+		private IRepository Repository { get; set; }
 		
 		public MenuAbstractImpl(ApplicationSetting application) : base(application){}
 		public MenuAbstractImpl(ApplicationSetting application, EfContext context) : base(application)
 		{
 			db = context;
+			Repository = new EfRepository(db);
 		}
 
 		IQueryable<Grid> AvailableGrids()
@@ -43,8 +45,10 @@ namespace cms.data.EF.DataProvider
 
 		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
 		{
-			JsonDataEfHelpers.UpdateResources(item,db,CurrentCulture,CurrentApplication.Id);
 			var grid = AvailableGrids().Single(x => x.Id == gridId);
+			
+			grid.UpdateResourceList(item.ResourcesLoc, CurrentCulture, Repository);
+			
 			var a = new GridElement
 				        {
 					        Position = item.Position,

@@ -22,13 +22,13 @@ namespace cms.data.tests.EF
 				var a = new GridPageDto
 					        {
 						        Name = name,
-						        ResourceDto = new ResourceDtoLoc { Value = link },
+						        //ResourceDto = new ResourceDtoLoc { Value = link },
 						        Category = CategoryEnum.Page
 					        };
 
 				var n = db.Page.Add(a);
 				Assert.AreEqual(name, n.Name);
-				Assert.AreEqual(link, n.ResourceDto.Value);
+				//Assert.AreEqual(link, n.ResourceDto.Value);
 				return n;
 			}
 		}
@@ -48,16 +48,17 @@ namespace cms.data.tests.EF
 			Xxx.DeleteDatabaseDataGenereateSampleData();
 		}
 
+
 		[Test]
 		public void AddGridpage_Basic()
 		{
-			var name = "xxx";
-			var link = "AddGridpage_Basic";
+			const string name = "xxx";
+			const string link = "AddGridpage_Basic";
 			var n = AddGridpage(name, link);
 			var g = GetGridpage(n.Id);
 
 			Assert.AreEqual(name, g.Name);
-			Assert.AreEqual(link, g.ResourceDto.Value);
+			//Assert.AreEqual(link, g.ResourceDto.Value);
 		}
 
 		[Test]

@@ -1,64 +1,68 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
-using log4net.Core;
 
 namespace cms.data.EF.DataProvider
 {
 	public static class JsonDataEfHelpers
 	{
-		public static void UpdateResources(IResourceElement item, EfContext db, string currentCulture, Guid applicationId)
-		{
-			var currentEl = db.GridElements.Get(item.Id, applicationId);
-			foreach (var resUpdate in item.ResourcesLoc)
-			{
-				if (db.Resources.Exist(resUpdate.Value.Id))
-				{
-					var res = db.Resources.Get(resUpdate.Value.Id);
-					if ((res.Owner == currentEl.Id))
-					{
-						res.Value = resUpdate.Value.Value;
-					}
-					else
-					{
-						//pridat referenci pokud jeste neni pridana
-						if (ReferenceExist(currentEl, resUpdate.Key, currentCulture))
-						{
-							//oddelat puvodni a pridat novou 
-							currentEl.Resources.Remove(GetResource(currentEl, resUpdate.Key, currentCulture));
-						}
-						currentEl.Resources.Add(res);
-					}
-				}
-				else
-				{
-					if (ReferenceExist(currentEl, resUpdate.Key, currentCulture))
-						throw new ArgumentException("same resource exists");
+		//public static void UpdateResources(IResourceElement item, EfContext db, string currentCulture, Guid applicationId)
+		//{
+		//	var currentEl = db.GridElements.Get(item.Id, applicationId);
+		//	foreach (var resUpdate in item.ResourcesLoc)
+		//	{
+		//		if (db.Resources.Exist(resUpdate.Value.Id))
+		//		{
+		//			var res = db.Resources.Get(resUpdate.Value.Id);
+		//			if ((res.Owner == currentEl.Id))
+		//			{
+		//				res.Value = resUpdate.Value.Value;
+		//			}
+		//			else
+		//			{
+		//				//pridat referenci pokud jeste neni pridana
+		//				if (ReferenceExist(currentEl, resUpdate.Key, currentCulture))
+		//				{
+		//					//oddelat puvodni a pridat novou 
+		//					currentEl.Resources.Remove(GetResource(currentEl, resUpdate.Key, currentCulture));
+		//				}
+		//				currentEl.Resources.Add(res);
+		//			}
+		//		}
+		//		else
+		//		{
+		//			if (ReferenceExist(currentEl, resUpdate.Key, currentCulture))
+		//				throw new ArgumentException("same resource exists");
 
-					var newres = new Resource()
-										 {
-											 Owner = item.Id,
-											 Culture = currentCulture,
-											 Key = resUpdate.Key,
-											 Value = resUpdate.Value.Value
-										 };
-					db.Resources.Add(newres);
-					db.GridElements.Get(item.Id, applicationId).Resources.Add(newres);
-				}
-			}
-		}
-		static bool ReferenceExist(GridElement curEl, string key, string culture)
+		//			var newres = new Resource()
+		//								 {
+		//									 Owner = item.Id,
+		//									 Culture = currentCulture,
+		//									 Key = resUpdate.Key,
+		//									 Value = resUpdate.Value.Value
+		//								 };
+		//			db.Resources.Add(newres);
+		//			db.GridElements.Get(item.Id, applicationId).Resources.Add(newres);
+		//		}
+		//	}
+		//}
+		//static bool ReferenceExist(GridElement curEl, string key, string culture)
+		//{
+		//	return curEl.Resources.Any(x => x.Key == key && x.Culture == culture);
+		//}
+
+		//static Resource GetResource(GridElement curEl, string key, string culture)
+		//{
+		//	return curEl.Resources.Single(x => x.Key == key && x.Culture == culture);
+		//}
+
+		public static Resource GetResource(string key, string value, Guid parentId, string culture, int id)
 		{
-			return curEl.Resources.Any(x => x.Key == key && x.Culture == culture);
+			return new Resource { Id = id, Value = value, Key = key, Culture = culture, Owner = parentId };
 		}
 
-		static Resource GetResource(GridElement curEl, string key, string culture)
-		{
-			return curEl.Resources.Single(x => x.Key == key && x.Culture == culture);
-		}
 
 		public static Resource GetByKey(this IEnumerable<Resource> resources, string key, string culture)
 		{
@@ -80,7 +84,7 @@ namespace cms.data.EF.DataProvider
 		{
 			foreach (var i in resourcesDto)
 			{
-					var resourceByKey = GetByKey(currentItem.Resources, i.Key, culture);
+				var resourceByKey = GetByKey(currentItem.Resources, i.Key, culture);
 				var resourceById = i.Value.Id != 0 ? GetById(repo.Resources, i.Value.Id, culture) : null;
 
 				if (resourceByKey != null)

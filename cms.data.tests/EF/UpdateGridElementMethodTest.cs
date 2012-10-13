@@ -166,7 +166,6 @@ namespace cms.data.tests.EF
 				res1.Key = "kkk";
 				using (var db = new SessionManager().CreateSession)
 				{
-
 					db.GridElement.Update(g1.ToDto());
 					var updated = db.GridElement.Get(g1.Id);
 					var res1Updated = updated.ResourcesLoc.First();

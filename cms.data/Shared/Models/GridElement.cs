@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace cms.data.Shared.Models
 {
-	public class GridElement : IEntity
+	public class GridElement : IEntity, IEntityWithResource
 	{
 		public GridElement()
 		{

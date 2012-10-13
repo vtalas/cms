@@ -7,6 +7,5 @@ namespace cms.data.Shared.Models
 	{
 		Guid Id { get; set; }
 		ICollection<Resource> Resources { get; set; }
-		string Name { get; set; }
 	}
 }

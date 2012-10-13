@@ -25,7 +25,6 @@ namespace cms.data.Shared.Models
 
 		
 		public virtual ApplicationSetting ApplicationSettings { get; set; }
-		public virtual Resource Resource { get; set; }
 		public virtual ICollection<GridElement> GridElements { get; set; }
 		public virtual ICollection<Resource> Resources { get; set; }
 	}

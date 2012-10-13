@@ -33,6 +33,11 @@ namespace cms.data.tests.UpdateResourceList
 		{
 			var repo = new Mock<IRepository>();
 			repo.Setup(x => x.Resources).Returns(_allResources.AsQueryable);
+			repo.Setup(x => x.Add(It.IsAny<Resource>())).Returns((Resource input) =>
+																	 {
+																		 input.Id = _allResources.Count + 1;
+																		 return input;
+																	 });
 			return repo.Object;
 		}
 
@@ -51,8 +56,8 @@ namespace cms.data.tests.UpdateResourceList
 			var g = DefaultGrid();
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
-			                                .WithResource("link", "linkvaluedto", 0)
-			                                .WithResource("name", "linkvaluedto", 0);
+											.WithResource("link", "linkvaluedto", 0)
+											.WithResource("name", "linkvaluedto", 0);
 
 			Assert.AreEqual(0, g.Resources.Count);
 
@@ -69,8 +74,8 @@ namespace cms.data.tests.UpdateResourceList
 				.WithResource("nameXXX", "dbvalueName");
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
-			                                .WithResource("link", "linkvaluedto", 0)
-			                                .WithResource("name", "linkvaluedto", 0);
+											.WithResource("link", "linkvaluedto", 0)
+											.WithResource("name", "linkvaluedto", 0);
 
 			Assert.AreEqual(2, g.Resources.Count);
 			g.UpdateResourceList(gResources, CultureCs, _repository);
@@ -85,8 +90,8 @@ namespace cms.data.tests.UpdateResourceList
 				.WithResource("name", "dbvalueName");
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
-			                                .WithResource("link", "linkvaluedto", 0)
-			                                .WithResource("name", "namevaluedto", 0);
+											.WithResource("link", "linkvaluedto", 0)
+											.WithResource("name", "namevaluedto", 0);
 
 			g.UpdateResourceList(gResources, CultureCs, _repository);
 
@@ -113,8 +118,8 @@ namespace cms.data.tests.UpdateResourceList
 				.WithResource(_allResources, "name", "dbvalueName", CultureCs, 2);
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
-			                                .WithResource("link", "linkvaluedto", 12)
-			                                .WithResource("name", "namevaluedto", 23);
+											.WithResource("link", "linkvaluedto", 12)
+											.WithResource("name", "namevaluedto", 23);
 
 			g.UpdateResourceList(gResources, CultureCs, _repository);
 			Assert.AreEqual(2, g.Resources.Count);
@@ -166,8 +171,8 @@ namespace cms.data.tests.UpdateResourceList
 			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
 
 			grid1.CheckResource("link")
-			     .ValueIs("b222")
-			     .OwnerIs(grid2.Id);
+				 .ValueIs("b222")
+				 .OwnerIs(grid2.Id);
 
 			Assert.AreEqual(1, grid2.Resources.Count);
 		}
@@ -185,7 +190,7 @@ namespace cms.data.tests.UpdateResourceList
 			grid1.CheckResource("link")
 				  .ValueIs("b222")
 				  .OwnerIs(grid2.Id);
-			
+
 			grid1.UpdateResourceList(newResources, CultureCs, _repository);
 			grid1.CheckResource("link")
 				.ValueIs("newlinkvalue")
@@ -205,8 +210,8 @@ namespace cms.data.tests.UpdateResourceList
 			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
 
 			grid1.CheckResource("link", CultureCs)
-			     .ValueIs("b222")
-			     .OwnerIs(grid2.Id);
+				 .ValueIs("b222")
+				 .OwnerIs(grid2.Id);
 
 			grid1.UpdateResourceList(grid3.Resources.ToDtos(CultureEn), CultureEn, _repository);
 
@@ -214,8 +219,8 @@ namespace cms.data.tests.UpdateResourceList
 
 			grid1.CheckResource("link");
 			grid1.CheckResource("link", CultureEn)
-			     .ValueIs("c333")
-			     .OwnerIs(grid3.Id);
+				 .ValueIs("c333")
+				 .OwnerIs(grid3.Id);
 		}
 
 	}

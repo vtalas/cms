@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using cms.data.Shared.Models;
 using cms.shared;
+using cms.data.EF.DataProvider;
 
 namespace cms.data.Dtos
 {
@@ -119,6 +120,7 @@ namespace cms.data.Dtos
 					};
 		}
 
+	
 		public static Grid ToGrid(this GridPageDto source)
 		{
 			var a = new Grid
@@ -126,9 +128,23 @@ namespace cms.data.Dtos
 				Name = source.Name,
 				Home = source.Home,
 				Category = source.Category ?? CategoryEnum.Page,
-				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id
+				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id,
 			};
+			a.AddResource("name", source.Name).AddResource("link", source.Link);
 			return a;
+		}
+
+		public static Grid AddResource(this Grid source, string  key, string value)
+		{
+			var res = new Resource
+				       {
+					       Key = key,
+					       Culture = _currentCulture,
+					       Value = value,
+					       Owner = source.Id
+				       };
+			source.Resources.Add(res);
+			return source;
 		}
 
 		public static MenuDto ToMenuDto(this Grid source)
@@ -141,7 +157,7 @@ namespace cms.data.Dtos
 					   {
 						   Home = source.Home,
 						   Id = source.Id,
-						   ResourceDto = source.Resource == null ? source.Resource.ToDto() : new ResourceDtoLoc(),
+						   //ResourceDto = source.Resource == null ? source.Resource.ToDto() : new ResourceDtoLoc(),
 						   Name = source.Name,
 						   Category = source.Category,
 						   Children = source.GridElements.ToChildren()
@@ -156,7 +172,7 @@ namespace cms.data.Dtos
 				GridElements = source.GridElements.ToDtos(),
 				Home = source.Home,
 				Id = source.Id,
-				Link = source.Resource != null ? source.Resource.ToDto().Value  : "",
+				Link = source.Resources.GetByKey("link", SharedLayer.Culture).Value,
 				//ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDtoLoc(),
 				Name = source.Name,
 				Category = source.Category

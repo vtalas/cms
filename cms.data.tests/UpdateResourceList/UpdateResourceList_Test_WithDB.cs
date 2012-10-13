@@ -38,7 +38,6 @@ namespace cms.data.tests.UpdateResourceList
 			return grid;
 		}
 
-
 		[Test]
 		public void Value_AddNew_Test()
 		{
@@ -63,6 +62,7 @@ namespace cms.data.tests.UpdateResourceList
 				Assert.AreEqual(before + 1, db.Resources.Count());
 			}
 		}
+		
 		[Test]
 		public void AddReference_Test()
 		{

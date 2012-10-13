@@ -2,12 +2,29 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using WebMatrix.WebData;
+using cms.data.EF.DataProvider;
 using cms.data.Shared.Models;
 using cms.shared;
 using System.Linq;
+using cms.data.Dtos;
 
 namespace cms.data.EF.Initializers
 {
+	public static class Chuj
+	{
+		public static List<Resource> EmptyResource()
+		{
+			return new List<Resource>();
+		}
+
+		public static List<Resource> WithResource(this List<Resource> source, string key, string value, Guid parentId, string culture, int id = 0)
+		{
+			var res = JsonDataEfHelpers.GetResource(key, value, parentId, culture, id);
+			source.Add(res);
+			return source;
+		}
+
+	}
 	public class SampleData
 	{
 		protected EfContext Context { get; set; }
@@ -23,7 +40,7 @@ namespace cms.data.EF.Initializers
 		public void Generate()
 		{
 			var application = new ApplicationSetting { Name = "test1", Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643") };
-			
+
 			GenerateUsers();
 
 			Context.ApplicationSettings.Add(application);
@@ -58,54 +75,58 @@ namespace cms.data.EF.Initializers
 
 
 			Context.SaveChanges();
-
 		}
+
+
 
 		private void GenerateGrids(ApplicationSetting application)
 		{
+			var culture = "cs";
 			var grids = new Grid
-				            {
-					            Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-					            Resource =
-						            new Resource {Value = "linkTestPage", Owner = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643")},
-					            Name = "test page",
-					            GridElements = new List<GridElement>
+							{
+								Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+								Name = "test page",
+								GridElements = new List<GridElement>
 						                           {
 							                           new GridElement {Content = "aaaaaaaa aaa", Position = 0, Width = 12, Type = "text"}
 						                           },
-					            ApplicationSettings = application
-				            };
+								ApplicationSettings = application
+							};
+			grids.AddResource("link", "linkTestPage");
 
 			Context.Grids.Add(grids);
 			Context.Grids.Add(new Grid
-				                  {
-					                  Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-					                  Name = "grid Bez elementu",
-					                  ApplicationSettings = application,
-					                  Resource =
-						                  new Resource {Value = "bezelementu", Owner = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643")}
-				                  });
+								  {
+									  Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+									  Name = "grid Bez elementu",
+									  ApplicationSettings = application,
+									  Resources = Chuj.EmptyResource()
+										 .WithResource("link", "bezelementu", new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), culture)
+								  });
 			Context.Grids.Add(new Grid
-				                  {
-					                  Id = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-					                  Name = "gallery 1 ",
-					                  ApplicationSettings = application,
-					                  Resource = new Resource {Value = "s", Owner = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643")}
-				                  });
+								  {
+									  Id = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+									  Name = "gallery 1 ",
+									  ApplicationSettings = application,
+									  Resources = Chuj.EmptyResource()
+										 .WithResource("link", "gallery_1", new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), culture)
+								  });
 			Context.Grids.Add(new Grid
-				                  {
-					                  Id = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-					                  Name = "gallery 1 sub 1",
-					                  ApplicationSettings = application,
-					                  Resource = new Resource {Value = "ss1", Owner = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643")}
-				                  });
+								  {
+									  Id = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+									  Name = "gallery 1 sub 1",
+									  ApplicationSettings = application,
+									  Resources = Chuj.EmptyResource()
+										 .WithResource("link", "gallery_1", new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), culture)
+								  });
 			Context.Grids.Add(new Grid
-				                  {
-					                  Id = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-					                  Name = "gallery 1 sub 2 ",
-					                  ApplicationSettings = application,
-					                  Resource = new Resource {Value = "ss2", Owner = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643")}
-				                  });
+								  {
+									  Id = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
+									  Name = "gallery 1 sub 2 ",
+									  ApplicationSettings = application,
+									  Resources = Chuj.EmptyResource()
+										 .WithResource("link", "gallery_1", new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), culture)
+								  });
 		}
 
 		private void GenerateUsers()
@@ -118,13 +139,15 @@ namespace cms.data.EF.Initializers
 
 		private void GenerateMenus(ApplicationSetting application)
 		{
-			var items = new List<GridElement>();
+			var items = new List<GridElement>
+				            {
+					            new GridElement {Parent = null, Content = "", Id = Guid.NewGuid()},
+					            new GridElement {Parent = null, Content = "", Id = Guid.NewGuid()},
+					            new GridElement {Parent = null, Content = "", Id = Guid.NewGuid()},
+					            new GridElement {Parent = null, Content = "", Id = Guid.NewGuid()}
+				            };
 
 			//add rootitems 
-			items.Add(new GridElement { Parent = null, Content = "", Id = Guid.NewGuid() });
-			items.Add(new GridElement { Parent = null, Content = "", Id = Guid.NewGuid() });
-			items.Add(new GridElement { Parent = null, Content = "", Id = Guid.NewGuid() });
-			items.Add(new GridElement { Parent = null, Content = "", Id = Guid.NewGuid() });
 
 			var rootitem = new GridElement { Parent = null, Content = "", Id = Guid.NewGuid() };
 			items.Add(rootitem);
@@ -138,8 +161,8 @@ namespace cms.data.EF.Initializers
 			var menu = new Grid
 						   {
 							   Id = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"),
-							   Resource =
-								   new Resource { Value = "linkTestPage", Owner = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643") },
+							   Resources = Chuj.EmptyResource()
+								   .WithResource("link", "bezelementu", new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), "cs"),
 							   Name = "test menu",
 							   ApplicationSettings = application,
 							   Category = CategoryEnum.Menu,

@@ -44,29 +44,26 @@ namespace cms.data.tests.Helpers
 
 		public static Grid WithResource(this Grid item, string key, string value, string culture = "cs", int id = 0)
 		{
-			item.Resources.Add(GetResource(key, value, item.Id, culture, id));
+			item.Resources.Add(JsonDataEfHelpers.GetResource(key, value, item.Id, culture, id));
 			return item;
 		}
 
-		public static Grid WithResource(this Grid item, IList<Resource> allResources, string key, string value, string culture = "cs", int id = 0)
+		public static Grid WithResource(this Grid item, IList<Resource> allResources, string key, string value,
+		                                string culture = "cs", int id = 0)
 		{
-			var newitem = GetResource(key, value, item.Id, culture, id);
+			var newitem = JsonDataEfHelpers.GetResource(key, value, item.Id, culture, id);
 			item.Resources.Add(newitem);
 			allResources.Add(newitem);
 			return item;
 		}
 
-		public static Dictionary<string, ResourceDtoLoc> WithResource(this Dictionary<string, ResourceDtoLoc> item, string key, string value, int id)
+		public static Dictionary<string, ResourceDtoLoc> WithResource(this Dictionary<string, ResourceDtoLoc> item, string key,
+		                                                              string value, int id)
 		{
-			item.Add(key, new ResourceDtoLoc() { Id = id, Value = value });
+			item.Add(key, new ResourceDtoLoc() {Id = id, Value = value});
 			return item;
 		}
 
-		public static Resource GetResource(string key, string value, Guid parentId, string culture, int id)
-		{
-			return new Resource { Id = id, Value = value, Key = key, Culture = culture, Owner = parentId };
-		}
-
-
 	}
+
 }

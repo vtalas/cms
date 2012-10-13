@@ -11,11 +11,13 @@ namespace cms.data
 	public class GridElementAbstractImpl : GridElementAbstract
 	{
 		EfContext db { get; set; }
+		IRepository Respository { get; set; }
 
 		public GridElementAbstractImpl(ApplicationSetting application) : base(application){}
 		public GridElementAbstractImpl(ApplicationSetting application, EfContext context) : base(application)
 		{
 			db = context;
+			Respository = new EfRepository(db);
 		}
 
 		public override GridElement AddToGrid(GridElement gridElement, Guid gridId)
@@ -63,12 +65,10 @@ namespace cms.data
 
 		public override GridElementDto Update(GridElementDto item)
 		{
-			if (item.ResourcesLoc != null)
-			{
-				JsonDataEfHelpers.UpdateResources(item, db, CurrentCulture, CurrentApplication.Id);
-			}
-
 			var el = db.GridElements.Get(item.Id, CurrentApplication.Id);
+
+			el.UpdateResourceList(item.ResourcesLoc, CurrentCulture, Respository);
+			
 			//TODO:nahovno, udelat lip
 			el.Position = item.Position;
 			el.Skin = item.Skin;

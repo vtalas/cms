@@ -78,12 +78,8 @@ namespace cms.data.EF.DataProvider
 					Id = dto.Id,
 					Category = dto.Category,
 					Name = dto.Name,
+					Link = dto.Resources.GetByKey("link", CurrentCulture).Value,
 					Home = dto.Home,
-					ResourceDto = new ResourceDtoLoc()
-									  {
-										  Id = dto.Resource.Id,
-										  Value = dto.Resource.Value
-									  }
 				});
 			return a.ToList();
 		}
