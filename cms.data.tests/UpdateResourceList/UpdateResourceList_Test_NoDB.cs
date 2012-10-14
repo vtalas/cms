@@ -19,9 +19,7 @@ namespace cms.data.tests.UpdateResourceList
 		[SetUp]
 		public void SetUp()
 		{
-			_allResources = new List<Resource>();
 			_repository = GetRepositoryMock();
-
 			SharedLayer.Init();
 		}
 

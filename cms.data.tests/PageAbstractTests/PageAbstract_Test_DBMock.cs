@@ -1,56 +1,89 @@
 using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using NUnit.Framework;
+using cms.data.EF;
 using cms.data.EF.DataProvider;
-using cms.data.Shared.Models;
+using cms.data.EF.Initializers;
+using cms.data.tests.EF;
 using cms.data.tests._Common;
 using cms.shared;
+using System.Linq;
 
 namespace cms.data.tests.PageAbstractTests
 {
 	[TestFixture]
+	public class PageAbstract_Test_DBXXX
+	{
+		[SetUp]
+		public void SetUp()
+		{
+			Database.SetInitializer(new DropAndCreateAlwaysForce());
+			Xxx.DeleteDatabaseDataGenereateSampleData();
+			SharedLayer.Init();
+		}
+	
+		[Test]
+		public void xxxx()
+		{
+			using (var x = new EfContext())
+			{
+				var a = new PageAbstract_Test_DBMock(() => new EfRepository(x));
+				a.Setup();
+				a.Get_ById_test();
+			}
+		}
+	}
+
+	[TestFixture]
 	public class PageAbstract_Test_DBMock : NoDbBase_Test
 	{
 		private PageAbstractImpl Page { get; set; }
-		private readonly Guid _gridId = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
+		private readonly Guid _gridId = new Guid("0000005e-1115-480b-9ab7-a3ab3c0f6643");
+		private Func<IRepository> RepositoryCreator { get; set; }
+		
+		public PageAbstract_Test_DBMock(Func<IRepository> repositoryCreator)
+		{
+			RepositoryCreator = repositoryCreator;
+		}
+
+		public PageAbstract_Test_DBMock()
+		{
+			RepositoryCreator = GetRepositoryMock;
+		}
 
 		[SetUp]
 		public void Setup()
 		{
-			_allResources = new List<Resource>();
-			_repository = GetRepositoryMock();
+			_repository = RepositoryCreator();
 			SharedLayer.Init();
 
 			var app = CreateDefaultApplication("prd App")
 				.WithGrid(
-					CreateDefaultGrid()
-						.WithResource("link", "aaaaaaaa")
-						.WithResource("name", "NAME AAAA", CultureCs, 111)
+					GridHelper.WithResource(CreateDefaultGrid()
+							              .WithResource("link", "aaa"), "name", "NAME AAAA", CultureCs, 111)
 				)
 				.WithGrid(
-					CreateDefaultGrid(_gridId)
-						.WithResource("link", "bbbbbbbb")
-						.WithResource("name", "NAME BBB", CultureCs, 222)
-				);
+					GridHelper.WithResource(CreateDefaultGrid(_gridId)
+							              .WithResource("link", "bbb"), "name", "NAME BBB", CultureCs, 222)
+				).AddTo(_repository);
 
 			Page = new PageAbstractImpl(app, _repository);
-
+			Assert.That(_repository.ApplicationSettings.Any());
+			Assert.That(_repository.Grids.Any());
+			Assert.That(_repository.Resources.Any());
 		}
 
 		[Test]
 		public void Get_ByLink_test()
 		{
-			
-
+			var gridpage = Page.Get("bbb");
+			Assert.IsNotNull(gridpage);
+			Assert.AreEqual(gridpage.Id, _gridId);
 		}
 
 		[Test]
 		public void Get_ById_test()
 		{
-			foreach (var item in _allResources)
-			{
-				Console.WriteLine(item.Value);
-			}
 			var gridpage = Page.Get(_gridId);
 			Assert.IsNotNull(gridpage);
 			Assert.AreEqual(gridpage.Id, _gridId);
@@ -59,7 +92,15 @@ namespace cms.data.tests.PageAbstractTests
 		[Test]
 		public void List_test()
 		{
-			Assert.IsTrue(false);
+			var gridpage = Page.List();
+			Assert.IsTrue(gridpage.Any());
+		}
+
+		[Test]
+		public void List_NoItems_test()
+		{
+			var xx = new PageAbstractImpl(CreateDefaultApplication("applikace with no grids"), _repository);
+			Assert.IsFalse(xx.List().Any());
 		}
 
 		[Test]

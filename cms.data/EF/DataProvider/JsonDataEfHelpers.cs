@@ -18,9 +18,10 @@ namespace cms.data.EF.DataProvider
 			return resources.SingleOrDefault(a => a.Key == key && a.Culture == culture);
 		}
 
-		public static bool ContainsKey(this IEnumerable<Resource> resources, string key, string culture)
+		public static bool ContainsKeyValue(this IEnumerable<Resource> resources, string key, string value, string culture)
 		{
-			return resources.GetByKey(key, culture) != null;
+			var res = resources.GetByKey(key, culture);
+			return res != null && res.Value == value;
 		}
 
 		public static Resource GetById(this IEnumerable<Resource> resources, int id, string culture)
@@ -87,7 +88,7 @@ namespace cms.data.EF.DataProvider
 
 		public ApplicationSetting Add(ApplicationSetting item)
 		{
-			throw new NotImplementedException();
+			return db.ApplicationSettings.Add(item);
 		}
 
 		public Resource Add(Resource itemToAdd)

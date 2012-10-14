@@ -23,19 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="novinka.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/gridelements/novinka/novinka.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Grids.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="14" selection-start="1599" selection-end="1599" vertical-scroll-proportion="0.6597938">
+            <state line="17" column="14" selection-start="459" selection-end="459" vertical-scroll-proportion="0.28041238">
               <folding />
             </state>
           </provider>
@@ -62,11 +53,11 @@
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/text.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/GridListController.js" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/_GridElementScripts/reference_view.coffee" />
         <option value="$PROJECT_DIR$/Content/Apps/test1/StaticContent.html" />
         <option value="$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
       </list>
     </option>
   </component>
@@ -341,13 +332,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/gridelements/novinka/novinka.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="24" selection-start="574" selection-end="574" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Admin/Grids.cshtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -378,16 +362,9 @@
         <state line="24" column="52" selection-start="660" selection-end="660" vertical-scroll-proportion="0.029010238" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/gridelements/novinka/novinka.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="14" selection-start="1599" selection-end="1599" vertical-scroll-proportion="0.6597938">
+        <state line="17" column="14" selection-start="459" selection-end="459" vertical-scroll-proportion="0.28041238">
           <folding />
         </state>
       </provider>
