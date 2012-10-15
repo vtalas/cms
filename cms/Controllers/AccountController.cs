@@ -4,8 +4,6 @@ using System.Web.Security;
 using WebMatrix.WebData;
 using cms.Controllers.Attributes;
 using cms.data.EF;
-using cms.data.EF.DataProvider;
-using cms.data.EF.Initializers;
 
 namespace MvcApplication1.Controllers
 {
@@ -13,16 +11,8 @@ namespace MvcApplication1.Controllers
 	[InitializeSimpleMembership]
 	public class AccountController : Controller
 	{
-		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
-		{
-			base.Initialize(requestContext);
-		}
-
-		protected SessionProvider SessionProvider { get; set; }
-
 		//
 		// GET: /Account/Login
-
 		[AllowAnonymous]
 		public ActionResult Login(string returnUrl)
 		{

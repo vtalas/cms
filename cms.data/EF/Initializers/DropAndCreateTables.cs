@@ -30,8 +30,6 @@ namespace cms.data.EF.Initializers
 
 			Seed(context);
 
-			WebSecurity.InitializeDatabaseConnection("EfContext", "UserProfile", "Id", "UserName", autoCreateTables: true);
-
 			context.SaveChanges();
 
 		}
