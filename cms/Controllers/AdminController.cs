@@ -3,6 +3,7 @@ using cms.Code;
 
 namespace cms.Controllers
 {
+	[Authorize]
 	public class AdminController : CmsControllerBase
     {
 

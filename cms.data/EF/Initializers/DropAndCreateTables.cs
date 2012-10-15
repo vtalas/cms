@@ -1,6 +1,7 @@
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using WebMatrix.WebData;
 
 namespace cms.data.EF.Initializers
 {
@@ -28,6 +29,9 @@ namespace cms.data.EF.Initializers
 			context.Database.ExecuteSqlCommand(dbCreationScript);
 
 			Seed(context);
+
+			WebSecurity.InitializeDatabaseConnection("EfContext", "UserProfile", "Id", "UserName", autoCreateTables: true);
+
 			context.SaveChanges();
 
 		}

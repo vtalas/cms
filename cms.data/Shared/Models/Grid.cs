@@ -4,7 +4,6 @@ using cms.shared;
 
 namespace cms.data.Shared.Models
 {
-
 	public class Grid :IEntity
 	{
 		public Grid()
