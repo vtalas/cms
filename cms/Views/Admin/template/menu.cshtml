@@ -1,41 +1,19 @@
-﻿{{data.Name}} .{{dragging}}.
-<script type="text/ng-template" id="tree_item_renderer.html">
-	
-	<div ui-dropable-html="sortable,pageslist" ng-model="item" class="dropableCtrl" ></div>
-	<div ui-draganddrop-html="sortable" 
-		ng-model="item" 
-		class="draggableCtrl">
-		<div menuitem="item" grid="data" class="menuitem" ></div> 
-	
-		<ul>
+﻿<script type="text/ng-template" id="tree_item_renderer.html">
+	<div ui-draganddrop-html="sortable" ng-model="item" class="sortableNestedCtrl {{item.statusclass}}" ng-show="!item.hidden"  >
+				<div menuitem="item" grid="data" class="menuitem" ></div> 
+			<ul>
 			<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
-		
-			@*
-			<li ui-dropable-html ng-show="item.Children.length > 0" ng-model="item.Children">placeholder LAST </li>
-			<li ng-show="item.showAdd" ng-hide="!item.showAdd">
-				<select ui-select2="{allowClear:false}" data-placeholder="stránka" ng-model="select2" style="width: 230px">
-					<option></option>
-					<option ng-repeat="g in grids" value="three" value="{{g.Id}}">{{g.Name}}</option>
-				</select>
-				<button ng-click="hideAdd(item)">cancel</button>
-				<button ng-click="add(item)">OK</button>
-			</li>
-			<li ng-show="!item.showAdd && item.Children.length > 0" ng-click="showAdd(item)" style="color:#eee" class="ui-sortable-disabled menuitem">přidat</li>
-			*@
-		
 		</ul>
-		<div ui-dropable-html="sortable,pageslist" ng-show="$last" ui-config={last:true} class="dropableCtrl"  ng-model="item"></div>
 	</div>
-
 </script>
 <style>
-	.ui-state-highlight
-	{
-		border-bottom: 1px solid red;
-		height: 0px;
-		width: 100%;
+
+	.pseudohidden {
+		border: 1px solid red;
+		position: absolute;
+		top: -100px;
 	}
-	
+
 	.menuitem
 	{
 		border: 1px solid gray;
@@ -65,15 +43,9 @@
 		<ul>
 			<li ng-repeat="g in grids">
 				<div class="menuitem" ui-draggable-html="pageslist" ng-model="g">
-					{{g.Name}}.. {{g.Id}}</div>
+					{{g.Name}}.. {{g.Id}}
+				</div>
 			</li>
 		</ul>
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function (event) {
-		$(".xxx").click(function (e) {
-
-		});
-	});
-</script>

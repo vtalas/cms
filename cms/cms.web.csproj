@@ -122,9 +122,17 @@
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
     <Content Include="Content\fluid_grid.css" />
+    <Content Include="Content\htmlDragAndDrop\angular-ui-ext-dndClass.js">
+      <DependentUpon>angular-ui-ext-dndClass.ts</DependentUpon>
+    </Content>
+    <Content Include="Content\htmlDragAndDrop\angular-ui-ext-dndClass.ts" />
+    <Content Include="Content\htmlDragAndDrop\angular-ui-ext.js" />
     <Content Include="Content\htmlDragAndDrop\base.css" />
-    <Content Include="Content\htmlDragAndDrop\dragendDropModule.js" />
+    <Content Include="Content\htmlDragAndDrop\angular-ui-dnd.js" />
     <Content Include="Content\htmlDragAndDrop\index.html" />
+    <Content Include="Content\htmlDragAndDrop\libs\angular-ui.js" />
+    <Content Include="Content\htmlDragAndDrop\libs\angular.js" />
+    <Content Include="Content\htmlDragAndDrop\libs\jquery-1.7.2.js" />
     <Content Include="Content\htmlDragAndDrop\sortableCtrl.js" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
@@ -184,6 +192,7 @@
     <Content Include="Scripts\angular-templates-ext.js">
       <DependentUpon>angular-templates-ext.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\angular-ui-dnd.js" />
     <Content Include="Scripts\angular-ui-ext-dndClass.js">
       <DependentUpon>angular-ui-ext-dndClass.ts</DependentUpon>
     </Content>

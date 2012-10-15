@@ -19,37 +19,28 @@
 var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams, GridApi) {
 	menuCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings", "$routeParams"];
 
-	$scope.dragging = false;
-
-	$scope.$on("setCultureEvent", function () {
-		console.log("menuCtrl set culture");
-	});
-
-	$scope.$on("dragstart", function (data, xxx) {
-		$(xxx.sourceElement).addClass("dragged");
-		setTimeout(function () {
-			$(".dropableCtrl").animate({ height: 20 }, 200);
-		}, 200);
-	});
-
-	$scope.$on("dragover", function (data, xxx) {
-	});
-
-	$scope.$on("dragenter", function (data, xxx) {
-		$(xxx.destinationElement).addClass("dragover");
-	});
-
-	$scope.$on("dragleave", function (data, xxx) {
-		$(xxx.destinationElement).removeClass("dragover");
-	});
-
-	$scope.$on("drop", function (data, xxx) {
-		$scope.dragendAction(xxx);
-		//$scope.add(item);
-	});
-
-	$scope.$on("dragend", function (data, xxx) {
-		$scope.dragendAction(xxx);
+	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
+		var old = (xxx.element).css("background-color");
+		switch (xxx.newvalue) {
+		case StatusEnum.DRAGEND:
+			(xxx.element).css("background-color", "green");
+			$(".sortableCtrl").stop(true, true).css("opacity", "1");
+			(xxx.element).animate({ backgroundColor: old }, 1000);
+			break;
+		case StatusEnum.DRAGGED:
+			(xxx.element).css("opacity", 1);
+			break;
+		case StatusEnum.DROPPED:
+			break;
+		case StatusEnum.SWAPPED:
+			console.log("swapped")
+			(xxx.element).css("background-color", "green");
+			setTimeout(function () {
+				(xxx.element).animate({ backgroundColor: old }, 1000);
+			}, 200);
+			break;
+		default:
+		}
 	});
 
 
@@ -60,6 +51,8 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 		$(xxx.destinationElement).removeClass("dragged");
 		$(".dropableCtrl").animate({ height: 0 }, 100);
 	};
+
+
 
 	$scope.showAdd = function (item) {
 		item.showAdd = 1;

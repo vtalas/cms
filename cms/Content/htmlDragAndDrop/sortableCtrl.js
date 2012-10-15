@@ -5,18 +5,18 @@
 	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
 		var old = (xxx.element).css("background-color");
 		switch (xxx.newvalue) {
-		case DRAGEND:
+		case StatusEnum.DRAGEND:
 			(xxx.element).css("background-color", "green");
 			$(".sortableCtrl").stop(true, true).css("opacity", "1");
 			(xxx.element).animate({ backgroundColor: old }, 1000);
 			console.log("xxxx", xxx.element);
 			break;
-		case DRAGGED:
+		case StatusEnum.DRAGGED:
 			(xxx.element).css("opacity", 1);
 			break;
-		case DROPPED:
+		case StatusEnum.DROPPED:
 			break;
-		case SWAPPED:
+		case StatusEnum.SWAPPED:
 			(xxx.element).css("opacity", 1);
 			setTimeout(function () {
 				(xxx.element).animate({ opacity: 0.4 }, 1000);
@@ -67,21 +67,20 @@ var sortableNestedCtrl = function ($scope, $http) {
 
 	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
 		switch (xxx.newvalue) {
-		case DRAGEND:
+		case StatusEnum.DRAGEND:
 			(xxx.element).css("opacity", 1);
 			console.log("xx", xxx.element);
 			break;
-		case DRAGGED:
+		case StatusEnum.DRAGGED:
 			(xxx.element).css("opacity", 0.5);
 			break;
-		case DROPPED:
+		case StatusEnum.DROPPED:
 			break;
-		case DRAGOLD:
+		case StatusEnum.DRAGOLD:
 			console.log("dragold");
-			xxx.item.Id += "XXX";
 			//xxx.element.css("border", "2px solid red");
 			break;
-		case SWAPPED:
+		case StatusEnum.SWAPPED:
 	//		(xxx.element).css("opacity", 1);
 			setTimeout(function () {
 //				(xxx.element).animate({ opacity: 0.4 }, 1000);
@@ -90,7 +89,7 @@ var sortableNestedCtrl = function ($scope, $http) {
 		default:
 		}
 	});
-	
+
 	$scope.$on("dragstart-sortablehtmlPico", function (data, dndObj) {
 		console.log(dndObj)
 		//$(".sortableNestedCtrl").css("opacity", "0.4");

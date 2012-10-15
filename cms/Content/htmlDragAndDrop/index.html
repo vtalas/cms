@@ -5,24 +5,25 @@
 	<link rel="stylesheet" type="text/css" href="/Content/fluid_grid.css" />
 	<link rel="stylesheet" type="text/css" href="base.css" />
 
-	<script src="../../Scripts/jquery-1.7.2.js"></script>
-	<script src="../../Scripts/angular.js"></script>
-	<script src="../../Scripts/angular-ui.js"></script>
-	<script src="../../Scripts/angular-ui-ext-dndClass.js"></script>
-	<script src="../../Scripts/angular-ui-ext.js"></script>
-
-	<script src="dragendDropModule.js"></script>
+	<script src="libs/jquery-1.7.2.js"></script>
+	<script src="libs/angular.js"></script>
+	<script src="libs/angular-ui.js"></script>
+	
+	<script src="angular-ui-ext-dndClass.js"></script>
+	<script src="angular-ui-ext.js"></script>
+	<script src="angular-ui-dnd.js"></script>
 	<script src="sortableCtrl.js"></script>
 
 </head>
 <body>
 	<div ng-controller="sortableNestedCtrl" class="sortableNested">
-		<div class="xxx" draggable="true">XXX</div>
-		{{draggedID}}
+		
 		<h1>Sortable - nested</h1>
 		<script type="text/ng-template" id="tree_item_renderer.html">
 			<div ui-draganddrop-html="sortable" ng-model="item" class="sortableNestedCtrl {{item.statusclass}}" ng-show="!item.hidden"  >
-					<div class="nestedItem"><h2>{{item.Id}}</h2></div>
+				<div class="nestedItemContent">
+					<h2>{{item.Id}}</h2>
+				</div>
 				<ul>
 					<li ng-repeat="item in item.Children" ng-include="'tree_item_renderer.html'" ></li>
 				</ul>
@@ -33,11 +34,11 @@
 		</ul>
 		<div style="position: absolute;left:800px;top:100px;width:100px;">
 			<div>
-				---{{data.Children.length}}
+				<h3>Debug</h3>
+				{{data.Children.length}}
 			</div>
 			{{json()}}
-	</div>
-
+		</div>
 	</div>
 	
 	<div class="clearfix"></div>
@@ -50,7 +51,7 @@
 			</div>
 		</script>
 		<ul class="container_12 container ">
-			<li ng-repeat="item in data.Children" ng-include="'tree_item_rendereSortable.html'" class="grid_{{item.Width * 4 || 4 }}"></li>
+			<li ng-repeat="item in data.Children" ng-include="'tree_item_rendereSortable.html'" class="grid_{{item.Width  || 2 }}"></li>
 		</ul>
 	
 		<div ng-model="ddd">..</div>
@@ -61,7 +62,6 @@
 
 
 <style>
-
 
 	.container
 	{
@@ -75,15 +75,16 @@
 		background-color: #aaa;
 	}
 
-
 	.sortableNested {
 		width: 600px;
 	}
-	.nestedItem {
+	.nestedItemContent {
 		background-color: greenyellow;
 		width: 100%;
 	}
 	.sortableNestedCtrl {
+		padding-top: 5px; 
+
 	}
 
 	ul {
@@ -99,10 +100,8 @@
 	.pseudohidden {
 		border: 1px solid red;
 		position: absolute;
-		top: 10px;
-
+		top: -100px;
 	}
-	
 </style>
 	<script>
 	</script>
