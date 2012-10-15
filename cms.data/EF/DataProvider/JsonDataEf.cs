@@ -143,6 +143,15 @@ namespace cms.data.EF.DataProvider
 			get { return new PageAbstractImpl(ApplicationId, db); }
 		}
 
+		public override List<Grid> Grids
+		{
+			get
+			{
+				var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId);
+				return a.ToList();
+			}
+		}
+
 		public override void DeleteApplication(Guid id)
 		{
 			var delete = GetApplication(id);

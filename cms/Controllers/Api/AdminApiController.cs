@@ -10,7 +10,7 @@ using cms.shared;
 
 namespace cms.Controllers.Api
 {
-	//AJAX ax=kce
+	//AJAX akce
 	public class AdminApiController : ApiControllerBase
 	{
 
@@ -89,7 +89,6 @@ namespace cms.Controllers.Api
 		{
 
 			public string Param { get; set; }
-
 			public override void OnActionExecuting(ActionExecutingContext filterContext)
 			{
 				if ((filterContext.HttpContext.Request.ContentType ?? string.Empty).Contains("application/json"))
@@ -145,7 +144,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.Page.List();
+				var g = db.Grids;
 				return new JSONNetResult(g);
 			}
 		}

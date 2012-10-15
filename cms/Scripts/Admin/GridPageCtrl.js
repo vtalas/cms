@@ -3,7 +3,6 @@
     return newitem;
 }
 
-
 var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi", function ($scope, $http, $routeParams, appSettings, GridApi) {
 	$scope.data = {};
 

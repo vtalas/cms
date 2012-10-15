@@ -140,7 +140,7 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 	});
 	$provide.constant();
 	$routeProvider
-		.when('/gridpages', {controller: GridListController, templateUrl: 'template/gridpages'})
+		.when('/gridpages', {controller: gridpagesCtrl, templateUrl: 'template/gridpages'})
 		.when('/menus', {controller: menusCtrl, templateUrl: 'template/menus'})
 		.when('/menu/:Id', {controller: menuCtrl, templateUrl: 'template/menu'})
 		.when('/menu2/:Id', {controller: menu2Ctrl, templateUrl: 'template/menu2'})

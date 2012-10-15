@@ -64,6 +64,7 @@
     <Compile Include="EF\DataProvider\JsonDataEf.cs" />
     <Compile Include="Files\JsonDataFiles.cs" />
     <Compile Include="GridElementExt.cs" />
+    <Compile Include="Dtos\GridListDto.cs" />
     <Compile Include="GridPage.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="EF\EfContext.cs" />

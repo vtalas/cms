@@ -14,7 +14,7 @@ namespace cms.data
 
 		protected JsonDataProvider(Guid applicationId )
 		{
-			this.ApplicationId  = applicationId;
+			ApplicationId  = applicationId;
 		}
 		
 		protected JsonDataProvider(string application )
@@ -24,7 +24,9 @@ namespace cms.data
 
 		public abstract MenuAbstract Menu { get; }
 		public abstract PageAbstract Page { get; }
+		public abstract List<Grid> Grids { get; }
 
+		///!! tohle este ocekovat
 		public abstract void DeleteApplication(Guid guid);
 		public abstract GridElement AddGridElementToGrid(GridElement gridElement, Guid gridId);
 		public abstract Grid GetGrid(Guid guid);
@@ -36,15 +38,15 @@ namespace cms.data
 		public abstract GridPageDto Update(GridPageDto item);
 		public abstract ApplicationSetting GetApplication(Guid id);
 		public abstract ApplicationSetting GetApplication(string name);
-		public abstract void Dispose();
 		public abstract IEnumerable<ApplicationSettingDto> Applications();
-
+		
+		
+		public abstract void Dispose();
 	}
 
 	public abstract class PageAbstract : DataProviderBase
 	{
 		protected PageAbstract(Guid applicationId) : base(applicationId){}
-		
 		public abstract GridPageDto Get(string link);
 		public abstract GridPageDto Get(Guid id);
 		public abstract IEnumerable<GridPageDto> List();
@@ -54,7 +56,6 @@ namespace cms.data
 	public abstract class MenuAbstract : DataProviderBase
 	{
 		protected MenuAbstract(Guid applicationId) : base(applicationId){}
-
 		public abstract MenuDto Get(Guid guid);
 		public abstract MenuDto Add(MenuDto newitem);
 		public abstract Guid AddMenuItem(MenuItemDto newitem, Guid gridId);

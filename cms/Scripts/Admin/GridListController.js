@@ -1,9 +1,8 @@
-var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
+var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
 
-    $scope.$on("setCultureEvent",function(){
-        console.log("GridListController set culture")
-    })
-
+	$scope.$on("setCultureEvent", function () {
+		console.log("gridpagesCtrl set culture");
+	});
 
 	$scope.data = GridApi.grids({ applicationId: appSettings.Id }, function (d) {
 	});
@@ -21,7 +20,7 @@ var GridListController = ['$scope', '$http', '$rootScope', 'appSettings', 'GridA
 
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/AddGrid', data: { data: newitem} })
             .success(function (data, status, headers, config) {
-            	$scope.data.push(data);
+	            $scope.data.push(data);
             })
             .error(function (data, status, headers, config) {
 

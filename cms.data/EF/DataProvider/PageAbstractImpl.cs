@@ -27,7 +27,7 @@ namespace cms.data.EF.DataProvider
 
 		public override IEnumerable<GridPageDto> List()
 		{
-			var a = AvailableGridsPage().Where(x => x.Category == CategoryEnum.Page).ToList();
+			var a = AvailableGridsPage().ToList();
 			return a.Select(grid => grid.ToGridPageDto()).ToList();
 		}
 
