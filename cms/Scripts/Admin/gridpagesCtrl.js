@@ -7,10 +7,19 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	$scope.data = GridApi.grids({ applicationId: appSettings.Id }, function (d) {
 	});
 
+	$scope.getLink = function (item) {
+		switch (item.Category) {
+		case "Page":
+			return "page/" + item.Id;
+		case "Menu":
+			return "menu/" + item.Id;
+		}
+	};
+
 	$scope.addclick = function () {
 		$scope.createNew = true;
 	};
-	$scope.createNewCancel = function() {
+	$scope.createNewCancel = function () {
 		$scope.createNew = false;
 	};
 
@@ -20,7 +29,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/AddGrid', data: { data: newitem} })
             .success(function (data, status, headers, config) {
-	            $scope.data.push(data);
+            	$scope.data.push(data);
             })
             .error(function (data, status, headers, config) {
 

@@ -236,8 +236,8 @@
     </None>
     <None Include="Service References\ServiceReference1\Client1.disco" />
     <Content Include="Scripts\Admin\cmsapi.js" />
-    <Content Include="Scripts\Admin\GridListController.js" />
-    <Content Include="Scripts\Admin\GridPageCtrl.js" />
+    <Content Include="Scripts\Admin\gridpagesCtrl.js" />
+    <Content Include="Scripts\Admin\pageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\colorPicker_src.js" />
@@ -362,7 +362,6 @@
     <Content Include="Views\Shared\_GridElementTmpl\reference_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\textlocalized_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\textlocalized_View.cshtml" />
-    <Content Include="Views\Admin\template\menus.cshtml" />
     <Content Include="Views\Admin\template\menu.cshtml" />
     <Content Include="Views\Admin\template\test.cshtml" />
     <Content Include="Views\templates\drag.cshtml" />

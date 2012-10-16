@@ -139,12 +139,11 @@ namespace cms.Controllers.Api
 			}
 		}
 
-		//TODO: prejmenovat na Pages
 		public ActionResult Grids()
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.Grids;
+				var g = db.Grids();
 				return new JSONNetResult(g);
 			}
 		}

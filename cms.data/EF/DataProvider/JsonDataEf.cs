@@ -143,13 +143,16 @@ namespace cms.data.EF.DataProvider
 			get { return new PageAbstractImpl(ApplicationId, db); }
 		}
 
-		public override List<Grid> Grids
+		public override IEnumerable<GridListDto> Grids()
 		{
-			get
-			{
-				var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId);
-				return a.ToList();
-			}
+			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId).Select(dto => new GridListDto
+				{
+					Category =  dto.Category,
+					Name = dto.Name,
+					Home = dto.Home,
+					Id = dto.Id
+				});
+			return a.ToList();
 		}
 
 		public override void DeleteApplication(Guid id)

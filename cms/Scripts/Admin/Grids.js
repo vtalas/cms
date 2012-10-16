@@ -141,10 +141,9 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 	$provide.constant();
 	$routeProvider
 		.when('/gridpages', {controller: gridpagesCtrl, templateUrl: 'template/gridpages'})
-		.when('/menus', {controller: menusCtrl, templateUrl: 'template/menus'})
 		.when('/menu/:Id', {controller: menuCtrl, templateUrl: 'template/menu'})
 		.when('/menu2/:Id', {controller: menu2Ctrl, templateUrl: 'template/menu2'})
-		.when('/gridpage/:Id', {controller: GridPageCtrl, templateUrl: 'template/gridpage'})
+		.when('/page/:Id', {controller: pageCtrl, templateUrl: 'template/gridpage'})
 		.otherwise({redirectTo: '/gridpages'});
 }]);
 

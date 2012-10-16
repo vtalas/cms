@@ -1,7 +1,7 @@
 ﻿<table>
 	<tr ng-repeat="grid in data">
 		<td>
-			<a href="#/gridpage/{{grid.Id}}"> {{grid.Name}}</a> 
+			<a href="#/{{getLink(grid)}}"> {{grid.Name}}</a> 
 		</td>
 		<td ng-hide="grid.Edit">
 			{{grid.ResourceDto.Value}}

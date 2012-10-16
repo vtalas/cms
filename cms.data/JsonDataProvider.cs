@@ -24,7 +24,7 @@ namespace cms.data
 
 		public abstract MenuAbstract Menu { get; }
 		public abstract PageAbstract Page { get; }
-		public abstract List<Grid> Grids { get; }
+		public abstract IEnumerable<GridListDto> Grids();
 
 		///!! tohle este ocekovat
 		public abstract void DeleteApplication(Guid guid);

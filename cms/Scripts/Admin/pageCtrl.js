@@ -3,10 +3,11 @@
     return newitem;
 }
 
-var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi", function ($scope, $http, $routeParams, appSettings, GridApi) {
+var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi", function ($scope, $http, $routeParams, appSettings, GridApi) {
 	$scope.data = {};
 
 	var params = {applicationId: appSettings.Id,id: $routeParams.Id};
+	
 
 	$scope.$on("refreshgrid", function () {
 		console.log("refreshgrid ");
@@ -14,10 +15,9 @@ var GridPageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi",
 	});
 
     $scope.$on("setCultureEvent", function() {
-        console.log("GridPageCtrl set culture");
+        console.log("pageCtrl set culture");
         $scope.getGrid();
     });
-
 
 
     $scope.getGrid = function () {

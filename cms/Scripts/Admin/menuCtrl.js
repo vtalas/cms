@@ -1,22 +1,4 @@
-﻿var menusCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, GridApi) {
-	menusCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings"];
-
-	$scope.$on("setCultureEvent", function () {
-		console.log("menuCtrl set culture");
-	});
-
-	$scope.data = apimenu.list({ }, function (d) {
-		console.log(d);
-	});
-	$scope.addclick = function () {
-		$scope.createNew = true;
-	};
-	$scope.createNewCancel = function () {
-		$scope.createNew = false;
-	};
-};
-
-var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams, GridApi) {
+﻿var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams, GridApi) {
 	menuCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings", "$routeParams"];
 
 	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
@@ -51,8 +33,6 @@ var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $route
 		$(xxx.destinationElement).removeClass("dragged");
 		$(".dropableCtrl").animate({ height: 0 }, 100);
 	};
-
-
 
 	$scope.showAdd = function (item) {
 		item.showAdd = 1;
