@@ -25,7 +25,7 @@
 		default:
 		}
 	});
-	
+
 	$scope.$on("dragstart-sortablehtml", function (data, xxx) {
 		$(".sortableCtrl").css("opacity", "0.4");
 	});

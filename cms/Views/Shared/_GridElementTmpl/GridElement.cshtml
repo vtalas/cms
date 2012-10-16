@@ -1,41 +1,34 @@
 ﻿@model cms.Models.TemplateSettings
-
-<div ng-controller="@Model.Type">
-
-	<div ng-show="gridelement.Id==0">
-		<select ng-model="gridelement.Type">
-			<option value="text">text</option>
-			<option value="textlocalized">textlocalized</option>
-			<option value="novinka">novinka</option>
-			<option value="simplehtml">simple HTML</option>
-			<option value="reference">Reference</option>
-		</select>
-		<button ng-click="add(gridelement)">Create</button>
+<div ng-controller="@Model.Type" ng-click="edit(gridelement)" class="" ng-class="{contentitem: gridelement.Id != 0}">
+	<div ng-show="gridelement.Id == 0">
+		<div class="btn-group">
+			<button ng-click="add(gridelement)" class="btn">{{gridelement.Type}}</button>
+			<button class="btn dropdown-toggle" data-toggle="dropdown">
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#" ng-click="addWithType(gridelement, 'text', $event )"> text </a></li>
+				<li><a href="#" ng-click="addWithType(gridelement, 'textlocalized', $event )"> textlocalized </a> </li>
+				<li><a href="#" ng-click="addWithType(gridelement, 'novinka', $event )"> novinka </a></li>
+				<li><a href="#" ng-click="addWithType(gridelement, 'simplehtml', $event )"> simple HTML </a></li>
+				<li><a href="#" ng-click="addWithType(gridelement, 'reference', $event )"> Reference </a></li>
+			</ul>
+		</div>
 	</div>
 
 	<div ng-show="gridelement.Id">
-		<button ng-click="edit(gridelement)">edit</button>
-
-		<button ng-click="remove(gridelement)">smazat</button>
+		<button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete" />
 		<b>@Model.Type</b>
-		@*		<span ng-show="gridelement.Edit" >
-			<input  type="checkbox" ng-model="preview" /> Zobrazit náhled
-		</span>
-*@
 	</div>
-	{{edit}}
-	<div ng-show="gridelement.Edit">
+	<div ng-show="gridelement.Edit" >
 		@Html.Partial(Model.TemplateEdit)
-		<button ng-click="save(gridelement)">Uložit</button>
+		<button class="btn btn-small" ng-click="save(gridelement)">Uložit</button>
+		<p></p>
 	</div>
-	<div @*ng-show="preview || !gridelement.Edit"*@ >
+	<div ng-show="!gridelement.Edit" >
 		@Html.Partial(Model.TemplateView)
 	</div>
 </div>
-
-
-
-
 
 @* 
 //NOTE: include static html file 

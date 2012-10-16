@@ -145,7 +145,8 @@ namespace cms.data.Dtos
 				Home = source.Home,
 				Id = source.Id,
 				ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDtoLoc(),
-				Name = source.Name
+				Name = source.Name,
+				Category = source.Category
 			};
 
 		}

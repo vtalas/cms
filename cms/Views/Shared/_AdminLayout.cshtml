@@ -1,5 +1,4 @@
 ﻿@using System.Web.Optimization
-@using cms.Code
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link href="/Content/bootstrapdefault/less/bootstrap.css" rel="stylesheet">
+	@*<link href="/Content/bootstrapdefault/less/bootstrap.css" rel="stylesheet">*@
+	<link href="/Content/metro-bootstrap.less.css" rel="stylesheet">
 	<style>
 		body
 		{
@@ -58,7 +58,7 @@
 		)
 
 	@Styles.Render(
-				//"~/Content/fluid_grid.css",
+			//	"~/Content/fluid_grid.css",
 				//"~/Scripts/select2/select2.css",
 			//"~/Content/bootstrapdefault/less/bootstrap.less",
 				"~/Content/admin.less"

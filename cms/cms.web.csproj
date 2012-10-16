@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>cms</RootNamespace>
     <AssemblyName>cms</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
@@ -87,17 +87,17 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml.Linq" />
@@ -217,6 +217,66 @@
     <Content Include="Content\test\a.cshtml" />
     <Content Include="Content\test\menu.json" />
     <Content Include="Content\test\menu2.json" />
+    <Content Include="Content\less\accordion.less" />
+    <Content Include="Content\less\alerts.less" />
+    <Content Include="Content\less\bootstrap.less" />
+    <Content Include="Content\less\breadcrumbs.less" />
+    <Content Include="Content\less\button-groups.less" />
+    <Content Include="Content\less\buttons.less" />
+    <Content Include="Content\less\carousel.less" />
+    <Content Include="Content\less\close.less" />
+    <Content Include="Content\less\code.less" />
+    <Content Include="Content\less\component-animations.less" />
+    <Content Include="Content\less\dropdowns.less" />
+    <Content Include="Content\less\forms.less" />
+    <Content Include="Content\less\grid.less" />
+    <Content Include="Content\less\hero-unit.less" />
+    <Content Include="Content\less\labels-badges.less" />
+    <Content Include="Content\less\layouts.less" />
+    <Content Include="Content\less\metro-bootstrap\alerts.less" />
+    <Content Include="Content\less\metro-bootstrap\breadcrumbs.less" />
+    <Content Include="Content\less\metro-bootstrap\button-groups.less" />
+    <Content Include="Content\less\metro-bootstrap\buttons.less" />
+    <Content Include="Content\less\metro-bootstrap\code.less" />
+    <Content Include="Content\less\metro-bootstrap\forms.less" />
+    <Content Include="Content\less\metro-bootstrap\hero-unit.less" />
+    <Content Include="Content\less\metro-bootstrap\icons.less" />
+    <Content Include="Content\less\metro-bootstrap\labels-badges.less" />
+    <Content Include="Content\less\metro-bootstrap\metro-bootstrap.less" />
+    <Content Include="Content\less\metro-bootstrap\navbar.less" />
+    <Content Include="Content\less\metro-bootstrap\navs.less" />
+    <Content Include="Content\less\metro-bootstrap\pager.less" />
+    <Content Include="Content\less\metro-bootstrap\pagination.less" />
+    <Content Include="Content\less\metro-bootstrap\progress-bars.less" />
+    <Content Include="Content\less\metro-bootstrap\thumbnails.less" />
+    <Content Include="Content\less\metro-bootstrap\tiles.less" />
+    <Content Include="Content\less\metro-bootstrap\type.less" />
+    <Content Include="Content\less\metro-bootstrap\variables.less" />
+    <Content Include="Content\less\metro-bootstrap\wells.less" />
+    <Content Include="Content\less\mixins.less" />
+    <Content Include="Content\less\modals.less" />
+    <Content Include="Content\less\navbar.less" />
+    <Content Include="Content\less\navs.less" />
+    <Content Include="Content\less\pager.less" />
+    <Content Include="Content\less\pagination.less" />
+    <Content Include="Content\less\popovers.less" />
+    <Content Include="Content\less\progress-bars.less" />
+    <Content Include="Content\less\reset.less" />
+    <Content Include="Content\less\responsive-1200px-min.less" />
+    <Content Include="Content\less\responsive-767px-max.less" />
+    <Content Include="Content\less\responsive-768px-979px.less" />
+    <Content Include="Content\less\responsive-navbar.less" />
+    <Content Include="Content\less\responsive-utilities.less" />
+    <Content Include="Content\less\responsive.less" />
+    <Content Include="Content\less\scaffolding.less" />
+    <Content Include="Content\less\sprites.less" />
+    <Content Include="Content\less\tables.less" />
+    <Content Include="Content\less\thumbnails.less" />
+    <Content Include="Content\less\tooltip.less" />
+    <Content Include="Content\less\type.less" />
+    <Content Include="Content\less\utilities.less" />
+    <Content Include="Content\less\variables.less" />
+    <Content Include="Content\less\wells.less" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <None Include="Content\admin.less" />
@@ -240,6 +300,12 @@
     <Content Include="Scripts\Apps\defaults\_gridElementScripts\novinka.js">
       <DependentUpon>novinka.coffee</DependentUpon>
     </Content>
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\simplehtml.js">
+      <DependentUpon>simplehtml.coffee</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\text.js">
+      <DependentUpon>text.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\Apps\defaults\_gridElementScripts\textlocalized.coffee" />
     <Content Include="Scripts\Apps\defaults\_gridElementScripts\reference.coffee" />
     <Content Include="Scripts\Apps\defaults\_gridElementScripts\simplehtml.coffee" />
@@ -251,20 +317,10 @@
     </Content>
     <Content Include="Scripts\Apps\defaults\_gridElementScripts\text.coffee" />
     <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
+    <Content Include="Scripts\Apps\defaults\_gridElementScripts\textlocalized.js">
+      <DependentUpon>textlocalized.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
-    <None Include="Service References\ServiceReference1\Client1.wsdl" />
-    <None Include="Service References\ServiceReference1\Client4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\Client6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\Client7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ServiceReference1\Client8.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
@@ -272,7 +328,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Client1.disco" />
     <Content Include="Scripts\Admin\cmsapi.js" />
     <Content Include="Scripts\Admin\gridpagesCtrl.js" />
     <Content Include="Scripts\Admin\pageCtrl.js" />

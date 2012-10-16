@@ -166,13 +166,18 @@ module.controller("cultureCtrl", function ($scope, appSettings, GridApi) {
 //module.directive("gridelement", ['$compile', "GridApi", "appSettings","$http",
 module.directive("gridelement", function ($compile, GridApi, appSettings, gridtemplate) {
 
-	function _newitem(line) {
-		var newitem = {Id: 0, Width: 12, Type: "text", Line: line, Edit: 0};
+	function _newitem(line, type) {
+		var newitem = {Id: 0, Width: 12, Type: type, Line: line, Edit: 0};
 		return newitem;
 	}
 
 	var directiveDefinitionObject,
 		gridElementCtrl = function ($scope) {
+			$scope.addWithType = function (item, newtype, event) {
+				event.preventDefault();
+				item.Type = newtype;
+				$scope.add(item);
+			};
 			$scope.add = function (item) {
 				GridApi.AddGridElement({
 					applicationId: appSettings.Id,
@@ -180,7 +185,7 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 					gridId: $scope.grid.Id
 				}, function (data) {
 					if (data.Line >= $scope.grid.Lines.length - 1) {
-						var newitem = _newitem($scope.grid.Lines.length);
+						var newitem = _newitem($scope.grid.Lines.length, item.Type);
 						$scope.grid.Lines.push([newitem]);
 					}
 					$scope.grid.Lines[data.Line][data.Position] = data;
@@ -191,7 +196,6 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 
 			$scope.remove = function (item) {
 				var line = $scope.$parent.$parent.line;
-
 				GridApi.DeleteGridElement({applicationId: appSettings.Id, data: item, gridId: $scope.grid.Id},
 					function () {
 						item.Id = 0;
@@ -206,7 +210,9 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 
 			$scope.edit = function (item) {
 				$scope.$broadcast("gridelement-edit");
-				item.Edit = 1;
+				if (item.Id !== 0) {
+					item.Edit = 1;
+				}
 			};
 
 			$scope.save = function (item) {
@@ -215,7 +221,6 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 				if (angular.isObject(copy.Content)) {
 					copy.Content = JSON.stringify(copy.Content);
 				}
-
 				GridApi.UpdateGridElement({applicationId: appSettings.Id, data: copy},
 					function () {
 						item.Edit = 0;
@@ -253,6 +258,19 @@ module.directive("menuitem", function ($compile, GridApi, appSettings, menuItemT
 			var sablona = menuItemTemplate(scope.menuitem.Type),
 				compiled = $compile(sablona)(scope);
 			iElement.html(compiled);
+		}
+	};
+});
+
+module.directive("ngcHover", function () {
+	return {
+		link: function (scope, element, attrs) {
+			element.bind('mouseenter', function () {
+				element.find(".hider").show();
+			});
+			element.bind('mouseleave', function () {
+				element.find(".hider").hide();
+			});
 		}
 	};
 });

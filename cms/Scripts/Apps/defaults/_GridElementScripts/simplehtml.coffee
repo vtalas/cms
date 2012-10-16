@@ -5,16 +5,15 @@
 ###
 
 simplehtml = ($scope, $http) ->
-  text.$inject = [ "$scope", "$http" ]
+	text.$inject = [ "$scope", "$http" ]
 
-  converter = new Showdown.converter()
+	converter = new Showdown.converter()
 
-  toHtml = (markdown) ->
-    converter.makeHtml markdown if markdown
+	toHtml = (markdown) ->
+		converter.makeHtml markdown if markdown
 
-  $scope.ContentToHtml = ->
-    toHtml $scope.gridelement.Content
-
-  1
+	$scope.ContentToHtml = ->
+		toHtml $scope.gridelement.Content
+	1
 
 window.simplehtml = simplehtml

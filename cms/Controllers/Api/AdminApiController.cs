@@ -34,7 +34,6 @@ namespace cms.Controllers.Api
 			}
 		}
 
-
 		[HttpPost]
 		public ActionResult DeleteGridElement(GridElement data, Guid gridId)
 		{
@@ -46,13 +45,13 @@ namespace cms.Controllers.Api
 		}
 
 		[HttpPost]
-		[JObjectFilter(Param = "data")]
-		public ActionResult UpdateGridElement(JObject data)
+		//[JObjectFilter(Param = "data")]
+		public ActionResult UpdateGridElement(GridElementDto data)
 		//public ActionResult UpdateGridElement(GridElementDto data)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.Update(data["data"].ToGridElementDto());
+				var g = db.Update(data);
 				return new JSONNetResult(g);
 			}
 		}
@@ -111,8 +110,6 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				data.Category = CategoryEnum.Page;
-
 				var newgrid = db.Page.Add(data);
 				return new JSONNetResult(newgrid);
 			}

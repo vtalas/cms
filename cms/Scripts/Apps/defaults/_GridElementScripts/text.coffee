@@ -5,10 +5,10 @@
 ###
 
 text = ($scope, $http, appSettings) ->
-  text.$inject = [ "$scope", "$http", "appSettings"]
-#  console.log(appSettings)
+	text.$inject = [ "$scope", "$http", "appSettings"]
+#	console.log(appSettings)
 
-  $scope.xxx = "xxxx"
-  1
+	$scope.xxx = "xxxx"
+	1
 
 window.text = text
