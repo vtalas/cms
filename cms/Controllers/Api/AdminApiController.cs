@@ -45,7 +45,6 @@ namespace cms.Controllers.Api
 			}
 		}
 
-
 		[HttpPost]
 		[JObjectFilter(Param = "data")]
 		public ActionResult UpdateGridElement(JObject data)
