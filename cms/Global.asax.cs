@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using cms.Models;
 using cms.shared;
@@ -77,7 +78,15 @@ namespace cms
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);
 			SharedLayer.Init();
+			RegisterBundles();
 		}
+
+		protected void RegisterBundles()
+		{
+			var cssjQuery = new StyleBundle("~/Content");
+			cssjQuery.IncludeDirectory("~/Content", "*.css");
+		}
+
 
 		protected void Session_Start(Object sender, EventArgs e)
 		{

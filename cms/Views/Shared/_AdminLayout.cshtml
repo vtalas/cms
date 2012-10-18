@@ -4,7 +4,7 @@
 <html>	
 	<head>
 		<title>@ViewBag.Title</title>
-		<script src=""></script>
+		
 		@Scripts.Render(
 				"~/Scripts/jquery-1.7.2.js",
 				"~/Scripts/jquery-ui.min.js",
@@ -16,8 +16,6 @@
 				"~/Scripts/select2/select2.js",
 				"~/Scripts/showdown.js",
 				
-				//.Add("~/Scripts/Admin")
-				
 				"~/Scripts/angular-templates-ext.coffee",
 				"~/Scripts/Apps/defaults/_gridElementScripts/novinka.coffee",
 				"~/Scripts/Apps/defaults/_gridElementScripts/text.coffee",
@@ -26,15 +24,24 @@
 				"~/Scripts/Apps/defaults/_gridElementScripts/textlocalized.coffee"
 			)
 		
+		@Scripts.Render(
+  				"~/Scripts/Admin/cmsapi.js",
+  				"~/Scripts/Admin/gridpagesCtrl.js",
+  				"~/Scripts/Admin/Grids.js",
+  				"~/Scripts/Admin/Index.js",
+  				"~/Scripts/Admin/menuCtrl.js",
+  				"~/Scripts/Admin/pageCtrl.js"
+		)
 		
-		@Styles.Render(
+		<link href="@Styles.Url("~/Content")" rel="stylesheet" type="text/css" />
+
+		@*@Styles.Render(
 				"~/Content/fluid_grid.css",
 				"~/Scripts/select2/select2.css",
-				//"~/Content/bootstrapdefault/less/dropdowns.less",
 				//"~/Content/bootstrapdefault/less/bootstrap.less"
 				"~/Content/admin.less"
 			)
-	
+	*@
 	</head>
 	<body>
 		@RenderBody()
