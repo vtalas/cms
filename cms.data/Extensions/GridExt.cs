@@ -74,12 +74,13 @@ namespace cms.data.Extensions
 				};
 			return grid;
 		}
-		public static GridElement CreateGridElement(string type)
+		public static GridElement CreateGridElement(string type, int position = 0 )
 		{
 			var grid = new GridElement
 				{
 					Type = type,
 					Width = 12,
+					Position = position,
 					Id = Guid.NewGuid()
 
 				};

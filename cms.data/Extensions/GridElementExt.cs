@@ -9,7 +9,7 @@ namespace cms.data.Extensions
 	{
 		public static IEnumerable<MenuItemDto> ToChildren(this IEnumerable<GridElement> source)
 		{
-			var rootlist = source.Where(x => x.Parent == null).Select(x=>x.ToMenuItemDto(source)).ToList();
+			var rootlist = source.Where(x => x.Parent == null).Select(x=>x.ToMenuItemDto(source)).OrderBy(a=>a.Position).ToList();
 			return rootlist;
 		}
 

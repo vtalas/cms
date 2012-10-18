@@ -108,18 +108,18 @@ namespace cms.data.EF.Initializers
 
 		private void GenerateMenus(ApplicationSetting application)
 		{
-			var rootitem = GridExt.CreateGridElement("menutext");
+			var rootitem = GridExt.CreateGridElement("menutext", 2);
 			
 			var items = new List<GridElement>
 				            {
-								GridExt.CreateGridElement("menutext"),
-								GridExt.CreateGridElement("menutext"),
-								GridExt.CreateGridElement("menutext"),
-								GridExt.CreateGridElement("menutext"),
+								GridExt.CreateGridElement("menutext", 0),
+								GridExt.CreateGridElement("menutext", 1),
+								GridExt.CreateGridElement("menutext", 3),
+								GridExt.CreateGridElement("menutext", 4),
 								rootitem,
-								GridExt.CreateGridElement("menutext").WithParent(rootitem),
-								GridExt.CreateGridElement("menutext").WithParent(rootitem),
-								GridExt.CreateGridElement("menutext").WithParent(rootitem),
+								GridExt.CreateGridElement("menutext", 0).WithParent(rootitem),
+								GridExt.CreateGridElement("menutext", 1).WithParent(rootitem),
+								GridExt.CreateGridElement("menutext", 2).WithParent(rootitem),
 				            };
 
 			var menu = GridExt.CreateGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)

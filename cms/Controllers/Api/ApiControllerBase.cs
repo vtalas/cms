@@ -20,6 +20,7 @@ namespace cms.Controllers.Api
 			base.Initialize(requestContext);
 			
 			ApplicationId = new Guid( RouteData.Values["applicationId"].ToString());
+			SecurityProvider.EnsureInitialized();
 			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId, WebSecurity.CurrentUserId ), new MigrateInitalizer());
 			
 		}
