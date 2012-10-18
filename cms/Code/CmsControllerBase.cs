@@ -1,6 +1,7 @@
 using System;
 using System.Data.Entity;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 using cms.data.EF;
 using cms.data.EF.DataProvider;
 using cms.data.EF.Initializers;
@@ -30,11 +31,13 @@ namespace cms.Code
 			base.Initialize(requestContext);
 			object x = null;
 
+			SecurityProvider.EnsureInitialized();
+
 			if (RouteData.Values.TryGetValue("application", out x  ))
 			{
 				Application = x as string;
 
-				SessionProvider = new SessionProvider(() => new JsonDataEf(Application), new MigrateInitalizer());
+				SessionProvider = new SessionProvider(() => new DataEf(Application, WebSecurity.CurrentUserId));
 				using (var db = SessionProvider.CreateSession)
 				{
 					ApplicationId = db.ApplicationId;

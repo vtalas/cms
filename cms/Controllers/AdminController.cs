@@ -6,7 +6,6 @@ namespace cms.Controllers
 	[Authorize]
 	public class AdminController : CmsControllerBase
     {
-
 		public ActionResult Index()
 		{
 			using (var db = SessionProvider.CreateSession)

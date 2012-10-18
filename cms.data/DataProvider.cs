@@ -5,23 +5,22 @@ using cms.data.Shared.Models;
 
 namespace cms.data
 {
-	public interface IDataProvTmp
+	public abstract class DataProvider :  IDisposable
 	{
-		
-	}
-
-	public abstract class JsonDataProvider :  IDisposable
-	{
+		protected int UserId { get; set; }
 		public string ApplicationName { get; protected set; }
 		public Guid ApplicationId { get; protected set; }
-		public abstract ApplicationSetting CurrentApplication { get; }
+		public abstract ApplicationSetting CurrentApplication { get; protected set; }
 		protected string CurrentCulture {get { return shared.SharedLayer.Culture; }}
-		protected JsonDataProvider(Guid applicationId )		{
-			ApplicationId  = applicationId;
-		}
-		protected JsonDataProvider(string application )
+		protected DataProvider(Guid applicationId, int userId)
 		{
-			ApplicationName = application;
+			ApplicationId  = applicationId;
+			UserId = userId;
+		}
+		protected DataProvider(string applicationName, int userId)
+		{
+			ApplicationName = applicationName;
+			UserId = userId;
 		}
 		public abstract MenuAbstract Menu { get; }
 		public abstract PageAbstract Page { get; }
@@ -31,13 +30,12 @@ namespace cms.data
 		public abstract GridElement AddGridElementToGrid(GridElement gridElement, Guid gridId);
 		public abstract Grid GetGrid(Guid guid);
 		public abstract void DeleteGrid(Guid guid);
-		public abstract ApplicationSetting Add(ApplicationSetting newitem);
+		public abstract ApplicationSetting Add(ApplicationSetting newitem, int userId);
 		public abstract void DeleteGridElement(Guid guid, Guid gridid);
 		public abstract GridElement GetGridElement(Guid guid);
 		public abstract GridElementDto Update(GridElementDto item);
 		public abstract GridPageDto Update(GridPageDto item);
-		public abstract ApplicationSetting GetApplication(Guid id);
-		public abstract ApplicationSetting GetApplication(string name);
+
 		public abstract IEnumerable<ApplicationSettingDto> Applications();
 		
 		public abstract void Dispose();

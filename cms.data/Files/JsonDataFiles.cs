@@ -6,7 +6,7 @@ using cms.data.Shared.Models;
 
 namespace cms.data.Files
 {
-	//public class JsonDataFiles : JsonDataProvider
+	//public class JsonDataFiles : DataProvider
 	//{
 	//    List<ApplicationSetting> apps  = new List<ApplicationSetting>()
 	//                                        {

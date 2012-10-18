@@ -11,6 +11,7 @@ namespace cms.data.Shared.Models
 		}
 
 		public Guid Id { get; set; }
+		public ICollection<UserProfile> Users { get; set; }
 		public string Name { get; set; }
 		public string DefaultLanguage { get; set; }
 		public virtual ICollection<Grid> Grids { get; set; }

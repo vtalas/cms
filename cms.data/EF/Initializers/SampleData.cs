@@ -1,17 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Threading;
 using WebMatrix.WebData;
 using cms.data.Shared.Models;
 using cms.shared;
 
 namespace cms.data.EF.Initializers
 {
-
 	public class SampleData
 	{
-
 		protected EfContext Context { get; set; }
 
 		//static readonly ILog Log = LogManager.GetLogger<SampleData>();
@@ -103,9 +100,12 @@ namespace cms.data.EF.Initializers
 
 		private void GenerateUsers(ApplicationSetting application)
 		{
-			SecurityProvider.EnsureInitialized();
+			SecurityProvider.EnsureInitialized(true);
+
 			WebSecurity.CreateUserAndAccount("admin", "a");
 			WebSecurity.Login("admin", "a");
+
+			SecurityProvider.Destroy();
 		}
 
 		private void GenerateMenus(ApplicationSetting application)

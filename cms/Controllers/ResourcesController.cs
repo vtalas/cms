@@ -28,7 +28,6 @@ namespace cms.Controllers
 			Resources.IncludeDirectory("../_default/gridelements");
 		}
 
-
 		public ActionResult Index()
 		{
 			

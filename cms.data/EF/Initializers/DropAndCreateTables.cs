@@ -1,7 +1,6 @@
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using WebMatrix.WebData;
 
 namespace cms.data.EF.Initializers
 {
@@ -9,7 +8,16 @@ namespace cms.data.EF.Initializers
 	{
 		public void InitializeDatabase(EfContext context)
 		{
-			var modelvalid = context.Database.CompatibleWithModel(true);
+		
+			bool modelvalid = false;
+			try
+			{
+				modelvalid = context.Database.CompatibleWithModel(true);
+			}
+			catch (Exception)
+			{
+			}
+
 			if (!modelvalid)
 			{
 				//TODO: obcas to spadne - DB is in use

@@ -6,13 +6,13 @@ namespace cms.data.tests.EF
 {
 	public class SessionManager : IDisposable
 	{
-		private static JsonDataEf Context { get; set; }
+		private static DataEf Context { get; set; }
 
-		public static JsonDataEf CreateSession
+		public static DataEf CreateSession
 		{
 			get
 			{
-				Context = new JsonDataEf(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"));
+				Context = new DataEf(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), 1);
 				return Context;
 			}
 		}

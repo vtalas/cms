@@ -12,7 +12,7 @@ namespace cms.data.tests.SampleData
 	[TestFixture]
 	public class CreateSampleDataTest
 	{
-		private JsonDataEf Repo { get; set; }
+		private DataEf Repo { get; set; }
 
 		[SetUp]
 		[Ignore]
@@ -20,7 +20,7 @@ namespace cms.data.tests.SampleData
 		{
 			var context = new EfContext("EfContextSampleData");
 			Database.SetInitializer(new DropAndCreate());
-			Repo = new JsonDataEf("aaa", context);
+			Repo = new DataEf("aaa",  context, 1);
 		}
 
 		[Test]

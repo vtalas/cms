@@ -8,33 +8,42 @@ using cms.shared;
 
 namespace cms.data.EF.DataProvider
 {
-	public class JsonDataEf : JsonDataProvider
+	public class DataEf : data.DataProvider
 	{
+		private UserProfile CurrentUser { get; set; }
 		private EfContext db { get; set; }
 
-		public JsonDataEf(string application, EfContext context)
-			: base(application)
+		public override sealed ApplicationSetting CurrentApplication { get; protected set; } 
+
+		private DataEf(ApplicationSetting app, EfContext context, int userId) : base(app.Id, userId)
 		{
 			db = context;
-			var app = GetApplication(application);
-			ApplicationId = app == null ? new Guid("00000000-0000-0000-0000-000000000000") : app.Id;
+			ApplicationId = app.Id;
+			ApplicationName = app.Name;
+			CurrentApplication = app;
+			CurrentUser = db.UserProfile.Single(x => x.Id == userId);
 		}
 
-		public JsonDataEf(Guid application, EfContext context)
-			: base(application)
+		public DataEf(string applicationName, EfContext context, int userId)
+			: this(GetApp(applicationName, context, userId), context, userId) { }
+
+		public DataEf(Guid applicationId, EfContext context, int userId)
+			: this(GetApp(applicationId, context, userId), context, userId){}
+
+		public DataEf(string applicationName, int userId) : this(applicationName, new EfContext(), userId) { }
+
+		public DataEf(Guid applicationId, int userId) : this(applicationId, new EfContext(), userId) { }
+
+		private static ApplicationSetting GetApp(Guid appId, EfContext context, int userId)
 		{
-			db = context;
-
-			var app = GetApplication(application);
-			ApplicationName = app == null ? "" : app.Name;
+			return context.ApplicationSettings.SingleOrDefault(x => x.Id == appId && x.Users.Any(u => u.Id == userId));
 		}
 
-		public JsonDataEf(string application) : this(application, new EfContext()) { }
-
-		public JsonDataEf(Guid applicationId) : this(applicationId, new EfContext()) { }
-
-		public override ApplicationSetting CurrentApplication { get { return db.ApplicationSettings.Single(x => x.Name == ApplicationName); } }
-
+		private static ApplicationSetting GetApp(string appName, EfContext context, int userId)
+		{
+			return context.ApplicationSettings.SingleOrDefault(x => x.Name == appName && x.Users.Any(u => u.Id == userId));
+		}
+		
 		public override IEnumerable<ApplicationSettingDto> Applications()
 		{
 			return db.ApplicationSettings.ToList().ToDtos();
@@ -46,14 +55,9 @@ namespace cms.data.EF.DataProvider
 			return a;
 		}
 
-		public override sealed ApplicationSetting GetApplication(Guid id)
+		private  ApplicationSetting GetApplication(Guid id)
 		{
 			return db.ApplicationSettings.SingleOrDefault(x => x.Id == id);
-		}
-
-		public override sealed ApplicationSetting GetApplication(string name)
-		{
-			return db.ApplicationSettings.SingleOrDefault(x => x.Name == name);
 		}
 
 		public override Grid GetGrid(Guid id)
@@ -192,8 +196,11 @@ namespace cms.data.EF.DataProvider
 			return newitem;
 		}
 
-		public override ApplicationSetting Add(ApplicationSetting newitem)
+		public override ApplicationSetting Add(ApplicationSetting newitem, int userId)
 		{
+			var user = db.UserProfile.Single(x => x.Id == userId);
+			newitem.Users.Add(user);
+
 			db.ApplicationSettings.Add(newitem);
 			if (newitem.Grids == null)
 			{

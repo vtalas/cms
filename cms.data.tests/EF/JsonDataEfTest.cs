@@ -38,7 +38,6 @@ namespace cms.data.tests.EF
 				            		new Resource{ Culture = "cs", Value = "cesky", Key = "text1"},
 									new Resource{ Culture = "en", Value = "englicky", Key = "text1"},
 				            	}
-
 				};
 				var newitem = db.AddGridElementToGrid(a, guid);
 				Assert.True(!newitem.Id.IsEmpty());
@@ -56,7 +55,7 @@ namespace cms.data.tests.EF
 	[TestFixture]
 	public class JsonDataEfTest
 	{
-		private JsonDataEf repo { get; set; }
+		private DataEf repo { get; set; }
 		EfContext _context;
 
 		[SetUp]
@@ -64,7 +63,7 @@ namespace cms.data.tests.EF
 		{
 			_context = new EfContext();
 			Database.SetInitializer(new DropAndCreate());
-			repo = new JsonDataEf(Helpers.guid, _context);
+			repo = new DataEf(Helpers.guid, _context, 1);
 			Assert.IsNotNull(repo);
 		}
 
@@ -486,9 +485,9 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSession)
 				{
-					var newitem = db.Add(a);
+					var newitem = db.Add(a, 1);
 					Console.WriteLine(newitem.Name);
-					Assert.IsNotNull(db.GetApplication(newitem.Id));
+					//Assert.IsNotNull(db.GetApplication(newitem.Id));
 				}
 
 			}

@@ -66,14 +66,14 @@
     <Compile Include="EF\SessionProvider.cs" />
     <Compile Include="EF\Initializers\DropAndCreate.cs" />
     <Compile Include="EF\Initializers\DropAndCreateTables.cs" />
-    <Compile Include="EF\DataProvider\JsonDataEf.cs" />
+    <Compile Include="EF\DataProvider\DataEf.cs" />
     <Compile Include="Files\JsonDataFiles.cs" />
     <Compile Include="GridElementExt.cs" />
     <Compile Include="Dtos\GridListDto.cs" />
     <Compile Include="GridPage.cs" />
     <Compile Include="IDataProvider.cs" />
     <Compile Include="EF\EfContext.cs" />
-    <Compile Include="JsonDataProvider.cs" />
+    <Compile Include="DataProvider.cs" />
     <Compile Include="EF\DataProvider\MenuAbstractImpl.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="EF\DataProvider\PageAbstractImpl.cs" />

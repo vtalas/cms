@@ -1,18 +1,16 @@
 namespace cms.data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<cms.data.EF.EfContext>
+    public sealed class Configuration : DbMigrationsConfiguration<EF.EfContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(cms.data.EF.EfContext context)
+
+        protected override void Seed(EF.EfContext context)
         {
             //  This method will be called after migrating to the latest version.
 
