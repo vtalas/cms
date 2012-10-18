@@ -69,6 +69,7 @@ class DragAndDropObjts {
 		this.destination = destinationItem;
 		this.pseudohidden = new DndItem({}, {}, {}, "");
 	}
+
 	swapItems() {
 		var collection = this.source.collection(),
 			sourceindex = this.source.findById(this.source.item),
@@ -78,15 +79,13 @@ class DragAndDropObjts {
 		collection[sourceindex] = collection[destinationindex];
 		collection[destinationindex] = tempSource;
 	}
-	removeOrHide() {
-		if (this.source.isClone()) {
-			this.source.removeFromCollection();
-		} else {
-			this.hide(this.source.item);
-			this.pseudohidden.item = this.source.item;
-			this.pseudohidden.scope = this.source.scope;
-		}
+
+	changeParent() {
+		this.removeOrHideInSource();
+		this.showOrPush();
+		this.source.scope = this.destination.scope;
 	}
+
 	hide(itemToHide) {
 		itemToHide.statusclass = "pseudohidden";
 		itemToHide.status = StatusEnum.PSEUDOHIDDEN;
@@ -94,6 +93,16 @@ class DragAndDropObjts {
 	show(itemToHide, newstatus:StatusEnum) {
 		itemToHide.statusclass = "";
 		itemToHide.status = newstatus;
+	}
+
+	removeOrHideInSource() {
+		if (this.source.isClone()) {
+			this.source.removeFromCollection();
+		} else {
+			this.hide(this.source.item);
+			this.pseudohidden.item = this.source.item;
+			this.pseudohidden.scope = this.source.scope;
+		}
 	}
 	showOrPush() {
 		var collectiondest = this.destination.collection();

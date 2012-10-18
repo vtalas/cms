@@ -10,7 +10,7 @@ angular.module('ui.directives').value('ui.config.default', {
 				dndobj.$emit("dragstart-sortablehtml");
 			},
 			dragend: function (e, uioptions, dndobj) {
-				console.log("end", dndobj.source.item.status);
+				console.log("end ...", dndobj.source.item.status);
 				dndobj.setSourceStatus(StatusEnum.DRAGEND);
 				dndobj.source.item.isClone = false;
 

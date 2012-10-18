@@ -10,7 +10,7 @@ angular.module('ui.directives').value('ui.config.default', {
 				dndobj.$emit("dragstart-sortablehtml");
 			},
 			dragend: function (e, uioptions, dndobj) {
-				console.log("end", dndobj.source.item.status);
+				console.log("end", dndobj);
 				dndobj.setSourceStatus(StatusEnum.DRAGEND);
 				dndobj.source.item.isClone = false;
 
@@ -21,36 +21,34 @@ angular.module('ui.directives').value('ui.config.default', {
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 			},
 			dragenter: function (e, uioptions, dndobj) {
-				var collectiondest = dndobj.destination.collection,
-					destinationIsChild = (dndobj.source.element).find(dndobj.destination.element).length > 0;
+				var	destinationIsChildOfDragged = (dndobj.source.element).find(dndobj.destination.element).length > 0;
 
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
-				if (destinationIsChild) {
+				if (destinationIsChildOfDragged) {
 					return;
 				}
 
 				if (dndobj.source.item !== dndobj.destination.item) {
-
 					if (dndobj.sameCollection()) {
 						dndobj.swapItems();
 					} else {
-						//remove or hide
-						dndobj.removeOrHide();
-						dndobj.showOrPush(collectiondest, dndobj);
-						dndobj.source.scope = dndobj.destination.scope;
+                        dndobj.changeParent();
 					}
 				}
+
 				dndobj.destination.scope.$apply();
 				dndobj.$emit("dragenter-sortablehtml");
 			},
 			dragleave: function (e, uioptions, dndobj) {
 				dndobj.$emit("dragleave-sortablehtml", dndobj);
 			},
+
 			dragover: function (e, uioptions, dndobj) {
 				e.preventDefault();
 				e.stopPropagation();
 				dndobj.$emit("dragover-sortablehtml");
 			},
+
 			drop: function (e, uioptions, dndobj) {
 				console.log("drop");
 				dndobj.setSourceStatus(StatusEnum.DROPPED);

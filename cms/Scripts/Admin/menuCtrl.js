@@ -6,12 +6,10 @@
 		var old = (xxx.element).css("background-color");
 		switch (xxx.newvalue) {
 		case StatusEnum.DRAGEND:
-			(xxx.element).css("background-color", "green");
-			$(".sortableCtrl").stop(true, true).css("opacity", "1");
-			(xxx.element).animate({ backgroundColor: old }, 1000);
 			break;
 		case StatusEnum.DRAGGED:
-			(xxx.element).css("opacity", 1);
+            console.log("swapped");
+                $(xxx.element).css("opacity", 1);
 			break;
 		case StatusEnum.DROPPED:
 			break;
@@ -35,16 +33,10 @@
 		$(".dropableCtrl").animate({ height: 0 }, 100);
 	};
 
-	$scope.showAdd = function (item) {
-		item.showAdd = 1;
-	};
-	$scope.hideAdd = function (item) {
-		item.showAdd = 0;
-	};
-
 	$scope.grids = GridApi.grids({ }, function (data) {
 
 	});
+
 	$scope.add = function (item) {
 		console.log("add", item);
 		var menuitem = {

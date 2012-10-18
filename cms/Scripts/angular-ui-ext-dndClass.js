@@ -69,14 +69,10 @@ var DragAndDropObjts = (function () {
         collection[sourceindex] = collection[destinationindex];
         collection[destinationindex] = tempSource;
     };
-    DragAndDropObjts.prototype.removeOrHide = function () {
-        if(this.source.isClone()) {
-            this.source.removeFromCollection();
-        } else {
-            this.hide(this.source.item);
-            this.pseudohidden.item = this.source.item;
-            this.pseudohidden.scope = this.source.scope;
-        }
+    DragAndDropObjts.prototype.changeParent = function () {
+        this.removeOrHideInSource();
+        this.showOrPush();
+        this.source.scope = this.destination.scope;
     };
     DragAndDropObjts.prototype.hide = function (itemToHide) {
         itemToHide.statusclass = "pseudohidden";
@@ -85,6 +81,15 @@ var DragAndDropObjts = (function () {
     DragAndDropObjts.prototype.show = function (itemToHide, newstatus) {
         itemToHide.statusclass = "";
         itemToHide.status = newstatus;
+    };
+    DragAndDropObjts.prototype.removeOrHideInSource = function () {
+        if(this.source.isClone()) {
+            this.source.removeFromCollection();
+        } else {
+            this.hide(this.source.item);
+            this.pseudohidden.item = this.source.item;
+            this.pseudohidden.scope = this.source.scope;
+        }
     };
     DragAndDropObjts.prototype.showOrPush = function () {
         var collectiondest = this.destination.collection();
