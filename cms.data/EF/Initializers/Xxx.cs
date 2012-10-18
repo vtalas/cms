@@ -1,6 +1,4 @@
-using cms.data.EF;
-
-namespace cms.data.tests.EF
+namespace cms.data.EF.Initializers
 {
 	public class Xxx
 	{

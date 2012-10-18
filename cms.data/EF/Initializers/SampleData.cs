@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using WebMatrix.WebData;
@@ -34,7 +34,7 @@ namespace cms.data.EF.Initializers
 			var user = Context.UserProfile.Single(x => x.Id == userid);
 			application.Users.Add(user);
 
-			GenerateGrids(application);
+			GenerateGridPages(application);
 
 			Context.TemplateTypes.Add(new TemplateType { Name = "novinka" });
 			Context.TemplateTypes.Add(new TemplateType { Name = "text" });
@@ -61,34 +61,38 @@ namespace cms.data.EF.Initializers
 			Context.SaveChanges();
 		}
 
-		private void GenerateGrids(ApplicationSetting application)
+		private void GenerateGridPages(ApplicationSetting application)
 		{
-
-			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithGridElement(new GridElement { Content = "", Position = 0, Width = 12, Type = "text" })
+			Context.Grids.Add(GridExt.CreateGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+										.WithGridElement(
+											GridExt.CreateGridElement("text")
+												.WithResource("text", "český text")
+												.WithResource("text", "english text", CultureEn)
+												)
 										.WithResource(SpecialResourceEnum.Link, "testPage_link")
 										.WithResource("name", "testovaci stranka", CultureCs)
-										.WithResource("name", "Test Page", CultureEn)
+										.WithResource("name", "Test Page", CultureEn)  as Grid 
 								);
 
-			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+
+			Context.Grids.Add(GridExt.CreateGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "bezelementu")
 										.WithResource("name", "grid Bez elementu", CultureCs)
 										.WithResource("name", "Without Any Element", CultureEn)
 								);
 
-			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			Context.Grids.Add(GridExt.CreateGrid(new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "gallery_1")
 										.WithResource("name", "galerie 1", CultureCs)
 										.WithResource("name", "gallery 1", CultureEn)
 								);
 
-			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			Context.Grids.Add(GridExt.CreateGrid(new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "gallery_1_sub_1", CultureCs)
 										.WithResource("name", "subgalerie galerie 1", CultureCs)
 								);
 
-			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			Context.Grids.Add(GridExt.CreateGrid(new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "gallery_1_2", CultureCs)
 										.WithResource("name", "gallery 1 sub 2 ", CultureCs)
 								);
@@ -104,26 +108,21 @@ namespace cms.data.EF.Initializers
 
 		private void GenerateMenus(ApplicationSetting application)
 		{
+			var rootitem = GridExt.CreateGridElement("menutext");
+			
 			var items = new List<GridElement>
 				            {
-					            new GridElement {Parent = null, Content = "", Id = Guid.NewGuid()},
-					            new GridElement {Parent = null, Content = "", Id = Guid.NewGuid()},
-					            new GridElement {Parent = null, Content = "", Id = Guid.NewGuid()},
-					            new GridElement {Parent = null, Content = "", Id = Guid.NewGuid()}
+								GridExt.CreateGridElement("menutext"),
+								GridExt.CreateGridElement("menutext"),
+								GridExt.CreateGridElement("menutext"),
+								GridExt.CreateGridElement("menutext"),
+								rootitem,
+								GridExt.CreateGridElement("menutext").WithParent(rootitem),
+								GridExt.CreateGridElement("menutext").WithParent(rootitem),
+								GridExt.CreateGridElement("menutext").WithParent(rootitem),
 				            };
 
-			//add rootitems 
-
-			var rootitem = new GridElement { Parent = null, Content = "", Id = Guid.NewGuid() };
-			items.Add(rootitem);
-
-			items.Add(new GridElement { Parent = rootitem, Content = "", Id = Guid.NewGuid() });
-			items.Add(new GridElement { Parent = rootitem, Content = "", Id = Guid.NewGuid() });
-			items.Add(new GridElement { Parent = rootitem, Content = "", Id = Guid.NewGuid() });
-			items.Add(new GridElement { Parent = rootitem, Content = "", Id = Guid.NewGuid() });
-			items.Add(new GridElement { Parent = rootitem, Content = "", Id = Guid.NewGuid() });
-
-			var menu = GridExtensions.CreateGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			var menu = GridExt.CreateGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 								.WithCategory(CategoryEnum.Menu)
 								.WithGridElements(items)
 								.WithResource(SpecialResourceEnum.Link, "test_menu_link", CultureCs)

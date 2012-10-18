@@ -1,4 +1,4 @@
 ﻿<div>
-	menu template
-	{{gridelement.ResourcesLoc.text.Value}}
+	{{gridelement.Id}}
+    lkndlkandlk
 </div>

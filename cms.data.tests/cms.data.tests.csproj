@@ -72,7 +72,6 @@
     <Compile Include="PageAbstractTests\PageAbstract_Test.cs" />
     <Compile Include="PageAbstractTests\PageAbstract_Test_EntityFrameworkDB.cs" />
     <Compile Include="SampleData\CreateSampleDataTest.cs" />
-    <Compile Include="EF\Xxx.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UpdateResourceList\UpdateResourceList_Test_NoDB.cs" />

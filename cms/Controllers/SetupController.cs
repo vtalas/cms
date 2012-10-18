@@ -11,9 +11,10 @@ namespace cms.Controllers
     {
 		public ActionResult DropAndCreateTables()
 		{
+			
+			Database.SetInitializer(new DropAndCreateTables());
 			using (var a = new EfContext())
 			{
-				Database.SetInitializer(new DropAndCreateTables());
 				Response.Write(a.ApplicationSettings.ToList()[0].Id);
 				Response.Write(" \n");
 				Response.Write(WebSecurity.Initialized);
@@ -25,14 +26,17 @@ namespace cms.Controllers
 		{
 			using (var a = new EfContext())
 			{
-				Database.SetInitializer(new DropAndCreateAlwaysForce());
+				Xxx.DeleteDatabaseData();
+				new DropAndCreateAlwaysForce().InitializeDatabase(a);
+				SecurityProvider.EnsureInitialized(true);
+				new SampleData(a).Generate();
+
 				Response.Write(a.ApplicationSettings.ToList()[0].Id);
 				Response.Write(" \n");
 				Response.Write(WebSecurity.Initialized);
 			}
-			return View();
+			return RedirectToAction("Index");
 		}
-
 		 
 		 
 		 public ActionResult MigrateDatabaseToLatestVersion()

@@ -169,6 +169,7 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 		scope: { grid: "=", gridelement: "=" },
 		link: function (scope, iElement, tAttrs, controller) {
 			scope.gui = { edit: 0 };
+
 			var template = tAttrs.admin ? gridtemplate(scope.gridelement.Type + "_admin.thtml") : gridtemplate(scope.gridelement.Type + ".thtml"),
 			    compiled = $compile(template)(scope);
 			iElement.html(compiled);

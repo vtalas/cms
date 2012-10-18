@@ -26,13 +26,11 @@
 	}])
 	.factory('apimenu', ['$resource', 'appSettings', function ($resource, appSettings) {
 
-		var project = $resource('/api/:applicationId/:controller/:action/:Id',
+		return $resource('/api/:applicationId/:controller/:action/:Id',
 			{ applicationId: appSettings.Id, controller: "menu" },
 			{
 				list: { method: 'GET', isArray: true, params: { action: "list" } },
 				get: { method: 'GET', isArray: false, params: { action: "get" } }
 			}
 		);
-
-		return project;
 	}]);

@@ -54,9 +54,10 @@
     <Compile Include="DataProvider\DataProviderAbstract.cs" />
     <Compile Include="DataProvider\DataProviderBase.cs" />
     <Compile Include="EF\EfContextExt.cs" />
+    <Compile Include="EF\Initializers\Xxx.cs" />
     <Compile Include="Extensions\PageAbstractExt.cs" />
     <Compile Include="EF\RepositoryImplementation\EfRepository.cs" />
-    <Compile Include="Extensions\GridExtensions.cs" />
+    <Compile Include="Extensions\GridExt.cs" />
     <Compile Include="Extensions\JsonDataEfHelpers.cs" />
     <Compile Include="Dtos\ApplicationSettingDto.cs" />
     <Compile Include="Dtos\MenuDto.cs" />

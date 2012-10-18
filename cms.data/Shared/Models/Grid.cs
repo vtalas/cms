@@ -8,25 +8,16 @@ namespace cms.data.Shared.Models
 	{
 		public Grid()
 		{
-			//GridType = DomainModels.GridType.Content;
-			//Status = DomainModels.Status.Private;
 			Id = Guid.NewGuid();
 			GridElements = new List<GridElement>();
 			Resources = new List<Resource>();
 			Category = CategoryEnum.Page;
 		}
 		public Guid Id { get; set; }
-		//public string Name { get; set; }
-		//public string Link { get; set; }
 		public bool Home { get; set; }
-		//public GridTypeWrapper GridType { get; set; }
-		//public StatusWrapper Status { get; set; }
 		public string Category { get; set; }
-
-		
 		public virtual ApplicationSetting ApplicationSettings { get; set; }
 		public virtual ICollection<GridElement> GridElements { get; set; }
 		public virtual ICollection<Resource> Resources { get; set; }
-
 	}
 }

@@ -1,5 +1,6 @@
 using System.Data;
 using NUnit.Framework;
+using cms.data.EF.Initializers;
 using cms.shared;
 
 namespace cms.data.tests.EF

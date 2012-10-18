@@ -13,29 +13,33 @@ namespace cms.data.EF.DataProviderImplementation
 	public class MenuAbstractImpl : MenuAbstract
 	{
 		private IRepository db { get; set; }
-		
-		public MenuAbstractImpl(ApplicationSetting application) : base(application){}
-		public MenuAbstractImpl(ApplicationSetting application, IRepository context) : base(application)
+
+		public MenuAbstractImpl(ApplicationSetting application) : base(application) { }
+		public MenuAbstractImpl(ApplicationSetting application, IRepository context)
+			: base(application)
 		{
 			db = context;
 		}
 
-		IQueryable<Grid> AvailableGrids()
+		private IQueryable<Grid> AvailableGrids
 		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Menu);
-			return a;
+			get
+			{
+				var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Menu);
+				return a;
+			}
 		}
 
 		public override void Delete(Guid guid)
 		{
-			var delete = AvailableGrids().Single(x => x.Id == guid);
+			var delete = AvailableGrids.Single(x => x.Id == guid);
 			db.Remove(delete);
 			db.SaveChanges();
 		}
 
 		public override MenuDto Get(Guid guid)
 		{
-			var grid = AvailableGrids().Single(x => x.Id == guid);
+			var grid = AvailableGrids.Single(x => x.Id == guid);
 			return grid.ToMenuDto();
 		}
 
@@ -46,18 +50,18 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
 		{
-			var grid = AvailableGrids().Single(x => x.Id == gridId);
-			
+			var grid = AvailableGrids.Single(x => x.Id == gridId);
+
 			grid.UpdateResourceList(item.ResourcesLoc, CurrentCulture, db);
-			
+
 			var a = new GridElement
-				        {
-					        Position = item.Position,
+						{
+							Position = item.Position,
 							Content = item.Content,
 							Type = item.Type,
 							Skin = item.Skin,
-							Parent = db.GridElements.Single(x => x.Id ==  new Guid(item.ParentId)),
-				        };
+							Parent = db.GridElements.Single(x => x.Id == new Guid(item.ParentId)),
+						};
 			grid.GridElements.Add(a);
 			db.SaveChanges();
 			return a.Id;
@@ -65,7 +69,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override IEnumerable<MenuDto> List()
 		{
-			var a = AvailableGrids().Where(x=>x.Category == CategoryEnum.Menu).ToList();
+			var a = AvailableGrids.Where(x => x.Category == CategoryEnum.Menu).ToList();
 			return a.Select(grid => grid.ToMenuDto()).ToList();
 		}
 	}

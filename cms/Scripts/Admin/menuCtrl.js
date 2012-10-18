@@ -1,4 +1,5 @@
 ﻿var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams, GridApi) {
+    "use strict";
 	menuCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings", "$routeParams"];
 
 	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
@@ -40,6 +41,7 @@
 	$scope.hideAdd = function (item) {
 		item.showAdd = 0;
 	};
+
 	$scope.grids = GridApi.grids({ }, function (data) {
 
 	});
@@ -53,26 +55,11 @@
 
 	};
 
-
 	var params = { id: $routeParams.Id };
 
-	$scope.getGrid = function () {
-		$http({ method: 'GET', url: '/content/test/menu2.json' }).
-			success(function (data, status, headers, config) {
-				$scope.data = data;
-			});
-		return;
-		apimenu.get(params, function (data) {
-			$scope.data = data;
-			console.log(data);
-			//var newitem = _newitem($scope.data.Lines.length);
-			//$scope.data.Lines.push([newitem]);
-		});
-	};
-
-	$scope.getGrid();
-
-
+    $scope.data = apimenu.get({Id: params.id }, function (data) {
+        console.log("xxx", data);
+    });
 };
 
 var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams, GridApi) {

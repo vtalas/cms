@@ -10,6 +10,7 @@ namespace cms.data.Shared.Models
 			//Status = DomainModels.Status.Private;
 			Id = Guid.NewGuid();
 			Grid = new List<Grid>();
+			Resources = new List<Resource>();
 			Type = "text";
 		}
 
