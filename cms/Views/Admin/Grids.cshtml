@@ -1,11 +1,12 @@
 ﻿@using cms.shared
 @{
-    ViewBag.Title = "Grids";
+	ViewBag.Title = "Grids";
 	Layout = "_Layout_Grids.cshtml";
-	
+
 	var applicationName = ViewBag.Application;
 	var applicationId = ViewBag.ApplicationId;
 }
+
 <div ng-app="gridsmodule"
 	 data-application-name="@applicationName"
 	 data-application-id="@applicationId"
@@ -13,11 +14,12 @@
 	 class="gridsmodule"
 	>
 	<div ng-controller="cultureCtrl">
-		<button ng-click="setCulture('cs')" >cs</button>
-		<button ng-click="setCulture('en')" >en</button>
-		{{currentCulture }}
+		<div class="btn-group" >
+			<button class="btn" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>
+			<button class="btn" ng-class="{ active:currentCulture  == 'en' }" href="#" ng-click="setCulture('en')">en</button>
+		</div>
 	</div>
-	
+
 	<div ng-view>
 	</div>
 </div>

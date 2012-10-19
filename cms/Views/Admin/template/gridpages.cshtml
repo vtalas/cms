@@ -10,9 +10,17 @@
 			<input type="text" ng-model="grid.ResourceDto.Value"/>
 		</td>
 		<td>
-			<button ng-hide="grid.Edit" ng-click="edit(grid)">Edit</button>
-			<button ng-show="grid.Edit" ng-click="save(grid)">Ok</button>
-			<button ng-click="remove(grid)">Smazat</button>
+			
+			<button ng-hide="grid.Edit" ng-click="edit(grid)" class="btn">
+				<i class="icon-pencil" ></i>
+			</button>
+			<button ng-show="grid.Edit" ng-click="save(grid)"  class="btn">
+				<i class="icon-ok" ></i>
+			</button>
+			
+			<button ng-click="remove(grid)"  class="btn">
+				<i class="icon-trash" ></i>
+			</button>
 		</td>
 		<td>
 			<a href="/client/@ViewBag.Application/{{grid.ResourceDto.Value}}">viewhtml</a> |
@@ -20,8 +28,7 @@
 		</td>
 	</tr>
 </table>
-
-<button ng-click="addclick()" >Přidat</button>
+<button ng-click="addclick()"  type="button" class="btn" data-toggle="button">Přidat</button>
 
 <div ng-show="createNew" ng-hide="!createNew" >
 	<h2>new</h2>
