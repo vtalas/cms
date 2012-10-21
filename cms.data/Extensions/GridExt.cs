@@ -65,27 +65,7 @@ namespace cms.data.Extensions
 			return source;
 		}
 
-		public static Grid CreateGrid(Guid id, ApplicationSetting application)
-		{
-			var grid = new Grid
-				{
-					Id = id,
-					ApplicationSettings = application,
-				};
-			return grid;
-		}
-		public static GridElement CreateGridElement(string type, int position = 0 )
-		{
-			var grid = new GridElement
-				{
-					Type = type,
-					Width = 12,
-					Position = position,
-					Id = Guid.NewGuid()
 
-				};
-			return grid;
-		}
 
 	}
 }

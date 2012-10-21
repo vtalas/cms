@@ -44,8 +44,6 @@ namespace cms.data.DataProvider
 		public abstract GridElement AddToGrid(GridElement gridElement, Guid gridId);
 		public abstract void Delete(Guid guid, Guid gridid);
 		public abstract GridElementDto Update(GridElementDto item);
-		public abstract GridElementDto Get(Guid guid);
-		
 	}
 
 	public abstract class PageAbstract : DataProviderBase

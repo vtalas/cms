@@ -54,6 +54,7 @@
     <Compile Include="DataProvider\DataProviderAbstract.cs" />
     <Compile Include="DataProvider\DataProviderBase.cs" />
     <Compile Include="EF\EfContextExt.cs" />
+    <Compile Include="EF\Initializers\ObjectBuilder.cs" />
     <Compile Include="EF\Initializers\Xxx.cs" />
     <Compile Include="Extensions\PageAbstractExt.cs" />
     <Compile Include="EF\RepositoryImplementation\EfRepository.cs" />

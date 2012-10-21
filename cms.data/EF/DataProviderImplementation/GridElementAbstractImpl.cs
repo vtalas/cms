@@ -11,9 +11,7 @@ namespace cms.data.EF.DataProviderImplementation
 {
 	public class GridElementAbstractImpl : GridElementAbstract
 	{
-		IRepository db { get; set; }
-
-		public GridElementAbstractImpl(ApplicationSetting application) : base(application){}
+		public GridElementAbstractImpl(ApplicationSetting application) : base(application) {}
 		public GridElementAbstractImpl(ApplicationSetting application, IRepository context) : base(application)
 		{
 			db = context;
@@ -21,7 +19,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override GridElement AddToGrid(GridElement gridElement, Guid gridId)
 		{
-			var grid = GetGridFromDb(gridId);
+			var grid = GetGrid(gridId);
 			gridElement.Grid.Add(grid);
 
 			db.Add(gridElement);
@@ -47,7 +45,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override void Delete(Guid id, Guid gridid)
 		{
-			var grid = GetGridFromDb(gridid);
+			var grid = GetGrid(gridid);
 			var delete = grid.GridElements.Single(x => x.Id == id);
 			db.Remove(delete);
 
@@ -79,27 +77,5 @@ namespace cms.data.EF.DataProviderImplementation
 			db.SaveChanges();
 			return item;
 		}
-
-		public override GridElementDto Get(Guid guid)
-		{
-			var item = db.GridElements.Get(guid, CurrentApplication.Id);
-			var localizedResources = item.Resources.Where(x => x.Culture == CurrentCulture || x.Culture == null);
-			item.Resources = localizedResources.ToList();
-			return item.ToDto();
-		}
-
-		private Grid GetGridFromDb(Guid gridId)
-		{
-			return AvailableGridsPage.Single(x=>x.Id == gridId);
-		}
-
-		private IQueryable<Grid> AvailableGridsPage
-		{
-			get
-			{
-				return db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Page);
-			}
-		}
-
 	}
 }

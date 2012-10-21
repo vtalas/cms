@@ -9,11 +9,9 @@ using System.Linq;
 
 namespace cms.data.EF.Initializers
 {
-	public class SampleData
+	public class SampleData : ObjectBuilder
 	{
 		protected EfContext Context { get; set; }
-		private const string CultureCs = "cs";
-		private const string CultureEn = "en";
 
 		//static readonly ILog Log = LogManager.GetLogger<SampleData>();
 
@@ -63,9 +61,9 @@ namespace cms.data.EF.Initializers
 
 		private void GenerateGridPages(ApplicationSetting application)
 		{
-			Context.Grids.Add(GridExt.CreateGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			Context.Grids.Add(AGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithGridElement(
-											GridExt.CreateGridElement("text")
+											AGridElement("text")
 												.WithResource("text", "český text")
 												.WithResource("text", "english text", CultureEn)
 												)
@@ -75,24 +73,24 @@ namespace cms.data.EF.Initializers
 								);
 
 
-			Context.Grids.Add(GridExt.CreateGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			Context.Grids.Add(AGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "bezelementu")
 										.WithResource("name", "grid Bez elementu", CultureCs)
 										.WithResource("name", "Without Any Element", CultureEn)
 								);
 
-			Context.Grids.Add(GridExt.CreateGrid(new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			Context.Grids.Add(AGrid(new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "gallery_1")
 										.WithResource("name", "galerie 1", CultureCs)
 										.WithResource("name", "gallery 1", CultureEn)
 								);
 
-			Context.Grids.Add(GridExt.CreateGrid(new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			Context.Grids.Add(AGrid(new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "gallery_1_sub_1", CultureCs)
 										.WithResource("name", "subgalerie galerie 1", CultureCs)
 								);
 
-			Context.Grids.Add(GridExt.CreateGrid(new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			Context.Grids.Add(AGrid(new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "gallery_1_2", CultureCs)
 										.WithResource("name", "gallery 1 sub 2 ", CultureCs)
 								);
@@ -108,21 +106,21 @@ namespace cms.data.EF.Initializers
 
 		private void GenerateMenus(ApplicationSetting application)
 		{
-			var rootitem = GridExt.CreateGridElement("menutext", 2);
+			var rootitem = AGridElement("menutext", 2);
 			
 			var items = new List<GridElement>
 				            {
-								GridExt.CreateGridElement("menutext", 0),
-								GridExt.CreateGridElement("menutext", 1),
-								GridExt.CreateGridElement("menutext", 3),
-								GridExt.CreateGridElement("menutext", 4),
+								AGridElement("menutext", 0),
+								AGridElement("menutext", 1),
+								AGridElement("menutext", 3),
+								AGridElement("menutext", 4),
 								rootitem,
-								GridExt.CreateGridElement("menutext", 0).WithParent(rootitem),
-								GridExt.CreateGridElement("menutext", 1).WithParent(rootitem),
-								GridExt.CreateGridElement("menutext", 2).WithParent(rootitem),
+								AGridElement("menutext", 0).WithParent(rootitem),
+								AGridElement("menutext", 1).WithParent(rootitem),
+								AGridElement("menutext", 2).WithParent(rootitem),
 				            };
 
-			var menu = GridExt.CreateGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+			var menu = AGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 								.WithCategory(CategoryEnum.Menu)
 								.WithGridElements(items)
 								.WithResource(SpecialResourceEnum.Link, "test_menu_link", CultureCs)

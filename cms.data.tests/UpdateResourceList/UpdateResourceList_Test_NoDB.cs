@@ -29,7 +29,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_AddNew_test()
 		{
-			var g = CreateDefaultGrid().AddTo(Repository);
+			var g = AGrid().AddTo(Repository);
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
 													  .WithResource("link", "linkvaluedto", 0)
@@ -46,7 +46,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_AddNew_NewKeys_test()
 		{
-			var g = CreateDefaultGrid()
+			var g = AGrid()
 				.WithResource("linkXXX", "dbvalueLink")
 				.WithResource("nameXXX", "dbvalueName");
 
@@ -62,7 +62,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_Replace_ByNewResources_test()
 		{
-			var g = CreateDefaultGrid()
+			var g = AGrid()
 				.WithResource("link", "dbvalueLink")
 				.WithResource("name", "dbvalueName");
 
@@ -80,7 +80,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void UpdateResourceTest_checkOwnerShip()
 		{
-			var g = CreateDefaultGrid()
+			var g = AGrid()
 				.WithResource("link", "dbvalueLink", CultureCs, 11)
 				.WithResource("name", "dbvalueName", CultureCs, 12);
 
@@ -90,7 +90,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_Replace_ByNewResources_SearchById_test()
 		{
-			var g = CreateDefaultGrid()
+			var g = AGrid()
 				.WithResource("link", "dbvalueLink", CultureCs, 1)
 				.WithResource("name", "dbvalueName", CultureCs, 2).AddTo(Repository);
 
@@ -107,10 +107,10 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Reference_AddNew_test()
 		{
-			var g1 = CreateDefaultGrid()
+			var g1 = AGrid()
 				.WithResource("link", "dbvalueLink", CultureCs, 1).AddTo(Repository);
 
-			var g2 = CreateDefaultGrid().AddTo(Repository);
+			var g2 = AGrid().AddTo(Repository);
 
 			g2.UpdateResourceList(g1.Resources.ToDtos(), CultureCs, Repository);
 
@@ -124,8 +124,8 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Reference_Replace_ByAnotherReference_test()
 		{
-			var grid1 = CreateDefaultGrid().WithResource("link", "a111", CultureCs, 1).AddTo(Repository);
-			var grid2 = CreateDefaultGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
+			var grid1 = AGrid().WithResource("link", "a111", CultureCs, 1).AddTo(Repository);
+			var grid2 = AGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
 
 			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, Repository);
 
@@ -139,8 +139,8 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Reference_Replace_ByNewResource_Test()
 		{
-			var grid1 = CreateDefaultGrid().AddTo(Repository);
-			var grid2 = CreateDefaultGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
+			var grid1 = AGrid().AddTo(Repository);
+			var grid2 = AGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
 			var newResources = ResourcesHelper.EmptyResourcesDto()
 											 .WithResource("link", "newlinkvalue", 0);
 
@@ -162,9 +162,9 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void UpdateResourceTest_LANGUAGE()
 		{
-			var grid1 = CreateDefaultGrid().WithResource("link", "a111", CultureCs, 1).AddTo(Repository);
-			var grid2 = CreateDefaultGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
-			var grid3 = CreateDefaultGrid().WithResource("link", "c333", CultureEn, 3).AddTo(Repository);
+			var grid1 = AGrid().WithResource("link", "a111", CultureCs, 1).AddTo(Repository);
+			var grid2 = AGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
+			var grid3 = AGrid().WithResource("link", "c333", CultureEn, 3).AddTo(Repository);
 
 			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, Repository);
 
@@ -185,7 +185,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_HandlingSpecianResources_linkIsCultureInvariant()
 		{
-			var g = CreateDefaultGrid()
+			var g = AGrid()
 				.WithResource(SpecialResourceEnum.Link, "dbvalueLink").AddTo(Repository);
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()

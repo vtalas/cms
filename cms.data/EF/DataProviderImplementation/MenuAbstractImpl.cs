@@ -12,7 +12,6 @@ namespace cms.data.EF.DataProviderImplementation
 {
 	public class MenuAbstractImpl : MenuAbstract
 	{
-		private IRepository db { get; set; }
 
 		public MenuAbstractImpl(ApplicationSetting application) : base(application) { }
 		public MenuAbstractImpl(ApplicationSetting application, IRepository context)
@@ -21,25 +20,16 @@ namespace cms.data.EF.DataProviderImplementation
 			db = context;
 		}
 
-		private IQueryable<Grid> AvailableGrids
-		{
-			get
-			{
-				var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Menu);
-				return a;
-			}
-		}
-
 		public override void Delete(Guid guid)
 		{
-			var delete = AvailableGrids.Single(x => x.Id == guid);
+			var delete = GetGrid(guid);
 			db.Remove(delete);
 			db.SaveChanges();
 		}
 
 		public override MenuDto Get(Guid guid)
 		{
-			var grid = AvailableGrids.Single(x => x.Id == guid);
+			var grid = GetGrid(guid);
 			return grid.ToMenuDto();
 		}
 
@@ -60,7 +50,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
 		{
-			var grid = AvailableGrids.Single(x => x.Id == gridId);
+			var grid = GetGrid(gridId);
 
 			grid.UpdateResourceList(item.ResourcesLoc, CurrentCulture, db);
 

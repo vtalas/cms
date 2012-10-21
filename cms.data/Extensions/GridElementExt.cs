@@ -12,6 +12,5 @@ namespace cms.data.Extensions
 			var rootlist = source.Where(x => x.Parent == null).Select(x=>x.ToMenuItemDto(source)).OrderBy(a=>a.Position).ToList();
 			return rootlist;
 		}
-
 	}
 }

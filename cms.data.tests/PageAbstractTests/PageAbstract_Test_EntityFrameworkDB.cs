@@ -109,9 +109,9 @@ namespace cms.data.tests.PageAbstractTests
 			using (var db = new EfContext())
 			{
 				var useriId = CreateUser("admin");
-				CreateDefaultApplication("prd", SessionManager.DefaultAppId)
+				AApplication("prd", SessionManager.DefaultAppId)
 					.WithUser(db.UserProfile.Single(x => x.Id == useriId))
-					.WithGrid(CreateDefaultGrid()
+					.WithGrid(AGrid()
 					 .WithResource(SpecialResourceEnum.Link, "xxx"))
 					 .AddTo(new EfRepository(db));
 			}

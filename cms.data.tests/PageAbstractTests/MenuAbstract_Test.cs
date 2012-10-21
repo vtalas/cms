@@ -28,13 +28,13 @@ namespace cms.data.tests.PageAbstractTests
 		{
 			Repository = RepositoryCreator();
 
-			var app1 = CreateDefaultApplication("prd App")
+			var app1 = AApplication("prd App")
 				.WithGrid(
-					CreateDefaultGrid().WithCategory(CategoryEnum.Menu)
+					AGrid().WithCategory(CategoryEnum.Menu)
 					                   .WithResource(SpecialResourceEnum.Link, "aaa")
 				)
 				.WithGrid(
-					CreateDefaultGrid(_gridId)
+					AGrid(_gridId)
 						.WithCategory(CategoryEnum.Menu)
 						.WithResource(SpecialResourceEnum.Link, "bbb")
 						.WithResource("name", "xxx")
@@ -51,7 +51,9 @@ namespace cms.data.tests.PageAbstractTests
 			Assert.AreEqual("xxx", menu.Name);
 			Assert.AreEqual("bbb", menu.Link);
 			SetCulture(CultureEn);
-			Assert.AreEqual("bbb", menu.Link );
+
+			menu = _implemtation.Get(_gridId);
+			Assert.AreEqual("bbb", menu.Link);
 			Assert.AreEqual("xxxEn", menu.Name);
 		}
 

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using NUnit.Framework;
-using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.EF.DataProviderImplementation;
 using cms.data.EF.RepositoryImplementation;
@@ -15,46 +14,6 @@ using cms.data.EF.Initializers;
 
 namespace cms.data.tests.PageAbstractTests
 {
-	[TestFixture]
-	public class GridElementAbstract_Test : InjectableBase_Test
-	{
-		private GridElementAbstract _implemtation;
-		private readonly Guid _gridIdFromApp2 = new Guid("1111111e-1115-480b-9ab7-a3ab3c0f6643");
-		private int _gridsCountBefore;
-		private int _resourcesCountBefore;
-
-		public GridElementAbstract_Test()
-			: this(new Base_MockDb().GetRepositoryMock)
-		{
-		}
-
-		public GridElementAbstract_Test(Func<IRepository> repositoryCreator)
-			: base(repositoryCreator)
-		{
-			SharedLayer.Init();
-		}
-
-		[SetUp]
-		public void Setup()
-		{
-			Repository = RepositoryCreator();
-
-			var app1 = CreateDefaultApplication("prd App")
-				.WithGrid(
-					CreateDefaultGrid()
-						.WithResource(SpecialResourceEnum.Link, "aaa")
-						.WithResource("name", "NAME AAAA", CultureCs, 111)
-				)
-				.WithGrid(
-					CreateDefaultGrid(_gridId)
-						.WithResource(SpecialResourceEnum.Link, "bbb")
-						.WithResource("name", "NAME BBB", CultureCs, 221)
-						.WithResource("name", "NAME BBB EN", CultureEn, 222)
-				).AddTo(Repository);
-			_implemtation = new GridElementAbstractImpl(app1, Repository);
-		}
-	}
-
 	[TestFixture]
 	public class PageAbstract_Test : InjectableBase_Test
 	{
@@ -75,22 +34,22 @@ namespace cms.data.tests.PageAbstractTests
 		{
 			Repository = RepositoryCreator();
 
-			var app1 = CreateDefaultApplication("prd App")
+			var app1 = AApplication("prd App")
 				.WithGrid(
-					CreateDefaultGrid()
+					AGrid()
 						.WithResource(SpecialResourceEnum.Link, "aaa")
 						.WithResource("name", "NAME AAAA", CultureCs, 111)
 				)
 				.WithGrid(
-					CreateDefaultGrid(_gridId)
+					AGrid(_gridId)
 						.WithResource(SpecialResourceEnum.Link, "bbb")
 						.WithResource("name", "NAME BBB", CultureCs, 221)
 						.WithResource("name", "NAME BBB EN", CultureEn, 222)
 				).AddTo(Repository);
 
-			CreateDefaultApplication("almost the same as app1")
+			AApplication("almost the same as app1")
 				.WithGrid(
-					CreateDefaultGrid(_gridIdFromApp2)
+					AGrid(_gridIdFromApp2)
 						.WithResource(SpecialResourceEnum.Link, "bbb")
 						.WithResource("name", "NAME AAAA", CultureCs, 111)
 				).AddTo(Repository);
@@ -152,14 +111,14 @@ namespace cms.data.tests.PageAbstractTests
 		[Test]
 		public void List_NoItems_test()
 		{
-			var xx = new PageAbstractImpl(CreateDefaultApplication("applikace with no grids"), Repository);
+			var xx = new PageAbstractImpl(AApplication("applikace with no grids"), Repository);
 			Assert.IsFalse(xx.List().Any());
 		}
 
 		[Test]
 		public void Add_test()
 		{
-			var gridpage = CreateDefaultGridpage("gridpagename", "xxxlink");
+			var gridpage = AGridpageDto("gridpagename", "xxxlink");
 			var saved = Page.Add(gridpage);
 
 			Assert.AreEqual("xxxlink", saved.Link);
@@ -173,7 +132,7 @@ namespace cms.data.tests.PageAbstractTests
 		{
 			Assert.AreEqual(_gridsCountBefore, Repository.Grids.Count());
 			Assert.AreEqual(2, Repository.Resources.Count(x => x.Key == SpecialResourceEnum.Link && x.Value == "bbb"));
-			var gridpage = CreateDefaultGridpage("gridpagename", "bbb");
+			var gridpage = AGridpageDto("gridpagename", "bbb");
 			Assert.Throws<Exception>(() => Page.Add(gridpage));
 			Assert.AreEqual(_gridsCountBefore, Repository.Grids.Count());
 		}
@@ -181,7 +140,7 @@ namespace cms.data.tests.PageAbstractTests
 		[Test]
 		public void Add_Change_lancguage_test()
 		{
-			var gridpage = CreateDefaultGridpage("gridpagename", "xxxlink");
+			var gridpage = AGridpageDto("gridpagename", "xxxlink");
 			var saved = Page.Add(gridpage);
 
 			Assert.AreEqual("xxxlink", saved.Link);

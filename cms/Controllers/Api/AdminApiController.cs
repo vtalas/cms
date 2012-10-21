@@ -38,7 +38,6 @@ namespace cms.Controllers.Api
 			}
 		}
 
-
 		[HttpPost]
 		public ActionResult DeleteGridElement(GridElement data, Guid gridId)
 		{
@@ -57,15 +56,6 @@ namespace cms.Controllers.Api
 			using (var db = SessionProvider.CreateSession)
 			{
 				var g = db.GridElement.Update(data);
-				return new JSONNetResult(g);
-			}
-		}
-
-		public ActionResult GetGridElement(Guid id)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				var g = db.GridElement.Get(id);
 				return new JSONNetResult(g);
 			}
 		}
