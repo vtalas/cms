@@ -1,0 +1,1 @@
+lessc %~dp0Content\bootstrapdefault\less\bootstrap.less>%~dp0Content\bootstrapdefault\less\bootstrap.css

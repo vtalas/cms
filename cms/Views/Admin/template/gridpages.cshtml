@@ -1,13 +1,13 @@
-﻿<table>
+﻿ <hr class="divider"></hr>
+
+<table>
 	<tr ng-repeat="grid in data">
-		<td width="200">
+		<td width="200" >
 			<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">
-				<i class="icon-ok" ></i>
 				{{grid.Name}}
 			</a>
-
 		</td>
-		<td ng-hide="grid.Edit">
+		<td width="200" ng-hide="grid.Edit">
 			{{grid.ResourceDto.Value}}
 		</td>
 		<td ng-show="grid.Edit">
@@ -32,8 +32,8 @@
 		</td>
 	</tr>
 </table>
+ <hr class="divider"></hr>
 <button ng-click="addclick()"  type="button" class="btn" data-toggle="button">Přidat</button>
-
 <div ng-show="createNew" ng-hide="!createNew" >
 	<h2>new</h2>
 	<table>

@@ -106,7 +106,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\Class1.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
@@ -410,6 +409,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\userdata\" />
+    <Folder Include="App_Start\" />
     <Folder Include="App_Themes\" />
     <Folder Include="Scripts\Apps\test1\_GridElementScripts\" />
   </ItemGroup>
@@ -459,6 +459,9 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PreBuildEvent>
-    </PreBuildEvent>
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>$(ProjectDir)bootstrapcompile.bat</PostBuildEvent>
   </PropertyGroup>
 </Project>
