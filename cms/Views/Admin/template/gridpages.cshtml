@@ -1,7 +1,11 @@
 ﻿<table>
 	<tr ng-repeat="grid in data">
-		<td>
-			<a href="#/{{getLink(grid)}}"> {{grid.Name}}</a> 
+		<td width="200">
+			<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">
+				<i class="icon-ok" ></i>
+				{{grid.Name}}
+			</a>
+
 		</td>
 		<td ng-hide="grid.Edit">
 			{{grid.ResourceDto.Value}}

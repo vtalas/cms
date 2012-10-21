@@ -107,6 +107,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Class1.cs" />
+    <Compile Include="Code\less\ConsoleLogger.cs" />
+    <Compile Include="Code\less\ResponseLogger.cs" />
+    <Compile Include="Code\less\ServerPathResolver.cs" />
+    <Compile Include="Code\less\Lessaak.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
@@ -157,6 +161,15 @@
     <Content Include="Content\htmlDragAndDrop\libs\angular.js" />
     <Content Include="Content\htmlDragAndDrop\libs\jquery-1.7.2.js" />
     <Content Include="Content\htmlDragAndDrop\sortableCtrl.js" />
+    <Content Include="Content\jetstrap\assets\css\bootstrap-responsive.css" />
+    <Content Include="Content\jetstrap\assets\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\jetstrap\assets\css\bootstrap.css" />
+    <Content Include="Content\jetstrap\assets\css\bootstrap.min.css" />
+    <Content Include="Content\jetstrap\assets\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\jetstrap\assets\img\glyphicons-halflings.png" />
+    <Content Include="Content\jetstrap\assets\js\bootstrap.js" />
+    <Content Include="Content\jetstrap\assets\js\bootstrap.min.js" />
+    <Content Include="Content\jetstrap\index.html" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
     </Content>
@@ -320,7 +333,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\setup\index.cshtml" />
     <None Include="tests\config\jsTestDriver-scenario.conf" />
     <None Include="tests\config\jsTestDriver.conf" />
@@ -360,9 +372,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -392,6 +401,7 @@
     <Content Include="Views\Admin\template\test.cshtml" />
     <Content Include="Views\templates\drag.cshtml" />
     <Content Include="Views\Admin\template\menu2.cshtml" />
+    <Content Include="Views\Admin\_navbar.cshtml" />
     <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />
