@@ -107,10 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Class1.cs" />
-    <Compile Include="Code\less\ConsoleLogger.cs" />
-    <Compile Include="Code\less\ResponseLogger.cs" />
-    <Compile Include="Code\less\ServerPathResolver.cs" />
-    <Compile Include="Code\less\Lessaak.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
