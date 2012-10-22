@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{DE7729CE-0050-4798-A6BA-A1E3ED191195}</ProjectGuid>
-    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>cms</RootNamespace>
@@ -91,15 +91,12 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
@@ -159,6 +156,15 @@
     <Content Include="Content\htmlDragAndDrop\libs\angular.js" />
     <Content Include="Content\htmlDragAndDrop\libs\jquery-1.7.2.js" />
     <Content Include="Content\htmlDragAndDrop\sortableCtrl.js" />
+    <Content Include="Content\jetstrap\assets\css\bootstrap-responsive.css" />
+    <Content Include="Content\jetstrap\assets\css\bootstrap-responsive.min.css" />
+    <Content Include="Content\jetstrap\assets\css\bootstrap.css" />
+    <Content Include="Content\jetstrap\assets\css\bootstrap.min.css" />
+    <Content Include="Content\jetstrap\assets\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\jetstrap\assets\img\glyphicons-halflings.png" />
+    <Content Include="Content\jetstrap\assets\js\bootstrap.js" />
+    <Content Include="Content\jetstrap\assets\js\bootstrap.min.js" />
+    <Content Include="Content\jetstrap\index.html" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
     </Content>
@@ -322,7 +328,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\setup\index.cshtml" />
     <None Include="tests\config\jsTestDriver-scenario.conf" />
     <None Include="tests\config\jsTestDriver.conf" />
@@ -362,9 +367,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -394,6 +396,7 @@
     <Content Include="Views\Admin\template\test.cshtml" />
     <Content Include="Views\templates\drag.cshtml" />
     <Content Include="Views\Admin\template\menu2.cshtml" />
+    <Content Include="Views\Admin\_navbar.cshtml" />
     <None Include="Views\Shared\_GridElementTmpl\novinka_View.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\novinka_Edit.cshtml" />
     <Content Include="Views\Shared\_GridElementTmpl\text_Edit.cshtml" />
@@ -406,6 +409,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\userdata\" />
+    <Folder Include="App_Start\" />
     <Folder Include="App_Themes\" />
     <Folder Include="Scripts\Apps\test1\_GridElementScripts\" />
   </ItemGroup>
@@ -455,6 +459,9 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PreBuildEvent>
-    </PreBuildEvent>
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>$(ProjectDir)bootstrapcompile.bat</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -1,26 +1,10 @@
-﻿@using cms.shared
-@{
+﻿@{
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
-
-	var applicationName = ViewBag.Application;
-	var applicationId = ViewBag.ApplicationId;
 }
-<div class="adminheader"> 
-	<ul class="mainmenu">
-		<li>
-			<a href="@Url.Action("grids")">@applicationName</a>
-		</li>
-		<li>
-			nastavení
-		</li>
-		<li>
-			@applicationId
-		</li>
-	</ul>
 
-</div>
+@Html.Partial("_navbar")
 
-<div class="admincontent">
+<div class="container">
 	@RenderBody()
 </div>
 

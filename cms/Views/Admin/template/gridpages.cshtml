@@ -1,18 +1,30 @@
-﻿<table>
+﻿ <hr class="divider"></hr>
+
+<table>
 	<tr ng-repeat="grid in data">
-		<td>
-			<a href="#/{{getLink(grid)}}"> {{grid.Name}}</a> 
+		<td width="200" >
+			<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">
+				{{grid.Name}}
+			</a>
 		</td>
-		<td ng-hide="grid.Edit">
+		<td width="200" ng-hide="grid.Edit">
 			{{grid.ResourceDto.Value}}
 		</td>
 		<td ng-show="grid.Edit">
 			<input type="text" ng-model="grid.ResourceDto.Value"/>
 		</td>
 		<td>
-			<button ng-hide="grid.Edit" ng-click="edit(grid)">Edit</button>
-			<button ng-show="grid.Edit" ng-click="save(grid)">Ok</button>
-			<button ng-click="remove(grid)">Smazat</button>
+			
+			<button ng-hide="grid.Edit" ng-click="edit(grid)" class="btn">
+				<i class="icon-pencil" ></i>
+			</button>
+			<button ng-show="grid.Edit" ng-click="save(grid)"  class="btn">
+				<i class="icon-ok" ></i>
+			</button>
+			
+			<button ng-click="remove(grid)"  class="btn">
+				<i class="icon-trash" ></i>
+			</button>
 		</td>
 		<td>
 			<a href="/client/@ViewBag.Application/{{grid.ResourceDto.Value}}">viewhtml</a> |
@@ -20,9 +32,8 @@
 		</td>
 	</tr>
 </table>
-
-<button ng-click="addclick()" >Přidat</button>
-
+ <hr class="divider"></hr>
+<button ng-click="addclick()"  type="button" class="btn" data-toggle="button">Přidat</button>
 <div ng-show="createNew" ng-hide="!createNew" >
 	<h2>new</h2>
 	<table>

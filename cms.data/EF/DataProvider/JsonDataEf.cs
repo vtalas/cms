@@ -88,20 +88,20 @@ namespace cms.data.EF.DataProvider
 
 		public override GridElement GetGridElement(Guid guid)
 		{
-			var item = db.GridElements.Get(guid,ApplicationId);
+			var item = db.GridElements.Get(guid, ApplicationId);
 			var localizedResources = item.Resources.Where(x => x.Culture == CurrentCulture || x.Culture == null);
 			item.Resources = localizedResources.ToList();
 			return item;
 		}
-		
+
 		public override GridElementDto Update(GridElementDto item)
 		{
 			if (item.ResourcesLoc != null)
 			{
-				JsonDataEfHelpers.UpdateResource(item,db, CurrentCulture, ApplicationId);
+				JsonDataEfHelpers.UpdateResource(item, db, CurrentCulture, ApplicationId);
 			}
 
-			var el = db.GridElements.Get(item.Id,ApplicationId);
+			var el = db.GridElements.Get(item.Id, ApplicationId);
 			//TODO:nahovno, udelat lip
 			el.Line = item.Line;
 			el.Position = item.Position;
@@ -135,7 +135,7 @@ namespace cms.data.EF.DataProvider
 
 		public override MenuAbstract Menu
 		{
-			get { return new MenuAbstractImpl(ApplicationId,db); }
+			get { return new MenuAbstractImpl(ApplicationId, db); }
 		}
 
 		public override PageAbstract Page
@@ -147,10 +147,15 @@ namespace cms.data.EF.DataProvider
 		{
 			var a = db.Grids.Where(x => x.ApplicationSettings.Id == ApplicationId).Select(dto => new GridListDto
 				{
-					Category =  dto.Category,
+					Id = dto.Id,
+					Category = dto.Category,
 					Name = dto.Name,
 					Home = dto.Home,
-					Id = dto.Id
+					ResourceDto = new ResourceDtoLoc()
+						              {
+							              Id = dto.Resource.Id,
+										  Value = dto.Resource.Value
+						              }
 				});
 			return a.ToList();
 		}
@@ -183,7 +188,6 @@ namespace cms.data.EF.DataProvider
 					}
 				}
 			}
-
 			db.SaveChanges();
 			return newitem;
 		}
@@ -195,16 +199,14 @@ namespace cms.data.EF.DataProvider
 			{
 				newitem.Grids = new List<Grid>{
 									new Grid
-				        				{
-				        					ApplicationSettings = newitem,
+										{	
+											ApplicationSettings = newitem,
 				        					Home = true,
 				        					Name = "homepage",
-				        				}				                		
-				                	};
+				        				}				
+									};
 			}
-
 			db.SaveChanges();
-
 			return newitem;
 		}
 
