@@ -15,11 +15,40 @@
 	<script src="sortableCtrl.js"></script>
 
 </head>
-<body>
-	<div ng-controller="sortableNestedCtrl" class="sortableNested">
+	<body>
 		
-		<h1>Sortable - nested</h1>
-		<script type="text/ng-template" id="tree_item_renderer.html">
+		<style>
+		.aaaas div {
+			background-color: red;
+		}
+	</style>
+
+	<div class="container_12 aaaas">
+		<div class="grid_2">1 xx</div>
+		<div class="grid_2">2 xx</div>
+		<div class="grid_2">3 xx</div>
+		<div class="grid_2">4 xx</div>
+		<div class="grid_2">5 xx</div>
+		<div class="clear"></div>
+		<div class="grid_2">6 xx</div>
+		<div class="grid_2">7 xx</div>
+		<div class="grid_2">8 xx</div>
+		<div class="grid_2">9 xx</div>
+		<div class="grid_2">10 xx</div>
+		<div class="grid_2">11 xx</div>
+		<div class="grid_2">13 xx</div>
+		<div class="grid_2">xx</div>
+		<div class="grid_2">xx</div>
+		<div class="grid_2">xx</div>
+
+	</div>
+
+
+
+		<div ng-controller="sortableNestedCtrl" class="sortableNested">
+		
+			<h1>Sortable - nested</h1>
+			<script type="text/ng-template" id="tree_item_renderer.html">
 			<div ui-draganddrop-html="sortable" ng-model="item" class="sortableNestedCtrl {{item.statusclass}}" ng-show="!item.hidden"  >
 				<div class="nestedItemContent">
 					<h2>{{item.Id}}</h2>
@@ -29,36 +58,37 @@
 				</ul>
 			</div>
 		</script>
-		<ul>
-			<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'"></li>
-		</ul>
-		<div style="position: absolute;left:800px;top:100px;width:100px;">
-			<div>
-				<h3>Debug</h3>
-				{{data.Children.length}}
+			<ul>
+				<li ng-repeat="item in data.Children" ng-include="'tree_item_renderer.html'"></li>
+			</ul>
+			<div style="position: absolute;left:800px;top:100px;width:100px;">
+				<div>
+					<h3>Debug</h3>
+					{{data.Children.length}}
+				</div>
+				{{json()}}
 			</div>
-			{{json()}}
 		</div>
-	</div>
 	
-	<div class="clearfix"></div>
+		<div class="clearfix"></div>
 		
-	<div ng-controller="sortableCtrl">
-		<h1>Sortable - grid</h1>
-		<script type="text/ng-template" id="tree_item_rendereSortable.html">
-			<div ui-draganddrop-html="sortable" ng-model="item" class="sortableCtrl">
+		<div ng-controller="sortableCtrl">
+			<h1>Sortable - grid</h1>
+			<script type="text/ng-template" id="tree_item_rendereSortable.html">
+			{{ ($index % 6) }}
+			<div ui-draganddrop-html="sortable" ng-model="item" class="sortableCtrl" >
 				<h1>{{item.Id}}</h1>
 			</div>
 		</script>
-		<ul class="container_12 container ">
-			<li ng-repeat="item in data.Children" ng-include="'tree_item_rendereSortable.html'" class="grid_{{item.Width  || 2 }}"></li>
-		</ul>
+			<ul class="container_12 container ">
+				<li ng-repeat="item in data.Children" ng-include="'tree_item_rendereSortable.html'" class="grid_{{item.Width  || 2 }}" ng-class="{clear: ($index % 6) == 0 }"></li>
+			</ul>
 	
-		<div ng-model="ddd">..</div>
-	</div>
-	<div class="clearfix"></div>
+			<div ng-model="ddd">..</div>
+		</div>
+		<div class="clearfix"></div>
 
-</body>
+	</body>
 
 
 <style>
