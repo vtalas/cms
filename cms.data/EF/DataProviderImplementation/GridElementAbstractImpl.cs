@@ -5,14 +5,12 @@ using cms.data.DataProvider;
 using cms.data.Extensions;
 using cms.data.Repository;
 using cms.data.Shared.Models;
-using cms.shared;
 
 namespace cms.data.EF.DataProviderImplementation
 {
 	public class GridElementAbstractImpl : GridElementAbstract
 	{
-		public GridElementAbstractImpl(ApplicationSetting application) : base(application) {}
-		public GridElementAbstractImpl(ApplicationSetting application, IRepository context) : base(application)
+		public GridElementAbstractImpl(ApplicationSetting application, IRepository context) : base(application, context)
 		{
 			db = context;
 		}
@@ -63,16 +61,17 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override GridElementDto Update(GridElementDto item)
 		{
-			var el = db.GridElements.Get(item.Id, CurrentApplication.Id);
+			throw new NotImplementedException();
+			//var el = db.GridElements.Get(item.Id, CurrentApplication.Id);
 
-			el.UpdateResourceList(item.ResourcesLoc, CurrentCulture, db);
+			//el.UpdateResourceList(item.ResourcesLoc, CurrentCulture, db);
 			
-			//TODO:nahovno, udelat lip
-			el.Position = item.Position;
-			el.Skin = item.Skin;
-			el.Type = item.Type;
-			el.Width = item.Width;
-			el.Content = item.Content;
+			////TODO:nahovno, udelat lip
+			//el.Position = item.Position;
+			//el.Skin = item.Skin;
+			//el.Type = item.Type;
+			//el.Width = item.Width;
+			//el.Content = item.Content;
 
 			db.SaveChanges();
 			return item;

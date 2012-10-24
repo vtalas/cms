@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using cms.data.Shared.Models;
 
@@ -22,7 +21,7 @@ namespace cms.data.Extensions
 			return item;
 		}
 
-		public static Grid Get(this IQueryable<Grid> context, Guid guid, Guid applicationId)
+		public static Grid Get(this IQueryable<Grid> context, Guid guid)
 		{
 			var item = context.Single(x => x.Id == guid);
 			return item;

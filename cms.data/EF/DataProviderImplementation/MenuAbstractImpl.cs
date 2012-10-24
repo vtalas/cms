@@ -12,10 +12,8 @@ namespace cms.data.EF.DataProviderImplementation
 {
 	public class MenuAbstractImpl : MenuAbstract
 	{
-
-		public MenuAbstractImpl(ApplicationSetting application) : base(application) { }
 		public MenuAbstractImpl(ApplicationSetting application, IRepository context)
-			: base(application)
+			: base(application, context)
 		{
 			db = context;
 		}
@@ -43,12 +41,7 @@ namespace cms.data.EF.DataProviderImplementation
 			throw new NotImplementedException();
 		}
 
-		public override MenuItemDto AddMenuitem(MenuItemDto menuItem)
-		{
-			throw new NotImplementedException();
-		}
-
-		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
+		public override MenuItemDto AddMenuItem(MenuItemDto item, Guid gridId)
 		{
 			var grid = GetGrid(gridId);
 
@@ -64,7 +57,7 @@ namespace cms.data.EF.DataProviderImplementation
 						};
 			grid.GridElements.Add(a);
 			db.SaveChanges();
-			return a.Id;
+			return a.ToMenuItemDto(grid.GridElements);
 		}
 
 		public override IEnumerable<MenuDto> List()

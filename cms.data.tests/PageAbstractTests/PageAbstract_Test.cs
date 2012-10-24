@@ -1,16 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
 using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF.DataProviderImplementation;
-using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
 using cms.data.Repository;
 using cms.data.tests._Common;
 using cms.shared;
 using System.Linq;
-using cms.data.EF.Initializers;
 
 namespace cms.data.tests.PageAbstractTests
 {

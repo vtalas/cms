@@ -13,9 +13,8 @@ namespace cms.data.EF.DataProviderImplementation
 {
 	public class PageAbstractImpl : PageAbstract
 	{
-		public PageAbstractImpl(ApplicationSetting application) : base(application) { }
 		public PageAbstractImpl(ApplicationSetting application, IRepository context)
-			: base(application)
+			: base(application, context)
 		{
 			db = context;
 		}

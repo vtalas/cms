@@ -14,15 +14,18 @@ namespace cms.data.tests._Common
 		protected static IList<Resource> _allResources;
 		protected static IList<Grid> _allGrids;
 		protected static IList<ApplicationSetting> _applicationSettings;
+		protected static IList<GridElement> _gridElements;
 
 		public IRepository GetRepositoryMock()
 		{
 			_allResources = new List<Resource>();
 			_allGrids = new List<Grid>();
 			_applicationSettings = new List<ApplicationSetting>();
+			_gridElements = new List<GridElement>();
 
 			var repo = new Mock<IRepository>();
 			repo.Setup(x => x.Resources).Returns(_allResources.AsQueryable());
+			repo.Setup(x => x.GridElements).Returns(_gridElements.AsQueryable());
 			repo.Setup(x => x.Grids).Returns(_allGrids.AsQueryable());
 			repo.Setup(x => x.ApplicationSettings).Returns(_applicationSettings.AsQueryable());
 			
@@ -41,6 +44,11 @@ namespace cms.data.tests._Common
 					{
 						repo.Object.Add(resource);
 					}
+
+					foreach (var gridElement in input.GridElements)
+					{
+						repo.Object.Add(gridElement);
+					}
 					return input;
 				});
 
@@ -48,6 +56,16 @@ namespace cms.data.tests._Common
 				{
 					_applicationSettings.Add(input);
 					foreach (var grid in input.Grids)
+					{
+						repo.Object.Add(grid);
+					}
+					return input;
+				});
+
+			repo.Setup(x => x.Add(It.IsAny<GridElement>())).Returns((GridElement input) =>
+				{
+					_gridElements.Add(input);
+					foreach (var grid in input.Resources)
 					{
 						repo.Object.Add(grid);
 					}

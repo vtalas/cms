@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using cms.data.Dtos;
 using cms.data.Extensions;
 using cms.data.Repository;
 using cms.data.Shared.Models;
@@ -8,7 +11,8 @@ using cms.shared;
 
 namespace cms.data.DataProvider
 {
-	public class DataProviderBase
+
+	public class DataProviderBase : IGridElementDataProvider
 	{
 		protected ApplicationSetting CurrentApplication { get; set; }
 
@@ -16,9 +20,10 @@ namespace cms.data.DataProvider
 
 		protected IRepository db { get; set; }
 
-		protected DataProviderBase(ApplicationSetting application )
+		public DataProviderBase(ApplicationSetting application, IRepository repository )
 		{
 			CurrentApplication = application;
+			db = repository;
 		}
 
 		protected IQueryable<Grid> AvailableGrids
@@ -57,5 +62,41 @@ namespace cms.data.DataProvider
 			}
 		}
 
+		public GridElement AddToGrid(GridElement gridElement, Guid gridId)
+		{
+			var grid = GetGrid(gridId);
+			if (grid == null)
+			{
+				throw new ObjectNotFoundException("grid not found");
+			}
+
+			grid.GridElements.AddToCorrectPosition(gridElement);
+			db.SaveChanges();
+			return gridElement;
+		}
+
+		public void Delete(Guid guid, Guid gridid)
+		{
+			throw new NotImplementedException();
+		}
+
+		public GridElementDto Update(GridElementDto item)
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	public static class chghjshd
+	{
+		public static void AddToCorrectPosition(this ICollection<GridElement> list, GridElement newitem)
+		{
+			var ordered = list.OrderBy(x => x.Position);
+
+			foreach (var gridElement in ordered.Where(gridElement => gridElement.Position >= newitem.Position))
+			{
+				gridElement.Position++;
+			}
+			list.Add(newitem);
+		}
 	}
 }

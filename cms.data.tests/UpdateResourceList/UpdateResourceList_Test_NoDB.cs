@@ -31,7 +31,7 @@ namespace cms.data.tests.UpdateResourceList
 		{
 			var g = AGrid().AddTo(Repository);
 
-			var gResources = ResourcesHelper.EmptyResourcesDto()
+			var gResources = ResourcesAssertsHelper.EmptyResourcesDto()
 													  .WithResource("link", "linkvaluedto", 0)
 													  .WithResource("name", "linkvaluedto", 0);
 
@@ -50,7 +50,7 @@ namespace cms.data.tests.UpdateResourceList
 				.WithResource("linkXXX", "dbvalueLink")
 				.WithResource("nameXXX", "dbvalueName");
 
-			var gResources = ResourcesHelper.EmptyResourcesDto()
+			var gResources = ResourcesAssertsHelper.EmptyResourcesDto()
 											.WithResource("link", "linkvaluedto", 0)
 											.WithResource("name", "linkvaluedto", 0);
 
@@ -66,7 +66,7 @@ namespace cms.data.tests.UpdateResourceList
 				.WithResource("link", "dbvalueLink")
 				.WithResource("name", "dbvalueName");
 
-			var gResources = ResourcesHelper.EmptyResourcesDto()
+			var gResources = ResourcesAssertsHelper.EmptyResourcesDto()
 											.WithResource("link", "linkvaluedto", 0)
 											.WithResource("name", "namevaluedto", 0);
 
@@ -94,7 +94,7 @@ namespace cms.data.tests.UpdateResourceList
 				.WithResource("link", "dbvalueLink", CultureCs, 1)
 				.WithResource("name", "dbvalueName", CultureCs, 2).AddTo(Repository);
 
-			var gResources = ResourcesHelper.EmptyResourcesDto()
+			var gResources = ResourcesAssertsHelper.EmptyResourcesDto()
 											.WithResource("link", "linkvaluedto", 12)
 											.WithResource("name", "namevaluedto", 23);
 
@@ -141,7 +141,7 @@ namespace cms.data.tests.UpdateResourceList
 		{
 			var grid1 = AGrid().AddTo(Repository);
 			var grid2 = AGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
-			var newResources = ResourcesHelper.EmptyResourcesDto()
+			var newResources = ResourcesAssertsHelper.EmptyResourcesDto()
 											 .WithResource("link", "newlinkvalue", 0);
 
 
@@ -188,7 +188,7 @@ namespace cms.data.tests.UpdateResourceList
 			var g = AGrid()
 				.WithResource(SpecialResourceEnum.Link, "dbvalueLink").AddTo(Repository);
 
-			var gResources = ResourcesHelper.EmptyResourcesDto()
+			var gResources = ResourcesAssertsHelper.EmptyResourcesDto()
 													  .WithResource(SpecialResourceEnum.Link, "linkvaluedtoXXX", 0);
 
 			g.UpdateResourceList(gResources, CultureCs, Repository);

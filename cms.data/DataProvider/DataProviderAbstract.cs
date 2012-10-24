@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using cms.data.Dtos;
+using cms.data.Repository;
 using cms.data.Shared.Models;
 
 namespace cms.data.DataProvider
@@ -40,7 +41,7 @@ namespace cms.data.DataProvider
 
 	public abstract class GridElementAbstract : DataProviderBase
 	{
-		protected GridElementAbstract(ApplicationSetting application) : base(application){}
+		protected GridElementAbstract(ApplicationSetting application, IRepository repo) : base(application, repo){}
 		public abstract GridElement AddToGrid(GridElement gridElement, Guid gridId);
 		public abstract void Delete(Guid guid, Guid gridid);
 		public abstract GridElementDto Update(GridElementDto item);
@@ -48,7 +49,7 @@ namespace cms.data.DataProvider
 
 	public abstract class PageAbstract : DataProviderBase
 	{
-		protected PageAbstract(ApplicationSetting application) : base(application) { }
+		protected PageAbstract(ApplicationSetting application, IRepository repo) : base(application, repo) { }
 		public abstract GridPageDto Get(string link);
 		public abstract GridPageDto Get(Guid id);
 		public abstract IEnumerable<GridPageDto> List();
@@ -59,12 +60,11 @@ namespace cms.data.DataProvider
 
 	public abstract class MenuAbstract : DataProviderBase
 	{
-		protected MenuAbstract(ApplicationSetting application) : base(application) { }
+		protected MenuAbstract(ApplicationSetting application, IRepository repo) : base(application, repo) { }
 		public abstract MenuDto Get(Guid guid);
 		public abstract MenuDto Add(MenuDto newitem);
 		public abstract MenuItemDto UpdateMenuItem(MenuItemDto menuItem);
-		public abstract MenuItemDto AddMenuitem(MenuItemDto menuItem);
-		public abstract Guid AddMenuItem(MenuItemDto newitem, Guid gridId);
+		public abstract MenuItemDto AddMenuItem(MenuItemDto menuItem, Guid menuId);
 		public abstract IEnumerable<MenuDto> List();
 		public abstract void Delete(Guid guid);
 	}

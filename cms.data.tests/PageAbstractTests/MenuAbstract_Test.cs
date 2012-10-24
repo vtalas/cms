@@ -57,6 +57,21 @@ namespace cms.data.tests.PageAbstractTests
 			Assert.AreEqual("xxxEn", menu.Name);
 		}
 
+		[Test]
+		public void AddMenuItem_XXX_test()
+		{
+
+			var menu = _implemtation.Get(_gridId);
+			Assert.AreEqual(CategoryEnum.Menu, menu.Category );
+			Assert.AreEqual("xxx", menu.Name);
+			Assert.AreEqual("bbb", menu.Link);
+			SetCulture(CultureEn);
+
+			menu = _implemtation.Get(_gridId);
+			Assert.AreEqual("bbb", menu.Link);
+			Assert.AreEqual("xxxEn", menu.Name);
+		}
+
 		//public MenuDto Get(Guid guid)
 		//public MenuDto Add(MenuDto newitem);
 		//public MenuItemDto UpdateMenuItem(MenuItemDto menuItem);
