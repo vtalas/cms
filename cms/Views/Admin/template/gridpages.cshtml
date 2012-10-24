@@ -1,49 +1,54 @@
-﻿ <hr class="divider"></hr>
+﻿<hr class="divider" />
 
-<table>
-	<tr ng-repeat="grid in data">
-		<td width="200" >
-			<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">
-				{{grid.Name}}
-			</a>
-		</td>
-		<td width="200" ng-hide="grid.Edit">
-			{{grid.ResourceDto.Value}}
-		</td>
-		<td ng-show="grid.Edit">
-			<input type="text" ng-model="grid.ResourceDto.Value"/>
-		</td>
-		<td>
-			
-			<button ng-hide="grid.Edit" ng-click="edit(grid)" class="btn">
-				<i class="icon-pencil" ></i>
-			</button>
-			<button ng-show="grid.Edit" ng-click="save(grid)"  class="btn">
-				<i class="icon-ok" ></i>
-			</button>
-			
-			<button ng-click="remove(grid)"  class="btn">
-				<i class="icon-trash" ></i>
-			</button>
-		</td>
-		<td>
-			<a href="/client/@ViewBag.Application/{{grid.ResourceDto.Value}}">viewhtml</a> |
-			<a href="/client/json/@ViewBag.ApplicationId/{{grid.ResourceDto.Value}}">viewJson</a>
-		</td>
-	</tr>
-</table>
- <hr class="divider"></hr>
-<button ng-click="addclick()"  type="button" class="btn" data-toggle="button">Přidat</button>
-<div ng-show="createNew" ng-hide="!createNew" >
-	<h2>new</h2>
+<div class="row row-gridpages" ng-repeat="grid in data">
+	<div class="span3">
+		<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{grid.Name}}
+		</a>
+	</div>
+	<div class="span3">
+		<span class="admin-inline-block">{{grid.ResourceDto.Value}}</span>
+	</div>
+	<div class="span3">
+		<button ng-hide="grid.Edit" ng-click="edit(grid)" class="btn">
+			<i class="icon-pencil"></i>
+		</button>
+		<button ng-show="grid.Edit" ng-click="save(grid)" class="btn">
+			<i class="icon-ok"></i>
+		</button>
+
+		<button ng-click="remove(grid)" class="btn">
+			<i class="icon-trash"></i>
+		</button>
+
+		<a href="/client/@ViewBag.Application/{{grid.ResourceDto.Value}}">viewhtml</a> |
+		<a href="/client/json/@ViewBag.ApplicationId/{{grid.ResourceDto.Value}}">viewJson</a>
+	</div>
+</div>
+
+<hr class="divider" />
+
+<form class="row row-gridpages form-inline">
+	<div class="span3 admin-inline-block">
+		<input type="text" placeholder="Name" ng-model="newitem.Name">
+	</div>
+	<div class="span5 admin-inline-block">
+		<input type="text" placeholder="Link" ng-model="newitem.ResourceDto.Value">
+		<button ng-click="add()" type="submit" class="btn">Přidat</button>
+	</div>
+
+</form>
+<div ng-show="createNew" ng-hide="!createNew">
+
 	<table>
 		<tr>
 			<td>Jméno:</td>
-			<td><input type="text" ng-model="newitem.Name" /></td>
-		</tr>	
+			<td>
+				<input type="text" ng-model="newitem.Name" /></td>
+		</tr>
 		<tr>
 			<td>Link:</td>
-			<td><input type="text" ng-model="newitem.ResourceDto.Value" /></td>
+			<td>
+				<input type="text" ng-model="newitem.ResourceDto.Value" /></td>
 		</tr>
 
 	</table>
@@ -54,3 +59,33 @@
 
 
 
+@*<table>
+	<tr ng-repeat="grid in data">
+		<td>
+			<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{grid.Name}}
+			</a>
+		</td>
+		<td ng-hide="grid.Edit">{{grid.ResourceDto.Value}}
+		</td>
+		<td ng-show="grid.Edit">
+			<input type="text" ng-model="grid.ResourceDto.Value" />
+		</td>
+		<td>
+
+			<button ng-hide="grid.Edit" ng-click="edit(grid)" class="btn">
+				<i class="icon-pencil"></i>
+			</button>
+			<button ng-show="grid.Edit" ng-click="save(grid)" class="btn">
+				<i class="icon-ok"></i>
+			</button>
+
+			<button ng-click="remove(grid)" class="btn">
+				<i class="icon-trash"></i>
+			</button>
+		</td>
+		<td>
+			<a href="/client/@ViewBag.Application/{{grid.ResourceDto.Value}}">viewhtml</a> |
+			<a href="/client/json/@ViewBag.ApplicationId/{{grid.ResourceDto.Value}}">viewJson</a>
+		</td>
+	</tr>
+</table>*@
