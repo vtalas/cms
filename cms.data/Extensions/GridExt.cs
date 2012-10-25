@@ -23,6 +23,18 @@ namespace cms.data.Extensions
 			source.Parent = parent;
 			return source;
 		}
+		
+		public static GridElement WithContent(this GridElement source, string content)
+		{
+			source.Content = content;
+			return source;
+		}
+
+		public static GridElement IsPropertyOf(this GridElement source, Grid owner)
+		{
+			source.Grid = owner;
+			return source;
+		}
 
 		public static GridElement WithResource(this GridElement source, string key, string value, string culture, int id = 0)
 		{
@@ -61,6 +73,7 @@ namespace cms.data.Extensions
 
 		public static Grid WithGridElement(this Grid source, GridElement gridElement)
 		{
+			gridElement.Grid = source;
 			source.GridElements.Add(gridElement);
 			return source;
 		}

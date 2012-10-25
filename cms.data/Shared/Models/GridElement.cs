@@ -9,7 +9,7 @@ namespace cms.data.Shared.Models
 		{
 			//Status = DomainModels.Status.Private;
 			Id = Guid.NewGuid();
-			Grid = new List<Grid>();
+			//Grid = new List<Grid>();
 			Resources = new List<Resource>();
 			Type = "text";
 		}
@@ -24,7 +24,7 @@ namespace cms.data.Shared.Models
 		public string Skin { get; set; }
 			
 		public virtual GridElement Parent { get; set; }
-		public virtual ICollection<Grid> Grid { get; set; }
+		public virtual Grid Grid { get; set; }
 		public virtual ICollection<Resource> Resources { get; set; }
 
 	}

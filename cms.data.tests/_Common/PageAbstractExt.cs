@@ -11,16 +11,6 @@ namespace cms.data.Extensions
 			return context.Any(x => x.Id == id);
 		}
 
-		public static GridElement Get(this IQueryable<GridElement> context, Guid guid, Guid applicationId)
-		{
-			var item = context.Single(x => x.Id == guid);
-			
-			if(item.Grid.Any(x=>x.ApplicationSettings.Id != applicationId))
-				throw new InvalidOperationException();
-			
-			return item;
-		}
-
 		public static Grid Get(this IQueryable<Grid> context, Guid guid)
 		{
 			var item = context.Single(x => x.Id == guid);

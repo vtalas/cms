@@ -76,11 +76,6 @@ namespace cms.data.EF.DataProviderImplementation
 			get { return new PageAbstractImpl(CurrentApplication, Repository); }
 		}
 
-		public override GridElementAbstract GridElement
-		{
-			get { return new GridElementAbstractImpl(CurrentApplication, Repository); }
-		}
-
 		public override IEnumerable<GridListDto> Grids()
 		{
 			var a = Repository.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id).ToList().Select(dto => new GridListDto

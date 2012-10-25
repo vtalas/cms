@@ -43,9 +43,8 @@ namespace cms.data.tests.EF
 							               Type = "text",
 						               };
 
-					var newgridelem = db.GridElement.AddToGrid(gridelem, gridDb.Id);
+					var newgridelem = db.Page.AddToGrid(gridelem, gridDb.Id);
 
-					Assert.AreEqual(1, newgridelem.Grid.Count);
 					Assert.AreEqual(gridelementsBefore + 1, checkdb.GridElements.Count());
 				}
 			}
@@ -73,7 +72,7 @@ namespace cms.data.tests.EF
 					               };
 
 
-				var newgridelem = db.GridElement.AddToGrid(gridelem, grid.Id);
+				var newgridelem = db.Page.AddToGrid(gridelem, grid.Id);
 
 				Assert.IsTrue(newgridelem.Resources.Any());
 				Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));
@@ -101,7 +100,7 @@ namespace cms.data.tests.EF
 							                           }
 					               };
 
-				var newgridelem = db.GridElement.AddToGrid(gridelem, grid.Id);
+				var newgridelem = db.Page.AddToGrid(gridelem, grid.Id);
 
 				Assert.IsTrue(newgridelem.Resources.Any());
 				Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));

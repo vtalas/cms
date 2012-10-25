@@ -23,8 +23,6 @@ namespace cms.data.tests
 		[Test]
 		public void Sertest()
 		{
-
-	
 			var dd = new Dictionary<string, string>
 			         	{
 			         		{"001", "kjabsdjkasbdkasd"},

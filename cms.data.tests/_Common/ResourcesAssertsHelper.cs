@@ -36,24 +36,35 @@ namespace cms.data.tests._Common
 			item.GridElements.Where(x => x.Parent == null).HasGridElementsValid();
 
 			Assert.AreEqual(expectedTotalCount, item.GridElements.Count);
-			
-
 			return item;
 		}
 		
 		public static IEnumerable<GridElement> HasGridElementsValid(this IEnumerable<GridElement> listWithSameParent)
 		{
-			foreach (var gridelement in listWithSameParent)
+			var checkSum = 0;
+			var index = 0;
+			var positionSum = 0;
+
+			foreach (var gridelement in listWithSameParent.OrderBy(x=>x.Position))
 			{
 				Assert.AreEqual(1, listWithSameParent.Count(x => x.Position == gridelement.Position), "position " + gridelement.Position + " is more then once");
+				
+				checkSum += index;
+				positionSum += gridelement.Position;
+
+				index++;
 			}
+			var parentId = listWithSameParent.First().Parent != null ? listWithSameParent.First().Parent.Id.ToString() : "";
+			var xx = listWithSameParent.Select(x=>x.Position.ToString()).Aggregate((x, y) => x + "," + y);
+
+			Assert.AreEqual(checkSum, positionSum, "sum of positions should be " + checkSum + " for parent " + parentId +" sequence: " + xx);
 			return listWithSameParent;
 		}
 
 		public static Grid HasGridElementIndex(this Grid item, GridElement parent, int expectedIndex)
 		{
 			var index = item.GridElements.Where(x => x.Parent == parent).OrderBy(a => a.Position).ToList().FindIndex(a => a.Position == expectedIndex);
-			Assert.AreEqual(expectedIndex, index);
+			Assert.AreEqual(expectedIndex, index, "gridelement should be on index" + expectedIndex);
 			return item;
 		}
 	}

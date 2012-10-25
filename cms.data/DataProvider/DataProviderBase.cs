@@ -12,7 +12,7 @@ using cms.shared;
 namespace cms.data.DataProvider
 {
 
-	public class DataProviderBase : IGridElementDataProvider
+	public class DataProviderBase 
 	{
 		protected ApplicationSetting CurrentApplication { get; set; }
 
@@ -46,6 +46,17 @@ namespace cms.data.DataProvider
 		{
 			var grid = AvailableGrids.SingleOrDefault(x => x.Id == id);
 			return grid;
+		}
+
+		protected GridElement GetGridElement(Guid id)
+		{
+			var gridElement = db.GridElements.SingleOrDefault(x => x.Id == id);
+
+			if (gridElement == null || !AvailableGrids.Any(x => x.Id == gridElement.Grid.Id))
+			{
+				throw new ObjectNotFoundException("grid element not found");
+			}
+			return gridElement;
 		}
 
 		protected bool LinkExist(string linkValue)
@@ -84,19 +95,64 @@ namespace cms.data.DataProvider
 		{
 			throw new NotImplementedException();
 		}
+
+		public GridElement Update(GridElement item)
+		{
+			var gridlementOld = GetGridElement(item.Id);
+			if (item.Grid == null)
+			{
+				throw new ObjectNotFoundException("grid element owner not found");
+			}
+			var parents = item.Grid.GridElements.Where(x=>x.Parent == item.Parent);
+
+			var oldPosition = gridlementOld.Position;
+			var newPosition = item.Position;
+
+			foreach (var current in parents.OrderBy(x => x.Position))
+			{
+				var movedDown = oldPosition < newPosition;
+				if (movedDown)
+				{
+					if (current.Position >= oldPosition && current.Position <= newPosition)
+					{
+						current.Position--;
+					}
+				}
+				else
+				{
+					if (current.Position >= newPosition && current.Position <= oldPosition)
+					{
+						current.Position++;
+					}
+				}
+			}
+
+			var parentsCount = parents.Count();
+			gridlementOld.Content = item.Content;
+			gridlementOld.Grid = item.Grid;
+			gridlementOld.Parent = item.Parent;
+			gridlementOld.Position = item.Position > parentsCount && parentsCount > 0 ? parentsCount - 1  : item.Position;
+			gridlementOld.Resources = item.Resources;
+			gridlementOld.Skin = item.Skin;
+
+
+			db.SaveChanges();
+
+			return gridlementOld;
+		}
 	}
 
 	public static class chghjshd
 	{
-		public static void AddToCorrectPosition(this ICollection<GridElement> list, GridElement newitem)
+		public static void AddToCorrectPosition(this ICollection<GridElement> allGridElements, GridElement newitem)
 		{
-			var ordered = list.OrderBy(x => x.Position);
+			var ordered = allGridElements.OrderBy(x => x.Position);
 
-			foreach (var gridElement in ordered.Where(gridElement => gridElement.Position >= newitem.Position))
+			foreach (var gridElement in ordered.Where(gridElement => gridElement.Position >= newitem.Position && gridElement.Parent == newitem.Parent))
 			{
 				gridElement.Position++;
 			}
-			list.Add(newitem);
+			allGridElements.Add(newitem);
 		}
 	}
 }

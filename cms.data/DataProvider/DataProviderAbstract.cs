@@ -28,7 +28,6 @@ namespace cms.data.DataProvider
 
 		public abstract MenuAbstract Menu { get; }
 		public abstract PageAbstract Page { get; }
-		public abstract GridElementAbstract GridElement { get; }
 	
 		public abstract IEnumerable<GridListDto> Grids();
 
@@ -37,14 +36,6 @@ namespace cms.data.DataProvider
 		public abstract IEnumerable<ApplicationSetting> Applications();
 		public abstract void Dispose();
 
-	}
-
-	public abstract class GridElementAbstract : DataProviderBase
-	{
-		protected GridElementAbstract(ApplicationSetting application, IRepository repo) : base(application, repo){}
-		public abstract GridElement AddToGrid(GridElement gridElement, Guid gridId);
-		public abstract void Delete(Guid guid, Guid gridid);
-		public abstract GridElementDto Update(GridElementDto item);
 	}
 
 	public abstract class PageAbstract : DataProviderBase

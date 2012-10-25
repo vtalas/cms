@@ -33,7 +33,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var newitem = db.GridElement.AddToGrid(data, gridId);
+				var newitem = db.Page.AddToGrid(data, gridId);
 				return new JSONNetResult(newitem.ToDto());
 			}
 		}
@@ -43,7 +43,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				db.GridElement.Delete(data.Id, gridId);
+				db.Page.Delete(data.Id, gridId);
 				return new JSONNetResult(null);
 			}
 		}
@@ -55,7 +55,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.GridElement.Update(data);
+				var g = db.Page.Update(data);
 				return new JSONNetResult(g);
 			}
 		}
