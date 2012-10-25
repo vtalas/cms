@@ -1,0 +1,58 @@
+.align-left {
+  text-align: left;
+}
+.admin-inline-block {
+  padding: 6px 0px;
+  display: inline-block;
+}
+.row-gridpages {
+  background-color: #eee;
+  margin-bottom: 1px;
+  margin-left: 0px;
+}
+.row-gridpages {
+  background-color: #eee;
+  margin-bottom: 1px;
+  margin-left: 0px;
+}
+.xxx .menuitem {
+  width: 100%;
+}
+.xxx span.ng-scope {
+  display: block;
+  height: 0px;
+}
+.xxx .dropableCtrl.dragging {
+  height: 20px;
+}
+.xxx .dropableCtrl.dragover {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  height: 42px !important;
+}
+.xxx .draggableCtrl.dragged {
+  opacity: 0.4;
+}
+.menu2 {
+  border: 1px solid #ededed;
+}
+.ggg span.ng-scope {
+  display: block;
+  height: 0px;
+}
+.ggg .dropableCtrl {
+  height: 70px;
+  background-color: #eee;
+}
+.ggg .dropableCtrl.dragover {
+  background-color: Yellow;
+}
+.ggg .draggableCtrl,
+.ggg .sortableCtrl {
+  background-color: #aaa;
+}
+.ggg .draggableCtrl,
+.ggg .sortableCtrl {
+  margin-top: 10px;
+  height: 70px;
+}

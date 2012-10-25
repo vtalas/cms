@@ -1,11 +1,12 @@
-﻿<hr class="divider" />
+﻿<p></p>
 
-<div class="row row-gridpages" ng-repeat="grid in data">
+<div class="row row-gridpages form-inline" ng-repeat="grid in data">
 	<div class="span3">
 		<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{grid.Name}}
 		</a>
 	</div>
-	<div class="span3">
+	<div class="span3 admin-inline-block">
+		@*<input type="text" placeholder="Link" ng-model="newitem.ResourceDto.Value">*@
 		<span class="admin-inline-block">{{grid.ResourceDto.Value}}</span>
 	</div>
 	<div class="span3">
@@ -24,20 +25,32 @@
 		<a href="/client/json/@ViewBag.ApplicationId/{{grid.ResourceDto.Value}}">viewJson</a>
 	</div>
 </div>
+<p></p>
 
-<hr class="divider" />
 
-<form class="row row-gridpages form-inline">
+
+<div class="span3" ng-show="!createNew" ng-hide="createNew">
+	<button ng-click="addclick()" type="submit" class="btn" >Přidat Nový</button>
+</div>
+
+<form class="row row-gridpages xxx form-inline"  ng-show="createNew" ng-hide="!createNew">
 	<div class="span3 admin-inline-block">
 		<input type="text" placeholder="Name" ng-model="newitem.Name">
 	</div>
 	<div class="span5 admin-inline-block">
 		<input type="text" placeholder="Link" ng-model="newitem.ResourceDto.Value">
-		<button ng-click="add()" type="submit" class="btn">Přidat</button>
 	</div>
-
+	
+	<div class="clearfix"> </div>
+	
+	<div class="span3">
+		<button ng-click="add()" type="submit" class="btn" >Ok</button>
+		<button ng-click="addclick()" type="submit" class="btn" >Cancel</button>
+	</div>
+	
 </form>
-<div ng-show="createNew" ng-hide="!createNew">
+
+@*<div ng-show="createNew" ng-hide="!createNew">
 
 	<table>
 		<tr>
@@ -57,7 +70,7 @@
 </div>
 
 
-
+*@
 
 @*<table>
 	<tr ng-repeat="grid in data">
