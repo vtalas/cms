@@ -12,15 +12,18 @@ using cms.shared;
 namespace cms.data.DataProvider
 {
 
-	public class DataProviderBase 
+	public class DataProviderBase
 	{
 		protected ApplicationSetting CurrentApplication { get; set; }
 
-		protected string CurrentCulture { get { return SharedLayer.Culture; } }
+		protected string CurrentCulture
+		{
+			get { return SharedLayer.Culture; }
+		}
 
 		protected IRepository db { get; set; }
 
-		public DataProviderBase(ApplicationSetting application, IRepository repository )
+		public DataProviderBase(ApplicationSetting application, IRepository repository)
 		{
 			CurrentApplication = application;
 			db = repository;
@@ -30,7 +33,7 @@ namespace cms.data.DataProvider
 		{
 			get
 			{
-				var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id );
+				var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id);
 				return a;
 			}
 		}
@@ -111,55 +114,23 @@ namespace cms.data.DataProvider
 			{
 				var oldPosition = itemBefore.Position;
 				var newPosition = item.Position;
-
-				foreach (var current in groupDestination.OrderBy(x => x.Position))
-				{
-					var movedDown = oldPosition < newPosition;
-					if (movedDown)
-					{
-						if (current.Position >= oldPosition && current.Position <= newPosition)
-						{
-							current.Position--;
-						}
-					}
-					else
-					{
-						if (current.Position >= newPosition && current.Position <= oldPosition)
-						{
-							current.Position++;
-						}
-					}
-				}
+				groupDestination.CorrectPostion(oldPosition, newPosition);
 			}
 			else
 			{
-				foreach (var current in groupDestination.OrderBy(x => x.Position))
-				{
-					var newPosition = item.Position;
-
-					if (current.Position >= newPosition)
-					{
-						current.Position++;
-					}
-				}
 				var groupSource = item.Grid.GridElements.Where(x => GridElement.EqualsById(x.Parent, itemBefore.Parent));
 
-				foreach (var current in groupSource.OrderBy(x => x.Position))
-				{
-					var oldPosition = itemBefore.Position;
-
-					if (current.Position >= oldPosition)
-					{
-						current.Position--;
-					}
-				}
+				groupSource.CorrectPostionSoftRemove(itemBefore.Position);
+				groupDestination.CorrectPostionSoftAdd(item.Position);
 				
+
+
 			}
 			var parentsCount = groupDestination.Count();
 			itemBefore.Content = item.Content;
 			itemBefore.Grid = item.Grid;
 			itemBefore.Parent = item.Parent;
-			itemBefore.Position = item.Position > parentsCount && parentsCount > 0 ? parentsCount - 1  : item.Position;
+			itemBefore.Position = item.Position > parentsCount && parentsCount > 0 ? parentsCount - 1 : item.Position;
 			itemBefore.Resources = item.Resources;
 			itemBefore.Skin = item.Skin;
 
@@ -175,11 +146,49 @@ namespace cms.data.DataProvider
 		{
 			var ordered = allGridElements.OrderBy(x => x.Position);
 
-			foreach (var gridElement in ordered.Where(gridElement => gridElement.Position >= newitem.Position && gridElement.Parent == newitem.Parent))
+			foreach (
+				var gridElement in
+					ordered.Where(gridElement => gridElement.Position >= newitem.Position && gridElement.Parent == newitem.Parent))
 			{
 				gridElement.Position++;
 			}
 			allGridElements.Add(newitem);
+		}
+
+		public static void CorrectPostion(this IEnumerable<GridElement> allGridElements, int oldPosition, int newPosition)
+		{
+			var ordered = allGridElements.OrderBy(x => x.Position);
+
+			foreach (var current in ordered)
+			{
+				if (current.Position >= oldPosition && current.Position <= newPosition)
+				{
+					current.Position--;
+				}
+				if (current.Position >= newPosition && current.Position <= oldPosition)
+				{
+					current.Position++;
+				}
+			}
+
+		}
+
+		public static void CorrectPostionSoftAdd(this IEnumerable<GridElement> allGridElements, int newPosition)
+		{
+			var ordered = allGridElements.OrderBy(x => x.Position);
+
+			foreach (var current in ordered.Where(current => current.Position >= newPosition))
+				current.Position++;
+		}
+
+		public static void CorrectPostionSoftRemove(this IEnumerable<GridElement> allGridElements, int oldPosition)
+		{
+			var ordered = allGridElements.OrderBy(x => x.Position);
+
+			foreach (var current in ordered.Where(current => current.Position >= oldPosition))
+			{
+				current.Position--;
+			}
 		}
 	}
 }
