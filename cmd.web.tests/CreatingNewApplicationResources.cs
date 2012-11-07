@@ -68,6 +68,8 @@ namespace cms.web.tests
 
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js1.js"))).Returns("alert('kabdkjsa js1 1111111')");
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js2.js"))).Returns("alert('kabdkjsa js2 222222')");
+			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "t1.thtml"))).Returns("<span>template1</span>");
+			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "css1.css"))).Returns("body{color:red;}");
 			
 			//mock.Setup(x => x.DirectoryExists(Path.Combine(RootDir, Id.ToString()))).Returns(true);
 			return mock.Object;
@@ -143,7 +145,7 @@ namespace cms.web.tests
 		}
 
 		[Test]
-		public void IncludeFile_test()
+		public void IncludeFile_script_test()
 		{
 			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("js1.js");
@@ -162,13 +164,18 @@ namespace cms.web.tests
 		}
 
 		[Test]
-		public void RenderScripts_test()
+		public void Render_test()
 		{
 			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("js1.js");
 			resources.Include("js2.js");
+			resources.Include("t1.thtml");
+			resources.Include("css1.css");
 			
-			Assert.AreEqual(resources.Assets.Sum(x => x.Content.Length),  resources.RenderScripts().Length );
+			Assert.AreEqual(resources.Assets.Where(x=>x.IsScript).Sum(x => x.Content.Length),  resources.RenderScripts().Length );
+			Assert.IsTrue(resources.RenderHtmlTemplates().Contains("<span>") );
+			Assert.AreEqual(resources.Assets.Where(x=>x.IsStylesheet).Sum(x => x.Content.Length),  resources.RenderStyleSheets().Length );
+		
 		}
 
 		[Test]

@@ -46,5 +46,13 @@ namespace cms.Controllers
 			return new EmptyResult();
 		}
 
+		public ActionResult HtmlTemplates()
+		{
+			Resources.IncludeDirectory("gridelements");
+
+			Response.Write(Resources.RenderHtmlTemplates());
+			return new EmptyResult();
+		}
+
     }
 }
