@@ -2,11 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using BundleTransformer.CoffeeScript.Translators;
 using BundleTransformer.Core;
 using BundleTransformer.Core.Assets;
 using BundleTransformer.Core.FileSystem;
+using BundleTransformer.Core.Translators;
 using BundleTransformer.Core.Web;
 using System.Linq;
+using BundleTransformer.Less.Configuration;
+using BundleTransformer.Less.Translators;
 
 namespace cms.Code.UserResources
 {
@@ -27,6 +31,9 @@ namespace cms.Code.UserResources
 		public Guid Id { get; private set; }
 		private IDictionary<string, IAssetExt> AssetsValues { get; set; }
 		private string BaseDir { get; set; }
+		private static readonly Lazy<LessTranslator> LessTranslatorObject =new Lazy<LessTranslator>(() => new LessTranslator());
+		private static readonly Lazy<CoffeeScriptTranslator> CoffeeTranslatorObject = new Lazy<CoffeeScriptTranslator>(() => new CoffeeScriptTranslator());
+
 
 		public IFileSystemWrapper AssetsFilesystem { get; private set; }
 		public IDictionary<string, IAssetExt> Assets
@@ -118,6 +125,7 @@ namespace cms.Code.UserResources
 
 		private string Render(IEnumerable<KeyValuePair<string, IAssetExt>> contentToRender)
 		{
+			//ITranslator translatorInstance = BundleTransformerContext.Current.GetJsTranslatorInstance("CoffeeScriptTranslator");
 			var s = new StringBuilder();
 			foreach (var asset in contentToRender)
 			{
@@ -128,18 +136,15 @@ namespace cms.Code.UserResources
 						s.Append(asset.Value.Content);
 						break;
 					case AssetTypeExtened.CoffeeScript:
-						var xx = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
-						s.Append(xx.Translate(asset.Value));
+						s.Append(CoffeeTranslatorObject.Value.Translate(asset.Value).Content);
 						break;
-
 					case AssetTypeExtened.Css:
 						s.Append(asset.Value.Content);
 						break;
 					case AssetTypeExtened.Sass:
 					case AssetTypeExtened.Scss:
 					case AssetTypeExtened.Less:
-						var x = new BundleTransformer.Less.Translators.LessTranslator();
-						s.Append(x.Translate(asset.Value));
+						s.Append(LessTranslatorObject.Value.Translate(asset.Value).Content);
 						break;
 					case AssetTypeExtened.HtmlTemplate:
 						s.Append(asset.Value.Content);

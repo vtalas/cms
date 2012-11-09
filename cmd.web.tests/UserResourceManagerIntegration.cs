@@ -81,7 +81,7 @@ namespace cms.web.tests
 			Console.WriteLine(httpinfo.RootPath);
 			var resources = UserResourceManager.Get(Id, httpinfo, fswrapper);
 			resources.IncludeDirectory("js");
-			Assert.AreEqual(3, resources.Assets.Count);
+			Assert.AreEqual(4, resources.Assets.Count);
 		}
 
 	}

@@ -32,6 +32,7 @@ namespace cms.web.tests
 			mock.Setup(x => x.FileExists(It.IsAny<string>())).Returns(true);
 
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js1.js"))).Returns("alert('js1client')");
+			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "coffee.coffee"))).Returns("test -> console.log('coffee')");
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "default/js1.js"))).Returns("alert('js1defaltclient')");
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js2.js"))).Returns("alert('js2client')");
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "js2_admin.js"))).Returns("alert('js2admin')");
@@ -72,10 +73,25 @@ namespace cms.web.tests
 			resources.Include("js2.js");
 			resources.Include("js2_admin.js");
 
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.Content.Contains("js2admin")).Value.IsAdmin);
-			Assert.IsFalse(resources.Assets.Single(x => x.Value.Content.Contains("js2client")).Value.IsAdmin);
+			Assert.IsTrue(resources.Assets["js2_admin.js"].IsAdmin);
+			Assert.IsFalse(resources.Assets["js2.js"].IsAdmin);
+		}
 
-			Console.WriteLine(resources.Assets.Single(x => x.Value.Content.Contains("js2admin")).Value.FileName);
+		[Test]
+		public void IncludeCoffee_test()
+		{
+			var resources = CreateDefaultResourceManagerFilesMocked();
+			resources.Include("coffee.coffee");
+			
+			Console.WriteLine(resources.Assets["coffee.coffee"].Content);
+			Console.WriteLine(resources.RenderScripts());
+			Console.WriteLine(resources.Assets["coffee.coffee"].Content);
+			Console.WriteLine("kjabsdjkas");
+			Console.WriteLine(resources.RenderScripts());
+			Console.WriteLine(resources.RenderScripts());
+			// coffee se prelozil
+			//Assert.IsTrue(resources.RenderScripts().Contains("return console.log('coffee')"));
+
 		}
 
 		[Test]
@@ -110,17 +126,17 @@ namespace cms.web.tests
 		{
 			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("js1.js");
-			resources.Include("coffee1.coffee");
+			resources.Include("coffee.coffee");
 			resources.Include("ts1.ts");
 
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.JavaScript).Value.IsScript);
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.JavaScript).Value.Path.Contains("js1.js"));
+			Assert.IsTrue(resources.Assets["js1.js"].IsScript);
+			Assert.IsTrue(resources.Assets["js1.js"].AssetTypeExtended == AssetTypeExtened.JavaScript);
 
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.CoffeeScript).Value.IsScript);
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.CoffeeScript).Value.Path.Contains("coffee1.coffee"));
-
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.TypeScript).Value.IsScript);
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.TypeScript).Value.Path.Contains("ts1.ts"));
+			Assert.IsTrue(resources.Assets["coffee.coffee"].IsScript);
+			Assert.IsTrue(resources.Assets["coffee.coffee"].AssetTypeExtended == AssetTypeExtened.CoffeeScript);
+	
+			Assert.IsTrue(resources.Assets["ts1.ts"].IsScript);
+			Assert.IsTrue(resources.Assets["ts1.ts"].AssetTypeExtended == AssetTypeExtened.TypeScript);
 		}
 
 		[Test]
@@ -130,10 +146,10 @@ namespace cms.web.tests
 			resources.Include("template1.thtml");
 			resources.Include("templatexxx");
 
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.HtmlTemplate).Value.IsHtmlTemplate);
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.HtmlTemplate).Value.Path.Contains("template1.thtml"));
+			Assert.IsTrue(resources.Assets["template1.thtml"].IsHtmlTemplate);
+			Assert.IsTrue(resources.Assets["template1.thtml"].AssetTypeExtended == AssetTypeExtened.HtmlTemplate);
 
-			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.Unknown).Value.Path.Contains("templatexxx"));
+			Assert.IsTrue(resources.Assets["templatexxx"].AssetTypeExtended == AssetTypeExtened.Unknown);
 		}
 
 	}
