@@ -16,7 +16,6 @@ namespace cms.Code.UserResources
 		IDictionary<string, IAssetExt> Assets { get; }
 		void IncludeDirectory(string path);
 		void Include(string path);
-	
 		bool Exist();
 		string RenderScripts();
 		string RenderStyleSheets();
