@@ -4,6 +4,7 @@ using BundleTransformer.Core.FileSystem;
 using BundleTransformer.Core.Web;
 using NUnit.Framework;
 using cms.Code.UserResources;
+using cms.web.tests.Code;
 
 namespace cms.web.tests
 {
@@ -27,7 +28,6 @@ namespace cms.web.tests
 			return new HttpApplicationInfo(IntegrationRootDir, IntegrationRootDir);
 		}
 
-
 		public void Cleanup(Guid id )
 		{
 			var apppath = Path.Combine(IntegrationRootDir, id.ToString());
@@ -46,7 +46,6 @@ namespace cms.web.tests
 			Cleanup(appId);
 		}
 
-
 		[Test]
 		public void TryCreateWithSameName_test()
 		{
@@ -55,7 +54,6 @@ namespace cms.web.tests
 			Assert.Throws<Exception>(() => UserResourceManager.Create(appId, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject()));
 			Cleanup(appId);
 		}
-
 
 		[Test]
 		public void GetApp_ApplicationExists_test()

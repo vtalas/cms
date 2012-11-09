@@ -6,6 +6,7 @@ using Moq;
 using NUnit.Framework;
 using cms.Code.UserResources;
 using System.Linq;
+using cms.web.tests.Code;
 
 namespace cms.web.tests
 {

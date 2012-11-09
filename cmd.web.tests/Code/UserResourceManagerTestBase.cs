@@ -3,7 +3,7 @@ using Moq;
 using cms.data;
 using cms.data.Shared.Models;
 
-namespace cms.web.tests
+namespace cms.web.tests.Code
 {
 	internal class UserResourceManagerTestBase
 	{
