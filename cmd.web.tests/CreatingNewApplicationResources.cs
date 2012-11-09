@@ -5,58 +5,25 @@ using BundleTransformer.Core.Web;
 using Moq;
 using NUnit.Framework;
 using cms.Code.UserResources;
-using cms.data;
-using cms.data.Shared.Models;
 using System.Linq;
 
 namespace cms.web.tests
 {
-	
-
 	[TestFixture]
-	class CreatingNewApplicationResources
+	class CreatingNewApplicationResources : UserResourceManagerTestBase
 	{
-		private static readonly Guid Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
-		private string RootDir { get; set; }
-		private string IntegrationRootDir { get; set; }
+		protected string RootDir { get; set; }
 
 		public CreatingNewApplicationResources()
 		{
-			RootDir = Path.GetFullPath("../../Content");
-			IntegrationRootDir = Path.GetFullPath("c:/lades/web/cms/cmd.web.tests/Integration");
-		}
-
-		readonly ApplicationSetting _defaultApp = new ApplicationSetting
-		{
-			Name = "prdel",
-			DefaultLanguage = "cs",
-			Id = Id
-		};
-
-		public ApplicationSetting CreateDefaultApp()
-		{
-		
-			var mock = new Mock<JsonDataProvider>("00000000-0000-0000-0000-000000000000");
-			mock.Setup(x => x.Add(It.IsAny<ApplicationSetting>()))
-				.Returns(_defaultApp);
-			var db = mock.Object;
-
-			return db.Add(new ApplicationSetting());
+			RootDir = Path.GetFullPath(".");
 		}
 
 		IHttpApplicationInfo HttpApplicationInfoObject()
 		{
 			return new HttpApplicationInfo(RootDir, RootDir);
 		}
-		IHttpApplicationInfo HttpApplicationInfoIntegratonObject()
-		{
-			return new HttpApplicationInfo(IntegrationRootDir, IntegrationRootDir);
-		}
 
-		IFileSystemWrapper FileSystemWrapperObject()
-		{
-			return new FileSystemWrapper();
-		}
 
 		IFileSystemWrapper FileSystemWrapperMock()
 		{
@@ -70,7 +37,6 @@ namespace cms.web.tests
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "t1.thtml"))).Returns("<span>template1client</span>");
 			mock.Setup(x => x.GetFileTextContent(Path.Combine(RootDir, Id.ToString(), "css1.css"))).Returns("body{color:red;}");
 			
-			//mock.Setup(x => x.DirectoryExists(Path.Combine(RootDir, Id.ToString()))).Returns(true);
 			return mock.Object;
 		}
 
@@ -80,62 +46,6 @@ namespace cms.web.tests
 			return UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperMock());
 		}
 		
-		[TestFixtureSetUp]
-		public void Setup()
-		{
-			var apppath = Path.Combine(RootDir, Id.ToString());
-			if (Directory.Exists(apppath))
-			{
-				Directory.Delete(apppath, true);
-			}
-		}
-
-		public void Cleanup()
-		{
-			var apppath = Path.Combine(RootDir, Id.ToString());
-			if (Directory.Exists(apppath))
-			{
-				Directory.Delete(apppath, true);
-			}
-		}
-
-		[Test]
-		public void CreateAndCheckIfExists_test()
-		{
-			var app = CreateDefaultApp();
-			var res = UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject());
-			Assert.IsTrue(res.Exist());
-			Cleanup();
-		}
-
-
-		[Test]
-		public void TryCreateWithSameName_test()
-		{
-			var app = CreateDefaultApp();
-			UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject());
-			Assert.Throws<Exception>(() =>  UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject()));
-			Cleanup();
-		}
-
-
-		[Test]
-		public void GetApp_ApplicationExists_test()
-		{
-			var app = CreateDefaultApp();
-			UserResourceManager.Create(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject());
-			var res = UserResourceManager.Get(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject());
-			Assert.IsTrue(res.Exist());
-			Cleanup();
-		}
-
-		[Test]
-		public void GetApp_ApplicationDoesntExists_test()
-		{
-			var app = CreateDefaultApp();
-			Assert.Throws<DirectoryNotFoundException>(() => UserResourceManager.Get(app.Id, HttpApplicationInfoObject(), FileSystemWrapperObject()));
-		}
-
 		[Test]
 		public void NoAssetsOnBeginning_test()
 		{
@@ -149,22 +59,10 @@ namespace cms.web.tests
 			var resources = CreateDefaultResourceManagerFilesMocked();
 			resources.Include("js1.js");
 			Assert.IsTrue(resources.Assets.Count == 1);
-			Assert.IsTrue(resources.Assets[0].Content.Length > 0);
-			Console.WriteLine(resources.Assets[0].Content );
+			Assert.IsTrue(resources.Assets["js1.js"].Content.Length > 0);
+			Console.WriteLine(resources.Assets["js1.js"].Content);
 		}
 
-
-		[Test]
-		public void IncludeDirectory_test()
-		{
-			var httpinfo = HttpApplicationInfoIntegratonObject();
-			var fswrapper = FileSystemWrapperObject();
-
-			Console.WriteLine(httpinfo.RootPath);
-			var resources = UserResourceManager.Get(Id, httpinfo, fswrapper);
-			resources.IncludeDirectory("js");
-			Assert.AreEqual(3, resources.Assets.Count);
-		}
 
 		[Test]
 		public void IsAdmin_test()
@@ -173,10 +71,10 @@ namespace cms.web.tests
 			resources.Include("js2.js");
 			resources.Include("js2_admin.js");
 
-			Assert.IsTrue(resources.Assets.Single(x => x.Content.Contains("js2admin")).IsAdmin);
-			Assert.IsFalse(resources.Assets.Single(x => x.Content.Contains("js2client")).IsAdmin);
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.Content.Contains("js2admin")).Value.IsAdmin);
+			Assert.IsFalse(resources.Assets.Single(x => x.Value.Content.Contains("js2client")).Value.IsAdmin);
 
-			Console.WriteLine(resources.Assets.Single(x => x.Content.Contains("js2admin")).FileName);
+			Console.WriteLine(resources.Assets.Single(x => x.Value.Content.Contains("js2admin")).Value.FileName);
 		}
 
 		[Test]
@@ -187,10 +85,10 @@ namespace cms.web.tests
 			resources.Include("js2.js");
 			resources.Include("t1.thtml");
 			resources.Include("css1.css");
-			
-			Assert.AreEqual(resources.Assets.Where(x=>x.IsScript).Sum(x => x.Content.Length),  resources.RenderScripts().Length );
+
+			Assert.AreEqual(resources.Assets.Where(x => x.Value.IsScript).Sum(x => x.Value.Content.Length), resources.RenderScripts().Length);
 			Assert.IsTrue(resources.RenderHtmlTemplates().Contains("<span>") );
-			Assert.AreEqual(resources.Assets.Where(x=>x.IsStylesheet).Sum(x => x.Content.Length),  resources.RenderStyleSheets().Length );
+			Assert.AreEqual(resources.Assets.Where(x => x.Value.IsStylesheet).Sum(x => x.Value.Content.Length), resources.RenderStyleSheets().Length);
 		}
 
 		[Test]
@@ -201,8 +99,8 @@ namespace cms.web.tests
 			resources.Include("default/js1.js");
 
 			var render = resources.RenderScripts();
-			var asset1Default = resources.Assets.Single(x => x.Content.Contains("js1defaultclient"));
-			Assert.AreEqual(asset1Default, render);
+			var asset1Default = resources.Assets["js1.js"]; 
+			Assert.AreEqual(asset1Default.Content, render);
 			Assert.AreEqual(1, resources.Assets.Count);
 		}
 
@@ -214,14 +112,14 @@ namespace cms.web.tests
 			resources.Include("coffee1.coffee");
 			resources.Include("ts1.ts");
 
-			Assert.IsTrue(resources.Assets.Single(x=>x.AssetTypeExtended == AssetTypeExtened.JavaScript).IsScript);
-			Assert.IsTrue(resources.Assets.Single(x=>x.AssetTypeExtended == AssetTypeExtened.JavaScript).Path.Contains("js1.js") );
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.JavaScript).Value.IsScript);
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.JavaScript).Value.Path.Contains("js1.js"));
 
-			Assert.IsTrue(resources.Assets.Single(x=>x.AssetTypeExtended == AssetTypeExtened.CoffeeScript).IsScript);
-			Assert.IsTrue(resources.Assets.Single(x=>x.AssetTypeExtended == AssetTypeExtened.CoffeeScript).Path.Contains("coffee1.coffee") );
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.CoffeeScript).Value.IsScript);
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.CoffeeScript).Value.Path.Contains("coffee1.coffee"));
 
-			Assert.IsTrue(resources.Assets.Single(x=>x.AssetTypeExtended == AssetTypeExtened.TypeScript).IsScript);
-			Assert.IsTrue(resources.Assets.Single(x=>x.AssetTypeExtended == AssetTypeExtened.TypeScript).Path.Contains("ts1.ts") );
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.TypeScript).Value.IsScript);
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.TypeScript).Value.Path.Contains("ts1.ts"));
 		}
 
 		[Test]
@@ -231,11 +129,11 @@ namespace cms.web.tests
 			resources.Include("template1.thtml");
 			resources.Include("templatexxx");
 
-			Assert.IsTrue(resources.Assets.Single(x=>x.AssetTypeExtended == AssetTypeExtened.HtmlTemplate).IsHtmlTemplate);
-			Assert.IsTrue(resources.Assets.Single(x => x.AssetTypeExtended == AssetTypeExtened.HtmlTemplate).Path.Contains("template1.thtml"));
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.HtmlTemplate).Value.IsHtmlTemplate);
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.HtmlTemplate).Value.Path.Contains("template1.thtml"));
 
-			Assert.IsTrue(resources.Assets.Single(x => x.AssetTypeExtended == AssetTypeExtened.Unknown).Path.Contains("templatexxx"));
+			Assert.IsTrue(resources.Assets.Single(x => x.Value.AssetTypeExtended == AssetTypeExtened.Unknown).Value.Path.Contains("templatexxx"));
 		}
-	
+
 	}
 }

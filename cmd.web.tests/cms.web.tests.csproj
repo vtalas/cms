@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="CreatingNewApplicationResources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserResourceManagerIntegration.cs" />
+    <Compile Include="UserResourceManagerTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

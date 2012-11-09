@@ -106,7 +106,15 @@ namespace cms.Code.UserResources
 		public void Include(string path)
 		{
 			var asset = new AssetDecorator(new Asset(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper));
-			AssetsValues.Add(asset);
+			if (AssetsValues.ContainsKey(asset.FileName))
+			{
+				AssetsValues[asset.FileName] = asset;
+			}
+			else
+			{
+				AssetsValues.Add(asset.FileName, asset);
+			}
+
 		}
 
 		private string Render(IEnumerable<KeyValuePair<string, IAssetExt>> contentToRender)
@@ -118,24 +126,24 @@ namespace cms.Code.UserResources
 				{
 					case AssetTypeExtened.TypeScript:
 					case AssetTypeExtened.JavaScript:
-						s.Append(asset.Content);
+						s.Append(asset.Value.Content);
 						break;
 					case AssetTypeExtened.CoffeeScript:
 						var xx = new BundleTransformer.CoffeeScript.Translators.CoffeeScriptTranslator();
-						s.Append(xx.Translate(asset));
+						s.Append(xx.Translate(asset.Value));
 						break;
 
 					case AssetTypeExtened.Css:
-						s.Append(asset.Content);
+						s.Append(asset.Value.Content);
 						break;
 					case AssetTypeExtened.Sass:
 					case AssetTypeExtened.Scss:
 					case AssetTypeExtened.Less:
 						var x = new BundleTransformer.Less.Translators.LessTranslator();
-						s.Append(x.Translate(asset));
+						s.Append(x.Translate(asset.Value));
 						break;
 					case AssetTypeExtened.HtmlTemplate:
-						s.Append(asset.Content);
+						s.Append(asset.Value.Content);
 						break;
 				}
 			}
@@ -144,24 +152,24 @@ namespace cms.Code.UserResources
 
 		public string RenderScripts()
 		{
-			var contentToRender = Assets.Where(x => x.IsScript).ToList();
+			var contentToRender = Assets.Where(x => x.Value.IsScript).ToList();
 			return Render(contentToRender);
 		}
 
 		public string RenderStyleSheets()
 		{
-			var contentToRender = Assets.Where(x => x.IsStylesheet).ToList();
+			var contentToRender = Assets.Where(x => x.Value.IsStylesheet).ToList();
 			return Render(contentToRender);
 		}
 
 		public string RenderHtmlTemplates(Func<IAssetExt, bool> restriction )
 		{
-			return Render(Assets.Where(x => x.IsHtmlTemplate && restriction(x)).ToList());
+			return Render(Assets.Where(x => x.Value.IsHtmlTemplate && restriction(x.Value)).ToList());
 		}
 
 		public string RenderHtmlTemplates()
 		{
-			var contentToRender = Assets.Where(x => x.IsHtmlTemplate).ToList();
+			var contentToRender = Assets.Where(x => x.Value.IsHtmlTemplate).ToList();
 			return Render(contentToRender);
 		}
 	}
