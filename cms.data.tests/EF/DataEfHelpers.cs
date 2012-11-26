@@ -32,7 +32,7 @@ namespace cms.data.tests.EF
 								                    new Resource{ Culture = "en", Value = "englicky", Key = "text1"},
 							                    }
 					        };
-				var newitem = db.GridElement.AddGridElementToGrid(a, guid);
+				var newitem = db.GridElement.AddToGrid(a, guid);
 				Assert.True(!newitem.Id.IsEmpty());
 				return newitem;
 			}

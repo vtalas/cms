@@ -19,7 +19,7 @@ namespace cms.data
 		}
 
 
-		public override GridElement AddGridElementToGrid(GridElement gridElement, Guid gridId)
+		public override GridElement AddToGrid(GridElement gridElement, Guid gridId)
 		{
 			var grid = GetGrid(gridId);
 			gridElement.Grid.Add(grid);

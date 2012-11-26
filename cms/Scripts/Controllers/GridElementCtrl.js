@@ -4,10 +4,10 @@ function _newitem(line, type) {
 }
 
 var gridElementCtrl = function ($scope, GridApi, appSettings) {
-	$scope.addWithType = function (item, newtype, event) {
+	$scope.addWithType = function (item, gridid, lines, newtype, event) {
 		event.preventDefault();
 		item.Type = newtype;
-		$scope.add(item);
+		$scope.add(item, gridid, lines);
 	};
 	$scope.add = function (item, gridId, lines) {
 		GridApi.AddGridElement({

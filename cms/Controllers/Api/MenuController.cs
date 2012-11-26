@@ -4,15 +4,16 @@ using cms.data.Dtos;
 
 namespace cms.Controllers.Api
 {
-    public class MenuController : ApiControllerBase
-    {
+	[Authorize]
+	public class MenuController : ApiControllerBase
+	{
 		[HttpPost]
 		public ActionResult Add(MenuDto data)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				data.Category = shared.CategoryEnum.Menu;
-				
+
 				var newgrid = db.Menu.Add(data);
 				return new JSONNetResult(newgrid);
 			}
@@ -53,7 +54,7 @@ namespace cms.Controllers.Api
 			using (var db = SessionProvider.CreateSession)
 			{
 				data.Category = shared.CategoryEnum.Menu;
-				
+
 				var updated = db.Page.Update(data);
 				return new JSONNetResult(updated);
 			}

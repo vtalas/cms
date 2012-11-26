@@ -1,16 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Web.Mvc;
-using System.Web.Optimization;
-using BundleTransformer.Core.Translators;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebMatrix.WebData;
-using cms.Code;
 using cms.Code.UserResources;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
-using cms.shared;
 
 namespace cms.Controllers.Api
 {
@@ -36,10 +32,11 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var newitem = db.GridElement.AddGridElementToGrid(data, gridId);
+				var newitem = db.GridElement.AddToGrid(data, gridId);
 				return new JSONNetResult(newitem.ToDto());
 			}
 		}
+
 
 		[HttpPost]
 		public ActionResult DeleteGridElement(GridElement data, Guid gridId)
