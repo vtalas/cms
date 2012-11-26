@@ -68,6 +68,7 @@
     <Compile Include="EF\Initializers\DropAndCreateTables.cs" />
     <Compile Include="EF\DataProvider\DataEfAuthorized.cs" />
     <Compile Include="Files\JsonDataFiles.cs" />
+    <Compile Include="GridElementAbstractImpl.cs" />
     <Compile Include="GridElementExt.cs" />
     <Compile Include="Dtos\GridListDto.cs" />
     <Compile Include="GridPage.cs" />

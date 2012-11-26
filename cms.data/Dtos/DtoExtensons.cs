@@ -14,7 +14,7 @@ namespace cms.data.Dtos
 		{
 			get
 			{
-				return shared.SharedLayer.Culture;
+				return SharedLayer.Culture;
 			}
 		}
 

@@ -42,7 +42,7 @@ namespace cms.Controllers.Api
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				db.DeleteGrid(id);
+				db.Menu.Delete(id);
 				return new JSONNetResult(null);
 			}
 		}

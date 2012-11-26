@@ -191,11 +191,11 @@ namespace cms.data.tests.EF
 				var xxx = DataEfHelpers.AddDefaultGridElement();
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
-					var a = db.GetGridElement(xxx.Id);
+					var a = db.GridElement.Get(xxx.Id);
 
 					Assert.IsNotNull(a);
-					Assert.AreEqual(1, a.Resources.Count);
-					Assert.AreEqual("cesky", a.Resources.First().Value);
+					Assert.AreEqual(1, a.ResourcesLoc.Count);
+					Assert.AreEqual("cesky", a.ResourcesLoc.First().Value);
 				}
 			}
 
@@ -209,11 +209,11 @@ namespace cms.data.tests.EF
 				var xxx = DataEfHelpers.AddDefaultGridElement();
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
-					var a = db.GetGridElement(xxx.Id);
+					var a = db.GridElement.Get(xxx.Id);
 
 					Assert.IsNotNull(a);
-					Assert.AreEqual(1, a.Resources.Count);
-					Assert.AreEqual("englicky", a.Resources.First().Value);
+					Assert.AreEqual(1, a.ResourcesLoc.Count);
+					Assert.AreEqual("englicky", a.ResourcesLoc.First().Value);
 				}
 			}
 		}
@@ -277,9 +277,9 @@ namespace cms.data.tests.EF
 					newitem.Position = 111;
 					newitem.Skin = "aaa";
 
-					db.Update(newitem.ToDto());
+					db.GridElement.Update(newitem.ToDto());
 
-					var updated = db.GetGridElement(newitem.Id);
+					var updated = db.GridElement.Get(newitem.Id);
 
 					Assert.AreEqual(1, updated.Line);
 					Assert.AreEqual(0, updated.Width);
@@ -300,16 +300,16 @@ namespace cms.data.tests.EF
 					newitem.Resources.ToList()[0].Value = "xxx";
 					newitem.Resources.ToList()[0].Key = "new cs";
 
-					db.Update(newitem.ToDto());
+					db.GridElement.Update(newitem.ToDto());
 
-					var updated = db.GetGridElement(newitem.Id);
+					var updated = db.GridElement.Get(newitem.Id);
 
-					Assert.AreEqual(1, updated.Resources.Count);
+					Assert.AreEqual(1, updated.ResourcesLoc.Count);
 					Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
-					Assert.IsNotNull(updated.Resources.SingleOrDefault(x => x.Value == "xxx"));
+					Assert.IsNotNull(updated.ResourcesLoc.SingleOrDefault(x => x.Value.Value == "xxx"));
 
 
-					Assert.AreNotEqual("new cs", updated.Resources.Single(x => x.Value == "xxx").Key);
+					Assert.AreNotEqual("new cs", updated.ResourcesLoc.Single(x => x.Value.Value == "xxx").Key);
 				}
 			}
 
@@ -321,7 +321,7 @@ namespace cms.data.tests.EF
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
 					var a = new GridElement { Content = "oldcontent", Width = 12, Line = 0, Skin = "xxx" };
-					newitem = db.AddGridElementToGrid(a, DataEfHelpers.guid);
+					newitem = db.GridElement.AddGridElementToGrid(a, DataEfHelpers.guid);
 					Assert.True(!newitem.Id.IsEmpty());
 				}
 
@@ -336,9 +336,9 @@ namespace cms.data.tests.EF
 
 					newitem.Resources = resources;
 
-					db.Update(newitem.ToDto());
-					var updated = db.GetGridElement(newitem.Id);
-					Assert.AreEqual(1, updated.Resources.Count);
+					db.GridElement.Update(newitem.ToDto());
+					var updated = db.GridElement.Get(newitem.Id);
+					Assert.AreEqual(1, updated.ResourcesLoc.Count);
 				}
 			}
 
@@ -355,10 +355,10 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
-					db.Update(newitem.ToDto());
-					var updated = db.GetGridElement(newitem.Id);
+					db.GridElement.Update(newitem.ToDto());
+					var updated = db.GridElement.Get(newitem.Id);
 					//text1, text1xx
-					Assert.AreEqual(2, updated.Resources.Count);
+					Assert.AreEqual(2, updated.ResourcesLoc.Count);
 
 					Assert.AreEqual(resourcesCountBefore + 3, _context.Resources.Count());
 				}
@@ -376,7 +376,7 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
-					Assert.Throws<ArgumentException>(() => db.Update(newitem.ToDto()));
+					Assert.Throws<ArgumentException>(() => db.GridElement.Update(newitem.ToDto()));
 					Assert.AreEqual(resourcesCountBefore + 2, _context.Resources.Count());
 				}
 			}
@@ -396,12 +396,12 @@ namespace cms.data.tests.EF
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
 
-					db.Update(g1.ToDto());
-					var updated = db.GetGridElement(g1.Id);
-					var res1Updated = updated.Resources.First();
+					db.GridElement.Update(g1.ToDto());
+					var updated = db.GridElement.Get(g1.Id);
+					var res1Updated = updated.ResourcesLoc.First();
 
-					Assert.AreEqual(1, updated.Resources.Count);
-					Assert.AreEqual("prd", res1Updated.Value);
+					Assert.AreEqual(1, updated.ResourcesLoc.Count);
+					Assert.AreEqual("prd", res1Updated.Value.Value);
 
 					//u resourcu se da zmenit jenom value
 					Assert.AreNotEqual("kkk", res1Updated.Key);
@@ -423,10 +423,10 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
-					db.Update(g1.ToDto());
-					var updated = db.GetGridElement(g1.Id);
+					db.GridElement.Update(g1.ToDto());
+					var updated = db.GridElement.Get(g1.Id);
 
-					Assert.AreEqual(2, updated.Resources.Count);
+					Assert.AreEqual(2, updated.ResourcesLoc.Count);
 					Assert.AreEqual(resourcesCountBefore + 1, _context.Resources.Count());
 				}
 			}
@@ -441,7 +441,7 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
-					db.Update(gridelementdb.ToDto());
+					db.GridElement.Update(gridelementdb.ToDto());
 				}
 				Assert.AreEqual(resourcesCountBefore + 1, _context.Resources.Count());
 			}
@@ -459,11 +459,11 @@ namespace cms.data.tests.EF
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
 
-					db.Update(gridelementdb1.ToDto());
+					db.GridElement.Update(gridelementdb1.ToDto());
 
-					var updated = db.GetGridElement(gridelementdb1.Id);
+					var updated = db.GridElement.Get(gridelementdb1.Id);
 
-					Assert.AreEqual(2, updated.Resources.Count);
+					Assert.AreEqual(2, updated.ResourcesLoc.Count);
 				}
 				Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
 			}
@@ -477,7 +477,7 @@ namespace cms.data.tests.EF
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
 					var a = new GridElement { Content = "oldcontent", Width = 12, Line = 0, Skin = "xxx" };
-					gridelementdb = db.AddGridElementToGrid(a, DataEfHelpers.guid);
+					gridelementdb = db.GridElement.AddGridElementToGrid(a, DataEfHelpers.guid);
 				}
 
 				using (var db = SessionManager.CreateSessionWithSampleData)
@@ -492,9 +492,9 @@ namespace cms.data.tests.EF
 
 					gridelementdb.Resources = resources;
 
-					db.Update(gridelementdb.ToDto());
-					var updated = db.GetGridElement(gridelementdb.Id);
-					Assert.AreEqual(0, updated.Resources.Count);
+					db.GridElement.Update(gridelementdb.ToDto());
+					var updated = db.GridElement.Get(gridelementdb.Id);
+					Assert.AreEqual(0, updated.ResourcesLoc.Count);
 					Assert.AreEqual(resourcesCountBefore, _context.Resources.Count());
 				}
 			}
@@ -547,8 +547,9 @@ namespace cms.data.tests.EF
 				{
 
 					var gridpage = db.Page.Add(new GridPageDto { Name = "addgridElement test Gridpage", Category = CategoryEnum.Page });
-					var gridDb = db.GetGrid(gridpage.Id);
-					Assert.AreEqual(0, db.GetGrid(gridpage.Id).GridElements.Count);
+					var gridDb = db.Page.Get(gridpage.Id);
+					//Assert.AreEqual(0, db.Page.Get(gridpage.Id).GridElements.Count);
+					Assert.AreEqual(0, -11);
 
 
 					var gridelem = new GridElement()
@@ -560,10 +561,11 @@ namespace cms.data.tests.EF
 										Type = "text",
 									};
 
-					var newgridelem = db.AddGridElementToGrid(gridelem, gridDb.Id);
+					var newgridelem = db.GridElement.AddGridElementToGrid(gridelem, gridDb.Id);
 
 					Assert.AreEqual(1, newgridelem.Grid.Count);
-					Assert.AreEqual(1, db.GetGrid(gridpage.Id).GridElements.Count);
+					//Assert.AreEqual(1, db.Page.Get(gridpage.Id).GridElements.Count);
+					Assert.AreEqual(1, -111);
 				}
 			}
 
@@ -574,7 +576,7 @@ namespace cms.data.tests.EF
 				{
 
 					var gridpage = db.Page.Get(DataEfHelpers._defaultlink);
-					var grid = db.GetGrid(gridpage.Id);
+					var grid = db.Page.Get(gridpage.Id);
 
 					var gridelem = new GridElement
 									{
@@ -591,7 +593,7 @@ namespace cms.data.tests.EF
 									};
 
 
-					var newgridelem = db.AddGridElementToGrid(gridelem, grid.Id);
+					var newgridelem = db.GridElement.AddGridElementToGrid(gridelem, grid.Id);
 
 					Assert.IsTrue(newgridelem.Resources.Any());
 					Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));
@@ -604,7 +606,7 @@ namespace cms.data.tests.EF
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
 					var gridpage = db.Page.Get(DataEfHelpers._defaultlink);
-					var grid = db.GetGrid(gridpage.Id);
+					var grid = db.Page.Get(gridpage.Id);
 					var resourcesCountBefore = _context.Resources.Count();
 					var existingsRes = _context.Resources.First();
 
@@ -623,7 +625,7 @@ namespace cms.data.tests.EF
 					               		            	}
 									};
 
-					var newgridelem = db.AddGridElementToGrid(gridelem, grid.Id);
+					var newgridelem = db.GridElement.AddGridElementToGrid(gridelem, grid.Id);
 
 					Assert.IsTrue(newgridelem.Resources.Any());
 					Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));

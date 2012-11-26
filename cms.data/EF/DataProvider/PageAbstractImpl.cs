@@ -18,7 +18,7 @@ namespace cms.data.EF.DataProvider
 			db = context;
 		}
 
-		IQueryable<Grid> AvailableGridsPage()
+		IQueryable<Grid> AvailableGrids()
 		{
 			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Page);
 			return a;
@@ -26,20 +26,20 @@ namespace cms.data.EF.DataProvider
 
 		public override IEnumerable<GridPageDto> List()
 		{
-			var a = AvailableGridsPage().ToList();
+			var a = AvailableGrids().ToList();
 			return a.Select(grid => grid.ToGridPageDto()).ToList();
 		}
 
 		public override GridPageDto Get(Guid id)
 		{
-			var grid = AvailableGridsPage().Single(x => x.Id == id);
+			var grid = AvailableGrids().Single(x => x.Id == id);
 			return grid.ToGridPageDto();
 		}
 
 		//TODO: pokud nenanjde melo by o vracet homepage
 		public override GridPageDto Get(string link)
 		{
-			var a = AvailableGridsPage().FirstOrDefault(x => x.Resource.Value == link);
+			var a = AvailableGrids().FirstOrDefault(x => x.Resource.Value == link);
 			//var a = Grids().FirstOrDefault(x => x.Resource.Value == link);
 			if (a == null)
 			{
@@ -54,7 +54,7 @@ namespace cms.data.EF.DataProvider
 
 		void CheckIfLinkExist(GridPageDto newitem)
 		{
-			var linkExist = AvailableGridsPage().Any(x => x.Resource.Value == newitem.ResourceDto.Value);
+			var linkExist = AvailableGrids().Any(x => x.Resource.Value == newitem.ResourceDto.Value);
 			if (linkExist)
 			{
 				throw new ArgumentException("link exists");
@@ -100,6 +100,13 @@ namespace cms.data.EF.DataProvider
 			db.Entry(grid).State = EntityState.Modified;
 			db.SaveChanges();
 			return grid;
+		}
+
+		public override void Delete(Guid guid)
+		{
+			var delete = AvailableGrids().Single(x => x.Id == guid);
+			db.Grids.Remove(delete);
+			db.SaveChanges();
 		}
 	}
 }
