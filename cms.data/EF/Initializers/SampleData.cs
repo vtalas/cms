@@ -71,7 +71,7 @@ namespace cms.data.EF.Initializers
 					            Name = "test page",
 					            GridElements = new List<GridElement>
 						                           {
-							                           new GridElement {Content = "aaaaaaaa aaa", Line = 0, Width = 12, Type = "text"}
+							                           new GridElement {Content = "aaaaaaaa aaa", Position = 0, Width = 12, Type = "text"}
 						                           },
 					            ApplicationSettings = application
 				            };

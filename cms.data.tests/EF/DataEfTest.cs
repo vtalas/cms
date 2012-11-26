@@ -271,7 +271,6 @@ namespace cms.data.tests.EF
 				{
 					var newitem = DataEfHelpers.AddDefaultGridElement();
 
-					newitem.Line = 1;
 					newitem.Content = "newcontent";
 					newitem.Width = 0;
 					newitem.Position = 111;
@@ -281,7 +280,6 @@ namespace cms.data.tests.EF
 
 					var updated = db.GridElement.Get(newitem.Id);
 
-					Assert.AreEqual(1, updated.Line);
 					Assert.AreEqual(0, updated.Width);
 					Assert.AreEqual(111, updated.Position);
 					Assert.AreEqual("aaa", updated.Skin);
@@ -320,7 +318,7 @@ namespace cms.data.tests.EF
 				GridElement newitem;
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
-					var a = new GridElement { Content = "oldcontent", Width = 12, Line = 0, Skin = "xxx" };
+					var a = new GridElement { Content = "oldcontent", Width = 12, Position = 0, Skin = "xxx" };
 					newitem = db.GridElement.AddToGrid(a, DataEfHelpers.guid);
 					Assert.True(!newitem.Id.IsEmpty());
 				}
@@ -428,6 +426,7 @@ namespace cms.data.tests.EF
 
 					Assert.AreEqual(2, updated.ResourcesLoc.Count);
 					Assert.AreEqual(resourcesCountBefore + 1, _context.Resources.Count());
+			
 				}
 			}
 
@@ -476,7 +475,7 @@ namespace cms.data.tests.EF
 
 				using (var db = SessionManager.CreateSessionWithSampleData)
 				{
-					var a = new GridElement { Content = "oldcontent", Width = 12, Line = 0, Skin = "xxx" };
+					var a = new GridElement { Content = "oldcontent", Width = 12, Position = 0, Skin = "xxx" };
 					gridelementdb = db.GridElement.AddToGrid(a, DataEfHelpers.guid);
 				}
 
@@ -555,7 +554,6 @@ namespace cms.data.tests.EF
 					var gridelem = new GridElement()
 									{
 										Content = "XXX",
-										Line = 0,
 										Position = 0,
 										Width = 12,
 										Type = "text",
@@ -581,7 +579,6 @@ namespace cms.data.tests.EF
 					var gridelem = new GridElement
 									{
 										Content = "XXX",
-										Line = 0,
 										Position = 0,
 										Width = 12,
 										Type = "text",
@@ -613,7 +610,6 @@ namespace cms.data.tests.EF
 					var gridelem = new GridElement
 									{
 										Content = "XXX",
-										Line = 0,
 										Position = 0,
 										Width = 12,
 										Type = "text",

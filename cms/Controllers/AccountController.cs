@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
 using cms.Controllers.Attributes;
-using cms.data.EF;
 
 namespace MvcApplication1.Controllers
 {
@@ -22,7 +21,6 @@ namespace MvcApplication1.Controllers
 
 		//
 		// POST: /Account/Login
-
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]

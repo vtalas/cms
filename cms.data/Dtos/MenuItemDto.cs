@@ -7,7 +7,7 @@ namespace cms.data.Dtos
 	public class MenuItemDto : IResourceElement
 	{
 		public Guid Id { get; set; }
-		public int Line { get; set; }
+		public int Position { get; set; }
 
 
 		public string Content { get; set; }

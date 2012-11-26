@@ -25,7 +25,6 @@ namespace cms.Code
 			        	{
 			        		Id = new Guid(s["Id"].Value<string>()), 
 							Content = s["Content"].Value<string>(), 
-							Line = s["Line"].Value<int>(),
 							Position = s["Position"].Value<int>(), 
 							Skin = s["Skin"].Value<string>(), 
 							Type = s["Type"].Value<string>(), 

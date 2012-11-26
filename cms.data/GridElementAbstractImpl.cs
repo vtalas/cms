@@ -50,13 +50,13 @@ namespace cms.data
 			var grid = GetGrid(gridid);
 			var delete = grid.GridElements.Single(x => x.Id == id);
 			db.GridElements.Remove(delete);
-			var deletedline = delete.Line;
+			var deletedPosition = delete.Position;
 
-			if (grid.GridElements.All(x => x.Line != deletedline))
+			if (grid.GridElements.All(x => x.Position != deletedPosition))
 			{
-				foreach (var item in grid.GridElements.OrderBy(x => x.Line))
+				foreach (var item in grid.GridElements.OrderBy(x => x.Position))
 				{
-					if (item.Line > deletedline && item.Line > 0) item.Line--;
+					if (item.Position > deletedPosition && item.Position > 0) item.Position--;
 				}
 			}
 			db.SaveChanges();
@@ -71,7 +71,6 @@ namespace cms.data
 
 			var el = db.GridElements.Get(item.Id, CurrentApplication.Id);
 			//TODO:nahovno, udelat lip
-			el.Line = item.Line;
 			el.Position = item.Position;
 			el.Skin = item.Skin;
 			el.Type = item.Type;

@@ -24,7 +24,7 @@ namespace cms.data.tests.EF
 					        {
 						        Content = "oldcontent",
 						        Width = 12,
-						        Line = 0,
+						        Position = 0,
 						        Skin = "xxx",
 						        Resources = new List<Resource>
 							                    {

@@ -47,11 +47,11 @@ namespace cms.data.EF.DataProvider
 			var grid = AvailableGrids().Single(x => x.Id == gridId);
 			var a = new GridElement
 				        {
-					        Line = item.Line,
+					        Position = item.Position,
 							Content = item.Content,
 							Type = item.Type,
 							Skin = item.Skin,
-							Parent = db.GridElements.Single(x=>x.Id ==  new Guid(item.ParentId)),
+							Parent = db.GridElements.Single(x => x.Id ==  new Guid(item.ParentId)),
 				        };
 			grid.GridElements.Add(a);
 			db.SaveChanges();
