@@ -75,10 +75,10 @@ namespace cms.Code.UserResources
 		public string FileName { get; private set; }
 		public AssetTypeExtened AssetTypeExtended { get; private set; }
 		
-		private string html()
+		private string Html()
 		{
 			var content = AssetObject.Content.Replace(Environment.NewLine, "");
-			return string.Format("<script id=\"{0}\" type=\"text/ng-template\" >{1}</script>", FileName, content );
+			return string.Format("<script id=\"{0}\" type=\"text/ng-template\" >{1}</script>\n", FileName, content );
 		}
 		private string RenderAsset()
 		{
@@ -91,7 +91,7 @@ namespace cms.Code.UserResources
 				case AssetTypeExtened.CoffeeScript:
 					return CoffeeTranslatorObject.Value.Translate(AssetObject).Content;
 				case AssetTypeExtened.HtmlTemplate:
-					return html();
+					return Html();
 				case AssetTypeExtened.Sass:
 				case AssetTypeExtened.Scss:
 				case AssetTypeExtened.Less:

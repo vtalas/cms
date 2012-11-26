@@ -1,8 +1,4 @@
-﻿using System.IO;
-using System.Web;
-using System.Web.Mvc;
-using BundleTransformer.Core;
-using BundleTransformer.Core.FileSystem;
+﻿using System.Web.Mvc;
 using BundleTransformer.Core.Web;
 using cms.Code.UserResources;
 using cms.Controllers.Api;
@@ -20,8 +16,10 @@ namespace cms.Controllers
 
 			Resources = UserResourcesManagerProvider.GetApplication(ApplicationId);
 
-			Resources.IncludeDirectory("gridelements");
-			Resources.IncludeDirectory("../_default/gridelements");
+			Resources.IncludeDirectory("pageElements");
+			Resources.IncludeDirectory("menuElements");
+			Resources.IncludeDirectory("../_default/pageElements");
+			Resources.IncludeDirectory("../_default/menuElements");
 		}
 
 		public ActionResult Index()

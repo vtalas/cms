@@ -1,0 +1,4 @@
+﻿<div>
+	menu template
+	{{gridelement.ResourcesLoc.text.Value}}
+</div>

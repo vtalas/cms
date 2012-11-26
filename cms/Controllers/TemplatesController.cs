@@ -14,16 +14,5 @@ namespace cms.Controllers
 		{
 			return View(template);
 		}
-
-		public ActionResult MenuItemTemplate(string type, string skin)
-		{
-			var settings = new TemplateSettings
-				               {
-								   TemplateEdit = string.Format("_MenuItemTmpl/{0}_edit", type),
-								   TemplateView = string.Format("_MenuItemTmpl/{0}_view", type),
-					               Type = type
-				               };
-			return View("_MenuItemTmpl/Menuitem", settings);
-		}
 	}
 }

@@ -107,15 +107,16 @@ namespace cms.Code.UserResources
 
 		public void Include(string path)
 		{
-			var asset = new AssetDecorator(new Asset(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper));
-			
-			if (AssetsValues.ContainsKey(asset.FileName))
+			var asset = new Asset(Path.Combine(HttpAppInfo.RootPath, Id.ToString(), path), HttpAppInfo, FileSystemWrapper);
+			var assetDecorator = new AssetDecorator(asset);
+
+			if (AssetsValues.ContainsKey(assetDecorator.FileName))
 			{
-				AssetsValues[asset.FileName] = asset;
+				AssetsValues[assetDecorator.FileName] = assetDecorator;
 			}
 			else
 			{
-				AssetsValues.Add(asset.FileName, asset);
+				AssetsValues.Add(assetDecorator.FileName, assetDecorator);
 			}
 
 		}
