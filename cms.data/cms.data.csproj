@@ -67,7 +67,6 @@
     <Compile Include="EF\Initializers\DropAndCreate.cs" />
     <Compile Include="EF\Initializers\DropAndCreateTables.cs" />
     <Compile Include="EF\DataProvider\DataEfAuthorized.cs" />
-    <Compile Include="Files\JsonDataFiles.cs" />
     <Compile Include="GridElementAbstractImpl.cs" />
     <Compile Include="GridElementExt.cs" />
     <Compile Include="Dtos\GridListDto.cs" />
@@ -98,7 +97,9 @@
       <Name>cms.shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Files\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

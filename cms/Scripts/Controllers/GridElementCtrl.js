@@ -19,16 +19,13 @@ var gridElementCtrl = function ($scope, GridApi, appSettings) {
 	};
 
 	$scope.remove = function (item, gridId) {
-		var line = $scope.$parent.$parent.line;
 		GridApi.DeleteGridElement({ applicationId: appSettings.Id, data: item, gridId: gridId },
 			function () {
 				item.Id = 0;
 				item.Edit = 0;
 				item.Content = "";
 				//refresh - preopocitani poradi radku
-				if (line.length === 1) {
-					$scope.$emit("refreshgrid");
-				}
+				$scope.$emit("refreshgrid");
 			});
 	};
 

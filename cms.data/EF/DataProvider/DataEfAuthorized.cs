@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
-using cms.shared;
 
 namespace cms.data.EF.DataProvider
 {
