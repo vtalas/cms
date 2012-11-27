@@ -6,9 +6,9 @@ namespace cms.data.tests.EF
 {
 	public class SessionManager : IDisposable
 	{
-		private static DataEfAuthorized Context { get; set; }
+		private DataEfAuthorized Context { get; set; }
 
-		public static DataEfAuthorized CreateSessionWithSampleData
+		public DataEfAuthorized CreateSessionWithSampleData
 		{
 			get
 			{
@@ -17,7 +17,7 @@ namespace cms.data.tests.EF
 			}
 		}
 
-		public static DataEfAuthorized CreateSessionWithInvalidUser
+		public DataEfAuthorized CreateSessionWithInvalidUser
 		{
 			get
 			{

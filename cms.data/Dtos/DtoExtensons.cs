@@ -140,8 +140,6 @@ namespace cms.data.Dtos
 
 					   };
 		}
-		
-		
 
 		public static GridPageDto ToGridPageDto(this Grid source)
 		{
