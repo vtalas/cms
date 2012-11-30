@@ -150,7 +150,6 @@ namespace cms.Controllers.Api
 		//TODO: prejmenovat na Get
 		public ActionResult GetGrid(Guid? id)
 		{
-
 			using (var db = SessionProvider.CreateSession)
 			{
 				var g = db.Page.Get(id.Value);

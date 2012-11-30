@@ -148,7 +148,8 @@ namespace cms.data.Dtos
 				GridElements = source.GridElements.ToDtos(),
 				Home = source.Home,
 				Id = source.Id,
-				ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDtoLoc(),
+				Link = source.Resource != null ? source.Resource.ToDto().Value  : "",
+				//ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDtoLoc(),
 				Name = source.Name,
 				Category = source.Category
 			};
