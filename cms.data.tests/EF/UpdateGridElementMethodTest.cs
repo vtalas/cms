@@ -316,8 +316,7 @@ namespace cms.data.tests.EF
 			private IRepository GetRepositoryMock()
 			{
 				var repo = new Mock<IRepository>();
-				repo.Setup(x => x.Attach(It.IsAny<Resource>()));
-				repo.Setup(x => x.All()).Returns(_allResources.AsQueryable);
+				repo.Setup(x => x.Resources).Returns(_allResources.AsQueryable);
 				return repo.Object;
 			}
 
@@ -325,6 +324,7 @@ namespace cms.data.tests.EF
 			public void SetUp()
 			{
 				_allResources = new List<Resource>();
+				SharedLayer.Init();
 			}
 
 			[Test]
@@ -380,9 +380,10 @@ namespace cms.data.tests.EF
 					.WithResource("name", "namevaluedto", 0);
 
 				g.UpdateResourceList(gResources, culture, db);
+			
 				Assert.AreEqual(2, g.Resources.Count);
-				Assert.AreEqual("linkvaluedto", g.Resources.GetByKey("link", culture).Value);
-				Assert.AreEqual("namevaluedto", g.Resources.GetByKey("name", culture).Value);
+				g.CheckResource("link",culture).ValueIs("linkvaluedto");
+				g.CheckResource("name",culture).ValueIs("namevaluedto");
 			}
 
 			[Test]
@@ -413,8 +414,8 @@ namespace cms.data.tests.EF
 
 				g.UpdateResourceList(gResources, culture, db);
 				Assert.AreEqual(2, g.Resources.Count);
-				Assert.AreEqual("linkvaluedto", g.Resources.GetByKey("link", culture).Value);
-				Assert.AreEqual("namevaluedto", g.Resources.GetByKey("name", culture).Value);
+				g.CheckResource("link", culture).ValueIs("linkvaluedto");
+				g.CheckResource("name", culture).ValueIs("namevaluedto");
 			}
 
 			[Test]
@@ -435,21 +436,60 @@ namespace cms.data.tests.EF
 			}
 
 			[Test]
-			public void UpdateResourceTest_AttachResources()
+			public void UpdateResourceTest_AttachResourcReference()
 			{
 				const string culture = "cs";
 				IRepository db = GetRepositoryMock();
 
 				var g1 = DefaultGrid()
-					.WithResource("link", "dbvalueLink", culture, 1);
+					.WithResource(_allResources, "link", "dbvalueLink", culture, 1);
 
 				var g2 = DefaultGrid();
 
-
 				g2.UpdateResourceList(g1.Resources.ToDtos(), culture, db);
+
+				g2.CheckResource("link", culture)
+					.ValueIs("dbvalueLink")
+					.OwnerIs(g1.Id);
+
 				Assert.AreEqual(1, g2.Resources.Count);
-				Assert.AreEqual("dbvalueLink", g2.Resources.GetByKey("link", culture).Value);
-				Assert.AreEqual(g1.Id, g2.Resources.GetByKey("link", culture).Owner);
+			}
+
+			[Test]
+			public void UpdateResourceTest_AttachResourcReference_ResourceExist_ShouldntChangeValue()
+			{
+				const string culture = "cs";
+				IRepository db = GetRepositoryMock();
+
+				var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", culture, 1);
+				var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", culture, 2);
+
+				grid2.UpdateResourceList(grid1.Resources.ToDtos(), culture, db);
+
+				grid2.CheckResource("link", culture)
+					  .ValueIs("b222")
+					  .OwnerIs(grid2.Id);
+
+				Assert.AreEqual(1, grid2.Resources.Count);
+			}
+
+			[Test]
+			public void UpdateResourceTest_AttachResourcReference_ResourceExist_ShouldntChangeValue333()
+			{
+				const string culture = "cs";
+				IRepository db = GetRepositoryMock();
+
+				var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", culture, 1);
+				var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", culture, 2);
+				var grid3 = DefaultGrid().WithResource(_allResources, "link", "c333", culture, 3);
+
+				grid2.UpdateResourceList(grid1.Resources.ToDtos(), culture, db);
+
+				grid2.CheckResource("link", culture)
+					  .ValueIs("b222")
+					  .OwnerIs(grid2.Id);
+
+				Assert.AreEqual(1, grid2.Resources.Count);
 			}
 
 		}
@@ -459,7 +499,7 @@ namespace cms.data.tests.EF
 		{
 			public JsonDataEfHelpersTest()
 			{
-				Database.SetInitializer(new DropAndCreate());
+				//Database.SetInitializer(new DropAndCreate());
 			}
 
 			[SetUp]
@@ -471,16 +511,12 @@ namespace cms.data.tests.EF
 
 			Grid SimpleGridPage(string name)
 			{
-				using (var db = new SessionManager().CreateSession)
+				var grid = new Grid
 				{
-					var gridpage = new GridPageDto()
-					{
-						Category = "page",
-						Name = name
-					};
-					return db.Page.Add(gridpage).ToGrid();
-				}
-
+					Category = "page",
+					Name = name
+				};
+				return grid;
 			}
 
 
@@ -488,39 +524,69 @@ namespace cms.data.tests.EF
 			public void UpdateResourceTest()
 			{
 				const string culture = "cs";
+
+				var g1 = SimpleGridPage("prd")
+					.WithResource("link", "dbvalueLink111", culture)
+					.AddToDb();
+
+				var g2 = SimpleGridPage("prd2")
+					.AddToDb();
+
 				using (var db = new EfContext())
 				{
+					var before = db.Resources.Count();
+					var repo = new EfRepository(db);
 
-					var g1 = SimpleGridPage("prd")
-						.WithResource(db, "link", "dbvalueLink111", culture);
-
-					var g2 = SimpleGridPage("prd2");
-					db.SaveChanges();
-
-					var repo = new EfRepository(db); 
+					Assert.AreEqual(1, g1.Resources.Count);
 
 					g2.UpdateResourceList(g1.Resources.ToDtos(), culture, repo);
 
 					Assert.AreEqual(1, g2.Resources.Count);
 					Assert.AreEqual("dbvalueLink111", g2.Resources.GetByKey("link", culture).Value);
-					
 					Assert.AreEqual(g1.Id, g2.Resources.GetByKey("link", culture).Owner);
+					Assert.AreEqual(before, db.Resources.Count());
 				}
 			}
 		}
+	}
 
+	public static class DbExtension
+	{
+		public static Grid AddToDb(this Grid item)
+		{
+			using (var db = new EfContext())
+			{
+				var x = db.Grids.Add(item);
+				db.SaveChanges();
+				return x;
+			}
+		}
 
 	}
+
 	public static class MyClass
 	{
 
-		public static Grid WithResource(this Grid item, string key, string value, string culture = "cs", int id = 0)
+		public static Resource CheckResource(this Grid item, string key, string culture)
 		{
-			item.Resources.Add(GetResource(key, value, item.Id, culture, id));
+			var getbyLink = item.Resources.GetByKey(key, culture);
+			Assert.IsNotNull(getbyLink);
+			return getbyLink;
+
+		}
+		public static Resource ValueIs(this Resource item, string value)
+		{
+			Assert.AreEqual(value, item.Value);
 			return item;
 		}
 
-		public static Grid WithResource(this Grid item, EfContext db, string key, string value, string culture = "cs", int id = 0)
+		public static Resource OwnerIs(this Resource item, Guid expectedId)
+		{
+			Assert.AreEqual(expectedId, item.Owner);
+			return item;
+		}
+
+		public static Grid WithResource(this Grid item, string key, string value, string culture = "cs", int id = 0)
 		{
 			item.Resources.Add(GetResource(key, value, item.Id, culture, id));
 			return item;
@@ -540,7 +606,7 @@ namespace cms.data.tests.EF
 			return item;
 		}
 
-		private static Resource GetResource(string key, string value, Guid parentId, string culture, int id)
+		public static Resource GetResource(string key, string value, Guid parentId, string culture, int id)
 		{
 			return new Resource { Id = id, Value = value, Key = key, Culture = culture, Owner = parentId };
 		}

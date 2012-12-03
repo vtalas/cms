@@ -75,18 +75,13 @@ namespace cms.data.EF.DataProvider
 			currentItem.Resources.Add(i.ToResource(key, currentItem.Id, culture));
 		}
 
-		private static void UpdateResource(this Resource currentResource, string value)
-		{
-			currentResource.Value = value;
-		}
-
-		
-
-		public static void UpdateResourceList(this IEntityWithResource currentItem, IDictionary<string, ResourceDtoLoc> resourcesDto, string culture, IRepository db)
+		public static void UpdateResourceList(this IEntityWithResource currentItem, IDictionary<string, ResourceDtoLoc> resourcesDto, string culture, IRepository repo)
 		{
 			foreach (var i  in resourcesDto )
 			{
-				var rrr = i.Value.Id == 0 ? GetByKey(currentItem.Resources, i.Key, culture) : GetById(db.All(), i.Value.Id);
+
+				var rrr = i.Value.Id == 0 ? GetByKey(currentItem.Resources, i.Key, culture) : GetById(repo.Resources, i.Value.Id);
+
 				if (rrr == null)
 				{
 					currentItem.AddNewResource(i.Key, i.Value, culture);
@@ -97,6 +92,15 @@ namespace cms.data.EF.DataProvider
 					{
 						rrr.Value = i.Value.Value;
 					}
+					else
+					{
+						var currentItemResource = GetByKey(currentItem.Resources, i.Key, culture);
+						if (currentItemResource == null)
+						{
+							currentItem.Resources.Add(GetById(repo.Resources, i.Value.Id));
+						}
+					}
+				
 				}
 				
 			}
@@ -105,8 +109,7 @@ namespace cms.data.EF.DataProvider
 
 	public interface IRepository
 	{
-		void Attach(Resource itemToAttach);
-		IQueryable<Resource> All();
+		IQueryable<Resource> Resources { get; }
 	}
 
 	public class EfRepository : IRepository
@@ -121,11 +124,12 @@ namespace cms.data.EF.DataProvider
 		public void Attach(Resource itemToAttach)
 		{
 			db.Resources.Attach(itemToAttach);
+			db.SaveChanges();
 		}
 
-		public IQueryable<Resource> All()
+		public IQueryable<Resource> Resources { get
 		{
 			return db.Resources;
-		}
+		} }
 	}
 }
