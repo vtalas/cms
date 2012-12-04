@@ -65,9 +65,9 @@ namespace cms.data.EF.DataProvider
 			return resources.SingleOrDefault(a => a.Key == key && a.Culture == culture);
 		}
 
-		public static Resource GetById(this IEnumerable<Resource> resources, int id)
+		public static Resource GetById(this IEnumerable<Resource> resources, int id, string culture)
 		{
-			return resources.SingleOrDefault(a => a.Id == id);
+			return resources.SingleOrDefault(a => a.Id == id && a.Culture == culture);
 		}
 
 		private static void AddNewResource(this IEntityWithResource currentItem, string key, ResourceDtoLoc i, string culture)
@@ -79,9 +79,7 @@ namespace cms.data.EF.DataProvider
 		{
 			foreach (var i  in resourcesDto )
 			{
-
-				var rrr = i.Value.Id == 0 ? GetByKey(currentItem.Resources, i.Key, culture) : GetById(repo.Resources, i.Value.Id);
-
+				var rrr = i.Value.Id == 0 ? GetByKey(currentItem.Resources, i.Key, culture) : GetById(repo.Resources, i.Value.Id,culture);
 				if (rrr == null)
 				{
 					currentItem.AddNewResource(i.Key, i.Value, culture);
@@ -97,10 +95,14 @@ namespace cms.data.EF.DataProvider
 						var currentItemResource = GetByKey(currentItem.Resources, i.Key, culture);
 						if (currentItemResource == null)
 						{
-							currentItem.Resources.Add(GetById(repo.Resources, i.Value.Id));
+							currentItem.Resources.Add(GetById(repo.Resources, i.Value.Id, culture));
+						}
+						else
+						{
+							currentItem.Resources.Remove(currentItemResource);
+							currentItem.Resources.Add(GetById(repo.Resources, i.Value.Id, culture));
 						}
 					}
-				
 				}
 				
 			}

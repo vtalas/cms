@@ -285,6 +285,11 @@ namespace cms.data.tests.EF
 		[TestFixture]
 		public class JsonDataEfHelpers_Test_NoDB
 		{
+			const string CultureCs = "cs";
+			const string CultureEn = "en";
+			private static IList<Resource> _allResources;
+			private IRepository _repository;
+			
 			private Dictionary<string, ResourceDtoLoc> DefaultResourcesDto()
 			{
 				return new Dictionary<string, ResourceDtoLoc>
@@ -311,8 +316,6 @@ namespace cms.data.tests.EF
 				};
 			}
 
-			private static IList<Resource> _allResources;
-
 			private IRepository GetRepositoryMock()
 			{
 				var repo = new Mock<IRepository>();
@@ -324,15 +327,14 @@ namespace cms.data.tests.EF
 			public void SetUp()
 			{
 				_allResources = new List<Resource>();
+				_repository = GetRepositoryMock();
+
 				SharedLayer.Init();
 			}
 
 			[Test]
 			public void UpdateResourceTest_gridHasNone_addNewResources()
 			{
-				const string culture = "cs";
-				IRepository db = GetRepositoryMock();
-
 				var g = DefaultGrid();
 
 				var gResources = EmptyResourcesDto()
@@ -341,7 +343,7 @@ namespace cms.data.tests.EF
 
 				Assert.AreEqual(0, g.Resources.Count);
 
-				g.UpdateResourceList(gResources, culture, db);
+				g.UpdateResourceList(gResources, CultureCs, _repository);
 				Console.WriteLine(g.Resources.Count);
 				Assert.AreEqual(2, g.Resources.Count);
 			}
@@ -349,106 +351,93 @@ namespace cms.data.tests.EF
 			[Test]
 			public void UpdateResourceTest_gridHas2_addNewResources()
 			{
-				const string culture = "cs";
-				IRepository db = GetRepositoryMock();
-
 				var g = DefaultGrid()
-					.WithResource("linkXXX", "dbvalueLink", culture)
-					.WithResource("nameXXX", "dbvalueName", culture);
+					.WithResource("linkXXX", "dbvalueLink")
+					.WithResource("nameXXX", "dbvalueName");
 
 				var gResources = EmptyResourcesDto()
 					.WithResource("link", "linkvaluedto", 0)
 					.WithResource("name", "linkvaluedto", 0);
 
 				Assert.AreEqual(2, g.Resources.Count);
-				g.UpdateResourceList(gResources, culture, db);
+				g.UpdateResourceList(gResources, CultureCs, _repository);
 				Assert.AreEqual(4, g.Resources.Count);
 			}
 
 			[Test]
 			public void UpdateResourceTest_gridHas2_UpdateResources_isOwner()
 			{
-				const string culture = "cs";
-				IRepository db = GetRepositoryMock();
-
 				var g = DefaultGrid()
-					.WithResource("link", "dbvalueLink", culture)
-					.WithResource("name", "dbvalueName", culture);
+					.WithResource("link", "dbvalueLink")
+					.WithResource("name", "dbvalueName");
 
 				var gResources = EmptyResourcesDto()
 					.WithResource("link", "linkvaluedto", 0)
 					.WithResource("name", "namevaluedto", 0);
 
-				g.UpdateResourceList(gResources, culture, db);
+				g.UpdateResourceList(gResources, CultureCs, _repository);
 			
 				Assert.AreEqual(2, g.Resources.Count);
-				g.CheckResource("link",culture).ValueIs("linkvaluedto");
-				g.CheckResource("name",culture).ValueIs("namevaluedto");
+				g.CheckResource("link").ValueIs("linkvaluedto");
+				g.CheckResource("name").ValueIs("namevaluedto");
 			}
 
 			[Test]
 			public void UpdateResourceTest_checkOwnerShip()
 			{
-				const string culture = "cs";
-
 				var g = DefaultGrid()
-					.WithResource("link", "dbvalueLink", culture, 11)
-					.WithResource("name", "dbvalueName", culture, 12);
+					.WithResource("link", "dbvalueLink", CultureCs, 11)
+					.WithResource("name", "dbvalueName", CultureCs, 12);
 
-				Assert.AreEqual(g.Id, g.Resources.GetByKey("name", culture).Owner);
+				Assert.AreEqual(g.Id, g.Resources.GetByKey("name", CultureCs).Owner);
 			}
 
 			[Test]
 			public void UpdateResourceTest_UpdateResources_isOwnwer_searchById()
 			{
-				const string culture = "cs";
-				IRepository db = GetRepositoryMock();
-
 				var g = DefaultGrid()
-					.WithResource(_allResources, "link", "dbvalueLink", culture, 1)
-					.WithResource(_allResources, "name", "dbvalueName", culture, 2);
+					.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1)
+					.WithResource(_allResources, "name", "dbvalueName", CultureCs, 2);
 
 				var gResources = EmptyResourcesDto()
 					.WithResource("link", "linkvaluedto", 1)
 					.WithResource("name", "namevaluedto", 2);
 
-				g.UpdateResourceList(gResources, culture, db);
+				g.UpdateResourceList(gResources, CultureCs, _repository);
 				Assert.AreEqual(2, g.Resources.Count);
-				g.CheckResource("link", culture).ValueIs("linkvaluedto");
-				g.CheckResource("name", culture).ValueIs("namevaluedto");
+				g.CheckResource("link").ValueIs("linkvaluedto");
+				g.CheckResource("name").ValueIs("namevaluedto");
 			}
 
 			[Test]
-			public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldntChangeValue()
+			public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference()
 			{
-				const string culture = "cs";
-				IRepository db = GetRepositoryMock();
-
 				var g1 = DefaultGrid()
-					.WithResource(_allResources, "link", "dbvalueLink", culture, 1);
+					.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
 
 				var g2 = DefaultGrid()
-					.WithResource(_allResources, "link", "xxx", culture, 12);
+					.WithResource(_allResources, "link", "xxx", CultureCs, 12);
 
-				g1.UpdateResourceList(g2.Resources.ToDtos(), culture, db);
+				g1.UpdateResourceList(g2.Resources.ToDtos(), CultureCs, _repository);
+
+				g1.CheckResource("link")
+					.ValueIs("xxx")
+					.OwnerIs(g2.Id);
+
 				Assert.AreEqual(1, g1.Resources.Count);
-				Assert.AreEqual("dbvalueLink", g1.Resources.GetByKey("link", culture).Value);
 			}
 
 			[Test]
 			public void UpdateResourceTest_AttachResourcReference()
 			{
-				const string culture = "cs";
-				IRepository db = GetRepositoryMock();
-
 				var g1 = DefaultGrid()
-					.WithResource(_allResources, "link", "dbvalueLink", culture, 1);
+					.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
 
 				var g2 = DefaultGrid();
 
-				g2.UpdateResourceList(g1.Resources.ToDtos(), culture, db);
+				g2.UpdateResourceList(g1.Resources.ToDtos(), CultureCs, _repository);
 
-				g2.CheckResource("link", culture)
+				g2.CheckResource("link")
 					.ValueIs("dbvalueLink")
 					.OwnerIs(g1.Id);
 
@@ -456,40 +445,42 @@ namespace cms.data.tests.EF
 			}
 
 			[Test]
-			public void UpdateResourceTest_AttachResourcReference_ResourceExist_ShouldntChangeValue()
+			public void UpdateResourceTest_AttachResourcReference_ResourceExist_ShouldReplaceReference()
 			{
-				const string culture = "cs";
-				IRepository db = GetRepositoryMock();
+				var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
+				var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
 
-				var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", culture, 1);
-				var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", culture, 2);
+				grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
 
-				grid2.UpdateResourceList(grid1.Resources.ToDtos(), culture, db);
-
-				grid2.CheckResource("link", culture)
+				grid1.CheckResource("link")
 					  .ValueIs("b222")
 					  .OwnerIs(grid2.Id);
 
 				Assert.AreEqual(1, grid2.Resources.Count);
 			}
 
+	
 			[Test]
-			public void UpdateResourceTest_AttachResourcReference_ResourceExist_ShouldntChangeValue333()
+			public void UpdateResourceTest_LANGUAGE()
 			{
-				const string culture = "cs";
-				IRepository db = GetRepositoryMock();
+				var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
+				var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+				var grid3 = DefaultGrid().WithResource(_allResources, "link", "c333", CultureEn, 3);
 
-				var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", culture, 1);
-				var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", culture, 2);
-				var grid3 = DefaultGrid().WithResource(_allResources, "link", "c333", culture, 3);
+				grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
 
-				grid2.UpdateResourceList(grid1.Resources.ToDtos(), culture, db);
-
-				grid2.CheckResource("link", culture)
+				grid1.CheckResource("link", CultureCs)
 					  .ValueIs("b222")
 					  .OwnerIs(grid2.Id);
 
-				Assert.AreEqual(1, grid2.Resources.Count);
+				grid1.UpdateResourceList(grid3.Resources.ToDtos(CultureEn), CultureEn, _repository);
+
+				Assert.AreEqual(2, grid1.Resources.Count);
+
+				grid1.CheckResource("link");
+				grid1.CheckResource("link", CultureEn)
+					  .ValueIs("c333")
+					  .OwnerIs(grid3.Id);
 			}
 
 		}
@@ -497,6 +488,9 @@ namespace cms.data.tests.EF
 		[TestFixture]
 		public class JsonDataEfHelpersTest
 		{
+			const string CultureCs = "cs";
+			const string CultureEn = "en";
+			
 			public JsonDataEfHelpersTest()
 			{
 				//Database.SetInitializer(new DropAndCreate());
@@ -521,30 +515,57 @@ namespace cms.data.tests.EF
 
 
 			[Test]
-			public void UpdateResourceTest()
+			public void AddReference_Test()
 			{
-				const string culture = "cs";
+				var grid1 = SimpleGridPage("prd").AddToDb();
 
-				var g1 = SimpleGridPage("prd")
-					.WithResource("link", "dbvalueLink111", culture)
-					.AddToDb();
-
-				var g2 = SimpleGridPage("prd2")
-					.AddToDb();
+				var grid2 = SimpleGridPage("prd2")
+					.WithResource("link", "dbvalueLink222").AddToDb();
 
 				using (var db = new EfContext())
 				{
 					var before = db.Resources.Count();
 					var repo = new EfRepository(db);
 
-					Assert.AreEqual(1, g1.Resources.Count);
+					Assert.AreEqual(0, grid1.Resources.Count);
+					Assert.AreEqual(1, grid2.Resources.Count);
 
-					g2.UpdateResourceList(g1.Resources.ToDtos(), culture, repo);
+					grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, repo);
 
-					Assert.AreEqual(1, g2.Resources.Count);
-					Assert.AreEqual("dbvalueLink111", g2.Resources.GetByKey("link", culture).Value);
-					Assert.AreEqual(g1.Id, g2.Resources.GetByKey("link", culture).Owner);
+					Assert.AreEqual(1, grid1.Resources.Count);
+					grid1.CheckResource("link")
+						.ValueIs("dbvalueLink222")
+						.OwnerIs(grid2.Id);
 					Assert.AreEqual(before, db.Resources.Count());
+				
+				}
+			}
+
+			[Test]
+			public void ReplaceReference_Test()
+			{
+				var grid1 = SimpleGridPage("prd")
+					.WithResource("link", "dbvalueLink111").AddToDb();
+
+				var grid2 = SimpleGridPage("prd2")
+					.WithResource("link", "dbvalueLink222").AddToDb();
+
+				using (var db = new EfContext())
+				{
+					var before = db.Resources.Count();
+					var repo = new EfRepository(db);
+
+					Assert.AreEqual(1, grid1.Resources.Count);
+					Assert.AreEqual(1, grid2.Resources.Count);
+
+					grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, repo);
+
+					Assert.AreEqual(1, grid1.Resources.Count);
+					grid1.CheckResource("link")
+						.ValueIs("dbvalueLink222")
+						.OwnerIs(grid2.Id);
+					Assert.AreEqual(before, db.Resources.Count());
+				
 				}
 			}
 		}
@@ -566,14 +587,20 @@ namespace cms.data.tests.EF
 
 	public static class MyClass
 	{
+		private static readonly string CurrentCulture = SharedLayer.Culture;
 
 		public static Resource CheckResource(this Grid item, string key, string culture)
 		{
 			var getbyLink = item.Resources.GetByKey(key, culture);
 			Assert.IsNotNull(getbyLink);
 			return getbyLink;
-
 		}
+
+		public static Resource CheckResource(this Grid item, string key)
+		{
+			return item.CheckResource(key, CurrentCulture);
+		}
+
 		public static Resource ValueIs(this Resource item, string value)
 		{
 			Assert.AreEqual(value, item.Value);

@@ -55,10 +55,15 @@ namespace cms.data.Dtos
 
 		public static IDictionary<string, ResourceDtoLoc> ToDtos(this ICollection<Resource> source)
 		{
+			return source.ToDtos(_currentCulture);
+		}
+
+		public static IDictionary<string, ResourceDtoLoc> ToDtos(this ICollection<Resource> source, string culture)
+		{
 			if (source == null)
 				return new Dictionary<string, ResourceDtoLoc>();
 
-			return source.Where(x => (x.Culture == _currentCulture || x.Culture == null) && x.Key != null)
+			return source.Where(x => (x.Culture == culture || x.Culture == null) && x.Key != null)
 				.ToDictionary(x => x.Key, v => v.ToDto());
 		}
 
