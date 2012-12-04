@@ -22,7 +22,7 @@ namespace cms.data.EF.DataProvider
 					{
 						res.Value = resUpdate.Value.Value;
 					}
-					else 
+					else
 					{
 						//pridat referenci pokud jeste neni pridana
 						if (ReferenceExist(currentEl, resUpdate.Key, currentCulture))
@@ -39,12 +39,12 @@ namespace cms.data.EF.DataProvider
 						throw new ArgumentException("same resource exists");
 
 					var newres = new Resource()
-						             {
-							             Owner = item.Id,
-							             Culture = currentCulture,
-							             Key = resUpdate.Key,
-							             Value = resUpdate.Value.Value
-						             };
+										 {
+											 Owner = item.Id,
+											 Culture = currentCulture,
+											 Key = resUpdate.Key,
+											 Value = resUpdate.Value.Value
+										 };
 					db.Resources.Add(newres);
 					db.GridElements.Get(item.Id, applicationId).Resources.Add(newres);
 				}
@@ -60,7 +60,7 @@ namespace cms.data.EF.DataProvider
 			return curEl.Resources.Single(x => x.Key == key && x.Culture == culture);
 		}
 
-		public static Resource GetByKey(this IEnumerable<Resource> resources,  string key, string culture)
+		public static Resource GetByKey(this IEnumerable<Resource> resources, string key, string culture)
 		{
 			return resources.SingleOrDefault(a => a.Key == key && a.Culture == culture);
 		}
@@ -77,44 +77,56 @@ namespace cms.data.EF.DataProvider
 
 		public static void UpdateResourceList(this IEntityWithResource currentItem, IDictionary<string, ResourceDtoLoc> resourcesDto, string culture, IRepository repo)
 		{
-			foreach (var i  in resourcesDto )
+			foreach (var i in resourcesDto)
 			{
 				var resourceByKey = GetByKey(currentItem.Resources, i.Key, culture);
-				var resourceById = i.Value.Id != 0 ?  GetById(repo.Resources, i.Value.Id, culture) : null;
-				
-				var rrr = i.Value.Id == 0 ? resourceByKey : resourceById;
-				
-				if (rrr == null)
+				var resourceById = i.Value.Id != 0 ? GetById(repo.Resources, i.Value.Id, culture) : null;
+
+			//	var rrr = i.Value.Id == 0 ? resourceByKey : resourceById;
+
+
+				if (resourceByKey != null)
 				{
-					currentItem.AddNewResource(i.Key, i.Value, culture);
+					currentItem.Resources.Remove(resourceByKey);
+				}
+
+				if (resourceById != null)
+				{
+					currentItem.Resources.Add(resourceById);
 				}
 				else
 				{
-					if (rrr.Owner == currentItem.Id)
-					{
-						rrr.Value = i.Value.Value;
-					}
-					else
-					{
-						if (resourceByKey == null)
-						{
-							currentItem.Resources.Add(resourceById);
-						}
-						else
-						{
-							currentItem.Resources.Remove(resourceByKey);
-							if (resourceById != null)
-							{
-								currentItem.Resources.Add(resourceById);
-							}
-							else
-							{
-								currentItem.AddNewResource(i.Key, i.Value, culture);
-							}
-						}
-					}
+					currentItem.AddNewResource(i.Key, i.Value, culture);
 				}
-				
+
+
+
+				//if (rrr == null)
+				//{
+				//	currentItem.AddNewResource(i.Key, i.Value, culture);
+				//}
+				//else if (rrr.Owner == currentItem.Id)
+				//{
+				//	rrr.Value = i.Value.Value;
+				//}
+
+				//else if (resourceByKey == null)
+				//	{
+				//		currentItem.Resources.Add(resourceById);
+				//	}
+				//	else
+				//	{
+				//		currentItem.Resources.Remove(resourceByKey);
+				//		if (resourceById != null)
+				//		{
+				//			currentItem.Resources.Add(resourceById);
+				//		}
+				//		else
+				//		{
+				//			currentItem.AddNewResource(i.Key, i.Value, culture);
+				//		}
+				//	}
+
 			}
 		}
 	}
@@ -139,9 +151,12 @@ namespace cms.data.EF.DataProvider
 			db.SaveChanges();
 		}
 
-		public IQueryable<Resource> Resources { get
+		public IQueryable<Resource> Resources
 		{
-			return db.Resources;
-		} }
+			get
+			{
+				return db.Resources;
+			}
+		}
 	}
 }
