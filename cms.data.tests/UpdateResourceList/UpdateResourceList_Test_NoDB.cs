@@ -19,16 +19,6 @@ namespace cms.data.tests.UpdateResourceList
 		private static IList<Resource> _allResources;
 		private IRepository _repository;
 
-		private Dictionary<string, ResourceDtoLoc> DefaultResourcesDto()
-		{
-			return new Dictionary<string, ResourceDtoLoc>
-				{
-					{"link", new ResourceDtoLoc {Id = 1, Value = "linkxxxcs"}},
-					{"name", new ResourceDtoLoc {Id = 2, Value = "name"}},
-					{"newname", new ResourceDtoLoc {Id = 0, Value = "newnamename2"}}
-				};
-		}
-
 		private Grid DefaultGrid()
 		{
 			return new Grid()
