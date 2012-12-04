@@ -71,11 +71,15 @@
     <Compile Include="EF\PageAbstractTest.cs" />
     <Compile Include="EF\SessionManager.cs" />
     <Compile Include="EF\UpdateGridElementMethodTest.cs" />
+    <Compile Include="Helpers\DbExtension.cs" />
+    <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="LocalizationsTests.cs" />
     <Compile Include="SampleData\CreateSampleDataTest.cs" />
     <Compile Include="EF\Xxx.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateResourceList\UpdateResourceList_Test_NoDB.cs" />
+    <Compile Include="UpdateResourceList\UpdateResourceList_Test_WithDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

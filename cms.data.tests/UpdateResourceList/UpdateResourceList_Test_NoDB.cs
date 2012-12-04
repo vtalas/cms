@@ -1,0 +1,210 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Moq;
+using NUnit.Framework;
+using cms.data.Dtos;
+using cms.data.EF.DataProvider;
+using cms.data.Shared.Models;
+using cms.data.tests.Helpers;
+using cms.shared;
+
+namespace cms.data.tests.UpdateResourceList
+{
+	[TestFixture]
+	public class UpdateResourceList_Test_NoDB
+	{
+		const string CultureCs = "cs";
+		const string CultureEn = "en";
+		private static IList<Resource> _allResources;
+		private IRepository _repository;
+
+		private Dictionary<string, ResourceDtoLoc> DefaultResourcesDto()
+		{
+			return new Dictionary<string, ResourceDtoLoc>
+				{
+					{"link", new ResourceDtoLoc {Id = 1, Value = "linkxxxcs"}},
+					{"name", new ResourceDtoLoc {Id = 2, Value = "name"}},
+					{"newname", new ResourceDtoLoc {Id = 0, Value = "newnamename2"}}
+				};
+		}
+
+		private Grid DefaultGrid()
+		{
+			return new Grid()
+				{
+					Name = "aaa",
+					Id = Guid.NewGuid(),
+					Category = "page",
+				};
+		}
+
+		private IRepository GetRepositoryMock()
+		{
+			var repo = new Mock<IRepository>();
+			repo.Setup(x => x.Resources).Returns(_allResources.AsQueryable);
+			return repo.Object;
+		}
+
+		[SetUp]
+		public void SetUp()
+		{
+			_allResources = new List<Resource>();
+			_repository = GetRepositoryMock();
+
+			SharedLayer.Init();
+		}
+
+		[Test]
+		public void UpdateResourceTest_gridHasNone_addNewResources()
+		{
+			var g = DefaultGrid();
+
+			var gResources = ResourcesHelper.EmptyResourcesDto()
+			                                .WithResource("link", "linkvaluedto", 0)
+			                                .WithResource("name", "linkvaluedto", 0);
+
+			Assert.AreEqual(0, g.Resources.Count);
+
+			g.UpdateResourceList(gResources, CultureCs, _repository);
+			Console.WriteLine(g.Resources.Count);
+			Assert.AreEqual(2, g.Resources.Count);
+		}
+
+		[Test]
+		public void UpdateResourceTest_gridHas2_addNewResources()
+		{
+			var g = DefaultGrid()
+				.WithResource("linkXXX", "dbvalueLink")
+				.WithResource("nameXXX", "dbvalueName");
+
+			var gResources = ResourcesHelper.EmptyResourcesDto()
+			                                .WithResource("link", "linkvaluedto", 0)
+			                                .WithResource("name", "linkvaluedto", 0);
+
+			Assert.AreEqual(2, g.Resources.Count);
+			g.UpdateResourceList(gResources, CultureCs, _repository);
+			Assert.AreEqual(4, g.Resources.Count);
+		}
+
+		[Test]
+		public void UpdateResourceTest_gridHas2_UpdateResources_isOwner()
+		{
+			var g = DefaultGrid()
+				.WithResource("link", "dbvalueLink")
+				.WithResource("name", "dbvalueName");
+
+			var gResources = ResourcesHelper.EmptyResourcesDto()
+			                                .WithResource("link", "linkvaluedto", 0)
+			                                .WithResource("name", "namevaluedto", 0);
+
+			g.UpdateResourceList(gResources, CultureCs, _repository);
+
+			Assert.AreEqual(2, g.Resources.Count);
+			g.CheckResource("link").ValueIs("linkvaluedto");
+			g.CheckResource("name").ValueIs("namevaluedto");
+		}
+
+		[Test]
+		public void UpdateResourceTest_checkOwnerShip()
+		{
+			var g = DefaultGrid()
+				.WithResource("link", "dbvalueLink", CultureCs, 11)
+				.WithResource("name", "dbvalueName", CultureCs, 12);
+
+			Assert.AreEqual(g.Id, g.Resources.GetByKey("name", CultureCs).Owner);
+		}
+
+		[Test]
+		public void UpdateResourceTest_UpdateResources_isOwnwer_searchById()
+		{
+			var g = DefaultGrid()
+				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1)
+				.WithResource(_allResources, "name", "dbvalueName", CultureCs, 2);
+
+			var gResources = ResourcesHelper.EmptyResourcesDto()
+			                                .WithResource("link", "linkvaluedto", 1)
+			                                .WithResource("name", "namevaluedto", 2);
+
+			g.UpdateResourceList(gResources, CultureCs, _repository);
+			Assert.AreEqual(2, g.Resources.Count);
+			g.CheckResource("link").ValueIs("linkvaluedto");
+			g.CheckResource("name").ValueIs("namevaluedto");
+		}
+
+		[Test]
+		public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference()
+		{
+			var g1 = DefaultGrid()
+				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
+
+			var g2 = DefaultGrid()
+				.WithResource(_allResources, "link", "xxx", CultureCs, 12);
+
+			g1.UpdateResourceList(g2.Resources.ToDtos(), CultureCs, _repository);
+
+			g1.CheckResource("link")
+			  .ValueIs("xxx")
+			  .OwnerIs(g2.Id);
+
+			Assert.AreEqual(1, g1.Resources.Count);
+		}
+
+		[Test]
+		public void UpdateResourceTest_AttachResourcReference()
+		{
+			var g1 = DefaultGrid()
+				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
+
+			var g2 = DefaultGrid();
+
+			g2.UpdateResourceList(g1.Resources.ToDtos(), CultureCs, _repository);
+
+			g2.CheckResource("link")
+			  .ValueIs("dbvalueLink")
+			  .OwnerIs(g1.Id);
+
+			Assert.AreEqual(1, g2.Resources.Count);
+		}
+
+		[Test]
+		public void UpdateResourceTest_AttachResourcReference_ResourceExist_ShouldReplaceReference()
+		{
+			var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
+			var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+
+			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
+
+			grid1.CheckResource("link")
+			     .ValueIs("b222")
+			     .OwnerIs(grid2.Id);
+
+			Assert.AreEqual(1, grid2.Resources.Count);
+		}
+
+
+		[Test]
+		public void UpdateResourceTest_LANGUAGE()
+		{
+			var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
+			var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+			var grid3 = DefaultGrid().WithResource(_allResources, "link", "c333", CultureEn, 3);
+
+			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
+
+			grid1.CheckResource("link", CultureCs)
+			     .ValueIs("b222")
+			     .OwnerIs(grid2.Id);
+
+			grid1.UpdateResourceList(grid3.Resources.ToDtos(CultureEn), CultureEn, _repository);
+
+			Assert.AreEqual(2, grid1.Resources.Count);
+
+			grid1.CheckResource("link");
+			grid1.CheckResource("link", CultureEn)
+			     .ValueIs("c333")
+			     .OwnerIs(grid3.Id);
+		}
+
+	}
+}

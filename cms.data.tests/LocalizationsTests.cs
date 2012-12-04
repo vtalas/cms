@@ -6,14 +6,11 @@ using System.Xml;
 using NUnit.Framework;
 using Newtonsoft.Json.Linq;
 using cms.Code;
-using System.Linq;
 using cms.data.Migrations;
 using cms.data.Shared.Models;
 
 namespace cms.data.tests
 {
-
-	
 	[TestFixture]
 	public class LocalizationsTests
 	{
