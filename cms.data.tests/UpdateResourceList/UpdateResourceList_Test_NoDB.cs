@@ -46,7 +46,7 @@ namespace cms.data.tests.UpdateResourceList
 		}
 
 		[Test]
-		public void UpdateResourceTest_gridHasNone_addNewResources()
+		public void Values_AddNew_test()
 		{
 			var g = DefaultGrid();
 
@@ -62,7 +62,7 @@ namespace cms.data.tests.UpdateResourceList
 		}
 
 		[Test]
-		public void UpdateResourceTest_gridHas2_addNewResources()
+		public void Values_AddNew_NewKeys_test()
 		{
 			var g = DefaultGrid()
 				.WithResource("linkXXX", "dbvalueLink")
@@ -78,7 +78,7 @@ namespace cms.data.tests.UpdateResourceList
 		}
 
 		[Test]
-		public void UpdateResourceTest_gridHas2_UpdateResources_isOwner()
+		public void Values_Replace_ByNewResources_test()
 		{
 			var g = DefaultGrid()
 				.WithResource("link", "dbvalueLink")
@@ -106,7 +106,7 @@ namespace cms.data.tests.UpdateResourceList
 		}
 
 		[Test]
-		public void UpdateResourceTest_UpdateResources_isOwnwer_searchById()
+		public void Values_Replace_ByNewResources_SearchById_test()
 		{
 			var g = DefaultGrid()
 				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1)
@@ -141,7 +141,7 @@ namespace cms.data.tests.UpdateResourceList
 		}
 
 		[Test]
-		public void UpdateResourceTest_AttachResourcReference()
+		public void Reference_AddNew_test()
 		{
 			var g1 = DefaultGrid()
 				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
@@ -158,7 +158,7 @@ namespace cms.data.tests.UpdateResourceList
 		}
 
 		[Test]
-		public void UpdateResourceTest_AttachResourcReference_ResourceExist_ShouldReplaceReference()
+		public void Reference_Replace_ByAnotherReference_test()
 		{
 			var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
 			var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
@@ -172,6 +172,28 @@ namespace cms.data.tests.UpdateResourceList
 			Assert.AreEqual(1, grid2.Resources.Count);
 		}
 
+		[Test]
+		public void Reference_Replace_ByNewResource_Test()
+		{
+			var grid1 = DefaultGrid();
+			var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+			var newResources = ResourcesHelper.EmptyResourcesDto()
+											 .WithResource("link", "newlinkvalue", 0);
+
+
+			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
+			grid1.CheckResource("link")
+				  .ValueIs("b222")
+				  .OwnerIs(grid2.Id);
+			
+			grid1.UpdateResourceList(newResources, CultureCs, _repository);
+			grid1.CheckResource("link")
+				.ValueIs("newlinkvalue")
+				.OwnerIs(grid1.Id);
+
+
+			Assert.AreEqual(1, grid2.Resources.Count);
+		}
 
 		[Test]
 		public void UpdateResourceTest_LANGUAGE()

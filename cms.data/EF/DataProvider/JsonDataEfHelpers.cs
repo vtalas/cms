@@ -79,7 +79,11 @@ namespace cms.data.EF.DataProvider
 		{
 			foreach (var i  in resourcesDto )
 			{
-				var rrr = i.Value.Id == 0 ? GetByKey(currentItem.Resources, i.Key, culture) : GetById(repo.Resources, i.Value.Id,culture);
+				var resourceByKey = GetByKey(currentItem.Resources, i.Key, culture);
+				var resourceById = i.Value.Id != 0 ?  GetById(repo.Resources, i.Value.Id, culture) : null;
+				
+				var rrr = i.Value.Id == 0 ? resourceByKey : resourceById;
+				
 				if (rrr == null)
 				{
 					currentItem.AddNewResource(i.Key, i.Value, culture);
@@ -92,15 +96,21 @@ namespace cms.data.EF.DataProvider
 					}
 					else
 					{
-						var currentItemResource = GetByKey(currentItem.Resources, i.Key, culture);
-						if (currentItemResource == null)
+						if (resourceByKey == null)
 						{
-							currentItem.Resources.Add(GetById(repo.Resources, i.Value.Id, culture));
+							currentItem.Resources.Add(resourceById);
 						}
 						else
 						{
-							currentItem.Resources.Remove(currentItemResource);
-							currentItem.Resources.Add(GetById(repo.Resources, i.Value.Id, culture));
+							currentItem.Resources.Remove(resourceByKey);
+							if (resourceById != null)
+							{
+								currentItem.Resources.Add(resourceById);
+							}
+							else
+							{
+								currentItem.AddNewResource(i.Key, i.Value, culture);
+							}
 						}
 					}
 				}
