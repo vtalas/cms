@@ -301,11 +301,6 @@ namespace cms.data.tests.EF
 
 			}
 
-			private Dictionary<string, ResourceDtoLoc> EmptyResourcesDto()
-			{
-				return new Dictionary<string, ResourceDtoLoc>();
-			}
-
 			private Grid DefaultGrid()
 			{
 				return new Grid()
@@ -337,7 +332,7 @@ namespace cms.data.tests.EF
 			{
 				var g = DefaultGrid();
 
-				var gResources = EmptyResourcesDto()
+				var gResources = MyClass.EmptyResourcesDto()
 					.WithResource("link", "linkvaluedto", 0)
 					.WithResource("name", "linkvaluedto", 0);
 
@@ -355,7 +350,7 @@ namespace cms.data.tests.EF
 					.WithResource("linkXXX", "dbvalueLink")
 					.WithResource("nameXXX", "dbvalueName");
 
-				var gResources = EmptyResourcesDto()
+				var gResources = MyClass.EmptyResourcesDto()
 					.WithResource("link", "linkvaluedto", 0)
 					.WithResource("name", "linkvaluedto", 0);
 
@@ -371,7 +366,7 @@ namespace cms.data.tests.EF
 					.WithResource("link", "dbvalueLink")
 					.WithResource("name", "dbvalueName");
 
-				var gResources = EmptyResourcesDto()
+				var gResources = MyClass.EmptyResourcesDto()
 					.WithResource("link", "linkvaluedto", 0)
 					.WithResource("name", "namevaluedto", 0);
 
@@ -399,7 +394,7 @@ namespace cms.data.tests.EF
 					.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1)
 					.WithResource(_allResources, "name", "dbvalueName", CultureCs, 2);
 
-				var gResources = EmptyResourcesDto()
+				var gResources = MyClass.EmptyResourcesDto()
 					.WithResource("link", "linkvaluedto", 1)
 					.WithResource("name", "namevaluedto", 2);
 
@@ -524,7 +519,8 @@ namespace cms.data.tests.EF
 
 				using (var db = new EfContext())
 				{
-					var before = db.Resources.Count();
+					var before = db.Resources;
+
 					var repo = new EfRepository(db);
 
 					Assert.AreEqual(0, grid1.Resources.Count);
@@ -536,13 +532,13 @@ namespace cms.data.tests.EF
 					grid1.CheckResource("link")
 						.ValueIs("dbvalueLink222")
 						.OwnerIs(grid2.Id);
-					Assert.AreEqual(before, db.Resources.Count());
+					Assert.AreEqual(before, db.Resources);
 				
 				}
 			}
 
 			[Test]
-			public void ReplaceReference_Test()
+			public void ReplaceReference_byReference_Test()
 			{
 				var grid1 = SimpleGridPage("prd")
 					.WithResource("link", "dbvalueLink111").AddToDb();
@@ -564,7 +560,43 @@ namespace cms.data.tests.EF
 					grid1.CheckResource("link")
 						.ValueIs("dbvalueLink222")
 						.OwnerIs(grid2.Id);
+
+					grid2.CheckResource("link")
+						.ValueIs("dbvalueLink222")
+						.OwnerIs(grid2.Id);
 					Assert.AreEqual(before, db.Resources.Count());
+				
+				}
+			}
+
+			[Test]
+			public void ReplaceReference_ByNewResource_Test()
+			{
+				var grid1 = SimpleGridPage("prd");
+
+				var grid2 = SimpleGridPage("prd2")
+					.WithResource("link", "dbvalueLink222").AddToDb();
+				
+				var newResources = MyClass.EmptyResourcesDto()
+				                          .WithResource("link", "newlinkvalue", 0);
+
+
+				using (var db = new EfContext())
+				{
+					var before = db.Resources.Count();
+					var repo = new EfRepository(db);
+
+					//add reference
+					grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, repo);
+
+					grid1.UpdateResourceList(newResources, CultureCs, repo);
+
+					Assert.AreEqual(1, grid1.Resources.Count);
+					grid1.CheckResource("link")
+						.ValueIs("newlinkvalue")
+						.OwnerIs(grid1.Id);
+
+					Assert.AreEqual(before + 1, db.Resources.Count());
 				
 				}
 			}
@@ -588,6 +620,11 @@ namespace cms.data.tests.EF
 	public static class MyClass
 	{
 		private static readonly string CurrentCulture = SharedLayer.Culture;
+
+		public static Dictionary<string, ResourceDtoLoc> EmptyResourcesDto()
+		{
+			return new Dictionary<string, ResourceDtoLoc>();
+		}
 
 		public static Resource CheckResource(this Grid item, string key, string culture)
 		{
