@@ -63,11 +63,12 @@
     <Compile Include="EF\Bootstrap\IBootStrapGenerator.cs" />
     <Compile Include="EF\DataProvider\IResourceElement.cs" />
     <Compile Include="EF\DataProvider\JsonDataEfHelpers.cs" />
+    <Compile Include="EF\Initializers\DeleteAllDataAndSampleData.cs" />
     <Compile Include="EF\Initializers\MigrateInitalizer.cs" />
     <Compile Include="EF\Initializers\SampleData.cs" />
     <Compile Include="EF\SecurityProvider.cs" />
     <Compile Include="EF\SessionProvider.cs" />
-    <Compile Include="EF\Initializers\DropAndCreate.cs" />
+    <Compile Include="EF\Initializers\DropAndCreateAlwaysForce.cs" />
     <Compile Include="EF\Initializers\DropAndCreateTables.cs" />
     <Compile Include="EF\DataProvider\DataEfAuthorized.cs" />
     <Compile Include="GridElementAbstractImpl.cs" />

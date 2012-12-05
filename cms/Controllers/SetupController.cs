@@ -19,9 +19,23 @@ namespace cms.Controllers
 				Response.Write(WebSecurity.Initialized);
 			}
 			return View();
-
 		}
-		public ActionResult MigrateDatabaseToLatestVersion()
+
+		public ActionResult DropAndCreateAlwaysForce()
+		{
+			using (var a = new EfContext())
+			{
+				Database.SetInitializer(new DropAndCreateAlwaysForce());
+				Response.Write(a.ApplicationSettings.ToList()[0].Id);
+				Response.Write(" \n");
+				Response.Write(WebSecurity.Initialized);
+			}
+			return View();
+		}
+
+		 
+		 
+		 public ActionResult MigrateDatabaseToLatestVersion()
 		{
 			using (var a = new EfContext())
 			{

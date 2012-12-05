@@ -14,7 +14,7 @@ namespace cms.data.tests.EF
 		public void SetInit()
 		{
 			Xxx.DeleteDatabaseDataGenereateSampleData();
-			Database.SetInitializer(new DropAndCreate());
+			Database.SetInitializer(new DropAndCreateAlwaysForce());
 		}
 
 		[Test]

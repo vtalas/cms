@@ -37,9 +37,9 @@ namespace cms.data.EF.DataProvider
 		}
 
 		//TODO: pokud nenanjde melo by o vracet homepage
-		public override GridPageDto Get(string link)
+		public overr ide GridPageDto Get(string link)
 		{
-			var a = AvailableGrids().FirstOrDefault(x => x.Resources.GetByKey("link", CurrentCulture) != null );
+			var a = AvailableGrids().FirstOrDefault(x => x.Resources.ToList().GetByKey("link", CurrentCulture) != null );
 			if (a == null)
 			{
 				throw new ObjectNotFoundException(string.Format("'{0}' not found", link));

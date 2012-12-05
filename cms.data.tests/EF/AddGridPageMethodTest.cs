@@ -12,7 +12,7 @@ namespace cms.data.tests.EF
 	{
 		public AddGridPageMethodTest()
 		{
-			Database.SetInitializer(new DropAndCreate());
+			Database.SetInitializer(new DropAndCreateAlwaysForce());
 		}
 
 		GridPageDto AddGridpage(string name, string link)

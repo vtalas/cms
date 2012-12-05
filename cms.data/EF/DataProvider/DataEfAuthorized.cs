@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
+using cms.data.EF.Initializers;
 using cms.data.Shared.Models;
 
 namespace cms.data.EF.DataProvider
@@ -71,17 +72,19 @@ namespace cms.data.EF.DataProvider
 			get { return new GridElementAbstractImpl(CurrentApplication, db); }
 		}
 
+
 		public override IEnumerable<GridListDto> Grids()
 		{
 			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id).Select(dto => new GridListDto
 				{
 					Id = dto.Id,
 					Category = dto.Category,
-					Name = dto.Name,
-					Link = dto.Resources.GetByKey("link", CurrentCulture).Value,
+					Name = dto.Resources.FirstOrDefault(x=>x.Key == "name" && x.Culture == CurrentCulture).Value,
+					Link = dto.Resources.FirstOrDefault(x => x.Key == "link" && x.Culture == CurrentCulture).Value,
 					Home = dto.Home,
 				});
 			return a.ToList();
+
 		}
 
 		public override void DeleteApplication(Guid id)
@@ -98,14 +101,14 @@ namespace cms.data.EF.DataProvider
 			db.ApplicationSettings.Add(newitem);
 			if (newitem.Grids == null)
 			{
-				newitem.Grids = new List<Grid>{
-									new Grid
-										{	
-											ApplicationSettings = newitem,
-				        					Home = true,
-				        					Name = "homepage",
-				        				}				
-									};
+				var a = new Grid
+					{
+						ApplicationSettings = newitem,
+						Home = true
+					};
+				a.WithResource("name", "homepage", CurrentCulture);
+				newitem.Grids = new List<Grid>{a};
+
 			}
 			db.SaveChanges();
 			return newitem;

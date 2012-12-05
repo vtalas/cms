@@ -22,15 +22,14 @@
 		<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{grid.Name}}</a>
 	</div>
 	<div class="span4">
-		<span class="admin-inline-block">{{grid.ResourceDto.Value}}</span>
+		<span class="admin-inline-block">{{grid.Link}}</span>
 	</div>
 	<div class="span3 hider">
 		<button ng-hide="grid.Edit" ng-click="edit(grid)" class="btn font-icon edit" />
 		<button ng-show="grid.Edit" ng-click="save(grid)" class="btn font-icon ok" />
 		<button ng-click="remove(grid)" class="btn font-icon delete" />
 
-		<a href="/client/@ViewBag.Application/{{grid.ResourceDto.Value}}">viewhtml</a> |
-		<a href="/client/json/@ViewBag.ApplicationId/{{grid.ResourceDto.Value}}">viewJson</a>
+		<a href="/client/json/@ViewBag.ApplicationId/{{grid.Link}}">viewJson</a>
 	</div>
 </div>
 <p></p>
@@ -57,7 +56,7 @@
 		<input type="text" placeholder="Jméno" ng-model="newitem.Name">
 	</div>
 	<div class="span4 admin-inline-block">
-		<input type="text" placeholder="Link" ng-model="newitem.ResourceDto.Value">
+		<input type="text" placeholder="Link" ng-model="newitem.Link">
 	</div>
 
 	<div class="clearfix"></div>

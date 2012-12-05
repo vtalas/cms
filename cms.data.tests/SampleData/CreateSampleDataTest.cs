@@ -19,7 +19,7 @@ namespace cms.data.tests.SampleData
 		public void Setup()
 		{
 			var context = new EfContext("EfContextSampleData");
-			Database.SetInitializer(new DropAndCreate());
+			Database.SetInitializer(new DropAndCreateAlwaysForce());
 			Repo = new DataEfAuthorized("aaa",  context, 1);
 		}
 

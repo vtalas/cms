@@ -16,6 +16,7 @@ namespace cms.data.tests.UpdateResourceList
 	{
 		const string CultureCs = "cs";
 		const string CultureEn = "en";
+
 		private static IList<Resource> _allResources;
 		private IRepository _repository;
 
@@ -23,7 +24,6 @@ namespace cms.data.tests.UpdateResourceList
 		{
 			return new Grid()
 				{
-					Name = "aaa",
 					Id = Guid.NewGuid(),
 					Category = "page",
 				};

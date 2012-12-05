@@ -38,10 +38,10 @@ namespace cms.data.Dtos
 		public static ApplicationSettingDto ToDto(this ApplicationSetting source)
 		{
 			return new ApplicationSettingDto
-				   {
-					   Name = source.Name,
-					   Id = source.Id
-				   };
+					{
+						Name = source.Name,
+						Id = source.Id
+					};
 		}
 
 		public static IList<ApplicationSettingDto> ToDtos(this IList<ApplicationSetting> source)
@@ -90,13 +90,13 @@ namespace cms.data.Dtos
 			return children;
 		}
 
-		public static MenuItemDto ToMenuItemDto(this GridElement source, IEnumerable<GridElement> allElements )
+		public static MenuItemDto ToMenuItemDto(this GridElement source, IEnumerable<GridElement> allElements)
 		{
 			var a = new MenuItemDto
 				{
 					Id = source.Id,
 					Content = source.Content,
-					
+
 					Skin = source.Skin,
 					Type = source.Type,
 					ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
@@ -120,49 +120,48 @@ namespace cms.data.Dtos
 					};
 		}
 
-	
+
 		public static Grid ToGrid(this GridPageDto source)
 		{
 			var a = new Grid
 			{
-				Name = source.Name,
 				Home = source.Home,
 				Category = source.Category ?? CategoryEnum.Page,
 				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id,
 			};
-			a.AddResource("name", source.Name).AddResource("link", source.Link);
+			a.AddResource("name", source.Name)
+				.AddResource("link", source.Link);
 			return a;
 		}
 
-		public static Grid AddResource(this Grid source, string  key, string value)
+		public static Grid AddResource(this Grid source, string key, string value)
 		{
 			var res = new Resource
-				       {
-					       Key = key,
-					       Culture = _currentCulture,
-					       Value = value,
-					       Owner = source.Id
-				       };
+						 {
+							 Key = key,
+							 Culture = _currentCulture,
+							 Value = value,
+							 Owner = source.Id
+						 };
 			source.Resources.Add(res);
 			return source;
 		}
 
 		public static MenuDto ToMenuDto(this Grid source)
 		{
-			if (source.Category != null && source.Category == CategoryEnum.Page )
+			if (source.Category != null && source.Category == CategoryEnum.Page)
 			{
 				throw new InvalidEnumArgumentException("InvalidCategoryPage");
 			}
 			return new MenuDto
-					   {
-						   Home = source.Home,
-						   Id = source.Id,
-						   //ResourceDto = source.Resource == null ? source.Resource.ToDto() : new ResourceDtoLoc(),
-						   Name = source.Name,
-						   Category = source.Category,
-						   Children = source.GridElements.ToChildren()
-
-					   };
+						{
+							Home = source.Home,
+							Id = source.Id,
+							Link = source.Resources.GetByKey("link", _currentCulture).Value,
+							Name = source.Resources.GetByKey("name", _currentCulture).Value,
+							Category = source.Category,
+							Children = source.GridElements.ToChildren()
+						};
 		}
 
 		public static GridPageDto ToGridPageDto(this Grid source)
@@ -172,9 +171,8 @@ namespace cms.data.Dtos
 				GridElements = source.GridElements.ToDtos(),
 				Home = source.Home,
 				Id = source.Id,
-				Link = source.Resources.GetByKey("link", SharedLayer.Culture).Value,
-				//ResourceDto = source.Resource != null ? source.Resource.ToDto() : new ResourceDtoLoc(),
-				Name = source.Name,
+				Link = source.Resources.GetByKey("link", _currentCulture).Value,
+				Name = source.Resources.GetByKey("name", _currentCulture).Value,
 				Category = source.Category
 			};
 

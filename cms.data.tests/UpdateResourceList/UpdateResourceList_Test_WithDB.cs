@@ -33,7 +33,6 @@ namespace cms.data.tests.UpdateResourceList
 			var grid = new Grid
 				{
 					Category = "page",
-					Name = name
 				};
 			return grid;
 		}

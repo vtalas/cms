@@ -6,28 +6,52 @@ using cms.data.EF.DataProvider;
 using cms.data.Shared.Models;
 using cms.shared;
 using System.Linq;
-using cms.data.Dtos;
 
 namespace cms.data.EF.Initializers
 {
 	public static class Chuj
 	{
-		public static List<Resource> EmptyResource()
+
+		public static Grid WithResource(this Grid source, string key, string value, string culture, int id = 0)
 		{
-			return new List<Resource>();
+			var res = JsonDataEfHelpers.GetResource(key, value, source.Id, culture, id);
+			source.Resources.Add(res);
+			return source;
 		}
 
-		public static List<Resource> WithResource(this List<Resource> source, string key, string value, Guid parentId, string culture, int id = 0)
+		public static Grid WithCategory(this Grid source, string category)
 		{
-			var res = JsonDataEfHelpers.GetResource(key, value, parentId, culture, id);
-			source.Add(res);
+			source.Category = category;
 			return source;
+		}
+
+		public static Grid WithGridElements(this Grid source, List<GridElement> gridElements)
+		{
+			source.GridElements = gridElements;
+			return source;
+		}
+
+		public static Grid WithGridElement(this Grid source, GridElement gridElement)
+		{
+			source.GridElements.Add(gridElement);
+			return source;
+		}
+
+		public static Grid CreateGrid(Guid id, ApplicationSetting application)
+		{
+			var grid = new Grid
+				{
+					Id = id,
+					ApplicationSettings = application,
+				};
+			return grid;
 		}
 
 	}
 	public class SampleData
 	{
 		protected EfContext Context { get; set; }
+		private const string Culture = "cs";
 
 		//static readonly ILog Log = LogManager.GetLogger<SampleData>();
 
@@ -77,56 +101,34 @@ namespace cms.data.EF.Initializers
 			Context.SaveChanges();
 		}
 
-
-
 		private void GenerateGrids(ApplicationSetting application)
 		{
-			var culture = "cs";
-			var grids = new Grid
-							{
-								Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-								Name = "test page",
-								GridElements = new List<GridElement>
-						                           {
-							                           new GridElement {Content = "aaaaaaaa aaa", Position = 0, Width = 12, Type = "text"}
-						                           },
-								ApplicationSettings = application
-							};
-			grids.AddResource("link", "linkTestPage");
 
-			Context.Grids.Add(grids);
-			Context.Grids.Add(new Grid
-								  {
-									  Id = new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-									  Name = "grid Bez elementu",
-									  ApplicationSettings = application,
-									  Resources = Chuj.EmptyResource()
-										 .WithResource("link", "bezelementu", new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), culture)
-								  });
-			Context.Grids.Add(new Grid
-								  {
-									  Id = new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-									  Name = "gallery 1 ",
-									  ApplicationSettings = application,
-									  Resources = Chuj.EmptyResource()
-										 .WithResource("link", "gallery_1", new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), culture)
-								  });
-			Context.Grids.Add(new Grid
-								  {
-									  Id = new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-									  Name = "gallery 1 sub 1",
-									  ApplicationSettings = application,
-									  Resources = Chuj.EmptyResource()
-										 .WithResource("link", "gallery_1", new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), culture)
-								  });
-			Context.Grids.Add(new Grid
-								  {
-									  Id = new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"),
-									  Name = "gallery 1 sub 2 ",
-									  ApplicationSettings = application,
-									  Resources = Chuj.EmptyResource()
-										 .WithResource("link", "gallery_1", new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), culture)
-								  });
+			Context.Grids.Add(Chuj.CreateGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+										.WithGridElement(new GridElement { Content = "", Position = 0, Width = 12, Type = "text" })
+										.WithResource("link", "testPage_link", Culture)
+										.WithResource("name", "testovaci stranka", Culture)
+								);
+
+			Context.Grids.Add(Chuj.CreateGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+										.WithResource("link", "bezelementu", Culture)
+										.WithResource("name", "grid Bez elementu", Culture)
+								);
+
+			Context.Grids.Add(Chuj.CreateGrid(new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+										.WithResource("link", "gallery_1", Culture)
+										.WithResource("name", "galerie 1", Culture)
+								);
+
+			Context.Grids.Add(Chuj.CreateGrid(new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+										.WithResource("link", "gallery_1_sub_1", Culture)
+										.WithResource("name", "subgalerie galerie 1", Culture)
+								);
+
+			Context.Grids.Add(Chuj.CreateGrid(new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+										.WithResource("link", "gallery_1_2", Culture)
+										.WithResource("name", "gallery 1 sub 2 ", Culture)
+								);
 		}
 
 		private void GenerateUsers()
@@ -158,16 +160,11 @@ namespace cms.data.EF.Initializers
 			items.Add(new GridElement { Parent = rootitem, Content = "", Id = Guid.NewGuid() });
 			items.Add(new GridElement { Parent = rootitem, Content = "", Id = Guid.NewGuid() });
 
-			var menu = new Grid
-						   {
-							   Id = new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"),
-							   Resources = Chuj.EmptyResource()
-								   .WithResource("link", "bezelementu", new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), "cs"),
-							   Name = "test menu",
-							   ApplicationSettings = application,
-							   Category = CategoryEnum.Menu,
-							   GridElements = items
-						   };
+			var menu = Chuj.CreateGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
+								.WithCategory(CategoryEnum.Menu)
+								.WithGridElements(items)
+								.WithResource("link", "test_menu_link", Culture)
+								.WithResource("name", "test menu", Culture);
 
 			Context.Grids.Add(menu);
 		}

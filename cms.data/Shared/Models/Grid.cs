@@ -16,7 +16,7 @@ namespace cms.data.Shared.Models
 			Category = CategoryEnum.Page;
 		}
 		public Guid Id { get; set; }
-		public string Name { get; set; }
+		//public string Name { get; set; }
 		//public string Link { get; set; }
 		public bool Home { get; set; }
 		//public GridTypeWrapper GridType { get; set; }
@@ -27,5 +27,6 @@ namespace cms.data.Shared.Models
 		public virtual ApplicationSetting ApplicationSettings { get; set; }
 		public virtual ICollection<GridElement> GridElements { get; set; }
 		public virtual ICollection<Resource> Resources { get; set; }
+
 	}
 }
