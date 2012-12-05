@@ -18,6 +18,11 @@ namespace cms.data.EF.DataProvider
 			return resources.SingleOrDefault(a => a.Key == key && a.Culture == culture);
 		}
 
+		public static bool ContainsKey(this IEnumerable<Resource> resources, string key, string culture)
+		{
+			return resources.GetByKey(key, culture) != null;
+		}
+
 		public static Resource GetById(this IEnumerable<Resource> resources, int id, string culture)
 		{
 			return resources.SingleOrDefault(a => a.Id == id && a.Culture == culture);

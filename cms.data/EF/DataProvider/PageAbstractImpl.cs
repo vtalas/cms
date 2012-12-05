@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -37,9 +38,11 @@ namespace cms.data.EF.DataProvider
 		}
 
 		//TODO: pokud nenanjde melo by o vracet homepage
-		public overr ide GridPageDto Get(string link)
+		public override GridPageDto Get(string link)
 		{
-			var a = AvailableGrids().FirstOrDefault(x => x.Resources.ToList().GetByKey("link", CurrentCulture) != null );
+			Func<Grid, bool> aa = grid => grid.Resources.ContainsKey(link, CurrentCulture);
+			//var a = AvailableGrids().FirstOrDefault(x => x.Resources.ToList().GetByKey("link", CurrentCulture) != null );
+			var a = AvailableGrids().FirstOrDefault(aa);
 			if (a == null)
 			{
 				throw new ObjectNotFoundException(string.Format("'{0}' not found", link));
