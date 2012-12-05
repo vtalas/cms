@@ -9,6 +9,7 @@ namespace cms.data.EF.DataProvider
 {
 	public class DataEfAuthorized : data.DataProvider
 	{
+		private EfRepository Repository { get; set; }
 		public EfContext db { get; set; }
 		private IQueryable<ApplicationSetting> AvailableApplications { get { return db.ApplicationSettings.Where(x => x.Users.Any(a => a.Id == UserId)); } }
 
@@ -16,6 +17,7 @@ namespace cms.data.EF.DataProvider
 			: base(applicationId, userId)
 		{
 			db = context;
+			Repository = new EfRepository(db);
 		}
 
 		public DataEfAuthorized(string applicationName, EfContext context, int userId)
@@ -64,7 +66,7 @@ namespace cms.data.EF.DataProvider
 
 		public override PageAbstract Page
 		{
-			get { return new PageAbstractImpl(CurrentApplication, db); }
+			get { return new PageAbstractImpl(CurrentApplication, Repository); }
 		}
 
 		public override GridElementAbstract GridElement

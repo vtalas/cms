@@ -7,39 +7,14 @@ using cms.data.Dtos;
 using cms.data.EF.DataProvider;
 using cms.data.Shared.Models;
 using cms.data.tests.Helpers;
+using cms.data.tests._Common;
 using cms.shared;
 
 namespace cms.data.tests.UpdateResourceList
 {
 	[TestFixture]
-	public class UpdateResourceList_Test_NoDB
+	public class UpdateResourceList_Test_NoDB : NoDbBase_Test
 	{
-		const string CultureCs = "cs";
-		const string CultureEn = "en";
-
-		private static IList<Resource> _allResources;
-		private IRepository _repository;
-
-		private Grid DefaultGrid()
-		{
-			return new Grid()
-				{
-					Id = Guid.NewGuid(),
-					Category = "page",
-				};
-		}
-
-		private IRepository GetRepositoryMock()
-		{
-			var repo = new Mock<IRepository>();
-			repo.Setup(x => x.Resources).Returns(_allResources.AsQueryable);
-			repo.Setup(x => x.Add(It.IsAny<Resource>())).Returns((Resource input) =>
-																	 {
-																		 input.Id = _allResources.Count + 1;
-																		 return input;
-																	 });
-			return repo.Object;
-		}
 
 		[SetUp]
 		public void SetUp()
@@ -53,7 +28,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_AddNew_test()
 		{
-			var g = DefaultGrid();
+			var g = CreateDefaultGrid();
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
 											.WithResource("link", "linkvaluedto", 0)
@@ -69,7 +44,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_AddNew_NewKeys_test()
 		{
-			var g = DefaultGrid()
+			var g = CreateDefaultGrid()
 				.WithResource("linkXXX", "dbvalueLink")
 				.WithResource("nameXXX", "dbvalueName");
 
@@ -85,7 +60,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_Replace_ByNewResources_test()
 		{
-			var g = DefaultGrid()
+			var g = CreateDefaultGrid()
 				.WithResource("link", "dbvalueLink")
 				.WithResource("name", "dbvalueName");
 
@@ -103,7 +78,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void UpdateResourceTest_checkOwnerShip()
 		{
-			var g = DefaultGrid()
+			var g = CreateDefaultGrid()
 				.WithResource("link", "dbvalueLink", CultureCs, 11)
 				.WithResource("name", "dbvalueName", CultureCs, 12);
 
@@ -113,7 +88,7 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Values_Replace_ByNewResources_SearchById_test()
 		{
-			var g = DefaultGrid()
+			var g = CreateDefaultGrid()
 				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1)
 				.WithResource(_allResources, "name", "dbvalueName", CultureCs, 2);
 
@@ -130,10 +105,10 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference()
 		{
-			var g1 = DefaultGrid()
+			var g1 = CreateDefaultGrid()
 				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
 
-			var g2 = DefaultGrid()
+			var g2 = CreateDefaultGrid()
 				.WithResource(_allResources, "link", "xxx", CultureCs, 12);
 
 			g1.UpdateResourceList(g2.Resources.ToDtos(), CultureCs, _repository);
@@ -148,10 +123,10 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Reference_AddNew_test()
 		{
-			var g1 = DefaultGrid()
+			var g1 = CreateDefaultGrid()
 				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
 
-			var g2 = DefaultGrid();
+			var g2 = CreateDefaultGrid();
 
 			g2.UpdateResourceList(g1.Resources.ToDtos(), CultureCs, _repository);
 
@@ -165,8 +140,8 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Reference_Replace_ByAnotherReference_test()
 		{
-			var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
-			var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+			var grid1 = CreateDefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
+			var grid2 = CreateDefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
 
 			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
 
@@ -180,8 +155,8 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Reference_Replace_ByNewResource_Test()
 		{
-			var grid1 = DefaultGrid();
-			var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+			var grid1 = CreateDefaultGrid();
+			var grid2 = CreateDefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
 			var newResources = ResourcesHelper.EmptyResourcesDto()
 											 .WithResource("link", "newlinkvalue", 0);
 
@@ -203,9 +178,9 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void UpdateResourceTest_LANGUAGE()
 		{
-			var grid1 = DefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
-			var grid2 = DefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
-			var grid3 = DefaultGrid().WithResource(_allResources, "link", "c333", CultureEn, 3);
+			var grid1 = CreateDefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
+			var grid2 = CreateDefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+			var grid3 = CreateDefaultGrid().WithResource(_allResources, "link", "c333", CultureEn, 3);
 
 			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
 

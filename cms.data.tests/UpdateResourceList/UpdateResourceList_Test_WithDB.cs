@@ -1,11 +1,14 @@
+using System.Data.Entity;
 using System.Linq;
 using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.DataProvider;
+using cms.data.EF.Initializers;
 using cms.data.Shared.Models;
 using cms.data.tests.EF;
 using cms.data.tests.Helpers;
+using cms.data.tests._Common;
 using cms.shared;
 
 namespace cms.data.tests.UpdateResourceList
@@ -18,7 +21,7 @@ namespace cms.data.tests.UpdateResourceList
 
 		public UpdateResourceList_Test_WithDB()
 		{
-			//Database.SetInitializer(new DropAndCreate());
+			Database.SetInitializer(new DropAndCreateAlwaysForce());
 		}
 
 		[SetUp]

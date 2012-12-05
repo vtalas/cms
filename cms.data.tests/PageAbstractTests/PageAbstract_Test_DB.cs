@@ -2,12 +2,13 @@ using System.Linq;
 using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF.DataProvider;
+using cms.data.tests.EF;
 using cms.shared;
 
-namespace cms.data.tests.EF
+namespace cms.data.tests.PageAbstractTests
 {
 	[TestFixture]
-	public class PageAbstractTest
+	public class PageAbstract_Test_DB
 	{
 		[SetUp]
 		public void Setup()
@@ -21,8 +22,9 @@ namespace cms.data.tests.EF
 		{
 			using (var db = new SessionManager().CreateSession)
 			{
+
 				Assert.IsNotNull(db.CurrentApplication);
-				var page = new PageAbstractImpl(db.CurrentApplication, db.db);
+				var page = new PageAbstractImpl(db.CurrentApplication, null);
 
 				var list = page.List();
 				Assert.IsTrue(list.Any());
@@ -35,9 +37,11 @@ namespace cms.data.tests.EF
 		{
 			var a = new GridPageDto { Name = "xxxxx" };
 
+
+			//TODO opravit 
 			using (var db = new SessionManager().CreateSession)
 			{
-				var page = new PageAbstractImpl(db.CurrentApplication, db.db);
+				var page = new PageAbstractImpl(db.CurrentApplication, null);
 				var countBefore = page.List().Count();
 				var newitem = page.Add(a);
 				Assert.IsNotNull(newitem.Id);

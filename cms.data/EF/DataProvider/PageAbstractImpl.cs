@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Linq.Expressions;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -11,10 +10,10 @@ namespace cms.data.EF.DataProvider
 {
 	public class PageAbstractImpl : PageAbstract
 	{
-		private EfContext db { get; set; }
+		private IRepository db { get; set; }
 
 		public PageAbstractImpl(ApplicationSetting application) : base(application) { }
-		public PageAbstractImpl(ApplicationSetting application, EfContext context) : base(application)
+		public PageAbstractImpl(ApplicationSetting application, IRepository context) : base(application)
 		{
 			db = context;
 		}
@@ -62,7 +61,8 @@ namespace cms.data.EF.DataProvider
 			CheckIfLinkExist(newitem);
 
 			CurrentApplication.Grids.Add(item);
-			db.Grids.Add(item);
+
+			db.Add(item);
 
 			db.SaveChanges();
 			return item.ToGridPageDto();
@@ -82,7 +82,6 @@ namespace cms.data.EF.DataProvider
 			grid.Name = item.Name;
 			grid.Home = item.Home;
 
-			db.Entry(grid).State = EntityState.Modified;
 			db.SaveChanges();
 			return grid;
 		}
@@ -90,7 +89,7 @@ namespace cms.data.EF.DataProvider
 		public override void Delete(Guid guid)
 		{
 			var delete = AvailableGrids().Single(x => x.Id == guid);
-			db.Grids.Remove(delete);
+			db.Remove(delete);
 			db.SaveChanges();
 		}
 	}
