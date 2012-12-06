@@ -12,7 +12,8 @@ namespace cms.data.EF.Initializers
 	public class SampleData
 	{
 		protected EfContext Context { get; set; }
-		private const string Culture = "cs";
+		private const string CultureCs = "cs";
+		private const string CultureEn = "en";
 
 		//static readonly ILog Log = LogManager.GetLogger<SampleData>();
 
@@ -49,7 +50,6 @@ namespace cms.data.EF.Initializers
 			//    Log.ErrorFormat("{0} not exist..", defualtjsondata);
 			//}
 
-
 			//TODO: opravit
 			//Context.Bootstrapgenerators.Add(new Bootstrapgenerator
 			//{
@@ -57,7 +57,6 @@ namespace cms.data.EF.Initializers
 			//    Name = "default",
 			//    Status = Boostrapperstatus.Default
 			//});
-
 
 			Context.SaveChanges();
 		}
@@ -67,28 +66,32 @@ namespace cms.data.EF.Initializers
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithGridElement(new GridElement { Content = "", Position = 0, Width = 12, Type = "text" })
-										.WithResource("link", "testPage_link", Culture)
-										.WithResource("name", "testovaci stranka", Culture)
+										.WithResource("link", "testPage_link", CultureCs)
+										.WithResource("name", "testovaci stranka", CultureCs)
+										.WithResource("link", "testPage_link", CultureEn)
+										.WithResource("name", "Test Page", CultureEn)
 								);
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource("link", "bezelementu", Culture)
-										.WithResource("name", "grid Bez elementu", Culture)
+										.WithResource("link", "bezelementu", CultureCs)
+										.WithResource("name", "grid Bez elementu", CultureCs)
+										.WithResource("link", "without_any_element", CultureEn)
+										.WithResource("name", "Without Any Element", CultureEn)
 								);
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource("link", "gallery_1", Culture)
-										.WithResource("name", "galerie 1", Culture)
+										.WithResource("link", "gallery_1", CultureCs)
+										.WithResource("name", "galerie 1", CultureCs)
 								);
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource("link", "gallery_1_sub_1", Culture)
-										.WithResource("name", "subgalerie galerie 1", Culture)
+										.WithResource("link", "gallery_1_sub_1", CultureCs)
+										.WithResource("name", "subgalerie galerie 1", CultureCs)
 								);
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource("link", "gallery_1_2", Culture)
-										.WithResource("name", "gallery 1 sub 2 ", Culture)
+										.WithResource("link", "gallery_1_2", CultureCs)
+										.WithResource("name", "gallery 1 sub 2 ", CultureCs)
 								);
 		}
 
@@ -124,8 +127,8 @@ namespace cms.data.EF.Initializers
 			var menu = GridExtensions.CreateGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 								.WithCategory(CategoryEnum.Menu)
 								.WithGridElements(items)
-								.WithResource("link", "test_menu_link", Culture)
-								.WithResource("name", "test menu", Culture);
+								.WithResource("link", "test_menu_link", CultureCs)
+								.WithResource("name", "test menu", CultureCs);
 
 			Context.Grids.Add(menu);
 		}

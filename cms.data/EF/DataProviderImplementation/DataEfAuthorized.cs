@@ -79,7 +79,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override IEnumerable<GridListDto> Grids()
 		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id).Select(dto => new GridListDto
+			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id).ToList().Select(dto => new GridListDto
 				{
 					Id = dto.Id,
 					Category = dto.Category,

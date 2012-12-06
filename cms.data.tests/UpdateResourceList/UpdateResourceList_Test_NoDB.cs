@@ -47,6 +47,19 @@ namespace cms.data.tests.UpdateResourceList
 		}
 
 		[Test]
+		public void Values_AddNew_NewKeys_testxxxx()
+		{
+			var g = CreateDefaultGrid()
+				.WithResource("link", "dbvalueLink", "").AddTo(Repository);
+
+			Assert.AreEqual(2, g.Resources.Count);
+			g.UpdateResourceList(gResources, CultureCs, Repository);
+			Assert.AreEqual(4, g.Resources.Count);
+		}
+
+
+
+		[Test]
 		public void Values_AddNew_NewKeys_test()
 		{
 			var g = CreateDefaultGrid()
