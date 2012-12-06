@@ -1,7 +1,9 @@
 using System;
 using NUnit.Framework;
 using cms.data.Dtos;
-using cms.data.EF.DataProvider;
+using cms.data.DtosExtensions;
+using cms.data.EF.Repository;
+using cms.data.EF.Initializers;
 using cms.data.tests.PageAbstractTests;
 using cms.data.tests._Common;
 using cms.shared;

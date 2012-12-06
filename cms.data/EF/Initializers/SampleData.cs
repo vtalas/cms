@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using WebMatrix.WebData;
-using cms.data.EF.DataProvider;
+using cms.data.EF.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
 using System.Linq;
@@ -11,8 +11,11 @@ namespace cms.data.EF.Initializers
 {
 	public static class Chuj
 	{
-
-		public static Grid WithResource(this Grid source, string key, string value, string culture, int id = 0)
+		public static Grid WithResource(this Grid source, string key, string value, int id = 0)
+		{
+			return source.WithResource(key, value, SharedLayer.Culture, id);
+		}
+		public static Grid WithResource(this Grid source, string key, string value,string culture, int id = 0)
 		{
 			var res = JsonDataEfHelpers.GetResource(key, value, source.Id, culture, id);
 			source.Resources.Add(res);

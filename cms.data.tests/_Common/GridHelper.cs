@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using cms.data.EF.DataProvider;
 using cms.data.Shared.Models;
 using cms.shared;
 
@@ -14,12 +12,5 @@ namespace cms.data.tests._Common
 			return item.CheckResource(key, CurrentCulture);
 		}
 
-		public static Grid WithResource(this Grid item, string key, string value, string culture = "cs", int id = 0)
-		{
-			item.Resources.Add(JsonDataEfHelpers.GetResource(key, value, item.Id, culture, id));
-			return item;
-		}
-
-	
 	}
 }

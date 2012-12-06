@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using cms.data.EF.DataProvider;
 
 namespace cms.data.Dtos
 {
-	public class MenuItemDto : IResourceElement
+	public class MenuItemDto 
 	{
 		public Guid Id { get; set; }
 		public int Position { get; set; }

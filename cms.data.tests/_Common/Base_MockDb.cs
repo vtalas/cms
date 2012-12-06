@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Moq;
-using cms.data.EF.DataProvider;
+using cms.data.EF.Repository;
 using cms.data.Shared.Models;
 
 namespace cms.data.tests._Common

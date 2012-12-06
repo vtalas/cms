@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using cms.data.Dtos;
-using cms.data.EF.DataProvider;
+using cms.data.EF.Repository;
 using cms.data.Shared.Models;
 
 namespace cms.data.tests._Common
@@ -22,7 +22,6 @@ namespace cms.data.tests._Common
 			return getbyLink;
 		}
 
-
 		public static Resource ValueIs(this Resource item, string value)
 		{
 			Assert.AreEqual(value, item.Value);
@@ -35,11 +34,9 @@ namespace cms.data.tests._Common
 			return item;
 		}
 
-
-		public static Dictionary<string, ResourceDtoLoc> WithResource(this Dictionary<string, ResourceDtoLoc> item, string key,
-		                                                              string value, int id)
+		public static Dictionary<string, ResourceDtoLoc> WithResource(this Dictionary<string, ResourceDtoLoc> item, string key, string value, int id)
 		{
-			item.Add(key, new ResourceDtoLoc() {Id = id, Value = value});
+			item.Add(key, new ResourceDtoLoc() { Id = id, Value = value });
 			return item;
 		}
 

@@ -6,6 +6,7 @@ using Newtonsoft.Json.Linq;
 using WebMatrix.WebData;
 using cms.Code.UserResources;
 using cms.data.Dtos;
+using cms.data.DtosExtensions;
 using cms.data.Shared.Models;
 
 namespace cms.Controllers.Api

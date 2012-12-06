@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
+using cms.data.DtosExtensions;
 using cms.data.EF.Initializers;
+using cms.data.EF.Repository;
 using cms.data.Shared.Models;
 
 namespace cms.data.EF.DataProvider
@@ -81,8 +83,8 @@ namespace cms.data.EF.DataProvider
 				{
 					Id = dto.Id,
 					Category = dto.Category,
-					Name = dto.Resources.FirstOrDefault(x=>x.Key == "name" && x.Culture == CurrentCulture).Value,
-					Link = dto.Resources.FirstOrDefault(x => x.Key == "link" && x.Culture == CurrentCulture).Value,
+					Name = dto.Resources.GetValueByKey("name", CurrentCulture),
+					Link = dto.Resources.GetValueByKey("link", CurrentCulture),
 					Home = dto.Home,
 				});
 			return a.ToList();
@@ -110,7 +112,6 @@ namespace cms.data.EF.DataProvider
 					};
 				a.WithResource("name", "homepage", CurrentCulture);
 				newitem.Grids = new List<Grid>{a};
-
 			}
 			db.SaveChanges();
 			return newitem;

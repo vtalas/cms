@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using cms.data.Dtos;
+using cms.data.EF.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
-using cms.data.EF.DataProvider;
 
-namespace cms.data.Dtos
+namespace cms.data.DtosExtensions
 {
 	public static class DtoExtensons
 	{
@@ -40,7 +41,7 @@ namespace cms.data.Dtos
 
 		public static IList<ApplicationSettingDto> ToDtos(this IList<ApplicationSetting> source)
 		{
-			return source.Select(item => item.ToDto()).ToList();
+			return source.Select(item => ToDto((ApplicationSetting) item)).ToList();
 		}
 
 		public static IList<GridElementDto> ToDtos(this ICollection<GridElement> source)

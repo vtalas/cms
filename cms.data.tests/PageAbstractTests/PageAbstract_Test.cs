@@ -1,9 +1,10 @@
 using System;
 using NUnit.Framework;
-using cms.data.EF.DataProvider;
+using cms.data.EF.Repository;
 using cms.data.tests._Common;
 using cms.shared;
 using System.Linq;
+using cms.data.EF.Initializers;
 
 namespace cms.data.tests.PageAbstractTests
 {

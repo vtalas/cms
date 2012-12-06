@@ -1,6 +1,6 @@
 using System;
 using WebMatrix.WebData;
-using cms.data.EF.DataProvider;
+using cms.data.EF.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
 

@@ -18,7 +18,6 @@ namespace cms.data.EF
 			Database.SetInitializer(initializer);
 		}
 
-		public data.DataProvider CreateSession { get { return _createInstanceFunction.Invoke(); } }
-
+		public  data.DataProvider CreateSession { get { return _createInstanceFunction.Invoke(); } }
 	}
 }

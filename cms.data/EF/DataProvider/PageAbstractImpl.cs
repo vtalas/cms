@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using cms.data.Dtos;
+using cms.data.DtosExtensions;
 using cms.data.Shared.Models;
 using cms.shared;
 using System.Data.Entity;
 
-namespace cms.data.EF.DataProvider
+namespace cms.data.EF.Repository
 {
 	public class PageAbstractImpl : PageAbstract
 	{

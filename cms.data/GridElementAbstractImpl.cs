@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
 using cms.data.Dtos;
+using cms.data.DtosExtensions;
 using cms.data.EF;
-using cms.data.EF.DataProvider;
+using cms.data.EF.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
 

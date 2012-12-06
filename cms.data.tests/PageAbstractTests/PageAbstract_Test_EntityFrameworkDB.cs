@@ -3,7 +3,7 @@ using System.Data.Entity;
 using NUnit.Framework;
 using WebMatrix.WebData;
 using cms.data.EF;
-using cms.data.EF.DataProvider;
+using cms.data.EF.Repository;
 using cms.data.EF.Initializers;
 using cms.data.tests.EF;
 using cms.data.tests._Common;

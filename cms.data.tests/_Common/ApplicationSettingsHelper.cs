@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using cms.data.Dtos;
-using cms.data.EF.DataProvider;
+using cms.data.EF.Repository;
 using cms.data.Shared.Models;
-using cms.shared;
 
 namespace cms.data.tests._Common
 {
 	public static class ApplicationSettingsHelper
 	{
-		private static readonly string CurrentCulture = SharedLayer.Culture;
-		
 		public static ApplicationSetting WithGrid(this ApplicationSetting item, Grid grid )
 		{
 			grid.ApplicationSettings = item;
@@ -51,17 +45,5 @@ namespace cms.data.tests._Common
 			repository.SaveChanges();
 			return item;
 		}
-
-		//public static Dictionary<string, ResourceDtoLoc> AddTo(this Dictionary<string, ResourceDtoLoc> item, IRepository repository)
-		//{
-		//	foreach (var res in item)
-		//	{
-		//		repository.Add(item);
-		//	}
-		//	repository.SaveChanges();
-		//	return item;
-		//}
-
-
 	}
 }

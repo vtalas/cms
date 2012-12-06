@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
+using cms.data.DtosExtensions;
 using cms.data.Shared.Models;
 
-namespace cms.data.EF.DataProvider
+namespace cms.data.EF.Repository
 {
 	public static class JsonDataEfHelpers
 	{
@@ -64,58 +65,5 @@ namespace cms.data.EF.DataProvider
 				}
 			}
 		}
-	}
-
-	public interface IRepository
-	{
-		IQueryable<Resource> Resources { get; }
-		IQueryable<Grid> Grids { get; }
-		IQueryable<ApplicationSetting> ApplicationSettings { get; }
-		ApplicationSetting Add(ApplicationSetting item);
-		Resource Add(Resource itemToAttach);
-		Grid Add(Grid item);
-		void Remove(Grid item);
-		void SaveChanges();
-
-	}
-
-	public class EfRepository : IRepository
-	{
-		private EfContext db { get; set; }
-
-		public EfRepository(EfContext db)
-		{
-			this.db = db;
-		}
-
-		public IQueryable<Resource> Resources{ get { return db.Resources;}}
-		public IQueryable<Grid> Grids { get { return db.Grids; } }
-		public IQueryable<ApplicationSetting> ApplicationSettings { get { return db.ApplicationSettings;} }
-
-		public ApplicationSetting Add(ApplicationSetting item)
-		{
-			return db.ApplicationSettings.Add(item);
-		}
-
-		public Resource Add(Resource itemToAdd)
-		{
-			return db.Resources.Add(itemToAdd);
-		}
-
-		public Grid Add(Grid item)
-		{
-			return db.Grids.Add(item);
-		}
-
-		public void Remove(Grid item)
-		{
-			db.Grids.Remove(item);
-		}
-
-		public void SaveChanges()
-		{
-			db.SaveChanges();
-		}
-
 	}
 }

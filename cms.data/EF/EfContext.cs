@@ -1,12 +1,11 @@
 using System;
 using System.Data.Entity;
-using cms.data.EF.Bootstrap;
 using cms.data.Shared.Models;
 using System.Linq;
 
 namespace cms.data.EF
 {
-	public class EfContext :DbContext, IBootStrapGenerator
+	public class EfContext :DbContext
 	{
 		public EfContext(string nameOrConnectionString) : base(nameOrConnectionString){}
 
@@ -18,8 +17,6 @@ namespace cms.data.EF
 		public virtual IDbSet<TemplateType> TemplateTypes { get; set; }
 		public virtual IDbSet<Resource> Resources { get; set; }
 		public virtual IDbSet<UserProfile> UserProfile { get; set; }
-
-		//public DbSet<Bootstrapgenerator> Bootstrapgenerators { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
