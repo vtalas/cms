@@ -7,7 +7,7 @@ using cms.data.EF.DataProvider;
 using cms.data.EF.Initializers;
 using cms.data.tests.EF;
 
-namespace cms.data.tests.SampleData
+namespace cms.data.tests.SampleDataTest
 {
 	[TestFixture]
 	public class CreateSampleDataTest

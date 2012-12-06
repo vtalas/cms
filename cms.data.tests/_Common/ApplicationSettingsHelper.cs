@@ -18,6 +18,12 @@ namespace cms.data.tests._Common
 			return item;
 		}
 
+		public static ApplicationSetting WithUser(this ApplicationSetting item, UserProfile user)
+		{
+			item.Users.Add(user);
+			return item;
+		}
+
 		public static ApplicationSetting WithGrid(this ApplicationSetting item, Grid grid, IRepository repository)
 		{
 			item.WithGrid(grid);

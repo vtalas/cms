@@ -1,5 +1,6 @@
 using System;
 using WebMatrix.WebData;
+using cms.data.EF;
 using cms.data.EF.DataProvider;
 
 namespace cms.data.tests.EF
@@ -8,12 +9,13 @@ namespace cms.data.tests.EF
 	{
 		private DataEfAuthorized Context { get; set; }
 
+		public static Guid DefaultAppId = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
 		public DataEfAuthorized CreateSession
 		{
 			get
 			{
 				var userId = WebSecurity.GetUserId("admin");
-				Context = new DataEfAuthorized(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), userId);
+				Context = new DataEfAuthorized(DefaultAppId, userId);
 				return Context;
 			}
 		}
@@ -22,7 +24,7 @@ namespace cms.data.tests.EF
 		{
 			get
 			{
-				Context = new DataEfAuthorized(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), 0);
+				Context = new DataEfAuthorized(DefaultAppId, 0);
 				return Context;
 			}
 		}

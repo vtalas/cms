@@ -8,13 +8,13 @@ using System.Linq;
 namespace cms.data.tests.PageAbstractTests
 {
 	[TestFixture]
-	public class PageAbstract_Test_MockDB : InjectableBase_Test
+	public class PageAbstract_Test : InjectableBase_Test
 	{
 		private PageAbstractImpl Page { get; set; }
 		private readonly Guid _gridId = new Guid("0000005e-1115-480b-9ab7-a3ab3c0f6643");
 
-		public PageAbstract_Test_MockDB() : this(new Base_MockDb().GetRepositoryMock){}
-		public PageAbstract_Test_MockDB(Func<IRepository> repositoryCreator) : base(repositoryCreator)
+		public PageAbstract_Test() : this(new Base_MockDb().GetRepositoryMock){}
+		public PageAbstract_Test(Func<IRepository> repositoryCreator) : base(repositoryCreator)
 		{
 			SharedLayer.Init();
 		}
@@ -29,7 +29,7 @@ namespace cms.data.tests.PageAbstractTests
 					CreateDefaultGrid()
 						.WithResource("link", "aaa")
 						.WithResource("name", "NAME AAAA", CultureCs, 111)
-				)
+				)	
 				.WithGrid(
 					CreateDefaultGrid(_gridId)
 						.WithResource("link", "bbb")
@@ -40,6 +40,9 @@ namespace cms.data.tests.PageAbstractTests
 			Assert.That(Repository.ApplicationSettings.Any());
 			Assert.That(Repository.Grids.Any());
 			Assert.That(Repository.Resources.Any());
+			Console.WriteLine("resources: {0}", Repository.Resources.Count());
+			Console.WriteLine("grids: {0}", Repository.Grids.Count());
+
 		}
 
 		[Test]

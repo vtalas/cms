@@ -1,30 +1,33 @@
 using System;
 using System.Data.Entity;
 using NUnit.Framework;
+using WebMatrix.WebData;
 using cms.data.EF;
 using cms.data.EF.DataProvider;
 using cms.data.EF.Initializers;
 using cms.data.tests.EF;
-using cms.shared;
+using cms.data.tests._Common;
+using System.Linq;
 
 namespace cms.data.tests.PageAbstractTests
 {
 	[TestFixture]
-	public class PageAbstract_Test_EntityFrameworkDB
+	public class PageAbstract_Test_EntityFrameworkDB :Base_Test
 	{
 	
 		[SetUp]
 		public void SetUp()
 		{
 			Database.SetInitializer(new DropAndCreateAlwaysForce());
-			Xxx.DeleteDatabaseDataGenereateSampleData();
+			Xxx.DeleteDatabaseData();
+			SecurityProvider.EnsureInitialized(true);
 		}
 
-		public void RunTestDelegate(Action<PageAbstract_Test_MockDB> test)
+		public void RunTestDelegate(Action<PageAbstract_Test> test)
 		{
 			using (var db = new EfContext())
 			{
-				var testsInstance = new PageAbstract_Test_MockDB(() => new EfRepository(db));
+				var testsInstance = new PageAbstract_Test(() => new EfRepository(db));
 				testsInstance.Setup();
 				test(testsInstance);
 			}
@@ -34,6 +37,27 @@ namespace cms.data.tests.PageAbstractTests
 		public void Get_ByLink_test()
 		{
 			RunTestDelegate(instance => instance.Get_ByLink_test());
+		}
+
+		[Test]
+		public void Get_ByLink_test222()
+		{
+
+			using (var db = new EfContext())
+			{
+			
+				var useriId = CreateUser("admin");
+				CreateDefaultApplication("prd", SessionManager.DefaultAppId)
+					.WithUser(db.UserProfile.Single(x => x.Id == useriId))
+					.WithGrid(CreateDefaultGrid()
+					 .WithResource("link", "xxx"))
+					 .AddTo(new EfRepository(db));
+			}
+
+			using (var session = new SessionManager().CreateSession)
+			{
+				var a = session.Page.Get("xxx");
+			}
 		}
 
 		[Test]

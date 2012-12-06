@@ -1,4 +1,5 @@
 using System;
+using WebMatrix.WebData;
 using cms.data.EF.DataProvider;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -24,14 +25,26 @@ namespace cms.data.tests._Common
 			};
 		}
 
-		protected ApplicationSetting CreateDefaultApplication(string name)
+		protected ApplicationSetting CreateDefaultApplication(string name, Guid id)
 		{
 			return new ApplicationSetting()
 			{
 				Name = name,
-				Id = Guid.NewGuid(),
+				Id = id,
 				DefaultLanguage = CultureCs
 			};
 		}
+
+		protected ApplicationSetting CreateDefaultApplication(string name)
+		{
+			return CreateDefaultApplication(name, Guid.NewGuid());
+		}
+
+		protected int CreateUser(string name)
+		{
+			WebSecurity.CreateUserAndAccount(name, "a");
+			return WebSecurity.GetUserId(name);
+		}
+
 	}
 }
