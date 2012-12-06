@@ -30,6 +30,13 @@ namespace cms.data.tests._Common
 			return item;
 		}
 
+		public static Grid AddTo(this Grid item, IRepository repository)
+		{
+			repository.Add(item);
+			repository.SaveChanges();
+			return item;
+		}
+
 
 	}
 }

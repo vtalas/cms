@@ -20,14 +20,6 @@ namespace cms.data.tests._Common
 			return item;
 		}
 
-		public static Grid WithResource(this Grid item, IList<Resource> allResources, string key, string value,
-		                                string culture = "cs", int id = 0)
-		{
-			var newitem = JsonDataEfHelpers.GetResource(key, value, item.Id, culture, id);
-			item.Resources.Add(newitem);
-			allResources.Add(newitem);
-			return item;
-		}
 	
 	}
 }

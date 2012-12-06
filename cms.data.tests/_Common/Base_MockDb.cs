@@ -1,24 +1,19 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using Moq;
 using cms.data.EF.DataProvider;
 using cms.data.Shared.Models;
-using System.Linq;
-using cms.shared;
 
 namespace cms.data.tests._Common
 {
-	public class NoDbBase_Test
+	public class Base_MockDb 
 	{
-		protected const string CultureCs = "cs";
-		protected const string CultureEn = "en";
-
 		protected IRepository _repository;
 		protected static IList<Resource> _allResources;
 		protected static IList<Grid> _allGrids;
 		protected static IList<ApplicationSetting> _applicationSettings;
-	
-		protected IRepository GetRepositoryMock()
+
+		public IRepository GetRepositoryMock()
 		{
 			_allResources = new List<Resource>();
 			_allGrids = new List<Grid>();
@@ -58,31 +53,6 @@ namespace cms.data.tests._Common
 
 			return repo.Object;
 		}
-
-		protected Grid CreateDefaultGrid()
-		{
-			return CreateDefaultGrid(Guid.NewGuid());
-		}
-
-		protected Grid CreateDefaultGrid(Guid id)
-		{
-			return new Grid()
-			{
-				Id = id,
-				Category = CategoryEnum.Page,
-			};
-		}
-
-		protected ApplicationSetting CreateDefaultApplication(string name)
-		{
-			return new ApplicationSetting()
-			{
-				Name = name,
-				Id = Guid.NewGuid(),
-				DefaultLanguage = CultureCs
-			};
-		}
-	
 	
 	}
 }

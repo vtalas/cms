@@ -1,25 +1,21 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using Moq;
 using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF.DataProvider;
-using cms.data.Shared.Models;
-using cms.data.tests.Helpers;
 using cms.data.tests._Common;
 using cms.shared;
 
 namespace cms.data.tests.UpdateResourceList
 {
 	[TestFixture]
-	public class UpdateResourceList_Test_NoDB : NoDbBase_Test
+	public class UpdateResourceList_Test_NoDB : Base_Test
 	{
 
 		[SetUp]
 		public void SetUp()
 		{
-			_repository = GetRepositoryMock();
+			var xx = new Base_MockDb();
+			_repository = xx.GetRepositoryMock();
 			SharedLayer.Init();
 		}
 
@@ -87,8 +83,8 @@ namespace cms.data.tests.UpdateResourceList
 		public void Values_Replace_ByNewResources_SearchById_test()
 		{
 			var g = CreateDefaultGrid()
-				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1)
-				.WithResource(_allResources, "name", "dbvalueName", CultureCs, 2);
+				.WithResource("link", "dbvalueLink", CultureCs, 1)
+				.WithResource("name", "dbvalueName", CultureCs, 2).AddTo(_repository);
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
 											.WithResource("link", "linkvaluedto", 12)
@@ -104,10 +100,10 @@ namespace cms.data.tests.UpdateResourceList
 		public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference()
 		{
 			var g1 = CreateDefaultGrid()
-				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
+				.WithResource( "link", "dbvalueLink", CultureCs, 1).AddTo(_repository);
 
 			var g2 = CreateDefaultGrid()
-				.WithResource(_allResources, "link", "xxx", CultureCs, 12);
+				.WithResource( "link", "xxx", CultureCs, 12).AddTo(_repository);
 
 			g1.UpdateResourceList(g2.Resources.ToDtos(), CultureCs, _repository);
 

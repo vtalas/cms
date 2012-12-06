@@ -70,10 +70,9 @@
     <Compile Include="EF\GetGridPageMethodTest.cs" />
     <Compile Include="EF\SessionManager.cs" />
     <Compile Include="EF\UpdateGridElementMethodTest.cs" />
-    <Compile Include="Helpers\DbExtension.cs" />
     <Compile Include="LocalizationsTests.cs" />
-    <Compile Include="PageAbstractTests\PageAbstract_Test_DB.cs" />
-    <Compile Include="PageAbstractTests\PageAbstract_Test_DBMock.cs" />
+    <Compile Include="PageAbstractTests\PageAbstract_Test_MockDB.cs" />
+    <Compile Include="PageAbstractTests\PageAbstract_Test_EntityFrameworkDB.cs" />
     <Compile Include="SampleData\CreateSampleDataTest.cs" />
     <Compile Include="EF\Xxx.cs" />
     <Compile Include="JsonDataFilesTest.cs" />
@@ -82,7 +81,8 @@
     <Compile Include="UpdateResourceList\UpdateResourceList_Test_WithDB.cs" />
     <Compile Include="_Common\ApplicationSettingsHelper.cs" />
     <Compile Include="_Common\GridHelper.cs" />
-    <Compile Include="_Common\NoDbBase_Test.cs" />
+    <Compile Include="_Common\Base_Test.cs" />
+    <Compile Include="_Common\Base_MockDb.cs" />
     <Compile Include="_Common\ResourcesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +107,9 @@
       <Project>{DE7729CE-0050-4798-A6BA-A1E3ED191195}</Project>
       <Name>cms.web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,10 +1,6 @@
 using System;
-using System.Data.Entity;
 using NUnit.Framework;
-using cms.data.EF;
 using cms.data.EF.DataProvider;
-using cms.data.EF.Initializers;
-using cms.data.tests.EF;
 using cms.data.tests._Common;
 using cms.shared;
 using System.Linq;
@@ -12,43 +8,21 @@ using System.Linq;
 namespace cms.data.tests.PageAbstractTests
 {
 	[TestFixture]
-	public class PageAbstract_Test_DBXXX
-	{
-		[SetUp]
-		public void SetUp()
-		{
-			Database.SetInitializer(new DropAndCreateAlwaysForce());
-			Xxx.DeleteDatabaseDataGenereateSampleData();
-			SharedLayer.Init();
-		}
-	
-		[Test]
-		public void xxxx()
-		{
-			using (var x = new EfContext())
-			{
-				var a = new PageAbstract_Test_DBMock(() => new EfRepository(x));
-				a.Setup();
-				a.Get_ById_test();
-			}
-		}
-	}
-
-	[TestFixture]
-	public class PageAbstract_Test_DBMock : NoDbBase_Test
+	public class PageAbstract_Test_MockDB : Base_Test
 	{
 		private PageAbstractImpl Page { get; set; }
 		private readonly Guid _gridId = new Guid("0000005e-1115-480b-9ab7-a3ab3c0f6643");
 		private Func<IRepository> RepositoryCreator { get; set; }
 		
-		public PageAbstract_Test_DBMock(Func<IRepository> repositoryCreator)
+		public PageAbstract_Test_MockDB(Func<IRepository> repositoryCreator)
 		{
 			RepositoryCreator = repositoryCreator;
 		}
 
-		public PageAbstract_Test_DBMock()
+		public PageAbstract_Test_MockDB()
 		{
-			RepositoryCreator = GetRepositoryMock;
+			var xx = new Base_MockDb();
+			RepositoryCreator = xx.GetRepositoryMock;
 		}
 
 		[SetUp]
