@@ -8,6 +8,7 @@ using cms.data.EF.Initializers;
 using cms.data.tests.EF;
 using cms.data.tests._Common;
 using System.Linq;
+using cms.shared;
 
 namespace cms.data.tests.PageAbstractTests
 {
@@ -21,6 +22,7 @@ namespace cms.data.tests.PageAbstractTests
 			Database.SetInitializer(new DropAndCreateAlwaysForce());
 			Xxx.DeleteDatabaseData();
 			SecurityProvider.EnsureInitialized(true);
+			SharedLayer.Init();
 		}
 
 		public void RunTestDelegate(Action<PageAbstract_Test> test)
@@ -40,12 +42,11 @@ namespace cms.data.tests.PageAbstractTests
 		}
 
 		[Test]
-		public void Get_ByLink_test222()
+		public void Get_ByLink_test_SESSIONMANAGER()
 		{
 
 			using (var db = new EfContext())
 			{
-			
 				var useriId = CreateUser("admin");
 				CreateDefaultApplication("prd", SessionManager.DefaultAppId)
 					.WithUser(db.UserProfile.Single(x => x.Id == useriId))

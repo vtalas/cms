@@ -5,6 +5,7 @@ using System.Linq;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 using cms.shared;
+using System.Data.Entity;
 
 namespace cms.data.EF.DataProvider
 {
@@ -42,14 +43,14 @@ namespace cms.data.EF.DataProvider
 		//TODO: pokud nenanjde melo by o vracet homepage
 		public override GridPageDto Get(string linkValue)
 		{
-			Func<Grid, bool> aa = grid => grid.Resources.ContainsKeyValue("link", linkValue, CurrentCulture);
-			//var a = AvailableGrids().FirstOrDefault(x => x.Resources.ToList().GetByKey("link", CurrentCulture) != null );
-			var a = AvailableGrids.FirstOrDefault(aa);
-			if (a == null)
-			{
-				throw new ObjectNotFoundException(string.Format("'{0}' not found", linkValue));
-			}
-			return a.ToGridPageDto();
+				Func<Grid, bool> aa = grid => grid.Resources.ContainsKeyValue("link", linkValue, CurrentCulture);
+				//var a = AvailableGrids().FirstOrDefault(x => x.Resources.ToList().GetByKey("link", CurrentCulture) != null );
+				var a = AvailableGrids.Include(x=>x.Resources).ToList().FirstOrDefault(aa);
+				if (a == null)
+				{
+					throw new ObjectNotFoundException(string.Format("'{0}' not found", linkValue));
+				}
+				return a.ToGridPageDto();
 		}
 
 		void CheckIfLinkExist(GridPageDto newitem)

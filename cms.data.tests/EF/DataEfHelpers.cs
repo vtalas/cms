@@ -41,7 +41,6 @@ namespace cms.data.tests.EF
 
 		public static string CurrentCulture{get { return shared.SharedLayer.Culture; }
 		}
-		public static string _defaultlink = "linkTestPage";
-
+		public static string _defaultlink = "testPage_link";
 	}
 }

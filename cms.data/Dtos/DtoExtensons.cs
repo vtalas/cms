@@ -11,13 +11,7 @@ namespace cms.data.Dtos
 	public static class DtoExtensons
 	{
 		//TODO: tohle je nahovno
-		static string _currentCulture
-		{
-			get
-			{
-				return SharedLayer.Culture;
-			}
-		}
+		static string _currentCulture{ get {return SharedLayer.Culture; } }
 
 		public static bool IsEmpty(this Guid s)
 		{
@@ -96,7 +90,6 @@ namespace cms.data.Dtos
 				{
 					Id = source.Id,
 					Content = source.Content,
-
 					Skin = source.Skin,
 					Type = source.Type,
 					ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
@@ -157,8 +150,8 @@ namespace cms.data.Dtos
 						{
 							Home = source.Home,
 							Id = source.Id,
-							Link = source.Resources.GetByKey("link", _currentCulture).Value,
-							Name = source.Resources.GetByKey("name", _currentCulture).Value,
+							Link = source.Resources.GetValueByKey("link", _currentCulture),
+							Name = source.Resources.GetValueByKey("name", _currentCulture),
 							Category = source.Category,
 							Children = source.GridElements.ToChildren()
 						};
@@ -171,8 +164,8 @@ namespace cms.data.Dtos
 				GridElements = source.GridElements.ToDtos(),
 				Home = source.Home,
 				Id = source.Id,
-				Link = source.Resources.GetByKey("link", _currentCulture).Value,
-				Name = source.Resources.GetByKey("name", _currentCulture).Value,
+				Link = source.Resources.GetValueByKey("link", _currentCulture),
+				Name = source.Resources.GetValueByKey("name", _currentCulture),
 				Category = source.Category
 			};
 
