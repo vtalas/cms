@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using cms.data.DtosExtensions;
+using cms.data.Extensions;
 using cms.data.Shared.Models;
 
 namespace cms.data.tests.EF

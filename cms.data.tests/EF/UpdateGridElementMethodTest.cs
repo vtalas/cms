@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using NUnit.Framework;
-using cms.data.DtosExtensions;
 using cms.data.EF;
 using cms.data.EF.Initializers;
+using cms.data.Extensions;
 using cms.data.Shared.Models;
 using cms.shared;
 

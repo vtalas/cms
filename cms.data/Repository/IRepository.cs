@@ -1,7 +1,7 @@
 using System.Linq;
 using cms.data.Shared.Models;
 
-namespace cms.data.EF.Repository
+namespace cms.data.EF.RepositoryImplementation
 {
 	public interface IRepository
 	{

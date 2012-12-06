@@ -1,6 +1,7 @@
 using System;
 using WebMatrix.WebData;
-using cms.data.EF.DataProvider;
+using cms.data.DataProvider;
+using cms.data.EF.DataProviderImplementation;
 
 namespace cms.data.tests.EF
 {

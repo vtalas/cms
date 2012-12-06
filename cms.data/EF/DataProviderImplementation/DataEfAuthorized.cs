@@ -1,15 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using cms.data.DataProvider;
 using cms.data.Dtos;
-using cms.data.DtosExtensions;
-using cms.data.EF.Initializers;
-using cms.data.EF.Repository;
+using cms.data.EF.RepositoryImplementation;
+using cms.data.Extensions;
 using cms.data.Shared.Models;
 
-namespace cms.data.EF.DataProvider
+namespace cms.data.EF.DataProviderImplementation
 {
-	public class DataEfAuthorized : data.DataProvider
+	public class DataEfAuthorized : DataProviderAbstract
 	{
 		private EfRepository Repository { get; set; }
 		public EfContext db { get; set; }

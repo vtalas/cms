@@ -1,6 +1,9 @@
 using System;
 using NUnit.Framework;
-using cms.data.EF.Repository;
+using cms.data.DataProvider;
+using cms.data.EF.DataProviderImplementation;
+using cms.data.EF.RepositoryImplementation;
+using cms.data.Extensions;
 using cms.data.tests._Common;
 using cms.shared;
 using System.Linq;

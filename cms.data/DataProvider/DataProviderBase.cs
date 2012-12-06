@@ -1,7 +1,6 @@
-using System;
 using cms.data.Shared.Models;
 
-namespace cms.data
+namespace cms.data.DataProvider
 {
 	public class DataProviderBase
 	{

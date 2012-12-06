@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
-using cms.data.DtosExtensions;
+using cms.data.EF.RepositoryImplementation;
 using cms.data.Shared.Models;
 
-namespace cms.data.EF.Repository
+namespace cms.data.Extensions
 {
 	public static class JsonDataEfHelpers
 	{

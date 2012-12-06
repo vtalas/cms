@@ -1,23 +1,24 @@
 using System;
 using System.Data.Entity;
+using cms.data.DataProvider;
 
 namespace cms.data.EF
 {
 	public class SessionProvider : IDataProvider
 	{
-		private readonly Func<data.DataProvider> _createInstanceFunction;
+		private readonly Func<DataProviderAbstract> _createInstanceFunction;
 
-		public SessionProvider(Func<data.DataProvider> createInstanceFunction )
+		public SessionProvider(Func<DataProviderAbstract> createInstanceFunction )
 		{
 			_createInstanceFunction = createInstanceFunction;
 		}
 
-		public SessionProvider(Func<data.DataProvider> createInstanceFunction, IDatabaseInitializer<EfContext> initializer)
+		public SessionProvider(Func<DataProviderAbstract> createInstanceFunction, IDatabaseInitializer<EfContext> initializer)
 			:this(createInstanceFunction)
 		{
 			Database.SetInitializer(initializer);
 		}
 
-		public  data.DataProvider CreateSession { get { return _createInstanceFunction.Invoke(); } }
+		public  DataProviderAbstract CreateSession { get { return _createInstanceFunction.Invoke(); } }
 	}
 }

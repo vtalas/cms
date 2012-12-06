@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using cms.data.Dtos;
-using cms.data.EF.Repository;
+using cms.data.DataProvider;
+using cms.data.EF.RepositoryImplementation;
+using cms.data.Extensions;
 using cms.data.Shared.Models;
 
 namespace cms.data.tests._Common

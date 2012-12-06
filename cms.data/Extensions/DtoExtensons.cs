@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using cms.data.DataProvider;
 using cms.data.Dtos;
-using cms.data.EF.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
 
-namespace cms.data.DtosExtensions
+namespace cms.data.Extensions
 {
 	public static class DtoExtensons
 	{

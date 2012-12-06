@@ -1,5 +1,5 @@
 using System;
-using cms.data.EF.Repository;
+using cms.data.EF.RepositoryImplementation;
 
 namespace cms.data.tests._Common
 {

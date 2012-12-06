@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using cms.data.DataProvider;
 using cms.data.Dtos;
-using cms.data.DtosExtensions;
+using cms.data.EF.RepositoryImplementation;
+using cms.data.Extensions;
 using cms.data.Shared.Models;
 using cms.shared;
 
-namespace cms.data.EF.Repository
+namespace cms.data.EF.DataProviderImplementation
 {
 	public class MenuAbstractImpl : MenuAbstract
 	{

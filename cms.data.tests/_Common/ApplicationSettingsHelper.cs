@@ -1,4 +1,4 @@
-using cms.data.EF.Repository;
+using cms.data.EF.RepositoryImplementation;
 using cms.data.Shared.Models;
 
 namespace cms.data.tests._Common

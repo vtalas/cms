@@ -2,7 +2,7 @@ using System;
 using System.Data.Entity;
 using NUnit.Framework;
 using cms.data.EF;
-using cms.data.EF.Repository;
+using cms.data.EF.RepositoryImplementation;
 using cms.data.EF.Initializers;
 using cms.data.tests.EF;
 using cms.data.tests._Common;

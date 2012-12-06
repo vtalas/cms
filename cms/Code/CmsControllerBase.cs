@@ -2,7 +2,8 @@ using System;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using cms.data.EF;
-using cms.data.EF.DataProvider;
+using cms.data.DataProvider;
+using cms.data.EF.DataProviderImplementation;
 
 namespace cms.Code
 {

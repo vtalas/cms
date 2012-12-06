@@ -2,7 +2,8 @@ using System;
 using System.Data.Entity;
 using System.Linq;
 using NUnit.Framework;
-using cms.data.EF.DataProvider;
+using cms.data.DataProvider;
+using cms.data.EF.DataProviderImplementation;
 using cms.data.EF.Initializers;
 
 namespace cms.data.tests.EF
