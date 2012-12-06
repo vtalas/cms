@@ -2,35 +2,43 @@ using System;
 using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF.DataProvider;
+using cms.data.tests.PageAbstractTests;
 using cms.data.tests._Common;
 using cms.shared;
 
 namespace cms.data.tests.UpdateResourceList
 {
 	[TestFixture]
-	public class UpdateResourceList_Test_NoDB : Base_Test
+	public class UpdateResourceList_Test_NoDB : InjectableBase_Test
 	{
+		
+		public UpdateResourceList_Test_NoDB() 
+			: this(new Base_MockDb().GetRepositoryMock) 
+		{
+			SharedLayer.Init();
+		}
+		public UpdateResourceList_Test_NoDB(Func<IRepository> repositoryCreator) 
+			: base(repositoryCreator){}
+
 
 		[SetUp]
-		public void SetUp()
+		public void Setup()
 		{
-			var xx = new Base_MockDb();
-			_repository = xx.GetRepositoryMock();
-			SharedLayer.Init();
+			Repository = RepositoryCreator();
 		}
 
 		[Test]
 		public void Values_AddNew_test()
 		{
-			var g = CreateDefaultGrid();
+			var g = CreateDefaultGrid().AddTo(Repository);
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
-											.WithResource("link", "linkvaluedto", 0)
-											.WithResource("name", "linkvaluedto", 0);
+													  .WithResource("link", "linkvaluedto", 0)
+													  .WithResource("name", "linkvaluedto", 0);
 
 			Assert.AreEqual(0, g.Resources.Count);
 
-			g.UpdateResourceList(gResources, CultureCs, _repository);
+			g.UpdateResourceList(gResources, CultureCs, Repository);
 			Console.WriteLine(g.Resources.Count);
 			Assert.AreEqual(2, g.Resources.Count);
 		}
@@ -47,7 +55,7 @@ namespace cms.data.tests.UpdateResourceList
 											.WithResource("name", "linkvaluedto", 0);
 
 			Assert.AreEqual(2, g.Resources.Count);
-			g.UpdateResourceList(gResources, CultureCs, _repository);
+			g.UpdateResourceList(gResources, CultureCs, Repository);
 			Assert.AreEqual(4, g.Resources.Count);
 		}
 
@@ -62,7 +70,7 @@ namespace cms.data.tests.UpdateResourceList
 											.WithResource("link", "linkvaluedto", 0)
 											.WithResource("name", "namevaluedto", 0);
 
-			g.UpdateResourceList(gResources, CultureCs, _repository);
+			g.UpdateResourceList(gResources, CultureCs, Repository);
 
 			Assert.AreEqual(2, g.Resources.Count);
 			g.CheckResource("link").ValueIs("linkvaluedto");
@@ -84,13 +92,13 @@ namespace cms.data.tests.UpdateResourceList
 		{
 			var g = CreateDefaultGrid()
 				.WithResource("link", "dbvalueLink", CultureCs, 1)
-				.WithResource("name", "dbvalueName", CultureCs, 2).AddTo(_repository);
+				.WithResource("name", "dbvalueName", CultureCs, 2).AddTo(Repository);
 
 			var gResources = ResourcesHelper.EmptyResourcesDto()
 											.WithResource("link", "linkvaluedto", 12)
 											.WithResource("name", "namevaluedto", 23);
 
-			g.UpdateResourceList(gResources, CultureCs, _repository);
+			g.UpdateResourceList(gResources, CultureCs, Repository);
 			Assert.AreEqual(2, g.Resources.Count);
 			g.CheckResource("link").ValueIs("linkvaluedto");
 			g.CheckResource("name").ValueIs("namevaluedto");
@@ -100,12 +108,12 @@ namespace cms.data.tests.UpdateResourceList
 		public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference()
 		{
 			var g1 = CreateDefaultGrid()
-				.WithResource( "link", "dbvalueLink", CultureCs, 1).AddTo(_repository);
+				.WithResource("link", "dbvalueLink", CultureCs, 1).AddTo(Repository);
 
 			var g2 = CreateDefaultGrid()
-				.WithResource( "link", "xxx", CultureCs, 12).AddTo(_repository);
+				.WithResource("link", "xxx", CultureCs, 12).AddTo(Repository);
 
-			g1.UpdateResourceList(g2.Resources.ToDtos(), CultureCs, _repository);
+			g1.UpdateResourceList(g2.Resources.ToDtos(), CultureCs, Repository);
 
 			g1.CheckResource("link")
 			  .ValueIs("xxx")
@@ -118,11 +126,11 @@ namespace cms.data.tests.UpdateResourceList
 		public void Reference_AddNew_test()
 		{
 			var g1 = CreateDefaultGrid()
-				.WithResource(_allResources, "link", "dbvalueLink", CultureCs, 1);
+				.WithResource("link", "dbvalueLink", CultureCs, 1).AddTo(Repository);
 
-			var g2 = CreateDefaultGrid();
+			var g2 = CreateDefaultGrid().AddTo(Repository);
 
-			g2.UpdateResourceList(g1.Resources.ToDtos(), CultureCs, _repository);
+			g2.UpdateResourceList(g1.Resources.ToDtos(), CultureCs, Repository);
 
 			g2.CheckResource("link")
 			  .ValueIs("dbvalueLink")
@@ -134,10 +142,10 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Reference_Replace_ByAnotherReference_test()
 		{
-			var grid1 = CreateDefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
-			var grid2 = CreateDefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+			var grid1 = CreateDefaultGrid().WithResource("link", "a111", CultureCs, 1).AddTo(Repository);
+			var grid2 = CreateDefaultGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
 
-			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
+			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, Repository);
 
 			grid1.CheckResource("link")
 				 .ValueIs("b222")
@@ -149,18 +157,18 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void Reference_Replace_ByNewResource_Test()
 		{
-			var grid1 = CreateDefaultGrid();
-			var grid2 = CreateDefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
+			var grid1 = CreateDefaultGrid().AddTo(Repository);
+			var grid2 = CreateDefaultGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
 			var newResources = ResourcesHelper.EmptyResourcesDto()
 											 .WithResource("link", "newlinkvalue", 0);
 
 
-			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
+			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, Repository);
 			grid1.CheckResource("link")
 				  .ValueIs("b222")
 				  .OwnerIs(grid2.Id);
 
-			grid1.UpdateResourceList(newResources, CultureCs, _repository);
+			grid1.UpdateResourceList(newResources, CultureCs, Repository);
 			grid1.CheckResource("link")
 				.ValueIs("newlinkvalue")
 				.OwnerIs(grid1.Id);
@@ -172,17 +180,17 @@ namespace cms.data.tests.UpdateResourceList
 		[Test]
 		public void UpdateResourceTest_LANGUAGE()
 		{
-			var grid1 = CreateDefaultGrid().WithResource(_allResources, "link", "a111", CultureCs, 1);
-			var grid2 = CreateDefaultGrid().WithResource(_allResources, "link", "b222", CultureCs, 2);
-			var grid3 = CreateDefaultGrid().WithResource(_allResources, "link", "c333", CultureEn, 3);
+			var grid1 = CreateDefaultGrid().WithResource("link", "a111", CultureCs, 1).AddTo(Repository);
+			var grid2 = CreateDefaultGrid().WithResource("link", "b222", CultureCs, 2).AddTo(Repository);
+			var grid3 = CreateDefaultGrid().WithResource("link", "c333", CultureEn, 3).AddTo(Repository);
 
-			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, _repository);
+			grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, Repository);
 
 			grid1.CheckResource("link", CultureCs)
 				 .ValueIs("b222")
 				 .OwnerIs(grid2.Id);
 
-			grid1.UpdateResourceList(grid3.Resources.ToDtos(CultureEn), CultureEn, _repository);
+			grid1.UpdateResourceList(grid3.Resources.ToDtos(CultureEn), CultureEn, Repository);
 
 			Assert.AreEqual(2, grid1.Resources.Count);
 

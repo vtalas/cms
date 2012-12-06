@@ -8,43 +8,38 @@ using System.Linq;
 namespace cms.data.tests.PageAbstractTests
 {
 	[TestFixture]
-	public class PageAbstract_Test_MockDB : Base_Test
+	public class PageAbstract_Test_MockDB : InjectableBase_Test
 	{
 		private PageAbstractImpl Page { get; set; }
 		private readonly Guid _gridId = new Guid("0000005e-1115-480b-9ab7-a3ab3c0f6643");
-		private Func<IRepository> RepositoryCreator { get; set; }
-		
-		public PageAbstract_Test_MockDB(Func<IRepository> repositoryCreator)
-		{
-			RepositoryCreator = repositoryCreator;
-		}
 
-		public PageAbstract_Test_MockDB()
+		public PageAbstract_Test_MockDB() : this(new Base_MockDb().GetRepositoryMock){}
+		public PageAbstract_Test_MockDB(Func<IRepository> repositoryCreator) : base(repositoryCreator)
 		{
-			var xx = new Base_MockDb();
-			RepositoryCreator = xx.GetRepositoryMock;
+			SharedLayer.Init();
 		}
 
 		[SetUp]
 		public void Setup()
 		{
-			_repository = RepositoryCreator();
-			SharedLayer.Init();
+			Repository = RepositoryCreator();
 
 			var app = CreateDefaultApplication("prd App")
 				.WithGrid(
-					GridHelper.WithResource(CreateDefaultGrid()
-							              .WithResource("link", "aaa"), "name", "NAME AAAA", CultureCs, 111)
+					CreateDefaultGrid()
+						.WithResource("link", "aaa")
+						.WithResource("name", "NAME AAAA", CultureCs, 111)
 				)
 				.WithGrid(
-					GridHelper.WithResource(CreateDefaultGrid(_gridId)
-							              .WithResource("link", "bbb"), "name", "NAME BBB", CultureCs, 222)
-				).AddTo(_repository);
+					CreateDefaultGrid(_gridId)
+						.WithResource("link", "bbb")
+						.WithResource("name", "NAME BBB", CultureCs, 222)
+				).AddTo(Repository);
 
-			Page = new PageAbstractImpl(app, _repository);
-			Assert.That(_repository.ApplicationSettings.Any());
-			Assert.That(_repository.Grids.Any());
-			Assert.That(_repository.Resources.Any());
+			Page = new PageAbstractImpl(app, Repository);
+			Assert.That(Repository.ApplicationSettings.Any());
+			Assert.That(Repository.Grids.Any());
+			Assert.That(Repository.Resources.Any());
 		}
 
 		[Test]
@@ -53,6 +48,7 @@ namespace cms.data.tests.PageAbstractTests
 			var gridpage = Page.Get("bbb");
 			Assert.IsNotNull(gridpage);
 			Assert.AreEqual(gridpage.Id, _gridId);
+			Assert.AreEqual(4, Repository.Resources.Count());
 		}
 
 		[Test]
@@ -73,7 +69,7 @@ namespace cms.data.tests.PageAbstractTests
 		[Test]
 		public void List_NoItems_test()
 		{
-			var xx = new PageAbstractImpl(CreateDefaultApplication("applikace with no grids"), _repository);
+			var xx = new PageAbstractImpl(CreateDefaultApplication("applikace with no grids"), Repository);
 			Assert.IsFalse(xx.List().Any());
 		}
 

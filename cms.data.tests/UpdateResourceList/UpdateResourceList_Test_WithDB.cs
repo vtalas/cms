@@ -1,163 +1,97 @@
+using System;
 using System.Data.Entity;
-using System.Linq;
 using NUnit.Framework;
 using cms.data.EF;
 using cms.data.EF.DataProvider;
 using cms.data.EF.Initializers;
-using cms.data.Shared.Models;
 using cms.data.tests.EF;
 using cms.data.tests._Common;
-using cms.shared;
 
 namespace cms.data.tests.UpdateResourceList
 {
 	[TestFixture]
-	public class UpdateResourceList_Test_WithDB
+	public class UpdateResourceList_Test_WithDB : Base_Test
 	{
-		const string CultureCs = "cs";
-		const string CultureEn = "en";
 
 		public UpdateResourceList_Test_WithDB()
 		{
 			Database.SetInitializer(new DropAndCreateAlwaysForce());
 		}
 
+		public void RunTestDelegate(Action<UpdateResourceList_Test_NoDB> test)
+		{
+			using (var db = new EfContext())
+			{
+				var testsInstance = new UpdateResourceList_Test_NoDB(() => new EfRepository(db));
+				testsInstance.Setup();
+				test(testsInstance);
+			}
+		}
+
 		[SetUp]
-		public void Setup()
+		public void SetUp()
 		{
 			Xxx.DeleteDatabaseDataGenereateSampleData();
-			SharedLayer.Init();
-		}
-
-		Grid SimpleGridPage(string name)
-		{
-			var grid = new Grid
-				{
-					Category = "page",
-				};
-			return grid;
 		}
 
 		[Test]
-		public void Value_AddNew_Test()
+		public void Values_AddNew_test()
 		{
-			var grid1 = SimpleGridPage("prd").AddToDb();
-
-			var newResources = ResourcesHelper.EmptyResourcesDto()
-								  .WithResource("link", "newlinkvalue", 0);
-
-			using (var db = new EfContext())
-			{
-				var before = db.Resources.Count();
-				var repo = new EfRepository(db);
-
-				Assert.AreEqual(0, grid1.Resources.Count);
-				grid1.UpdateResourceList(newResources, CultureCs, repo);
-				Assert.AreEqual(1, grid1.Resources.Count);
-
-				grid1.CheckResource("link")
-					 .ValueIs("newlinkvalue")
-				     .OwnerIs(grid1.Id);
-
-				Assert.AreEqual(before + 1, db.Resources.Count());
-			}
-		}
-		
-		[Test]
-		public void AddReference_Test()
-		{
-			var grid1 = SimpleGridPage("prd").AddToDb();
-
-			var grid2 = SimpleGridPage("prd2")
-				.WithResource("link", "dbvalueLink222").AddToDb();
-
-			using (var db = new EfContext())
-			{
-				var before = db.Resources.Count();
-
-				var repo = new EfRepository(db);
-
-				Assert.AreEqual(0, grid1.Resources.Count);
-				Assert.AreEqual(1, grid2.Resources.Count);
-
-				grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, repo);
-
-				Assert.AreEqual(1, grid1.Resources.Count);
-				grid1.CheckResource("link")
-				     .ValueIs("dbvalueLink222")
-				     .OwnerIs(grid2.Id);
-
-				Assert.AreEqual(before, db.Resources.Count());
-
-			}
+			RunTestDelegate(x => x.Values_AddNew_test());
 		}
 
 		[Test]
-		public void Reference_Replace_byReference_Test()
+		public void Values_AddNew_NewKeys_test()
 		{
-			var grid1 = SimpleGridPage("prd")
-				.WithResource("link", "dbvalueLink111").AddToDb();
-
-			var grid2 = SimpleGridPage("prd2")
-				.WithResource("link", "dbvalueLink222").AddToDb();
-
-			using (var db = new EfContext())
-			{
-				var before = db.Resources.Count();
-				var repo = new EfRepository(db);
-
-				Assert.AreEqual(1, grid1.Resources.Count);
-				Assert.AreEqual(1, grid2.Resources.Count);
-
-				grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, repo);
-
-				Assert.AreEqual(1, grid1.Resources.Count);
-				grid1.CheckResource("link")
-				     .ValueIs("dbvalueLink222")
-				     .OwnerIs(grid2.Id);
-
-				grid2.CheckResource("link")
-				     .ValueIs("dbvalueLink222")
-				     .OwnerIs(grid2.Id);
-
-				Assert.AreEqual(before, db.Resources.Count());
-
-			}
+			RunTestDelegate(x => x.Values_AddNew_NewKeys_test());
 		}
 
 		[Test]
-		public void ReplaceReference_ByNewResource_Test()
+		public void Values_Replace_ByNewResources_test()
 		{
-			var grid1 = SimpleGridPage("prd");
+			RunTestDelegate(x => x.Values_Replace_ByNewResources_test());
+		}
 
-			var grid2 = SimpleGridPage("prd2")
-				.WithResource("link", "dbvalueLink222").AddToDb();
+		[Test]
+		public void UpdateResourceTest_checkOwnerShip()
+		{
+			RunTestDelegate(x => x.UpdateResourceTest_checkOwnerShip());
+		}
 
-			var newResources = ResourcesHelper.EmptyResourcesDto()
-			                                  .WithResource("link", "newlinkvalue", 0);
+		[Test]
+		public void Values_Replace_ByNewResources_SearchById_test()
+		{
+			RunTestDelegate(x => x.Values_Replace_ByNewResources_SearchById_test());
+		}
 
-			using (var db = new EfContext())
-			{
-				var before = db.Resources.Count();
-				var repo = new EfRepository(db);
+		[Test]
+		public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference()
+		{
+			RunTestDelegate(x => x.UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference());
+		}
 
-				//add reference
-				grid1.UpdateResourceList(grid2.Resources.ToDtos(), CultureCs, repo);
+		[Test]
+		public void Reference_AddNew_test()
+		{
+			RunTestDelegate(x => x.Reference_AddNew_test());
+		}
 
-				grid1.UpdateResourceList(newResources, CultureCs, repo);
+		[Test]
+		public void Reference_Replace_ByAnotherReference_test()
+		{
+			RunTestDelegate(x => x.Reference_Replace_ByAnotherReference_test());
+		}
 
-				Assert.AreEqual(1, grid1.Resources.Count);
-				grid1.CheckResource("link")
-				     .ValueIs("newlinkvalue")
-				     .OwnerIs(grid1.Id);
+		[Test]
+		public void Reference_Replace_ByNewResource_Test()
+		{
+			RunTestDelegate(x => x.Reference_Replace_ByNewResource_Test());
+		}
 
-				grid2.CheckResource("link")
-					 .ValueIs("dbvalueLink222")
-				     .OwnerIs(grid2.Id);
-
-				Assert.AreEqual(before + 1, db.Resources.Count());
-
-			}
+		[Test]
+		public void UpdateResourceTest_LANGUAGE()
+		{
+			RunTestDelegate(x => x.UpdateResourceTest_LANGUAGE());
 		}
 	}
 }

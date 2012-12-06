@@ -83,6 +83,7 @@
     <Compile Include="_Common\GridHelper.cs" />
     <Compile Include="_Common\Base_Test.cs" />
     <Compile Include="_Common\Base_MockDb.cs" />
+    <Compile Include="_Common\InjectableBase_Test.cs" />
     <Compile Include="_Common\ResourcesHelper.cs" />
   </ItemGroup>
   <ItemGroup>

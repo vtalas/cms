@@ -10,8 +10,6 @@ namespace cms.data.tests._Common
 		protected const string CultureCs = "cs";
 		protected const string CultureEn = "en";
 
-		protected IRepository _repository;
-
 		protected Grid CreateDefaultGrid()
 		{
 			return CreateDefaultGrid(Guid.NewGuid());

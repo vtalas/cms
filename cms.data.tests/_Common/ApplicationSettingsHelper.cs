@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using cms.data.Dtos;
 using cms.data.EF.DataProvider;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -36,6 +38,23 @@ namespace cms.data.tests._Common
 			repository.SaveChanges();
 			return item;
 		}
+
+		public static Resource AddTo(this Resource item, IRepository repository)
+		{
+			repository.Add(item);
+			repository.SaveChanges();
+			return item;
+		}
+
+		//public static Dictionary<string, ResourceDtoLoc> AddTo(this Dictionary<string, ResourceDtoLoc> item, IRepository repository)
+		//{
+		//	foreach (var res in item)
+		//	{
+		//		repository.Add(item);
+		//	}
+		//	repository.SaveChanges();
+		//	return item;
+		//}
 
 
 	}
