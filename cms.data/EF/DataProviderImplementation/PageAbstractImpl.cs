@@ -7,6 +7,7 @@ using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
+using cms.data.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
 
@@ -23,7 +24,7 @@ namespace cms.data.EF.DataProviderImplementation
 			db = context;
 		}
 
-		IQueryable<Grid> AvailableGrids
+		IQueryable<Grid> AvailablePages
 		{
 			get
 			{
@@ -31,24 +32,30 @@ namespace cms.data.EF.DataProviderImplementation
 			}
 		}
 
+		IQueryable<Grid> AvailableGrids
+		{
+			get
+			{
+				return db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id);
+			}
+		}
+
 		public override IEnumerable<GridPageDto> List()
 		{
-			var a = AvailableGrids.ToList();
+			var a = AvailablePages.ToList();
 			return a.Select(grid => grid.ToGridPageDto()).ToList();
 		}
 
 		public override GridPageDto Get(Guid id)
 		{
-			var grid = AvailableGrids.Single(x => x.Id == id);
-			return grid.ToGridPageDto();
+			return GetFromDb(id).ToGridPageDto();
 		}
 
 		//TODO: pokud nenanjde melo by o vracet homepage
 		public override GridPageDto Get(string linkValue)
 		{
-				Func<Grid, bool> aa = grid => grid.Resources.ContainsKeyValue("link", linkValue, CurrentCulture);
-				//var a = AvailableGrids().FirstOrDefault(x => x.Resources.ToList().GetByKey("link", CurrentCulture) != null );
-				var a = AvailableGrids.Include(x=>x.Resources).ToList().FirstOrDefault(aa);
+				Func<Grid, bool> aa = grid => grid.Resources.ContainsKeyValue(SpecialResourceEnum.Link, linkValue, null);
+				var a = AvailablePages.Include(x=>x.Resources).ToList().FirstOrDefault(aa);
 				if (a == null)
 				{
 					throw new ObjectNotFoundException(string.Format("'{0}' not found", linkValue));
@@ -56,15 +63,12 @@ namespace cms.data.EF.DataProviderImplementation
 				return a.ToGridPageDto();
 		}
 
-		void CheckIfLinkExist(GridPageDto newitem)
-		{
-
-		}
-
 		public override GridPageDto Add(GridPageDto newitem)
 		{
 			var item = newitem.ToGrid();
-			CheckIfLinkExist(newitem);
+			
+			ValidateLink(newitem.Link);
+			
 			CurrentApplication.Grids.Add(item);
 			db.Add(item);
 			db.SaveChanges();
@@ -73,27 +77,52 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override GridPageDto Update(GridPageDto item)
 		{
-			//if (item.ResourceDto != null)
-			//{
-			//	if (item.ResourceDto.Id != 0)
-			//	{
-			//		db.Resources.Single(x => x.Id == item.ResourceDto.Id).Value = item.ResourceDto.Value;
-			//	}
-			//}
-			var grid = Get(item.Id);
+			ValidateLink(item.Link);
+			
+			var grid = GetFromDb(item.Id);
+			
+			var resLink = grid.Resources.GetByKey(SpecialResourceEnum.Link, null);
+			var resName = grid.Resources.GetByKey("name", CurrentCulture);
 
-			grid.Name = item.Name;
 			grid.Home = item.Home;
+			resLink.Value = item.Link;
+			resName.Value = item.Name;
 
 			db.SaveChanges();
-			return grid;
+			return grid.ToGridPageDto();
 		}
 
 		public override void Delete(Guid guid)
 		{
-			var delete = AvailableGrids.Single(x => x.Id == guid);
+			var delete = AvailablePages.SingleOrDefault(x => x.Id == guid);
+			if (delete == null)
+			{
+				throw new ObjectNotFoundException(string.Format(" '{0}' not found", guid));
+			}
+
 			db.Remove(delete);
 			db.SaveChanges();
 		}
+
+		bool CheckIfLinkExist(string linkValue)
+		{
+			Func<Grid, bool> aa = grid => grid.Resources.ContainsKeyValue(SpecialResourceEnum.Link, linkValue, null);
+			return AvailableGrids.Include(x => x.Resources).ToList().Any(aa);
+		}
+
+		void ValidateLink(string linkValue)
+		{
+			if (CheckIfLinkExist(linkValue))
+			{
+				throw new Exception(string.Format("item with link '{0}' allready Exists", linkValue));
+			}
+		}
+
+		private Grid GetFromDb(Guid id)
+		{
+			var grid = AvailablePages.Single(x => x.Id == id);
+			return grid;
+		}
+
 	}
 }

@@ -9,7 +9,8 @@ namespace cms.data.Extensions
 	{
 		public static Grid WithResource(this Grid source, string key, string value, int id = 0)
 		{
-			return source.WithResource(key, value, SharedLayer.Culture, id);
+			var cultureUpadated = JsonDataEfHelpers.CorrectCulture(key, SharedLayer.Culture);
+			return source.WithResource(key, value, cultureUpadated, id);
 		}
 		public static Grid WithResource(this Grid source, string key, string value,string culture, int id = 0)
 		{

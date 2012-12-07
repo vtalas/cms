@@ -65,12 +65,14 @@ namespace cms.data.Extensions
 
 		public static Resource ToResource(this ResourceDtoLoc s, string key, Guid owner, string culture)
 		{
+			var cultureUpadated = JsonDataEfHelpers.CorrectCulture(key, culture);
+	
 			return new Resource
 					{
 						Id = s.Id,
 						Key = key,
 						Owner = owner,
-						Culture = culture,
+						Culture = cultureUpadated,
 						Value = s.Value
 					};
 		}
@@ -124,16 +126,17 @@ namespace cms.data.Extensions
 				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id,
 			};
 			a.AddResource("name", source.Name)
-				.AddResource("link", source.Link);
+				.AddResource(SpecialResourceEnum.Link, source.Link);
 			return a;
 		}
 
 		public static Grid AddResource(this Grid source, string key, string value)
 		{
+			var cultureUpadated = JsonDataEfHelpers.CorrectCulture(key, _currentCulture);
 			var res = new Resource
 						 {
 							 Key = key,
-							 Culture = _currentCulture,
+							 Culture = cultureUpadated,
 							 Value = value,
 							 Owner = source.Id
 						 };
@@ -151,7 +154,7 @@ namespace cms.data.Extensions
 						{
 							Home = source.Home,
 							Id = source.Id,
-							Link = source.Resources.GetValueByKey("link", _currentCulture),
+							Link = source.Resources.GetValueByKey(SpecialResourceEnum.Link, null),
 							Name = source.Resources.GetValueByKey("name", _currentCulture),
 							Category = source.Category,
 							Children = source.GridElements.ToChildren()
@@ -165,7 +168,7 @@ namespace cms.data.Extensions
 				GridElements = source.GridElements.ToDtos(),
 				Home = source.Home,
 				Id = source.Id,
-				Link = source.Resources.GetValueByKey("link", _currentCulture),
+				Link = source.Resources.GetValueByKey(SpecialResourceEnum.Link, null),
 				Name = source.Resources.GetValueByKey("name", _currentCulture),
 				Category = source.Category
 			};

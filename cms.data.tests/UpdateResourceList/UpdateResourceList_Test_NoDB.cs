@@ -1,11 +1,7 @@
 using System;
 using NUnit.Framework;
-using cms.data.Dtos;
-using cms.data.DataProvider;
-using cms.data.EF.RepositoryImplementation;
-using cms.data.EF.Initializers;
 using cms.data.Extensions;
-using cms.data.tests.PageAbstractTests;
+using cms.data.Repository;
 using cms.data.tests._Common;
 using cms.shared;
 
@@ -45,18 +41,6 @@ namespace cms.data.tests.UpdateResourceList
 			Console.WriteLine(g.Resources.Count);
 			Assert.AreEqual(2, g.Resources.Count);
 		}
-
-		[Test]
-		public void Values_AddNew_NewKeys_testxxxx()
-		{
-			var g = CreateDefaultGrid()
-				.WithResource("link", "dbvalueLink", "").AddTo(Repository);
-
-			Assert.AreEqual(2, g.Resources.Count);
-			g.UpdateResourceList(gResources, CultureCs, Repository);
-			Assert.AreEqual(4, g.Resources.Count);
-		}
-
 
 
 		[Test]
@@ -118,24 +102,6 @@ namespace cms.data.tests.UpdateResourceList
 			Assert.AreEqual(2, g.Resources.Count);
 			g.CheckResource("link").ValueIs("linkvaluedto");
 			g.CheckResource("name").ValueIs("namevaluedto");
-		}
-
-		[Test]
-		public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference()
-		{
-			var g1 = CreateDefaultGrid()
-				.WithResource("link", "dbvalueLink", CultureCs, 1).AddTo(Repository);
-
-			var g2 = CreateDefaultGrid()
-				.WithResource("link", "xxx", CultureCs, 12).AddTo(Repository);
-
-			g1.UpdateResourceList(g2.Resources.ToDtos(), CultureCs, Repository);
-
-			g1.CheckResource("link")
-			  .ValueIs("xxx")
-			  .OwnerIs(g2.Id);
-
-			Assert.AreEqual(1, g1.Resources.Count);
 		}
 
 		[Test]
@@ -215,6 +181,26 @@ namespace cms.data.tests.UpdateResourceList
 				 .ValueIs("c333")
 				 .OwnerIs(grid3.Id);
 		}
+
+		[Test]
+		public void Values_HandlingSpecianResources_linkIsCultureInvariant()
+		{
+			var g = CreateDefaultGrid()
+				.WithResource(SpecialResourceEnum.Link, "dbvalueLink").AddTo(Repository);
+
+			var gResources = ResourcesHelper.EmptyResourcesDto()
+													  .WithResource(SpecialResourceEnum.Link, "linkvaluedtoXXX", 0);
+
+			g.UpdateResourceList(gResources, CultureCs, Repository);
+
+			Assert.AreEqual(null, g.Resources.GetByKey(SpecialResourceEnum.Link, null).Culture);
+			Assert.AreEqual(1, g.Resources.Count);
+			Assert.AreEqual("linkvaluedtoXXX", g.Resources.GetValueByKey(SpecialResourceEnum.Link, CultureCs));
+			Assert.AreEqual("linkvaluedtoXXX", g.Resources.GetValueByKey(SpecialResourceEnum.Link, CultureEn));
+			Assert.AreEqual("linkvaluedtoXXX", g.Resources.GetValueByKey(SpecialResourceEnum.Link, ""));
+			Assert.AreEqual("linkvaluedtoXXX", g.Resources.GetValueByKey(SpecialResourceEnum.Link, null));
+		}
+
 
 	}
 }

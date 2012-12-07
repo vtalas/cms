@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="DataProvider\DataProviderAbstract.cs" />
     <Compile Include="DataProvider\DataProviderBase.cs" />
+    <Compile Include="EF\EfContextExt.cs" />
+    <Compile Include="Extensions\PageAbstractExt.cs" />
     <Compile Include="EF\RepositoryImplementation\EfRepository.cs" />
     <Compile Include="Extensions\GridExtensions.cs" />
     <Compile Include="Extensions\JsonDataEfHelpers.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Shared\Models\Resource.cs" />
     <Compile Include="Shared\Models\TemplateType.cs" />
     <Compile Include="Shared\Models\UserProfile.cs" />
+    <Compile Include="Shared\SpecialResourceEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

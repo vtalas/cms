@@ -1,4 +1,5 @@
 using System.Linq;
+using cms.data.Repository;
 using cms.data.Shared.Models;
 
 namespace cms.data.EF.RepositoryImplementation
@@ -15,10 +16,16 @@ namespace cms.data.EF.RepositoryImplementation
 		public IQueryable<Resource> Resources{ get { return db.Resources;}}
 		public IQueryable<Grid> Grids { get { return db.Grids; } }
 		public IQueryable<ApplicationSetting> ApplicationSettings { get { return db.ApplicationSettings;} }
+		public IQueryable<GridElement> GridElements { get; private set; }
 
 		public ApplicationSetting Add(ApplicationSetting item)
 		{
 			return db.ApplicationSettings.Add(item);
+		}
+
+		public GridElement Add(GridElement item)
+		{
+			return db.GridElements.Add(item);
 		}
 
 		public Resource Add(Resource itemToAdd)
@@ -29,6 +36,16 @@ namespace cms.data.EF.RepositoryImplementation
 		public Grid Add(Grid item)
 		{
 			return db.Grids.Add(item);
+		}
+
+		public void Remove(GridElement item)
+		{
+			db.GridElements.Remove(item);
+		}
+
+		public void Remove(Resource item)
+		{
+			db.Resources.Remove(item);
 		}
 
 		public void Remove(Grid item)

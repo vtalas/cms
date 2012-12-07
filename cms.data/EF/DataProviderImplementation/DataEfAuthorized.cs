@@ -6,6 +6,7 @@ using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
 using cms.data.Shared.Models;
+using cms.shared;
 
 namespace cms.data.EF.DataProviderImplementation
 {
@@ -73,7 +74,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override GridElementAbstract GridElement
 		{
-			get { return new GridElementAbstractImpl(CurrentApplication, db); }
+			get { return new GridElementAbstractImpl(CurrentApplication, Repository); }
 		}
 
 
@@ -83,8 +84,8 @@ namespace cms.data.EF.DataProviderImplementation
 				{
 					Id = dto.Id,
 					Category = dto.Category,
+					Link = dto.Resources.GetValueByKey(SpecialResourceEnum.Link, null),
 					Name = dto.Resources.GetValueByKey("name", CurrentCulture),
-					Link = dto.Resources.GetValueByKey("link", CurrentCulture),
 					Home = dto.Home,
 				});
 			return a.ToList();

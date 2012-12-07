@@ -5,6 +5,7 @@ using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
+using cms.data.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
 

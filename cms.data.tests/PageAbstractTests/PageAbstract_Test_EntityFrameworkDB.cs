@@ -43,23 +43,9 @@ namespace cms.data.tests.PageAbstractTests
 		}
 
 		[Test]
-		public void Get_ByLink_test_SESSIONMANAGER()
+		public void Get_ById_LanguageSet_test()
 		{
-
-			using (var db = new EfContext())
-			{
-				var useriId = CreateUser("admin");
-				CreateDefaultApplication("prd", SessionManager.DefaultAppId)
-					.WithUser(db.UserProfile.Single(x => x.Id == useriId))
-					.WithGrid(CreateDefaultGrid()
-					 .WithResource("link", "xxx"))
-					 .AddTo(new EfRepository(db));
-			}
-
-			using (var session = new SessionManager().CreateSession)
-			{
-				var a = session.Page.Get("xxx");
-			}
+			RunTestDelegate(instance => instance.Get_ById_test());
 		}
 
 		[Test]
@@ -87,6 +73,18 @@ namespace cms.data.tests.PageAbstractTests
 		}
 
 		[Test]
+		public void Add_TryAddExistingLink_test()
+		{
+			RunTestDelegate(instance => instance.Add_Change_lancguage_test());
+		}
+
+		[Test]
+		public void Add_Change_language_test()
+		{
+			RunTestDelegate(instance => instance.Add_Change_lancguage_test());
+		}
+
+		[Test]
 		public void Update_test()
 		{
 			RunTestDelegate(instance => instance.Update_test());
@@ -97,6 +95,33 @@ namespace cms.data.tests.PageAbstractTests
 		{
 			RunTestDelegate(instance => instance.Delete_test());
 		}
+
+		[Test]
+		public void Delete_IsNotOwner_TryToDelete_test()
+		{
+			RunTestDelegate(instance => instance.Delete_IsNotOwner_TryToDelete_test());
+		}
+
+		[Test]
+		public void Get_ByLink_test_SESSIONMANAGER()
+		{
+
+			using (var db = new EfContext())
+			{
+				var useriId = CreateUser("admin");
+				CreateDefaultApplication("prd", SessionManager.DefaultAppId)
+					.WithUser(db.UserProfile.Single(x => x.Id == useriId))
+					.WithGrid(CreateDefaultGrid()
+					 .WithResource(SpecialResourceEnum.Link, "xxx"))
+					 .AddTo(new EfRepository(db));
+			}
+
+			using (var session = new SessionManager().CreateSession)
+			{
+				var a = session.Page.Get("xxx");
+			}
+		}
+
 
 
 	}

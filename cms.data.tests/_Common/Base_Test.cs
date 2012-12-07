@@ -1,5 +1,6 @@
 using System;
 using WebMatrix.WebData;
+using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -44,6 +45,22 @@ namespace cms.data.tests._Common
 		{
 			WebSecurity.CreateUserAndAccount(name, "a");
 			return WebSecurity.GetUserId(name);
+		}
+
+		protected GridPageDto CreateDefaultGridpage(string name, string link)
+		{
+			return new GridPageDto()
+			{
+				Name = name,
+				Category = CategoryEnum.Page,
+				Home = false,
+				Link = link
+			};
+		}
+
+		protected void SetCulture(string culture)
+		{
+			SharedLayer.SetCulture(culture);
 		}
 
 	}

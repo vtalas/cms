@@ -26,6 +26,7 @@ namespace cms.data.tests.EF
 			SharedLayer.Init();
 		}
 
+
 		[Test]
 		public void Basics_test()
 		{

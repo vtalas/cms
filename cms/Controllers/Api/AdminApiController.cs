@@ -84,7 +84,7 @@ namespace cms.Controllers.Api
 		public ActionResult SetCulture(string culture)
 		{
 			//TODO:ocekovat povolene
-			shared.SharedLayer.Culture = culture;
+			shared.SharedLayer.SetCulture(culture);
 			return new EmptyResult();
 		}
 

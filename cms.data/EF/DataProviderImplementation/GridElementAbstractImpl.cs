@@ -4,6 +4,7 @@ using cms.data.Dtos;
 using cms.data.DataProvider;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
+using cms.data.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
 
@@ -11,22 +12,20 @@ namespace cms.data.EF.DataProviderImplementation
 {
 	public class GridElementAbstractImpl : GridElementAbstract
 	{
-		EfContext db { get; set; }
-		IRepository Respository { get; set; }
+		IRepository db { get; set; }
 
 		public GridElementAbstractImpl(ApplicationSetting application) : base(application){}
-		public GridElementAbstractImpl(ApplicationSetting application, EfContext context) : base(application)
+		public GridElementAbstractImpl(ApplicationSetting application, IRepository context) : base(application)
 		{
 			db = context;
-			Respository = new EfRepository(db);
 		}
 
 		public override GridElement AddToGrid(GridElement gridElement, Guid gridId)
 		{
-			var grid = GetGrid(gridId);
+			var grid = GetGridFromDb(gridId);
 			gridElement.Grid.Add(grid);
 
-			db.GridElements.Add(gridElement);
+			db.Add(gridElement);
 
 			if (gridElement.Resources != null)
 			{
@@ -34,12 +33,12 @@ namespace cms.data.EF.DataProviderImplementation
 				{
 					if (resource.Id != 0)
 					{
-						db.Resources.Attach(resource);
+						//db.Resources.Attach(resource);
 					}
 					else
 					{
 						resource.Owner = gridElement.Id;
-						db.Resources.Add(resource);
+						db.Add(resource);
 					}
 				}
 			}
@@ -49,9 +48,10 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override void Delete(Guid id, Guid gridid)
 		{
-			var grid = GetGrid(gridid);
+			var grid = GetGridFromDb(gridid);
 			var delete = grid.GridElements.Single(x => x.Id == id);
-			db.GridElements.Remove(delete);
+			db.Remove(delete);
+
 			var deletedPosition = delete.Position;
 
 			if (grid.GridElements.All(x => x.Position != deletedPosition))
@@ -68,7 +68,7 @@ namespace cms.data.EF.DataProviderImplementation
 		{
 			var el = db.GridElements.Get(item.Id, CurrentApplication.Id);
 
-			el.UpdateResourceList(item.ResourcesLoc, CurrentCulture, Respository);
+			el.UpdateResourceList(item.ResourcesLoc, CurrentCulture, db);
 			
 			//TODO:nahovno, udelat lip
 			el.Position = item.Position;
@@ -89,15 +89,17 @@ namespace cms.data.EF.DataProviderImplementation
 			return item.ToDto();
 		}
 
-		private Grid GetGrid(Guid gridId)
+		private Grid GetGridFromDb(Guid gridId)
 		{
-			return AvailableGridsPage().Single(x => x.Id == gridId);
+			return AvailableGridsPage.Single(x=>x.Id == gridId);
 		}
 
-		IQueryable<Grid> AvailableGridsPage()
+		private IQueryable<Grid> AvailableGridsPage
 		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Page);
-			return a;
+			get
+			{
+				return db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id && x.Category == CategoryEnum.Page);
+			}
 		}
 
 	}

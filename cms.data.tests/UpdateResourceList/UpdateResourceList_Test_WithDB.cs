@@ -65,12 +65,6 @@ namespace cms.data.tests.UpdateResourceList
 		}
 
 		[Test]
-		public void UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference()
-		{
-			RunTestDelegate(x => x.UpdateResourceTest_UpdateResources_isNotOwnwer_ShouldReplaceByReference());
-		}
-
-		[Test]
 		public void Reference_AddNew_test()
 		{
 			RunTestDelegate(x => x.Reference_AddNew_test());

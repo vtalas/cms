@@ -66,31 +66,30 @@ namespace cms.data.EF.Initializers
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithGridElement(new GridElement { Content = "", Position = 0, Width = 12, Type = "text" })
-										.WithResource("link", "testPage_link", CultureCs)
+										.WithResource(SpecialResourceEnum.Link, "testPage_link")
 										.WithResource("name", "testovaci stranka", CultureCs)
-										.WithResource("link", "testPage_link", CultureEn)
 										.WithResource("name", "Test Page", CultureEn)
 								);
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource("link", "bezelementu", CultureCs)
+										.WithResource(SpecialResourceEnum.Link, "bezelementu")
 										.WithResource("name", "grid Bez elementu", CultureCs)
-										.WithResource("link", "without_any_element", CultureEn)
 										.WithResource("name", "Without Any Element", CultureEn)
 								);
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource("link", "gallery_1", CultureCs)
+										.WithResource(SpecialResourceEnum.Link, "gallery_1")
 										.WithResource("name", "galerie 1", CultureCs)
+										.WithResource("name", "gallery 1", CultureEn)
 								);
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource("link", "gallery_1_sub_1", CultureCs)
+										.WithResource(SpecialResourceEnum.Link, "gallery_1_sub_1", CultureCs)
 										.WithResource("name", "subgalerie galerie 1", CultureCs)
 								);
 
 			Context.Grids.Add(GridExtensions.CreateGrid(new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource("link", "gallery_1_2", CultureCs)
+										.WithResource(SpecialResourceEnum.Link, "gallery_1_2", CultureCs)
 										.WithResource("name", "gallery 1 sub 2 ", CultureCs)
 								);
 		}
@@ -127,7 +126,7 @@ namespace cms.data.EF.Initializers
 			var menu = GridExtensions.CreateGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 								.WithCategory(CategoryEnum.Menu)
 								.WithGridElements(items)
-								.WithResource("link", "test_menu_link", CultureCs)
+								.WithResource(SpecialResourceEnum.Link, "test_menu_link", CultureCs)
 								.WithResource("name", "test menu", CultureCs);
 
 			Context.Grids.Add(menu);
