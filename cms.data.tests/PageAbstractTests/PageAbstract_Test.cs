@@ -52,7 +52,6 @@ namespace cms.data.tests.PageAbstractTests
 						.WithResource("name", "NAME BBB EN", CultureEn, 222)
 				).AddTo(Repository);
 			GridElementImpl = new GridElementAbstractImpl(app1, Repository);
-
 		}
 	}
 

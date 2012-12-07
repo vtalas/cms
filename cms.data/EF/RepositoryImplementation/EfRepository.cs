@@ -16,7 +16,8 @@ namespace cms.data.EF.RepositoryImplementation
 		public IQueryable<Resource> Resources{ get { return db.Resources;}}
 		public IQueryable<Grid> Grids { get { return db.Grids; } }
 		public IQueryable<ApplicationSetting> ApplicationSettings { get { return db.ApplicationSettings;} }
-		public IQueryable<GridElement> GridElements { get; private set; }
+		public IQueryable<GridElement> GridElements { get { return db.GridElements; } }
+		public IQueryable<UserProfile> UserProfile { get { return db.UserProfile; } }
 
 		public ApplicationSetting Add(ApplicationSetting item)
 		{
@@ -36,6 +37,11 @@ namespace cms.data.EF.RepositoryImplementation
 		public Grid Add(Grid item)
 		{
 			return db.Grids.Add(item);
+		}
+
+		public void Remove(ApplicationSetting item)
+		{
+			throw new System.NotImplementedException();
 		}
 
 		public void Remove(GridElement item)

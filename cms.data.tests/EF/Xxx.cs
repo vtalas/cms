@@ -25,7 +25,6 @@ namespace cms.data.tests.EF
 				db.Database.ExecuteSqlCommand("EXEC sp_MSForEachTable @command1 = \" DELETE FROM ?\" ");
 				db.Database.ExecuteSqlCommand("EXEC sp_MSForEachTable @command1 = \" ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all\" ");
 			}
-
 		}
 	}
 }

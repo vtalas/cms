@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebMatrix.WebData;
 using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
+using cms.data.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
 
@@ -12,21 +14,23 @@ namespace cms.data.EF.DataProviderImplementation
 {
 	public class DataEfAuthorized : DataProviderAbstract
 	{
-		private EfRepository Repository { get; set; }
-		public EfContext db { get; set; }
-		private IQueryable<ApplicationSetting> AvailableApplications { get { return db.ApplicationSettings.Where(x => x.Users.Any(a => a.Id == UserId)); } }
+		private EfContext Db { get; set; }
+		public IRepository Repository { get; set; }
+
+		private IQueryable<ApplicationSetting> AvailableApplications { get { return Repository.ApplicationSettings.Where(x => x.Users.Any(a => a.Id == UserId)); } }
 
 		public DataEfAuthorized(Guid applicationId, EfContext context, int userId)
 			: base(applicationId, userId)
 		{
-			db = context;
-			Repository = new EfRepository(db);
+			Db = context;
+			Repository = new EfRepository(context);
 		}
 
 		public DataEfAuthorized(string applicationName, EfContext context, int userId)
 			: base(applicationName, userId)
 		{
-			db = context;
+			Db = context;
+			Repository = new EfRepository(context);
 		}
 
 		public DataEfAuthorized(Guid applicationId, int userId) : this(applicationId, new EfContext(), userId) { }
@@ -39,7 +43,7 @@ namespace cms.data.EF.DataProviderImplementation
 			{
 				if (!ApplicationId.IsEmpty())
 				{
-					var aaa = db.ApplicationSettings.SingleOrDefault(x => x.Id == ApplicationId && x.Users.Any(u => u.Id == UserId));
+					var aaa = Repository.ApplicationSettings.SingleOrDefault(x => x.Id == ApplicationId && x.Users.Any(u => u.Id == UserId));
 					if (aaa == null)
 						throw new Exception("Cannot get aplication");
 					return aaa;
@@ -47,7 +51,7 @@ namespace cms.data.EF.DataProviderImplementation
 				}
 				if (!String.IsNullOrEmpty(ApplicationName))
 				{
-					var aaa = db.ApplicationSettings.SingleOrDefault(x => x.Id == ApplicationId && x.Users.Any(u => u.Id == UserId));
+					var aaa = Repository.ApplicationSettings.SingleOrDefault(x => x.Id == ApplicationId && x.Users.Any(u => u.Id == UserId));
 					if (aaa == null)
 						throw new Exception("Cannot get aplication");
 					return aaa;
@@ -64,7 +68,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override MenuAbstract Menu
 		{
-			get { return new MenuAbstractImpl(CurrentApplication, db); }
+			get { return new MenuAbstractImpl(CurrentApplication, Repository); }
 		}
 
 		public override PageAbstract Page
@@ -77,10 +81,9 @@ namespace cms.data.EF.DataProviderImplementation
 			get { return new GridElementAbstractImpl(CurrentApplication, Repository); }
 		}
 
-
 		public override IEnumerable<GridListDto> Grids()
 		{
-			var a = db.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id).ToList().Select(dto => new GridListDto
+			var a = Repository.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id).ToList().Select(dto => new GridListDto
 				{
 					Id = dto.Id,
 					Category = dto.Category,
@@ -95,15 +98,15 @@ namespace cms.data.EF.DataProviderImplementation
 		public override void DeleteApplication(Guid id)
 		{
 			var delete = AvailableApplications.Single(x => x.Id == id);
-			db.ApplicationSettings.Remove(delete);
+			Repository.Remove(delete);
 		}
 
 		public override ApplicationSetting Add(ApplicationSetting newitem, int userId)
 		{
-			var user = db.UserProfile.Single(x => x.Id == userId);
+			var user = Repository.UserProfile.Single(x => x.Id == userId);
 			newitem.Users.Add(user);
 
-			db.ApplicationSettings.Add(newitem);
+			Repository.Add(newitem);
 			if (newitem.Grids == null)
 			{
 				var a = new Grid
@@ -114,13 +117,14 @@ namespace cms.data.EF.DataProviderImplementation
 				a.WithResource("name", "homepage", CurrentCulture);
 				newitem.Grids = new List<Grid>{a};
 			}
-			db.SaveChanges();
+			Repository.SaveChanges();
 			return newitem;
 		}
 
 		public override void Dispose()
 		{
-			if (db != null) db.Dispose();
+			
+			if (Db != null) Db.Dispose();
 		}
 
 

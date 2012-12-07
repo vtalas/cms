@@ -1,6 +1,5 @@
 using System;
 using WebMatrix.WebData;
-using cms.data.DataProvider;
 using cms.data.EF.DataProviderImplementation;
 
 namespace cms.data.tests.EF
@@ -8,8 +7,8 @@ namespace cms.data.tests.EF
 	public class SessionManager : IDisposable
 	{
 		private DataEfAuthorized Context { get; set; }
-
 		public static Guid DefaultAppId = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
+		
 		public DataEfAuthorized CreateSession
 		{
 			get

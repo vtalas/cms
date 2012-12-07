@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using cms.data.DataProvider;
 using cms.data.Dtos;
-using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
 using cms.data.Repository;
 using cms.data.Shared.Models;
@@ -13,14 +12,12 @@ namespace cms.data.EF.DataProviderImplementation
 {
 	public class MenuAbstractImpl : MenuAbstract
 	{
-		private EfContext db { get; set; }
-		private IRepository Repository { get; set; }
+		private IRepository db { get; set; }
 		
 		public MenuAbstractImpl(ApplicationSetting application) : base(application){}
-		public MenuAbstractImpl(ApplicationSetting application, EfContext context) : base(application)
+		public MenuAbstractImpl(ApplicationSetting application, IRepository context) : base(application)
 		{
 			db = context;
-			Repository = new EfRepository(db);
 		}
 
 		IQueryable<Grid> AvailableGrids()
@@ -32,7 +29,7 @@ namespace cms.data.EF.DataProviderImplementation
 		public override void Delete(Guid guid)
 		{
 			var delete = AvailableGrids().Single(x => x.Id == guid);
-			db.Grids.Remove(delete);
+			db.Remove(delete);
 			db.SaveChanges();
 		}
 
@@ -51,7 +48,7 @@ namespace cms.data.EF.DataProviderImplementation
 		{
 			var grid = AvailableGrids().Single(x => x.Id == gridId);
 			
-			grid.UpdateResourceList(item.ResourcesLoc, CurrentCulture, Repository);
+			grid.UpdateResourceList(item.ResourcesLoc, CurrentCulture, db);
 			
 			var a = new GridElement
 				        {

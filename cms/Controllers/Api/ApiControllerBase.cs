@@ -21,6 +21,7 @@ namespace cms.Controllers.Api
 			
 			ApplicationId = new Guid( RouteData.Values["applicationId"].ToString());
 			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId, WebSecurity.CurrentUserId ), new MigrateInitalizer());
+			
 		}
 
 		protected override void OnActionExecuted(ActionExecutedContext filterContext)
