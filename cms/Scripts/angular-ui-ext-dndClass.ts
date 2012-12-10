@@ -44,7 +44,7 @@ class DndItem {
 		index = this.findById(this.item);
 		this.collection().splice(index, 1);
 	}
-	findById(item:IAngularObject) {
+	findById(item: IAngularObject) {
 		return this.findBy("$$hashKey", item.$$hashKey);
 	}
 	findBy(key, value) {
@@ -84,6 +84,7 @@ class DragAndDropObjts {
 		this.removeOrHideInSource();
 		this.showOrPush();
 		this.source.scope = this.destination.scope;
+		this.source.item.ParentId = this.destination.item.ParentId;
 	}
 
 	hide(itemToHide) {
@@ -131,7 +132,11 @@ class DragAndDropObjts {
 	setSourceStatus(newstatus) {
 		this.source.item.status = newstatus
 	}
-	cleanUp() {
+	dragEnd() {
+		var position = this.destination.findById(this.destination.item);
+		this.setSourceStatus(StatusEnum.DRAGEND);
+		this.source.item.isClone = false;
+		this.source.item.Position = position;
 		this.pseudohidden.removeFromCollection();
 	}
 	$emit(eventName) {

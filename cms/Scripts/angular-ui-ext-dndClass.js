@@ -73,6 +73,7 @@ var DragAndDropObjts = (function () {
         this.removeOrHideInSource();
         this.showOrPush();
         this.source.scope = this.destination.scope;
+        this.source.item.ParentId = this.destination.item.ParentId;
     };
     DragAndDropObjts.prototype.hide = function (itemToHide) {
         itemToHide.statusclass = "pseudohidden";
@@ -118,7 +119,11 @@ var DragAndDropObjts = (function () {
     DragAndDropObjts.prototype.setSourceStatus = function (newstatus) {
         this.source.item.status = newstatus;
     };
-    DragAndDropObjts.prototype.cleanUp = function () {
+    DragAndDropObjts.prototype.dragEnd = function () {
+        var position = this.destination.findById(this.destination.item);
+        this.setSourceStatus(StatusEnum.DRAGEND);
+        this.source.item.isClone = false;
+        this.source.item.Position = position;
         this.pseudohidden.removeFromCollection();
     };
     DragAndDropObjts.prototype.$emit = function (eventName) {

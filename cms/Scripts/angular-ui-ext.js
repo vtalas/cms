@@ -10,19 +10,17 @@ angular.module('ui.directives').value('ui.config.default', {
 				dndobj.$emit("dragstart-sortablehtml");
 			},
 			dragend: function (e, uioptions, dndobj) {
-				console.log("end", dndobj);
-				dndobj.setSourceStatus(StatusEnum.DRAGEND);
-				dndobj.source.item.isClone = false;
+				console.log("end", dndobj.source.item);
 
-				dndobj.cleanUp();
+				dndobj.dragEnd();
 
 				dndobj.destination.scope.$apply();
 				dndobj.$emit("dragend-sortablehtml");
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 			},
 			dragenter: function (e, uioptions, dndobj) {
-				var	destinationIsChildOfDragged = (dndobj.source.element).find(dndobj.destination.element).length > 0;
 
+				var destinationIsChildOfDragged = (dndobj.source.element).find(dndobj.destination.element).length > 0;
 				e.stopPropagation(); //pro pripad ze je sortable v sortable 
 				if (destinationIsChildOfDragged) {
 					return;
@@ -32,7 +30,7 @@ angular.module('ui.directives').value('ui.config.default', {
 					if (dndobj.sameCollection()) {
 						dndobj.swapItems();
 					} else {
-                        dndobj.changeParent();
+						dndobj.changeParent();
 					}
 				}
 

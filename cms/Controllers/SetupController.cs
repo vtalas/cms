@@ -24,6 +24,9 @@ namespace cms.Controllers
 
 		public ActionResult DropAndCreateAlwaysForce()
 		{
+			Database.SetInitializer(new DropAndCreateAlwaysForce());
+//			Database.Delete("")
+
 			using (var a = new EfContext())
 			{
 				Xxx.DeleteDatabaseData();
