@@ -48,6 +48,16 @@ namespace cms.data.EF.DataProviderImplementation
 			throw new NotImplementedException();
 		}
 
+		public override MenuItemDto UpdateMenuItem(MenuItemDto menuItem)
+		{
+			throw new NotImplementedException();
+		}
+
+		public override MenuItemDto AddMenuitem(MenuItemDto menuItem)
+		{
+			throw new NotImplementedException();
+		}
+
 		public override Guid AddMenuItem(MenuItemDto item, Guid gridId)
 		{
 			var grid = AvailableGrids.Single(x => x.Id == gridId);

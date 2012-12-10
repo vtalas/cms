@@ -58,16 +58,6 @@ namespace cms.data.tests._Common
 
 			return repo.Object;
 		}
-
-		private void AttachTo(Grid input, ApplicationSetting applicationSettings)
-		{
-			if (input.ApplicationSettings != null)
-			{
-				var app = _applicationSettings.SingleOrDefault(x => x.Id == input.ApplicationSettings.Id);
-				if (app!= null) 
-					app.Grids.Add(input);
-			}
-		}
 	}
 
 }

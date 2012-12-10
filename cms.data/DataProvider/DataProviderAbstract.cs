@@ -64,6 +64,8 @@ namespace cms.data.DataProvider
 		protected MenuAbstract(ApplicationSetting application) : base(application) { }
 		public abstract MenuDto Get(Guid guid);
 		public abstract MenuDto Add(MenuDto newitem);
+		public abstract MenuItemDto UpdateMenuItem(MenuItemDto menuItem);
+		public abstract MenuItemDto AddMenuitem(MenuItemDto menuItem);
 		public abstract Guid AddMenuItem(MenuItemDto newitem, Guid gridId);
 		public abstract IEnumerable<MenuDto> List();
 		public abstract void Delete(Guid guid);

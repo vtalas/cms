@@ -7,6 +7,7 @@ namespace cms.data.tests._Common
 	public class InjectableBase_Test : Base_Test
 	{
 		protected IRepository Repository;
+		protected readonly Guid _gridId = new Guid("0000005e-1115-480b-9ab7-a3ab3c0f6643");
 
 		protected Func<IRepository> RepositoryCreator { get; set; }
 
