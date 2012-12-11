@@ -18,7 +18,7 @@ namespace cms.data.tests.PageAbstractTests
 	[TestFixture]
 	public class GridElementAbstract_Test : InjectableBase_Test
 	{
-		private GridElementAbstract GridElementImpl { get; set; }
+		private GridElementAbstract _implemtation;
 		private readonly Guid _gridIdFromApp2 = new Guid("1111111e-1115-480b-9ab7-a3ab3c0f6643");
 		private int _gridsCountBefore;
 		private int _resourcesCountBefore;
@@ -51,54 +51,8 @@ namespace cms.data.tests.PageAbstractTests
 						.WithResource("name", "NAME BBB", CultureCs, 221)
 						.WithResource("name", "NAME BBB EN", CultureEn, 222)
 				).AddTo(Repository);
-			GridElementImpl = new GridElementAbstractImpl(app1, Repository);
+			_implemtation = new GridElementAbstractImpl(app1, Repository);
 		}
-	}
-
-	[TestFixture]
-	public class MenuAbstract_Test : InjectableBase_Test
-	{
-		private MenuAbstractImpl _implemtation;
-
-		public MenuAbstract_Test()
-			: this(new Base_MockDb().GetRepositoryMock)
-		{
-		}
-
-		public MenuAbstract_Test(Func<IRepository> repositoryCreator) : base(repositoryCreator)
-		{
-			SharedLayer.Init();
-		}
-
-		[SetUp]
-		public void Setup()
-		{
-			Repository = RepositoryCreator();
-
-			var app1 = CreateDefaultApplication("prd App")
-				.WithGrid(
-					CreateDefaultGrid().WithCategory(CategoryEnum.Menu)
-						.WithResource(SpecialResourceEnum.Link, "aaa")
-						.WithResource("name", "NAME AAAA", CultureCs, 111)
-				)
-				.WithGrid(
-					CreateDefaultGrid(_gridId)
-						.WithResource(SpecialResourceEnum.Link, "bbb")
-						.WithResource("name", "NAME BBB", CultureCs, 221)
-						.WithResource("name", "NAME BBB EN", CultureEn, 222)
-				).AddTo(Repository);
-			_implemtation = new MenuAbstractImpl(app1, Repository);
-		}
-
-
-		//public MenuDto Get(Guid guid)
-		//public MenuDto Add(MenuDto newitem);
-		//public MenuItemDto UpdateMenuItem(MenuItemDto menuItem);
-		//public MenuItemDto AddMenuitem(MenuItemDto menuItem);
-		//public Guid AddMenuItem(MenuItemDto newitem, Guid gridId);
-		//public IEnumerable<MenuDto> List();
-		//public void Delete(Guid guid);
-
 	}
 
 	[TestFixture]
