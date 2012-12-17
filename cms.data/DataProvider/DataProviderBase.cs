@@ -135,7 +135,6 @@ namespace cms.data.DataProvider
 			gridlementOld.Resources = item.Resources;
 			gridlementOld.Skin = item.Skin;
 
-
 			db.SaveChanges();
 
 			return gridlementOld;

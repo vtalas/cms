@@ -16,6 +16,8 @@ namespace cms.data.tests.PageAbstractTests
 	public class DataProvider_GridElement_Test : InjectableBase_Test
 	{
 		private DataProviderBase _dataProvider;
+		private string subElement1Content = "s1";
+		private string subElement2Content = "s2";
 
 		public DataProvider_GridElement_Test(Func<IRepository> repositoryCreator) : base(repositoryCreator)
 		{
@@ -29,9 +31,11 @@ namespace cms.data.tests.PageAbstractTests
 		[SetUp]
 		public void Setup()
 		{
+		
 			Repository = RepositoryCreator();
-			var subGridElement = AGridElement("text", 3).WithContent("subelement 1");
-			var subGridElement2 = AGridElement("text", 4).WithContent("subelement 2");
+			
+			var subGridElement = AGridElement("text", 3).WithContent(subElement1Content);
+			var subGridElement2 = AGridElement("text", 4).WithContent(subElement2Content);
 			
 			var application = AApplication("prd App")
 				.WithGrid(
@@ -43,7 +47,7 @@ namespace cms.data.tests.PageAbstractTests
 						.WithGridElement(AGridElement("text", 2))
 						.WithGridElement(subGridElement)
 						.WithGridElement(AGridElement("text", 0).WithParent(subGridElement))
-						.WithGridElement(AGridElement("text", 1).WithParent(subGridElement))
+						.WithGridElement(AGridElement("text", 1).WithContent("chujs").WithParent(subGridElement))
 						.WithGridElement(subGridElement2)
 						.WithGridElement(AGridElement("text", 0).WithParent(subGridElement2))
 				).AddTo(Repository);
@@ -104,15 +108,14 @@ namespace cms.data.tests.PageAbstractTests
 		public void UpdatePosition_UpdateBy(Guid gridElementId, GridElement update)
 		{
 			var newPosition = update.Position;
- 
+
 			_dataProvider.Update(update);
 
 			var gridAfter = Repository.Grids.Get(update.Grid.Id);
 
 			gridAfter.GridElements
-				.Where(x => x.Parent == null)
-				.OrderBy(x => x.Position)
-				.PrintGridElements(x => x.Position + " " + x.Content);
+				.Where(x => x.Parent == update.Parent)
+				.PrintGridElementsPositons(update.Id);
 
 			gridAfter.Check()
 				.HasGridElementsCountAndValid(8)
@@ -121,20 +124,52 @@ namespace cms.data.tests.PageAbstractTests
 			var updateAfter = gridAfter.GridElement(gridElementId);
 			Assert.AreEqual("new position", updateAfter.Content);
 			Assert.AreEqual(newPosition, updateAfter.Position);
-
-			Console.WriteLine("");
-			
 		}
+
 		public void UpdatePosition_withSameParents_testHelper(int itemFromPosition, int newPosition)
 		{
 			var grid = Repository.Grids.Get(_gridId);
-			var gridElement = grid.GridElements.Single(x => x.Position == itemFromPosition && x.Parent == null);
+			var gridElements = grid.GridElements.Where(x=>x.Parent == null);
 
-			Console.WriteLine("puvodni " + gridElement.Position + "  nova :" + newPosition);
+			Console.WriteLine("puvodni " + itemFromPosition + "  nova :" + newPosition);
+
+			var gridElement = gridElements.Single(x => x.Position == itemFromPosition );
+			gridElements.PrintGridElementsPositons(gridElement.Id);
 
 			var update = AGridElement("text", gridElement.Id, newPosition)
 								.WithContent("new position")
 								.IsPropertyOf(grid);
+
+			UpdatePosition_UpdateBy(gridElement.Id, update);
+		}
+
+		[Test]
+		public void UpdatePosition_withSameParents_test_XXXXXXXXXXX()
+		{
+			const int itemFromPosition = 0;
+			const int newPosition = 1;
+			var gridId = _gridId;
+
+			var grid = Repository.Grids.Get(gridId);
+			var gridElement = grid.GridElements
+				.Single(x => x.Position == itemFromPosition && x.Parent != null && x.Parent.Content == subElement2Content);
+
+			var newParent = grid.GridElements
+				.Single(x => x.Content == subElement1Content);
+
+
+			var gridBefore = Repository.Grids.Get(gridId);
+			
+			Console.WriteLine("puvodni " + gridElement.Position + "  nova :" + newPosition);
+
+			var update = AGridElement("text", gridElement.Id, newPosition)
+								.WithContent("new position")
+								.WithParent(newParent)
+								.IsPropertyOf(grid);
+
+			gridBefore.GridElements
+				.Where(x => x.Parent == gridElement.Parent)
+				.PrintGridElementsPositons(gridElement.Id);
 
 			UpdatePosition_UpdateBy(gridElement.Id, update);
 		}
@@ -190,7 +225,15 @@ namespace cms.data.tests.PageAbstractTests
 			{
 				Console.WriteLine(print(element));
 			}
+		}
 
+		public static void PrintGridElementsPositons(this IEnumerable<GridElement> gridElements , Guid itemToHighlight, string message = "")
+		{
+			Func<GridElement, string> contenFormat =
+				x => itemToHighlight == x.Id ? "[" + x.Position + "]" : x.Position.ToString();
+
+			Console.WriteLine(message + gridElements.OrderBy(x => x.Position).Select(contenFormat)
+				.Aggregate((x, y) => x + ", " + y));
 		}
 	}
 
