@@ -16,8 +16,9 @@ namespace cms.data.tests.PageAbstractTests
 	public class DataProvider_GridElement_Test : InjectableBase_Test
 	{
 		private DataProviderBase _dataProvider;
-		private string subElement1Content = "s1";
-		private string subElement2Content = "s2";
+		private const string subElement1Content = "s1";
+		private const string subElement2Content = "s2";
+		private int gridElementsBefore;
 
 		public DataProvider_GridElement_Test(Func<IRepository> repositoryCreator) : base(repositoryCreator)
 		{
@@ -31,7 +32,6 @@ namespace cms.data.tests.PageAbstractTests
 		[SetUp]
 		public void Setup()
 		{
-		
 			Repository = RepositoryCreator();
 			
 			var subGridElement = AGridElement("text", 3).WithContent(subElement1Content);
@@ -54,8 +54,9 @@ namespace cms.data.tests.PageAbstractTests
 			
 			_dataProvider = new DataProviderBase(application, Repository);
 			Assert.IsNotNull(_dataProvider);
-			
-			Repository.TotalGridElementsCount_Check(8);
+
+			gridElementsBefore = Repository.GridElements.Count();
+			Repository.TotalGridElementsCount_Check(gridElementsBefore);
 			Assert.AreEqual(1, Repository.ApplicationSettings.Count());
 			Assert.AreEqual(1, Repository.Grids.Count());
 		}
@@ -81,7 +82,6 @@ namespace cms.data.tests.PageAbstractTests
 		[Test]
 		public void AddGridElement_AddExistingGridElement_test()
 		{
-			var gridElementsBefore = Repository.GridElements.Count();
 			var gridelement = AGridElement("text", 1);
 			Repository.Add(gridelement);
 			Repository.SaveChanges();
@@ -144,7 +144,7 @@ namespace cms.data.tests.PageAbstractTests
 		}
 
 		[Test]
-		public void UpdatePosition_withSameParents_test_XXXXXXXXXXX()
+		public void UpdatePosition_withDifferentParents_test()
 		{
 			const int itemFromPosition = 0;
 			const int newPosition = 1;
@@ -156,7 +156,6 @@ namespace cms.data.tests.PageAbstractTests
 
 			var newParent = grid.GridElements
 				.Single(x => x.Content == subElement1Content);
-
 
 			var gridBefore = Repository.Grids.Get(gridId);
 			
