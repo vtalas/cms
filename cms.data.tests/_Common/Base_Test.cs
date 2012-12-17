@@ -6,8 +6,6 @@ namespace cms.data.tests._Common
 {
 	public class Base_Test : ObjectBuilder
 	{
-		
-
 		protected void SetCulture(string culture)
 		{
 			SharedLayer.SetCulture(culture);

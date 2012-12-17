@@ -5,7 +5,7 @@ using cms.shared;
 
 namespace cms.data.Extensions
 {
-	public static class GridExt
+	public static class GridBuildersExt
 	{
 
 		public static Grid WithResource(this Grid source, string key, string value, int id = 0)

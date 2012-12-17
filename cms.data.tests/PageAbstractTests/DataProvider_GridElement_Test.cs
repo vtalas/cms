@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using NUnit.Framework;
 using cms.data.DataProvider;
 using cms.data.Extensions;
 using cms.data.Repository;
+using cms.data.Shared.Models;
 using cms.data.tests._Common;
 using cms.shared;
 using System.Linq;
@@ -54,6 +56,7 @@ namespace cms.data.tests.PageAbstractTests
 			Assert.AreEqual(1, Repository.Grids.Count());
 		}
 
+
 		[Test]
 		public void AddGridElement_CheckCountAndCorrectPosition_test()
 		{
@@ -97,57 +100,63 @@ namespace cms.data.tests.PageAbstractTests
 			Assert.Throws<ObjectNotFoundException>(() => _dataProvider.AddToGrid(gridelement, Guid.NewGuid()));
 		}
 
-		
-		public void testxxx(int itemFromPosition, int newPosition)
+
+		public void UpdatePosition_UpdateBy(Guid gridElementId, GridElement update)
 		{
-			var grid = Repository.Grids.Single(x => x.Id == _gridId);
-			var gridElement = grid.GridElements.Single(x => x.Position == itemFromPosition && x.Parent == null);
-
-			var update = AGridElement("text", gridElement.Id, newPosition).IsPropertyOf(grid);
-			update.Content = "new position";
-
-			Console.WriteLine("puvodni " + gridElement.Position + "  nova :" + newPosition );
-
+			var newPosition = update.Position;
+ 
 			_dataProvider.Update(update);
 
-			grid = Repository.Grids.Single(x => x.Id == _gridId);
-			update = grid.GridElements.Single(x => x.Id == gridElement.Id);
+			var gridAfter = Repository.Grids.Get(update.Grid.Id);
 
-			var ggg = grid.GridElements.Where(x => x.Parent == null).OrderBy(x => x.Position);
-			
-			foreach (var element in ggg)
-			{
-				Console.WriteLine(element.Position + " " + element.Content);
-			}
+			gridAfter.GridElements
+				.Where(x => x.Parent == null)
+				.OrderBy(x => x.Position)
+				.PrintGridElements(x => x.Position + " " + x.Content);
 
-			Assert.AreEqual("new position", update.Content);
-			Assert.AreEqual(newPosition, update.Position);
-
-			grid.Check()
+			gridAfter.Check()
 				.HasGridElementsCountAndValid(8)
 				.HasGridElementIndex(null, newPosition);
+
+			var updateAfter = gridAfter.GridElement(gridElementId);
+			Assert.AreEqual("new position", updateAfter.Content);
+			Assert.AreEqual(newPosition, updateAfter.Position);
+
 			Console.WriteLine("");
+			
 		}
+		public void UpdatePosition_withSameParents_testHelper(int itemFromPosition, int newPosition)
+		{
+			var grid = Repository.Grids.Get(_gridId);
+			var gridElement = grid.GridElements.Single(x => x.Position == itemFromPosition && x.Parent == null);
+
+			Console.WriteLine("puvodni " + gridElement.Position + "  nova :" + newPosition);
+
+			var update = AGridElement("text", gridElement.Id, newPosition)
+								.WithContent("new position")
+								.IsPropertyOf(grid);
+
+			UpdatePosition_UpdateBy(gridElement.Id, update);
+		}
+
 		[Test]
 		public void UpdatePosition_withSameParents_test()
 		{
-			testxxx(1, 0);
+			UpdatePosition_withSameParents_testHelper(1, 0);
 			Setup();
 
-			testxxx(4, 0);
+			UpdatePosition_withSameParents_testHelper(4, 0);
 			Setup();
 
-			testxxx(4, 2);
+			UpdatePosition_withSameParents_testHelper(4, 2);
 			Setup();
 
-			testxxx(2, 4);
+			UpdatePosition_withSameParents_testHelper(2, 4);
 			Setup();
 
-			testxxx(0, 1);
+			UpdatePosition_withSameParents_testHelper(0, 1);
 			Setup();
 		}
-		
-
 
 		[Test]
 		public void TryUpadteNonExisting_test()
@@ -171,5 +180,18 @@ namespace cms.data.tests.PageAbstractTests
 			_dataProvider.Update(gridEelemOtherApp);
 
 		}
+
 	}
+	public static class PrintHelpers
+	{
+		public static void PrintGridElements(this IEnumerable<GridElement> gridElements, Func<GridElement,string> print )
+		{
+			foreach (var element in gridElements)
+			{
+				Console.WriteLine(print(element));
+			}
+
+		}
+	}
+
 }

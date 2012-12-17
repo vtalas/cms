@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using cms.data.Dtos;
-using cms.data.EF.RepositoryImplementation;
 using cms.data.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -51,6 +50,12 @@ namespace cms.data.Extensions
 			repo.SaveChanges();
 			currentItem.Resources.Add(resource);
 		}
+
+		public static GridElement GridElement(this Grid grid, Guid id)
+		{
+			return grid.GridElements.Single(x => x.Id == id);
+		}
+
 
 		public static void UpdateResourceList(this IEntityWithResource currentItem, IDictionary<string, ResourceDtoLoc> resourcesDto, string culture, IRepository repo)
 		{
