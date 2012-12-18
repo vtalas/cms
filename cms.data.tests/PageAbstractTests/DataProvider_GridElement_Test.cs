@@ -16,8 +16,8 @@ namespace cms.data.tests.PageAbstractTests
 	public class DataProvider_GridElement_Test : InjectableBase_Test
 	{
 		private DataProviderBase _dataProvider;
-		private const string subElement1Content = "s1";
-		private const string subElement2Content = "s2";
+		private const string SubElement1Content = "s1";
+		private const string SubElement2Content = "s2";
 		private int gridElementsBefore;
 
 		public DataProvider_GridElement_Test(Func<IRepository> repositoryCreator) : base(repositoryCreator)
@@ -34,8 +34,9 @@ namespace cms.data.tests.PageAbstractTests
 		{
 			Repository = RepositoryCreator();
 			
-			var subGridElement = AGridElement("text", 3).WithContent(subElement1Content);
-			var subGridElement2 = AGridElement("text", 4).WithContent(subElement2Content);
+
+			var subGridElement = AGridElement("text", 3) .WithContent(SubElement1Content);
+			var subGridElement2 = AGridElement("text", 4).WithContent(SubElement2Content);
 			
 			var application = AApplication("prd App")
 				.WithGrid(
@@ -105,8 +106,9 @@ namespace cms.data.tests.PageAbstractTests
 		}
 
 
-		public void UpdatePosition_UpdateBy(Guid gridElementId, GridElement update)
+		public void UpdatePosition_UpdateBy(GridElement update)
 		{
+			var gridElementId = update.Id;
 			var newPosition = update.Position;
 
 			_dataProvider.Update(update);
@@ -140,22 +142,56 @@ namespace cms.data.tests.PageAbstractTests
 								.WithContent("new position")
 								.IsPropertyOf(grid);
 
-			UpdatePosition_UpdateBy(gridElement.Id, update);
+			UpdatePosition_UpdateBy(update);
 		}
 
 		[Test]
-		public void UpdatePosition_withDifferentParents_test()
+		public void UpdatePosition_withDifferentParents_moveUpPosition_test()
 		{
-			const int itemFromPosition = 0;
-			const int newPosition = 1;
+			const int fromPosition = 0;
+			const int toPosition = 1;
+
 			var gridId = _gridId;
-
 			var grid = Repository.Grids.Get(gridId);
-			var gridElement = grid.GridElements
-				.Single(x => x.Position == itemFromPosition && x.Parent != null && x.Parent.Content == subElement2Content);
+			
+			var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
+			var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
 
-			var newParent = grid.GridElements
-				.Single(x => x.Content == subElement1Content);
+			UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent);
+		}
+
+		[Test]
+		public void UpdatePosition_withDifferentParents_samePosition_test()
+		{
+			const int fromPosition = 1;
+			const int toPosition = 1;
+
+			var gridId = _gridId;
+			var grid = Repository.Grids.Get(gridId);
+			
+			var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
+			var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
+
+			UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent);
+		}
+
+		[Test]
+		public void UpdatePosition_withDifferentParents_moveDownPosition_test()
+		{
+			const int fromPosition = 4;
+			const int toPosition = 1;
+
+			var gridId = _gridId;
+			var grid = Repository.Grids.Get(gridId);
+			
+			var gridElement = grid.GridElements.Single(x => x.Position == fromPosition && GridElement.EqualsById(x.Parent, null));
+			var newParent = grid.GridElements.Single(x => x.Content == SubElement1Content);
+
+			UpdatePosition_withDifferentParents(gridId, gridElement, toPosition, newParent);
+		}
+
+		public void UpdatePosition_withDifferentParents(Guid gridId, GridElement gridElement, int newPosition, GridElement newparent)
+		{
 
 			var gridBefore = Repository.Grids.Get(gridId);
 			
@@ -163,14 +199,14 @@ namespace cms.data.tests.PageAbstractTests
 
 			var update = AGridElement("text", gridElement.Id, newPosition)
 								.WithContent("new position")
-								.WithParent(newParent)
-								.IsPropertyOf(grid);
+								.IsPropertyOf(gridElement.Grid)
+								.WithParent(newparent);
 
 			gridBefore.GridElements
 				.Where(x => x.Parent == gridElement.Parent)
 				.PrintGridElementsPositons(gridElement.Id);
 
-			UpdatePosition_UpdateBy(gridElement.Id, update);
+			UpdatePosition_UpdateBy(update);
 		}
 
 		[Test]
@@ -197,7 +233,7 @@ namespace cms.data.tests.PageAbstractTests
 		{
 			var update = AGridElement("text", Guid.NewGuid(), 6);
 			update.Content = "xxx";
-			_dataProvider.Update(update);
+			Assert.Throws<ObjectNotFoundException>(() => _dataProvider.Update(update));
 		}
 
 		[Test]
@@ -209,10 +245,7 @@ namespace cms.data.tests.PageAbstractTests
 					AGrid()
 						.WithGridElement(gridEelemOtherApp)
 				).AddTo(Repository);
-
-			
-			_dataProvider.Update(gridEelemOtherApp);
-
+			Assert.Throws<ObjectNotFoundException >( ()=>_dataProvider.Update(gridEelemOtherApp));
 		}
 
 	}
@@ -233,6 +266,11 @@ namespace cms.data.tests.PageAbstractTests
 
 			Console.WriteLine(message + gridElements.OrderBy(x => x.Position).Select(contenFormat)
 				.Aggregate((x, y) => x + ", " + y));
+		}
+
+		public static string Serialize(this IEnumerable<GridElement> gridElements, string message = "")
+		{
+			return message + gridElements.OrderBy(x => x.Position).Select(x => x.Position.ToString()).Aggregate((x, y) => x + ", " + y);
 		}
 	}
 

@@ -8,6 +8,7 @@ using cms.data.Extensions;
 using cms.data.Repository;
 using cms.data.Shared.Models;
 using System.Linq;
+using cms.data.tests.PageAbstractTests;
 
 namespace cms.data.tests._Common
 {
@@ -47,8 +48,7 @@ namespace cms.data.tests._Common
 
 			foreach (var gridelement in listWithSameParent.OrderBy(x=>x.Position))
 			{
-				Assert.AreEqual(1, listWithSameParent.Count(x => x.Position == gridelement.Position), "position " + gridelement.Position + " is more then once");
-				
+				Assert.AreEqual(1, listWithSameParent.Count(x => x.Position == gridelement.Position), "position " + gridelement.Position + " is more then once: " + listWithSameParent.Serialize());
 				checkSum += index;
 				positionSum += gridelement.Position;
 

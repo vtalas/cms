@@ -96,15 +96,6 @@ namespace cms.data.DataProvider
 			throw new NotImplementedException();
 		}
 
-		private static bool Equals(GridElement g1, GridElement g2)
-		{
-			if (g1 == null && g2 == null)
-			{
-				return true;
-			}
-
-			return (g1 != null && g2 != null && g1.Id == g2.Id);
-		}
 
 
 		public GridElement Update(GridElement item)
@@ -115,7 +106,7 @@ namespace cms.data.DataProvider
 				throw new ObjectNotFoundException("grid element owner not found");
 			}
 
-			var groupDestination = item.Grid.GridElements.Where(x => Equals(x.Parent, item.Parent));
+			var groupDestination = item.Grid.GridElements.Where(x => GridElement.EqualsById(x.Parent, item.Parent));
 			if (Equals(itemBefore.Parent, item.Parent))
 			{
 				var oldPosition = itemBefore.Position;
@@ -142,7 +133,6 @@ namespace cms.data.DataProvider
 			}
 			else
 			{
-
 				foreach (var current in groupDestination.OrderBy(x => x.Position))
 				{
 					var newPosition = item.Position;
@@ -152,15 +142,15 @@ namespace cms.data.DataProvider
 						current.Position++;
 					}
 				}
-				var groupSource = item.Grid.GridElements.Where(x => Equals(x.Parent, itemBefore.Parent));
+				var groupSource = item.Grid.GridElements.Where(x => GridElement.EqualsById(x.Parent, itemBefore.Parent));
 
 				foreach (var current in groupSource.OrderBy(x => x.Position))
 				{
-					var newPosition = item.Position;
+					var oldPosition = itemBefore.Position;
 
-					if (current.Position >= newPosition)
+					if (current.Position >= oldPosition)
 					{
-						current.Position++;
+						current.Position--;
 					}
 				}
 				

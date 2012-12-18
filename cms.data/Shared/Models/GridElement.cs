@@ -27,6 +27,16 @@ namespace cms.data.Shared.Models
 		public virtual Grid Grid { get; set; }
 		public virtual ICollection<Resource> Resources { get; set; }
 
+		public static bool EqualsById(GridElement g1, GridElement g2)
+		{
+			if (g1 == null && g2 == null)
+			{
+				return true;
+			}
+
+			return (g1 != null && g2 != null && g1.Id == g2.Id);
+		}
+
 	}
 
 
