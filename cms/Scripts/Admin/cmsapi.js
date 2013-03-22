@@ -12,6 +12,7 @@
 				UpdateGridElement: { method: 'POST', params: { action: "UpdateGridElement" } }
 			}
 		);
+
 		project.prototype.save = function (cb) {
 			return project.save({ id: this._id.$oid },
 				angular.extend({ }, this, { _id: undefined }), cb);
@@ -20,7 +21,7 @@
 			return project.getGrid({ id: this._id.$oid },
 				angular.extend({ }, this, { _id: undefined }), cb);
 		};
-
+		console.log(project)
 		return project;
 	}])
 	.factory('apimenu', ['$resource', 'appSettings', function ($resource, appSettings) {

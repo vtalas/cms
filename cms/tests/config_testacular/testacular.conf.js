@@ -9,18 +9,22 @@ basePath = '../../';
 // list of files / patterns to load in the browser
 files = [
 
+	'Scripts/jquery.js',
 	'Scripts/angular.js',
 	'Scripts/angular-ui.js',
 	'Scripts/angular-resource.js',
 	'Scripts/angular-templates-ext.js',
 	'Scripts/angular-ui-ext-dndClass.js',
 	'Scripts/angular-ui-ext.js',
+	'Scripts/Admin/Grids.js',
+	'Scripts/Admin/cmsapi.js',
 	'Scripts/Admin/*.js',
 
-	'tests/test/lib/angular/angular*.js',
 
 	JASMINE,
 	JASMINE_ADAPTER,
+	'tests/test/lib/angular/angular-mocks.js',
+
 	'tests/test/unit/*.js'
 ];
 
@@ -50,7 +54,7 @@ colors = true;
 
 // level of logging
 // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-logLevel = LOG_DEBUG;
+logLevel = LOG_INFO;
 
 
 // enable / disable watching file and executing tests whenever any file changes

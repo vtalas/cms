@@ -1,6 +1,6 @@
-﻿
+
 /**
- * @license AngularJS v1.0.1
+ * @license AngularJS v1.0.3
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
  *
@@ -751,7 +751,7 @@ angular.mock.dump = function(object) {
      $httpBackend = $injector.get('$httpBackend');
 
      // backend definition common for all tests
-     $httpBackend.when('GET', '/auth.py').respond({userId: 'userX'}, {'A-Token': 'UpdateResource'});
+     $httpBackend.when('GET', '/auth.py').respond({userId: 'userX'}, {'A-Token': 'xxx'});
    }));
 
 
@@ -788,7 +788,7 @@ angular.mock.dump = function(object) {
      $httpBackend.expectPOST('/add-msg.py', undefined, function(headers) {
        // check if the header was send, if it wasn't the expectation won't
        // match the request and the test will fail
-       return headers['Authorization'] == 'UpdateResource';
+       return headers['Authorization'] == 'xxx';
      }).respond(201, '');
 
      var controller = scope.$new(MyController);
@@ -1591,9 +1591,29 @@ window.jasmine && (function(window) {
 
   afterEach(function() {
     var spec = getCurrentSpec();
+    var injector = spec.$injector;
+
     spec.$injector = null;
     spec.$modules = null;
+
+    if (injector) {
+      injector.get('$rootElement').unbind();
+      injector.get('$browser').pollFns.length = 0;
+    }
+
     angular.mock.clearDataCache();
+
+    // clean up jquery's fragment cache
+    angular.forEach(angular.element.fragments, function(val, key) {
+      delete angular.element.fragments[key];
+    });
+
+    MockXhr.$$lastInstance = null;
+
+    angular.forEach(angular.callbacks, function(val, key) {
+      delete angular.callbacks[key];
+    });
+    angular.callbacks.counter = 0;
   });
 
   function getCurrentSpec() {
@@ -1694,7 +1714,7 @@ window.jasmine && (function(window) {
    */
   window.inject = angular.mock.inject = function() {
     var blockFns = Array.prototype.slice.call(arguments, 0);
-    var stack = new Error('Declaration Location').stack;
+    var errorForStack = new Error('Declaration Location');
     return isSpecRunning() ? workFn() : workFn;
     /////////////////////
     function workFn() {
@@ -1710,10 +1730,12 @@ window.jasmine && (function(window) {
         try {
           injector.invoke(blockFns[i] || angular.noop, this);
         } catch (e) {
-          if(e.stack) e.stack +=  '\n' + stack;
+          if(e.stack) e.stack +=  '\n' + errorForStack.stack;
           throw e;
+        } finally {
+          errorForStack = null;
         }
       }
     }
-  }
+  };
 })(window);

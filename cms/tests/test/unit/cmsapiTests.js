@@ -1,14 +1,13 @@
-/* jasmine specs for controllers go here */
 describe('cms Api module', function () {
-
 	describe('Gridapi tests', function () {
         var scope, ctrl, $httpBackend;
 
-        beforeEach(angular.mock.module('cmsapi'));
+		beforeEach(angular.mock.module('cmsapi'));
+		beforeEach(angular.mock.module('gridsmodule'));
 
-        beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+        beforeEach(inject(function( _$httpBackend_, $rootScope, $controller) {
 
-            $httpBackend = _$httpBackend_;
+			$httpBackend = _$httpBackend_;
             $httpBackend.expectGET('/adminApi/1111/grids').
                 respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
 
@@ -17,15 +16,19 @@ describe('cms Api module', function () {
 
         }));
 
+
+
         it('should load GridApi', inject(function(_$httpBackend_, GridApi) {
             var rs = GridApi.grids({
                     applicationId : "1111"
-                }, function(data){
-                    console.log(data, "xx");
-                }
+                }, function (data) {
+                    dump(data, "xxxx");
+                },function (){
+					dump(data, "xxxx");
+				}
             );
 
-            console.log(rs);
+            dump("--",rs);
         }));
 
     });
