@@ -42,7 +42,6 @@ namespace MvcApplication1.Controllers
 		public ActionResult LogOff()
 		{
 			WebSecurity.Logout();
-
 			return RedirectToAction("Index", "Home");
 		}
 
@@ -81,6 +80,8 @@ namespace MvcApplication1.Controllers
 			// If we got this far, something failed, redisplay form
 			return View(model);
 		}
+
+
 
 		//
 		// POST: /Account/Disassociate
@@ -392,6 +393,7 @@ namespace MvcApplication1.Controllers
 			}
 		}
 		#endregion
+
 	}
 }
 

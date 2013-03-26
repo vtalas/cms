@@ -3,7 +3,7 @@
 var sys = require('sys'),
     http = require('http'),
     fs = require('fs'),
-    url = require('url'),
+    url = require('OAuth2AuthorizationUrl'),
     events = require('events');
 
 var DEFAULT_PORT = 8000;

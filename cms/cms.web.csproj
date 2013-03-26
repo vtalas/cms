@@ -71,6 +71,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Google.GData.Client">
+      <HintPath>..\packages\Google.GData.Client.2.1.0.0\lib\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions">
+      <HintPath>..\packages\Google.GData.Extensions.2.1.0.0\lib\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Photos">
+      <HintPath>..\packages\Google.GData.Photos.2.1.0.0\lib\Google.GData.Photos.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -81,8 +90,9 @@
     <Reference Include="MsieJavaScriptEngine">
       <HintPath>..\packages\MsieJavaScriptEngine.1.1.1\lib\net40\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.0.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -102,6 +112,7 @@
     </Reference>
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
@@ -114,6 +125,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\LinkAccounts\GdataJsonFileStorage.cs" />
+    <Compile Include="Code\LinkAccounts\GoogleDataOAuth2.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\Class1.cs" />
     <Compile Include="Code\UserResources\IResourceManager.cs" />
@@ -126,6 +139,7 @@
     <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Controllers\GDataController.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
@@ -156,7 +170,9 @@
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
-    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.thtml" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.coffee" />
@@ -408,7 +424,7 @@
     <None Include="tests\test\lib\jasmine\MIT.LICENSE" />
     <Content Include="Views\setup\MigrateDatabaseToLatestVersion.cshtml" />
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
-    <Content Include="Views\Admin\_Layout_Appllication.cshtml" />
+    <Content Include="Views\_AdminTemplates\_Layout_Appllication.cshtml" />
     <Content Include="Views\client\test1\Index.cshtml" />
     <Content Include="Content\Apps\test1\StaticContent.html" />
     <Content Include="Views\Shared\_MenuItemTmpl\Menuitem.cshtml" />
@@ -424,6 +440,9 @@
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\GData\Settings.cshtml" />
+    <Content Include="Views\GData\Index.cshtml" />
+    <Content Include="Views\GData\Index_NotAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
@@ -456,7 +475,7 @@
     <Content Include="Views\Admin\template\test.cshtml" />
     <Content Include="Views\templates\drag.cshtml" />
     <Content Include="Views\Admin\template\menu2.cshtml" />
-    <Content Include="Views\Admin\_navbar.cshtml" />
+    <Content Include="Views\_AdminTemplates\_navbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />

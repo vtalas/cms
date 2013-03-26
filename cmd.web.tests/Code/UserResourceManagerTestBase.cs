@@ -8,7 +8,7 @@ namespace cms.web.tests.Code
 {
 	internal class UserResourceManagerTestBase
 	{
-		protected static readonly Guid Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
+		protected static readonly Guid Id = new Guid("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa");
 
 		readonly ApplicationSetting _defaultApp = new ApplicationSetting
 		{
@@ -19,7 +19,6 @@ namespace cms.web.tests.Code
 
 		public ApplicationSetting CreateDefaultApp()
 		{
-
 			var mock = new Mock<DataProviderAbstract>(new Guid("00000000-0000-0000-0000-000000000000"), 1);
 			mock.Setup(x => x.Add(It.IsAny<ApplicationSetting>(), 1))
 				.Returns(_defaultApp);

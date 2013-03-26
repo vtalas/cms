@@ -39,7 +39,7 @@ namespace cms
 			);
 
 			routes.MapRoute(
-				"adminapi", // Route name
+				"adminapi", 
 				"adminapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "adminapi", action = "error", id = UrlParameter.Optional } // Parameter defaults
 			);
@@ -61,8 +61,6 @@ namespace cms
 				"clientapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "ClientApi", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 			);
-
-
 
 			routes.MapRoute(
 				"Default", // Route name

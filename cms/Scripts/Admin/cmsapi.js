@@ -21,7 +21,6 @@
 			return project.getGrid({ id: this._id.$oid },
 				angular.extend({ }, this, { _id: undefined }), cb);
 		};
-		console.log(project)
 		return project;
 	}])
 	.factory('apimenu', ['$resource', 'appSettings', function ($resource, appSettings) {

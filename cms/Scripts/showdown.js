@@ -158,7 +158,7 @@ var _StripLinkDefinitions = function(text) {
 // hash references.
 //
 
-	// Link defs are in the form: ^[id]: url "optional title"
+	// Link defs are in the form: ^[id]: OAuth2AuthorizationUrl "optional title"
 
 	/*
 		var text = text.replace(/
@@ -166,7 +166,7 @@ var _StripLinkDefinitions = function(text) {
 				  [ \t]*
 				  \n?				// maybe *one* newline
 				  [ \t]*
-				<?(\S+?)>?			// url = $2
+				<?(\S+?)>?			// OAuth2AuthorizationUrl = $2
 				  [ \t]*
 				  \n?				// maybe one newline
 				  [ \t]*
@@ -387,7 +387,7 @@ var _RunSpanGamut = function(text) {
 
 	// Make links out of things like `<http://example.com/>`
 	// Must come after _DoAnchors(), because you can use < and >
-	// delimiters in inline links like [this](<url>).
+	// delimiters in inline links like [this](<OAuth2AuthorizationUrl>).
 	text = _DoAutoLinks(text);
 	text = _EncodeAmpsAndAngles(text);
 	text = _DoItalicsAndBold(text);
@@ -450,7 +450,7 @@ var _DoAnchors = function(text) {
 	text = text.replace(/(\[((?:\[[^\]]*\]|[^\[\]])*)\][ ]?(?:\n[ ]*)?\[(.*?)\])()()()()/g,writeAnchorTag);
 
 	//
-	// Next, inline-style links: [link text](url "optional title")
+	// Next, inline-style links: [link text](OAuth2AuthorizationUrl "optional title")
 	//
 
 	/*
@@ -525,7 +525,7 @@ var writeAnchorTag = function(wholeMatch,m1,m2,m3,m4,m5,m6,m7) {
 		}
 		else {
 			if (whole_match.search(/\(\s*\)$/m)>-1) {
-				// Special case for explicit empty url
+				// Special case for explicit empty OAuth2AuthorizationUrl
 				url = "";
 			} else {
 				return whole_match;
@@ -576,7 +576,7 @@ var _DoImages = function(text) {
 	text = text.replace(/(!\[(.*?)\][ ]?(?:\n[ ]*)?\[(.*?)\])()()()()/g,writeImageTag);
 
 	//
-	// Next, handle inline images:  ![alt text](url "optional title")
+	// Next, handle inline images:  ![alt text](OAuth2AuthorizationUrl "optional title")
 	// Don't forget: encode * and _
 
 	/*
@@ -589,7 +589,7 @@ var _DoImages = function(text) {
 			\(					// literal paren
 			[ \t]*
 			()					// no id, so leave $3 empty
-			<?(\S+?)>?			// src url = $4
+			<?(\S+?)>?			// src OAuth2AuthorizationUrl = $4
 			[ \t]*
 			(					// $5
 				(['"])			// quote char = $6
@@ -1167,7 +1167,7 @@ var _EncodeEmailAddress = function(addr) {
 //	   &#64;&#101;x&#x61;&#109;&#x70;&#108;&#x65;&#x2E;&#99;&#111;&#109;</a>
 //
 //  Based on a filter by Matthew Wickline, posted to the BBEdit-Talk
-//  mailing list: <http://tinyurl.com/yu7ue>
+//  mailing list: <http://tinyOAuth2AuthorizationUrl.com/yu7ue>
 //
 
 	// attacklab: why can't javascript speak hex?

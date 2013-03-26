@@ -1,4 +1,4 @@
-
+﻿
 /**
  * @license AngularJS v1.0.3
  * (c) 2010-2012 Google, Inc. http://angularjs.org
@@ -40,7 +40,7 @@ angular.mock.$Browser = function() {
 
   this.isMock = true;
   self.$$url = "http://server/";
-  self.$$lastUrl = self.$$url; // used by url polling fn
+  self.$$lastUrl = self.$$url; // used by OAuth2AuthorizationUrl polling fn
   self.pollFns = [];
 
   // TODO(vojta): remove this temporary api
@@ -48,7 +48,7 @@ angular.mock.$Browser = function() {
   self.$$incOutstandingRequestCount = angular.noop;
 
 
-  // register url polling fn
+  // register OAuth2AuthorizationUrl polling fn
 
   self.onUrlChange = function(listener) {
     self.pollFns.push(
@@ -831,7 +831,7 @@ function createHttpBackendMock($delegate, $browser) {
     };
   }
 
-  // TODO(vojta): change params to: method, url, data, headers, callback
+  // TODO(vojta): change params to: method, OAuth2AuthorizationUrl, data, headers, callback
   function $httpBackend(method, url, data, callback, headers) {
     var xhr = new MockXhr(),
         expectation = expectations[0],
@@ -896,14 +896,14 @@ function createHttpBackendMock($delegate, $browser) {
    * Creates a new backend definition.
    *
    * @param {string} method HTTP method.
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(string|RegExp)=} data HTTP request body.
    * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
    *   object and returns true if the headers match the current definition.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    *   request is handled.
    *
-   *  - respond – `{function([status,] data[, headers])|function(function(method, url, data, headers)}`
+   *  - respond – `{function([status,] data[, headers])|function(function(method, OAuth2AuthorizationUrl, data, headers)}`
    *    – The respond method takes a set of static data to be returned or a function that can return
    *    an array containing response status (number), response data (string) and response headers
    *    (Object).
@@ -933,7 +933,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new backend definition for GET requests. For more info see `when()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(Object|function(Object))=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    * request is handled.
@@ -946,7 +946,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new backend definition for HEAD requests. For more info see `when()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(Object|function(Object))=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    * request is handled.
@@ -959,7 +959,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new backend definition for DELETE requests. For more info see `when()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(Object|function(Object))=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    * request is handled.
@@ -972,7 +972,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new backend definition for POST requests. For more info see `when()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(string|RegExp)=} data HTTP request body.
    * @param {(Object|function(Object))=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
@@ -986,7 +986,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new backend definition for PUT requests.  For more info see `when()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(string|RegExp)=} data HTTP request body.
    * @param {(Object|function(Object))=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
@@ -1000,7 +1000,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new backend definition for JSONP requests. For more info see `when()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    * request is handled.
    */
@@ -1015,14 +1015,14 @@ function createHttpBackendMock($delegate, $browser) {
    * Creates a new request expectation.
    *
    * @param {string} method HTTP method.
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(string|RegExp)=} data HTTP request body.
    * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
    *   object and returns true if the headers match the current expectation.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    *  request is handled.
    *
-   *  - respond – `{function([status,] data[, headers])|function(function(method, url, data, headers)}`
+   *  - respond – `{function([status,] data[, headers])|function(function(method, OAuth2AuthorizationUrl, data, headers)}`
    *    – The respond method takes a set of static data to be returned or a function that can return
    *    an array containing response status (number), response data (string) and response headers
    *    (Object).
@@ -1045,7 +1045,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new request expectation for GET requests. For more info see `expect()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {Object=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    * request is handled. See #expect for more info.
@@ -1058,7 +1058,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new request expectation for HEAD requests. For more info see `expect()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {Object=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    *   request is handled.
@@ -1071,7 +1071,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new request expectation for DELETE requests. For more info see `expect()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {Object=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    *   request is handled.
@@ -1084,7 +1084,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new request expectation for POST requests. For more info see `expect()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(string|RegExp)=} data HTTP request body.
    * @param {Object=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
@@ -1098,7 +1098,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new request expectation for PUT requests. For more info see `expect()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(string|RegExp)=} data HTTP request body.
    * @param {Object=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
@@ -1112,7 +1112,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new request expectation for PATCH requests. For more info see `expect()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @param {(string|RegExp)=} data HTTP request body.
    * @param {Object=} headers HTTP headers.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
@@ -1126,7 +1126,7 @@ function createHttpBackendMock($delegate, $browser) {
    * @description
    * Creates a new request expectation for JSONP requests. For more info see `expect()`.
    *
-   * @param {string|RegExp} url HTTP url.
+   * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
    * @returns {requestHandler} Returns an object with `respond` method that control how a matched
    *   request is handled.
    */
@@ -1424,7 +1424,7 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  *     $httpBackend.whenGET('/phones').respond(phones);
  *
  *     // adds a new phone to the phones array
- *     $httpBackend.whenPOST('/phones').respond(function(method, url, data) {
+ *     $httpBackend.whenPOST('/phones').respond(function(method, OAuth2AuthorizationUrl, data) {
  *       phones.push(angular.fromJSON(data));
  *     });
  *     $httpBackend.whenGET(/^\/templates\//).passThrough();
@@ -1443,14 +1443,14 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  * Creates a new backend definition.
  *
  * @param {string} method HTTP method.
- * @param {string|RegExp} url HTTP url.
+ * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
  * @param {(string|RegExp)=} data HTTP request body.
  * @param {(Object|function(Object))=} headers HTTP headers or function that receives http header
  *   object and returns true if the headers match the current definition.
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
  *   control how a matched request is handled.
  *
- *  - respond – `{function([status,] data[, headers])|function(function(method, url, data, headers)}`
+ *  - respond – `{function([status,] data[, headers])|function(function(method, OAuth2AuthorizationUrl, data, headers)}`
  *    – The respond method takes a set of static data to be returned or a function that can return
  *    an array containing response status (number), response data (string) and response headers
  *    (Object).
@@ -1466,7 +1466,7 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  * @description
  * Creates a new backend definition for GET requests. For more info see `when()`.
  *
- * @param {string|RegExp} url HTTP url.
+ * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
  * @param {(Object|function(Object))=} headers HTTP headers.
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
  *   control how a matched request is handled.
@@ -1479,7 +1479,7 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  * @description
  * Creates a new backend definition for HEAD requests. For more info see `when()`.
  *
- * @param {string|RegExp} url HTTP url.
+ * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
  * @param {(Object|function(Object))=} headers HTTP headers.
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
  *   control how a matched request is handled.
@@ -1492,7 +1492,7 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  * @description
  * Creates a new backend definition for DELETE requests. For more info see `when()`.
  *
- * @param {string|RegExp} url HTTP url.
+ * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
  * @param {(Object|function(Object))=} headers HTTP headers.
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
  *   control how a matched request is handled.
@@ -1505,7 +1505,7 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  * @description
  * Creates a new backend definition for POST requests. For more info see `when()`.
  *
- * @param {string|RegExp} url HTTP url.
+ * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
  * @param {(string|RegExp)=} data HTTP request body.
  * @param {(Object|function(Object))=} headers HTTP headers.
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
@@ -1519,7 +1519,7 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  * @description
  * Creates a new backend definition for PUT requests.  For more info see `when()`.
  *
- * @param {string|RegExp} url HTTP url.
+ * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
  * @param {(string|RegExp)=} data HTTP request body.
  * @param {(Object|function(Object))=} headers HTTP headers.
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
@@ -1533,7 +1533,7 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  * @description
  * Creates a new backend definition for PATCH requests.  For more info see `when()`.
  *
- * @param {string|RegExp} url HTTP url.
+ * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
  * @param {(string|RegExp)=} data HTTP request body.
  * @param {(Object|function(Object))=} headers HTTP headers.
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
@@ -1547,7 +1547,7 @@ angular.module('ngMockE2E', ['ng']).config(function($provide) {
  * @description
  * Creates a new backend definition for JSONP requests. For more info see `when()`.
  *
- * @param {string|RegExp} url HTTP url.
+ * @param {string|RegExp} OAuth2AuthorizationUrl HTTP OAuth2AuthorizationUrl.
  * @returns {requestHandler} Returns an object with `respond` and `passThrough` methods that
  *   control how a matched request is handled.
  */

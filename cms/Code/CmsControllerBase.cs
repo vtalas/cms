@@ -15,6 +15,7 @@ namespace cms.Code
 		{
 			return string.Format("{0}/{1}", Application, view);
 		}
+		
 		public string Application { get;  private set; }
 		
 		public Guid ApplicationId { get;  private set; }
@@ -46,10 +47,6 @@ namespace cms.Code
 			}
 
 			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId, WebSecurity.CurrentUserId));
-
-	
-
-
 		}
 	}
 }

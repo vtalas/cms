@@ -1,8 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using BundleTransformer.Core.FileSystem;
 using BundleTransformer.Core.Web;
 using NUnit.Framework;
+using Newtonsoft.Json;
+using cms.Code.LinkAccounts;
 using cms.Code.UserResources;
 using cms.web.tests.Code;
 
@@ -40,7 +43,7 @@ namespace cms.web.tests
 		[Test]
 		public void CreateAndCheckIfExists_test()
 		{
-			var appId = new Guid();
+			var appId = Guid.NewGuid();
 			var res = UserResourceManager.Create(appId, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
 			Assert.IsTrue(res.Exist());
 			Cleanup(appId);
@@ -49,7 +52,7 @@ namespace cms.web.tests
 		[Test]
 		public void TryCreateWithSameName_test()
 		{
-			var appId = new Guid();
+			var appId = Guid.NewGuid();
 			UserResourceManager.Create(appId, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
 			Assert.Throws<Exception>(() => UserResourceManager.Create(appId, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject()));
 			Cleanup(appId);
@@ -58,7 +61,7 @@ namespace cms.web.tests
 		[Test]
 		public void GetApp_ApplicationExists_test()
 		{
-			var appid = new Guid();
+			var appid = Guid.NewGuid();
 			UserResourceManager.Create(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
 			var res = UserResourceManager.Get(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
 			Assert.IsTrue(res.Exist());
@@ -68,7 +71,7 @@ namespace cms.web.tests
 		[Test]
 		public void GetApp_ApplicationDoesntExists_test()
 		{
-			var appId = new Guid();
+			var appId = Guid.NewGuid();
 			Assert.Throws<DirectoryNotFoundException>(() => UserResourceManager.Get(appId, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject()));
 		}
 
@@ -83,6 +86,43 @@ namespace cms.web.tests
 			resources.IncludeDirectory("js");
 			Assert.AreEqual(4, resources.Assets.Count);
 		}
+
+		[Test]
+		public void SettingsStorage_test()
+		{
+			var appid = Guid.NewGuid();
+			UserResourceManager.Create(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
+			var res = UserResourceManager.Get(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
+			res.SettingsStorage("xxx", "value");
+			var r = res.SettingsStorage("xxx");
+			Assert.AreEqual("value", r);
+			Cleanup(appid);
+		}
+
+		[Test]
+		public void SettingsStorage_json_test()
+		{
+			var appid = Guid.NewGuid();
+			UserResourceManager.Create(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
+			var res = UserResourceManager.Get(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
+
+			var aa = new GdataJsonFileStorage(res)
+				{
+					AccessCode = "AccessCode",
+					AccessToken = "Access token",
+					ClientId = "client id",
+					ClientSecret = "Client secret",
+					TokenExpiry = DateTime.Now
+				};
+
+
+
+
+			aa.Save();
+			
+		}
+
+
 
 	}
 }

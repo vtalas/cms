@@ -10984,7 +10984,7 @@ $.widget( "ui.tabs", {
 		this.anchors.each(function( i, a ) {
 			var href = $( a ).attr( "href" );
 			// For dynamically created HTML that contains a hash as href IE < 8 expands
-			// such href to the full page url with hash and then misinterprets tab as ajax.
+			// such href to the full page OAuth2AuthorizationUrl with hash and then misinterprets tab as ajax.
 			// Same consideration applies for an added tab with a fragment identifier
 			// since a[href=#fragment-identifier] does unexpectedly not match.
 			// Thus normalize href attribute...
@@ -11005,8 +11005,8 @@ $.widget( "ui.tabs", {
 				// required for restore on destroy
 				$.data( a, "href.tabs", href );
 
-				// TODO until #3808 is fixed strip fragment identifier from url
-				// (IE fails to load from such url)
+				// TODO until #3808 is fixed strip fragment identifier from OAuth2AuthorizationUrl
+				// (IE fails to load from such OAuth2AuthorizationUrl)
 				$.data( a, "load.tabs", href.replace( /#.*$/, "" ) );
 
 				var id = self._tabId( a );
@@ -11036,7 +11036,7 @@ $.widget( "ui.tabs", {
 
 			// Selected tab
 			// use "selected" option or try to retrieve:
-			// 1. from fragment identifier in url
+			// 1. from fragment identifier in OAuth2AuthorizationUrl
 			// 2. from cookie
 			// 3. from selected class attribute on <li>
 			if ( o.selected === undefined ) {

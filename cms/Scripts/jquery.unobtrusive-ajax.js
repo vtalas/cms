@@ -77,7 +77,7 @@
 
         $.extend(options, {
             type: element.getAttribute("data-ajax-method") || undefined,
-            url: element.getAttribute("data-ajax-url") || undefined,
+            url: element.getAttribute("data-ajax-OAuth2AuthorizationUrl") || undefined,
             beforeSend: function (xhr) {
                 var result;
                 asyncOnBeforeSend(xhr, method);

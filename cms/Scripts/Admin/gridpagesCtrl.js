@@ -1,9 +1,11 @@
 var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
+
 	$scope.$on("setCultureEvent", function () {
 		console.log("gridpagesCtrl set culture");
 	});
 
 	$scope.data = GridApi.grids({ applicationId: appSettings.Id }, function (d) {
+
 	});
 
 	$scope.getLink = function (item) {
@@ -31,7 +33,6 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 
 	$scope.add = function () {
 		var newitem = $scope.newitem;
-
 
 		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/AddGrid', data: { data: newitem } })
 			.success(function (data, status, headers, config) {

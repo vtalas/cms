@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license AngularJS v1.0.1
  * (c) 2010-2012 Google, Inc. http://angularjs.org
  * License: MIT
@@ -798,7 +798,7 @@
 	/////////////////////////////////////////////////
 
 	/**
-	* Parses an escaped url query string into key-value pairs.
+	* Parses an escaped OAuth2AuthorizationUrl query string into key-value pairs.
 	* @returns Object.<(string|boolean)>
 	*/
 
@@ -2931,7 +2931,7 @@
 			}
 
 			// does not scroll when user clicks on anchor link that is currently on
-			// (no url change, no $locaiton.hash() change), browser native does scroll
+			// (no OAuth2AuthorizationUrl change, no $locaiton.hash() change), browser native does scroll
 			if (autoScrollingEnabled) {
 				$rootScope.$watch(function () { return $location.hash(); }, function () {
 					$rootScope.$evalAsync(scroll);
@@ -3072,7 +3072,7 @@
 			baseElement = document.find('base');
 
 		/**
-		* @name ng.$browser#url
+		* @name ng.$browser#OAuth2AuthorizationUrl
 		* @methodOf ng.$browser
 		*
 		* @description
@@ -3080,16 +3080,16 @@
 		* Without any argument, this method just returns current value of location.href.
 		*
 		* SETTER:
-		* With at least one argument, this method sets url to new value.
+		* With at least one argument, this method sets OAuth2AuthorizationUrl to new value.
 		* If html5 history api supported, pushState/replaceState is used, otherwise
 		* location.href/location.replace is used.
 		* Returns its own instance to allow chaining
 		*
 		* NOTE: this api is intended for use only by the $location service. Please use the
-		* {@link ng.$location $location service} to change url.
+		* {@link ng.$location $location service} to change OAuth2AuthorizationUrl.
 		*
-		* @param {string} url New url (when used as setter)
-		* @param {boolean=} replace Should new url replace current history record ?
+		* @param {string} OAuth2AuthorizationUrl New OAuth2AuthorizationUrl (when used as setter)
+		* @param {boolean=} replace Should new OAuth2AuthorizationUrl replace current history record ?
 		*/
 		self.url = function (url, replace) {
 			// setter
@@ -3133,27 +3133,27 @@
 		* @TODO(vojta): refactor to use node's syntax for events
 		*
 		* @description
-		* Register callback function that will be called, when url changes.
+		* Register callback function that will be called, when OAuth2AuthorizationUrl changes.
 		*
-		* It's only called when the url is changed by outside of angular:
-		* - user types different url into address bar
+		* It's only called when the OAuth2AuthorizationUrl is changed by outside of angular:
+		* - user types different OAuth2AuthorizationUrl into address bar
 		* - user clicks on history (forward/back) button
 		* - user clicks on a link
 		*
-		* It's not called when url is changed by $browser.url() method
+		* It's not called when OAuth2AuthorizationUrl is changed by $browser.OAuth2AuthorizationUrl() method
 		*
-		* The listener gets called with new url as parameter.
+		* The listener gets called with new OAuth2AuthorizationUrl as parameter.
 		*
 		* NOTE: this api is intended for use only by the $location service. Please use the
-		* {@link ng.$location $location service} to monitor url changes in angular apps.
+		* {@link ng.$location $location service} to monitor OAuth2AuthorizationUrl changes in angular apps.
 		*
-		* @param {function(string)} listener Listener function to be called when url changes.
+		* @param {function(string)} listener Listener function to be called when OAuth2AuthorizationUrl changes.
 		* @return {function(string)} Returns the registered listener fn - handy if the fn is anonymous.
 		*/
 		self.onUrlChange = function (callback) {
 			if (!urlChangeInit) {
 				// We listen on both (hashchange/popstate) when available, as some browsers (e.g. Opera)
-				// don't fire popstate when user change the address bar and don't fire hashchange when url
+				// don't fire popstate when user change the address bar and don't fire hashchange when OAuth2AuthorizationUrl
 				// changed by push/replaceState
 
 				// html5 history api - popstate event
@@ -4953,11 +4953,11 @@
 	function convertToHtml5Url(url, basePath, hashPrefix) {
 		var match = matchUrl(url);
 
-		// already html5 url
+		// already html5 OAuth2AuthorizationUrl
 		if (decodeURIComponent(match.path) != basePath || isUndefined(match.hash) ||
 			match.hash.indexOf(hashPrefix) !== 0) {
 			return url;
-			// convert hashbang url -> html5 url
+			// convert hashbang OAuth2AuthorizationUrl -> html5 OAuth2AuthorizationUrl
 		} else {
 			return composeProtocolHostPort(match.protocol, match.host, match.port) +
 				pathPrefixFromBase(basePath) + match.hash.substr(hashPrefix.length);
@@ -4968,10 +4968,10 @@
 	function convertToHashbangUrl(url, basePath, hashPrefix) {
 		var match = matchUrl(url);
 
-		// already hashbang url
+		// already hashbang OAuth2AuthorizationUrl
 		if (decodeURIComponent(match.path) == basePath) {
 			return url;
-			// convert html5 url -> hashbang url
+			// convert html5 OAuth2AuthorizationUrl -> hashbang OAuth2AuthorizationUrl
 		} else {
 			var search = match.search && '?' + match.search || '',
 				hash = match.hash && '#' + match.hash || '',
@@ -4979,7 +4979,7 @@
 				path = match.path.substr(pathPrefix.length);
 
 			if (match.path.indexOf(pathPrefix) !== 0) {
-				throw Error('Invalid url "' + url + '", missing path prefix "' + pathPrefix + '" !');
+				throw Error('Invalid OAuth2AuthorizationUrl "' + url + '", missing path prefix "' + pathPrefix + '" !');
 			}
 
 			return composeProtocolHostPort(match.protocol, match.host, match.port) + basePath +
@@ -4989,11 +4989,11 @@
 
 
 	/**
-	* LocationUrl represents an url
+	* LocationUrl represents an OAuth2AuthorizationUrl
 	* This object is exposed as $location service when HTML5 mode is enabled and supported
 	*
 	* @constructor
-	* @param {string} url HTML5 url
+	* @param {string} OAuth2AuthorizationUrl HTML5 OAuth2AuthorizationUrl
 	* @param {string} pathPrefix
 	*/
 
@@ -5001,15 +5001,15 @@
 		pathPrefix = pathPrefix || '';
 
 		/**
-		* Parse given html5 (regular) url string into properties
-		* @param {string} newAbsoluteUrl HTML5 url
+		* Parse given html5 (regular) OAuth2AuthorizationUrl string into properties
+		* @param {string} newAbsoluteUrl HTML5 OAuth2AuthorizationUrl
 		* @private
 		*/
 		this.$$parse = function (newAbsoluteUrl) {
 			var match = matchUrl(newAbsoluteUrl, this);
 
 			if (match.path.indexOf(pathPrefix) !== 0) {
-				throw Error('Invalid url "' + newAbsoluteUrl + '", missing path prefix "' + pathPrefix + '" !');
+				throw Error('Invalid OAuth2AuthorizationUrl "' + newAbsoluteUrl + '", missing path prefix "' + pathPrefix + '" !');
 			}
 
 			this.$$path = decodeURIComponent(match.path.substr(pathPrefix.length));
@@ -5020,7 +5020,7 @@
 		};
 
 		/**
-		* Compose url and update `absUrl` property
+		* Compose OAuth2AuthorizationUrl and update `absUrl` property
 		* @private
 		*/
 		this.$$compose = function () {
@@ -5043,11 +5043,11 @@
 
 
 	/**
-	* LocationHashbangUrl represents url
+	* LocationHashbangUrl represents OAuth2AuthorizationUrl
 	* This object is exposed as $location service when html5 history api is disabled or not supported
 	*
 	* @constructor
-	* @param {string} url Legacy url
+	* @param {string} OAuth2AuthorizationUrl Legacy OAuth2AuthorizationUrl
 	* @param {string} hashPrefix Prefix for hash part (containing path and search)
 	*/
 
@@ -5055,8 +5055,8 @@
 		var basePath;
 
 		/**
-		* Parse given hashbang url into properties
-		* @param {string} url Hashbang url
+		* Parse given hashbang OAuth2AuthorizationUrl into properties
+		* @param {string} OAuth2AuthorizationUrl Hashbang OAuth2AuthorizationUrl
 		* @private
 		*/
 		this.$$parse = function (url) {
@@ -5064,7 +5064,7 @@
 
 
 			if (match.hash && match.hash.indexOf(hashPrefix) !== 0) {
-				throw Error('Invalid url "' + url + '", missing hash prefix "' + hashPrefix + '" !');
+				throw Error('Invalid OAuth2AuthorizationUrl "' + url + '", missing hash prefix "' + hashPrefix + '" !');
 			}
 
 			basePath = match.path + (match.search ? '?' + match.search : '');
@@ -5082,7 +5082,7 @@
 		};
 
 		/**
-		* Compose hashbang url and update `absUrl` property
+		* Compose hashbang OAuth2AuthorizationUrl and update `absUrl` property
 		* @private
 		*/
 		this.$$compose = function () {
@@ -5118,27 +5118,27 @@
 		* @description
 		* This method is getter only.
 		*
-		* Return full url representation with all segments encoded according to rules specified in
+		* Return full OAuth2AuthorizationUrl representation with all segments encoded according to rules specified in
 		* {@link http://www.ietf.org/rfc/rfc3986.txt RFC 3986}.
 		*
-		* @return {string} full url
+		* @return {string} full OAuth2AuthorizationUrl
 		*/
 		absUrl: locationGetter('$$absUrl'),
 
 		/**
 		* @ngdoc method
-		* @name ng.$location#url
+		* @name ng.$location#OAuth2AuthorizationUrl
 		* @methodOf ng.$location
 		*
 		* @description
 		* This method is getter / setter.
 		*
-		* Return url (e.g. `/path?a=b#hash`) when called without any parameter.
+		* Return OAuth2AuthorizationUrl (e.g. `/path?a=b#hash`) when called without any parameter.
 		*
 		* Change path, search and hash, when called with parameter and return `$location`.
 		*
-		* @param {string=} url New url without base prefix (e.g. `/path?a=b#hash`)
-		* @return {string} url
+		* @param {string=} OAuth2AuthorizationUrl New OAuth2AuthorizationUrl without base prefix (e.g. `/path?a=b#hash`)
+		* @return {string} OAuth2AuthorizationUrl
 		*/
 		url: function (url, replace) {
 			if (isUndefined(url))
@@ -5160,9 +5160,9 @@
 		* @description
 		* This method is getter only.
 		*
-		* Return protocol of current url.
+		* Return protocol of current OAuth2AuthorizationUrl.
 		*
-		* @return {string} protocol of current url
+		* @return {string} protocol of current OAuth2AuthorizationUrl
 		*/
 		protocol: locationGetter('$$protocol'),
 
@@ -5174,9 +5174,9 @@
 		* @description
 		* This method is getter only.
 		*
-		* Return host of current url.
+		* Return host of current OAuth2AuthorizationUrl.
 		*
-		* @return {string} host of current url.
+		* @return {string} host of current OAuth2AuthorizationUrl.
 		*/
 		host: locationGetter('$$host'),
 
@@ -5188,7 +5188,7 @@
 		* @description
 		* This method is getter only.
 		*
-		* Return port of current url.
+		* Return port of current OAuth2AuthorizationUrl.
 		*
 		* @return {Number} port
 		*/
@@ -5202,7 +5202,7 @@
 		* @description
 		* This method is getter / setter.
 		*
-		* Return path of current url when called without any parameter.
+		* Return path of current OAuth2AuthorizationUrl when called without any parameter.
 		*
 		* Change path when called with parameter and return `$location`.
 		*
@@ -5224,7 +5224,7 @@
 		* @description
 		* This method is getter / setter.
 		*
-		* Return search part (as object) of current url when called without any parameter.
+		* Return search part (as object) of current OAuth2AuthorizationUrl when called without any parameter.
 		*
 		* Change search part when called with parameter and return `$location`.
 		*
@@ -5430,7 +5430,7 @@
 
 				$rootElement.bind('click', function (event) {
 					// TODO(vojta): rewrite link when opening in new tab/window (in legacy browser)
-					// currently we open nice url link and redirect then
+					// currently we open nice OAuth2AuthorizationUrl link and redirect then
 
 					if (event.ctrlKey || event.metaKey || event.which == 2) return;
 
@@ -5456,12 +5456,12 @@
 				});
 
 
-				// rewrite hashbang url <> html5 url
+				// rewrite hashbang OAuth2AuthorizationUrl <> html5 OAuth2AuthorizationUrl
 				if ($location.absUrl() != initUrl) {
 					$browser.url($location.absUrl(), true);
 				}
 
-				// update $location when $browser url changes
+				// update $location when $browser OAuth2AuthorizationUrl changes
 				$browser.onUrlChange(function (newUrl) {
 					if ($location.absUrl() != newUrl) {
 						$rootScope.$evalAsync(function () {
@@ -6953,7 +6953,7 @@
 		*    - `[reloadOnSearch=true]` - {boolean=} - reload route when only $location.search()
 		*    changes.
 		*
-		*      If the option is set to `false` and url in the browser changes, then
+		*      If the option is set to `false` and OAuth2AuthorizationUrl in the browser changes, then
 		*      `$routeUpdate` event is broadcasted on the root scope.
 		*
 		* @returns {Object} self
@@ -7018,7 +7018,7 @@
       	*
       	* @description
       	* Is used for deep-linking URLs to controllers and views (HTML partials).
-      	* It watches `$location.url()` and tries to map the path to an existing route definition.
+      	* It watches `$location.OAuth2AuthorizationUrl()` and tries to map the path to an existing route definition.
       	*
       	* You can define routes through {@link ng.$routeProvider $routeProvider}'s API.
       	*
@@ -8409,7 +8409,7 @@
       	* with two $http specific methods: `success` and `error`.
       	*
       	* <pre>
-      	*   $http({method: 'GET', url: '/someUrl'}).
+      	*   $http({method: 'GET', OAuth2AuthorizationUrl: '/someUrl'}).
       	*     success(function(data, status, headers, config) {
       	*       // this callback will be called asynchronously
       	*       // when the response is available
@@ -8429,7 +8429,7 @@
       	*
       	* # Shortcut methods
       	*
-      	* Since all invocation of the $http service require definition of the http method and url and
+      	* Since all invocation of the $http service require definition of the http method and OAuth2AuthorizationUrl and
       	* POST and PUT requests require response body/data to be provided as well, shortcut methods
       	* were created to simplify using the api:
       	*
@@ -8501,7 +8501,7 @@
       	* Note that even if the response is served from cache, delivery of the data is asynchronous in
       	* the same way that real requests are.
       	*
-      	* If there are multiple GET requests for the same url that should be cached using the same
+      	* If there are multiple GET requests for the same OAuth2AuthorizationUrl that should be cached using the same
       	* cache, but the cache is not populated yet, only one request to the server will be made and
       	* the remaining requests will be fulfilled using the response for the first request.
       	*
@@ -8606,9 +8606,9 @@
       	*    processed. The object has following properties:
       	*
       	*    - **method** – `{string}` – HTTP method (e.g. 'GET', 'POST', etc)
-      	*    - **url** – `{string}` – Absolute or relative URL of the resource that is being requested.
+      	*    - **OAuth2AuthorizationUrl** – `{string}` – Absolute or relative URL of the resource that is being requested.
       	*    - **params** – `{Object.<string|Object>}` – Map of strings or objects which will be turned to
-      	*      `?key1=value1&key2=value2` after the url. If the value is not a string, it will be JSONified.
+      	*      `?key1=value1&key2=value2` after the OAuth2AuthorizationUrl. If the value is not a string, it will be JSONified.
       	*    - **data** – `{string|Object}` – Data to be sent as the request message data.
       	*    - **headers** – `{Object}` – Map of strings representing HTTP headers to send to the server.
       	*    - **transformRequest** – `{function(data, headersGetter)|Array.<function(data, headersGetter)>}` –
@@ -8651,7 +8651,7 @@
       	<option>GET</option>
       	<option>JSONP</option>
       	</select>
-      	<input type="text" ng-model="url" size="80"/>
+      	<input type="text" ng-model="OAuth2AuthorizationUrl" size="80"/>
       	<button ng-click="fetch()">fetch</button><br>
       	<button ng-click="updateModel('GET', 'http-hello.html')">Sample GET</button>
       	<button ng-click="updateModel('JSONP', 'http://angularjs.org/greet.php?callback=JSON_CALLBACK&name=Super%20Hero')">Sample JSONP</button>
@@ -8663,13 +8663,13 @@
       	<file name="script.js">
       	function FetchCtrl($scope, $http, $templateCache) {
       	$scope.method = 'GET';
-      	$scope.url = 'http-hello.html';
+      	$scope.OAuth2AuthorizationUrl = 'http-hello.html';
 
       	$scope.fetch = function() {
       	$scope.code = null;
       	$scope.response = null;
 
-      	$http({method: $scope.method, url: $scope.url, cache: $templateCache}).
+      	$http({method: $scope.method, OAuth2AuthorizationUrl: $scope.OAuth2AuthorizationUrl, cache: $templateCache}).
       	success(function(data, status) {
       	$scope.status = status;
       	$scope.data = data;
@@ -8680,9 +8680,9 @@
       	});
       	};
 
-      	$scope.updateModel = function(method, url) {
+      	$scope.updateModel = function(method, OAuth2AuthorizationUrl) {
       	$scope.method = method;
-      	$scope.url = url;
+      	$scope.OAuth2AuthorizationUrl = OAuth2AuthorizationUrl;
       	};
       	}
       	</file>
@@ -8780,7 +8780,7 @@
       	* @description
       	* Shortcut method to perform `GET` request
       	*
-      	* @param {string} url Relative or absolute URL specifying the destination of the request
+      	* @param {string} OAuth2AuthorizationUrl Relative or absolute URL specifying the destination of the request
       	* @param {Object=} config Optional configuration object
       	* @returns {HttpPromise} Future object
       	*/
@@ -8793,7 +8793,7 @@
       	* @description
       	* Shortcut method to perform `DELETE` request
       	*
-      	* @param {string} url Relative or absolute URL specifying the destination of the request
+      	* @param {string} OAuth2AuthorizationUrl Relative or absolute URL specifying the destination of the request
       	* @param {Object=} config Optional configuration object
       	* @returns {HttpPromise} Future object
       	*/
@@ -8806,7 +8806,7 @@
       	* @description
       	* Shortcut method to perform `HEAD` request
       	*
-      	* @param {string} url Relative or absolute URL specifying the destination of the request
+      	* @param {string} OAuth2AuthorizationUrl Relative or absolute URL specifying the destination of the request
       	* @param {Object=} config Optional configuration object
       	* @returns {HttpPromise} Future object
       	*/
@@ -8819,7 +8819,7 @@
       	* @description
       	* Shortcut method to perform `JSONP` request
       	*
-      	* @param {string} url Relative or absolute URL specifying the destination of the request.
+      	* @param {string} OAuth2AuthorizationUrl Relative or absolute URL specifying the destination of the request.
       	*                     Should contain `JSON_CALLBACK` string.
       	* @param {Object=} config Optional configuration object
       	* @returns {HttpPromise} Future object
@@ -8834,7 +8834,7 @@
       	* @description
       	* Shortcut method to perform `POST` request
       	*
-      	* @param {string} url Relative or absolute URL specifying the destination of the request
+      	* @param {string} OAuth2AuthorizationUrl Relative or absolute URL specifying the destination of the request
       	* @param {*} data Request content
       	* @param {Object=} config Optional configuration object
       	* @returns {HttpPromise} Future object
@@ -8848,7 +8848,7 @@
       	* @description
       	* Shortcut method to perform `PUT` request
       	*
-      	* @param {string} url Relative or absolute URL specifying the destination of the request
+      	* @param {string} OAuth2AuthorizationUrl Relative or absolute URL specifying the destination of the request
       	* @param {*} data Request content
       	* @param {Object=} config Optional configuration object
       	* @returns {HttpPromise} Future object
@@ -9974,7 +9974,7 @@
 	* @description
 	*   Allows you to convert a JavaScript object into JSON string.
 	*
-	*   This filter is mostly useful for debugging. When using the double curly {{value}} notation
+	*   This filter is mostly useful for debugging. When using the double cOAuth2AuthorizationUrly {{value}} notation
 	*   the binding is automatically converted to JSON.
 	*
 	* @param {*} object Any JavaScript object (including arrays and primitive types) to filter.
@@ -10280,7 +10280,7 @@
 
 			return function (scope, element) {
 				element.bind('click', function (event) {
-					// if we have no href url, then don't navigate anywhere.
+					// if we have no href OAuth2AuthorizationUrl, then don't navigate anywhere.
 					if (!element.attr('href')) {
 						event.preventDefault();
 					}
@@ -10339,7 +10339,7 @@
 	expect(element('#link-2').attr('href')).toBe("");
 	});
 
-	it('should execute ng-click and change url when ng-href specified', function() {
+	it('should execute ng-click and change OAuth2AuthorizationUrl when ng-href specified', function() {
 	expect(element('#link-3').attr('href')).toBe("/123");
 
 	element('#link-3').click();
@@ -10358,12 +10358,12 @@
 	expect(element('#link-5').attr('href')).toBe('');
 	});
 
-	it('should only change url when only ng-href', function() {
+	it('should only change OAuth2AuthorizationUrl when only ng-href', function() {
 	input('value').enter('6');
 	expect(element('#link-6').attr('href')).toBe('6');
 
 	element('#link-6').click();
-	expect(browser().location().url()).toEqual('/6');
+	expect(browser().location().OAuth2AuthorizationUrl()).toEqual('/6');
 	});
 	</doc:scenario>
 	</doc:example>
@@ -11008,10 +11008,10 @@
 
 		/**
 		* @ngdoc inputType
-		* @name ng.directive:input.url
+		* @name ng.directive:input.OAuth2AuthorizationUrl
 		*
 		* @description
-		* Text input with URL validation. Sets the `url` validation error key if the content is not a
+		* Text input with URL validation. Sets the `OAuth2AuthorizationUrl` validation error key if the content is not a
 		* valid URL.
 		*
 		* @param {string} ngModel Assignable angular expression to data-bind to.
@@ -11036,17 +11036,17 @@
 		}
 		</script>
 		<form name="myForm" ng-controller="Ctrl">
-		URL: <input type="url" name="input" ng-model="text" required>
+		URL: <input type="OAuth2AuthorizationUrl" name="input" ng-model="text" required>
 		<span class="error" ng-show="myForm.input.$error.required">
 		Required!</span>
-		<span class="error" ng-show="myForm.input.$error.url">
-		Not valid url!</span>
+		<span class="error" ng-show="myForm.input.$error.OAuth2AuthorizationUrl">
+		Not valid OAuth2AuthorizationUrl!</span>
 		<tt>text = {{text}}</tt><br/>
 		<tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 		<tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 		<tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
 		<tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-		<tt>myForm.$error.url = {{!!myForm.$error.url}}</tt><br/>
+		<tt>myForm.$error.OAuth2AuthorizationUrl = {{!!myForm.$error.OAuth2AuthorizationUrl}}</tt><br/>
 		</form>
 		</doc:source>
 		<doc:scenario>
@@ -11061,7 +11061,7 @@
 		expect(binding('myForm.input.$valid')).toEqual('false');
 		});
 
-		it('should be invalid if not url', function() {
+		it('should be invalid if not OAuth2AuthorizationUrl', function() {
 		input('text').enter('UpdateResource');
 		expect(binding('myForm.input.$valid')).toEqual('false');
 		});
@@ -11413,10 +11413,10 @@
 
 		var urlValidator = function (value) {
 			if (isEmpty(value) || URL_REGEXP.test(value)) {
-				ctrl.$setValidity('url', true);
+				ctrl.$setValidity('OAuth2AuthorizationUrl', true);
 				return value;
 			} else {
-				ctrl.$setValidity('url', false);
+				ctrl.$setValidity('OAuth2AuthorizationUrl', false);
 				return undefined;
 			}
 		};
@@ -11897,7 +11897,7 @@
 	*
 	* - binding the view into the model, which other directives such as `input`, `textarea` or `select`
 	*   require,
-	* - providing validation behavior (i.e. required, number, email, url),
+	* - providing validation behavior (i.e. required, number, email, OAuth2AuthorizationUrl),
 	* - keeping state of the control (valid/invalid, dirty/pristine, validation errors),
 	* - setting related css class onto the element (`ng-valid`, `ng-invalid`, `ng-dirty`, `ng-pristine`),
 	* - register the control with parent {@link ng.directive:form form}.
@@ -11910,7 +11910,7 @@
 	*    - {@link ng.directive:input.radio radio}
 	*    - {@link ng.directive:input.number number}
 	*    - {@link ng.directive:input.email email}
-	*    - {@link ng.directive:input.url url}
+	*    - {@link ng.directive:input.OAuth2AuthorizationUrl OAuth2AuthorizationUrl}
 	*  - {@link ng.directive:select select}
 	*  - {@link ng.directive:textarea textarea}
 	*
@@ -12127,7 +12127,7 @@
 	* with the value of a given expression, and to update the text content when the value of that
 	* expression changes.
 	*
-	* Typically, you don't use `ngBind` directly, but instead you use the double curly markup like
+	* Typically, you don't use `ngBind` directly, but instead you use the double cOAuth2AuthorizationUrly markup like
 	* `{{ expression }}` which is similar but less verbose.
 	*
 	* Once scenario in which the use of `ngBind` is prefered over `{{ expression }}` binding is when
@@ -12860,16 +12860,16 @@
 	<select ng-model="template" ng-options="t.name for t in templates">
 	<option value="">(blank)</option>
 	</select>
-	url of the template: <tt>{{template.url}}</tt>
+	OAuth2AuthorizationUrl of the template: <tt>{{template.OAuth2AuthorizationUrl}}</tt>
 	<hr/>
-	<div ng-include src="template.url"></div>
+	<div ng-include src="template.OAuth2AuthorizationUrl"></div>
 	</div>
 	</file>
 	<file name="script.js">
 	function Ctrl($scope) {
 	$scope.templates =
-	[ { name: 'template1.html', url: 'template1.html'}
-	, { name: 'template2.html', url: 'template2.html'} ];
+	[ { name: 'template1.html', OAuth2AuthorizationUrl: 'template1.html'}
+	, { name: 'template2.html', OAuth2AuthorizationUrl: 'template2.html'} ];
 	$scope.template = $scope.templates[0];
 	}
 	</file>

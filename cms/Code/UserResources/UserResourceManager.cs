@@ -2,19 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using BundleTransformer.CoffeeScript.Translators;
 using BundleTransformer.Core;
 using BundleTransformer.Core.Assets;
 using BundleTransformer.Core.FileSystem;
-using BundleTransformer.Core.Translators;
 using BundleTransformer.Core.Web;
 using System.Linq;
-using BundleTransformer.Less.Configuration;
-using BundleTransformer.Less.Translators;
 
 namespace cms.Code.UserResources
 {
-	public interface IResourceManager
+	public interface IKeyValueStorage
+	{
+		string SettingsStorage(string key);
+		string SettingsStorage(string key, string value);
+	}
+
+	public interface IResourceManager : IKeyValueStorage
 	{
 		Guid Id { get; }
 		IDictionary<string, IAssetExt> Assets { get; }
@@ -26,7 +28,7 @@ namespace cms.Code.UserResources
 		string RenderHtmlTemplates();
 	}
 
-	public class UserResourceManager: IResourceManager
+	public class UserResourceManager : IResourceManager
 	{
 		public Guid Id { get; private set; }
 		private IDictionary<string, IAssetExt> AssetsValues { get; set; }
@@ -46,7 +48,7 @@ namespace cms.Code.UserResources
 			FileSystemWrapper = fileSystemWrapper;
 			Id = id;
 			AssetsValues = new Dictionary<string, IAssetExt>();
-			BaseDir = Path.Combine( HttpAppInfo.RootPath, Id.ToString());
+			BaseDir = Path.Combine(HttpAppInfo.RootPath, Id.ToString());
 		}
 
 		public static IResourceManager Get(Guid id)
@@ -75,7 +77,7 @@ namespace cms.Code.UserResources
 		{
 			return Create(id, BundleTransformerContext.Current.GetApplicationInfo(), BundleTransformerContext.Current.GetFileSystemWrapper());
 		}
-		
+
 		public bool Exist()
 		{
 			return FileSystemWrapper.DirectoryExists(BaseDir);
@@ -87,6 +89,7 @@ namespace cms.Code.UserResources
 			{
 				throw new Exception("directory exists");
 			}
+			FileSystemWrapper.CreateDirectory(Path.Combine(BaseDir, "settings"));
 			FileSystemWrapper.CreateDirectory(BaseDir);
 		}
 
@@ -144,7 +147,7 @@ namespace cms.Code.UserResources
 			return Render(contentToRender);
 		}
 
-		public string RenderHtmlTemplates(Func<IAssetExt, bool> restriction )
+		public string RenderHtmlTemplates(Func<IAssetExt, bool> restriction)
 		{
 			return Render(Assets.Where(x => x.Value.IsHtmlTemplate && restriction(x.Value)).ToList());
 		}
@@ -154,8 +157,35 @@ namespace cms.Code.UserResources
 			var contentToRender = Assets.Where(x => x.Value.IsHtmlTemplate).ToList();
 			return Render(contentToRender);
 		}
+
+		public string SettingsStorage(string key)
+		{
+			var filePath = Path.Combine(BaseDir, "settings", key);
+			
+			if (!FileSystemWrapper.FileExists(filePath))
+			{
+				return "";
+			}
+
+			using (var streamReader = new StreamReader(filePath))
+			{
+				return streamReader.ReadToEnd();
+			}
+		}
+
+		public string SettingsStorage(string key, string value)
+		{
+			var filePath = Path.Combine(BaseDir, "settings", key);
+
+			using (var outfile = new StreamWriter(filePath))
+			{
+				outfile.Write(value);
+			}
+
+			return value;
+		}
 	}
 
 
-	
+
 }

@@ -23,7 +23,10 @@
 						@Html.ActionLink("logout", "LogOff", "Account")
 					</li>
 					<li>
-						@WebSecurity.CurrentUserName
+						@Html.ActionLink("nastaveni", "Settings", "Admin")
+					</li>
+					<li>
+						<span>@WebSecurity.CurrentUserName</span>
 					</li>
 				</ul>
 			</div>

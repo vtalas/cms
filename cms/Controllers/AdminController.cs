@@ -5,7 +5,7 @@ namespace cms.Controllers
 {
 	[Authorize]
 	public class AdminController : CmsControllerBase
-    {
+	{
 		public ActionResult Index()
 		{
 			using (var db = SessionProvider.CreateSession)
@@ -19,8 +19,8 @@ namespace cms.Controllers
 		public ActionResult Grids()
 		{
 			return View();
-        }
-		
+		}
+
 		//TODO: tohle asi hodit do template controlleru 
 		public ActionResult Template(string id)
 		{
@@ -28,5 +28,5 @@ namespace cms.Controllers
 			return View("template/" + templateName);
 		}
 
-    }
+	}
 }

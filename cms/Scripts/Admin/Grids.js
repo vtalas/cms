@@ -133,9 +133,9 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 		//var e = angular.element(".gridsmodule"),
 		var e = $(".gridsmodule"),
 			settings = {
-				Name:"aaa", //e.data("application-name"),
-				Id: "1111", // e.data("application-id"),
-				Culture: "cs"// e.data("application-culture")
+				Name: e.data("application-name"),
+				Id: e.data("application-id"),
+				Culture: e.data("application-culture")
 			};
 		return settings;
 	});

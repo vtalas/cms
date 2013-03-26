@@ -1,0 +1,40 @@
+﻿@model cms.Code.LinkAccounts.IGdataStorage
+	<h3>Nic</h3>
+
+<div ng-app>
+
+	@using (Html.BeginForm("RedirectToAuthenticate", "GData", FormMethod.Post, new { @class = "form-horizontal" }))
+ {
+		@Html.AntiForgeryToken()
+		@Html.ValidationSummary(true)
+
+		<div class="control-group">
+			@Html.LabelFor(m => m.ClientId, new { @class = "control-label" })
+			<div class="controls">
+				@Html.TextBoxFor(m => m.ClientId, new { @class = "input-block-level" })
+				@Html.ValidationMessageFor(m => m.ClientId)
+			</div>
+		</div>
+
+		<div class="control-group">
+			@Html.LabelFor(m => m.ClientSecret, new { @class = "control-label" })
+			<div class="controls">
+				@Html.TextBoxFor(m => m.ClientSecret, new { @class = "input-block-level" })
+				@Html.ValidationMessageFor(m => m.ClientSecret)
+			</div>
+		</div>
+		<div class="control-group">
+			@Html.LabelFor(m => m.RedirectUrl, new { @class = "control-label" })
+			<div class="controls">
+				<input class="input-block-level" type="text" name="RedirectUrl" id="RedirectUrl" value="@Request.Url/Authenticate"/>
+				@Html.ValidationMessageFor(m => m.RedirectUrl)
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls">
+				<button type="submit" class="btn">Registruj</button>
+			</div>
+		</div>
+ }
+
+</div>

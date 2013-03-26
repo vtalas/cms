@@ -121,14 +121,14 @@ function initScenarioAdapter(jstestdriver, initScenarioAndRun, config) {
     /**
      * HACK (angular.scenario.Application.navigateTo)
      *
-     * We need to navigate to relative urls when running from browser (without JSTD),
+     * We need to navigate to relative OAuth2AuthorizationUrls when running from browser (without JSTD),
      * because we want to allow running scenario tests without creating its own virtual host.
      * For example: http://angular.local/build/docs/docs-scenario.html
      *
-     * On the other hand, when running with JSTD, we need to navigate to absolute urls,
+     * On the other hand, when running with JSTD, we need to navigate to absolute OAuth2AuthorizationUrls,
      * because of JSTD proxy. (proxy, because of same domain policy)
      *
-     * So this hack is applied only if running with JSTD and change all relative urls to absolute.
+     * So this hack is applied only if running with JSTD and change all relative OAuth2AuthorizationUrls to absolute.
      */
     var appProto = angular.scenario.Application.prototype,
         navigateTo = appProto.navigateTo,
