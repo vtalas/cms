@@ -3,6 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using BundleTransformer.Core.FileSystem;
 using BundleTransformer.Core.Web;
+using Google.GData.Client;
 using NUnit.Framework;
 using Newtonsoft.Json;
 using cms.Code.LinkAccounts;
@@ -31,7 +32,7 @@ namespace cms.web.tests
 			return new HttpApplicationInfo(IntegrationRootDir, IntegrationRootDir);
 		}
 
-		public void Cleanup(Guid id )
+		public void Cleanup(Guid id)
 		{
 			var apppath = Path.Combine(IntegrationRootDir, id.ToString());
 			if (Directory.Exists(apppath))
@@ -106,7 +107,7 @@ namespace cms.web.tests
 			UserResourceManager.Create(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
 			var res = UserResourceManager.Get(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
 
-			var aa = new GdataJsonFileStorage(res)
+			var parameters = new OAuth2Parameters()
 				{
 					AccessCode = "AccessCode",
 					AccessToken = "Access token",
@@ -114,12 +115,14 @@ namespace cms.web.tests
 					ClientSecret = "Client secret",
 					TokenExpiry = DateTime.Now
 				};
+			var aa = new aaa(parameters, res);
 
 
+			var x = aa.ToJson();
+
+			Console.WriteLine(x);
 
 
-			aa.Save();
-			
 		}
 
 

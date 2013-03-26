@@ -17,6 +17,7 @@ namespace cms.web.tests
 
 		class GdataStorageMock : IGdataStorage
 		{
+			public OAuth2Parameters Data { get; set; }
 			public string ClientId { get; set; }
 			public string ClientSecret { get; set; }
 			public string AccessToken { get; set; }

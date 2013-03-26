@@ -1,4 +1,5 @@
 ﻿using System;
+using Google.GData.Client;
 using Newtonsoft.Json;
 using cms.Code.UserResources;
 
@@ -12,9 +13,11 @@ namespace cms.Code.LinkAccounts
 		public GdataJsonFileStorage(IKeyValueStorage storage)
 		{
 			Storage = storage;
+			Data = new OAuth2Parameters();
 			Source = JsonConvert.DeserializeObject<GdataJsonFileStorage>(Storage.SettingsStorage("GdataPicasa.json"));
 		}
 
+		public OAuth2Parameters Data { get; set; }
 		public string ClientId { get; set; }
 		public string ClientSecret { get; set; }
 		public string AccessToken { get; set; }

@@ -1,6 +1,8 @@
 ﻿using System;
 using Google.GData.Client;
 using Google.GData.Photos;
+using Newtonsoft.Json;
+using cms.Code.UserResources;
 
 namespace cms.Code.LinkAccounts
 {
@@ -77,6 +79,26 @@ namespace cms.Code.LinkAccounts
 			return auth;
 		}
 	}
+	public class aaa : OAuth2ParametersStorage
+	{
+		private IKeyValueStorage Storage { get; set; }
+
+		public aaa(OAuth2Parameters parameters, IKeyValueStorage storage)
+			: base(parameters)
+		{
+			Storage = storage;
+		}
+
+		public string ToJson()
+		{
+			return JsonConvert.SerializeObject(Parameters);
+		}
+
+		public override void Save()
+		{
+			Storage.SettingsStorage("GdataPicasa.json", this.ToJson());
+		}
+	}
 
 	public interface IGdataStorage
 	{
@@ -88,5 +110,17 @@ namespace cms.Code.LinkAccounts
 		string RedirectUrl { get; set; }
 		string AccessCode { get; set; }
 		void Save();
+	}
+
+	public abstract class OAuth2ParametersStorage
+	{
+		public OAuth2Parameters Parameters { get; set; }
+
+		protected OAuth2ParametersStorage(OAuth2Parameters parameters)
+		{
+			Parameters = parameters;
+		}
+
+		public abstract void Save();
 	}
 }
