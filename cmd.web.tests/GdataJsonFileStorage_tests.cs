@@ -1,6 +1,5 @@
 ﻿using System;
 using Google.GData.Client;
-using Google.GData.Photos;
 using NUnit.Framework;
 using cms.Code.LinkAccounts;
 

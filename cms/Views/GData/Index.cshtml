@@ -4,31 +4,25 @@
 }
 
 
+@using cms.Code.LinkAccounts
 @model cms.Code.LinkAccounts.GoogleDataOAuth2
 
-	<h2>Google Data</h2>
+	<h2>Google Data @Model.GetStatus()</h2>
 
-@if (Model.IsAuhtorized())
+@switch (Model.GetStatus())
 {
-	<div>
-		Ok
-	</div>
+	case GoogleDataOAuth2Status.Authorized:
+		<div>
+			Ok
+		</div>
+		break;
+
+	case GoogleDataOAuth2Status.NotAuthorized:
+		@Model.OAuth2AuthorizationUrl()
+		Html.RenderPartial("Index_NotAuthorized", Model.Storage.Parameters);
+		break;
+
+	case GoogleDataOAuth2Status.NeedRefresh:
+		<div>ajskbdkjasbdkjabsdk</div>
+		break;
 }
-else
-{
-	
-	
-	
-@Model.OAuth2AuthorizationUrl()
-	Html.RenderPartial("Index_NotAuthorized", Model.Storage);
-
-	
-	}
-https://accounts.google.com/o/oauth2/auth?
-scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&
-state=%2Fprofile&
-redirect_uri=https%3A%2F%2Foauth2-login-demo.appspot.com%2Fcode&
-response_type=code&
-client_id=812741506391.apps.googleusercontent.com&
-access_type=offline
-

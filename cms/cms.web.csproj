@@ -125,8 +125,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\LinkAccounts\GdataJsonFileStorage.cs" />
+    <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageJson.cs" />
     <Compile Include="Code\LinkAccounts\GoogleDataOAuth2.cs" />
+    <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\Class1.cs" />
     <Compile Include="Code\UserResources\IResourceManager.cs" />

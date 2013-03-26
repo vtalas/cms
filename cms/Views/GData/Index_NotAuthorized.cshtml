@@ -1,4 +1,4 @@
-﻿@model cms.Code.LinkAccounts.IGdataStorage
+﻿@model Google.GData.Client.OAuth2Parameters
 	<h3>Nic</h3>
 
 <div ng-app>
@@ -24,10 +24,17 @@
 			</div>
 		</div>
 		<div class="control-group">
-			@Html.LabelFor(m => m.RedirectUrl, new { @class = "control-label" })
+			@Html.LabelFor(m => m.RedirectUri, new { @class = "control-label" })
 			<div class="controls">
-				<input class="input-block-level" type="text" name="RedirectUrl" id="RedirectUrl" value="@Request.Url/Authenticate"/>
-				@Html.ValidationMessageFor(m => m.RedirectUrl)
+				@Html.TextBoxFor(m => m.RedirectUri, new { @class = "input-block-level" })
+				@Html.ValidationMessageFor(m => m.RedirectUri)
+			</div>
+		</div>
+		<div class="control-group">
+			@Html.LabelFor(m => m.Scope, new { @class = "control-label" })
+			<div class="controls">
+				@Html.TextBoxFor(m => m.Scope, new { @class = "input-block-level" })
+				@Html.ValidationMessageFor(m => m.Scope)
 			</div>
 		</div>
 		<div class="control-group">

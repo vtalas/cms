@@ -33,6 +33,7 @@ namespace cms.Code.UserResources
 		public Guid Id { get; private set; }
 		private IDictionary<string, IAssetExt> AssetsValues { get; set; }
 		private string BaseDir { get; set; }
+		private string SettingsDir { get { return Path.Combine(BaseDir, "Settings"); }  }
 
 		public IFileSystemWrapper AssetsFilesystem { get; private set; }
 		public IDictionary<string, IAssetExt> Assets
@@ -89,7 +90,7 @@ namespace cms.Code.UserResources
 			{
 				throw new Exception("directory exists");
 			}
-			FileSystemWrapper.CreateDirectory(Path.Combine(BaseDir, "settings"));
+			FileSystemWrapper.CreateDirectory(SettingsDir);
 			FileSystemWrapper.CreateDirectory(BaseDir);
 		}
 
@@ -175,7 +176,12 @@ namespace cms.Code.UserResources
 
 		public string SettingsStorage(string key, string value)
 		{
-			var filePath = Path.Combine(BaseDir, "settings", key);
+			var filePath = Path.Combine(SettingsDir, key);
+
+			if (!FileSystemWrapper.DirectoryExists(SettingsDir))
+			{
+				FileSystemWrapper.CreateDirectory(SettingsDir);
+			}
 
 			using (var outfile = new StreamWriter(filePath))
 			{

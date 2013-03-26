@@ -5,7 +5,6 @@ using BundleTransformer.Core.FileSystem;
 using BundleTransformer.Core.Web;
 using Google.GData.Client;
 using NUnit.Framework;
-using Newtonsoft.Json;
 using cms.Code.LinkAccounts;
 using cms.Code.UserResources;
 using cms.web.tests.Code;
@@ -101,12 +100,12 @@ namespace cms.web.tests
 		}
 
 		[Test]
-		public void SettingsStorage_json_test()
+		public void OAuth2ParametersStorageJson_test()
 		{
 			var appid = Guid.NewGuid();
 			UserResourceManager.Create(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
 			var res = UserResourceManager.Get(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
-
+			
 			var parameters = new OAuth2Parameters()
 				{
 					AccessCode = "AccessCode",
@@ -115,14 +114,29 @@ namespace cms.web.tests
 					ClientSecret = "Client secret",
 					TokenExpiry = DateTime.Now
 				};
-			var aa = new aaa(parameters, res);
+			var aa = new OAuth2ParametersStorageJson(parameters, res);
 
+			aa.Save();
 
-			var x = aa.ToJson();
+			var newValues = new OAuth2ParametersStorageJson(res);
+			newValues.Load();
+			
+			Assert.AreEqual("client id", newValues.Parameters.ClientId);
 
-			Console.WriteLine(x);
+		}
 
+		[Test]
+		public void OAuth2ParametersStorageJson_loadEmpty_shouldLoadDefaults_test()
+		{
+			var appid = Guid.NewGuid();
+			UserResourceManager.Create(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
+			var res = UserResourceManager.Get(appid, HttpApplicationInfoIntegratonObject(), FileSystemWrapperObject());
+			
+			var aa = new OAuth2ParametersStorageJson(res);
 
+			aa.Load();
+			
+			Assert.IsNull(aa.Parameters.ClientId);
 		}
 
 
