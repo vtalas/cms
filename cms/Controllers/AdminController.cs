@@ -23,6 +23,10 @@ namespace cms.Controllers
 		{
 			return View();
 		}
+		public ActionResult DataContent()
+		{
+			return View();
+		}
 
 		//TODO: tohle asi hodit do template controlleru 
 		public ActionResult Template(string id)

@@ -4,6 +4,21 @@ using Google.GData.Photos;
 
 namespace cms.Code.LinkAccounts
 {
+	public class PicasaServiceFactory
+	{
+		public IGDataRequestFactory RequestFactory { get; set; }
+
+		public PicasaServiceFactory(IGDataRequestFactory requestFactory)
+		{
+			RequestFactory = requestFactory;
+		}
+
+		public PicasaService GetService()
+		{
+			return new PicasaService("appname") { RequestFactory = RequestFactory };
+		}
+	}
+	
 	public class GoogleDataOAuth2
 	{
 		public OAuth2ParametersStorageAbstract Storage { get; set; }
@@ -13,12 +28,14 @@ namespace cms.Code.LinkAccounts
 			Storage = storage;
 		}
 
-		public PicasaService Picasa {get
+		public IGDataRequestFactory GetRequestDataFactoryInstance(string scope)
 		{
-			var requstFactory = new GOAuth2RequestFactory("https://picasaweb.google.com/data", "testtesds", Storage.Parameters);
-			var client = new PicasaService("appname") {RequestFactory = requstFactory};
-			return client;
-		}}
+			if (IsAuhtorized() && !IsValid())
+			{
+				RefreshAccessToken();
+			}
+			return new GOAuth2RequestFactory(scope, "ccc ccc aaa", Storage.Parameters);
+		}
 
 		public GoogleDataOAuth2Status GetStatus()
 		{
@@ -27,7 +44,7 @@ namespace cms.Code.LinkAccounts
 				return GoogleDataOAuth2Status.Authorized;
 			}
 
-			if (NeedRefresh())
+			if (NeedReAuthorize())
 			{
 				return GoogleDataOAuth2Status.NeedRefresh;
 			}
@@ -41,7 +58,7 @@ namespace cms.Code.LinkAccounts
 			return !string.IsNullOrEmpty(Storage.Parameters.AccessToken) && !string.IsNullOrEmpty(Storage.Parameters.RefreshToken);
 		}
 
-		public bool NeedRefresh()
+		public bool NeedReAuthorize()
 		{
 			return !string.IsNullOrEmpty(Storage.Parameters.AccessToken) && string.IsNullOrEmpty(Storage.Parameters.RefreshToken);
 		}

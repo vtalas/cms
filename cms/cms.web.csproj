@@ -199,7 +199,6 @@
     <Compile Include="Controllers\Api\WebApiControllerBase.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Controllers\GDataController.cs" />
-    <Compile Include="Controllers\Api\ResourcesController.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
@@ -503,6 +502,7 @@
     <Content Include="Views\GData\Settings.cshtml" />
     <Content Include="Views\GData\Index.cshtml" />
     <Content Include="Views\GData\Index_NotAuthorized.cshtml" />
+    <Content Include="Views\Admin\DataContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />

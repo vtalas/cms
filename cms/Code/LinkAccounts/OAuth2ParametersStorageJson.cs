@@ -32,7 +32,6 @@ namespace cms.Code.LinkAccounts
 		{
 			var dataString = Storage.SettingsStorage("GdataPicasa.json");
 			this.Parameters = JsonConvert.DeserializeObject<OAuth2Parameters>(dataString);
-
 		}
 	}
 }
