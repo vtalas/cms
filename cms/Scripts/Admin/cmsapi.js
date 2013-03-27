@@ -1,9 +1,12 @@
 ﻿angular.module('cmsapi', ['ngResource'])
 	.factory('GridApi', ['$resource', 'appSettings', function ($resource, appSettings) {
-		var project = $resource('/adminApi/:applicationId/:action/:Id',
-			{ applicationId: appSettings.Id },
+		var project = $resource('/api/:applicationId/:controller/:action/:Id',
 			{
-				setCulture: { method: 'POST', params: { action: "SetCulture" } },
+				applicationId: appSettings.Id,
+				controller: "adminApi"
+			},
+			{
+				setCulture: { method: 'PUT', params: { action: "PutCulture" } },
 				grids: { method: 'GET', isArray: true, params: { action: "grids" } },
 				gridpageJson: { method: 'GET', isArray: false, params: { action: "grids" } },
 				getGrid: { method: 'POST', params: { action: "GetGrid" } },

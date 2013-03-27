@@ -4,8 +4,11 @@
 
 @helper RenderHtmlTemplates(HtmlHelper<dynamic> html, object applicationId)
 {
-	var x = new Dictionary<string, object> { { "applicationId", applicationId } };
-	@html.Action("HtmlTemplates", "Resources", new RouteValueDictionary(x))
+	var x = new Dictionary<string, object>
+		{
+			{ "applicationId", applicationId }
+		};
+	@html.ActionLink("GetHtmlTemplates", "Resources", new RouteValueDictionary(x))
 }
 
 @helper RenderScripts(HtmlHelper<dynamic> html, object applicationId)

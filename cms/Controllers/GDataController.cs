@@ -22,16 +22,21 @@ namespace cms.Controllers
 		OAuth2ParametersStorageAbstract storage()
 		{
 			var resources = UserResourcesManagerProvider.GetApplication(ApplicationId);
-			var parameters = new OAuth2Parameters()
+			
+			var gg = new OAuth2ParametersStorageJson(resources);
+			gg.Load();
+
+			if (gg.Parameters == null)
+			{
+				gg.Parameters = new OAuth2Parameters()
 				{
 					ClientId = ClientId,
 					ClientSecret = ClientSecret,
 					Scope = "https://picasaweb.google.com/data",
 					RedirectUri = "http://localhost:62728/api/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/GData/Authenticate"
 				};
+			}
 
-			var gg = new OAuth2ParametersStorageJson(resources);
-			gg.Load();
 			return gg;
 		}
 
@@ -55,6 +60,20 @@ namespace cms.Controllers
 
 			GdataAuth.GetAccessToken();
 
+			return RedirectToAction("Index");
+		}
+
+		[HttpGet]
+		public ActionResult Revoke(string code)
+		{
+			//GdataAuth.GetAccessToken();
+			return RedirectToAction("Index");
+		}
+		
+		[HttpGet]
+		public ActionResult RefreshToken()
+		{
+			GdataAuth.RefreshAccessToken();
 			return RedirectToAction("Index");
 		}
 	}

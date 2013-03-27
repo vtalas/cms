@@ -6,7 +6,6 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="@Url.Action("grids")">@ViewBag.ApplicationId</a>
 			<div class="nav-collapse">
 				<ul class="nav">
 @*					<li class="btn-group">
@@ -20,13 +19,16 @@
 							</ul>
 					</li>*@
 					<li>
+						<a  href="@Url.Action("Grids", "Admin")">@ViewBag.ApplicationId</a>
+					</li>
+					<li>
 						@Html.ActionLink("logout", "LogOff", "Account")
 					</li>
 					<li>
-						@Html.ActionLink("nastaveni", "Settings", "Admin")
+						@Html.ActionLink("nastaveni", "Index", "Gdata")
 					</li>
 					<li>
-						<span>@WebSecurity.CurrentUserName</span>
+						<a href="/admin">@WebSecurity.CurrentUserName</a>
 					</li>
 				</ul>
 			</div>

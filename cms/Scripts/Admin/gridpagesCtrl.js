@@ -34,7 +34,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	$scope.add = function () {
 		var newitem = $scope.newitem;
 
-		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/AddGrid', data: { data: newitem } })
+		$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/AddGrid', data: newitem  })
 			.success(function (data, status, headers, config) {
 				$scope.data.push(data);
 				$scope.newitem = { Category: newitem.Category };
@@ -46,7 +46,12 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	};
 
 	$scope.remove = function (item) {
-		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/DeleteGrid', data: { id: item.Id } })
+		$http({
+			method: 'DELETE',
+			url: '/api/' + appSettings.Id + '/adminApi/DeleteGrid',
+			headers : {'Content-Type': 'application/json;charset=utf-8'},
+			data: JSON.stringify(item.Id)
+		})
 			.success(function (data, status, headers, config) {
 				var index = $scope.data.indexOf(item);
 				if (index !== -1) $scope.data.splice(index, 1);
@@ -57,7 +62,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 
 	$scope.save = function (item) {
 		item.Edit = 0;
-		$http({ method: 'POST', url: '/adminApi/' + appSettings.Id + '/UpdateGrid', data: { data: item } })
+		$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/UpdateGrid', data: item  })
 			.success(function (data, status, headers, config) {
 			})
 			.error(function (data, status, headers, config) {

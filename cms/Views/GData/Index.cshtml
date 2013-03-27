@@ -7,22 +7,40 @@
 @using cms.Code.LinkAccounts
 @model cms.Code.LinkAccounts.GoogleDataOAuth2
 
-	<h2>Google Data @Model.GetStatus()</h2>
+	<h2>Google Data</h2>
 
 @switch (Model.GetStatus())
 {
 	case GoogleDataOAuth2Status.Authorized:
+	<div>
+
+		@if (Model.IsValid())
+  {
+			<h2>@Model.GetStatus()</h2>
+  }
+
 		<div>
-			Ok
+			@Model.Storage.Parameters.AccessToken
 		</div>
-		break;
+		@Model.Storage.Parameters.TokenExpiry, ( zbývá 
+			@Model.ExpirationInSeconds() vteřin )
+
+		<div>
+			@Html.ActionLink("Refresh Access token", "RefreshToken", "GData", new { @class = "btn" })
+		</div>
+	</div>
+  break;
 
 	case GoogleDataOAuth2Status.NotAuthorized:
-		@Model.OAuth2AuthorizationUrl()
-		Html.RenderPartial("Index_NotAuthorized", Model.Storage.Parameters);
-		break;
+	@Model.GetStatus()
+	@Model.OAuth2AuthorizationUrl()
+  Html.RenderPartial("Index_NotAuthorized", Model.Storage.Parameters);
+  break;
 
 	case GoogleDataOAuth2Status.NeedRefresh:
-		<div>ajskbdkjasbdkjabsdk</div>
-		break;
+	@Model.GetStatus()
+	<div>Připojení na Google Data nefunguje jak má. Je potřeba resetovat propojení a provést autorizaci znovu.</div>
+	@Html.ActionLink("Resetovat propojení", "Revoke", "GData", new { @class = "btn" })
+				
+  break;
 }

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Web.Http;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -12,70 +15,67 @@ using cms.data.Shared.Models;
 namespace cms.Controllers.Api
 {
 	//AJAX akce
-	[Authorize]
-	public class AdminApiController : ApiControllerBase
+	[System.Web.Mvc.Authorize]
+	public class AdminApiController : WebApiControllerBase
 	{ 
-
-		[HttpPost]
-		public ActionResult AddApplication(ApplicationSetting data)
+		[System.Web.Mvc.HttpPost]
+		public ApplicationSetting AddApplication(ApplicationSetting data)
 		{
 			
 			using (var db = SessionProvider.CreateSession)
 			{
 				var a = db.Add(data, WebSecurity.CurrentUserId);
 				UserResourcesManagerProvider.CreateApplication(a.Id);
-				return new JSONNetResult(a);
+				return a;
 			}
 		}
 
-		[HttpPost]
-		public ActionResult AddGridElement(GridElement data, Guid gridId)
+		[System.Web.Mvc.HttpPost]
+		public GridElementDto AddGridElement(GridElement data, Guid gridId)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				var newitem = db.Page.AddToGrid(data, gridId);
-				return new JSONNetResult(newitem.ToDto());
+				return newitem.ToDto();
 			}
 		}
 
-		[HttpPost]
-		public ActionResult DeleteGridElement(GridElement data, Guid gridId)
+		[System.Web.Mvc.HttpPost]
+		public void DeleteGridElement(GridElement data, Guid gridId)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				db.Page.Delete(data.Id, gridId);
-				return new JSONNetResult(null);
 			}
 		}
 
-		[HttpPost]
+		[System.Web.Mvc.HttpPost]
 		//[JObjectFilter(Param = "data")]
-		public ActionResult UpdateGridElement(GridElementDto data)
+		public GridElementDto UpdateGridElement(GridElementDto data)
 		//public ActionResult UpdateGridElement(GridElementDto data)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var g = db.Page.Update(data);
-				return new JSONNetResult(g);
+				return db.Page.Update(data);
 			}
 		}
 
-		public ActionResult Error()
+		public JObject Error()
 		{
 			var e = new JObject()
         	        	{
         	        		{"error", true},
         	        		{"message", "Not Fount"}
         	        	};
-			return new JSONNetResult(e);
+			return e;
 
 		}
 
-		public ActionResult SetCulture(string culture)
+		public string PutCulture([FromBody]string culture)
 		{
 			//TODO:ocekovat povolene
 			shared.SharedLayer.SetCulture(culture);
-			return new EmptyResult();
+			return culture;
 		}
 
 		public class JObjectFilter : ActionFilterAttribute
@@ -99,52 +99,52 @@ namespace cms.Controllers.Api
 /// ////////////////////////////////////////////////////////////////////////////////////
 		//TODO: PRESUNOUT DO SAMOSTATNYHO CONTROLu
 
-		[HttpPost]
-		public ActionResult AddGrid(GridPageDto data)
+		[System.Web.Mvc.HttpPost]
+		public GridPageDto AddGrid(GridPageDto data)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				var newgrid = db.Page.Add(data);
-				return new JSONNetResult(newgrid);
+				return newgrid;
 			}
 		}
 
-		[HttpPost]
-		public ActionResult DeleteGrid(Guid id)
+		public void DeleteGrid([FromBody]Guid id)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				db.Page.Delete(id);
-				return new JSONNetResult(null);
 			}
 		}
 
-		[HttpPost]
-		public ActionResult UpdateGrid(GridPageDto data)
+		[System.Web.Mvc.HttpPost]
+		public GridPageDto UpdateGrid(GridPageDto data)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				var updated = db.Page.Update(data);
-				return new JSONNetResult(updated);
+				return updated;
 			}
 		}
 
-		public ActionResult Grids()
+		[System.Web.Mvc.AcceptVerbs("GET")]
+		[System.Web.Http.HttpGet]
+		public IEnumerable<GridListDto> Grids()
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				var g = db.Grids();
-				return new JSONNetResult(g);
+				return g;
 			}
 		}
 
 		//TODO: prejmenovat na Get
-		public ActionResult GetGrid(Guid? id)
+		public GridPageDto GetGrid(Guid? id)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
 				var g = db.Page.Get(id.Value);
-				return new JSONNetResult(g);
+				return g;
 			}
 		}
 

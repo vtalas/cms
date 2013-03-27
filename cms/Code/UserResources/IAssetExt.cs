@@ -11,17 +11,4 @@ namespace cms.Code.UserResources
 		bool IsAdmin { get; }
 		string FileName { get; }
 	}
-
-	public enum AssetTypeExtened
-	{
-		Unknown,
-		Css,
-		JavaScript,
-		Less,
-		Sass,
-		Scss,
-		CoffeeScript,
-		HtmlTemplate,
-		TypeScript
-	}
 }

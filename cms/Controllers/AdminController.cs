@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using cms.Code;
+using cms.data.Extensions;
 
 namespace cms.Controllers
 {
@@ -11,7 +13,8 @@ namespace cms.Controllers
 			using (var db = SessionProvider.CreateSession)
 			{
 				var applications = db.Applications();
-				ViewBag.Json = JSONNetResult.ToJson(applications);
+
+				ViewBag.Json = JSONNetResult.ToJson(applications.ToDtos());
 				return View();
 			}
 		}

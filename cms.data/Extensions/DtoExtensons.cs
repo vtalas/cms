@@ -39,7 +39,7 @@ namespace cms.data.Extensions
 					};
 		}
 
-		public static IList<ApplicationSettingDto> ToDtos(this IList<ApplicationSetting> source)
+		public static IList<ApplicationSettingDto> ToDtos(this IEnumerable<ApplicationSetting> source)
 		{
 			return source.Select(item => ToDto((ApplicationSetting) item)).ToList();
 		}

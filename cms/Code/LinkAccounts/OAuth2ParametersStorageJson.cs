@@ -8,7 +8,7 @@ namespace cms.Code.LinkAccounts
 	{
 		private IKeyValueStorage Storage { get; set; }
 
-		public OAuth2ParametersStorageJson(IKeyValueStorage storage)
+		public OAuth2ParametersStorageJson(IKeyValueStorage storage) :base ()
 		{
 			Storage = storage;
 		}

@@ -83,7 +83,9 @@ namespace cms.data.EF.DataProviderImplementation
 			{
 				throw new ObjectNotFoundException(string.Format(" '{0}' not found", guid));
 			}
-
+			
+			delete.Resources.Clear();
+			
 			Repository.Remove(delete);
 			Repository.SaveChanges();
 		}

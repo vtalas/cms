@@ -152,9 +152,7 @@ module.controller("cultureCtrl", function ($scope, appSettings, GridApi) {
 	$scope.setCulture = function (culture) {
 
 		if (culture !== appSettings.Culture) {
-			GridApi.setCulture({
-				culture: culture
-			}, function () {
+			GridApi.setCulture(JSON.stringify(culture), function () {
 				appSettings.Culture = culture;
 				$scope.currentCulture = culture;
 				$scope.$parent.$root.$broadcast("setCultureEvent");
