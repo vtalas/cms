@@ -8,7 +8,7 @@
 		{
 			{ "applicationId", applicationId }
 		};
-	@html.ActionLink("GetHtmlTemplates", "Resources", new RouteValueDictionary(x))
+	@html.Action("HtmlTemplates", "Resources", new RouteValueDictionary(x))
 }
 
 @helper RenderScripts(HtmlHelper<dynamic> html, object applicationId)

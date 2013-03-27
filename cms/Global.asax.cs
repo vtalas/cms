@@ -28,21 +28,8 @@ namespace cms
 
 			routes.MapRoute(
 				"applicationAdmin", // Route name
-				"admin/{applicationId}/{action}/{id}", // URL with parameters
+				"render/{applicationId}/{controller}/{action}/{id}", // URL with parameters
 				new { controller = "admin", action = "Index", applicationId = "00000000-0000-0000-0000-000000000000", id = UrlParameter.Optional } // Parameter defaults
-			);
-
-			////TODO: predelat api routes na tento 
-			//routes.MapRoute(
-			//	"api", // Route name
-			//	"api/{applicationId}/{controller}/{action}/{id}", // URL with parameters
-			//	new { controller = "adminapi", action = "index", id = UrlParameter.Optional } // Parameter defaults
-			//);
-
-			routes.MapRoute(
-				"adminapi",
-				"adminapi/{applicationId}/{action}/{id}", // URL with parameters
-				new { controller = "adminapi", action = "error", id = UrlParameter.Optional } // Parameter defaults
 			);
 
 			routes.MapRoute(

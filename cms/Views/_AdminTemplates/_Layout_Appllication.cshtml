@@ -3,7 +3,7 @@
 	var applicationName = ViewBag.Application;
 	var applicationId = ViewBag.ApplicationId;
 }
-<script type="text/javascript" src="@Url.Content(string.Format("~/api/{0}/Resources/Scripts", ViewBag.ApplicationId))"></script>
+<script type="text/javascript" src="@Url.Content(string.Format("~/render/{0}/Resources/Scripts", ViewBag.ApplicationId))"></script>
 
 @Html.Partial("~/Views/_AdminTemplates/_navbar.cshtml")
 

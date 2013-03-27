@@ -7,7 +7,7 @@
 	<div ng-controller="index" data-model="@ViewBag.Json" class="container" >
 		<ul>
 			<li ng-repeat="item in data">
-				<a href="/admin/{{item.Id}}/grids">{{item.Name}}</a> |
+				<a href="/render/{{item.Id}}/admin/grids">{{item.Name}}</a> |
 				<a href="/client/{{item.Name}}">Preview</a>
 			</li>
 		</ul>

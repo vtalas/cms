@@ -200,6 +200,7 @@
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Controllers\GDataController.cs" />
     <Compile Include="Controllers\Api\ResourcesController.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
     <Compile Include="Models\TemplateSettings.cs" />

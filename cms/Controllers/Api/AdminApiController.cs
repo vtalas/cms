@@ -30,8 +30,7 @@ namespace cms.Controllers.Api
 			}
 		}
 
-		[System.Web.Mvc.HttpPost]
-		public GridElementDto AddGridElement(GridElement data, Guid gridId)
+		public GridElementDto PostGridElement(GridElement data, Guid gridId)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{

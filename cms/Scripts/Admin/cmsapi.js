@@ -9,8 +9,8 @@
 				setCulture: { method: 'PUT', params: { action: "PutCulture" } },
 				grids: { method: 'GET', isArray: true, params: { action: "grids" } },
 				gridpageJson: { method: 'GET', isArray: false, params: { action: "grids" } },
-				getGrid: { method: 'POST', params: { action: "GetGrid" } },
-				AddGridElement: { method: 'POST', params: { action: "AddGridElement" } },
+				getGrid: { method: 'GET', params: { action: "GetGrid" } },
+				AddGridElement: { method: 'POST', params: { action: "PostGridElement" } },
 				DeleteGridElement: { method: 'POST', params: { action: "DeleteGridElement" } },
 				UpdateGridElement: { method: 'POST', params: { action: "UpdateGridElement" } }
 			}
