@@ -1,30 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
-using cms.Code.LinkAccounts;
+using Google.GData.Photos;
+using Microsoft.Ajax.Utilities;
+using WebMatrix.WebData;
+using cms.data.EF;
+using cms.data.EF.DataProviderImplementation;
+using cms.data.EF.Initializers;
 
 namespace cms.Controllers.Api
 {
-	public class GdataPhotosController : WebApiControllerBase
+	public class GdataPhotosController : WebApiPicasaControllerBase
 	{
-		private PicasaServiceFactory Picasa { get; set; }
-
-		public GdataPhotosController()
-		{
-			//var gdataAuth = new GoogleDataOAuth2(OAuth2ParametersStorageFactory.Storage(ApplicationId));
-			//Picasa = new PicasaServiceFactory(gdataAuth.GetRequestDataFactoryInstance("https://picasaweb.google.com/data"));
-			var x = "asdlsakndkl ";
-		}
-
 		// GET api/gdataphotos
 		public IEnumerable<string> Get()
 		{
-			return new string[] { "value1", "value2" };
+			var service = Picasa.GetService();
+			var query = new AlbumQuery(PicasaQuery.CreatePicasaUri("default"));
+
+			var feed = service.Query(query);
+
+			var x = new List<string>();
+			
+			foreach (PicasaEntry entry in feed.Entries)
+			{
+				x.Add( entry.Title.Text);
+				var ac = new AlbumAccessor(entry);
+				//				Console.WriteLine(ac.NumPhotos);
+			}
+			return x;
 		}
 
 		// GET api/gdataphotos/5
 		public string Get(int id)
 		{
-			return "value";
+			return "kjasdhkasjd";
 		}
 
 		// POST api/gdataphotos
