@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebMatrix.WebData;
 using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
@@ -122,7 +121,32 @@ namespace cms.data.EF.DataProviderImplementation
 			if (Db != null) Db.Dispose();
 		}
 
+		public override string SettingsStorage(string key)
+		{
+			var a = Db.ApplicationSettingStorage.SingleOrDefault(x => x.Key == key && x.AppliceSetting.Id == CurrentApplication.Id);
+			return a == null ? string.Empty : a.Value;
+		}
 
+		public override string SettingsStorage(string key, string value)
+		{
+			var a = Db.ApplicationSettingStorage.SingleOrDefault(x => x.Key == key && x.AppliceSetting.Id == CurrentApplication.Id);
+			if (a == null)
+			{
+				var newsettings = new ApplicationSettingStorage
+					{
+						Key = key,
+						Value = value,
+						AppliceSetting = CurrentApplication
+					};
+				Db.ApplicationSettingStorage.Add(newsettings);
+			}
+			else
+			{
+				a.Value = value;
+			}
+			Db.SaveChanges();
+			return value;
+		}
 	}
 
 }

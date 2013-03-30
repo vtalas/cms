@@ -1,13 +1,17 @@
-var gridElementCtrl = function ($scope, GridApi, appSettings) {
+var gridElementCtrl = function ($scope, gridEelementApi, appSettings) {
 
 	$scope.addWithType = function (item, gridid, elements, newtype, event) {
 		event.preventDefault();
 		item.Type = newtype;
 		$scope.add(item, gridid, elements);
 	};
-	
+	var x = gridEelementApi.get({id: "c78ee05e-1115-480b-9ab7-a3ab3c0f6643"}, function(data) {
+		console.log("kjsdfnlkjsa", data);
+	});
+
+
 	$scope.add = function (item, gridId, elements) {
-		GridApi.AddGridElement({
+		gridEelementApi.post({
 			applicationId: appSettings.Id,
 			data: item,
 			gridId: gridId
@@ -19,7 +23,7 @@ var gridElementCtrl = function ($scope, GridApi, appSettings) {
 	};
 
 	$scope.remove = function (item, gridId) {
-		GridApi.DeleteGridElement({ applicationId: appSettings.Id, data: item, gridId: gridId },
+		gridEelementApi.delete({ applicationId: appSettings.Id, data: item, gridId: gridId },
 			function () {
 				item.Id = 0;
 				item.Edit = 0;
@@ -31,7 +35,7 @@ var gridElementCtrl = function ($scope, GridApi, appSettings) {
 
 	$scope.edit = function (item) {
 		$scope.$broadcast("gridelement-edit");
-        if (item.Id !== 0) {
+		if (item.Id !== 0) {
 			item.Edit = 1;
 		}
 	};
@@ -42,8 +46,8 @@ var gridElementCtrl = function ($scope, GridApi, appSettings) {
 		if (angular.isObject(copy.Content)) {
 			copy.Content = JSON.stringify(copy.Content);
 		}
-		
-		GridApi.UpdateGridElement({ applicationId: appSettings.Id, data: copy },
+
+		gridEelementApi.put({ applicationId: appSettings.Id, data: copy },
 			function () {
 				item.Edit = 0;
 			});

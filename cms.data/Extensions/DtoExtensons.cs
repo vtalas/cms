@@ -103,6 +103,7 @@ namespace cms.data.Extensions
 			a.Children = getchildren(source, allElements);
 			return a;
 		}
+		
 		public static GridElementDto ToDto(this GridElement source)
 		{
 			return new GridElementDto
@@ -118,7 +119,6 @@ namespace cms.data.Extensions
 					};
 		}
 
-
 		public static Grid ToGrid(this GridPageDto source)
 		{
 			var a = new Grid
@@ -129,6 +129,14 @@ namespace cms.data.Extensions
 			};
 			a.AddResource("name", source.Name)
 				.AddResource(SpecialResourceEnum.Link, source.Link);
+			return a;
+		}
+
+		public static GridElement ToGridElement(this GridElementDto source)
+		{
+			var a = new GridElement
+			{
+			};
 			return a;
 		}
 
@@ -176,5 +184,7 @@ namespace cms.data.Extensions
 			};
 
 		}
+
+
 	}
 }

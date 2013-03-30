@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileExts.cs" />
+    <Compile Include="IKeyValueStorage.cs" />
     <Compile Include="SharedLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

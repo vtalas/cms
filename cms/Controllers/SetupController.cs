@@ -11,7 +11,6 @@ namespace cms.Controllers
     {
 		public ActionResult DropAndCreateTables()
 		{
-			
 			Database.SetInitializer(new DropAndCreateTables());
 			using (var a = new EfContext())
 			{

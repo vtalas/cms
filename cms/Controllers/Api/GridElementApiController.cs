@@ -17,13 +17,21 @@ namespace cms.Controllers.Api
 			}
 		}
 
-		public GridElementDto Get(Guid gridId)
+		public GridElementDto Post(GridElementDto gridElementDto)
 		{
-			return new GridElementDto();
+			using (var db = SessionProvider.CreateSession)
+			{
+				return db.Page.Add(gridElementDto);
+			}
 		}
 
-		[System.Web.Mvc.HttpPost]
-		public void DeleteGridElement(GridElement data, Guid gridId)
+		public GridElementDto Get(Guid id)
+		{
+			var x =  new GridElementDto {Id = id, Content = "lknasljkdnasjkld"};
+			return x;
+		}
+
+		public void Delete(GridElement data, Guid gridId)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
@@ -31,8 +39,7 @@ namespace cms.Controllers.Api
 			}
 		}
 
-		[System.Web.Mvc.HttpPost]
-		public GridElementDto UpdateGridElement(GridElementDto data)
+		public GridElementDto Put(GridElementDto data)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{

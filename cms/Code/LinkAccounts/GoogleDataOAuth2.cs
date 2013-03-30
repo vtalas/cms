@@ -1,24 +1,9 @@
 ﻿using System;
 using Google.GData.Client;
-using Google.GData.Photos;
+using cms.data.EF;
 
 namespace cms.Code.LinkAccounts
 {
-	public class PicasaServiceFactory
-	{
-		public IGDataRequestFactory RequestFactory { get; set; }
-
-		public PicasaServiceFactory(IGDataRequestFactory requestFactory)
-		{
-			RequestFactory = requestFactory;
-		}
-
-		public PicasaService GetService()
-		{
-			return new PicasaService("appname") { RequestFactory = RequestFactory };
-		}
-	}
-	
 	public class GoogleDataOAuth2
 	{
 		public OAuth2ParametersStorageAbstract Storage { get; set; }

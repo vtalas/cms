@@ -15,25 +15,31 @@
 
 		project.prototype.save = function (cb) {
 			return project.save({ id: this._id.$oid },
-				angular.extend({ }, this, { _id: undefined }), cb);
+				angular.extend({}, this, { _id: undefined }), cb);
 		};
 		project.prototype.getGrid = function (cb) {
 			return project.getGrid({ id: this._id.$oid },
-				angular.extend({ }, this, { _id: undefined }), cb);
+				angular.extend({}, this, { _id: undefined }), cb);
 		};
 		return project;
 	}])
 
-	.factory("gridEelement", ['$resource', 'appSettings', function ($resource, appSettings) {
+	.factory("gridEelementApi", ['$resource', 'appSettings', function ($resource, appSettings) {
 		var project = $resource('/api/:applicationId/:controller/:action/:Id',
 			{
 				applicationId: appSettings.Id,
 				controller: "gridElementApi"
 			},
 			{
-//				AddGridElement: { method: 'POST', params: { action: "PostGridElement" } },
-//				DeleteGridElement: { method: 'POST', params: { action: "DeleteGridElement" } },
-//				UpdateGridElement: { method: 'POST', params: { action: "UpdateGridElement" } }
+				get: { method: 'GET', params: { action: "get" } },
+				post: { method: 'POST', params: { action: "post" } },
+				delete: { method: 'DELETE', params: { action: "delete" } },
+				put: { method: 'PUT', params: { action: "put" } },
+
+				//save: { method: 'POST' },
+				//query: { method: 'GET', isArray: true },
+				//remove: { method: 'DELETE' },
+				//delete: { method: 'DELETE' }
 			}
 		);
 		return project;

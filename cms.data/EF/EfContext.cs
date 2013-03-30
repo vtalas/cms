@@ -10,6 +10,7 @@ namespace cms.data.EF
 		public EfContext(){}
 
 		public virtual IDbSet<ApplicationSetting> ApplicationSettings { get; set; }
+		public virtual IDbSet<ApplicationSettingStorage> ApplicationSettingStorage { get; set; }
 		public virtual IDbSet<Grid> Grids { get; set; }
 		public virtual IDbSet<GridElement> GridElements { get; set; }
 		public virtual IDbSet<TemplateType> TemplateTypes { get; set; }

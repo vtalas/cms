@@ -55,6 +55,7 @@
     <Compile Include="DataProvider\DataProviderAbstract.cs" />
     <Compile Include="DataProvider\DataProviderBase.cs" />
     <Compile Include="DataProvider\GridElementHandler.cs" />
+    <Compile Include="Shared\Models\ApplicationSettingStorage.cs" />
     <Compile Include="EF\Initializers\ObjectBuilder.cs" />
     <Compile Include="EF\Initializers\Xxx.cs" />
     <Compile Include="EF\RepositoryImplementation\EfRepository.cs" />
@@ -77,7 +78,6 @@
     <Compile Include="EF\Initializers\DropAndCreateAlwaysForce.cs" />
     <Compile Include="EF\Initializers\DropAndCreateTables.cs" />
     <Compile Include="Extensions\DtoExtensons.cs" />
-    <Compile Include="EF\DataProviderImplementation\GridElementAbstractImpl.cs" />
     <Compile Include="Extensions\GridElementExt.cs" />
     <Compile Include="Dtos\GridListDto.cs" />
     <Compile Include="DataProvider\IDataProvider.cs" />

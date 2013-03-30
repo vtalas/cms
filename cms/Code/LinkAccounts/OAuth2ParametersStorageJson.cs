@@ -1,6 +1,6 @@
 ﻿using Google.GData.Client;
 using Newtonsoft.Json;
-using cms.Code.UserResources;
+using cms.shared;
 
 namespace cms.Code.LinkAccounts
 {
@@ -31,7 +31,7 @@ namespace cms.Code.LinkAccounts
 		public override void Load()
 		{
 			var dataString = Storage.SettingsStorage("GdataPicasa.json");
-			this.Parameters = JsonConvert.DeserializeObject<OAuth2Parameters>(dataString);
+			Parameters = JsonConvert.DeserializeObject<OAuth2Parameters>(dataString);
 		}
 	}
 }

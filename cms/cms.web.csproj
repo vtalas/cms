@@ -167,13 +167,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageEfContext.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageJson.cs" />
     <Compile Include="Code\LinkAccounts\GoogleDataOAuth2.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
+    <Compile Include="Code\LinkAccounts\PicasaServiceFactory.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\AssetTypeExtened.cs" />
     <Compile Include="Code\UserResources\IAssetExt.cs" />
-    <Compile Include="Code\UserResources\IResourceManager.cs" />
     <Compile Include="Code\UserResources\UserResourceManager.cs" />
     <Compile Include="Code\UserResources\UserResourcesManagerProvider.cs" />
     <Compile Include="Code\UserResources\ViewModeType.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Controllers\Api\WebApiPicasaControllerBase.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Controllers\GDataController.cs" />
+    <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageFactory.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\SetupController.cs" />
@@ -492,6 +494,7 @@
     <Content Include="Views\GData\Index.cshtml" />
     <Content Include="Views\GData\Index_NotAuthorized.cshtml" />
     <Content Include="Views\Admin\DataContent.cshtml" />
+    <Content Include="Web.config.default" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />

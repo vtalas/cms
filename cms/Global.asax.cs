@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using cms.Models;
 using cms.shared;
 
 namespace cms
 {
-	// Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-	// visit http://go.microsoft.com/?LinkId=9394801
-
-	public class MvcApplication : System.Web.HttpApplication
+	public class MvcApplication : HttpApplication
 	{
-
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{
 			filters.Add(new HandleErrorAttribute());
@@ -29,7 +22,7 @@ namespace cms
 			routes.MapRoute(
 				"applicationAdmin", // Route name
 				"render/{applicationId}/{controller}/{action}/{id}", // URL with parameters
-				new { controller = "admin", action = "Index", applicationId = "00000000-0000-0000-0000-000000000000", id = UrlParameter.Optional } // Parameter defaults
+				new { controller = "admin", action = "Index", id = UrlParameter.Optional } // Parameter defaults
 			);
 
 			routes.MapRoute(
@@ -52,7 +45,7 @@ namespace cms
 
 			routes.MapHttpRoute(
 				name: "DefaultApi",
-				routeTemplate:	"{api}/{applicationId}/{controller}/{action}/{id}", // URL with parameters
+				routeTemplate:	"api/{applicationId}/{controller}/{action}/{id}", // URL with parameters
 				defaults: new { controller = "adminapi", action = "index", id = RouteParameter.Optional }
 				//routeTemplate: "api/{controller}/{id}",
 				//defaults: new { id = RouteParameter.Optional }

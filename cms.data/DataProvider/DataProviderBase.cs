@@ -88,6 +88,15 @@ namespace cms.data.DataProvider
 			return gridElement;
 		}
 
+		public GridElementDto Add(GridElementDto dto)
+		{
+			var gridElement = dto.ToGridElement();
+			gridElement.AppliceSetting = CurrentApplication;
+			Repository.Add(gridElement);
+			Repository.SaveChanges();
+			return gridElement.ToDto();
+		}
+
 		public void Delete(Guid guid, Guid gridid)
 		{
 			var itemDb = GetGridElement(guid);

@@ -101,6 +101,10 @@
       <Project>{815f85fc-179f-4817-9634-8ce3c1ff5ce2}</Project>
       <Name>cms.data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\cms.shared\cms.shared.csproj">
+      <Project>{D1A23BEB-46D6-47A9-AE9D-D369A5134050}</Project>
+      <Name>cms.shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\cms\cms.web.csproj">
       <Project>{de7729ce-0050-4798-a6ba-a1e3ed191195}</Project>
       <Name>cms.web</Name>

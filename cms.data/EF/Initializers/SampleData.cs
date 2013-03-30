@@ -24,10 +24,18 @@ namespace cms.data.EF.Initializers
 		public void Generate()
 		{
 			var application = new ApplicationSetting { Name = "test1", Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643") };
+			var gdataSettings = new ApplicationSettingStorage()
+				{
+					AppliceSetting = application,
+					Key = "GdataPicasa.json",
+					Value =
+						"{\"ClientId\":\"568637062174-4s9b1pohf5p0hkk8o4frvesnhj8na7ug.apps.googleusercontent.com\",\"ClientSecret\":\"YxM0MTKCTSBV5vGlU05Yj63h\",\"RedirectUri\":\"http://localhost:62728/render/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/Gdata/Authenticate\",\"AccessType\":\"offline\",\"ResponseType\":\"code\",\"ApprovalPrompt\":\"auto\",\"State\":null,\"Scope\":\"https://picasaweb.google.com/data\",\"TokenUri\":\"https://accounts.google.com/o/oauth2/token\",\"AuthUri\":\"https://accounts.google.com/o/oauth2/auth\",\"AccessCode\":\"4/QLbO_XmRyWhrLhCQZfeFBw_tOEO-.YjhDDUv4vvASOl05ti8ZT3aR9rZ2ewI\",\"AccessToken\":\"ya29.AHES6ZRHtQgmJdwI83C1ZGLfXcFT1UpO8KFaQoxewvZslPo\",\"TokenType\":\"Bearer\",\"RefreshToken\":\"1/JjvMzAvTWDI1jQ3SJ-tL-W2xfMGgKCNpfnPFC7YLXZQ\",\"TokenExpiry\":\"2013-03-30T14:50:52.0350746+01:00\"}"
+				};
 
 			GenerateUsers();
 
 			Context.ApplicationSettings.Add(application);
+			Context.ApplicationSettingStorage.Add(gdataSettings);
 			var userid = WebSecurity.GetUserId("admin");
 			var user = Context.UserProfile.Single(x => x.Id == userid);
 			application.Users.Add(user);

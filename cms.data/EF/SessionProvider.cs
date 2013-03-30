@@ -1,10 +1,11 @@
 using System;
 using System.Data.Entity;
 using cms.data.DataProvider;
+using cms.shared;
 
 namespace cms.data.EF
 {
-	public class SessionProvider : IDisposable
+	public class SessionProvider : IXxx
 	{
 		private readonly Func<DataProviderAbstract> _createInstanceFunction;
 		private DataProviderAbstract _instance;
@@ -36,5 +37,19 @@ namespace cms.data.EF
 				_instance.Dispose();
 			}
 		}
+
+		public IKeyValueStorage CreateKeValueSession
+		{
+			get
+			{
+				_instance = _createInstanceFunction.Invoke();
+				return _instance;
+			}
+		}
+	}
+
+	public interface IXxx : IDisposable
+	{
+		IKeyValueStorage CreateKeValueSession { get; }
 	}
 }

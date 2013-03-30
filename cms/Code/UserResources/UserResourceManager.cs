@@ -7,15 +7,10 @@ using BundleTransformer.Core.Assets;
 using BundleTransformer.Core.FileSystem;
 using BundleTransformer.Core.Web;
 using System.Linq;
+using cms.shared;
 
 namespace cms.Code.UserResources
 {
-	public interface IKeyValueStorage
-	{
-		string SettingsStorage(string key);
-		string SettingsStorage(string key, string value);
-	}
-
 	public interface IResourceManager : IKeyValueStorage
 	{
 		Guid Id { get; }
@@ -189,6 +184,11 @@ namespace cms.Code.UserResources
 			}
 
 			return value;
+		}
+
+		public void Dispose()
+		{
+			throw new NotImplementedException();
 		}
 	}
 
