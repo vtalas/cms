@@ -29,47 +29,7 @@ namespace cms.Controllers.Api
 				return a;
 			}
 		}
-
-		public GridElementDto PostGridElement(GridElement data, Guid gridId)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				var newitem = db.Page.AddToGrid(data, gridId);
-				return newitem.ToDto();
-			}
-		}
-
-		[System.Web.Mvc.HttpPost]
-		public void DeleteGridElement(GridElement data, Guid gridId)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				db.Page.Delete(data.Id, gridId);
-			}
-		}
-
-		[System.Web.Mvc.HttpPost]
-		//[JObjectFilter(Param = "data")]
-		public GridElementDto UpdateGridElement(GridElementDto data)
-		//public ActionResult UpdateGridElement(GridElementDto data)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				return db.Page.Update(data);
-			}
-		}
-
-		public JObject Error()
-		{
-			var e = new JObject()
-        	        	{
-        	        		{"error", true},
-        	        		{"message", "Not Fount"}
-        	        	};
-			return e;
-
-		}
-
+		
 		public string PutCulture([FromBody]string culture)
 		{
 			//TODO:ocekovat povolene

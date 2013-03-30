@@ -10,9 +10,6 @@
 				grids: { method: 'GET', isArray: true, params: { action: "grids" } },
 				gridpageJson: { method: 'GET', isArray: false, params: { action: "grids" } },
 				getGrid: { method: 'GET', params: { action: "GetGrid" } },
-				AddGridElement: { method: 'POST', params: { action: "PostGridElement" } },
-				DeleteGridElement: { method: 'POST', params: { action: "DeleteGridElement" } },
-				UpdateGridElement: { method: 'POST', params: { action: "UpdateGridElement" } }
 			}
 		);
 
@@ -24,6 +21,21 @@
 			return project.getGrid({ id: this._id.$oid },
 				angular.extend({ }, this, { _id: undefined }), cb);
 		};
+		return project;
+	}])
+
+	.factory("gridEelement", ['$resource', 'appSettings', function ($resource, appSettings) {
+		var project = $resource('/api/:applicationId/:controller/:action/:Id',
+			{
+				applicationId: appSettings.Id,
+				controller: "gridElementApi"
+			},
+			{
+//				AddGridElement: { method: 'POST', params: { action: "PostGridElement" } },
+//				DeleteGridElement: { method: 'POST', params: { action: "DeleteGridElement" } },
+//				UpdateGridElement: { method: 'POST', params: { action: "UpdateGridElement" } }
+			}
+		);
 		return project;
 	}])
 	.factory('apimenu', ['$resource', 'appSettings', function ($resource, appSettings) {

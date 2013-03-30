@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using Google.GData.Photos;
-using Microsoft.Ajax.Utilities;
-using WebMatrix.WebData;
-using cms.data.EF;
-using cms.data.EF.DataProviderImplementation;
-using cms.data.EF.Initializers;
 
 namespace cms.Controllers.Api
 {
