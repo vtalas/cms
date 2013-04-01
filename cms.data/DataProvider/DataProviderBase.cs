@@ -38,6 +38,15 @@ namespace cms.data.DataProvider
 			}
 		}
 
+		protected IQueryable<GridElement> AvailableGridElements
+		{
+			get
+			{
+				var a = Repository.GridElements.Where(x => x.AppliceSetting.Id == CurrentApplication.Id);
+				return a;
+			}
+		}
+
 		protected Grid GetGrid(string linkValue)
 		{
 			Func<Grid, bool> aa = grid => grid.Resources.ContainsKeyValue(SpecialResourceEnum.Link, linkValue, null);
@@ -53,9 +62,9 @@ namespace cms.data.DataProvider
 
 		protected GridElement GetGridElement(Guid id)
 		{
-			var gridElement = Repository.GridElements.SingleOrDefault(x => x.Id == id);
+			var gridElement = AvailableGridElements.SingleOrDefault(x => x.Id == id);
 
-			if (gridElement == null || !AvailableGrids.Any(x => x.Id == gridElement.Grid.Id))
+			if (gridElement == null)
 			{
 				throw new ObjectNotFoundException("grid element not found");
 			}
@@ -76,28 +85,38 @@ namespace cms.data.DataProvider
 			}
 		}
 
-		public GridElement AddToGrid(GridElement gridElement, Guid gridId)
+		public GridElementDto AddToGrid(GridElementDto dto, Guid gridId)
 		{
 			var grid = GetGrid(gridId);
 			if (grid == null)
 			{
 				throw new ObjectNotFoundException("grid not found");
 			}
-			grid.GridElements.AddToCorrectPosition(gridElement);
+			var model = dto.ToGridElement(grid, GetParent(dto.ParentId), CurrentApplication);
+			model.UpdateResourceList(dto.Resources, CurrentCulture, Repository);
+
+			grid.GridElements.AddToCorrectPosition(model);
 			Repository.SaveChanges();
-			return gridElement;
+			return model.ToDto();
+		}
+
+		private GridElement GetParent(string parentId)
+		{
+			return string.IsNullOrEmpty(parentId) ? null : GetGridElement(new Guid(parentId));
 		}
 
 		public GridElementDto Add(GridElementDto dto)
 		{
-			var gridElement = dto.ToGridElement();
+			var gridElement = dto.ToGridElement(CurrentApplication, GetParent(dto.ParentId));
+			gridElement.UpdateResourceList(dto.Resources, CurrentCulture, Repository);
+
 			gridElement.AppliceSetting = CurrentApplication;
 			Repository.Add(gridElement);
 			Repository.SaveChanges();
 			return gridElement.ToDto();
 		}
 
-		public void Delete(Guid guid, Guid gridid)
+		public void DeleteGridElement(Guid guid)
 		{
 			var itemDb = GetGridElement(guid);
 			itemDb.Resources.ToList().ForEach(resource => Repository.Remove(resource));
@@ -111,7 +130,7 @@ namespace cms.data.DataProvider
 			var newParent = string.IsNullOrEmpty(item.ParentId) ? null : GetGridElement(new Guid(item.ParentId));
 
 			itemDb.RefreshPositions(item, newParent);
-			itemDb.UpdateResourceList(item.ResourcesLoc, CurrentCulture, Repository);
+			itemDb.UpdateResourceList(item.Resources, CurrentCulture, Repository);
 			itemDb.Content = item.Content;
 			itemDb.Parent = newParent;
 			itemDb.Skin = item.Skin;

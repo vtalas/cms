@@ -119,7 +119,7 @@ namespace cms.data.tests.PageAbstractTests
 			var repository = RepositorySeed();
 			using (var db = new DataProviderBase(Application, repository))
 			{
-				db.Delete(GridElementId, GridId);
+				db.DeleteGridElement(GridElementId);
 				Assert.AreEqual(GridElementsBefore - 1 , repository.GridElements.Count());
 				Assert.AreEqual(ResourcesBefore - 1 , repository.Resources.Count());
 			}

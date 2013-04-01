@@ -9,7 +9,7 @@
 			title="{{gridelement.Type}}">
 
 			<div ng-show="gridelement.Id">
-				<button ng-click="remove(gridelement, data.Id)" class="btn btn-mini font-icon delete" />
+				<button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete" />
 				<div gridelement="gridelement" grid="data"></div>
 			</div>
 
@@ -29,10 +29,11 @@
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">text </a></li>
+				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">textxx </a></li>
 				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'novinka', $event )">novinka </a></li>
 				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'simplehtml', $event )">simple HTML </a></li>
 				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'reference', $event )">Reference </a></li>
+				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'gdataalbum', $event )">GData Album</a></li>
 			</ul>
 		</div>
 	</div>

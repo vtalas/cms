@@ -13,9 +13,8 @@ namespace cms.data.Dtos
 		public string Skin { get; set; }
 	
 		public string ParentId { get; set; }
-		public IDictionary<string, ResourceDtoLoc> ResourcesLoc { get; set; }
+		public IDictionary<string, ResourceDtoLoc> Resources { get; set; }
 
 		public int Width { get; set; }
-
 	}
 }

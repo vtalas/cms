@@ -5,6 +5,7 @@ using NUnit.Framework;
 using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.Initializers;
+using cms.data.Extensions;
 using cms.data.Shared.Models;
 using cms.shared;
 
@@ -43,7 +44,7 @@ namespace cms.data.tests.EF
 							               Type = "text",
 						               };
 
-					var newgridelem = db.Page.AddToGrid(gridelem, gridDb.Id);
+					var newgridelem = db.Page.AddToGrid(gridelem.ToDto(), gridDb.Id);
 
 					Assert.AreEqual(gridelementsBefore + 1, checkdb.GridElements.Count());
 				}
@@ -72,7 +73,7 @@ namespace cms.data.tests.EF
 					               };
 
 
-				var newgridelem = db.Page.AddToGrid(gridelem, grid.Id);
+				var newgridelem = db.Page.AddToGrid(gridelem.ToDto(), grid.Id);
 
 				Assert.IsTrue(newgridelem.Resources.Any());
 				Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));
@@ -100,7 +101,7 @@ namespace cms.data.tests.EF
 							                           }
 					               };
 
-				var newgridelem = db.Page.AddToGrid(gridelem, grid.Id);
+				var newgridelem = db.Page.AddToGrid(gridelem.ToDto(), grid.Id);
 
 				Assert.IsTrue(newgridelem.Resources.Any());
 				Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));

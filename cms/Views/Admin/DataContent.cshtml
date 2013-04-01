@@ -6,7 +6,40 @@
 	var applicationId = ViewBag.ApplicationId;
 }
 
+<style>
+	.gdataAlbum
+	{
+	
+	}
+	
+	.gdataThumb {
+		display: inline-block;
+	}
 
-<div>
-	data z GdataPhotosController
+	.gdataDetail {
+		display: inline-block;
+	}
+</style>
+
+<div ng-app="gridsmodule"
+     data-application-name="@applicationName"
+     data-application-id="@applicationId"
+     data-application-culture="@SharedLayer.Culture"
+     class="gridsmodule"
+     class="gridsmodule"
+	>
+
+	<div ng-controller="gDataPhotos">
+		<div ng-repeat="item in albums" class="gdataAlbum">
+			<div class="gdataThumb">
+				<img src="{{item.Thumbnail.Url}}" />
+			</div>
+			<div class="gdataDetail">
+				{{item.Link}}
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		laknsdlkanslkdnknkl
+	</div>
+
 </div>

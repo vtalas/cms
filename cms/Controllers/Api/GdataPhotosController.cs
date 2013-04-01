@@ -1,34 +1,59 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Web.Http;
-using Google.GData.Photos;
+using Google.GData.Extensions.MediaRss;
+using Google.Picasa;
 
 namespace cms.Controllers.Api
 {
-	public class GdataPhotosController : WebApiPicasaControllerBase
+	public class WebImage
 	{
-		// GET api/gdataphotos
-		public IEnumerable<string> Get()
+		public WebImage(string width, string height, string url)
 		{
-			var service = Picasa.GetService();
-			var query = new AlbumQuery(PicasaQuery.CreatePicasaUri("default"));
-
-			var feed = service.Query(query);
-
-			var x = new List<string>();
-			
-			foreach (PicasaEntry entry in feed.Entries)
-			{
-				x.Add( entry.Title.Text);
-				var ac = new AlbumAccessor(entry);
-				//				Console.WriteLine(ac.NumPhotos);
-			}
-			return x;
+			Width = int.Parse(width, CultureInfo.CurrentCulture);
+			Height = int.Parse(height, CultureInfo.CurrentCulture); ;
+			Url = url;
 		}
 
-		// GET api/gdataphotos/5
-		public string Get(int id)
+		public int Width { get; set; }
+		public int Height { get; set; }
+		public string Url { get; set; }
+	}
+	public class AlbumDecorator
+	{
+		public MediaThumbnail ThumbnailXXX { get; set; }
+		public Album Album { get; set; }
+		public AlbumDecorator(Album album)
 		{
-			return "kjasdhkasjd";
+			Album = album;
+			var xxx = Album.PicasaEntry.Media.Thumbnails[0];
+			Thumbnail = new WebImage(xxx.Width, xxx.Height, xxx.Url);
+			ThumbnailXXX = xxx;
+		}
+
+		public string Link { get { return Album.Title; } }
+		public string Id { get { return Album.Id; } }
+		public DateTime Updated { get { return Album.Updated; } }
+		public WebImage Thumbnail { get; set; }
+	}
+
+	public class GdataPhotosController : WebApiPicasaControllerBase
+	{
+		public IEnumerable<AlbumDecorator> GetAlbums()
+		{
+			return Picasa.GetAlbums().Select(x => new AlbumDecorator(x)); ;
+		}
+
+		public AlbumDecorator GetAlbum(string link)
+		{
+			return Picasa.GetAlbum(link);
+		}
+
+		public IEnumerable<Photo> GetAlbumPhotos(string albumid)
+		{
+			return Picasa.GetAlbumPhotos(albumid);
 		}
 
 		// POST api/gdataphotos

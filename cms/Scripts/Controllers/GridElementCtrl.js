@@ -5,25 +5,19 @@ var gridElementCtrl = function ($scope, gridEelementApi, appSettings) {
 		item.Type = newtype;
 		$scope.add(item, gridid, elements);
 	};
-	var x = gridEelementApi.get({id: "c78ee05e-1115-480b-9ab7-a3ab3c0f6643"}, function(data) {
-		console.log("kjsdfnlkjsa", data);
-	});
-
 
 	$scope.add = function (item, gridId, elements) {
 		gridEelementApi.post({
-			applicationId: appSettings.Id,
-			data: item,
 			gridId: gridId
-		}, function (data) {
+		}, item, function (data) {
 			elements.push(data);
 			//TODO: nevyvola se broadcast
 			$scope.edit(data);
 		});
 	};
 
-	$scope.remove = function (item, gridId) {
-		gridEelementApi.delete({ applicationId: appSettings.Id, data: item, gridId: gridId },
+	$scope.remove = function (item) {
+		gridEelementApi.delete({ id: item.Id },
 			function () {
 				item.Id = 0;
 				item.Edit = 0;
@@ -47,7 +41,7 @@ var gridElementCtrl = function ($scope, gridEelementApi, appSettings) {
 			copy.Content = JSON.stringify(copy.Content);
 		}
 
-		gridEelementApi.put({ applicationId: appSettings.Id, data: copy },
+		gridEelementApi.put( copy ,
 			function () {
 				item.Edit = 0;
 			});

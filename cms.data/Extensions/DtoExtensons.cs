@@ -115,7 +115,7 @@ namespace cms.data.Extensions
 						Type = source.Type,
 						Width = source.Width,
 						ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
-						ResourcesLoc = source.Resources.ToDtos()
+						Resources = source.Resources.ToDtos()
 					};
 		}
 
@@ -129,14 +129,6 @@ namespace cms.data.Extensions
 			};
 			a.AddResource("name", source.Name)
 				.AddResource(SpecialResourceEnum.Link, source.Link);
-			return a;
-		}
-
-		public static GridElement ToGridElement(this GridElementDto source)
-		{
-			var a = new GridElement
-			{
-			};
 			return a;
 		}
 
@@ -185,6 +177,28 @@ namespace cms.data.Extensions
 
 		}
 
+		public static GridElement ToGridElement(this GridElementDto source, ApplicationSetting currentApplication, GridElement parent)
+		{
+			var a = new GridElement
+			{
+				Content = source.Content,
+				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id,
+				Parent = parent,
+				Position = source.Position,
+				//				Resources = source.Resources.to,
+				Skin = source.Skin,
+				Type = source.Type,
+				Width = source.Width,
+				AppliceSetting = currentApplication,
+			};
+			return a;
+		}
 
+		public static GridElement ToGridElement(this GridElementDto source, Grid grid, GridElement parent, ApplicationSetting currentApplication)
+		{
+			var gridElement = source.ToGridElement(currentApplication, parent);
+			gridElement.Grid = grid;
+			return gridElement;
+		}
 	}
 }

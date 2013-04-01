@@ -33,7 +33,7 @@ namespace cms.data.tests.PageAbstractTests
 			using (var dataProvider = new DataProviderBase(Application, repository))
 			{
 				var gridelement = AGridElement("text", 1).WithContent("prdel");
-				dataProvider.AddToGrid(gridelement, GridId);
+				dataProvider.AddToGrid(gridelement.ToDto(), GridId);
 				var grid = repository.Grids.Get(GridId);
 
 				foreach (var element in grid.GridElements.Where(x => x.Parent == null).OrderBy(x => x.Position))
@@ -59,7 +59,7 @@ namespace cms.data.tests.PageAbstractTests
 
 				repository.TotalGridElementsCount_Check(GridElementsBefore + 1);
 
-				db.AddToGrid(gridelement, GridId);
+				db.AddToGrid(gridelement.ToDto(), GridId);
 				var x = repository.Grids.Get(GridId);
 				x.Check()
 					.HasGridElementsCountAndValid(9)
@@ -76,7 +76,7 @@ namespace cms.data.tests.PageAbstractTests
 			using (var db = new DataProviderBase(Application, repository))
 			{
 				var gridelement = AGridElement("text", 1);
-				Assert.Throws<ObjectNotFoundException>(() => db.AddToGrid(gridelement, Guid.NewGuid()));
+				Assert.Throws<ObjectNotFoundException>(() => db.AddToGrid(gridelement.ToDto(), Guid.NewGuid()));
 			}
 		}
 
@@ -264,7 +264,7 @@ namespace cms.data.tests.PageAbstractTests
 			var repository = RepositorySeed();
 			using (var db = new DataProviderBase(Application, repository))
 			{
-				db.Delete(GridElementId, GridId);
+				db.DeleteGridElement(GridElementId);
 				Assert.AreEqual(GridElementsBefore - 1, repository.GridElements.Count());
 				Assert.AreEqual(ResourcesBefore - 1, repository.Resources.Count());
 			}

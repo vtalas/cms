@@ -1,7 +1,7 @@
 ﻿using Google.GData.Client;
 using Google.GData.Photos;
 
-namespace cms.Code.LinkAccounts
+namespace cms.Code.LinkAccounts.Picasa
 {
 	public class PicasaServiceFactory
 	{

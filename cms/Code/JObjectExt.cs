@@ -29,7 +29,7 @@ namespace cms.Code
 							Skin = s["Skin"].Value<string>(), 
 							Type = s["Type"].Value<string>(), 
 							Width = s["Width"].Value<int>(),
-							ResourcesLoc = s["ResourcesLoc"].ToDictionary(k => ((JProperty)k).Name, v => v.ToResource())
+							Resources = s["Resources"].ToDictionary(k => ((JProperty)k).Name, v => v.ToResource())
 						};
 			return d;
 		}

@@ -8,12 +8,12 @@ namespace cms.Controllers.Api
 	[System.Web.Mvc.Authorize]
 	public class GridElementApiController : WebApiControllerBase
 	{ 
-		public GridElementDto PostGridElement(GridElement data, Guid gridId)
+
+		public GridElementDto PostToGrid(GridElementDto gridElementDto, Guid gridId)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var newitem = db.Page.AddToGrid(data, gridId);
-				return newitem.ToDto();
+				return db.Page.AddToGrid(gridElementDto, gridId);
 			}
 		}
 
@@ -31,11 +31,11 @@ namespace cms.Controllers.Api
 			return x;
 		}
 
-		public void Delete(GridElement data, Guid gridId)
+		public void Delete(Guid id )
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				db.Page.Delete(data.Id, gridId);
+				db.Page.DeleteGridElement(id);
 			}
 		}
 

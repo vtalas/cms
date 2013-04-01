@@ -25,14 +25,17 @@
 	}])
 
 	.factory("gridEelementApi", ['$resource', 'appSettings', function ($resource, appSettings) {
-		var project = $resource('/api/:applicationId/:controller/:action/:Id',
+		var project = $resource('/api/:applicationId/:controller/:action',
 			{
 				applicationId: appSettings.Id,
 				controller: "gridElementApi"
 			},
 			{
 				get: { method: 'GET', params: { action: "get" } },
-				post: { method: 'POST', params: { action: "post" } },
+				post: { method: 'POST', params: {
+					action: "postToGrid",
+					gridId: "@gridId"
+				} },
 				delete: { method: 'DELETE', params: { action: "delete" } },
 				put: { method: 'PUT', params: { action: "put" } },
 
@@ -40,6 +43,19 @@
 				//query: { method: 'GET', isArray: true },
 				//remove: { method: 'DELETE' },
 				//delete: { method: 'DELETE' }
+			}
+		);
+
+		return project;
+	}])
+	.factory("gdataPhotos", ['$resource', 'appSettings', function ($resource, appSettings) {
+		var project = $resource('/api/:applicationId/:controller/:action/:Id',
+			{
+				applicationId: appSettings.Id,
+				controller: "GdataPhotos"
+			},
+			{
+				getAlbums: { method: 'GET', isArray: true, params: { action: "getAlbums" } },
 			}
 		);
 		return project;

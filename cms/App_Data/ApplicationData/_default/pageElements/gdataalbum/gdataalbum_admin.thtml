@@ -1,0 +1,27 @@
+﻿<div ng-controller="gdataalbum">
+
+	<style>
+		.gdataAlbum
+		{
+		display: inline-block;
+		margin:5px;
+		}
+
+		.gdataThumb {
+		display: inline-block;
+		}
+
+		.gdataDetail {
+		display: inline-block;
+		}
+	</style>
+
+	<div ng-repeat="item in albums" class="gdataAlbum">
+		<div class="gdataThumb">
+			<img src="{{item.Thumbnail.Url}}" />
+		</div>
+	</div>
+	<div class="clearfix"></div>
+
+</div>
+
