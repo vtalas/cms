@@ -55,7 +55,7 @@
 				controller: "GdataPhotos"
 			},
 			{
-				getAlbums: { method: 'GET', isArray: true, params: { action: "getAlbums" } },
+				getAlbums: { method: 'GET', isArray: false, params: { action: "getAlbums" } },
 			}
 		);
 		return project;

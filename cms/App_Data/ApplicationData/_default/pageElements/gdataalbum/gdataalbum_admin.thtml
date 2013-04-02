@@ -16,8 +16,11 @@
 		}
 	</style>
 
+	<textarea class="span{{gridelement.Width}}" ng-model="gridelement.Resources.text.Value" rows="2" ></textarea>
+
+	<h3>Google Alba</h3>
 	<div ng-repeat="item in albums" class="gdataAlbum">
-		<div class="gdataThumb">
+		<div class="gdataThumb" ng-click="addAlbum(item.Id)">
 			<img src="{{item.Thumbnail.Url}}" />
 		</div>
 	</div>

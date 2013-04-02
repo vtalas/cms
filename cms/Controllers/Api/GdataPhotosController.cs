@@ -33,17 +33,19 @@ namespace cms.Controllers.Api
 			ThumbnailXXX = xxx;
 		}
 
+
 		public string Link { get { return Album.Title; } }
 		public string Id { get { return Album.Id; } }
-		public DateTime Updated { get { return Album.Updated; } }
+		public DateTime Updated { get { return Album.Updated; } }	
 		public WebImage Thumbnail { get; set; }
 	}
 
 	public class GdataPhotosController : WebApiPicasaControllerBase
 	{
-		public IEnumerable<AlbumDecorator> GetAlbums()
+		public IDictionary<string, AlbumDecorator> GetAlbums()
 		{
-			return Picasa.GetAlbums().Select(x => new AlbumDecorator(x)); ;
+			var albums = Picasa.GetAlbums().Select(x => new AlbumDecorator(x));
+			return albums.ToDictionary(key => key.Id);
 		}
 
 		public AlbumDecorator GetAlbum(string link)

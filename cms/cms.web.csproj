@@ -231,14 +231,18 @@
     <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.thtml" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml_admin.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\pageElements\text\text.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\text\text.thtml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\text\text_admin.thtml" />
     <Content Include="App_Data\ApplicationData\_default\menuElements\menutext\menutext.thtml" />
     <Content Include="App_Data\ApplicationData\_default\menuElements\menutext\menutext_admin.thtml" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\gdataalbum.thtml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\gdataalbum_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\gdataalbum_admin.thtml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
