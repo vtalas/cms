@@ -266,6 +266,12 @@
     </Content>
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
+    <Content Include="App_Data\bootstrap\less\variables.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
+    <Content Include="App_Data\bootstrap\less\variables.min.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
     <Content Include="Content\fluid_grid.css" />
@@ -281,6 +287,12 @@
     <Content Include="Content\htmlDragAndDrop\libs\angular.js" />
     <Content Include="Content\htmlDragAndDrop\libs\jquery-1.7.2.js" />
     <Content Include="Content\htmlDragAndDrop\sortableCtrl.js" />
+    <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\metro-bootstrap.css">
+      <DependentUpon>metro-bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\metro-bootstrap.min.css">
+      <DependentUpon>metro-bootstrap.less</DependentUpon>
+    </Content>
     <Content Include="Content\metro-bootstrap.css" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
@@ -330,68 +342,6 @@
     <None Include="Content\bootstrapdefault\less\wells.less" />
     <Content Include="Content\htmlDragAndDrop\sortableData.json" />
     <Content Include="Content\htmlDragAndDrop\sortableNestedData.json" />
-    <Content Include="Content\metroBootstrapSource\accordion.less" />
-    <Content Include="Content\metroBootstrapSource\alerts.less" />
-    <Content Include="Content\metroBootstrapSource\bootstrap.less" />
-    <Content Include="Content\metroBootstrapSource\breadcrumbs.less" />
-    <Content Include="Content\metroBootstrapSource\button-groups.less" />
-    <Content Include="Content\metroBootstrapSource\buttons.less" />
-    <Content Include="Content\metroBootstrapSource\carousel.less" />
-    <Content Include="Content\metroBootstrapSource\close.less" />
-    <Content Include="Content\metroBootstrapSource\code.less" />
-    <Content Include="Content\metroBootstrapSource\component-animations.less" />
-    <Content Include="Content\metroBootstrapSource\dropdowns.less" />
-    <Content Include="Content\metroBootstrapSource\forms.less" />
-    <Content Include="Content\metroBootstrapSource\grid.less" />
-    <Content Include="Content\metroBootstrapSource\hero-unit.less" />
-    <Content Include="Content\metroBootstrapSource\labels-badges.less" />
-    <Content Include="Content\metroBootstrapSource\layouts.less" />
-    <Content Include="Content\metroBootstrapSource\media.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\alerts.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\breadcrumbs.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\button-groups.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\buttons.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\code.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\dropdowns.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\forms.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\hero-unit.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\icons.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\labels-badges.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\metro-bootstrap.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\navbar.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\navs.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\pager.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\pagination.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\progress-bars.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\thumbnails.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\tiles.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\type.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\variables.less" />
-    <Content Include="Content\metroBootstrapSource\metro-bootstrap\wells.less" />
-    <Content Include="Content\metroBootstrapSource\mixins.less" />
-    <Content Include="Content\metroBootstrapSource\modals.less" />
-    <Content Include="Content\metroBootstrapSource\navbar.less" />
-    <Content Include="Content\metroBootstrapSource\navs.less" />
-    <Content Include="Content\metroBootstrapSource\pager.less" />
-    <Content Include="Content\metroBootstrapSource\pagination.less" />
-    <Content Include="Content\metroBootstrapSource\popovers.less" />
-    <Content Include="Content\metroBootstrapSource\progress-bars.less" />
-    <Content Include="Content\metroBootstrapSource\reset.less" />
-    <Content Include="Content\metroBootstrapSource\responsive-1200px-min.less" />
-    <Content Include="Content\metroBootstrapSource\responsive-767px-max.less" />
-    <Content Include="Content\metroBootstrapSource\responsive-768px-979px.less" />
-    <Content Include="Content\metroBootstrapSource\responsive-navbar.less" />
-    <Content Include="Content\metroBootstrapSource\responsive-utilities.less" />
-    <Content Include="Content\metroBootstrapSource\responsive.less" />
-    <Content Include="Content\metroBootstrapSource\scaffolding.less" />
-    <Content Include="Content\metroBootstrapSource\sprites.less" />
-    <Content Include="Content\metroBootstrapSource\tables.less" />
-    <Content Include="Content\metroBootstrapSource\thumbnails.less" />
-    <Content Include="Content\metroBootstrapSource\tooltip.less" />
-    <Content Include="Content\metroBootstrapSource\type.less" />
-    <Content Include="Content\metroBootstrapSource\utilities.less" />
-    <Content Include="Content\metroBootstrapSource\variables.less" />
-    <Content Include="Content\metroBootstrapSource\wells.less" />
     <Content Include="Content\less\metro-bootstrap-source\accordion.less" />
     <Content Include="Content\less\metro-bootstrap-source\alerts.less" />
     <Content Include="Content\less\metro-bootstrap-source\bootstrap.less" />
@@ -620,6 +570,7 @@
   <ItemGroup>
     <Folder Include="App_Start\" />
     <Folder Include="App_Themes\" />
+    <Folder Include="Content\metroBootstrapSource\" />
     <Folder Include="tests\config\" />
   </ItemGroup>
   <ItemGroup>
