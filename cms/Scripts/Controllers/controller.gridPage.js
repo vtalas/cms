@@ -1,4 +1,4 @@
-var gridElementCtrl = function ($scope, gridEelementApi, appSettings) {
+var gridPage = function ($scope, gridEelementApi, appSettings) {
 
 	$scope.addWithType = function (item, gridid, elements, newtype, event) {
 		event.preventDefault();
@@ -27,10 +27,12 @@ var gridElementCtrl = function ($scope, gridEelementApi, appSettings) {
 			});
 	};
 
-	$scope.edit = function (item) {
+	$scope.editToggle = function (item) {
 		$scope.$broadcast("gridelement-edit");
+	    console.log("kjabsdjkasb")
 		if (item.Id !== 0) {
-			item.Edit = 1;
+		    var value = item.Edit;
+		    item.Edit = !value;
 		}
 	};
 

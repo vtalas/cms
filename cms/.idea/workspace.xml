@@ -4,11 +4,19 @@
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="" />
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/gdataalbum_admin.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364896070142" ignored="false" />
-    <file path="/controller.gdataalbum.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364898279833" ignored="false" />
+    <file path="/gdataalbum_admin.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364982542786" ignored="false" />
+    <file path="/controller.gdataalbum.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364982624372" ignored="false" />
     <file path="/a.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364895677132" ignored="false" />
     <file path="/gdataalbum.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364898300122" ignored="false" />
     <file path="/cmsapi.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364898181657" ignored="false" />
+    <file path="C:/TrunkPhoenix/web/phoenix/controllers/controller.editor.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364996110824" ignored="false" />
+    <file path="/controller.editor.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364996110063" ignored="false" />
+    <file path="C:/TrunkPhoenix/web/phoenix/resources/dialogs/phoenix.dialog.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364992512932" ignored="false" />
+    <file path="/phoenix.dialog.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364992509407" ignored="false" />
+    <file path="C:/TrunkPhoenix/web/phoenix/resources/dialogs/phoenix.dialog.insertblock.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364992522624" ignored="false" />
+    <file path="/phoenix.dialog.insertblock.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364992345110" ignored="false" />
+    <file path="C:/TrunkPhoenix/web/phoenix/resources/editor/editor.reloader.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364997086161" ignored="false" />
+    <file path="/editor.reloader.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364997082932" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +39,7 @@
       <file leaf-file-name="text.thtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="50" selection-end="50" vertical-scroll-proportion="-1.28">
+            <state line="2" column="6" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -40,7 +48,7 @@
       <file leaf-file-name="gdataalbum_admin.thtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="12" selection-start="206" selection-end="206" vertical-scroll-proportion="-10.24">
+            <state line="29" column="28" selection-start="537" selection-end="537" vertical-scroll-proportion="-18.56">
               <folding />
             </state>
           </provider>
@@ -58,7 +66,7 @@
       <file leaf-file-name="controller.gdataalbum.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="25" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
+            <state line="23" column="54" selection-start="574" selection-end="574" vertical-scroll-proportion="-14.72">
               <folding />
             </state>
           </provider>
@@ -100,10 +108,10 @@
         <option value="$PROJECT_DIR$/tests/config_testacular/testacular.conf.js" />
         <option value="$PROJECT_DIR$/tests/test/unit/cmsapiTests.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml" />
         <option value="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee" />
       </list>
     </option>
   </component>
@@ -222,13 +230,13 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.sourceCode.CoffeeScript" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="C:/TrunkPhoenix/web" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -452,6 +460,13 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="13" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference.thtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="4" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0" />
@@ -476,30 +491,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test/unit/cmsapiTests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="32" selection-start="699" selection-end="699" vertical-scroll-proportion="0.2063882">
-          <folding />
-        </state>
+        <state line="21" column="32" selection-start="699" selection-end="699" vertical-scroll-proportion="0.2063882" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test/unit/BootstrapperCtrlTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.12776412">
-          <folding />
-        </state>
+        <state line="13" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.12776412" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test/lib/angular/angular-mocks.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="569" column="64" selection-start="15663" selection-end="15670" vertical-scroll-proportion="0.00982801">
-          <folding />
-        </state>
+        <state line="569" column="64" selection-start="15663" selection-end="15670" vertical-scroll-proportion="0.00982801" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/config_testacular/testacular.conf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="34" selection-start="354" selection-end="354" vertical-scroll-proportion="0.12776412">
-          <folding />
-        </state>
+        <state line="14" column="34" selection-start="354" selection-end="354" vertical-scroll-proportion="0.12776412" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
@@ -509,30 +516,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/GridElementCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="6" selection-start="449" selection-end="449" vertical-scroll-proportion="0.15724815">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/angular-templates-ext.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="12" selection-start="206" selection-end="206" vertical-scroll-proportion="-10.24">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="50" selection-end="50" vertical-scroll-proportion="-1.28">
+        <state line="2" column="6" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -546,7 +537,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="25" selection-start="699" selection-end="699" vertical-scroll-proportion="0.0">
+        <state line="23" column="54" selection-start="574" selection-end="574" vertical-scroll-proportion="-14.72">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="28" selection-start="537" selection-end="537" vertical-scroll-proportion="-18.56">
           <folding />
         </state>
       </provider>

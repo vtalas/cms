@@ -16,15 +16,26 @@
 		}
 	</style>
 
-	<textarea class="span{{gridelement.Width}}" ng-model="gridelement.Resources.text.Value" rows="2" ></textarea>
-
-	<h3>Google Alba</h3>
-	<div ng-repeat="item in albums" class="gdataAlbum">
-		<div class="gdataThumb" ng-click="addAlbum(item.Id)">
-			<img src="{{item.Thumbnail.Url}}" />
-		</div>
+	<div ng-hide="isEditMode()">
+		{{gridelement.Resources.text.Value}}
 	</div>
-	<div class="clearfix"></div>
+
+	<div ng-show="isEditMode()">
+		<input class="span{{gridelement.Width}}" ng-model="gridelement.Resources.text.Value"  />
+		<button ng-click="showGdataAlbums()">Vybrat Album</button>
+	</div>
+
+
+	<div ng-show="isShowGdataAlbums()">
+		<h3>Google Alba</h3>
+		<div ng-repeat="item in albums" class="gdataAlbum">
+			<div class="gdataThumb" ng-click="addAlbum(item.Id)">
+				<img src="{{item.Thumbnail.Url}}" />
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
 
 </div>
 

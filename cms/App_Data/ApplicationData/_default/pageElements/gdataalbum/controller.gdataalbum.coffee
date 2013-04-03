@@ -16,6 +16,7 @@ gdataalbum = ($scope, gdataPhotos) ->
 		currentAlbum
 
 	gridelement = $scope.$parent.gridelement;
+	$scope.showGdataAlbumsValue = false;
 
 	gdataPhotos.getAlbums((data) ->
 		console.log(data)
@@ -28,10 +29,23 @@ gdataalbum = ($scope, gdataPhotos) ->
 	$scope.addAlbum = (id) ->
 		gridelement.Content = {}
 		gridelement.Content.gdataAlbumId = id
+		$scope.showGdataAlbumsValue = $scope.hideGdataAlbums();
 
 
 	$scope.hasAlbum = () ->
 		return $scope.currentAlbum != undefined
+
+	$scope.isEditMode = () ->
+		return !!gridelement.Edit;
+
+	$scope.showGdataAlbums = () ->
+		$scope.showGdataAlbums = true;
+
+	$scope.hideGdataAlbums = () ->
+		$scope.showGdataAlbums = true;
+
+	$scope.isShowGdataAlbums = () ->
+		return !!gridelement.Edit && $scope.showGdataAlbumsValue;
 
 	1
 
