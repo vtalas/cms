@@ -222,28 +222,48 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
-    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.coffee" />
-    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.coffee" />
-    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.thtml" />
-    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.coffee">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.thtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.coffee">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.thtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml_admin.thtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\text\text.thtml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\text\text_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\text\text_admin.thtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\ApplicationData\_default\menuElements\menutext\menutext.thtml" />
     <Content Include="App_Data\ApplicationData\_default\menuElements\menutext\menutext_admin.thtml" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\gdataalbum.thtml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\gdataalbum_admin.thtml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
@@ -270,6 +290,8 @@
     <Content Include="Content\jetstrap\assets\js\bootstrap.js" />
     <Content Include="Content\jetstrap\assets\js\bootstrap.min.js" />
     <Content Include="Content\jetstrap\index.html" />
+    <Content Include="Content\metro-bootstrap.css" />
+    <Content Include="Content\metro-bootstrap.less.css" />
     <Content Include="Content\test\metro.html" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
@@ -385,7 +407,9 @@
     <Content Include="Content\reset.less" />
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
-    <None Include="Content\admin.less" />
+    <None Include="Content\admin.less">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Scripts\Admin\controller.gDataPhotos.js" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
     <Content Include="Scripts\angular-templates-ext.coffee">
@@ -408,6 +432,9 @@
     <Content Include="Scripts\angular-ui.js" />
     <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
     <Content Include="Scripts\bootstrap.js" />
+    <None Include="Properties\PublishProfiles\ladeso.aspone.cz.pubxml" />
+    <None Include="Properties\PublishProfiles\ladesopeklo - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ladesopeklo - Web Deploy.pubxml" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
@@ -421,13 +448,13 @@
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\Controllers\GridElementCtrl.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Admin\Grids.js" />
     <Content Include="Scripts\Admin\Index.js" />
     <Content Include="Scripts\showdown.js" />
-    <Content Include="tests\config\jstd-scenario-adapter-config.js" />
     <Content Include="tests\scripts\web-server.js" />
     <Content Include="tests\test\e2e\runner.html" />
     <Content Include="tests\test\e2e\scenarios.js" />
@@ -444,8 +471,6 @@
     <Content Include="tests\test\lib\jstestdriver\JsTestDriver.jar" />
     <Content Include="tests\test\lib\jstestdriver\version.txt" />
     <Content Include="tests\test\unit\cmsapiTests.js" />
-    <Content Include="tests\test\unit\servicesSpec.js" />
-    <Content Include="tests\test\unit\_test.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -465,8 +490,6 @@
     </Content>
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\setup\index.cshtml" />
-    <None Include="tests\config\jsTestDriver-scenario.conf" />
-    <None Include="tests\config\jsTestDriver.conf" />
     <None Include="tests\scripts\e2e-test-server.bat" />
     <None Include="tests\scripts\e2e-test-server.sh" />
     <None Include="tests\scripts\e2e-test.bat" />
@@ -505,6 +528,9 @@
     <Content Include="Views\GData\Index_NotAuthorized.cshtml" />
     <Content Include="Views\Admin\DataContent.cshtml" />
     <Content Include="Web.config.default" />
+    <None Include="Web.ladesoAsponeDebug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\client\test1\_Layout.cshtml" />
@@ -545,6 +571,7 @@
   <ItemGroup>
     <Folder Include="App_Start\" />
     <Folder Include="App_Themes\" />
+    <Folder Include="tests\config\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cms.data\cms.data.csproj">
@@ -559,6 +586,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ladesoAsponeDebug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
