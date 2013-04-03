@@ -12,7 +12,7 @@ var gridPage = function ($scope, gridEelementApi, appSettings) {
 		}, item, function (data) {
 			elements.push(data);
 			//TODO: nevyvola se broadcast
-			$scope.edit(data);
+			//$scope.edit(data);
 		});
 	};
 
@@ -27,12 +27,10 @@ var gridPage = function ($scope, gridEelementApi, appSettings) {
 			});
 	};
 
-	$scope.editToggle = function (item) {
+	$scope.edit = function (item) {
 		$scope.$broadcast("gridelement-edit");
-	    console.log("kjabsdjkasb")
 		if (item.Id !== 0) {
-		    var value = item.Edit;
-		    item.Edit = !value;
+		    item.Edit = true;
 		}
 	};
 

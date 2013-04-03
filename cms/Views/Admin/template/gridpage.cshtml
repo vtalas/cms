@@ -2,25 +2,24 @@
 	<h2>{{data.Name}}</h2>
 
 	<div class="row">
-	    <div ng-repeat="gridelement in data.GridElements"
-	         class="span{{gridelement.Width}}"
-	         ng-click="editToggle(gridelement)"
-	         ng-class="{contentitem: gridelement.Id != 0}"
-	         title="{{gridelement.Type}}">
+		<div ng-repeat="gridelement in data.GridElements"
+			class="span{{gridelement.Width}}"
+			ng-click="edit(gridelement)"
+			ng-class="{contentitem: gridelement.Id != 0}"
+			title="{{gridelement.Type}}">
 
-	        <div ng-show="gridelement.Id">
-	            <button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete" />
-	            <p>&nbsp;</p>
-			    
-	        </div>
+			<div ng-show="gridelement.Id">
+				<button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete" />
+				<div gridelement="gridelement" grid="data"></div>
+			</div>
 
-	        <div gridelement="gridelement" grid="data" admin="1"></div>
-	        <button class="btn btn-small" ng-click="save(gridelement)">Uložit</button>
-            
-    		    <p>&nbsp;</p>
+			<div ng-show="gridelement.Edit">
+				<div gridelement="gridelement" grid="data" admin="1"></div>
+				<button class="btn btn-small" ng-click="save(gridelement)">Uložit</button>
+				<p></p>
+			</div>
 
-	    </div>
-
+		</div>
 	</div>
 
 	<div>
