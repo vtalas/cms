@@ -24,7 +24,6 @@
 		<div class="xx" >
 			<fieldset>
 				<legend>Legend</legend>
-				lakndlkasndlkn
 				<div class="control-group">
 					<input class="span6" type="text" placeholder="Nadpis" ng-model="gridelement.Resources.header.Value"/>
 				</div>

@@ -1,8 +1,15 @@
-﻿<div  ng-controller="gdataalbum">
+﻿<style>
+	.gridelement-content{
+	padding:10px;
+	}
+
+</style>
+<div  ng-controller="gdataalbum">
 
 	<div class="row">
 		<div class="span6">
-			<div class="form-horizontal">
+
+			<div class="form-horizontal gridelement-content" >
 				<div class="control-group">
 					<h3>{{gridelement.Resources.header.Value}}</h3>
 				</div>
@@ -10,14 +17,17 @@
 					{{gridelement.Resources.text.Value}}
 				</div>
 			</div>
+
 		</div>
 
 		<div class="span6">
-			<div ng-show="hasAlbum()">
-				<img src="{{currentAlbum.Thumbnail.Url}}" />
-			</div>
-			<div ng-hide="hasAlbum()">
-				<div style="background-color:red">sds</div>
+			<div class="gridelement-content" >
+				<div ng-show="hasAlbum()">
+					<img src="{{currentAlbum.Thumbnail.Url}}" />
+				</div>
+				<div ng-hide="hasAlbum()">
+					<div style="background-color:red">sds</div>
+				</div>
 			</div>
 		</div>
 	</div>
