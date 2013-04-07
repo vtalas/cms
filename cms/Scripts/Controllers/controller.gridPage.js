@@ -3,7 +3,12 @@ var gridPage = function ($scope, gridEelementApi, appSettings) {
 	$scope.addWithType = function (item, gridid, elements, newtype, event) {
 		event.preventDefault();
 		item.Type = newtype;
-		$scope.add(item, gridid, elements);
+		$scope.addToEnd(item, gridid, elements);
+	};
+
+	$scope.addToEnd = function (item, gridId, elements) {
+		item.Position = elements.length;
+		$scope.add(item, gridId, elements);
 	};
 
 	$scope.add = function (item, gridId, elements) {

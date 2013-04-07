@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="" />
+    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" afterPath="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/gdataalbum_admin.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364982542786" ignored="false" />
@@ -20,13 +25,14 @@
     <file path="/a.xml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365192314762" ignored="false" />
     <file path="/a.html" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365192319642" ignored="false" />
     <file path="/Grids.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365363886633" ignored="false" />
-    <file path="/controller.gridPage.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365321848271" ignored="false" />
-    <file path="/gridpage.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365326184680" ignored="false" />
+    <file path="/controller.gridPage.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365365060028" ignored="false" />
+    <file path="/gridpage.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365365019496" ignored="false" />
     <file path="/admin.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365334175129" ignored="false" />
     <file path="/a.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365334974544" ignored="false" />
     <file path="/text.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327068892" ignored="false" />
     <file path="/controller.text.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327049734" ignored="false" />
-    <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365362639284" ignored="false" />
+    <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365364599297" ignored="false" />
+    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365364690205" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,10 +52,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gdataalbum.thtml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="gdataalbum.thtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="55" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.76620615">
+            <state line="46" column="69" selection-start="1026" selection-end="1026" vertical-scroll-proportion="-14.5172415">
               <folding />
             </state>
           </provider>
@@ -58,7 +64,25 @@
       <file leaf-file-name="controller.gdataalbum.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="65" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0">
+            <state line="10" column="50" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controller.gridPage.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="112" selection-start="515" selection-end="515" vertical-scroll-proportion="0.35051546">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gridpage.cshtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="62" selection-start="781" selection-end="781" vertical-scroll-proportion="-8.275862">
               <folding />
             </state>
           </provider>
@@ -96,6 +120,14 @@
       <command text="testacular run" />
     </commandsHistory>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
@@ -103,10 +135,8 @@
         <option value="$PROJECT_DIR$/tests/config_testacular/testacular.conf.js" />
         <option value="$PROJECT_DIR$/tests/test/unit/cmsapiTests.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" />
-        <option value="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text_admin.thtml" />
-        <option value="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/controller.text.coffee" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee" />
@@ -115,6 +145,8 @@
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
+        <option value="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+        <option value="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
       </list>
     </option>
   </component>
@@ -203,7 +235,7 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -542,6 +574,7 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31863728" sideWeight="0.48655772" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25039536" sideWeight="0.68085104" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -553,7 +586,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31895688" sideWeight="0.48655772" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956672" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -664,20 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="50" selection-start="300" selection-end="300" vertical-scroll-proportion="0.19128586">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="18" selection-start="506" selection-end="506" vertical-scroll-proportion="0.41237113">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Content/admin.less">
       <provider selected="true" editor-type-id="text-editor">
         <state line="86" column="112" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.62886596">
@@ -720,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="65" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="258" column="40" selection-start="7609" selection-end="7609" vertical-scroll-proportion="0.0">
@@ -738,7 +749,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="55" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.76620615">
+        <state line="46" column="69" selection-start="1026" selection-end="1026" vertical-scroll-proportion="-14.5172415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="50" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="62" selection-start="781" selection-end="781" vertical-scroll-proportion="-8.275862">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="112" selection-start="515" selection-end="515" vertical-scroll-proportion="0.35051546">
           <folding />
         </state>
       </provider>
