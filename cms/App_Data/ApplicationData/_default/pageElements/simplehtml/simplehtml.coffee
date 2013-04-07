@@ -5,15 +5,21 @@
 ###
 
 simplehtml = ($scope, $http) ->
-	simplehtml.$inject = [ "$scope", "$http" ]
+    simplehtml.$inject = [ "$scope", "$http" ]
 
-	converter = new Showdown.converter()
+    gridelement = $scope.$parent.gridelement;
 
-	toHtml = (markdown) ->
-		converter.makeHtml markdown if markdown
+    $scope.$on "ngcClickEdit-showPreview", (e, data) ->
+        $scope.$emit("gridelement-save", gridelement);
 
-	$scope.ContentToHtml = ->
-		toHtml $scope.gridelement.Content
-	1
+
+    converter = new Showdown.converter()
+
+    toHtml = (markdown) ->
+        converter.makeHtml markdown if markdown
+
+    $scope.ContentToHtml = ->
+        toHtml gridelement.Resources.text.Value
+    1
 
 window.simplehtml = simplehtml

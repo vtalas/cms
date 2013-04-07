@@ -11,8 +11,6 @@ var gridPage = function ($scope, gridEelementApi, appSettings) {
 			gridId: gridId
 		}, item, function (data) {
 			elements.push(data);
-			//TODO: nevyvola se broadcast
-			//$scope.edit(data);
 		});
 	};
 
@@ -20,19 +18,15 @@ var gridPage = function ($scope, gridEelementApi, appSettings) {
 		gridEelementApi.delete({ id: item.Id },
 			function () {
 				item.Id = 0;
-				item.Edit = 0;
 				item.Content = "";
 				//refresh - preopocitani poradi radku
 				$scope.$emit("refreshgrid");
 			});
 	};
 
-	$scope.edit = function (item) {
-		$scope.$broadcast("gridelement-edit");
-		if (item.Id !== 0) {
-		    item.Edit = true;
-		}
-	};
+	$scope.$on("gridelement-save", function (e, gridelemnt) {
+		$scope.save(gridelemnt);
+	});
 
 	$scope.save = function (item) {
 		var copy = jQuery.extend(true, {}, item);
@@ -41,9 +35,6 @@ var gridPage = function ($scope, gridEelementApi, appSettings) {
 			copy.Content = JSON.stringify(copy.Content);
 		}
 
-		gridEelementApi.put( copy ,
-			function () {
-				item.Edit = 0;
-			});
+		gridEelementApi.put(copy);
 	};
 };

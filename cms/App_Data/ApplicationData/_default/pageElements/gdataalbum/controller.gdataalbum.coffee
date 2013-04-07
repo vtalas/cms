@@ -19,30 +19,34 @@ gdataalbum = ($scope, gdataPhotos) ->
 	$scope.showGdataAlbumsValue = false;
 
 	gdataPhotos.getAlbums((data) ->
-		console.log(data)
 		$scope.albums = data;
 		$scope.currentAlbum = getCurrentAlbum(gridelement)
-		console.log($scope.currentAlbum)
-
 		1)
 
-	$scope.addAlbum = (id) ->
-		gridelement.Content = {}
-		gridelement.Content.gdataAlbumId = id
-		$scope.showGdataAlbumsValue = $scope.hideGdataAlbums();
+	$scope.$on "ngcClickEdit-showPreview", (e, data) ->
+		$scope.$emit("gridelement-save", gridelement);
 
+	$scope.addAlbum = (id) ->
+
+		gridelement.Content = JSON.stringify({ gdataAlbumId:  id});
+		$scope.currentAlbum = getCurrentAlbum(gridelement);
+
+		$scope.showGdataAlbumsValue = $scope.hideGdataAlbums();
+		$scope.$emit("gridelement-save", gridelement);
+		$scope.$apply;
 
 	$scope.hasAlbum = () ->
-		return $scope.currentAlbum != undefined
+		return gridelement.Content != null
 
 	$scope.isEditMode = () ->
 		return !!gridelement.Edit;
 
 	$scope.showGdataAlbums = () ->
-		$scope.showGdataAlbums = true;
+		$scope.showGdataAlbumsValue = true;
 
 	$scope.hideGdataAlbums = () ->
-		$scope.showGdataAlbums = true;
+		$scope.showGdataAlbumsValue = false;
+
 
 	$scope.isShowGdataAlbums = () ->
 		return !!gridelement.Edit && $scope.showGdataAlbumsValue;

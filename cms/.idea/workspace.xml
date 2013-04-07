@@ -5,9 +5,9 @@
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/gdataalbum_admin.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364982542786" ignored="false" />
-    <file path="/controller.gdataalbum.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364982624372" ignored="false" />
-    <file path="/a.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364895677132" ignored="false" />
-    <file path="/gdataalbum.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364898300122" ignored="false" />
+    <file path="/controller.gdataalbum.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365338572986" ignored="false" />
+    <file path="/a.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365335044360" ignored="false" />
+    <file path="/gdataalbum.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365363984500" ignored="false" />
     <file path="/cmsapi.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364898181657" ignored="false" />
     <file path="C:/TrunkPhoenix/web/phoenix/controllers/controller.editor.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365067470065" ignored="false" />
     <file path="/controller.editor.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365053852240" ignored="false" />
@@ -17,6 +17,16 @@
     <file path="/phoenix.dialog.insertblock.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365067858164" ignored="false" />
     <file path="C:/TrunkPhoenix/web/phoenix/resources/editor/editor.reloader.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365053648546" ignored="false" />
     <file path="/editor.reloader.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365053272096" ignored="false" />
+    <file path="/a.xml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365192314762" ignored="false" />
+    <file path="/a.html" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365192319642" ignored="false" />
+    <file path="/Grids.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365363886633" ignored="false" />
+    <file path="/controller.gridPage.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365321848271" ignored="false" />
+    <file path="/gridpage.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365326184680" ignored="false" />
+    <file path="/admin.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365334175129" ignored="false" />
+    <file path="/a.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365334974544" ignored="false" />
+    <file path="/text.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327068892" ignored="false" />
+    <file path="/controller.text.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327049734" ignored="false" />
+    <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365362639284" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,31 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="text.thtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="6" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gdataalbum_admin.thtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="28" selection-start="802" selection-end="802" vertical-scroll-proportion="-18.56">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="gdataalbum.thtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="0" selection-start="671" selection-end="671" vertical-scroll-proportion="0.35932627">
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="61" column="55" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.76620615">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -68,16 +58,27 @@
       <file leaf-file-name="controller.gdataalbum.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="54" selection-start="574" selection-end="574" vertical-scroll-proportion="-14.72">
+            <state line="55" column="65" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cmsapi.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
+      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="13" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+            <state line="258" column="40" selection-start="7609" selection-end="7609" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controller.text.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/controller.text.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="12" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -98,30 +99,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/menuElements/menutext/menutext.thtml" />
-        <option value="$PROJECT_DIR$/Content/htmlDragAndDrop/angular-ui-ext.js" />
-        <option value="$PROJECT_DIR$/Scripts/angular-ui-ext.js" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/menuCtrl.js" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference.thtml" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.thtml" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.coffee" />
-        <option value="$PROJECT_DIR$/Scripts/Controllers/GridElementCtrl.js" />
         <option value="$PROJECT_DIR$/tests/test/unit/BootstrapperCtrlTest.js" />
         <option value="$PROJECT_DIR$/tests/config_testacular/testacular.conf.js" />
         <option value="$PROJECT_DIR$/tests/test/unit/cmsapiTests.js" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" />
+        <option value="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text_admin.thtml" />
+        <option value="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/controller.text.coffee" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" />
+        <option value="$PROJECT_DIR$/Content/admin.less" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1216" />
-    <option name="height" value="1812" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1170" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -216,7 +217,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -227,21 +228,184 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pageElements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="text" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pageElements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pageElements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gdataalbum" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.sourceCode.CoffeeScript" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="C:/TrunkPhoenix/web" />
+    <property name="options.lastSelected" value="preferences.sourceCode.CoffeeScript" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_opened_file_path" value="C:/wamp/www/masp/maspNew" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\lades\web\cms\cms\App_Data\ApplicationData\_default\pageElements\text" />
       <recent name="C:\lades\Weby\cms\cms\Scripts\Apps\defaults\_GridElementScripts" />
       <recent name="C:\lades\Weby\cms\cms\Scripts\_GridElementScripts" />
       <recent name="C:\lades\Weby\cms\cms\Scripts\Coffee" />
@@ -251,6 +415,14 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Testacular server">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="$PROJECT_DIR$/tests/config/jsTestDriver.conf" />
@@ -318,7 +490,7 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
     <option name="mySSHConnectionTimeout" value="30000" />
@@ -328,7 +500,6 @@
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
     <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
     <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="DETECT_NESTED_COPIES" value="true" />
     <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
     <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
@@ -366,7 +537,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1216" height="1812" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -462,60 +633,9 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="13" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference.thtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="4" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.thtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="140" selection-end="140" vertical-scroll-proportion="0.10309278" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="64" selection-start="861" selection-end="861" vertical-scroll-proportion="0.35051546" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/angular.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="43" selection-start="2077" selection-end="2077" vertical-scroll-proportion="0.009907121">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test/unit/cmsapiTests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="32" selection-start="699" selection-end="699" vertical-scroll-proportion="0.2063882" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test/unit/BootstrapperCtrlTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.12776412" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test/lib/angular/angular-mocks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="569" column="64" selection-start="15663" selection-end="15670" vertical-scroll-proportion="0.00982801" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/config_testacular/testacular.conf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="34" selection-start="354" selection-end="354" vertical-scroll-proportion="0.12776412" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="126" column="24" selection-start="3722" selection-end="3722" vertical-scroll-proportion="0.3022113">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/angular-templates-ext.coffee">
@@ -523,40 +643,103 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="6" selection-start="50" selection-end="50" vertical-scroll-proportion="0.0">
+        <state line="44" column="57" selection-start="1573" selection-end="1573" vertical-scroll-proportion="0.53608245">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="13" selection-start="1151" selection-end="1151" vertical-scroll-proportion="0.0">
+        <state line="63" column="11" selection-start="1661" selection-end="1661" vertical-scroll-proportion="0.62886596">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="19" selection-start="832" selection-end="832" vertical-scroll-proportion="0.6185567">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="50" selection-start="300" selection-end="300" vertical-scroll-proportion="0.19128586">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="18" selection-start="506" selection-end="506" vertical-scroll-proportion="0.41237113">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="112" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.62886596">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="112" selection-start="304" selection-end="304" vertical-scroll-proportion="0.19128586">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="47" selection-start="371" selection-end="371" vertical-scroll-proportion="0.3298969">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="66" selection-start="116" selection-end="116" vertical-scroll-proportion="0.04250797">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/standardSchemas/xhtml1-transitional.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2030" column="6" selection-start="58668" selection-end="58668" vertical-scroll-proportion="0.29175258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/controller.text.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="12" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="54" selection-start="574" selection-end="574" vertical-scroll-proportion="-14.72">
+        <state line="55" column="65" selection-start="1327" selection-end="1327" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum_admin.thtml">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="28" selection-start="802" selection-end="802" vertical-scroll-proportion="-18.56">
-          <folding />
+        <state line="258" column="40" selection-start="7609" selection-end="7609" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="0" selection-start="671" selection-end="671" vertical-scroll-proportion="0.35932627">
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="61" column="55" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.76620615">
+          <folding />
         </state>
       </provider>
     </entry>

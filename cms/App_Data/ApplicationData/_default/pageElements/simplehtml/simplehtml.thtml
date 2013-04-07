@@ -1,3 +1,9 @@
-﻿<div  ng-controller="simplehtml">
-	<div ng-bind-html-unsafe="ContentToHtml()"> </div>
+﻿<div ng-controller="simplehtml"  class="row">
+	<div class="span{{gridelement.Width}}">
+		<div class="gridelement-content">
+			<div ng-bind-html-unsafe="ContentToHtml()"> </div>
+			<span ngc-click-edit="gridelement.Resources.text.Value" type="textarea" placeholder="text"></span>
+		</div>
+	</div>
 </div>
+

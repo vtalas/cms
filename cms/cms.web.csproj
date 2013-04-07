@@ -293,6 +293,12 @@
     <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\metro-bootstrap.min.css">
       <DependentUpon>metro-bootstrap.less</DependentUpon>
     </Content>
+    <Content Include="Content\less\metro-bootstrap-source\variables.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\metro-bootstrap-source\variables.min.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
     <Content Include="Content\metro-bootstrap.css" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
