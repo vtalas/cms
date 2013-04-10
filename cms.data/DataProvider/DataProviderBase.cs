@@ -11,7 +11,7 @@ using cms.shared;
 
 namespace cms.data.DataProvider
 {
-
+	//TODO: je zbytecny aby byl disposable
 	public class DataProviderBase : IDisposable
 	{
 		protected ApplicationSetting CurrentApplication { get; set; }

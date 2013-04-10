@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication;
 using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
@@ -21,6 +22,10 @@ namespace cms.data.EF.DataProviderImplementation
 		public DataEfAuthorized(Guid applicationId, EfContext context, int userId)
 			: base(applicationId, userId)
 		{
+			if (userId < 1)
+			{
+				throw new AuthenticationException("log_in");
+			}
 			Db = context;
 			Repository = new EfRepository(context);
 		}
@@ -28,6 +33,10 @@ namespace cms.data.EF.DataProviderImplementation
 		public DataEfAuthorized(string applicationName, EfContext context, int userId)
 			: base(applicationName, userId)
 		{
+			if (userId < 1)
+			{
+				throw new AuthenticationException("log_in");
+			}
 			Db = context;
 			Repository = new EfRepository(context);
 		}
@@ -46,7 +55,6 @@ namespace cms.data.EF.DataProviderImplementation
 					if (aaa == null)
 						throw new Exception("Cannot get aplication");
 					return aaa;
-
 				}
 				if (!String.IsNullOrEmpty(ApplicationName))
 				{
