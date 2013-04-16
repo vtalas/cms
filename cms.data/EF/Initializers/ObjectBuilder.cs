@@ -67,15 +67,16 @@ namespace cms.data.EF.Initializers
 			return grid;
 		}
 
-		protected GridElement AGridElement(string type, int position = 0)
+		protected GridElement AGridElement(string type, ApplicationSetting application, int position = 0)
 		{
-			return AGridElement(type, Guid.NewGuid(), position);
+			return AGridElement(type, application, Guid.NewGuid(), position);
 		}
 
-		protected GridElement AGridElement(string type, Guid id, int position = 0)
+		protected GridElement AGridElement(string type, ApplicationSetting application, Guid id, int position = 0)
 		{
 			var grid = new GridElement
 			{
+				AppliceSetting = application,
 				Type = type,
 				Width = 12,
 				Position = position,

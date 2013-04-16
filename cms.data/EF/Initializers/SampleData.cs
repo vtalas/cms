@@ -71,7 +71,7 @@ namespace cms.data.EF.Initializers
 		{
 			Context.Grids.Add(AGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithGridElement(
-											AGridElement("text")
+											AGridElement("text", application)
 												.WithResource("text", "český text")
 												.WithResource("text", "english text", CultureEn)
 												)
@@ -113,18 +113,18 @@ namespace cms.data.EF.Initializers
 
 		private void GenerateMenus(ApplicationSetting application)
 		{
-			var rootitem = AGridElement("menutext", 2);
+			var rootitem = AGridElement("menutext", application, position: 2);
 			
 			var items = new List<GridElement>
 				            {
-								AGridElement("menutext", 0),
-								AGridElement("menutext", 1),
-								AGridElement("menutext", 3),
-								AGridElement("menutext", 4),
+								AGridElement("menutext", application, position: 0),
+								AGridElement("menutext", application, position: 1),
+								AGridElement("menutext", application, position: 3),
+								AGridElement("menutext", application, position: 4),
 								rootitem,
-								AGridElement("menutext", 0).WithParent(rootitem),
-								AGridElement("menutext", 1).WithParent(rootitem),
-								AGridElement("menutext", 2).WithParent(rootitem),
+								AGridElement("menutext", application, position: 0).WithParent(rootitem),
+								AGridElement("menutext", application, position: 1).WithParent(rootitem),
+								AGridElement("menutext", application, position: 2).WithParent(rootitem),
 				            };
 
 			var menu = AGrid(new Guid("eeeee05e-1115-480b-9ab7-a3ab3c0f6643"), application)

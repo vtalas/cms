@@ -32,7 +32,7 @@ namespace cms.data.tests.PageAbstractTests
 			var repository = RepositorySeed();
 			using (var dataProvider = new DataProviderBase(Application, repository))
 			{
-				var gridelement = AGridElement("text", 1).WithContent("prdel");
+				var gridelement = AGridElement("text", Application, position: 1).WithContent("prdel");
 				dataProvider.AddToGrid(gridelement.ToDto(), GridId);
 				var grid = repository.Grids.Get(GridId);
 
@@ -53,7 +53,7 @@ namespace cms.data.tests.PageAbstractTests
 			var repository = RepositorySeed();
 			using (var db = new DataProviderBase(Application, repository))
 			{
-				var gridelement = AGridElement("text", 1);
+				var gridelement = AGridElement("text", Application, position: 1);
 				repository.Add(gridelement);
 				repository.SaveChanges();
 
@@ -75,7 +75,7 @@ namespace cms.data.tests.PageAbstractTests
 			var repository = RepositorySeed();
 			using (var db = new DataProviderBase(Application, repository))
 			{
-				var gridelement = AGridElement("text", 1);
+				var gridelement = AGridElement("text", Application, position: 1);
 				Assert.Throws<ObjectNotFoundException>(() => db.AddToGrid(gridelement.ToDto(), Guid.NewGuid()));
 			}
 		}
@@ -117,7 +117,7 @@ namespace cms.data.tests.PageAbstractTests
 				var gridElement = gridElements.Single(x => x.Position == itemFromPosition);
 				gridElements.PrintGridElementsPositons(gridElement.Id);
 
-				var update = AGridElement("text", gridElement.Id, newPosition)
+				var update = AGridElement("text", Application, gridElement.Id, newPosition)
 					.WithContent("new position")
 					.IsPropertyOf(grid);
 
@@ -188,7 +188,7 @@ namespace cms.data.tests.PageAbstractTests
 
 			Console.WriteLine("puvodni " + gridElement.Position + "  nova :" + newPosition);
 
-			var update = AGridElement("text", gridElement.Id, newPosition)
+			var update = AGridElement("text", Application, gridElement.Id, newPosition)
 				.WithContent("new position")
 				.IsPropertyOf(gridElement.Grid)
 				.WithParent(newparent);
@@ -236,7 +236,7 @@ namespace cms.data.tests.PageAbstractTests
 			var repository = RepositorySeed();
 			using (var db = new DataProviderBase(Application, repository))
 			{
-				var update = AGridElement("text", Guid.NewGuid(), 6);
+				var update = AGridElement("text", Application, Guid.NewGuid(), 6);
 				update.Content = "xxx";
 				Assert.Throws<ObjectNotFoundException>(() => db.Update(update.ToDto()));
 			}
@@ -248,7 +248,7 @@ namespace cms.data.tests.PageAbstractTests
 			var repository = RepositorySeed();
 			using (var db = new DataProviderBase(Application, repository))
 			{
-				var gridEelemOtherApp = AGridElement("text", 2);
+				var gridEelemOtherApp = AGridElement("text", Application, position: 2);
 				AApplication("prd App")
 					.WithGrid(
 						AGrid()
@@ -257,6 +257,7 @@ namespace cms.data.tests.PageAbstractTests
 				Assert.Throws<ObjectNotFoundException>(() => db.Update(gridEelemOtherApp.ToDto()));
 			}
 		}
+
 
 		[Test]
 		public void Delete_test()
@@ -286,24 +287,25 @@ namespace cms.data.tests.PageAbstractTests
 		}
 
 		protected IRepository RepositorySeed()
-		{
-			var repository = RepositoryCreator();
-			var subGridElement = AGridElement("text", 3).WithContent(SubElement1Content);
-			var subGridElement2 = AGridElement("text", 4).WithContent(SubElement2Content);
 
-			Application = AApplication("prd App")
-				.WithGrid(
+		{
+			var app = AApplication("prd App");
+			var repository = RepositoryCreator();
+			var subGridElement = AGridElement("text", app, position: 3).WithContent(SubElement1Content);
+			var subGridElement2 = AGridElement("text", app, position: 4).WithContent(SubElement2Content);
+
+				app.WithGrid(
 					AGrid(GridId)
 						.WithResource(SpecialResourceEnum.Link, "aaa")
 						.WithResource("name", "NAME AAAA", CultureCs, 111)
-						.WithGridElement(AGridElement("text",GridElementId, 0).WithResource("link", "xxx"))
-						.WithGridElement(AGridElement("text", 1))
-						.WithGridElement(AGridElement("text", 2))
+						.WithGridElement(AGridElement("text", Application, GridElementId, 0).WithResource("link", "xxx"))
+						.WithGridElement(AGridElement("text", Application, position: 1))
+						.WithGridElement(AGridElement("text", Application, position: 2))
 						.WithGridElement(subGridElement)
-						.WithGridElement(AGridElement("text", 0).WithParent(subGridElement))
-						.WithGridElement(AGridElement("text", 1).WithContent("chujs").WithParent(subGridElement))
+						.WithGridElement(AGridElement("text", Application, position: 0).WithParent(subGridElement))
+						.WithGridElement(AGridElement("text", Application, position: 1).WithContent("chujs").WithParent(subGridElement))
 						.WithGridElement(subGridElement2)
-						.WithGridElement(AGridElement("text", 0).WithParent(subGridElement2))
+						.WithGridElement(AGridElement("text", Application, position: 0).WithParent(subGridElement2))
 				).AddTo(repository);
 
 			GridElementsBefore = repository.GridElements.Count();
@@ -311,6 +313,10 @@ namespace cms.data.tests.PageAbstractTests
 			Assert.AreEqual(1, repository.ApplicationSettings.Count(), "There should be an application ");
 			Assert.AreEqual(1, repository.Grids.Count());
 			ResourcesBefore = repository.Resources.Count();
+
+			Application = app;
+
+	
 			return repository;
 		}
 
