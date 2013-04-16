@@ -241,23 +241,13 @@
     <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.thtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml_admin.thtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\text\text.thtml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\text\text_admin.thtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\ApplicationData\_default\menuElements\menutext\menutext.thtml" />
     <Content Include="App_Data\ApplicationData\_default\menuElements\menutext\menutext_admin.thtml" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\gdataalbum.thtml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\gdataalbum_admin.thtml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -299,6 +289,8 @@
     <Content Include="Content\less\metro-bootstrap-source\variables.min.css">
       <DependentUpon>variables.less</DependentUpon>
     </Content>
+    <Content Include="Content\loader16.gif" />
+    <Content Include="Content\loader32.png" />
     <Content Include="Content\metro-bootstrap.css" />
     <Content Include="log4net.config">
       <SubType>Designer</SubType>

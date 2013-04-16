@@ -37,10 +37,10 @@ namespace cms
 				new { controller = "ClientApi", action = "ViewPageJson", link = UrlParameter.Optional } // Parameter defaults
 			);
 
-			routes.MapRoute(
+			routes.MapHttpRoute(
 				"clientApi", // Route name
 				"clientapi/{applicationId}/{action}/{id}", // URL with parameters
-				new { controller = "ClientApi", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+				new { controller = "ClientApi", action = "Index", id = RouteParameter.Optional } // Parameter defaults
 			);
 
 			routes.MapHttpRoute(

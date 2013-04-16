@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Web.Mvc;
+using cms.data.Dtos;
 
 namespace cms.Controllers.Api
 {
-    public class ClientApiController : ApiControllerBase
+    public class ClientApiController : WebApiControllerBase
     {
-		public ActionResult ViewPageJson(string link)
+		public GridPageDto GetPage(string id)
 		{
 			using (var db = SessionProvider.CreateSession)
 			{
-				var a = db.Page.Get(link);
-				return new Code.JSONNetResult(a);
+				return db.Page.Get(id);
 			}
 		}
 
-		public ActionResult GetGrid(Guid id)
-		{
-			using (var db = SessionProvider.CreateSession)
-			{
-				var a = db.Page.Get(id);
-				return new Code.JSONNetResult(a);
-			}
-		}
+		//public ActionResult GetGrid(Guid id)
+		//{
+		//	using (var db = SessionProvider.CreateSession)
+		//	{
+		//		var a = db.Page.Get(id);
+		//		return new Code.JSONNetResult(a);
+		//	}
+		//}
 	}
 }
