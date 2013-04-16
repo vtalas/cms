@@ -2,9 +2,12 @@
 using System.Linq;
 using System.Web.Mvc;
 using cms.data.Dtos;
+<<<<<<< HEAD
+=======
 using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
 using cms.data.EF.RepositoryImplementation;
+>>>>>>> origin/trunk
 
 namespace cms.Controllers.Api
 {
@@ -12,13 +15,30 @@ namespace cms.Controllers.Api
     {
 		public GridPageDto GetPage(string id)
 		{
-			//return new GridPageDto()
-			//{
+<<<<<<< HEAD
+			using (var db = SessionProvider.CreateSession)
+			{
 				return db.Page.Get(id);
-			//};
 			}
 		}
 
+=======
+			//return new GridPageDto()
+			//{
+			//	Category = "kabsdkjbasd",
+			//	Id = Guid.NewGuid()
+			//};
+
+			using (var repo = new EfRepository(new EfContext()))
+			{
+				var app = repo.ApplicationSettings.Single(x => x.Id == ApplicationId);
+				var session = new PageAbstractImpl(app, repo);
+
+				return session.Get(id);
+			}
+		}
+
+>>>>>>> origin/trunk
 		//public ActionResult GetGrid(Guid id)
 		//{
 		//	using (var db = SessionProvider.CreateSession)
@@ -29,12 +49,3 @@ namespace cms.Controllers.Api
 		//}
 	}
 }
-
-		//public ActionResult GetGrid(Guid id)
-		//{
-		//	using (var db = SessionProvider.CreateSession)
-		//	{
-		//		var a = db.Page.Get(id);
-		//		return new Code.JSONNetResult(a);
-		//	}
-		//}
