@@ -3,18 +3,33 @@
 	ViewBag.Title = "Index";
 
 }
-<div ng-app>
-	<div ng-controller="index" data-model="@ViewBag.Json" class="container" >
-		<ul>
-			<li ng-repeat="item in data">
-				<a href="/render/{{item.Id}}/admin/grids">{{item.Name}}</a> |
-				<a href="/client/{{item.Name}}">Preview</a>
-			</li>
-		</ul>
-	
+<style>
+	body
+	{
+		padding: 0px;
+	}
+</style>
+
+<div ng-app class="container admin-index">
+
+
+	<div class="page-header">
+		<h2>Aplikace</h2>
+	</div>
+	<div ng-controller="index" data-model="@ViewBag.Json"  >
+
+		<div ng-repeat="item in data" class="row color ">
+			<div class="span8">
+				<a href="/render/{{item.Id}}/admin/grids" class="btn-link align-left color">
+					<h1>{{item.Name}}</h1>
+				</a>
+				{{item.Id}}
+			</div>
+		</div>
+
 		<form ng-submit="add()" class="form-inline">
-			<input type="text" ng-model="newitem"  size="30" placeholder="pridat dalsi">
-			<button class="btn" type="submit" >přidat</button>
+			<input type="text" ng-model="newitem" size="30" placeholder="pridat dalsi">
+			<button class="btn" type="submit">přidat</button>
 		</form>
 		<span>{{data.length}} celkem </span>
 	</div>

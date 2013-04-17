@@ -21,7 +21,7 @@
 		<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{grid.Name}}</a>
 	</div>
 	<div class="span4">
-		<span class="admin-inline-block">{{grid.Link}}</span>
+		<span ngc-click-edit="grid.Link" type="input" placeholder="text"></span>
 	</div>
 	<div class="span3 hider">
 		<button ng-hide="grid.Edit" ng-click="edit(grid)" class="btn font-icon edit" />

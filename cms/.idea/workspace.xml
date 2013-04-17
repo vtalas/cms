@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/Api/ClientApiController.cs" afterPath="$PROJECT_DIR$/Controllers/Api/ClientApiController.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/Grids.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/Grids.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/Index.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/Index.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/_AdminTemplates/_navbar.cshtml" afterPath="$PROJECT_DIR$/Views/_AdminTemplates/_navbar.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/admin.less" afterPath="$PROJECT_DIR$/Content/admin.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.web.csproj" afterPath="$PROJECT_DIR$/cms.web.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
@@ -25,12 +31,14 @@
     <file path="/Grids.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365363886633" ignored="false" />
     <file path="/controller.gridPage.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365365060028" ignored="false" />
     <file path="/gridpage.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365365019496" ignored="false" />
-    <file path="/admin.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365334175129" ignored="false" />
+    <file path="/admin.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366225767099" ignored="false" />
     <file path="/a.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365334974544" ignored="false" />
     <file path="/text.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327068892" ignored="false" />
     <file path="/controller.text.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327049734" ignored="false" />
     <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365364599297" ignored="false" />
-    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365537370397" ignored="false" />
+    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366222806309" ignored="false" />
+    <file path="/_navbar.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366223152236" ignored="false" />
+    <file path="$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/variables.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366225652270" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,55 +58,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gdataalbum.thtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
+      <file leaf-file-name="_navbar.cshtml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Views/_AdminTemplates/_navbar.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="69" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.0">
+            <state line="17" column="81" selection-start="425" selection-end="425" vertical-scroll-proportion="0.4813008">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller.gdataalbum.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
+      <file leaf-file-name="admin.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Content/admin.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="50" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller.gridPage.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="99" selection-start="735" selection-end="735" vertical-scroll-proportion="0.556701">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gridpage.cshtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="62" selection-start="781" selection-end="781" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="258" column="40" selection-start="7609" selection-end="7609" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller.text.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/controller.text.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="12" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
+            <state line="187" column="76" selection-start="2397" selection-end="2397" vertical-scroll-proportion="-20.32">
               <folding />
             </state>
           </provider>
@@ -127,7 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/test/unit/BootstrapperCtrlTest.js" />
         <option value="$PROJECT_DIR$/tests/config_testacular/testacular.conf.js" />
         <option value="$PROJECT_DIR$/tests/test/unit/cmsapiTests.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" />
@@ -137,12 +108,13 @@
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" />
-        <option value="$PROJECT_DIR$/Content/admin.less" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee" />
         <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
         <option value="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
         <option value="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
+        <option value="$PROJECT_DIR$/Views/_AdminTemplates/_navbar.cshtml" />
+        <option value="$PROJECT_DIR$/Content/admin.less" />
       </list>
     </option>
   </component>
@@ -261,14 +233,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.sourceCode.CoffeeScript" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="C:/wamp/www/masp/maspNew" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -405,7 +377,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -413,7 +385,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25039536" sideWeight="0.68085104" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32798395" sideWeight="0.54545456" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32765532" sideWeight="0.54545456" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.31895688" sideWeight="0.5097522" order="2" side_tool="true" content_ui="tabs" x="458" y="69" width="1210" height="965" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32733223" sideWeight="0.4418012" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -520,16 +492,6 @@
         <state line="63" column="11" selection-start="1661" selection-end="1661" vertical-scroll-proportion="0.62886596" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="19" selection-start="832" selection-end="832" vertical-scroll-proportion="0.6185567" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/admin.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="112" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.62886596" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="112" selection-start="304" selection-end="304" vertical-scroll-proportion="0.19128586" />
@@ -552,44 +514,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/controller.text.coffee">
+    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="72" selection-end="72" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="258" column="40" selection-start="7609" selection-end="7609" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="69" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.0">
+        <state line="20" column="73" selection-start="526" selection-end="526" vertical-scroll-proportion="0.39175257">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="50" selection-start="235" selection-end="235" vertical-scroll-proportion="0.0">
+        <state line="10" column="50" selection-start="235" selection-end="235" vertical-scroll-proportion="0.019587629">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="69" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.39490446">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="62" selection-start="781" selection-end="781" vertical-scroll-proportion="0.0">
+        <state line="23" column="62" selection-start="781" selection-end="781" vertical-scroll-proportion="0.4639066">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="99" selection-start="735" selection-end="735" vertical-scroll-proportion="0.556701">
+        <state line="258" column="40" selection-start="7609" selection-end="7609" vertical-scroll-proportion="0.6670103">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/controller.text.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="12" selection-start="72" selection-end="72" vertical-scroll-proportion="0.058762886">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="187" column="76" selection-start="2397" selection-end="2397" vertical-scroll-proportion="-20.32">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/_AdminTemplates/_navbar.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="81" selection-start="425" selection-end="425" vertical-scroll-proportion="0.4813008">
           <folding />
         </state>
       </provider>

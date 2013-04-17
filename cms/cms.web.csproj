@@ -248,6 +248,12 @@
     <Content Include="App_Data\bootstrap\less\variables.min.css">
       <DependentUpon>variables.less</DependentUpon>
     </Content>
+    <Content Include="Content\admin.css">
+      <DependentUpon>admin.less</DependentUpon>
+    </Content>
+    <Content Include="Content\admin.min.css">
+      <DependentUpon>admin.less</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
     <Content Include="Content\fluid_grid.css" />
@@ -268,6 +274,12 @@
     </Content>
     <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\metro-bootstrap.min.css">
       <DependentUpon>metro-bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\variables.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\variables.min.css">
+      <DependentUpon>variables.less</DependentUpon>
     </Content>
     <Content Include="Content\less\metro-bootstrap-source\variables.css">
       <DependentUpon>variables.less</DependentUpon>
