@@ -239,6 +239,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\text\controller.text.coffee" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <Content Include="App_Data\bootstrap\less\variables.css">

@@ -47,6 +47,13 @@ namespace cms.Controllers.Api
 			}
 		}
 
+		public GridElementDto Putxxx(string xxx )
+		{
+			var x = new GridElementDto {Content = xxx};
+			return x;
+
+		}
+
 	}
 
 }
