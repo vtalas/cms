@@ -71,8 +71,20 @@
 
 .ngc-click-edit-preview {
   display: block;
+ cursor: pointer;
+  &.empty{
+	color: #d5d5d5;
+  }
+
+  &.empty:hover{
+	color: darkgrey;
+	border: 1px dashed darkgrey;
+
+  }
+
   border: 1px dashed #d5d5d5;
 }
+
 .ngc-click-edit-textarea {
   max-width: 99%;
   width: 99%;
@@ -191,6 +203,9 @@ a.color:hover {
 }
 
 .admin-index {
+	.row {
+		margin-bottom:2px;
+	}
 	.row a { 
 		color:#f5f5f5;
 	}
@@ -201,6 +216,14 @@ a.color:hover {
 
 	.row.color:hover {
 		background-color: #2E8BCC;
+	}
+	h1 {
+	}
+	.row {
+		margin-left: 0px;
+		&.newitem {
+			border:1px dotted #2f96b4;
+		}	
 	}
 }
 

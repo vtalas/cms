@@ -404,6 +404,7 @@
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <Content Include="Content\admin.less" />
     <Content Include="Scripts\Admin\controller.gDataPhotos.js" />
+    <Content Include="Scripts\Admin\directive.ngcClickEdit.js" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
     <Content Include="Scripts\angular-templates-ext.coffee">
       <Compile>True</Compile>
