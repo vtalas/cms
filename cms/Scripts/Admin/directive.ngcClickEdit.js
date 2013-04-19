@@ -1,6 +1,6 @@
 function ngcClickEditDirective() {
 	var previewTemplate = '<span ng-click="showEdit()" class="ngc-click-edit-preview" ng-hide="edit" ng-bind="ngcClickEdit" ></span>',
-		editTemplateInput = "<input ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-input' ng-show='edit' ng-model=\"ngcClickEdit\"></input>",
+		editTemplateInput = "<input ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-input small' ng-show='edit' ng-model=\"ngcClickEdit\"></input>",
 		editTemplateTextArea = "<textarea ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-textarea' ng-show=\"edit\" ng-model=\"ngcClickEdit\" ></textarea>";
 	function getEditTemplate(iAttrs) {
 		var type = iAttrs.type,

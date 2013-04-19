@@ -71,22 +71,25 @@
 
 
 .ngc-click-edit {
-//  margin-top: 5px;
-//  padding: 0px;
+
 }
 
 .ngc-click-edit-preview {
-  display: block;
   cursor: pointer;
-
+	display: block;
   &.large {
 	line-height: 44px;
 	font-size: 28px;
   }
 
+  &.small {
+
+  }
+
   &.empty {
 	color: #d5d5d5;
   }
+
   &.empty {
 	font-weight: normal;
   }
@@ -95,7 +98,6 @@
 	color: darkgrey;
 	border: 1px dashed darkgrey;
   }
-
   border: 1px dashed #d5d5d5;
 }
 
@@ -105,10 +107,12 @@
 }
 
 .ngc-click-edit-input {
-  width: 100%;
+	width: 100%;
   &.large {
 	line-height: 44px;
 	font-size: 28px;
+  }
+  &.small{
   }
 }
 
@@ -233,15 +237,6 @@ a.color:hover {
 	color: #f5f5f5;
   }
 
-  .row.color:hover {
-	background-color: #2E8BCC;
-  }
-  .row {
-	margin-left: 0px;
-	&.newitem {
-	  border: 1px dotted #2f96b4;
-	}
-  }
 
   .ngc-click-edit-preview {
 	margin-top: 13px;
@@ -251,3 +246,12 @@ a.color:hover {
   }
 }
 
+.row.color:hover {
+  background-color: #2E8BCC;
+}
+.row {
+  margin-left: 0px;
+  &.newitem {
+	border: 1px dotted #2f96b4;
+  }
+}

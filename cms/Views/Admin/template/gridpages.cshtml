@@ -17,20 +17,36 @@
 </div>
 <div class="row row-gridpages color" ng-repeat="grid in data" ngc-hover="">
 	<div class="span5">
-		<span class="font-icon {{grid.Category}}"></span>
+		<span style="width: 2em" class="font-icon  {{grid.Category}}"></span>
 		<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{grid.Name}}</a>
 	</div>
 	<div class="span4">
-		<span placeholder="text">{{grid.Link}}</span>
+		<div placeholder="text" style="margin-top: 10px">{{grid.Link}}</div>
 	</div>
 	<div class="span3 hider">
 		<button ng-hide="grid.Edit" ng-click="edit(grid)" class="btn font-icon edit" />
 		<button ng-show="grid.Edit" ng-click="save(grid)" class="btn font-icon ok" />
 		<button ng-click="remove(grid)" class="btn font-icon delete" />
-
 		<a href="/client/json/@ViewBag.ApplicationId/{{grid.Link}}">viewJson</a>
 	</div>
 </div>
+<div class="row row-gridpages newitem" style="padding-top: 5px; padding-bottom: 5px;">
+	<div class="span5">
+		<div style="margin-left:4em;  margin-top: 10px;" ngc-click-edit="newitem.Name"
+			 type="input"
+			 placeholder="jméno"></div>
+	</div>
+	<div class="span4">
+		<div ngc-click-edit="newitem.Link"
+			 type="input"
+			 style="margin-top: 10px;"
+			 placeholder="link"></div>
+	</div>
+	<div class="span2">
+		<button class="btn btn-success " type="submit" ng-click="add()">přidat</button>
+	</div>
+</div>
+
 <p></p>
 
 
