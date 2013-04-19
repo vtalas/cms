@@ -29,8 +29,6 @@ function ngcClickEditDirective() {
 	return {
 		scope: { ngcClickEdit: "=" },
 		compile: function (iElement, iAttrs, transclude) {
-
-
 			var	templatePreview = iAttrs.templatePreview,
 				preview =  templatePreview ? $(templatePreview).html() : angular.element(previewTemplate),
 				template;

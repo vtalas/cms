@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/Api/AdminApiController.cs" afterPath="$PROJECT_DIR$/Controllers/Api/AdminApiController.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/Index.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/Index.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/Index.js" afterPath="$PROJECT_DIR$/Scripts/Admin/Index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/admin.less" afterPath="$PROJECT_DIR$/Content/admin.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" afterPath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -29,18 +27,18 @@
     <file path="/Grids.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365363886633" ignored="false" />
     <file path="/controller.gridPage.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365365060028" ignored="false" />
     <file path="/gridpage.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365365019496" ignored="false" />
-    <file path="/admin.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366362650642" ignored="false" />
+    <file path="/admin.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366399295292" ignored="false" />
     <file path="/a.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365334974544" ignored="false" />
     <file path="/text.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327068892" ignored="false" />
     <file path="/controller.text.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327049734" ignored="false" />
     <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365364599297" ignored="false" />
-    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366360865138" ignored="false" />
+    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366390827359" ignored="false" />
     <file path="/_navbar.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366223152236" ignored="false" />
     <file path="/directive.ngcClickEdit.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366368506385" ignored="false" />
     <file path="/module.admin-index.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366316116716" ignored="false" />
     <file path="/*.regexp" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366362534697" ignored="false" />
     <file path="$PROJECT_DIR$/Content/metro-bootstrap.css" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366363519241" ignored="false" />
-    <file path="/Index.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366368277067" ignored="false" />
+    <file path="/Index.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366399426621" ignored="false" />
     <file path="C:/TrunkPhoenix/web/phoenix/models/model.templatedraft.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366367927968" ignored="false" />
     <file path="C:/TrunkPhoenix/web/phoenix/controllers/controller.approvalaction.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366367927968" ignored="false" />
     <file path="C:/TrunkPhoenix/web/phoenix/css/phoenix_documentinfo.less" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366368004805" ignored="false" />
@@ -63,22 +61,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="directive.ngcClickEdit.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="directive.ngcClickEdit.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="21" selection-start="633" selection-end="633" vertical-scroll-proportion="0.10526316">
+            <state line="45" column="58" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Index.cshtml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Index.cshtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Views/Admin/Index.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#style#0;n#input#0;n#script#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state line="14" column="76" selection-start="227" selection-end="227" vertical-scroll-proportion="0.28237793">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="208" column="0" selection-start="6053" selection-end="6053" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.less" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Content/admin.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="81" column="4" selection-start="1029" selection-end="1029" vertical-scroll-proportion="-11.2">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,17 +142,17 @@
         <option value="$PROJECT_DIR$/Views/_AdminTemplates/_navbar.cshtml" />
         <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/module.admin-index.js" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" />
         <option value="$PROJECT_DIR$/Content/admin.less" />
         <option value="$PROJECT_DIR$/Views/Admin/Index.cshtml" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1216" />
-    <option name="height" value="1812" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1170" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -249,14 +263,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.fileTypes" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="C:/wamp/www/masp/maspNew" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -392,12 +406,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1216" height="1812" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31862152" sideWeight="0.48655772" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25039536" sideWeight="0.68085104" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -409,6 +422,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31862152" sideWeight="0.48655772" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956672" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -505,23 +519,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/metro-bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="620" column="1" selection-start="10668" selection-end="10668" vertical-scroll-proportion="0.34834558">
-          <folding />
-        </state>
+        <state line="620" column="1" selection-start="10668" selection-end="10668" vertical-scroll-proportion="0.34834558" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/variables.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="253" column="30" selection-start="7571" selection-end="7572" vertical-scroll-proportion="0.14684016">
-          <folding />
-        </state>
+        <state line="253" column="30" selection-start="7571" selection-end="7572" vertical-scroll-proportion="0.14684016" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/type.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="24" selection-start="1391" selection-end="1391" vertical-scroll-proportion="0.47677726">
-          <folding />
-        </state>
+        <state line="57" column="24" selection-start="1391" selection-end="1391" vertical-scroll-proportion="0.47677726" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/responsive-767px-max.less">
@@ -533,44 +541,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/tiles.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="28" selection-start="685" selection-end="685" vertical-scroll-proportion="0.552974">
-          <folding />
-        </state>
+        <state line="35" column="28" selection-start="685" selection-end="685" vertical-scroll-proportion="0.552974" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/type.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="274" selection-end="274" vertical-scroll-proportion="0.3317844">
-          <folding />
-        </state>
+        <state line="21" column="0" selection-start="274" selection-end="274" vertical-scroll-proportion="0.3317844" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/metro-bootstrap.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/variables.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="77" selection-start="782" selection-end="782" vertical-scroll-proportion="0.44237918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="0" selection-start="6196" selection-end="6196" vertical-scroll-proportion="0.907357">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/admin.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="16" selection-start="917" selection-end="917" vertical-scroll-proportion="0.28633812">
-          <folding />
-        </state>
+        <state line="28" column="77" selection-start="782" selection-end="782" vertical-scroll-proportion="0.44237918" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/module.admin-index.js">
@@ -580,18 +566,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Admin/Index.cshtml">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#style#0;n#input#0;n#script#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="208" column="0" selection-start="6053" selection-end="6053" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="21" selection-start="633" selection-end="633" vertical-scroll-proportion="0.10526316">
+        <state line="45" column="58" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="4" selection-start="1029" selection-end="1029" vertical-scroll-proportion="-11.2">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/Index.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="76" selection-start="227" selection-end="227" vertical-scroll-proportion="0.28237793">
           <folding />
         </state>
       </provider>

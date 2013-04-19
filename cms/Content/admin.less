@@ -8,23 +8,23 @@
   margin-bottom: 1px;
 
   &.color {
-    background-color: #eaeeee;
+	background-color: #eaeeee;
 
-    &:hover {
-      background-color: #bbb;
-    }
+	&:hover {
+	  background-color: #bbb;
+	}
   }
 
   &.header {
-    opacity: 0;
+	opacity: 0;
 
-    &:hover {
-      opacity: 1;
-    }
+	&:hover {
+	  opacity: 1;
+	}
   }
 
   [class*="span"]:first-child {
-    margin-left: 0px;
+	margin-left: 0px;
   }
 }
 
@@ -38,57 +38,62 @@
   display: inline-block;
 
   &.ok:before {
-    content: "\E001";
+	content: "\E001";
   }
   &.edit:before {
-    content: "\E104";
+	content: "\E104";
   }
   &.delete:before {
-    content: "\E107";
+	content: "\E107";
   }
   &.Menu:before {
-    content: "\E0F5";
+	content: "\E0F5";
   }
   &.menu:before {
-    content: "\E0F5";
+	content: "\E0F5";
   }
   &.page:before {
-    content: "\E154";
+	content: "\E154";
   }
   &.Page:before {
-    content: "\E154";
+	content: "\E154";
   }
   &.close:before {
-    content: "\E0A4";
+	content: "\E0A4";
   }
 }
 
 .menuCtrlClass {
   ul {
-    list-style: none;
+	list-style: none;
   }
 }
 
-h3.ngc-click-edit {
-  line-height: 44px;
-}
 
 .ngc-click-edit {
-  margin-top: 5px;
-  padding: 0px;
+//  margin-top: 5px;
+//  padding: 0px;
 }
 
 .ngc-click-edit-preview {
   display: block;
- cursor: pointer;
-  &.empty{
-	color: #d5d5d5;
+  cursor: pointer;
+
+  &.large {
+	line-height: 44px;
+	font-size: 28px;
   }
 
-  &.empty:hover{
+  &.empty {
+	color: #d5d5d5;
+  }
+  &.empty {
+	font-weight: normal;
+  }
+
+  &.empty:hover {
 	color: darkgrey;
 	border: 1px dashed darkgrey;
-
   }
 
   border: 1px dashed #d5d5d5;
@@ -101,18 +106,22 @@ h3.ngc-click-edit {
 
 .ngc-click-edit-input {
   width: 100%;
+  &.large {
+	line-height: 44px;
+	font-size: 28px;
+  }
 }
 
 .gridpage {
   .contentitem {
-    border-bottom: 2px solid greenyellow;
-    background-color: #F9F9F9;
+	border-bottom: 2px solid greenyellow;
+	background-color: #F9F9F9;
   }
   .row:last-child {
-    margin-top: 1em;
+	margin-top: 1em;
   }
   .gridelement-controls {
-    float: right;
+	float: right;
   }
   .gridelement-content {
 	padding: 10px;
@@ -135,29 +144,29 @@ h3.ngc-click-edit {
   }
 
   .menuitem {
-    width: 100%;
+	width: 100%;
   }
 
   span.ng-scope {
-    display: block;
-    height: 0px;
+	display: block;
+	height: 0px;
   }
 
   .dropableCtrl {
   }
 
   .dropableCtrl.dragging {
-    height: 20px;
+	height: 20px;
   }
 
   .dropableCtrl.dragover {
-    background-color: #eee;
-    border: 1px solid #aaa;
-    height: 42px !important;
+	background-color: #eee;
+	border: 1px solid #aaa;
+	height: 42px !important;
   }
 
   .draggableCtrl.dragged {
-    opacity: 0.4;
+	opacity: 0.4;
   }
 }
 
@@ -175,63 +184,70 @@ ul.ggg li {
   @vyska: 70px;
 
   span.ng-scope {
-    display: block;
-    height: 0px;
+	display: block;
+	height: 0px;
   }
 
   .dropableCtrl {
-    height: @vyska;
-    background-color: #eee;
+	height: @vyska;
+	background-color: #eee;
   }
 
   .dropableCtrl.dragging {
   }
 
   .dropableCtrl.dragover {
-    background-color: Yellow;
+	background-color: Yellow;
   }
 
   .draggableCtrl, .sortableCtrl {
-    background-color: #aaa;
+	background-color: #aaa;
   }
 
   .draggableCtrl, .sortableCtrl {
-    margin-top: 10px;
-    height: @vyska;
+	margin-top: 10px;
+	height: @vyska;
   }
 
   .draggableCtrl.dragged, .sortableCtrl.dragged {
   }
 }
 
-
-a.color { 
-	color:#f5f5f5;
+a.color {
+  color: #f5f5f5;
 }
-a.color:hover { 
-	text-decoration: none;
+
+a.color:hover {
+  text-decoration: none;
 }
 
 .admin-index {
-	.row {
-		margin-bottom:2px;
-	}
-	.row a { 
-		color:#f5f5f5;
-	}
-	.row.color {
-		background-color: #2f96b4;
-		color: #f5f5f5;
-	}
+  .row {
+	margin-bottom: 2px;
+  }
+  .row a {
+	color: #f5f5f5;
+  }
+  .row.color {
+	background-color: #2f96b4;
+	color: #f5f5f5;
+  }
 
-	.row.color:hover {
-		background-color: #2E8BCC;
+  .row.color:hover {
+	background-color: #2E8BCC;
+  }
+  .row {
+	margin-left: 0px;
+	&.newitem {
+	  border: 1px dotted #2f96b4;
 	}
-	.row {
-		margin-left: 0px;
-		&.newitem {
-			border:1px dotted #2f96b4;
-		}	
-	}
+  }
+
+  .ngc-click-edit-preview {
+	margin-top: 13px;
+  }
+  .ngc-click-edit-input {
+	margin-top: 13px;
+  }
 }
 
