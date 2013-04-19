@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/Index.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/Index.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/admin.less" afterPath="$PROJECT_DIR$/Content/admin.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" afterPath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="" />
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/gdataalbum_admin.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364982542786" ignored="false" />
@@ -60,53 +55,7 @@
     <favorites_list name="cms" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="directive.ngcClickEdit.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="58" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Index.cshtml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Views/Admin/Index.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="76" selection-start="227" selection-end="227" vertical-scroll-proportion="0.28237793">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="208" column="0" selection-start="6053" selection-end="6053" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/admin.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="4" selection-start="1029" selection-end="1029" vertical-scroll-proportion="-11.2">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="module.admin-index.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/module.admin-index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -407,7 +356,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -559,37 +508,37 @@
         <state line="28" column="77" selection-start="782" selection-end="782" vertical-scroll-proportion="0.44237918" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/module.admin-index.js">
+    <entry file="file://$PROJECT_DIR$/Views/Admin/Index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="208" column="0" selection-start="6053" selection-end="6053" vertical-scroll-proportion="0.0">
+        <state line="30" column="72" selection-start="656" selection-end="656" vertical-scroll-proportion="0.60509557">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="58" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.0">
+        <state line="45" column="58" selection-start="1453" selection-end="1453" vertical-scroll-proportion="0.37216493">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="208" column="0" selection-start="6053" selection-end="6053" vertical-scroll-proportion="0.73195875">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/admin.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="4" selection-start="1029" selection-end="1029" vertical-scroll-proportion="-11.2">
+        <state line="81" column="4" selection-start="1029" selection-end="1029" vertical-scroll-proportion="0.2962963">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Admin/Index.cshtml">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/module.admin-index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="76" selection-start="227" selection-end="227" vertical-scroll-proportion="0.28237793">
+        <state line="4" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.078350514">
           <folding />
         </state>
       </provider>
