@@ -21,7 +21,6 @@ namespace cms.Controllers.Api
 		[System.Web.Mvc.HttpPost]
 		public ApplicationSetting AddApplication(ApplicationSetting data)
 		{
-			
 			using (var db = SessionProvider.CreateSession)
 			{
 				var a = db.Add(data, WebSecurity.CurrentUserId);

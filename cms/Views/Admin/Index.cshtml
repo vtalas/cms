@@ -29,16 +29,29 @@
 		<div class="row newitem ">
 			<form ng-submit="add()">
 				<div class="span8">
-					<h1 ngc-click-edit="newitem" type="input" placeholder="přidat novou"><button class="btn btn-" type="submit">přidat</button></h1>
-					<span>&nbsp;</span>
+					<h3 ngc-click-edit="newitem"
+						template-preview="#preview"
+						template-edit="#edit"
+						type="input"
+						placeholder="přidat novou"></h3>
+                    <span>&nbsp;</span>
 				</div>
-				<div class="span2">
-					<h1><button class="btn btn-large" type="submit">přidat</button></h1>
+				<div class="span2 ngc-click-edit">
+					<button class="btn btn-success " type="submit">přidat</button>
 				</div>
 			</form>
 		</div>
 
 		<span>{{data.length}} celkem </span>
 	</div>
+
+	<script id="preview" type="text/ng-template" >
+		<span ng-click="showEdit()" class="ngc-click-edit-preview" ng-hide="edit" ng-bind="ngcClickEdit" ></span>
+	</script>
+	<script id="edit" type="text/ng-template">
+		<input  style="height:50px" ui-event="{ blur : 'showPreview()' }" class='ngc-click-edit-input' ng-show='edit' ng-model="ngcClickEdit"></input>",
+	</script>
+
+
 </div>
 
