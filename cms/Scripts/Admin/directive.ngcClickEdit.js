@@ -25,7 +25,6 @@ function ngcClickEditDirective() {
 		return template;
 	}
 
-
 	return {
 		scope: { ngcClickEdit: "=" },
 		compile: function (iElement, iAttrs, transclude) {
@@ -44,25 +43,23 @@ function ngcClickEditDirective() {
 				scope.edit = false;
 				element.addClass("ngc-click-edit");
 
-
 				scope.$watch("edit", function (newValue, b) {
-					console.log(template);
 					template.focus();
 				});
 
 				scope.$watch("ngcClickEdit", function (newvalue, b) {
-					var input = element.find("span")[0];
+					var input = element.find("span");
 					if (!newvalue) {
-						$(input).text(attrs.placeholder);
-						$(input).addClass("empty");
+						input.text(attrs.placeholder);
+						input.addClass("empty");
 					}
 					else {
-						$(input).removeClass("empty");
-
+						input.removeClass("empty");
 					}
 				});
 
 				scope.showEdit = function () {
+					scope.$emit("ngcClickEdit-showEdit");
 					scope.edit = true;
 				};
 

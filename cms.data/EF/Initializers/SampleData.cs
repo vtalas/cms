@@ -46,8 +46,7 @@ namespace cms.data.EF.Initializers
 			Context.TemplateTypes.Add(new TemplateType { Name = "text" });
 			Context.TemplateTypes.Add(new TemplateType { Name = "reference" });
 
-
-			GenerateMenus(application);
+//			GenerateMenus(application);
 
 			string defualtjsondata = ConfigurationManager.AppSettings.Get("DefaultJsonBootstrap");
 			//TODO pridat log4net

@@ -107,7 +107,6 @@ namespace cms.data.EF.DataProviderImplementation
 		{
 			var user = Repository.UserProfile.Single(x => x.Id == userId);
 			newitem.Users.Add(user);
-
 			Repository.Add(newitem);
 			if (newitem.Grids == null)
 			{

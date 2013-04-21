@@ -193,7 +193,6 @@ module.directive("ngcHover", function () {
 });
 
 module.directive("ngcClickEdit", ngcClickEditDirective);
-
 module.directive("ngcLazyImage", function (appSettings) {
 	var loader = "/Content/loader16.gif";
 
