@@ -71,15 +71,18 @@ namespace cms.data.DataProvider
 			return gridElement;
 		}
 
-		protected bool LinkExist(string linkValue)
+		protected bool LinkExist(GridPageDto item)
 		{
-			Func<Grid, bool> aa = grid => grid.Resources.ContainsKeyValue(SpecialResourceEnum.Link, linkValue, null);
+			var linkValue = item.Link;
+			Func<Grid, bool> aa = grid => grid.Resources.ContainsKeyValue(SpecialResourceEnum.Link, linkValue, null) && grid.Id != item.Id;
 			return AvailableGrids.Include(x => x.Resources).ToList().Any(aa);
 		}
 
-		protected void ValidateLink(string linkValue)
+		protected void ValidateLink(GridPageDto item )
 		{
-			if (LinkExist(linkValue))
+			var linkValue = item.Link;
+
+			if (LinkExist(item))
 			{
 				throw new Exception(string.Format("item with link '{0}' allready Exists", linkValue));
 			}

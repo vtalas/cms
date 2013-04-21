@@ -51,7 +51,7 @@ namespace cms.data.EF.DataProviderImplementation
 		{
 			var item = newitem.ToGrid();
 
-			ValidateLink(newitem.Link);
+			ValidateLink(newitem);
 
 			CurrentApplication.Grids.Add(item);
 			Repository.Add(item);
@@ -61,7 +61,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override GridPageDto Update(GridPageDto item)
 		{
-			ValidateLink(item.Link);
+			ValidateLink(item);
 
 			var grid = GetGrid(item.Id);
 
@@ -85,6 +85,7 @@ namespace cms.data.EF.DataProviderImplementation
 			}
 			
 			delete.Resources.Clear();
+			delete.GridElements.Clear();
 			
 			Repository.Remove(delete);
 			Repository.SaveChanges();
