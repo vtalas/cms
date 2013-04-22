@@ -14,12 +14,18 @@ namespace cms.Controllers.Api
 		{
 			Width = int.Parse(width, CultureInfo.CurrentCulture);
 			Height = int.Parse(height, CultureInfo.CurrentCulture); ;
-			Url = url;
+			PhotoUri = url;
+		}
+		public WebImage(int width, int height, string url)
+		{
+			Width = width;
+			Height = height;
+			PhotoUri = url;
 		}
 
 		public int Width { get; set; }
 		public int Height { get; set; }
-		public string Url { get; set; }
+		public string PhotoUri { get; set; }
 	}
 	public class AlbumDecorator
 	{
@@ -40,6 +46,24 @@ namespace cms.Controllers.Api
 		public WebImage Thumbnail { get; set; }
 	}
 
+	public class PhotoDecorator
+	{
+		public Photo Photo { get; set; }
+
+		public PhotoDecorator(Photo photo)
+		{
+			Photo = photo;
+			Small = new WebImage(100, 100, null);
+			Medium = new WebImage(100, 100, null);
+			Large = new WebImage(100, 100, null);
+		}
+
+		public WebImage Small { get; set; }
+		public WebImage Medium { get; set; }
+		public WebImage Large { get; set; }
+	}
+
+
 	public class GdataPhotosController : WebApiPicasaControllerBase
 	{
 		public IDictionary<string, AlbumDecorator> GetAlbums()
@@ -48,14 +72,19 @@ namespace cms.Controllers.Api
 			return albums.ToDictionary(key => key.Id);
 		}
 
-		public AlbumDecorator GetAlbum(string link)
+		public AlbumDecorator GetAlbum(string id)
 		{
-			return Picasa.GetAlbum(link);
+			
+			return Picasa.GetAlbum(id);
 		}
 
-		public IEnumerable<Photo> GetAlbumPhotos(string albumid)
+		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
-			return Picasa.GetAlbumPhotos(albumid);
+			using (var settings = SessionProvider.CreateKeValueSession)
+			{
+			}
+
+			return Picasa.GetAlbumPhotos(id);
 		}
 
 		// POST api/gdataphotos

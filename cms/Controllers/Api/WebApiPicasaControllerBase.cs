@@ -17,8 +17,7 @@ namespace cms.Controllers.Api
 			//var gdataAuth = new GoogleDataOAuth2(OAuth2ParametersStorageFactory.StorageJsonFile(ApplicationId));
 			var gdataAuth = new GoogleDataOAuth2(oauth2ParametersStorage);
 			var picasaFactory = new PicasaServiceFactory(gdataAuth.GetRequestDataFactoryInstance("https://picasaweb.google.com/data"));
-			Picasa = new PicasaWrapper(picasaFactory.GetService(), gdataAuth.Storage.Parameters);
+			Picasa = new PicasaWrapper(picasaFactory.GetService(), gdataAuth.Storage.Parameters, SessionProvider);
 		}
-
 	}
 }

@@ -7,16 +7,19 @@ using Google.GData.Photos;
 using Google.Picasa;
 using WebGrease.Css.Extensions;
 using cms.Controllers.Api;
+using cms.data.EF;
 
 namespace cms.Code.LinkAccounts.Picasa
 {
 	public class PicasaWrapper
 	{
+		private readonly SessionProvider _sessionProvider;
 		private PicasaRequest PicasaRequest { get; set; }
 		public PicasaService Service { get; set; }
 
-		public PicasaWrapper(PicasaService service, OAuth2Parameters parameters)
+		public PicasaWrapper(PicasaService service, OAuth2Parameters parameters, SessionProvider sessionProvider)
 		{
+			_sessionProvider = sessionProvider;
 			Service = service;
 			var settings = new RequestSettings("x", parameters);
 			PicasaRequest = new PicasaRequest(settings);
@@ -28,18 +31,26 @@ namespace cms.Code.LinkAccounts.Picasa
 			return albums.Entries;
 		}
 
-		public AlbumDecorator GetAlbum(string link)
+		public AlbumDecorator GetAlbum(string id)
 		{
 			var albums = PicasaRequest.GetAlbums();
-			var xx = albums.Entries.SingleOrDefault(x => x.Title == link);
-
+			
+			var xx = albums.Entries.SingleOrDefault(x => x.Id == id);
 			return new AlbumDecorator(xx);
 		}
 
-		public IEnumerable<Photo> GetAlbumPhotos(string id)
+		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
-			var x = PicasaRequest.GetPhotosInAlbum(id);
-			return x.Entries;
+			using (var db = _sessionProvider.CreateKeValueSession)
+			{
+				//db.SettingsStorage()
+			}
+			
+
+			var photos = PicasaRequest.GetPhotosInAlbum(id);
+
+			return  photos.Entries.Select(x => new PhotoDecorator(x));
+
 		}
 	}
 	public static class ccc

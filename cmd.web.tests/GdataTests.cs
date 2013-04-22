@@ -14,6 +14,13 @@ namespace cms.web.tests
 		private const string ClientSecret = "YxM0MTKCTSBV5vGlU05Yj63h";
 		private const string AccessToken = "ya29.AHES6ZRQrQVpXpt-dxJ9nneI07yjAF0ou_qqtJtkgblsKFR0";
 
+		[Test]
+		public void sdkhskd()
+		{
+			var x = "https://lh5.googleusercontent.com/-i9UhPVg1blo/UXOVpMmRp4I/AAAAAAAAAZo/UsLzCQeW9O0/7.jpg";
+			var a = new Uri(x);
+		}
+
 		//[Test]
 		//public void shouldThrowException_NoAccessToken()
 		//{
