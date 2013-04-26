@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cmd.web.tests/GdataTests.cs" afterPath="$PROJECT_DIR$/../cmd.web.tests/GdataTests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/Api/PhotoDecorator.cs" afterPath="$PROJECT_DIR$/Controllers/Api/PhotoDecorator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/LinkAccounts/Picasa/PicasaWrapper.cs" afterPath="$PROJECT_DIR$/Code/LinkAccounts/Picasa/PicasaWrapper.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/admin.less" afterPath="$PROJECT_DIR$/Content/admin.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" />
+      <change type="DELETED" beforePath="C:\lades\Weby\cms\ClientPHP\ladeso.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
@@ -70,26 +61,7 @@
     <favorites_list name="cms" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="controller.gridPage.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="28" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gridpagesCtrl.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.026369167">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -249,7 +221,7 @@
     <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.fileTypes" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="last_opened_file_path" value="C:/wamp/www/Brav" />
+    <property name="last_opened_file_path" value="C:/wamp/www/weby/weby/masp/maspNew" />
     <property name="FullScreen" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -401,7 +373,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1170" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -591,16 +563,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="28" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
+        <state line="32" column="6" selection-start="933" selection-end="933" vertical-scroll-proportion="0.42292088">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
+    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="322" selection-end="322" vertical-scroll-proportion="0.026369167">
+        <state line="24" column="28" selection-start="637" selection-end="637" vertical-scroll-proportion="0.41379312">
           <folding />
         </state>
       </provider>
