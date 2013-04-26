@@ -7,7 +7,7 @@
 @using cms.Code.LinkAccounts
 @model cms.Code.LinkAccounts.GoogleDataOAuth2
 
-	<h2>Google Data</h2>
+<h2>Google Data</h2>
 
 @switch (Model.GetStatus())
 {
@@ -44,3 +44,6 @@
 				
   break;
 }
+
+
+@Html.Partial("GdataPhotosSettins");

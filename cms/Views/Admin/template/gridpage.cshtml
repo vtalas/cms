@@ -5,9 +5,9 @@
 
 	<div class="row">
 		<div ng-repeat="gridelement in data.GridElements"
-		     class="span{{gridelement.Width}}"
-		     ng-class="{contentitem: gridelement.Id != 0}"
-		     title="{{gridelement.Type}}">
+			 class="span{{gridelement.Width}}"
+			 ng-class="{contentitem: gridelement.Id != 0}"
+			 title="{{gridelement.Type}}">
 
 			<div ng-show="gridelement.Id">
 				<div class="gridelement-controls">
@@ -30,13 +30,13 @@
 				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">textxx </a>
 				</li>
 				<li><a href="#"
-				       ng-click="addWithType(newItem, data.Id, data.GridElements, 'novinka', $event )">novinka </a></li>
+					   ng-click="addWithType(newItem, data.Id, data.GridElements, 'novinka', $event )">novinka </a></li>
 				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'simplehtml', $event )">simple
-					    HTML </a></li>
+					HTML </a></li>
 				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'reference', $event )">Reference </a>
 				</li>
 				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'gdataalbum', $event )">GData
-					    Album</a></li>
+					Album</a></li>
 			</ul>
 		</div>
 	</div>

@@ -38,7 +38,7 @@ namespace cms.data.EF
 			}
 		}
 
-		public IKeyValueStorage CreateKeValueSession
+		public IKeyValueStorage CreateKeyValueSession
 		{
 			get
 			{
@@ -50,6 +50,6 @@ namespace cms.data.EF
 
 	public interface IXxx : IDisposable
 	{
-		IKeyValueStorage CreateKeValueSession { get; }
+		IKeyValueStorage CreateKeyValueSession { get; }
 	}
 }

@@ -41,7 +41,9 @@ namespace cms.Code.LinkAccounts.Picasa
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
-			using (var db = _sessionProvider.CreateKeValueSession)
+			var a = new GdataPhotosSettings();
+	
+			using (var db = _sessionProvider.CreateKeyValueSession)
 			{
 				//db.SettingsStorage()
 			}
@@ -49,10 +51,11 @@ namespace cms.Code.LinkAccounts.Picasa
 
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
 
-			return  photos.Entries.Select(x => new PhotoDecorator(x));
+			return  photos.Entries.Select(x => new PhotoDecorator(x, a));
 
 		}
 	}
+
 	public static class ccc
 	{
 		public static string SerializeObject<T>(this T toSerialize)

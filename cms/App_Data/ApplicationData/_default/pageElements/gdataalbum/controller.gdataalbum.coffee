@@ -8,11 +8,11 @@ gdataalbum = ($scope, gdataPhotos) ->
 	gdataalbum.$inject = [ "$scope", "gdataPhotos" ]
 
 	getCurrentAlbum = (item) ->
+		debugger;
 		if (item.Content != null)
 			data = JSON.parse(item.Content);
 			if ($scope.albums)
 				currentAlbum = $scope.albums[data.gdataAlbumId]
-
 		currentAlbum
 
 	gridelement = $scope.$parent.gridelement;

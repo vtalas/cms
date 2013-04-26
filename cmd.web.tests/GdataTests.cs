@@ -1,12 +1,14 @@
 ﻿using System;
 using Google.GData.Client;
 using NUnit.Framework;
+using Newtonsoft.Json;
 using cms.Code.LinkAccounts;
+using cms.Code.LinkAccounts.Picasa;
 
 namespace cms.web.tests
 {
 
-	
+
 	[TestFixture]
 	public class GdataTests
 	{
@@ -19,6 +21,19 @@ namespace cms.web.tests
 		{
 			var x = "https://lh5.googleusercontent.com/-i9UhPVg1blo/UXOVpMmRp4I/AAAAAAAAAZo/UsLzCQeW9O0/7.jpg";
 			var a = new Uri(x);
+			var aa = new GdataPhotosSettings();
+			aa.LargeHeight = 100;
+			aa.LargeWidth = 100;
+			
+			aa.SmallHeight = 100;
+			aa.SmallWidth = 100;
+			
+			aa.MediumWidth = 100;
+			aa.MediumHeight = 100;
+
+			var json =  JsonConvert.SerializeObject(aa);
+			Console.WriteLine(json);
+
 		}
 
 		//[Test]
@@ -39,7 +54,7 @@ namespace cms.web.tests
 		//			AccessToken = AccessToken
 		//		};
 		//	var a = new GoogleDataOAuth2(p);
-			
+
 		//	var query = new AlbumQuery(PicasaQuery.CreatePicasaUri("default"));
 
 		//	var feed = a.Picasa.Query(query);
@@ -60,7 +75,7 @@ namespace cms.web.tests
 		//	var a = new GoogleDataOAuth2(p);
 		//	Console.WriteLine(a.OAuth2AuthorizationUrl());
 		//}
-	
+
 		//[Test]
 		//public void GetAccessToken()
 		//{
@@ -72,7 +87,7 @@ namespace cms.web.tests
 		//		};
 
 		//	var a = new GoogleDataOAuth2(p);
-			
+
 		//	Console.WriteLine(a.GetAccessToken());
 		//}
 	}

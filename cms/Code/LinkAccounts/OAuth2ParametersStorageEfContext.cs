@@ -26,7 +26,7 @@ namespace cms.Code.LinkAccounts
 
 		public override void Save()
 		{
-			using (var x = StorageProvider.CreateKeValueSession)
+			using (var x = StorageProvider.CreateKeyValueSession)
 			{
 				x.SettingsStorage("GdataPicasa.json", ToJson());
 			}
@@ -34,7 +34,7 @@ namespace cms.Code.LinkAccounts
 
 		public override void Load()
 		{
-			using (var x = StorageProvider.CreateKeValueSession)
+			using (var x = StorageProvider.CreateKeyValueSession)
 			{
 				var dataString = x.SettingsStorage("GdataPicasa.json");
 				Parameters = JsonConvert.DeserializeObject<OAuth2Parameters>(dataString);

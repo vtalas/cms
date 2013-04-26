@@ -43,7 +43,7 @@
 		<div class="span6">
 			<div class="gridelement-content">
 				<div ng-show="hasAlbum()" class="gdata-album-preview">
-					<img ngc-lazy-image="currentAlbum.Thumbnail.Url" />
+					<img ngc-lazy-image="currentAlbum.Thumbnail.PhotoUri" />
 				</div>
 				<div ng-hide="hasAlbum()">
 					<div class="gdata-album-placeholder"></div>
@@ -59,7 +59,7 @@
 
 		<div ng-repeat="item in albums" class="gdataAlbum">
 			<div class="gdataThumb" ng-click="addAlbum(item.Id)">
-				<img ngc-lazy-image="item.Thumbnail.Url"/>
+				<img ngc-lazy-image="item.Thumbnail.PhotoUri"/>
 			</div>
 		</div>
 		<div class="clearfix"></div>

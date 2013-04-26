@@ -173,6 +173,7 @@
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageJson.cs" />
     <Compile Include="Code\LinkAccounts\GoogleDataOAuth2.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
+    <Compile Include="Code\LinkAccounts\Picasa\GdataPhotosSettings.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaServiceFactory.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\AssetTypeExtened.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Code\UserResources\UserResourceManager.cs" />
     <Compile Include="Code\UserResources\UserResourcesManagerProvider.cs" />
     <Compile Include="Code\UserResources\ViewModeType.cs" />
+    <Compile Include="Controllers\Api\AlbumDecorator.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
@@ -188,8 +190,10 @@
     <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaWrapper.cs" />
+    <Compile Include="Controllers\Api\PhotoDecorator.cs" />
     <Compile Include="Controllers\Api\WebApiControllerBase.cs" />
     <Compile Include="Controllers\Api\WebApiPicasaControllerBase.cs" />
+    <Compile Include="Controllers\Api\WebImage.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Controllers\GDataController.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageFactory.cs" />
@@ -222,6 +226,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.js">
+      <DependentUpon>controller.gdataalbum.coffee</DependentUpon>
+    </Content>
+    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.min.js">
+      <DependentUpon>controller.gdataalbum.coffee</DependentUpon>
+    </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
       <SubType>Designer</SubType>
