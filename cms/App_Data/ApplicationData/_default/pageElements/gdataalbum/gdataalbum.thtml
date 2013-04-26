@@ -3,15 +3,19 @@
 		display: inline-block;
 		margin: 5px;
 	}
+
 	.gdataThumb {
 		display: inline-block;
 	}
+
 	.gdataThumb:hover {
 		cursor: pointer;
 	}
+
 	.gdataDetail {
 		display: inline-block;
 	}
+
 	.gdata-album-placeholder {
 		width: 160px;
 		height: 160px;
@@ -26,35 +30,27 @@
 
 </style>
 
-<div ng-controller="gdataalbum">
-	<div class="row">
-		<div class="span6">
-
-			<div class="form-horizontal gridelement-content">
-				<div class="control-group">
-					<h3><span ngc-click-edit="gridelement.Resources.header.Value" type="input" placeholder="Nadpis"></span></h3>
-				</div>
-				<div class="control-group">
-					<div ngc-click-edit="gridelement.Resources.text.Value" type="textarea" placeholder="Text"></div>
-				</div>
-			</div>
+<div ng-controller="gdataalbum" class="row">
+	<div class="gridelement-content" style="float:left;min-width:50%;">
+		<div class="control-group">
+			<h3><span ngc-click-edit="gridelement.Resources.header.Value" type="input" placeholder="Nadpis"></span></h3>
 		</div>
-
-		<div class="span6">
-			<div class="gridelement-content">
-				<div ng-show="hasAlbum()" class="gdata-album-preview">
-					<img ngc-lazy-image="currentAlbum.Thumbnail.PhotoUri" />
-				</div>
-				<div ng-hide="hasAlbum()">
-					<div class="gdata-album-placeholder"></div>
-				</div>
-				<button ng-click="showGdataAlbums()" class="btn btn-small">Vybrat Album</button>
-			</div>
+		<div class="control-group">
+			<div ngc-click-edit="gridelement.Resources.text.Value" type="textarea" placeholder="Text"></div>
 		</div>
+	</div>
+	<div class="gridelement-content" style="float:left;">
+		<div ng-show="hasAlbum()" class="gdata-album-preview">
+			<img ngc-lazy-image="currentAlbum.Thumbnail.PhotoUri"/>
+		</div>
+		<div ng-hide="hasAlbum()">
+			<div class="gdata-album-placeholder"></div>
+		</div>
+		<button ng-click="showGdataAlbums()" class="btn btn-small">Vybrat Album</button>
 	</div>
 
 
-	<div ng-show="showGdataAlbumsValue" class="gridelement-content">
+	<div ng-show="showGdataAlbumsValue" class="gridelement-content" >
 		<h3>Google Alba</h3>
 
 		<div ng-repeat="item in albums" class="gdataAlbum">
@@ -64,7 +60,6 @@
 		</div>
 		<div class="clearfix"></div>
 	</div>
-
 
 
 </div>

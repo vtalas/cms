@@ -1,7 +1,6 @@
 ﻿using System;
 using Google.GData.Client;
 using NUnit.Framework;
-using Newtonsoft.Json;
 using cms.Code.LinkAccounts;
 using cms.Code.LinkAccounts.Picasa;
 
@@ -31,8 +30,8 @@ namespace cms.web.tests
 			aa.MediumWidth = 100;
 			aa.MediumHeight = 100;
 
-			var json =  JsonConvert.SerializeObject(aa);
-			Console.WriteLine(json);
+			//var json =  JsonConvert.SerializeObject(aa);
+			//Console.WriteLine(json);
 
 		}
 

@@ -28,6 +28,8 @@ namespace cms.data.EF.DataProviderImplementation
 		public override GridPageDto Get(Guid id)
 		{
 			var grid = GetGrid(id);
+			grid.GridElements = grid.GridElements.OrderBy(x => x.Position).ToList();
+
 			if (grid == null || grid.Category != CategoryEnum.Page)
 			{
 				throw new ObjectNotFoundException(string.Format("'{0}' not found", id.ToString()));

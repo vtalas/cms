@@ -1,3 +1,22 @@
+.row.color:hover {
+  background-color: #2E8BCC;
+}
+
+.row {
+  &.newitem {
+    border: 1px dotted #2f96b4;
+  }
+}
+
+.align-left {
+  text-align: left;
+}
+
+.admin-inline-block {
+  padding: 6px 0px;
+  display: inline-block;
+}
+
 .font-icon-big {
   font-family: 'Segoe UI Symbol';
   font-size: 150%;
@@ -118,7 +137,10 @@
 .gridpage {
   .contentitem {
 	border-bottom: 2px solid greenyellow;
-	background-color: #F9F9F9;
+	background-color: #f5f5f5;
+  }
+  .contentitem:hover {
+	background-color: #eaeeee;
   }
   .row:last-child {
 	margin-top: 1em;
@@ -128,17 +150,10 @@
   }
   .gridelement-content {
 	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
   }
 
-}
-
-.align-left {
-  text-align: left;
-}
-
-.admin-inline-block {
-  padding: 6px 0px;
-  display: inline-block;
 }
 
 .xxx {
@@ -175,12 +190,6 @@
 
 .menu2 {
   border: 1px solid #ededed;
-}
-
-ul.ggg {
-}
-
-ul.ggg li {
 }
 
 .ggg {
@@ -226,6 +235,7 @@ a.color:hover {
 
 .admin-index {
   .row {
+    margin-left: 0px;
 	margin-bottom: 2px;
   }
   .row a {
@@ -244,16 +254,6 @@ a.color:hover {
   }
 }
 
-.row.color:hover {
-  background-color: #2E8BCC;
-}
-
-.row {
-  margin-left: 0px;
-  &.newitem {
-	border: 1px dotted #2f96b4;
-  }
-}
 
 #admin-gridpages {
   .gridpage-text {

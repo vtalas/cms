@@ -48,7 +48,7 @@ namespace cms.Code.LinkAccounts.Picasa
 				//db.SettingsStorage()
 			}
 			
-
+			
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
 
 			return  photos.Entries.Select(x => new PhotoDecorator(x, a));
