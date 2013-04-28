@@ -7,13 +7,21 @@ var ApiWrapper = (function () {
 		//this.converter = new RawDataConverter();
 	}
 
-
 	ApiWrapper.prototype.getPage = function (link) {
 		var self = this,
 			deferred = $.Deferred();
 
-		this.cmsApi.getPage( {link:link }, function (data) {
-			console.log(data);
+		this.cmsApi.getPage({id:link}, function (data) {
+			deferred.resolve(data);
+		});
+		return deferred;
+	};
+
+	ApiWrapper.prototype.getPages = function () {
+		var self = this,
+			deferred = $.Deferred();
+
+		this.cmsApi.getPages(function (data) {
 			deferred.resolve(data);
 		});
 		return deferred;

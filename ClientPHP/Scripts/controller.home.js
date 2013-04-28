@@ -1,9 +1,13 @@
 function homeController($scope, cmsApi) {
 	var api = new ApiWrapper(cmsApi);
 
-	api.getPage("testPage_link");
 
-	console.log("kajsbdjkasbd")
+
+	api.getPages().then(function (data) {
+   		$scope.pages = data;
+		console.log(data)
+	});
+
 
 
 }

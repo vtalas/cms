@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\ClientPHP\ladeso.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/GData/GdataPhotosSettins.cshtml" afterPath="$PROJECT_DIR$/Views/GData/GdataPhotosSettins.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.web.csproj" afterPath="$PROJECT_DIR$/cms.web.csproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
@@ -30,7 +31,7 @@
     <file path="/text.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327068892" ignored="false" />
     <file path="/controller.text.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327049734" ignored="false" />
     <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366956688443" ignored="false" />
-    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366954660360" ignored="false" />
+    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1367087061744" ignored="false" />
     <file path="/_navbar.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366223152236" ignored="false" />
     <file path="/directive.ngcClickEdit.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366446262377" ignored="false" />
     <file path="/module.admin-index.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366316116716" ignored="false" />
@@ -218,25 +219,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.fileTypes" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="C:/wamp/www/masp/maspNew/ClientPHP" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="last_opened_file_path" value="C:/wamp/www/weby/weby/masp/maspNew" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
-  </component>
-  <component name="PublishConfig">
-    <servers>
-      <server id="fd7b2b01-2bdc-4b05-b31a-aec5221a3654">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </server>
-    </servers>
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -372,12 +362,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1170" extended-state="0" />
-    <editor active="false" />
+    <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3171937" sideWeight="0.48655772" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25039536" sideWeight="0.68085104" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -389,6 +378,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3171937" sideWeight="0.48655772" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956672" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -421,7 +411,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
     <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
@@ -485,16 +475,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/admin.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="177" column="1" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.82758623">
-          <folding />
-        </state>
+        <state line="177" column="1" selection-start="2992" selection-end="2992" vertical-scroll-proportion="0.82758623" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/admin.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="30" selection-start="1721" selection-end="1721" vertical-scroll-proportion="0.678125">
-          <folding />
-        </state>
+        <state line="139" column="30" selection-start="1721" selection-end="1721" vertical-scroll-proportion="0.678125" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
@@ -520,9 +506,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="46" selection-start="4774" selection-end="4774" vertical-scroll-proportion="0.562406">
-          <folding />
-        </state>
+        <state line="156" column="46" selection-start="4774" selection-end="4774" vertical-scroll-proportion="0.562406" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/controller.gDataPhotos.js">
@@ -534,9 +518,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="243" selection-end="243" vertical-scroll-proportion="0.18622848">
-          <folding />
-        </state>
+        <state line="7" column="0" selection-start="243" selection-end="243" vertical-scroll-proportion="0.18622848" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
@@ -558,9 +540,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Properties/DataSources/cms.data.GridPage.datasource">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="70" selection-start="508" selection-end="508" vertical-scroll-proportion="0.13793103">
-          <folding />
-        </state>
+        <state line="8" column="70" selection-start="508" selection-end="508" vertical-scroll-proportion="0.13793103" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
@@ -572,9 +552,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="28" selection-start="637" selection-end="637" vertical-scroll-proportion="0.41379312">
-          <folding />
-        </state>
+        <state line="24" column="28" selection-start="637" selection-end="637" vertical-scroll-proportion="0.41379312" />
       </provider>
     </entry>
   </component>
