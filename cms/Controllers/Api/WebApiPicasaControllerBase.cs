@@ -11,13 +11,7 @@ namespace cms.Controllers.Api
 		protected override void Initialize(HttpControllerContext requestContext)
 		{
 			base.Initialize(requestContext);
-
-			var oauth2ParametersStorage = OAuth2ParametersStorageFactory.StorageDatabase(SessionProvider);
-
-			//var gdataAuth = new GoogleDataOAuth2(OAuth2ParametersStorageFactory.StorageJsonFile(ApplicationId));
-			var gdataAuth = new GoogleDataOAuth2(oauth2ParametersStorage);
-			var picasaFactory = new PicasaServiceFactory(gdataAuth.GetRequestDataFactoryInstance("https://picasaweb.google.com/data"));
-			Picasa = new PicasaWrapper(picasaFactory.GetService(), gdataAuth.Storage.Parameters, SessionProvider);
+			Picasa = new PicasaWrapper(SessionProvider);
 		}
 	}
 }

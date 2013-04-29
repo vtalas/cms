@@ -1,21 +1,27 @@
 using System;
 using WebMatrix.WebData;
 using cms.data.EF.DataProviderImplementation;
+using cms.data.Repository;
+using cms.data.Shared;
 
 namespace cms.data.tests.EF
 {
 	public class SessionManager : IDisposable
 	{
-		private DataEfAuthorized Context { get; set; }
+		private readonly IRepository _repo;
 		public static Guid DefaultAppId = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643");
-		
-		public DataEfAuthorized CreateSession
+
+		public SessionManager()
+		{
+			_repo = new RepositoryFactory().Create;
+		}
+
+		public DataEfAuthorized Session
 		{
 			get
 			{
 				var userId = WebSecurity.GetUserId("admin");
-				Context = new DataEfAuthorized(DefaultAppId, userId);
-				return Context;
+				return new DataEfAuthorized(DefaultAppId, _repo, userId);;
 			}
 		}
 
@@ -23,14 +29,13 @@ namespace cms.data.tests.EF
 		{
 			get
 			{
-				Context = new DataEfAuthorized(DefaultAppId, 0);
-				return Context;
+				return new DataEfAuthorized(DefaultAppId, _repo, 0);
 			}
 		}
 
 		public void Dispose()
 		{
-			Context.Dispose();
+			_repo.Dispose();
 		}
 	}
 }

@@ -39,7 +39,7 @@
       <file leaf-file-name="controller.page.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/controller.page.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="46" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
+            <state line="7" column="25" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -48,7 +48,7 @@
       <file leaf-file-name="template.home.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template.home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="68" selection-start="89" selection-end="89" vertical-scroll-proportion="-2.0357144">
+            <state line="3" column="0" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -57,7 +57,7 @@
       <file leaf-file-name="module.defaultClient.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/module.defaultClient.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="53" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0">
+            <state line="12" column="0" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -66,7 +66,7 @@
       <file leaf-file-name="template.page.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template.page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="27" selection-start="71" selection-end="71" vertical-scroll-proportion="-2.0357144">
+            <state line="3" column="27" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -75,10 +75,8 @@
       <file leaf-file-name="class.apiWrapper.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/class.apiWrapper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="41" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="10" column="24" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,25 +84,25 @@
       <file leaf-file-name="module.apiModule.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/module.apiModule.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="14" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
+            <state line="5" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="module.appConfig.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="module.appConfig.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/module.appConfig.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="59" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
+            <state line="10" column="0" selection-start="251" selection-end="251" vertical-scroll-proportion="0.1724138">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="63" selection-start="790" selection-end="790" vertical-scroll-proportion="0.41503268">
+            <state line="27" column="0" selection-start="1056" selection-end="1056" vertical-scroll-proportion="-17.653847">
               <folding />
             </state>
           </provider>
@@ -122,7 +120,6 @@
       <list>
         <option value="$PROJECT_DIR$/Service/ladeso.php" />
         <option value="$PROJECT_DIR$/Scripts/angular.js" />
-        <option value="$PROJECT_DIR$/Scripts/module.appConfig.js" />
         <option value="$PROJECT_DIR$/Scripts/class.apiWrapper.js" />
         <option value="$PROJECT_DIR$/Scripts/module.apiModule.js" />
         <option value="$PROJECT_DIR$/template.page.html" />
@@ -131,6 +128,7 @@
         <option value="$PROJECT_DIR$/Scripts/controller.home.js" />
         <option value="$PROJECT_DIR$/Scripts/controller.page.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/Scripts/module.appConfig.js" />
       </list>
     </option>
   </component>
@@ -154,7 +152,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -165,57 +163,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClientPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClientPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClientPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClientPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClientPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClientPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClientPHP" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -248,12 +196,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1170" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32931727" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2524013" sideWeight="0.6706827" order="0" side_tool="false" content_ui="combo" />
@@ -265,6 +212,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32931727" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -296,7 +244,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
+    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
     <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
@@ -335,6 +283,13 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="63" selection-start="790" selection-end="790" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="48" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0">
           <folding />
         </state>
@@ -356,82 +311,78 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/controller.home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="1" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="8" column="1" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/angular.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13031" column="49" selection-start="425656" selection-end="425670" vertical-scroll-proportion="0.71288747">
-          <folding>
-            <marker date="1367102312829" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1367102312829" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/module.appConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="59" selection-start="168" selection-end="168" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="13031" column="49" selection-start="425656" selection-end="425670" vertical-scroll-proportion="0.71288747" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/module.apiModule.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="14" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
+        <state line="5" column="13" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/class.apiWrapper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="10" column="24" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template.page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="27" selection-start="71" selection-end="71" vertical-scroll-proportion="-2.0357144">
+        <state line="3" column="27" selection-start="71" selection-end="71" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template.home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="68" selection-start="89" selection-end="89" vertical-scroll-proportion="-2.0357144">
+        <state line="3" column="0" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/module.defaultClient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="53" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0">
+        <state line="12" column="0" selection-start="473" selection-end="473" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/controller.home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="4" selection-start="77" selection-end="77" vertical-scroll-proportion="0.059375">
-          <folding />
-        </state>
+        <state line="2" column="4" selection-start="77" selection-end="77" vertical-scroll-proportion="0.059375" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/controller.page.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="46" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
+        <state line="7" column="25" selection-start="217" selection-end="217" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/scopes/scope_settings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="63" selection-start="790" selection-end="790" vertical-scroll-proportion="0.41503268">
+        <state line="27" column="0" selection-start="1056" selection-end="1056" vertical-scroll-proportion="-17.653847">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/module.appConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="251" selection-end="251" vertical-scroll-proportion="0.1724138">
           <folding />
         </state>
       </provider>

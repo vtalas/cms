@@ -9,8 +9,10 @@ namespace cms.data.Repository
 		IQueryable<Resource> Resources { get; }
 		IQueryable<Grid> Grids { get; }
 		IQueryable<ApplicationSetting> ApplicationSettings { get; }
+		IQueryable<ApplicationSettingStorage> ApplicationSettingStorage { get; }
 		IQueryable<GridElement> GridElements { get; }
 		IQueryable<UserProfile> UserProfile { get; }
+		ApplicationSettingStorage Add(ApplicationSettingStorage item);
 		ApplicationSetting Add(ApplicationSetting item);
 		GridElement Add(GridElement item);
 		Resource Add(Resource itemToAttach);

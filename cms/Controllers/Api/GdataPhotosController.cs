@@ -15,7 +15,6 @@ namespace cms.Controllers.Api
 
 		public AlbumDecorator GetAlbum(string id)
 		{
-			
 			return Picasa.GetAlbum(id);
 		}
 

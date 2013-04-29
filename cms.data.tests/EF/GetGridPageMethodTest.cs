@@ -1,6 +1,7 @@
 using System.Data;
 using NUnit.Framework;
 using cms.data.EF.Initializers;
+using cms.data.Shared;
 using cms.shared;
 
 namespace cms.data.tests.EF
@@ -19,6 +20,10 @@ namespace cms.data.tests.EF
 		[Test]
 		public void Basic()
 		{
+			using (var x = new RepositoryFactory().Create)
+			{
+				
+			}
 			using (var db = new SessionManager().CreateSession)
 			{
 				var a = db.Page.Get(DataEfHelpers._defaultlink);

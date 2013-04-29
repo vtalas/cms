@@ -8,12 +8,13 @@ namespace cms.Controllers
 	[Authorize]
 	public class GDataController : CmsControllerBase
 	{
-		private GoogleDataOAuth2 GdataAuth { get; set; }
+		private GoogleDataOAuth2Service GdataAuth { get; set; }
 		
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
 			base.Initialize(requestContext);
-			GdataAuth = new GoogleDataOAuth2(OAuth2ParametersStorageFactory.StorageDatabase(SessionProvider));
+			GdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageDatabase(SessionProvider));
+		
 		}
 		
 		public ActionResult Index()

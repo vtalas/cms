@@ -5,7 +5,7 @@ using cms.shared;
 
 namespace cms.data.EF
 {
-	public class SessionProvider : IXxx
+	public class SessionProvider : IKeuValueStoreageProvider
 	{
 		private readonly Func<DataProviderAbstract> _createInstanceFunction;
 		private DataProviderAbstract _instance;
@@ -34,7 +34,7 @@ namespace cms.data.EF
 		{
 			if (_instance != null)
 			{
-				_instance.Dispose();
+				//_instance.Dispose();
 			}
 		}
 
@@ -42,13 +42,12 @@ namespace cms.data.EF
 		{
 			get
 			{
-				_instance = _createInstanceFunction.Invoke();
-				return _instance;
+				return _createInstanceFunction.Invoke().Settings;
 			}
 		}
 	}
 
-	public interface IXxx : IDisposable
+	public interface IKeuValueStoreageProvider : IDisposable
 	{
 		IKeyValueStorage CreateKeyValueSession { get; }
 	}

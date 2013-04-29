@@ -5,6 +5,7 @@ using WebMatrix.WebData;
 using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
 using cms.data.EF.Initializers;
+using cms.data.Shared;
 
 namespace cms.Controllers.Api
 {
@@ -20,7 +21,7 @@ namespace cms.Controllers.Api
 			
 			ApplicationId = new Guid( RouteData.Values["applicationId"].ToString());
 			SecurityProvider.EnsureInitialized();
-			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId, WebSecurity.CurrentUserId ), new MigrateInitalizer());
+			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId,  new RepositoryFactory().Create, WebSecurity.CurrentUserId), new MigrateInitalizer());
 		}
 
 		protected override void OnActionExecuted(ActionExecutedContext filterContext)

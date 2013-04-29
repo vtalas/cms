@@ -21,7 +21,7 @@ namespace cms.data.tests.EF
 		public void Application_add_test()
 		{
 			var a = new ApplicationSetting { Name = "xxx" };
-			using (var db = new SessionManager().CreateSession)
+			using (var db = new SessionManager().Session)
 			{
 				Assert.AreEqual(1, db.Applications().Count());
 

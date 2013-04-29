@@ -1,53 +1,67 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using Google.GData.Client;
 using Google.GData.Photos;
 using Google.Picasa;
-using WebGrease.Css.Extensions;
 using cms.Controllers.Api;
+using cms.data.DataProvider;
 using cms.data.EF;
+using cms.data.EF.RepositoryImplementation;
+using cms.data.Shared;
+using cms.shared;
 
 namespace cms.Code.LinkAccounts.Picasa
 {
 	public class PicasaWrapper
 	{
-		private readonly SessionProvider _sessionProvider;
+		private PicasaService Service { get; set; }
 		private PicasaRequest PicasaRequest { get; set; }
-		public PicasaService Service { get; set; }
 
-		public PicasaWrapper(PicasaService service, OAuth2Parameters parameters, SessionProvider sessionProvider)
+		public PicasaWrapper(IKeyValueStorage sessionProvider)
 		{
-			_sessionProvider = sessionProvider;
-			Service = service;
-			var settings = new RequestSettings("x", parameters);
-			PicasaRequest = new PicasaRequest(settings);
+			var ApplicationId = Guid.NewGuid();
+			using (var repo = new RepositoryFactory().Create)
+			{
+				var app = repo.ApplicationSettings.Single(x => x.Id == ApplicationId);
+				var session = new Settings(app, repo);
+
+				var oauth2ParametersStorage = OAuth2ParametersStorageFactory.StorageDatabase(session);
+				//var gdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageJsonFile(ApplicationId));
+				var gdataAuth = new GoogleDataOAuth2Service(oauth2ParametersStorage);
+				var picasaFactory = new PicasaServiceFactory(gdataAuth.GetRequestDataFactoryInstance("https://picasaweb.google.com/data"));
+				Service = picasaFactory.GetService();
+
+				PicasaRequest = new PicasaRequest(new RequestSettings("x", gdataAuth.GetValidOAuth2Parameters()));
+			}
 		}
 
 		public IEnumerable<Album> GetAlbums()
 		{
+			IKeuValueStoreageProvider sessionProvider;
 			var albums = PicasaRequest.GetAlbums();
 			return albums.Entries;
 		}
 
 		public AlbumDecorator GetAlbum(string id)
 		{
+			IKeuValueStoreageProvider sessionProvider;
 			var albums = PicasaRequest.GetAlbums();
-			
 			var xx = albums.Entries.SingleOrDefault(x => x.Id == id);
 			return new AlbumDecorator(xx);
 		}
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
+			IKeuValueStoreageProvider sessionProvider;
 			var a = new GdataPhotosSettings();
 	
-			using (var db = _sessionProvider.CreateKeyValueSession)
-			{
-				//db.SettingsStorage()
-			}
-			
+			//using (var db = _sessionProvider.CreateKeyValueSession)
+			//{
+			//	//db.SettingsStorage()
+			//}
 			
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
 

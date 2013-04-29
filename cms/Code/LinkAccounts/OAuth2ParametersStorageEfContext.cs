@@ -1,19 +1,21 @@
 ﻿using Google.GData.Client;
 using Newtonsoft.Json;
 using cms.data.EF;
+using cms.shared;
 
 namespace cms.Code.LinkAccounts
 {
 	public class OAuth2ParametersStorageEfContext : OAuth2ParametersStorageAbstract
 	{
-		public IXxx StorageProvider { get; set; }
+		public IKeyValueStorage StorageProvider { get; set; }
 
-		public OAuth2ParametersStorageEfContext(IXxx storageProvider) :base ()
+		public OAuth2ParametersStorageEfContext(IKeyValueStorage storageProvider)
+			: base()
 		{
 			StorageProvider = storageProvider;
 		}
 
-		public OAuth2ParametersStorageEfContext(OAuth2Parameters parameters, IXxx storageProvider)
+		public OAuth2ParametersStorageEfContext(OAuth2Parameters parameters, IKeyValueStorage storageProvider)
 			: base(parameters)
 		{
 			StorageProvider = storageProvider;
@@ -26,19 +28,13 @@ namespace cms.Code.LinkAccounts
 
 		public override void Save()
 		{
-			using (var x = StorageProvider.CreateKeyValueSession)
-			{
-				x.SettingsStorage("GdataPicasa.json", ToJson());
-			}
+			StorageProvider.SettingsStorage("GdataPicasa.json", ToJson());
 		}
 
 		public override void Load()
 		{
-			using (var x = StorageProvider.CreateKeyValueSession)
-			{
-				var dataString = x.SettingsStorage("GdataPicasa.json");
-				Parameters = JsonConvert.DeserializeObject<OAuth2Parameters>(dataString);
-			}
+			var dataString = StorageProvider.SettingsStorage("GdataPicasa.json");
+			Parameters = JsonConvert.DeserializeObject<OAuth2Parameters>(dataString);
 		}
 	}
 }

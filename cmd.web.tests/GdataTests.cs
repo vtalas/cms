@@ -38,7 +38,7 @@ namespace cms.web.tests
 		//[Test]
 		//public void shouldThrowException_NoAccessToken()
 		//{
-		//	var a = new GoogleDataOAuth2(new GdataStorageMock());
+		//	var a = new GoogleDataOAuth2Service(new GdataStorageMock());
 		//	var query = new AlbumQuery(PicasaQuery.CreatePicasaUri("default"));
 		//	var feed = a.Picasa.Query(query);
 		//}
@@ -52,7 +52,7 @@ namespace cms.web.tests
 		//			ClientSecret = ClientSecret,
 		//			AccessToken = AccessToken
 		//		};
-		//	var a = new GoogleDataOAuth2(p);
+		//	var a = new GoogleDataOAuth2Service(p);
 
 		//	var query = new AlbumQuery(PicasaQuery.CreatePicasaUri("default"));
 
@@ -71,7 +71,7 @@ namespace cms.web.tests
 		//{
 		//	var p = new GdataStorageMock {AccessToken = AccessToken};
 
-		//	var a = new GoogleDataOAuth2(p);
+		//	var a = new GoogleDataOAuth2Service(p);
 		//	Console.WriteLine(a.OAuth2AuthorizationUrl());
 		//}
 
@@ -85,7 +85,7 @@ namespace cms.web.tests
 		//			AccessCode = "4/4hG97iKEh2f2A_h-aSe8qJAXBzzK.0oMHv0ixm5EdOl05ti8ZT3aRqGZBewI"
 		//		};
 
-		//	var a = new GoogleDataOAuth2(p);
+		//	var a = new GoogleDataOAuth2Service(p);
 
 		//	Console.WriteLine(a.GetAccessToken());
 		//}

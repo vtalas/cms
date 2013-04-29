@@ -7,10 +7,10 @@ using cms.shared;
 
 namespace cms.data.DataProvider
 {
-	public abstract class DataProviderAbstract : IDisposable, IKeyValueStorage
+	public abstract class DataProviderAbstract
 	{
 		protected int UserId { get; set; }
-		protected string CurrentCulture { get { return shared.SharedLayer.Culture; } }
+		protected string CurrentCulture { get { return SharedLayer.Culture; } }
 
 		public string ApplicationName { get; protected set; }
 		public Guid ApplicationId { get; protected set; }
@@ -29,15 +29,13 @@ namespace cms.data.DataProvider
 
 		public abstract MenuAbstract Menu { get; }
 		public abstract PageAbstract Page { get; }
+		public abstract IKeyValueStorage Settings { get; }
 	
 		public abstract IEnumerable<GridListDto> Grids();
 
 		public abstract ApplicationSetting Add(ApplicationSetting newitem, int userId);
 		public abstract void DeleteApplication(Guid guid);
 		public abstract IEnumerable<ApplicationSetting> Applications();
-		public abstract void Dispose();
-		public abstract string SettingsStorage(string key);
-		public abstract string SettingsStorage(string key, string value);
 	}
 
 	public abstract class PageAbstract : DataProviderBase

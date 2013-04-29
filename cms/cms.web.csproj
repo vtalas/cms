@@ -171,7 +171,7 @@
   <ItemGroup>
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageEfContext.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageJson.cs" />
-    <Compile Include="Code\LinkAccounts\GoogleDataOAuth2.cs" />
+    <Compile Include="Code\LinkAccounts\GoogleDataOAuth2Service.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\GdataPhotosSettings.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaServiceFactory.cs" />

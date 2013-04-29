@@ -17,7 +17,7 @@ namespace cms.data.tests.EF
 
 		GridPageDto AddGridpage(string name, string link)
 		{
-			using (var db = new SessionManager().CreateSession)
+			using (var db = new SessionManager().Session)
 			{
 				var a = new GridPageDto
 					        {
@@ -35,7 +35,7 @@ namespace cms.data.tests.EF
 
 		GridPageDto GetGridpage(Guid id)
 		{
-			using (var db = new SessionManager().CreateSession)
+			using (var db = new SessionManager().Session)
 			{
 				var n = db.Page.Get(id);
 				return n;

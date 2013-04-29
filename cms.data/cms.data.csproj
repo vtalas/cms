@@ -64,6 +64,7 @@
     <Compile Include="DataProvider\DataProviderAbstract.cs" />
     <Compile Include="DataProvider\DataProviderBase.cs" />
     <Compile Include="DataProvider\GridElementHandler.cs" />
+    <Compile Include="DataProvider\Settings.cs" />
     <Compile Include="Shared\Models\ApplicationSettingStorage.cs" />
     <Compile Include="EF\Initializers\ObjectBuilder.cs" />
     <Compile Include="EF\Initializers\Xxx.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Shared\Models\Resource.cs" />
     <Compile Include="Shared\Models\TemplateType.cs" />
     <Compile Include="Shared\Models\UserProfile.cs" />
+    <Compile Include="Shared\RepositoryFactory.cs" />
     <Compile Include="Shared\SpecialResourceEnum.cs" />
   </ItemGroup>
   <ItemGroup>

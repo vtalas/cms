@@ -14,36 +14,33 @@ namespace cms.data.EF.DataProviderImplementation
 {
 	public class DataEfAuthorized : DataProviderAbstract
 	{
-		private EfContext Db { get; set; }
 		public IRepository Repository { get; set; }
 
 		private IQueryable<ApplicationSetting> AvailableApplications { get { return Repository.ApplicationSettings.Where(x => x.Users.Any(a => a.Id == UserId)); } }
 
-		public DataEfAuthorized(Guid applicationId, EfContext context, int userId)
+		public DataEfAuthorized(Guid applicationId, IRepository repository, int userId)
 			: base(applicationId, userId)
 		{
 			if (userId < 1)
 			{
 				throw new AuthenticationException("log_in");
 			}
-			Db = context;
-			Repository = new EfRepository(context);
+			Repository = repository;
 		}
 
-		public DataEfAuthorized(string applicationName, EfContext context, int userId)
+		public DataEfAuthorized(string applicationName, IRepository repository, int userId)
 			: base(applicationName, userId)
 		{
 			if (userId < 1)
 			{
 				throw new AuthenticationException("log_in");
 			}
-			Db = context;
-			Repository = new EfRepository(context);
+			Repository = repository;
 		}
 
-		public DataEfAuthorized(Guid applicationId, int userId) : this(applicationId, new EfContext(), userId) { }
+		//public DataEfAuthorized(Guid applicationId, int userId) : this(applicationId, new EfContext(), userId) { }
 
-		public DataEfAuthorized(string applicationName, int userId) : this(applicationName, new EfContext(), userId) { }
+		//public DataEfAuthorized(string applicationName, int userId) : this(applicationName, new EfContext(), userId) { }
 
 		public override sealed ApplicationSetting CurrentApplication
 		{
@@ -83,6 +80,11 @@ namespace cms.data.EF.DataProviderImplementation
 			get { return new PageAbstractImpl(CurrentApplication, Repository); }
 		}
 
+		public override IKeyValueStorage Settings
+		{
+			get { return new Settings(CurrentApplication, Repository); }
+		}
+
 		public override IEnumerable<GridListDto> Grids()
 		{
 			var a = Repository.Grids.Where(x => x.ApplicationSettings.Id == CurrentApplication.Id).ToList().Select(dto => new GridListDto
@@ -120,39 +122,6 @@ namespace cms.data.EF.DataProviderImplementation
 			}
 			Repository.SaveChanges();
 			return newitem;
-		}
-
-		public override void Dispose()
-		{
-			
-			if (Db != null) Db.Dispose();
-		}
-
-		public override string SettingsStorage(string key)
-		{
-			var a = Db.ApplicationSettingStorage.SingleOrDefault(x => x.Key == key && x.AppliceSetting.Id == CurrentApplication.Id);
-			return a == null ? string.Empty : a.Value;
-		}
-
-		public override string SettingsStorage(string key, string value)
-		{
-			var a = Db.ApplicationSettingStorage.SingleOrDefault(x => x.Key == key && x.AppliceSetting.Id == CurrentApplication.Id);
-			if (a == null)
-			{
-				var newsettings = new ApplicationSettingStorage
-					{
-						Key = key,
-						Value = value,
-						AppliceSetting = CurrentApplication
-					};
-				Db.ApplicationSettingStorage.Add(newsettings);
-			}
-			else
-			{
-				a.Value = value;
-			}
-			Db.SaveChanges();
-			return value;
 		}
 	}
 

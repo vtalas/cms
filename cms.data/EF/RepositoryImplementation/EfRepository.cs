@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Reflection.Emit;
 using cms.data.Repository;
 using cms.data.Shared.Models;
 
@@ -20,8 +21,14 @@ namespace cms.data.EF.RepositoryImplementation
 		public IQueryable<Resource> Resources{ get { return db.Resources;}}
 		public IQueryable<Grid> Grids { get { return db.Grids; } }
 		public IQueryable<ApplicationSetting> ApplicationSettings { get { return db.ApplicationSettings;} }
+		public IQueryable<ApplicationSettingStorage> ApplicationSettingStorage { get { return db.ApplicationSettingStorage; } }
 		public IQueryable<GridElement> GridElements { get { return db.GridElements; } }
 		public IQueryable<UserProfile> UserProfile { get { return db.UserProfile; } }
+
+		public ApplicationSettingStorage Add(ApplicationSettingStorage item)
+		{
+			return db.ApplicationSettingStorage.Add(item);
+		}
 
 		public ApplicationSetting Add(ApplicationSetting item)
 		{

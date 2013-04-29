@@ -2,6 +2,7 @@
 using Google.GData.Client;
 using cms.Code.UserResources;
 using cms.data.EF;
+using cms.shared;
 
 namespace cms.Code.LinkAccounts
 {
@@ -35,16 +36,16 @@ namespace cms.Code.LinkAccounts
 			return gg;
 		}
 
-		public static OAuth2ParametersStorageAbstract StorageDatabase(SessionProvider sessionProvider)
+		public static OAuth2ParametersStorageAbstract StorageDatabase(IKeyValueStorage sessionProvider)
 		{
-			var gg = new OAuth2ParametersStorageEfContext(sessionProvider);
-			gg.Load();
+			var efContextStorage = new OAuth2ParametersStorageEfContext(sessionProvider);
+			efContextStorage.Load();
 
-			if (gg.Parameters == null)
+			if (efContextStorage.Parameters == null)
 			{
-				gg.Parameters = GetDefaults();
+				efContextStorage.Parameters = GetDefaults();
 			}
-			return gg;
+			return efContextStorage;
 		}
 
 	}
