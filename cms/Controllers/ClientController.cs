@@ -8,9 +8,9 @@ namespace cms.Controllers
     {
 		public ActionResult ViewPage(string link)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var a = db.Page.Get(link);
+				var a = db.Session.Page.Get(link);
 				return View(ApplicationViewPath("Index"), a);
 			}
 		}

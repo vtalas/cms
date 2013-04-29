@@ -46,7 +46,7 @@ namespace cms.Code
 				ApplicationId = new Guid("00000000-0000-0000-0000-000000000000");
 			}
 
-			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId, WebSecurity.CurrentUserId));
+			SessionProvider = new SessionProvider(ApplicationId, WebSecurity.CurrentUserId);
 		}
 	}
 }

@@ -21,7 +21,8 @@ namespace cms.Controllers.Api
 			
 			ApplicationId = new Guid( RouteData.Values["applicationId"].ToString());
 			SecurityProvider.EnsureInitialized();
-			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId,  new RepositoryFactory().Create, WebSecurity.CurrentUserId), new MigrateInitalizer());
+			//SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId,  new RepositoryFactory().Create, WebSecurity.CurrentUserId), new MigrateInitalizer());
+			SessionProvider = new SessionProvider(ApplicationId, WebSecurity.CurrentUserId ,new MigrateInitalizer());
 		}
 
 		protected override void OnActionExecuted(ActionExecutedContext filterContext)

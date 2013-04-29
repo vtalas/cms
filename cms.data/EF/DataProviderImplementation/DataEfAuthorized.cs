@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Authentication;
 using cms.data.DataProvider;
 using cms.data.Dtos;
-using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
 using cms.data.Repository;
 using cms.data.Shared.Models;
@@ -21,6 +20,7 @@ namespace cms.data.EF.DataProviderImplementation
 		public DataEfAuthorized(Guid applicationId, IRepository repository, int userId)
 			: base(applicationId, userId)
 		{
+			
 			if (userId < 1)
 			{
 				throw new AuthenticationException("log_in");

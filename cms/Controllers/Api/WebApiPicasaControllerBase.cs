@@ -1,17 +1,19 @@
 ﻿using System.Web.Http.Controllers;
-using cms.Code.LinkAccounts;
 using cms.Code.LinkAccounts.Picasa;
+using cms.data.EF;
+using cms.data.EF.DataProviderImplementation;
 
 namespace cms.Controllers.Api
 {
-	public class WebApiPicasaControllerBase : WebApiControllerBase
+	public class WebApiPicasaControllerBase : CmsWebApiControllerBase
 	{
 		protected PicasaWrapper Picasa { get; set; }
 
 		protected override void Initialize(HttpControllerContext requestContext)
 		{
 			base.Initialize(requestContext);
-			Picasa = new PicasaWrapper(SessionProvider);
+			var sess = new SessionProvider(() => new DataEfPublic(ApplicationId, null, 0));
+			Picasa = new PicasaWrapper(sess);
 		}
 	}
 }

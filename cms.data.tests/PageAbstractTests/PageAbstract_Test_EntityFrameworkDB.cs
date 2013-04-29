@@ -112,7 +112,7 @@ namespace cms.data.tests.PageAbstractTests
 					 .AddTo(new EfRepository(db));
 			}
 
-			using (var session = new SessionManager().CreateSession)
+			using (var session = new SessionManager().Session)
 			{
 				var a = session.Page.Get("xxx");
 			}

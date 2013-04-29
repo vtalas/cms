@@ -21,9 +21,9 @@ namespace cms.Controllers.Api
 		[System.Web.Mvc.HttpPost]
 		public ApplicationSetting AddApplication(ApplicationSetting data)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var a = db.Add(data, WebSecurity.CurrentUserId);
+				var a = db.Session.Add(data, WebSecurity.CurrentUserId);
 				UserResourcesManagerProvider.CreateApplication(a.Id);
 				return a;
 			}
@@ -60,27 +60,27 @@ namespace cms.Controllers.Api
 		[System.Web.Mvc.HttpPost]
 		public GridPageDto AddGrid(GridPageDto data)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var newgrid = db.Page.Add(data);
+				var newgrid = db.Session.Page.Add(data);
 				return newgrid;
 			}
 		}
 
 		public void DeleteGrid([FromBody]Guid id)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				db.Page.Delete(id);
+				db.Session.Page.Delete(id);
 			}
 		}
 
 		[System.Web.Mvc.HttpPost]
 		public GridPageDto UpdateGrid(GridPageDto data)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var updated = db.Page.Update(data);
+				var updated = db.Session.Page.Update(data);
 				return updated;
 			}
 		}
@@ -89,9 +89,9 @@ namespace cms.Controllers.Api
 		[System.Web.Http.HttpGet]
 		public IEnumerable<GridListDto> Grids()
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var g = db.Grids();
+				var g = db.Session.Grids();
 				return g;
 			}
 		}
@@ -99,9 +99,9 @@ namespace cms.Controllers.Api
 		//TODO: prejmenovat na Get
 		public GridPageDto GetGrid(Guid? id)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var g = db.Page.Get(id.Value);
+				var g = db.Session.Page.Get(id.Value);
 				return g;
 			}
 		}

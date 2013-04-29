@@ -30,10 +30,10 @@ namespace cms.data.tests.EF
 		{
 			using (var checkdb = new EfContext())
 			{
-				using (var db = new SessionManager().CreateSession)
+				using (var db = new SessionManager())
 				{
-					var gridpage = db.Page.Add(new GridPageDto { Name = "addgridElement test Gridpage", Category = CategoryEnum.Page });
-					var gridDb = db.Page.Get(gridpage.Id);
+					var gridpage = db.Session.Page.Add(new GridPageDto { Name = "addgridElement test Gridpage", Category = CategoryEnum.Page });
+					var gridDb = db.Session.Page.Get(gridpage.Id);
 					var gridelementsBefore = checkdb.GridElements.Count();
 
 					var gridelem = new GridElement()
@@ -44,7 +44,7 @@ namespace cms.data.tests.EF
 							               Type = "text",
 						               };
 
-					var newgridelem = db.Page.AddToGrid(gridelem.ToDto(), gridDb.Id);
+					var newgridelem = db.Session.Page.AddToGrid(gridelem.ToDto(), gridDb.Id);
 
 					Assert.AreEqual(gridelementsBefore + 1, checkdb.GridElements.Count());
 				}
@@ -54,10 +54,10 @@ namespace cms.data.tests.EF
 		[Test]
 		public void AddGridElement_AddNewResources_test_same_keys()
 		{
-			using (var db = new SessionManager().CreateSession)
+			using (var db = new SessionManager())
 			{
-				var gridpage = db.Page.Get(DataEfHelpers._defaultlink);
-				var grid = db.Page.Get(gridpage.Id);
+				var gridpage =   db.Session.Page.Get(DataEfHelpers._defaultlink);
+				var grid =  db.Session.Page.Get(gridpage.Id);
 
 				var gridelem = new GridElement
 					               {
@@ -73,7 +73,7 @@ namespace cms.data.tests.EF
 					               };
 
 
-				var newgridelem = db.Page.AddToGrid(gridelem.ToDto(), grid.Id);
+				var newgridelem =  db.Session.Page.AddToGrid(gridelem.ToDto(), grid.Id);
 
 				Assert.IsTrue(newgridelem.Resources.Any());
 				Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));
@@ -83,10 +83,10 @@ namespace cms.data.tests.EF
 		[Test]
 		public void AddGridElement_AddNew_and_ExistingResources_test_same_keys()
 		{
-			using (var db = new SessionManager().CreateSession)
+			using (var db = new SessionManager())
 			{
-				var gridpage = db.Page.Get(DataEfHelpers._defaultlink);
-				var grid = db.Page.Get(gridpage.Id);
+				var gridpage =  db.Session.Page.Get(DataEfHelpers._defaultlink);
+				var grid =  db.Session.Page.Get(gridpage.Id);
 
 				var gridelem = new GridElement
 					               {
@@ -101,7 +101,7 @@ namespace cms.data.tests.EF
 							                           }
 					               };
 
-				var newgridelem = db.Page.AddToGrid(gridelem.ToDto(), grid.Id);
+				var newgridelem =  db.Session.Page.AddToGrid(gridelem.ToDto(), grid.Id);
 
 				Assert.IsTrue(newgridelem.Resources.Any());
 				Assert.AreEqual(2, newgridelem.Resources.Count(x => x.Key == "text1"));

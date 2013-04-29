@@ -1,54 +1,56 @@
 using System;
 using System.Data.Entity;
 using cms.data.DataProvider;
+using cms.data.EF.DataProviderImplementation;
+using cms.data.Repository;
+using cms.data.Shared;
 using cms.shared;
 
 namespace cms.data.EF
 {
-	public class SessionProvider : IKeuValueStoreageProvider
+	public class SessionProvider : IDisposable
 	{
-		private readonly Func<DataProviderAbstract> _createInstanceFunction;
-		private DataProviderAbstract _instance;
+		private readonly Guid _applicationId;
+		private readonly int _currentUserId;
+		private Func<DataProviderAbstract> zx;
+		private IRepository Repo { get; set; }
 
-		public SessionProvider(Func<DataProviderAbstract> createInstanceFunction)
+		public SessionProvider(Guid applicationId, int currentUserId)
 		{
-			_createInstanceFunction = createInstanceFunction;
+			_applicationId = applicationId;
+			_currentUserId = currentUserId;
+			zx = () => new DataEfAuthorized(_applicationId, Repo, _currentUserId);
 		}
 
-		public SessionProvider(Func<DataProviderAbstract> createInstanceFunction, IDatabaseInitializer<EfContext> initializer)
-			: this(createInstanceFunction)
+		public SessionProvider(Func<DataProviderAbstract> fnc ) 
+		{
+			zx = fnc;
+		}
+
+		public SessionProvider(Guid applicationId, int currentUserId, IDatabaseInitializer<EfContext> initializer)
+			: this(applicationId, currentUserId)
 		{
 			Database.SetInitializer(initializer);
 		}
 
-		public DataProviderAbstract CreateSession
+		public DataProviderAbstract Session
 		{
-			get
-			{
-				_instance = _createInstanceFunction.Invoke();
-				return _instance;
-			}
+			get { return new DataEfAuthorized(_applicationId, Repo, _currentUserId); }
+		}
+
+		public SessionProvider CreateSession()
+		{
+			Repo = new RepositoryFactory().Create;
+			return this;
 		}
 
 		public void Dispose()
 		{
-			if (_instance != null)
+			if (Repo != null)
 			{
-				//_instance.Dispose();
-			}
-		}
-
-		public IKeyValueStorage CreateKeyValueSession
-		{
-			get
-			{
-				return _createInstanceFunction.Invoke().Settings;
+				Repo.Dispose();
 			}
 		}
 	}
 
-	public interface IKeuValueStoreageProvider : IDisposable
-	{
-		IKeyValueStorage CreateKeyValueSession { get; }
-	}
 }

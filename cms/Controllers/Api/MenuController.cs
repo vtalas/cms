@@ -10,20 +10,20 @@ namespace cms.Controllers.Api
 		[HttpPost]
 		public ActionResult Add(MenuDto data)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
 				data.Category = shared.CategoryEnum.Menu;
 
-				var newgrid = db.Menu.Add(data);
+				var newgrid = db.Session.Menu.Add(data);
 				return new JSONNetResult(newgrid);
 			}
 		}
 		[HttpPost]
 		public ActionResult AddMenuItem(MenuItemDto data, Guid gridid)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var newgrid = db.Menu.AddMenuItem(data, gridid);
+				var newgrid = db.Session.Menu.AddMenuItem(data, gridid);
 				return new JSONNetResult(newgrid);
 			}
 		}
@@ -31,9 +31,9 @@ namespace cms.Controllers.Api
 		[HttpGet]
 		public ActionResult Get(Guid? id)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var g = db.Menu.Get(id.Value);
+				var g = db.Session.Menu.Get(id.Value);
 				return new JSONNetResult(g);
 			}
 		}
@@ -41,9 +41,9 @@ namespace cms.Controllers.Api
 		[HttpPost]
 		public ActionResult Delete(Guid id)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				db.Menu.Delete(id);
+				db.Session.Menu.Delete(id);
 				return new JSONNetResult(null);
 			}
 		}
@@ -51,20 +51,20 @@ namespace cms.Controllers.Api
 		[HttpPost]
 		public ActionResult Update(GridPageDto data)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
 				data.Category = shared.CategoryEnum.Menu;
 
-				var updated = db.Page.Update(data);
+				var updated = db.Session.Page.Update(data);
 				return new JSONNetResult(updated);
 			}
 		}
 
 		public ActionResult List()
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var g = db.Menu.List();
+				var g = db.Session.Menu.List();
 				return new JSONNetResult(g);
 			}
 		}

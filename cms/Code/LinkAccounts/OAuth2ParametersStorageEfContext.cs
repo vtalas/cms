@@ -7,15 +7,15 @@ namespace cms.Code.LinkAccounts
 {
 	public class OAuth2ParametersStorageEfContext : OAuth2ParametersStorageAbstract
 	{
-		public IKeyValueStorage StorageProvider { get; set; }
+		public SessionProvider StorageProvider { get; set; }
 
-		public OAuth2ParametersStorageEfContext(IKeyValueStorage storageProvider)
+		public OAuth2ParametersStorageEfContext(SessionProvider storageProvider)
 			: base()
 		{
 			StorageProvider = storageProvider;
 		}
 
-		public OAuth2ParametersStorageEfContext(OAuth2Parameters parameters, IKeyValueStorage storageProvider)
+		public OAuth2ParametersStorageEfContext(OAuth2Parameters parameters, SessionProvider storageProvider)
 			: base(parameters)
 		{
 			StorageProvider = storageProvider;
@@ -28,13 +28,19 @@ namespace cms.Code.LinkAccounts
 
 		public override void Save()
 		{
-			StorageProvider.SettingsStorage("GdataPicasa.json", ToJson());
+			using (var db = StorageProvider.CreateSession())
+			{
+				db.Session.Settings.SettingsStorage("GdataPicasa.json", ToJson());
+			}
 		}
 
 		public override void Load()
 		{
-			var dataString = StorageProvider.SettingsStorage("GdataPicasa.json");
-			Parameters = JsonConvert.DeserializeObject<OAuth2Parameters>(dataString);
+			using (var db = StorageProvider.CreateSession())
+			{
+				var dataString = db.Session.Settings.SettingsStorage("GdataPicasa.json");
+				Parameters = JsonConvert.DeserializeObject<OAuth2Parameters>(dataString);
+			}
 		}
 	}
 }

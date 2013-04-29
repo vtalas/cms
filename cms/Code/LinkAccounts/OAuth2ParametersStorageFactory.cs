@@ -36,7 +36,7 @@ namespace cms.Code.LinkAccounts
 			return gg;
 		}
 
-		public static OAuth2ParametersStorageAbstract StorageDatabase(IKeyValueStorage sessionProvider)
+		public static OAuth2ParametersStorageAbstract StorageDatabase(SessionProvider sessionProvider)
 		{
 			var efContextStorage = new OAuth2ParametersStorageEfContext(sessionProvider);
 			efContextStorage.Load();

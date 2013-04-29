@@ -14,7 +14,6 @@ namespace cms.Controllers
 		{
 			base.Initialize(requestContext);
 			GdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageDatabase(SessionProvider));
-		
 		}
 		
 		public ActionResult Index()

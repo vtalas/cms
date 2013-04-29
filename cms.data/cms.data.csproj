@@ -65,6 +65,7 @@
     <Compile Include="DataProvider\DataProviderBase.cs" />
     <Compile Include="DataProvider\GridElementHandler.cs" />
     <Compile Include="DataProvider\Settings.cs" />
+    <Compile Include="EF\DataProviderImplementation\DataEfPublic.cs" />
     <Compile Include="Shared\Models\ApplicationSettingStorage.cs" />
     <Compile Include="EF\Initializers\ObjectBuilder.cs" />
     <Compile Include="EF\Initializers\Xxx.cs" />

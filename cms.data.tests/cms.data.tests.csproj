@@ -81,7 +81,7 @@
     <Compile Include="EF\DataEfTestNEW.cs" />
     <Compile Include="EF\DtoTests.cs" />
     <Compile Include="EF\GetGridPageMethodTest.cs" />
-    <Compile Include="EF\SessionManager.cs" />
+    <Compile Include="EF\SessionProviderFactoryTest.cs" />
     <Compile Include="LocalizationsTests.cs" />
     <Compile Include="PageAbstractTests\DataProvider_GridElement_Test.cs" />
     <Compile Include="PageAbstractTests\DataProvider_GridElement_Test_EntityFramework.cs" />

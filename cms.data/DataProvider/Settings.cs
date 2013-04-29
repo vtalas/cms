@@ -1,7 +1,4 @@
 using System.Linq;
-using System.Management.Instrumentation;
-using cms.data.EF;
-using cms.data.EF.RepositoryImplementation;
 using cms.data.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -11,6 +8,7 @@ namespace cms.data.DataProvider
 	public class Settings : IKeyValueStorage
 	{
 		protected IRepository Db;
+		
 		protected ApplicationSetting CurrentApplication { get; set; }
 
 		public Settings(ApplicationSetting application, IRepository db)

@@ -9,9 +9,7 @@ using Google.Picasa;
 using cms.Controllers.Api;
 using cms.data.DataProvider;
 using cms.data.EF;
-using cms.data.EF.RepositoryImplementation;
 using cms.data.Shared;
-using cms.shared;
 
 namespace cms.Code.LinkAccounts.Picasa
 {
@@ -20,7 +18,7 @@ namespace cms.Code.LinkAccounts.Picasa
 		private PicasaService Service { get; set; }
 		private PicasaRequest PicasaRequest { get; set; }
 
-		public PicasaWrapper(IKeyValueStorage sessionProvider)
+		public PicasaWrapper(SessionProvider sessionProvider)
 		{
 			var ApplicationId = Guid.NewGuid();
 			using (var repo = new RepositoryFactory().Create)
@@ -28,7 +26,7 @@ namespace cms.Code.LinkAccounts.Picasa
 				var app = repo.ApplicationSettings.Single(x => x.Id == ApplicationId);
 				var session = new Settings(app, repo);
 
-				var oauth2ParametersStorage = OAuth2ParametersStorageFactory.StorageDatabase(session);
+				var oauth2ParametersStorage = OAuth2ParametersStorageFactory.StorageDatabase(sessionProvider);
 				//var gdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageJsonFile(ApplicationId));
 				var gdataAuth = new GoogleDataOAuth2Service(oauth2ParametersStorage);
 				var picasaFactory = new PicasaServiceFactory(gdataAuth.GetRequestDataFactoryInstance("https://picasaweb.google.com/data"));
@@ -40,14 +38,12 @@ namespace cms.Code.LinkAccounts.Picasa
 
 		public IEnumerable<Album> GetAlbums()
 		{
-			IKeuValueStoreageProvider sessionProvider;
 			var albums = PicasaRequest.GetAlbums();
 			return albums.Entries;
 		}
 
 		public AlbumDecorator GetAlbum(string id)
 		{
-			IKeuValueStoreageProvider sessionProvider;
 			var albums = PicasaRequest.GetAlbums();
 			var xx = albums.Entries.SingleOrDefault(x => x.Id == id);
 			return new AlbumDecorator(xx);
@@ -55,7 +51,6 @@ namespace cms.Code.LinkAccounts.Picasa
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
-			IKeuValueStoreageProvider sessionProvider;
 			var a = new GdataPhotosSettings();
 	
 			//using (var db = _sessionProvider.CreateKeyValueSession)

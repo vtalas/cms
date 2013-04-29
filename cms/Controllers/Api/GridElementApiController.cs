@@ -1,7 +1,5 @@
 ﻿using System;
 using cms.data.Dtos;
-using cms.data.Extensions;
-using cms.data.Shared.Models;
 
 namespace cms.Controllers.Api
 {
@@ -11,17 +9,17 @@ namespace cms.Controllers.Api
 
 		public GridElementDto PostToGrid(GridElementDto gridElementDto, Guid gridId)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				return db.Page.AddToGrid(gridElementDto, gridId);
+				return db.Session.Page.AddToGrid(gridElementDto, gridId);
 			}
 		}
 
 		public GridElementDto Post(GridElementDto gridElementDto)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				return db.Page.Add(gridElementDto);
+				return db.Session.Page.Add(gridElementDto);
 			}
 		}
 
@@ -33,17 +31,17 @@ namespace cms.Controllers.Api
 
 		public void Delete(Guid id )
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				db.Page.DeleteGridElement(id);
+				db.Session.Page.DeleteGridElement(id);
 			}
 		}
 
 		public GridElementDto Put(GridElementDto data)
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				return db.Page.Update(data);
+				return db.Session.Page.Update(data);
 			}
 		}
 

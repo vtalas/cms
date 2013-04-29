@@ -10,9 +10,9 @@ namespace cms.Controllers
 	{
 		public ActionResult Index()
 		{
-			using (var db = SessionProvider.CreateSession)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var applications = db.Applications();
+				var applications = db.Session.Applications();
 
 				ViewBag.Json = JSONNetResult.ToJson(applications.ToDtos());
 				return View();

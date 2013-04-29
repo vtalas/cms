@@ -18,7 +18,7 @@ namespace cms.Controllers.Api
 		{
 			base.Initialize(requestContext);
 			SecurityProvider.EnsureInitialized();
-			SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId, WebSecurity.CurrentUserId), new MigrateInitalizer());
+			SessionProvider = new SessionProvider(ApplicationId, WebSecurity.CurrentUserId, new MigrateInitalizer());
 		}
 	}
 }
