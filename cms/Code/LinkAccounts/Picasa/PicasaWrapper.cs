@@ -20,20 +20,13 @@ namespace cms.Code.LinkAccounts.Picasa
 
 		public PicasaWrapper(SessionProvider sessionProvider)
 		{
-			var ApplicationId = Guid.NewGuid();
-			using (var repo = new RepositoryFactory().Create)
-			{
-				var app = repo.ApplicationSettings.Single(x => x.Id == ApplicationId);
-				var session = new Settings(app, repo);
+			var oauth2ParametersStorage = OAuth2ParametersStorageFactory.StorageDatabase(sessionProvider);
+			//var gdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageJsonFile(ApplicationId));
+			var gdataAuth = new GoogleDataOAuth2Service(oauth2ParametersStorage);
+			var picasaFactory = new PicasaServiceFactory(gdataAuth.GetRequestDataFactoryInstance("https://picasaweb.google.com/data"));
+			Service = picasaFactory.GetService();
 
-				var oauth2ParametersStorage = OAuth2ParametersStorageFactory.StorageDatabase(sessionProvider);
-				//var gdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageJsonFile(ApplicationId));
-				var gdataAuth = new GoogleDataOAuth2Service(oauth2ParametersStorage);
-				var picasaFactory = new PicasaServiceFactory(gdataAuth.GetRequestDataFactoryInstance("https://picasaweb.google.com/data"));
-				Service = picasaFactory.GetService();
-
-				PicasaRequest = new PicasaRequest(new RequestSettings("x", gdataAuth.GetValidOAuth2Parameters()));
-			}
+			PicasaRequest = new PicasaRequest(new RequestSettings("x", gdataAuth.GetValidOAuth2Parameters()));
 		}
 
 		public IEnumerable<Album> GetAlbums()
@@ -52,15 +45,15 @@ namespace cms.Code.LinkAccounts.Picasa
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
 			var a = new GdataPhotosSettings();
-	
+
 			//using (var db = _sessionProvider.CreateKeyValueSession)
 			//{
 			//	//db.SettingsStorage()
 			//}
-			
+
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
 
-			return  photos.Entries.Select(x => new PhotoDecorator(x, a));
+			return photos.Entries.Select(x => new PhotoDecorator(x, a));
 
 		}
 	}
@@ -75,5 +68,5 @@ namespace cms.Code.LinkAccounts.Picasa
 			xmlSerializer.Serialize(textWriter, toSerialize);
 			return textWriter.ToString();
 		}
-	} 
+	}
 }

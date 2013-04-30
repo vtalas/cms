@@ -2,6 +2,7 @@
 using cms.Code.LinkAccounts.Picasa;
 using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
+using cms.data.Shared;
 
 namespace cms.Controllers.Api
 {
@@ -12,7 +13,7 @@ namespace cms.Controllers.Api
 		protected override void Initialize(HttpControllerContext requestContext)
 		{
 			base.Initialize(requestContext);
-			var sess = new SessionProvider(() => new DataEfPublic(ApplicationId, null, 0));
+			var sess = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
 			Picasa = new PicasaWrapper(sess);
 		}
 	}

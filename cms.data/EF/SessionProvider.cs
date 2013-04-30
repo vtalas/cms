@@ -12,19 +12,19 @@ namespace cms.data.EF
 	{
 		private readonly Guid _applicationId;
 		private readonly int _currentUserId;
-		private Func<DataProviderAbstract> zx;
+		private readonly Func<DataProviderAbstract> _dataProviderConstruct;
 		private IRepository Repo { get; set; }
 
 		public SessionProvider(Guid applicationId, int currentUserId)
 		{
 			_applicationId = applicationId;
 			_currentUserId = currentUserId;
-			zx = () => new DataEfAuthorized(_applicationId, Repo, _currentUserId);
+			_dataProviderConstruct = () => new DataEfAuthorized(_applicationId, Repo, _currentUserId);
 		}
 
 		public SessionProvider(Func<DataProviderAbstract> fnc ) 
 		{
-			zx = fnc;
+			_dataProviderConstruct = fnc;
 		}
 
 		public SessionProvider(Guid applicationId, int currentUserId, IDatabaseInitializer<EfContext> initializer)
@@ -35,7 +35,7 @@ namespace cms.data.EF
 
 		public DataProviderAbstract Session
 		{
-			get { return new DataEfAuthorized(_applicationId, Repo, _currentUserId); }
+			get { return _dataProviderConstruct.Invoke(); }
 		}
 
 		public SessionProvider CreateSession()
