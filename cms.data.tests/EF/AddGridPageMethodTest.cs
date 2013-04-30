@@ -2,6 +2,7 @@ using System;
 using System.Data.Entity;
 using NUnit.Framework;
 using cms.data.Dtos;
+using cms.data.EF;
 using cms.data.EF.Initializers;
 using cms.shared;
 
@@ -10,6 +11,8 @@ namespace cms.data.tests.EF
 	[TestFixture]
 	public class AddGridPageMethodTest
 	{
+		private SessionProvider SessionProvider { get; set; }
+
 		public AddGridPageMethodTest()
 		{
 			Database.SetInitializer(new DropAndCreateAlwaysForce());
@@ -17,7 +20,7 @@ namespace cms.data.tests.EF
 
 		GridPageDto AddGridpage(string name, string link)
 		{
-			using (var db = new SessionManager().Session)
+			using (var db = SessionProvider.CreateSession())
 			{
 				var a = new GridPageDto
 					        {
@@ -26,7 +29,7 @@ namespace cms.data.tests.EF
 						        Category = CategoryEnum.Page
 					        };
 
-				var n = db.Page.Add(a);
+				var n = db.Session.Page.Add(a);
 				Assert.AreEqual(name, n.Name);
 				//Assert.AreEqual(link, n.ResourceDto.Value);
 				return n;
@@ -35,9 +38,9 @@ namespace cms.data.tests.EF
 
 		GridPageDto GetGridpage(Guid id)
 		{
-			using (var db = new SessionManager().Session)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var n = db.Page.Get(id);
+				var n = db.Session.Page.Get(id);
 				return n;
 			}
 		}
@@ -45,7 +48,10 @@ namespace cms.data.tests.EF
 		[SetUp]
 		public void Setup()
 		{
+		
 			Xxx.DeleteDatabaseDataGenereateSampleData();
+			SessionProvider = SessionProviderFactoryTest.GetSessionProvider();
+
 		}
 
 

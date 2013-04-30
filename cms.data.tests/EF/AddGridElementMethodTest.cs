@@ -14,6 +14,8 @@ namespace cms.data.tests.EF
 	[TestFixture]
 	public class AddGridElementMethodTest
 	{
+		private SessionProvider SessionProvider { get; set; }
+
 		public AddGridElementMethodTest()
 		{
 			Database.SetInitializer(new DropAndCreateAlwaysForce());
@@ -23,6 +25,7 @@ namespace cms.data.tests.EF
 		public void Setup()
 		{
 			Xxx.DeleteDatabaseDataGenereateSampleData();
+			SessionProvider = SessionProviderFactoryTest.GetSessionProvider();
 		}
 
 		[Test]
@@ -30,7 +33,7 @@ namespace cms.data.tests.EF
 		{
 			using (var checkdb = new EfContext())
 			{
-				using (var db = new SessionManager())
+				using (var db = SessionProvider.CreateSession())
 				{
 					var gridpage = db.Session.Page.Add(new GridPageDto { Name = "addgridElement test Gridpage", Category = CategoryEnum.Page });
 					var gridDb = db.Session.Page.Get(gridpage.Id);
@@ -54,7 +57,7 @@ namespace cms.data.tests.EF
 		[Test]
 		public void AddGridElement_AddNewResources_test_same_keys()
 		{
-			using (var db = new SessionManager())
+			using (var db = SessionProvider.CreateSession())
 			{
 				var gridpage =   db.Session.Page.Get(DataEfHelpers._defaultlink);
 				var grid =  db.Session.Page.Get(gridpage.Id);
@@ -83,7 +86,7 @@ namespace cms.data.tests.EF
 		[Test]
 		public void AddGridElement_AddNew_and_ExistingResources_test_same_keys()
 		{
-			using (var db = new SessionManager())
+			using (var db = SessionProvider.CreateSession())
 			{
 				var gridpage =  db.Session.Page.Get(DataEfHelpers._defaultlink);
 				var grid =  db.Session.Page.Get(gridpage.Id);

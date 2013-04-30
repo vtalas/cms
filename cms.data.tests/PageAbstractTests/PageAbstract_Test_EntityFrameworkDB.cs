@@ -16,7 +16,8 @@ namespace cms.data.tests.PageAbstractTests
 	[TestFixture]
 	public class PageAbstract_Test_EntityFrameworkDB :Base_Test
 	{
-	
+		private SessionProvider SessionProvider { get; set; }
+
 		[SetUp]
 		public void SetUp()
 		{
@@ -24,6 +25,9 @@ namespace cms.data.tests.PageAbstractTests
 			Xxx.DeleteDatabaseData();
 			SecurityProvider.EnsureInitialized(true);
 			SharedLayer.Init();
+
+			SessionProvider = SessionProviderFactoryTest.GetSessionProvider();
+
 		}
 
 		public void RunTestDelegate(Action<PageAbstract_Test> test)
@@ -105,16 +109,16 @@ namespace cms.data.tests.PageAbstractTests
 			using (var db = new EfContext())
 			{
 				var useriId = CreateUser("admin");
-				AApplication("prd", SessionManager.DefaultAppId)
+				AApplication("prd", SessionProviderFactoryTest.DefaultAppId)
 					.WithUser(db.UserProfile.Single(x => x.Id == useriId))
 					.WithGrid(AGrid()
 					 .WithResource(SpecialResourceEnum.Link, "xxx"))
 					 .AddTo(new EfRepository(db));
 			}
 
-			using (var session = new SessionManager().Session)
+			using (var db = SessionProvider.CreateSession())
 			{
-				var a = session.Page.Get("xxx");
+				var a = db.Session.Page.Get("xxx");
 			}
 		}
 
