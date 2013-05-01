@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Google.GData.Client;
+using Microsoft.Ajax.Utilities;
 using NUnit.Framework;
 using cms.Code.LinkAccounts;
 using cms.Code.LinkAccounts.Picasa;
@@ -29,6 +31,29 @@ namespace cms.web.tests
 			
 			aa.MediumWidth = 100;
 			aa.MediumHeight = 100;
+
+			//var json =  JsonConvert.SerializeObject(aa);
+			//Console.WriteLine(json);
+
+		}
+
+		[Test]
+		public void sdkhskdxx()
+		{
+			var x = "https://lh5.googleusercontent.com/-i9UhPVg1blo/UXOVpMmRp4I/AAAAAAAAAZo/UsLzCQeW9O0/7.jpg";
+			var a = new Uri(x);
+
+
+
+
+			var b = new UriBuilder(a);
+			var parts = b.Path.Split('/');
+
+			parts[parts.Length - 2] = "kjasbkdjabsdkj";
+			b.Path = String.Join("/", parts);
+			
+			Console.WriteLine(b);
+
 
 			//var json =  JsonConvert.SerializeObject(aa);
 			//Console.WriteLine(json);

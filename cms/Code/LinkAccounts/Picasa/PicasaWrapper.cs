@@ -50,6 +50,7 @@ namespace cms.Code.LinkAccounts.Picasa
 			//{
 			//	//db.SettingsStorage()
 			//}
+			a.SmallHeight = 400;
 
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
 
