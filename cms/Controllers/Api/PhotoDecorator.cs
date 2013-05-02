@@ -21,9 +21,9 @@ namespace cms.Controllers.Api
 
 			var defaultThumbs = GetDefaultThumbs(photo);
 
-			Small = GetWebImage(200, 200);
+			Small = GetWebImage(95, 95);
 			Medium = GetWebImage(defaultThumbs[1]);
-			Large = GetWebImage(400, 400);
+			Large = GetWebImage(200, 200);
 
 		}
 
