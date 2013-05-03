@@ -1,47 +1,48 @@
 ﻿@model Google.GData.Client.OAuth2Parameters
-	<h3>Nic</h3>
+<style>
+    
+    .xxx h3, .xxx h5 {
+        margin: 0px;
+        padding: 0px;
+    }
+    .xxx h3 {
+        line-height: 22px;
+    }
+    .xxx span {
+        color: gray;
+    }
+    .xxx:hover span {
+        color: gray;
+    }
+
+</style>
 
 <div ng-app>
 
-	@using (Html.BeginForm("RedirectToAuthenticate", "GData", FormMethod.Post, new { @class = "form-horizontal" }))
- {
-		@Html.AntiForgeryToken()
-		@Html.ValidationSummary(true)
+    @using (Html.BeginForm("RedirectToAuthenticate", "GData", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
 
-		<div class="control-group">
-			@Html.LabelFor(m => m.ClientId, new { @class = "control-label" })
-			<div class="controls">
-				@Html.TextBoxFor(m => m.ClientId, new { @class = "input-block-level" })
-				@Html.ValidationMessageFor(m => m.ClientId)
-			</div>
-		</div>
+        @Html.HiddenFor(m => m.ClientId, new { @class = "input-block-level" })
+        @Html.HiddenFor(m => m.ClientSecret, new { @class = "input-block-level" })
+        @Html.HiddenFor(m => m.RedirectUri, new { @class = "input-block-level" })
+        @Html.HiddenFor(m => m.Scope)
 
-		<div class="control-group">
-			@Html.LabelFor(m => m.ClientSecret, new { @class = "control-label" })
-			<div class="controls">
-				@Html.TextBoxFor(m => m.ClientSecret, new { @class = "input-block-level" })
-				@Html.ValidationMessageFor(m => m.ClientSecret)
-			</div>
-		</div>
-		<div class="control-group">
-			@Html.LabelFor(m => m.RedirectUri, new { @class = "control-label" })
-			<div class="controls">
-				@Html.TextBoxFor(m => m.RedirectUri, new { @class = "input-block-level" })
-				@Html.ValidationMessageFor(m => m.RedirectUri)
-			</div>
-		</div>
-		<div class="control-group">
-			@Html.LabelFor(m => m.Scope, new { @class = "control-label" })
-			<div class="controls">
-				@Html.TextBoxFor(m => m.Scope, new { @class = "input-block-level" })
-				@Html.ValidationMessageFor(m => m.Scope)
-			</div>
-		</div>
-		<div class="control-group">
-			<div class="controls">
-				<button type="submit" class="btn">Registruj</button>
-			</div>
-		</div>
- }
+        <table style="width: 100%">
+            <tr>
+                <td style="width:160px">
+                    <button type="submit" class=" btn btn-mini" title="propojit s google picasa">
+                        <img src="@Url.Content("~/Content/images/picasa.png")"/>
+                    </button>
+                </td>
+                <td class="xxx">
+                    <h3>Propojení s Google Picasa</h3>
+                    <span>synchronizujte fotky z webových alb Picasa od Googlu</span>
+                </td>
+            </tr>
+
+        </table>
+        
+    }
 
 </div>

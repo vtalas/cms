@@ -18,7 +18,7 @@ namespace cms.Code.LinkAccounts
 				ClientId = ClientId,
 				ClientSecret = ClientSecret,
 				Scope = "https://picasaweb.google.com/data",
-				RedirectUri = "http://localhost:62728/api/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/GData/Authenticate"
+				RedirectUri = "http://localhost:62728/render/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/Gdata/Authenticate"
 			};
 		}
 
