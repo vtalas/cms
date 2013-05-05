@@ -9,7 +9,7 @@ text = ($scope) ->
 
 	gridelement = $scope.$parent.gridelement;
 
-	$scope.$on "ngcClickEdit-showPreview", (e, data) ->
+	$scope.$on "ngcClickEdit.showPreview", (e, data) ->
         $scope.$emit("gridelement-save", gridelement);
 
 

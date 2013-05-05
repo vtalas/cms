@@ -1,17 +1,23 @@
 ﻿<div class="gridpage" ng-controller="gridPage">
-	<h2 ngc-click-edit="data.Name" type="input" placeholder="text"></h2>
+	<h2 ngc-click-edit="data.Name"
+		namespace="gridname"
+		type="input"
+		placeholder="text"></h2>
 
 
+	<div ng-show="data.GridElements.length == 0">
+		<h3 class="text-error">bez obsahu.</h3>
+	</div>
 	<div class="row">
 		<div ng-repeat="gridelement in data.GridElements"
-			 class="span{{gridelement.Width}}"
-			 ng-class="{contentitem: gridelement.Id != 0}"
-			 title="{{gridelement.Type}}">
+			class="span{{gridelement.Width}}"
+			ng-class="{contentitem: gridelement.Id != 0}"
+			title="{{gridelement.Type}}">
 
 			<div ng-show="gridelement.Id">
 				<div class="gridelement-controls">
 					<i>{{gridelement.Type}}&nbsp;</i>
-					<button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete"/>
+					<button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete" />
 				</div>
 				<div class="clearfix"></div>
 				<div gridelement="gridelement" grid="data"></div>
@@ -20,24 +26,24 @@
 	</div>
 
 	<div>
-		<div class="btn-group">
+		<div class="btn-group" title="vložit šablonu podle typu">
 			<button ng-click="addToEnd(newItem, data.Id, data.GridElements)" class="btn">{{newItem.Type}}</button>
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">textxx </a>
+				<li title="neformátovaná text"><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">text </a>
 				</li>
-				<li><a href="#"
-					   ng-click="addWithType(newItem, data.Id, data.GridElements, 'novinka', $event )">novinka </a></li>
-				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'simplehtml', $event )">simple
-					HTML </a></li>
-				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'reference', $event )">Reference </a>
-				</li>
-				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'gdataalbum', $event )">GData
-					Album</a></li>
+@*				<li><a href="#"
+					ng-click="addWithType(newItem, data.Id, data.GridElements, 'novinka', $event )">novinka </a></li>*@
+				<li title="formátovaný text - markdown" ><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'simplehtml', $event )">Markdown</a></li>
+@*				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'reference', $event )">Reference </a>
+				</li>*@
+				<li title="Album z připojeného Google úložiště"><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'gdataalbum', $event )">Google
+					    Album</a></li>
 			</ul>
 		</div>
 	</div>
+
 
 </div>

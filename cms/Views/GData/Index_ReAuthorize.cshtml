@@ -1,0 +1,25 @@
+﻿@model cms.Code.LinkAccounts.GoogleDataOAuth2Service
+
+@*<div>Připojení na Google Data nefunguje jak má. Je potřeba resetovat propojení a provést autorizaci znovu.</div>
+@using (Html.BeginForm("Revoke", "GData", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+	<button class="btn btn-danger btn-large" type="submit">zrušit propojení</button>
+							    
+}*@
+<table style="width: 100%">
+	<tr>
+		<td >
+			@using (Html.BeginForm("Revoke", "GData", FormMethod.Post, new { @class = "form-horizontal" }))
+   {
+				<button class="btn btn-danger btn-large" type="submit">zrušit propojení</button>
+							    
+   }
+		</td>
+		<td class="xxx alert alert-error">
+			<h3 class="">Chyba</h3>
+			<span class="text-error">Připojení na Google Data nefunguje jak má. Je potřeba resetovat propojení a provést autorizaci znovu.</span>
+		</td>
+	</tr>
+
+</table>
+

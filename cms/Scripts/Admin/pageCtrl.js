@@ -36,4 +36,4 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi", fun
 
 	$scope.getGrid();
 
-}]
+}];

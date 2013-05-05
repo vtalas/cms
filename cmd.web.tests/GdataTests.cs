@@ -43,9 +43,6 @@ namespace cms.web.tests
 			var x = "https://lh5.googleusercontent.com/-i9UhPVg1blo/UXOVpMmRp4I/AAAAAAAAAZo/UsLzCQeW9O0/7.jpg";
 			var a = new Uri(x);
 
-
-
-
 			var b = new UriBuilder(a);
 			var parts = b.Path.Split('/');
 

@@ -14,12 +14,22 @@ namespace cms.Controllers
 			{
 				var applications = db.Session.Applications();
 
+				if (applications.Count() == 1)
+				{
+					return RedirectToAction("Grids", new {applicationId = applications.First().Id});
+				}
+
 				ViewBag.Json = JSONNetResult.ToJson(applications.ToDtos());
 				return View();
 			}
 		}
 
 		public ActionResult Grids()
+		{
+			return View();
+		}
+
+		public ActionResult Dashboard()
 		{
 			return View();
 		}

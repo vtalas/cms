@@ -4,8 +4,9 @@
 @reference ../angular.js
 ###
 
-gdataalbum = ($scope, gdataPhotos) ->
-	gdataalbum.$inject = [ "$scope", "gdataPhotos" ]
+gdataalbum = ($scope, gdataPhotos, appSettings) ->
+	gdataalbum.$inject = [ "$scope", "gdataPhotos", "appSettings" ]
+
 
 	getCurrentAlbum = (item) ->
 		if (item.Content != null)
@@ -17,12 +18,17 @@ gdataalbum = ($scope, gdataPhotos) ->
 	gridelement = $scope.$parent.gridelement;
 	$scope.showGdataAlbumsValue = false;
 
+
+	$scope.applicationId = appSettings.Id;
+
 	gdataPhotos.getAlbums((data) ->
 		$scope.albums = data;
 		$scope.currentAlbum = getCurrentAlbum(gridelement)
-		1)
+	,(errr) ->
+		$scope.error = "kjabsdkbaskjd"
+	)
 
-	$scope.$on "ngcClickEdit-showPreview", (e, data) ->
+	$scope.$on "ngcClickEdit.showPreview", (e, data) ->
 		$scope.$emit("gridelement-save", gridelement);
 
 	$scope.addAlbum = (id) ->

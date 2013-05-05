@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Net;
+using System.Web.Mvc;
 using Google.GData.Client;
 using cms.Code;
 using cms.Code.LinkAccounts;
@@ -9,7 +11,7 @@ namespace cms.Controllers
 	public class GDataController : CmsControllerBase
 	{
 		private GoogleDataOAuth2Service GdataAuth { get; set; }
-		
+
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
 			base.Initialize(requestContext);
@@ -21,10 +23,22 @@ namespace cms.Controllers
 			return View(GdataAuth);
 		}
 
+		public ActionResult aaa()
+		{
+			TempData["message"] = "Úspěšně připojeno na Google Picasa.";
+			return RedirectToAction("Index");
+		}
+
 		[HttpPost]
 		public ActionResult RedirectToAuthenticate(OAuth2Parameters model)
 		{
 			GdataAuth.Storage.Parameters = model;
+
+			var u = HttpContext.Request.Url;
+			
+			GdataAuth.Storage.Parameters.RedirectUri = string.Format("{0}://{1}/GdataAuth/Authenticate", u.Scheme, u.Authority);
+			GdataAuth.Storage.Parameters.State = ApplicationId.ToString();
+
 			return Redirect(GdataAuth.OAuth2AuthorizationUrl());
 		}
 
@@ -32,17 +46,19 @@ namespace cms.Controllers
 		public ActionResult Authenticate(string code)
 		{
 			GdataAuth.Storage.Parameters.AccessCode = code;
-			GdataAuth.Storage.Parameters.RedirectUri = "http://localhost:62728/render/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/Gdata/Authenticate";
-
+			var u = HttpContext.Request.Url;
+			
+			GdataAuth.Storage.Parameters.RedirectUri = string.Format("{0}://{1}/GdataAuth/Authenticate", u.Scheme, u.Authority);
+			
 			GdataAuth.GetAccessToken();
-
+			TempData["message"] = "Úspěšně připojeno na Google Picasa.";
 			return RedirectToAction("Index");
 		}
-
-		[HttpGet]
+	
+		[HttpPost]
 		public ActionResult Revoke(string code)
 		{
-			//GdataAuth.GetAccessToken();
+			GdataAuth.RevokeToken();
 			return RedirectToAction("Index");
 		}
 		
@@ -52,5 +68,13 @@ namespace cms.Controllers
 			GdataAuth.RefreshAccessToken();
 			return RedirectToAction("Index");
 		}
+	}
+
+	public enum ViewStatus
+	{
+		Success,
+		Error,
+		Info
+
 	}
 }

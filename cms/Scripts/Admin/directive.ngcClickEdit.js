@@ -1,7 +1,7 @@
 function ngcClickEditDirective() {
 	var previewTemplate = '<span ng-click="showEdit()" class="ngc-click-edit-preview" ng-hide="edit" ng-bind="ngcClickEdit" ></span>',
 		editTemplateInput = "<input ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-input small' ng-show='edit' ng-model=\"ngcClickEdit\"></input>",
-		editTemplateTextArea = "<textarea ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-textarea' ng-show=\"edit\" ng-model=\"ngcClickEdit\" ></textarea>";
+		editTemplateTextArea = "<textarea ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-textarea' ng-show=\"edit\" ng-model=\"ngcClickEdit\" rows='15'></textarea>";
 	function getEditTemplate(iAttrs) {
 		var type = iAttrs.type,
 			templateEdit = iAttrs.templateEdit,
@@ -40,8 +40,10 @@ function ngcClickEditDirective() {
 			iElement.append(template);
 
 			return function (scope, element, attrs) {
+				
 				scope.edit = false;
 				element.addClass("ngc-click-edit");
+
 
 				scope.$watch("edit", function (newValue, b) {
 					template.focus();
@@ -58,13 +60,14 @@ function ngcClickEditDirective() {
 					}
 				});
 
+				var namespace = attrs.namespace || "ngcClickEdit";
 				scope.showEdit = function () {
-					scope.$emit("ngcClickEdit-showEdit");
+					scope.$emit(namespace + ".showEdit");
 					scope.edit = true;
 				};
 
 				scope.showPreview = function () {
-					scope.$emit("ngcClickEdit-showPreview");
+					scope.$emit(namespace + ".showPreview");
 					scope.edit = false;
 				};
 			};

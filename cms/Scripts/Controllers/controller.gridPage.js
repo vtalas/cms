@@ -1,4 +1,4 @@
-var gridPage = function ($scope, gridEelementApi, appSettings) {
+var gridPage = function ($scope, gridEelementApi, GridApi) {
 
 	$scope.addWithType = function (item, gridid, elements, newtype, event) {
 		event.preventDefault();
@@ -31,6 +31,10 @@ var gridPage = function ($scope, gridEelementApi, appSettings) {
 
 	$scope.$on("gridelement-save", function (e, gridelemnt) {
 		$scope.save(gridelemnt);
+	});
+
+	$scope.$on("gridname.showPreview", function (e, gridelemnt) {
+		GridApi.updateGrid($scope.data);
 	});
 
 	$scope.save = function (item) {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using Google.GData.Client;
 
 namespace cms.Code.LinkAccounts
@@ -31,7 +32,7 @@ namespace cms.Code.LinkAccounts
 			if (IsAuhtorized())
 			{
 				return GoogleDataOAuth2Status.Authorized;
-			}	
+			}
 
 			if (NeedReAuthorize())
 			{
@@ -73,7 +74,7 @@ namespace cms.Code.LinkAccounts
 			var timespan = Storage.Parameters.TokenExpiry.Subtract(DateTime.Now);
 			return (int)timespan.TotalSeconds;
 		}
-		
+
 		public void GetAccessToken()
 		{
 			OAuthUtil.GetAccessToken(Storage.Parameters);
@@ -82,28 +83,24 @@ namespace cms.Code.LinkAccounts
 
 		public void RevokeToken()
 		{
-//			string accessTokenUrl = "https://www.google.com/accounts/AuthSubRevokeToken";
-//			var parameters = this.Storage.Parameters;
-//
-//			var uri = new Uri(string.Format("{0}?scope={1}", accessTokenUrl, (object)OAuthBase.EncodingPerRFC3986(parameters.Scope)));
-//			WebRequest webRequest = WebRequest.Create(new Uri(parameters.TokenUri));
-//			webRequest.Method = "POST";
-//			webRequest.ContentType = "application/x-www-form-urlencoded";
-//			StreamWriter streamWriter = new StreamWriter(webRequest.GetRequestStream());
-//			streamWriter.Write(requestBody);
-//			((TextWriter)streamWriter).Flush();
-//			streamWriter.Close();
-//			WebResponse response = webRequest.GetResponse();
-//	
-//			var x = new StreamReader(response.GetResponseStream()).ReadToEnd();
-//
-//			if (response == null)
-//				return;
-//
+			const string accessTokenUrl = " https://accounts.google.com/o/oauth2/revoke";
 
+			var url = string.Format("{0}?token={1}", accessTokenUrl, Storage.Parameters.RefreshToken);
+			var request = (HttpWebRequest)WebRequest.Create(url);
+			
+			try
+			{
+				using (var response = request.GetResponse() as HttpWebResponse)
+				{
 
-			//	OAuthUtil.GetUnauthorizedRequestToken(); .GetAccessToken(Storage.Parameters);
-			//Google.GData.Client.AuthSubUtil.getRevokeTokenUrl()e();
+				}
+			}
+			catch (WebException ex)
+			{
+			//	throw new Exception(ex.Message);
+			}
+
+			Storage.Parameters = null;
 			Storage.Save();
 		}
 	}

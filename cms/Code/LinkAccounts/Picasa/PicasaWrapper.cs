@@ -27,6 +27,8 @@ namespace cms.Code.LinkAccounts.Picasa
 			Service = picasaFactory.GetService();
 
 			PicasaRequest = new PicasaRequest(new RequestSettings("x", gdataAuth.GetValidOAuth2Parameters()));
+			var x = PicasaRequest.Settings.OAuthUser;
+
 		}
 
 		public IEnumerable<Album> GetAlbums()

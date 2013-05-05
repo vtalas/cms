@@ -1,12 +1,14 @@
 var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
 
+	function loadData () {
+		$scope.data  = GridApi.grids({ applicationId: appSettings.Id });
+	}
+
 	$scope.$on("setCultureEvent", function () {
-		console.log("gridpagesCtrl set culture");
+		loadData();
 	});
 
-	$scope.data = GridApi.grids({ applicationId: appSettings.Id }, function (d) {
-
-	});
+	loadData();
 
 	$scope.getLink = function (item) {
 		switch (item.Category) {
@@ -34,11 +36,9 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 
 	$scope.save = function (item) {
 		item.Edit = 0;
-		$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/UpdateGrid', data: item })
-			.success(function (data, status, headers, config) {
-			})
-			.error(function (data, status, headers, config) {
-			});
+		GridApi.updateGrid(item, function(ok) {
+			console.log(ok);
+		});
 	};
 
 	$scope.edit = function (item) {
@@ -74,11 +74,11 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	};
 
 
-	$scope.$on("ngcClickEdit-showEdit", function () {
+	$scope.$on("ngcClickEdit.showEdit", function () {
 		$scope.newItemEdit = true;
 	});
 
-	$scope.$on("ngcClickEdit-showPreview", function () {
+	$scope.$on("ngcClickEdit.showPreview", function () {
 		newItemReset();
 		$scope.newItemEdit = false;
 	});

@@ -1,48 +1,38 @@
 ﻿@model Google.GData.Client.OAuth2Parameters
-<style>
-    
-    .xxx h3, .xxx h5 {
-        margin: 0px;
-        padding: 0px;
-    }
-    .xxx h3 {
-        line-height: 22px;
-    }
-    .xxx span {
-        color: gray;
-    }
-    .xxx:hover span {
-        color: gray;
-    }
 
-</style>
 
 <div ng-app>
+	@using (Html.BeginForm("RedirectToAuthenticate", "GData", FormMethod.Post, new { @class = "form-horizontal" }))
+ {
+		@Html.AntiForgeryToken()
 
-    @using (Html.BeginForm("RedirectToAuthenticate", "GData", FormMethod.Post, new { @class = "form-horizontal" }))
-    {
-        @Html.AntiForgeryToken()
+		@Html.HiddenFor(m => m.ClientId, new { @class = "input-block-level" })
+		@Html.HiddenFor(m => m.ClientSecret, new { @class = "input-block-level" })
+		@Html.HiddenFor(m => m.RedirectUri, new { @class = "input-block-level" })
+		@Html.HiddenFor(m => m.Scope)
 
-        @Html.HiddenFor(m => m.ClientId, new { @class = "input-block-level" })
-        @Html.HiddenFor(m => m.ClientSecret, new { @class = "input-block-level" })
-        @Html.HiddenFor(m => m.RedirectUri, new { @class = "input-block-level" })
-        @Html.HiddenFor(m => m.Scope)
+		<table style="width: 100%">
+			<tr>
+				<td style="width: 60px">
+					<img src="@Url.Content("~/Content/images/picasa_logo.png")"/>
+				</td>
+				<td class="xxx">
+					<h3>Google Picasa</h3>
+					<span>synchronizujte fotky z webových alb Picasa od Googlu</span>
+				</td>
 
-        <table style="width: 100%">
-            <tr>
-                <td style="width:160px">
-                    <button type="submit" class=" btn btn-mini" title="propojit s google picasa">
-                        <img src="@Url.Content("~/Content/images/picasa.png")"/>
-                    </button>
-                </td>
-                <td class="xxx">
-                    <h3>Propojení s Google Picasa</h3>
-                    <span>synchronizujte fotky z webových alb Picasa od Googlu</span>
-                </td>
-            </tr>
+				<td>
+					@using (Html.BeginForm("Revoke", "GData"))
+	 {
+						<button class="btn btn-success btn-large" type="submit">připojit</button>
+							    
+	 }
+				</td>
 
-        </table>
+			</tr>
+
+		</table>
         
-    }
+ }
 
 </div>

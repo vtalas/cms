@@ -1,31 +1,31 @@
 ﻿<style>
 	.gdataAlbum {
-		display: inline-block;
-		margin: 5px;
+	display: inline-block;
+	margin: 5px;
 	}
 
 	.gdataThumb {
-		display: inline-block;
+	display: inline-block;
 	}
 
 	.gdataThumb:hover {
-		cursor: pointer;
+	cursor: pointer;
 	}
 
 	.gdataDetail {
-		display: inline-block;
+	display: inline-block;
 	}
 
 	.gdata-album-placeholder {
-		width: 160px;
-		height: 160px;
-		border: 1px dashed #d5d5d5;
+	width: 160px;
+	height: 160px;
+	border: 1px dashed #d5d5d5;
 	}
 
 	.gdata-album-preview {
-		width: 160px;
-		height: 160px;
-		border: 1px solid #d5d5d5;
+	width: 160px;
+	height: 160px;
+	border: 1px solid #d5d5d5;
 	}
 
 </style>
@@ -33,7 +33,9 @@
 <div ng-controller="gdataalbum" class="row">
 	<div class="gridelement-content" style="float:left;min-width:50%;">
 		<div class="control-group">
-			<h3><span ngc-click-edit="gridelement.Resources.header.Value" type="input" placeholder="Nadpis"></span></h3>
+			<h3>
+				<span ngc-click-edit="gridelement.Resources.header.Value" type="input" placeholder="Nadpis"></span>
+			</h3>
 		</div>
 		<div class="control-group">
 			<div ngc-click-edit="gridelement.Resources.text.Value" type="textarea" placeholder="Text"></div>
@@ -49,10 +51,19 @@
 		<button ng-click="showGdataAlbums()" class="btn btn-small">Vybrat Album</button>
 	</div>
 
-
+	<div class="clearfix"></div>
 	<div ng-show="showGdataAlbumsValue" class="gridelement-content" >
 		<h3>Google Alba</h3>
 
+		<div ng-show="albums.length == 0">
+			<H4 class="text-error">nenalezena žádná alba</H4>
+		</div>
+		<div ng-show="albums == null" class="alert alert-error">
+			<h4>chyba připojení </h4>
+			<div>
+				ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
+			</div>
+		</div>
 		<div ng-repeat="item in albums" class="gdataAlbum">
 			<div class="gdataThumb" ng-click="addAlbum(item.Id)">
 				<img ngc-lazy-image="item.Thumbnail.PhotoUri"/>

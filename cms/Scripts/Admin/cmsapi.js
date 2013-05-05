@@ -10,6 +10,7 @@
 				grids: { method: 'GET', isArray: true, params: { action: "grids" } },
 				gridpageJson: { method: 'GET', isArray: false, params: { action: "grids" } },
 				getGrid: { method: 'GET', params: { action: "GetGrid" } },
+				updateGrid: { method: 'POST', params: { action: "UpdateGrid" } },
 			}
 		);
 
