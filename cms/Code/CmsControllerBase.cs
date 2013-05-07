@@ -1,4 +1,5 @@
 using System;
+using System.Security.Authentication;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using cms.data.EF;
@@ -24,6 +25,17 @@ namespace cms.Code
 		{
 			base.OnActionExecuted(filterContext);
 			ViewBag.ApplicationId = ApplicationId;
+		}
+
+		protected override void OnException(ExceptionContext filterContext)
+		{
+			base.OnException(filterContext);
+			
+			if (filterContext.Exception.GetType() == typeof (AuthenticationException))
+			{
+				RedirectToAction("Login", "Account");
+			}
+
 		}
 
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)

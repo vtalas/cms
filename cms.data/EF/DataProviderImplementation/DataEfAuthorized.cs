@@ -20,12 +20,13 @@ namespace cms.data.EF.DataProviderImplementation
 		public DataEfAuthorized(Guid applicationId, IRepository repository, int userId)
 			: base(applicationId, userId)
 		{
-			
+
+			Repository = repository;
+
 			if (userId < 1)
 			{
 				throw new AuthenticationException("log_in");
 			}
-			Repository = repository;
 		}
 
 		public DataEfAuthorized(string applicationName, IRepository repository, int userId)

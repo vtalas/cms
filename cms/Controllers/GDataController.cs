@@ -51,7 +51,10 @@ namespace cms.Controllers
 			GdataAuth.Storage.Parameters.RedirectUri = string.Format("{0}://{1}/GdataAuth/Authenticate", u.Scheme, u.Authority);
 			
 			GdataAuth.GetAccessToken();
-			TempData["message"] = "Úspěšně připojeno na Google Picasa.";
+			if (GdataAuth.IsAuhtorized())
+			{
+				TempData["message"] = "Úspěšně připojeno na Google Picasa.";
+			}
 			return RedirectToAction("Index");
 		}
 	
