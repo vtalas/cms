@@ -215,7 +215,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Code\CmsControllerBase.cs" />
     <Compile Include="Controllers\Api\ClientApiController.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\Api\AdminApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -536,6 +535,7 @@
     <Content Include="Views\Admin\DataContent.cshtml" />
     <Content Include="Web.config.default" />
     <Content Include="Views\GData\GdataPhotosSettins.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

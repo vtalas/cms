@@ -3,21 +3,12 @@ using System.Security.Authentication;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using cms.data.EF;
-using cms.data.DataProvider;
-using cms.data.EF.DataProviderImplementation;
 
 namespace cms.Code
 {
 	public class CmsControllerBase : Controller
 	{
 		protected SessionProvider SessionProvider { get; set; }
-
-		public string ApplicationViewPath(string view)
-		{
-			return string.Format("{0}/{1}", Application, view);
-		}
-		
-		public string Application { get;  private set; }
 		
 		public Guid ApplicationId { get;  private set; }
 
@@ -59,6 +50,13 @@ namespace cms.Code
 			}
 
 			SessionProvider = new SessionProvider(ApplicationId, WebSecurity.CurrentUserId);
+
+			using (var db = SessionProvider.CreateSession())
+			{
+				ViewBag.ApplicationName = db.Session.ApplicationName;
+			}
+
+
 		}
 	}
 }

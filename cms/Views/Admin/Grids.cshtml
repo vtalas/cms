@@ -1,9 +1,9 @@
 ﻿@using cms.shared
 @{
-	ViewBag.Title = "Administrace - stránky";
-	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
-	var applicationName = ViewBag.Application;
-	var applicationId = ViewBag.ApplicationId;
+    ViewBag.Title = "Administrace - stránky";
+    Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
+    var applicationName = ViewBag.Application;
+    var applicationId = ViewBag.ApplicationId;
 }
 <div ng-app="gridsmodule"
 	 data-application-name="@applicationName"
@@ -14,8 +14,9 @@
 	>
 
 	@UserResources.RenderHtmlTemplates(Html, applicationId)
-
-	<div ng-controller="cultureCtrl">
+    
+    
+    <div ng-controller="cultureCtrl">
 		<div class="btn-group" >
 			<button class="btn" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>
 			<button class="btn" ng-class="{ active:currentCulture  == 'en' }" href="#" ng-click="setCulture('en')">en</button>

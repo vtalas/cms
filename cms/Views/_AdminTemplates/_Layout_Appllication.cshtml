@@ -6,7 +6,13 @@
 <script type="text/javascript" src="@Url.Content(string.Format("~/render/{0}/Resources/Scripts", ViewBag.ApplicationId))"></script>
 
 @Html.Partial("~/Views/_AdminTemplates/_navbar.cshtml")
-
 <div class="container">
+<ul class="breadcrumb">
+    <li>
+        <a class="" href="@Url.Action("Dashboard", "Admin")">@ViewBag.ApplicationName</a><span class="divider">/</span>
+    </li>
+  <li><a href="#">Library</a> <span class="divider">/</span></li>
+  <li class="active">Data</li>
+</ul>
 	@RenderBody()
 </div>

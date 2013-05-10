@@ -12,18 +12,13 @@ namespace cms.data.DataProvider
 		protected int UserId { get; set; }
 		protected string CurrentCulture { get { return SharedLayer.Culture; } }
 
-		public string ApplicationName { get; protected set; }
+		public abstract string ApplicationName { get; }
 		public Guid ApplicationId { get; protected set; }
 		public abstract ApplicationSetting CurrentApplication { get;}
 	
 		protected DataProviderAbstract(Guid applicationId, int userId)
 		{
 			ApplicationId  = applicationId;
-			UserId = userId;
-		}
-		protected DataProviderAbstract(string applicationName, int userId)
-		{
-			ApplicationName = applicationName;
 			UserId = userId;
 		}
 

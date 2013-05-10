@@ -85,7 +85,7 @@ namespace cms.Code.LinkAccounts
 		{
 			const string accessTokenUrl = " https://accounts.google.com/o/oauth2/revoke";
 
-			var url = string.Format("{0}?token={1}", accessTokenUrl, Storage.Parameters.AccessToken);
+			var url = string.Format("{0}?token={1}", accessTokenUrl, Storage.Parameters.RefreshToken);
 			var request = (HttpWebRequest)WebRequest.Create(url);
 			
 			try

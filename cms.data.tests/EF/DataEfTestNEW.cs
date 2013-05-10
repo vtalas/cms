@@ -34,27 +34,6 @@ namespace cms.data.tests.EF
 			}
 		}
 
-		//[Test]
-		//public void InvalidUserNonExistingInstance_test_AppId()
-		//{
-		//	using (var context = new SessionManager().CreateSessionWithInvalidUser)
-		//	{
-		//		Assert.IsNotNull(context);
-		//		Assert.Throws<Exception>(delegate { var xxx = context.CurrentApplication; });
-		//		Assert.AreEqual(0, context.Applications().Count());
-		//	}
-		//}
-
-		[Test]
-		public void InvalidUserNonExistingInstance_test_AppName()
-		{
-			using (var repo = new RepositoryFactory().Create)
-			{
-				var context = new DataEfAuthorized("test1", repo, 0);
-				Assert.IsNotNull(context);
-				Assert.Throws<Exception>(delegate { var xxx = context.CurrentApplication; });
-				Assert.AreEqual(0, context.Applications().Count());
-			}
-		}
+	
 	}
 }

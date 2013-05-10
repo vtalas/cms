@@ -1,22 +1,28 @@
 ﻿<style type="text/css">
-
-	.xxx {
-		float:left;
-	}
+    .xxx
+    {
+        float: left;
+    }
 </style>
 
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <ul class="nav">
+            <li class=""><a class="" href="@Url.Action("Dashboard", "Admin")">@ViewBag.ApplicationName</a></li>
+            @*<li><a href="#">Link</a></li>*@
+        </ul>
+        <ul class="nav pull-right">
+            <li>@WebSecurity.CurrentUserName  <span class="divider-vertical"> |  @Html.ActionLink("odhlásit", "LogOff", "Account")</span></li>
+        </ul>
+    </div>
+</div>
 
-<div class="navbar navbar-fixed-top navbar-inverse">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"> kabdkjasdbkf</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</a>
-			<div class="nav-collapse">
-				<ul class="nav">
-@*					<li class="btn-group">
+<div class="navbar navbar-fixed-top navbar-inverse" style="display: none">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse">
+                <ul class="nav">
+                    @*					<li class="btn-group">
 							<button class="btn" >@ViewBag.ApplicationName</button>
 							<button class="btn dropdown-toggle" data-toggle="dropdown">
 								<span class="caret"></span>
@@ -26,20 +32,20 @@
 								<li><a href="#" >app2 </a></li>
 							</ul>
 					</li>*@
-					<li>
-						<a  href="@Url.Action("DataContent", "Admin")">@ViewBag.ApplicationId</a>
-					</li>
-					<li>
-						@Html.ActionLink("logout", "LogOff", "Account")
-					</li>
-					<li>
-						@Html.ActionLink("nastaveni", "Index", "Gdata")
-					</li>
-					<li>
-						<a href="/admin">@WebSecurity.CurrentUserName</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+                    <li>
+                        <a  href="@Url.Action("Grids", "Admin")">@ViewBag.ApplicationName</a>
+                    </li>
+                    <li>
+                        @Html.ActionLink("logout", "LogOff", "Account")
+                    </li>
+                    <li>
+                        @Html.ActionLink("nastaveni", "Index", "Gdata")
+                    </li>
+                    <li>
+                        <a href="/admin">@WebSecurity.CurrentUserName</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

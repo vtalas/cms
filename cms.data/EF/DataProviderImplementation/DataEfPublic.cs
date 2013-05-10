@@ -20,6 +20,8 @@ namespace cms.data.EF.DataProviderImplementation
 			Repository = repository;
 		}
 
+		public override string ApplicationName { get { return CurrentApplication.Name; } }
+
 		public override sealed ApplicationSetting CurrentApplication
 		{
 			get

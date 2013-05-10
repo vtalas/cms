@@ -21,17 +21,6 @@ namespace cms.data.EF.DataProviderImplementation
 			: base(applicationId, userId)
 		{
 
-			Repository = repository;
-
-			if (userId < 1)
-			{
-				throw new AuthenticationException("log_in");
-			}
-		}
-
-		public DataEfAuthorized(string applicationName, IRepository repository, int userId)
-			: base(applicationName, userId)
-		{
 			if (userId < 1)
 			{
 				throw new AuthenticationException("log_in");
@@ -39,9 +28,7 @@ namespace cms.data.EF.DataProviderImplementation
 			Repository = repository;
 		}
 
-		//public DataEfAuthorized(Guid applicationId, int userId) : this(applicationId, new EfContext(), userId) { }
-
-		//public DataEfAuthorized(string applicationName, int userId) : this(applicationName, new EfContext(), userId) { }
+		public override string ApplicationName { get { return CurrentApplication.Name; } }
 
 		public override sealed ApplicationSetting CurrentApplication
 		{
