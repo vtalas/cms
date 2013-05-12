@@ -1,0 +1,28 @@
+﻿@model dynamic
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Chyba</title>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic,100,500,700,900' rel='stylesheet' type='text/css'>	
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: 'Roboto', sans-serif;
+				font-weight: 400;
+			}
+
+		</style>
+		<div style="margin: 2% auto; width:960px">
+			<h1>@HttpContext.Current.Response.Status</h1>
+			<h3>@TempData["message"]</h3>
+			<p>@TempData["ex"]</p>
+		</div>
+	</body>
+</html>

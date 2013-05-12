@@ -1,0 +1,61 @@
+﻿@{
+Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ViewBag.Title = "Administace";
+
+}
+<style>
+	body {
+		padding: 0px;
+	}
+</style>
+
+<div ng-app="admin-index" class="container admin-index">
+
+	<div class="page-header">
+		<h2>Aplikace</h2>
+	</div>
+	<div ng-controller="index" data-model="@ViewBag.Json">
+		
+		<div ng-repeat="item in data" class="row color ">
+			<div class="span8">
+				<a href="/render/{{item.Id}}/admin/dashboard" class="btn-link align-left color">
+					<h1>{{item.Name}}</h1>
+				</a>
+				<span>{{item.Id}}&nbsp;</span>
+			</div>
+		</div>
+
+		<div class="row newitem ">
+			<form ng-submit="add()">
+				<div class="span8">
+					<div ngc-click-edit="newitem"
+						 template-preview="#preview"
+						 template-edit="#edit"
+						 type="input"
+						 placeholder="zadej jméno nové aplikace"></div>
+					<span>&nbsp;</span>
+				</div>
+				<div class="span2 ">
+					<h3>
+						<button class="btn btn-success " type="submit">přidat</button>
+					</h3>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script id="preview" type="text/ng-template">
+		<span ng-click="showEdit()" class="ngc-click-edit-preview large" ng-hide="edit" ng-bind="ngcClickEdit"></span>
+	</script>
+
+	<script id="edit" type="text/ng-template">
+		<input ui-event="{ blur : 'showPreview()' }"
+			   class='ngc-click-edit-input large'
+			   ng-show="edit"
+			   ng-model="ngcClickEdit"
+			   required/>
+	</script>
+
+
+</div>
+

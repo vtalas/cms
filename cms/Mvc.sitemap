@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
+            enableLocalization="true">
+
+	<mvcSiteMapNode title="Aplikace" controller="Admin" action="Applications">
+		<mvcSiteMapNode title="Dashboard" controller="Admin" action="Dashboard" key="xxx" >
+			<mvcSiteMapNode title="Grids" controller="Admin" action="Grids" />
+			<mvcSiteMapNode title="Nastaveni" controller="Gdata" action="Index"/>
+		</mvcSiteMapNode>
+	</mvcSiteMapNode>
+
+</mvcSiteMap>

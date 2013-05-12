@@ -28,7 +28,7 @@ namespace cms.data.EF.DataProviderImplementation
 			Repository = repository;
 		}
 
-		public override string ApplicationName { get { return CurrentApplication.Name; } }
+		public override string ApplicationName { get { return !ApplicationId.IsEmpty() ? CurrentApplication.Name : ""; } }
 
 		public override sealed ApplicationSetting CurrentApplication
 		{
@@ -40,14 +40,6 @@ namespace cms.data.EF.DataProviderImplementation
 					if (aaa == null)
 						throw new Exception("Cannot get aplication");
 					return aaa;
-				}
-				if (!String.IsNullOrEmpty(ApplicationName))
-				{
-					var aaa = Repository.ApplicationSettings.SingleOrDefault(x => x.Id == ApplicationId && x.Users.Any(u => u.Id == UserId));
-					if (aaa == null)
-						throw new Exception("Cannot get aplication");
-					return aaa;
-
 				}
 				throw new Exception("Cannot get aplication");
 			}

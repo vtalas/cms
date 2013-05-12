@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Web.Mvc;
 using Google.GData.Client;
 using cms.Code;
@@ -10,17 +9,34 @@ namespace cms.Controllers
 	[Authorize]
 	public class GDataController : CmsControllerBase
 	{
+		private Func<GoogleDataOAuth2Service> _gdataAuthFnc;
 		private GoogleDataOAuth2Service GdataAuth { get; set; }
+
+		protected override void OnActionExecuting(ActionExecutingContext filterContext)
+		{
+			GdataAuth = _gdataAuthFnc.Invoke();
+			if (GdataAuth.IsAuhtorized() && !GdataAuth.IsValid())
+			{
+				try
+				{
+					GdataAuth.RefreshAccessToken();
+				}
+				catch (Exception ex)
+				{
+					
+				}
+			}
+		}
 
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
 			base.Initialize(requestContext);
-			GdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageDatabase(SessionProvider));
+			_gdataAuthFnc = () => new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageDatabase(SessionProvider));
 		}
-		
+
 		public ActionResult Index()
 		{
-			return View(GdataAuth);
+			return View(_gdataAuthFnc.Invoke());
 		}
 
 		public ActionResult aaa()

@@ -95,6 +95,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MsieJavaScriptEngine.1.1.1\lib\net40\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
+    <Reference Include="MvcSiteMapProvider">
+      <HintPath>..\packages\MvcSiteMapProvider.3.3.6.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -175,6 +178,7 @@
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\GdataPhotosSettings.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaServiceFactory.cs" />
+    <Compile Include="Code\prdel.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\AssetTypeExtened.cs" />
     <Compile Include="Code\UserResources\IAssetExt.cs" />
@@ -412,6 +416,10 @@
     <Content Include="Content\less\metro-bootstrap-source\utilities.less" />
     <Content Include="Content\less\metro-bootstrap-source\variables.less" />
     <Content Include="Content\less\metro-bootstrap-source\wells.less" />
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <Content Include="Content\admin.less" />
@@ -477,6 +485,12 @@
     <Content Include="tests\test\lib\jstestdriver\JsTestDriver.jar" />
     <Content Include="tests\test\lib\jstestdriver\version.txt" />
     <Content Include="tests\test\unit\cmsapiTests.js" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.ascx" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -536,6 +550,15 @@
     <Content Include="Web.config.default" />
     <Content Include="Views\GData\GdataPhotosSettins.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Shared\CustomError.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\GDataAuth\Index.cshtml" />
+    <Content Include="Views\Admin\Applications.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
