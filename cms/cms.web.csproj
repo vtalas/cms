@@ -179,7 +179,6 @@
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\GdataPhotosSettings.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaServiceFactory.cs" />
-    <Compile Include="Code\prdel.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\AssetTypeExtened.cs" />
     <Compile Include="Code\UserResources\IAssetExt.cs" />
@@ -464,6 +463,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\Controllers\controller.gridPage.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.3.0.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />

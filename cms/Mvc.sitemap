@@ -4,11 +4,10 @@
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
             enableLocalization="true">
 
-	<mvcSiteMapNode title="Aplikace" controller="Admin" action="Applications">
-		<mvcSiteMapNode title="Dashboard" controller="Admin" action="Dashboard" key="xxx" >
-			<mvcSiteMapNode title="Grids" controller="Admin" action="Grids" />
-			<mvcSiteMapNode title="Nastaveni" controller="Gdata" action="Index"/>
+	<mvcSiteMapNode title="aplikace" controller="Admin" action="Applications">
+		<mvcSiteMapNode title="dashboard" controller="Admin" action="Dashboard" key="xxx" >
+			<mvcSiteMapNode title="obsah" controller="Admin" action="Grids" />
+			<mvcSiteMapNode title="nastavení" controller="Gdata" action="Index"/>
 		</mvcSiteMapNode>
 	</mvcSiteMapNode>
-
 </mvcSiteMap>

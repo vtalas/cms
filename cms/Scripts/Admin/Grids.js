@@ -1,5 +1,5 @@
 /*global & */
-var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui"]);
+var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui", 'ui.bootstrap']);
 
 function removeFromArray(item, collection) {
 	var index;

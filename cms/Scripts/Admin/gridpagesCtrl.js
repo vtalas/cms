@@ -1,9 +1,9 @@
 var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
 
-    $scope.data = {};
+	$scope.data = {};
 
-    function loadData() {
-		$scope.data  = GridApi.grids({ applicationId: appSettings.Id });
+	function loadData() {
+		$scope.data = GridApi.grids({ applicationId: appSettings.Id });
 	}
 
 	$scope.$on("setCultureEvent", function () {
@@ -12,6 +12,10 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 
 	loadData();
 
+	$scope.aaa = function(item) {
+		return  "/clientApi/" + appSettings.Id + "/getpage/" + item.Link
+	};
+	
 	$scope.getLink = function (item) {
 		switch (item.Category) {
 			case "Page":
@@ -25,7 +29,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 		$http({
 			method: 'DELETE',
 			url: '/api/' + appSettings.Id + '/adminApi/DeleteGrid',
-			headers: {'Content-Type': 'application/json;charset=utf-8'},
+			headers: { 'Content-Type': 'application/json;charset=utf-8' },
 			data: JSON.stringify(item.Id)
 		})
 			.success(function (data, status, headers, config) {
@@ -38,7 +42,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 
 	$scope.save = function (item) {
 		item.Edit = 0;
-		GridApi.updateGrid(item, function(ok) {
+		GridApi.updateGrid(item, function (ok) {
 			console.log(ok);
 		});
 	};
@@ -63,7 +67,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	$scope.newItemAdd = function () {
 		var newitem = $scope.newitem;
 
-		$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/AddGrid', data: newitem  })
+		$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/AddGrid', data: newitem })
 			.success(function (data, status, headers, config) {
 				$scope.data.push(data);
 				$scope.newitem = { Category: newitem.Category };

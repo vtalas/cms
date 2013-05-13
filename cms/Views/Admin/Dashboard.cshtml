@@ -1,14 +1,13 @@
-﻿@using cms.shared
-@{
+﻿@{
     ViewBag.Title = "DashBoard";
     Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
 }
 
 <ul>
     <li>
-        @Html.ActionLink("nastaveni", "Index", "Gdata")
+        @Html.ActionLink("obsah", "Grids", "Admin")
     </li>
     <li>
-        @Html.ActionLink("grids", "Grids", "Admin")
+        @Html.ActionLink("nastavení", "Index", "Gdata")
     </li>
 </ul>
