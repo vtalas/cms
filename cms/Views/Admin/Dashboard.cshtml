@@ -1,11 +1,12 @@
 ﻿@{
-    ViewBag.Title = "DashBoard";
+    ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
     Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
 }
 
+
 <ul>
     <li>
-        @Html.ActionLink("obsah", "Grids", "Admin")
+        @Html.ActionLink("stránky", "Grids", "Admin")
     </li>
     <li>
         @Html.ActionLink("nastavení", "Index", "Gdata")

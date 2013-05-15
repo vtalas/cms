@@ -4,7 +4,7 @@
 
 @{
 	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
-	ViewBag.Title = "Settings";
+    ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
 }
 
 <style>
@@ -72,9 +72,6 @@
 
 	case GoogleDataOAuth2Status.NeedRefresh:
 	 Html.RenderPartial("Index_ReAuthorize", Model);
-
-
-
 	 break;
 }
 

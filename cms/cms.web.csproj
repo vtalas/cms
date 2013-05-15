@@ -486,10 +486,6 @@
     <Content Include="tests\test\lib\jstestdriver\JsTestDriver.jar" />
     <Content Include="tests\test\lib\jstestdriver\version.txt" />
     <Content Include="tests\test\unit\cmsapiTests.js" />
-    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.ascx" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.ascx" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.ascx" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -559,6 +555,7 @@
     <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\SiteMapTemplate.cshtml" />
+    <Content Include="Views\GData\Index_ReAuthorize.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
