@@ -67,6 +67,7 @@ namespace cms.Controllers.Api
 			}
 		}
 
+
 		public void DeleteGrid([FromBody]Guid id)
 		{
 			using (var db = SessionProvider.CreateSession())

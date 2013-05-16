@@ -190,6 +190,7 @@
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
     <Compile Include="Controllers\Api\CmsWebApiControllerBase.cs" />
+    <Compile Include="Controllers\Api\ClientApiAuthController.cs" />
     <Compile Include="Controllers\Api\GridElementApiController.cs" />
     <Compile Include="Controllers\Api\GdataPhotosController.cs" />
     <Compile Include="Controllers\Api\MenuController.cs" />

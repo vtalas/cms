@@ -44,7 +44,7 @@ namespace cms.data.EF.DataProviderImplementation
 
 		public override PageAbstract Page
 		{
-			get { throw new NotImplementedException(); }
+			get { return new PageAbstractImpl(CurrentApplication, Repository); }
 		}
 
 		public override IKeyValueStorage Settings

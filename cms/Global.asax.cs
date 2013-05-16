@@ -42,6 +42,11 @@ namespace cms
 				"clientapi/{applicationId}/{action}/{id}", // URL with parameters
 				new { controller = "ClientApi", action = "Index", id = RouteParameter.Optional } // Parameter defaults
 			);
+			routes.MapHttpRoute(
+				"clientApiAuth", // Route name
+				"clientapiAuth/{applicationId}/{action}/{id}", // URL with parameters
+				new { controller = "ClientApiAuth", action = "Index", id = RouteParameter.Optional } // Parameter defaults
+			);
 
 			routes.MapHttpRoute(
 				name: "DefaultApi",

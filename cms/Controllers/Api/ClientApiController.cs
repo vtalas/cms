@@ -3,44 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Controllers;
 using Google.Picasa;
+using WebMatrix.WebData;
 using cms.Code.LinkAccounts.Picasa;
-using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
+using cms.data.EF.Initializers;
 using cms.data.Shared;
+using System.Web.Mvc;
+
 
 namespace cms.Controllers.Api
 {
 	public class ClientApiController : CmsWebApiControllerBase
     {
 		private PicasaWrapper Picasa { get; set; }
+		public SessionProvider SessionFactory { get; set; }
 
 		protected override void Initialize(HttpControllerContext requestContext)
 		{
 			base.Initialize(requestContext);
-			var sess = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
-			Picasa = new PicasaWrapper(sess);
+			SessionFactory = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
+			SessionFactory = new SessionProvider(() => new DataEfAuthorized(ApplicationId, new RepositoryFactory().Create, 0));
+			Picasa = new PicasaWrapper(SessionFactory);
 		}
-
+		
+		[aaa]
 		public GridPageDto GetPage(string id)
 		{
-			using (var repo = new RepositoryFactory().Create)
+			const bool auth = true;
+			if (auth && !WebSecurity.IsAuthenticated)
 			{
-				var app = repo.ApplicationSettings.Single(x => x.Id == ApplicationId);
-				var session = new PageAbstractImpl(app, repo);
+				throw new UnauthorizedAccessException("kbjaskdjbasbdjkabskbdkasbd");
+			}
 
-				return session.Get(id);
+			using (var repo = SessionFactory.CreateSession())
+			{
+				return  repo.Session.Page.Get(id);
 			}
 		}
-
 		public IEnumerable<GridPageDto> GetPages()
 		{
-			using (var repo = new RepositoryFactory().Create)
+			using (var repo = SessionFactory.CreateSession())
 			{
-				var app = repo.ApplicationSettings.Single(x => x.Id == ApplicationId);
-				var session = new PageAbstractImpl(app, repo);
-				return session.List();
+				return repo.Session.Page.List();
 			}
 		}
 
@@ -49,6 +55,7 @@ namespace cms.Controllers.Api
 			return Picasa.GetAlbums();
 		}
 
+		
 		public AlbumDecorator GetAlbum(string id)
 		{
 			return Picasa.GetAlbum(id);
@@ -58,5 +65,10 @@ namespace cms.Controllers.Api
 		{
 			return Picasa.GetAlbumPhotos(id);
 		}
+	}
+
+	public class aaaAttribute : Attribute
+	{
+
 	}
 }
