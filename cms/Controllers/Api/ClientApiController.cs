@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Data;
+using System.Security.Authentication;
 using System.Web.Http.Controllers;
+using Google.GData.Client;
 using Google.Picasa;
 using WebMatrix.WebData;
 using cms.Code.LinkAccounts.Picasa;
 using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
-using cms.data.EF.Initializers;
 using cms.data.Shared;
-using System.Web.Mvc;
 
 
 namespace cms.Controllers.Api
@@ -23,23 +23,25 @@ namespace cms.Controllers.Api
 		protected override void Initialize(HttpControllerContext requestContext)
 		{
 			base.Initialize(requestContext);
+			SecurityProvider.EnsureInitialized();
 			SessionFactory = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
-			SessionFactory = new SessionProvider(() => new DataEfAuthorized(ApplicationId, new RepositoryFactory().Create, 0));
 			Picasa = new PicasaWrapper(SessionFactory);
 		}
 		
-		[aaa]
 		public GridPageDto GetPage(string id)
 		{
 			const bool auth = true;
-			if (auth && !WebSecurity.IsAuthenticated)
-			{
-				throw new UnauthorizedAccessException("kbjaskdjbasbdjkabskbdkasbd");
-			}
 
 			using (var repo = SessionFactory.CreateSession())
 			{
-				return  repo.Session.Page.Get(id);
+				var page = repo.Session.Page.Get(id);
+
+				if (auth && (!WebSecurity.IsAuthenticated || !repo.Session.IsUserAuthorized(WebSecurity.CurrentUserId)))
+				{
+					throw new System.Security.Authentication.AuthenticationException("log_in");
+				}
+
+				return page;
 			}
 		}
 		public IEnumerable<GridPageDto> GetPages()
@@ -65,10 +67,5 @@ namespace cms.Controllers.Api
 		{
 			return Picasa.GetAlbumPhotos(id);
 		}
-	}
-
-	public class aaaAttribute : Attribute
-	{
-
 	}
 }

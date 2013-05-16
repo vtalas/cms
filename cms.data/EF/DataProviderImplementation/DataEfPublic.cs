@@ -37,6 +37,12 @@ namespace cms.data.EF.DataProviderImplementation
 			}
 		}
 
+		public override bool IsUserAuthorized(int userId)
+		{
+			var application = Repository.ApplicationSettings.SingleOrDefault(x => x.Id == ApplicationId && x.Users.Any(u => u.Id == userId));
+			return application != null;
+		}
+
 		public override MenuAbstract Menu
 		{
 			get { throw new NotImplementedException(); }

@@ -15,7 +15,8 @@ namespace cms.data.DataProvider
 		public abstract string ApplicationName { get; }
 		public Guid ApplicationId { get; protected set; }
 		public abstract ApplicationSetting CurrentApplication { get;}
-	
+		public abstract bool IsUserAuthorized(int userId);
+
 		protected DataProviderAbstract(Guid applicationId, int userId)
 		{
 			ApplicationId  = applicationId;

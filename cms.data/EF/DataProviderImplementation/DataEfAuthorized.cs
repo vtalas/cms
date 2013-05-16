@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Authentication;
 using cms.data.DataProvider;
@@ -20,7 +21,6 @@ namespace cms.data.EF.DataProviderImplementation
 		public DataEfAuthorized(Guid applicationId, IRepository repository, int userId)
 			: base(applicationId, userId)
 		{
-
 			if (userId < 1)
 			{
 				throw new AuthenticationException("log_in");
@@ -38,11 +38,17 @@ namespace cms.data.EF.DataProviderImplementation
 				{
 					var aaa = Repository.ApplicationSettings.SingleOrDefault(x => x.Id == ApplicationId && x.Users.Any(u => u.Id == UserId));
 					if (aaa == null)
-						throw new Exception("Cannot get aplication");
+						throw new ObjectNotFoundException("Cannot get aplication");
 					return aaa;
 				}
-				throw new Exception("Cannot get aplication");
+				throw new ObjectNotFoundException("Cannot get aplication");
 			}
+		}
+
+		public override bool IsUserAuthorized(int userId)
+		{
+			var application = Repository.ApplicationSettings.SingleOrDefault(x => x.Id == ApplicationId && x.Users.Any(u => u.Id == userId));
+			return application != null;
 		}
 
 		public override IEnumerable<ApplicationSetting> Applications()
