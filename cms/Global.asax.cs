@@ -66,7 +66,7 @@ namespace cms
 
 		protected void Application_Start()
 		{
-			var transforms = new IBundleTransform[] { new JsMinify() };
+			var transforms = new IBundleTransform[] { new JsMinify(), new CssMinify(),  };
 
 			var testbundle = new Bundle("~/Scripts/libs", transforms)
 				.Include("~/Scripts/angular.js")
@@ -75,11 +75,12 @@ namespace cms
 				.IncludeDirectory("~/Scripts/", "*.coffee");
 			//.IncludeDirectory("~/Scripts/", "*.ts");
 
-			var adminBundle = new Bundle("~/Scripts/admin", transforms)
+
+			var adminBundle = new Bundle("~/Scripts/adminxxx", transforms)
 				.IncludeDirectory("~/Scripts/Admin", "*.js")
 				.IncludeDirectory("~/Scripts/Admin", "*.coffee");
 
-			var controllers = new Bundle("~/Scripts/Controllers", transforms)
+			var controllers = new Bundle("~/Scripts/controllersxxx", transforms)
 				.IncludeDirectory("~/Scripts/Controllers", "*.js")
 				.IncludeDirectory("~/Scripts/Controllers", "*.coffee");
 

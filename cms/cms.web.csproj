@@ -233,12 +233,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
-    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.js">
-      <DependentUpon>controller.gdataalbum.coffee</DependentUpon>
-    </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.min.js">
-      <DependentUpon>controller.gdataalbum.coffee</DependentUpon>
-    </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
       <SubType>Designer</SubType>
@@ -286,7 +280,11 @@
     <Content Include="Content\htmlDragAndDrop\libs\angular.js" />
     <Content Include="Content\htmlDragAndDrop\libs\jquery-1.7.2.js" />
     <Content Include="Content\htmlDragAndDrop\sortableCtrl.js" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\picasa.png" />
+    <Content Include="Content\images\picasa_big.png" />
+    <Content Include="Content\images\picasa_logo.png" />
     <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\metro-bootstrap.css">
       <DependentUpon>metro-bootstrap.less</DependentUpon>
     </Content>
@@ -426,8 +424,10 @@
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <Content Include="Content\admin.less" />
     <Content Include="Scripts\Admin\controller.gDataPhotos.js" />
+    <Content Include="Scripts\Admin\controller.gdataPhotosSettings.js" />
     <Content Include="Scripts\Admin\directive.ngcClickEdit.js" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
+    <Content Include="Scripts\Admin\module.admin-index.js" />
     <Content Include="Scripts\angular-templates-ext.coffee">
       <Compile>True</Compile>
       <Minify>True</Minify>
@@ -501,7 +501,6 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>

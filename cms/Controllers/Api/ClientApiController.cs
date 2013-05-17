@@ -5,6 +5,7 @@ using System.Security.Authentication;
 using System.Web.Http.Controllers;
 using Google.GData.Client;
 using Google.Picasa;
+using Microsoft.Ajax.Utilities;
 using WebMatrix.WebData;
 using cms.Code.LinkAccounts.Picasa;
 using cms.data.Dtos;
@@ -44,12 +45,24 @@ namespace cms.Controllers.Api
 				return page;
 			}
 		}
+
+
 		public IEnumerable<GridPageDto> GetPages()
 		{
 			using (var repo = SessionFactory.CreateSession())
 			{
 				return repo.Session.Page.List();
 			}
+		}
+
+		[System.Web.Mvc.HttpPost]
+		public int PostLogin(LoginModelxx data)
+		{
+			if (ModelState.IsValid && WebSecurity.Login(data.UserName, data.Password))
+			{
+				return WebSecurity.CurrentUserId;
+			}
+			return -10;
 		}
 
 		public IEnumerable<Album> GetAlbums()
@@ -67,5 +80,15 @@ namespace cms.Controllers.Api
 		{
 			return Picasa.GetAlbumPhotos(id);
 		}
+
+
+
 	}
+
+	public class LoginModelxx
+	{
+		public string UserName { get; set; }
+		public string Password { get; set; }
+	}
+
 }

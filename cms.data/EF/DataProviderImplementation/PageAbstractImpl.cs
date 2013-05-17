@@ -63,6 +63,7 @@ namespace cms.data.EF.DataProviderImplementation
 			return item.ToGridPageDto();
 		}
 
+
 		public override GridPageDto Update(GridPageDto item)
 		{
 			ValidateLink(item);
@@ -70,7 +71,7 @@ namespace cms.data.EF.DataProviderImplementation
 			var grid = GetGrid(item.Id);
 
 			var resLink = grid.Resources.GetByKey(SpecialResourceEnum.Link, null);
-			var resName = grid.Resources.GetByKey("name", CurrentCulture);
+			var resName = grid.Resources.GetByKey("name", CurrentCulture) ?? CreateNewResource(grid, "name");
 
 			grid.Home = item.Home;
 			resLink.Value = item.Link;
@@ -78,6 +79,19 @@ namespace cms.data.EF.DataProviderImplementation
 
 			Repository.SaveChanges();
 			return grid.ToGridPageDto();
+		}
+
+		private Resource CreateNewResource(IEntityWithResource grid, string key)
+		{
+			var res = new Resource
+			{
+				Culture = CurrentCulture,
+				Key = key,
+				Value = "",
+				Owner = grid.Id
+			};
+			grid.Resources.Add(res);
+			return res;
 		}
 
 		public override void Delete(Guid guid)
@@ -94,7 +108,6 @@ namespace cms.data.EF.DataProviderImplementation
 			Repository.Remove(delete);
 			Repository.SaveChanges();
 		}
-
 
 
 	}
