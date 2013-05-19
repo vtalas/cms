@@ -4,6 +4,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using OAuth2.Mvc.Module;
 using cms.shared;
 
 namespace cms
@@ -17,49 +18,31 @@ namespace cms
 
 		public static void RegisterRoutes(RouteCollection routes)
 		{
+			
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
-				"applicationAdmin", // Route name
-				"render/{applicationId}/{controller}/{action}/{id}", // URL with parameters
-				new { controller = "admin", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-			);
-
-			routes.MapRoute(
-				"ViewPage", // Route name
-				"client/{application}/{link}", // URL with parameters
-				new { controller = "Client", action = "ViewPage", link = UrlParameter.Optional }
-			);
-
-			routes.MapRoute(
-				"clientApiJson", // Route name
-				"client/json/{applicationId}/{link}", // URL with parameters
-				new { controller = "ClientApi", action = "ViewPageJson", link = UrlParameter.Optional } // Parameter defaults
+				"applicationAdmin",
+				"render/{applicationId}/{controller}/{action}/{id}", 
+				new { controller = "admin", action = "Index", id = UrlParameter.Optional } 
 			);
 
 			routes.MapHttpRoute(
-				"clientApi", // Route name
-				"clientapi/{applicationId}/{action}/{id}", // URL with parameters
-				new { controller = "ClientApi", action = "Index", id = RouteParameter.Optional } // Parameter defaults
-			);
-			routes.MapHttpRoute(
-				"clientApiAuth", // Route name
-				"clientapiAuth/{applicationId}/{action}/{id}", // URL with parameters
-				new { controller = "ClientApiAuth", action = "Index", id = RouteParameter.Optional } // Parameter defaults
+				"clientApi", 
+				"clientapi/{applicationId}/{action}/{id}",
+				new { controller = "ClientApi", action = "Index", id = RouteParameter.Optional, enableMvcOAuth = true }
 			);
 
 			routes.MapHttpRoute(
-				name: "DefaultApi",
-				routeTemplate:	"api/{applicationId}/{controller}/{action}/{id}", // URL with parameters
-				defaults: new { controller = "adminapi", action = "index", id = RouteParameter.Optional }
-				//routeTemplate: "api/{controller}/{id}",
-				//defaults: new { id = RouteParameter.Optional }
+				"DefaultApi",
+				"api/{applicationId}/{controller}/{action}/{id}", 
+				new { controller = "adminapi", action = "index", id = RouteParameter.Optional }
 			);
 
 			routes.MapRoute(
-				"Default", // Route name
-				"{controller}/{action}/{id}", // URL with parameters
-				new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+				"Default", 
+				"{controller}/{action}/{id}",
+				new { controller = "Home", action = "Index", id = UrlParameter.Optional } 
 			);
 
 		}

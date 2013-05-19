@@ -180,6 +180,11 @@
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\GdataPhotosSettings.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaServiceFactory.cs" />
+    <Compile Include="Code\MvcOauth\DemoIdentity.cs" />
+    <Compile Include="Code\MvcOauth\DemoPrincipal.cs" />
+    <Compile Include="Code\MvcOauth\DemoProvider.cs" />
+    <Compile Include="Code\MvcOauth\DemoService.cs" />
+    <Compile Include="Code\MvcOauth\DemoToken.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\AssetTypeExtened.cs" />
     <Compile Include="Code\UserResources\IAssetExt.cs" />
@@ -604,6 +609,10 @@
     <Folder Include="tests\config\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Users\vladimir\Downloads\OAuth2\Zip\Source\OAuth2.Mvc\OAuth2.Mvc.csproj">
+      <Project>{f4e72da8-129e-4872-b6ac-4d9cfcdf91a8}</Project>
+      <Name>OAuth2.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\cms.data\cms.data.csproj">
       <Project>{815F85FC-179F-4817-9634-8CE3C1FF5CE2}</Project>
       <Name>cms.data</Name>
