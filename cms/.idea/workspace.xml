@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/CmsControllerBase.cs" afterPath="$PROJECT_DIR$/Code/CmsControllerBase.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cms.data/EF/DataProviderImplementation/DataEfAuthorized.cs" afterPath="$PROJECT_DIR$/../cms.data/EF/DataProviderImplementation/DataEfAuthorized.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/GDataController.cs" afterPath="$PROJECT_DIR$/Controllers/GDataController.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/less/metro-bootstrap-source/breadcrumbs.less" afterPath="$PROJECT_DIR$/Content/less/metro-bootstrap-source/breadcrumbs.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/breadcrumbs.less" afterPath="$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/breadcrumbs.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.web.csproj" afterPath="$PROJECT_DIR$/cms.web.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/metro-bootstrap.css" afterPath="$PROJECT_DIR$/Content/metro-bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="" />
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/gdataalbum_admin.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364982542786" ignored="false" />
@@ -36,7 +27,7 @@
     <file path="/text.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327068892" ignored="false" />
     <file path="/controller.text.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327049734" ignored="false" />
     <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366956688443" ignored="false" />
-    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1368282900703" ignored="false" />
+    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1368948878444" ignored="false" />
     <file path="/_navbar.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366223152236" ignored="false" />
     <file path="/directive.ngcClickEdit.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366446262377" ignored="false" />
     <file path="/module.admin-index.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366316116716" ignored="false" />
@@ -68,53 +59,7 @@
     <favorites_list name="cms" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="controller.gdataalbum.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="83" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="breadcrumbs.less" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/breadcrumbs.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="55" selection-start="163" selection-end="163" vertical-scroll-proportion="0.26137567">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="breadcrumbs.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/breadcrumbs.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="-4.56">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="146" column="94" selection-start="4425" selection-end="4425" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gdataalbum.thtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="80" selection-start="1258" selection-end="1258" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -271,14 +216,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.sourceCode.CoffeeScript" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="C:/wamp/www/masp/maspNew/ClientPHP" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -560,44 +505,42 @@
         <state line="58" column="16" selection-start="1926" selection-end="1926" vertical-scroll-proportion="0.6082474" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
+    <entry file="file://$PROJECT_DIR$/Content/bootstrapdefault/less/breadcrumbs.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="80" selection-start="1258" selection-end="1258" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="6" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="0.12063492" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+    <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/breadcrumbs.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="146" column="94" selection-start="4425" selection-end="4425" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="83" selection-start="803" selection-end="803" vertical-scroll-proportion="0.0">
+        <state line="13" column="64" selection-start="163" selection-end="163" vertical-scroll-proportion="0.25463918">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/breadcrumbs.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="-4.56">
+        <state line="6" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="0.11752577">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/bootstrapdefault/less/breadcrumbs.less">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="0.12063492">
+        <state line="147" column="94" selection-start="4483" selection-end="4483" vertical-scroll-proportion="0.019587629">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/less/metro-bootstrap-source/metro-bootstrap/breadcrumbs.less">
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="55" selection-start="163" selection-end="163" vertical-scroll-proportion="0.26137567">
+        <state line="54" column="80" selection-start="1258" selection-end="1258" vertical-scroll-proportion="0.43524417">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="83" selection-start="803" selection-end="803" vertical-scroll-proportion="0.35360825">
           <folding />
         </state>
       </provider>
