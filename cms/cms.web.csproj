@@ -429,27 +429,13 @@
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <Content Include="Content\admin.less" />
+    <Content Include="Scripts\Admin\angular-templates-ext.js" />
+    <Content Include="Scripts\Admin\angular-ui-ext-dndClass.ts" />
     <Content Include="Scripts\Admin\controller.gDataPhotos.js" />
     <Content Include="Scripts\Admin\controller.gdataPhotosSettings.js" />
     <Content Include="Scripts\Admin\directive.ngcClickEdit.js" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
     <Content Include="Scripts\Admin\module.admin-index.js" />
-    <Content Include="Scripts\angular-templates-ext.coffee">
-      <Compile>True</Compile>
-      <Minify>True</Minify>
-      <Bare>False</Bare>
-      <Iced>False</Iced>
-    </Content>
-    <Content Include="Scripts\angular-templates-ext.js">
-      <DependentUpon>angular-templates-ext.coffee</DependentUpon>
-    </Content>
-    <Content Include="Scripts\angular-templates-ext.min.js">
-      <DependentUpon>angular-templates-ext.coffee</DependentUpon>
-    </Content>
-    <Content Include="Scripts\angular-ui-ext-dndClass.js">
-      <DependentUpon>angular-ui-ext-dndClass.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\angular-ui-ext-dndClass.ts" />
     <Content Include="Scripts\angular-ui-ext.js" />
     <Content Include="Scripts\angular-ui.js" />
     <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
@@ -503,10 +489,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>

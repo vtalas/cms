@@ -5,7 +5,7 @@
 ###
 
 reference = ($scope, $http, appSettings) ->
-#  reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"]
+ 	reference.$inject = [ "$scope", "$http", "appSettings"]
 
   $scope.grids = []
   $scope.app = appSettings

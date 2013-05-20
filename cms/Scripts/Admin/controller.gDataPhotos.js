@@ -1,4 +1,4 @@
-var gDataPhotos = ['$scope', 'gdataPhotos', 'appSettings', function ($scope, gdataPhotos) {
+var gDataPhotos = ['$scope', 'gdataPhotos', function ($scope, gdataPhotos) {
 
 	gdataPhotos.getAlbums(function(data) {
 		console.log(data);

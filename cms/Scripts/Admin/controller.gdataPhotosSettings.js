@@ -1,4 +1,4 @@
-var gdataPhotosSettings = ['$scope', 'gdataPhotos', 'appSettings', function ($scope) {
+var gdataPhotosSettings = ['$scope', function ($scope) {
 
 	$scope.settings = {
 		small : {

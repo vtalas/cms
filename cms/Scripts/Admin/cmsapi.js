@@ -37,7 +37,7 @@
 					action: "postToGrid",
 					gridId: "@gridId"
 				} },
-				delete: { method: 'DELETE', params: { action: "delete" } },
+				remove: { method: 'DELETE', params: { action: "delete" } },
 				put: { method: 'PUT', params: { action: "put" } },
 
 				//save: { method: 'POST' },

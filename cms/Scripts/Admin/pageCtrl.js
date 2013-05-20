@@ -3,7 +3,7 @@
 	return newitem;
 }
 
-var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi", function ($scope, $http, $routeParams, appSettings, GridApi) {
+var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', function ($scope, $http, $routeParams, appSettings, GridApi) {
 	$scope.data = {};
 
 	var params = { applicationId: appSettings.Id, id: $routeParams.Id };
@@ -12,7 +12,7 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi", fun
 		Id: 0,
 		Type: "text",
 		Edit: 0,
-		Width:12,
+		Width:12
 	};
 
 	$scope.$on("refreshgrid", function () {
@@ -31,8 +31,6 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', "GridApi", fun
 			$scope.data = data;
 		});
 	};
-
-
 
 	$scope.getGrid();
 

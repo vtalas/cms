@@ -40,7 +40,7 @@ function ngcClickEditDirective() {
 			iElement.append(template);
 
 			return function (scope, element, attrs) {
-				
+
 				scope.edit = false;
 				element.addClass("ngc-click-edit");
 

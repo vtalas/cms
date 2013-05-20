@@ -148,7 +148,7 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 		.otherwise({redirectTo: '/gridpages'});
 }]);
 
-module.controller("cultureCtrl", function ($scope, appSettings, GridApi) {
+module.controller("cultureCtrl", ["$scope", "appSettings", "GridApi", function ($scope, appSettings, GridApi) {
 	$scope.currentCulture = appSettings.Culture;
 	$scope.setCulture = function (culture) {
 
@@ -160,12 +160,12 @@ module.controller("cultureCtrl", function ($scope, appSettings, GridApi) {
 			});
 		}
 	};
-});
+}]);
 
 
-//module.directive("gridelement", ['$compile', "GridApi", "appSettings","$http",
-module.directive("gridelement", function ($compile, GridApi, appSettings, gridtemplate, $templateCache) {
-	var directiveDefinitionObject = {
+module.directive("gridelement", ["$compile", "GridApi", "appSettings", "gridtemplate", function ($compile, GridApi, appSettings, gridtemplate) {
+
+	var directiveObj = {
 		scope: { grid: "=", gridelement: "=" },
 		link: function (scope, iElement, tAttrs, controller) {
 			scope.gui = { edit: 0 };
@@ -175,8 +175,8 @@ module.directive("gridelement", function ($compile, GridApi, appSettings, gridte
 			iElement.html(compiled);
 		}
 	};
-	return directiveDefinitionObject;
-});
+	return directiveObj;
+}]);
 
 
 module.directive("ngcHover", function () {

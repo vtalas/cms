@@ -1,4 +1,4 @@
-var gridPage = function ($scope, gridEelementApi, GridApi) {
+var gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEelementApi, GridApi) {
 
 	$scope.addWithType = function (item, gridid, elements, newtype, event) {
 		event.preventDefault();
@@ -20,7 +20,7 @@ var gridPage = function ($scope, gridEelementApi, GridApi) {
 	};
 
 	$scope.remove = function (item) {
-		gridEelementApi.delete({ id: item.Id },
+		gridEelementApi.remove({ id: item.Id },
 			function () {
 				item.Id = 0;
 				item.Content = "";
@@ -46,4 +46,4 @@ var gridPage = function ($scope, gridEelementApi, GridApi) {
 
 		gridEelementApi.put(copy);
 	};
-};
+}];

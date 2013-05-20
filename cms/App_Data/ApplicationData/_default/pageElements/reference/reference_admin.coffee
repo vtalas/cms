@@ -5,36 +5,37 @@
 ###
 
 reference = ($scope, $http, GridApi, appSettings) ->
-#  reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"]
+	reference.$inject = [ "$scope", "$http", "GridApi", "appSettings"];
 
-  $scope.grids = []
-  $scope.destination = {}
-  $scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null, Link : null}
+	$scope.grids = []
+	$scope.destination =
+	{}
+	$scope.gridelement.Content = angular.fromJson($scope.gridelement.Content) or { Id: null, Link: null}
 
-  if $scope.gridelement.Content.Id
-    GridApi.getGrid({Id:$scope.gridelement.Content.Id}, (data)->
-      $scope.destination = data
-    )
-  # ADmin only
-  # load grid list
-  $scope.$on("gridelement-edit",()->
-    if $scope.grids.length == 0
-      $scope.grids()
-  )
+	if $scope.gridelement.Content.Id
+		GridApi.getGrid({Id: $scope.gridelement.Content.Id}, (data)->
+			$scope.destination = data
+		)
+	# ADmin only
+	# load grid list
+	$scope.$on("gridelement-edit", ()->
+		if $scope.grids.length == 0
+			$scope.grids()
+	)
 
-  $scope.choose = (grid)->
-    $scope.destination = grid;
-    $scope.gridelement.Content.Id = grid.Id;
-    $scope.gridelement.Content.Link = grid.Link;
+	$scope.choose = (grid)->
+		$scope.destination = grid;
+		$scope.gridelement.Content.Id = grid.Id;
+		$scope.gridelement.Content.Link = grid.Link;
 
-    $scope.$parent.Edit = 0
-    $scope.$parent.save($scope.gridelement)
+		$scope.$parent.Edit = 0
+		$scope.$parent.save($scope.gridelement)
 
-  $scope.grids = ()->
-    GridApi.grids(null, (data)->
-      $scope.grids = data
-    )
+	$scope.grids = ()->
+		GridApi.grids(null, (data)->
+			$scope.grids = data
+		)
 
-  1
+	1
 
 window.reference = reference

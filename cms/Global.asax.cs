@@ -49,13 +49,12 @@ namespace cms
 
 		protected void Application_Start()
 		{
-			var transforms = new IBundleTransform[] { };
+			var transforms = new IBundleTransform[] { new JsMinify() };
 
 			var testbundle = new Bundle("~/Scripts/libs", transforms)
 				.Include("~/Scripts/angular.js")
 				.Include("~/Scripts/angular-ui.js")
-				.IncludeDirectory("~/Scripts/", "*.js")
-				.IncludeDirectory("~/Scripts/", "*.coffee");
+				.IncludeDirectory("~/Scripts/", "*.js");
 			//.IncludeDirectory("~/Scripts/", "*.ts");
 
 

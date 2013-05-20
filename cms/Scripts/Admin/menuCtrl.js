@@ -1,6 +1,6 @@
 ﻿var menuCtrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams, GridApi) {
     "use strict";
-	menuCtrl.$inject = ["$scope", "$http", "apimenu", "appSettings", "$routeParams"];
+	menuCtrl.$inject = ["$scope", "$http", "$rootScope", "appSettings", "apimenu", "$routeParams", "GridApi"];
 
 	$scope.$on("statuschange-sortablehtml", function (data, xxx) {
 		var old = (xxx.element).css("background-color");
@@ -55,7 +55,7 @@
 };
 
 var menu2Ctrl = function ($scope, $http, $rootScope, appSettings, apimenu, $routeParams, GridApi) {
-	menu2Ctrl.$inject = ["$scope", "$http", "apimenu", "appSettings", "$routeParams"];
+	menu2Ctrl.$inject = ["$scope", "$http", "$rootScope", "appSettings", "apimenu", "$routeParams", "GridApi"];
 
 	$scope.dragging = false;
 
