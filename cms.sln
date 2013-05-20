@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cms.web.tests", "cmd.web.te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cms.shared", "cms.shared\cms.shared.csproj", "{D1A23BEB-46D6-47A9-AE9D-D369A5134050}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2.Mvc", "..\..\..\Users\vladimir\Downloads\OAuth2\Zip\Source\OAuth2.Mvc\OAuth2.Mvc.csproj", "{F4E72DA8-129E-4872-B6AC-4D9CFCDF91A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2.Mvc", "OAuth2.Mvc\OAuth2.Mvc.csproj", "{F4E72DA8-129E-4872-B6AC-4D9CFCDF91A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

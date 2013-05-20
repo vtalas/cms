@@ -6,7 +6,7 @@ namespace cms.data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+	        AutomaticMigrationsEnabled = false;
         }
 
 

@@ -55,17 +55,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="BundleTransformer.CoffeeScript, Version=1.6.24.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+    <Reference Include="BundleTransformer.CoffeeScript, Version=1.6.25.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\BundleTransformer.CoffeeScript.1.6.24\lib\net40\BundleTransformer.CoffeeScript.dll</HintPath>
+      <HintPath>..\packages\BundleTransformer.CoffeeScript.1.6.25\lib\net40\BundleTransformer.CoffeeScript.dll</HintPath>
     </Reference>
-    <Reference Include="BundleTransformer.Core, Version=1.6.24.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+    <Reference Include="BundleTransformer.Core, Version=1.6.25.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\BundleTransformer.Core.1.6.24\lib\net40\BundleTransformer.Core.dll</HintPath>
+      <HintPath>..\packages\BundleTransformer.Core.1.6.25\lib\net40\BundleTransformer.Core.dll</HintPath>
     </Reference>
-    <Reference Include="BundleTransformer.Less">
-      <HintPath>..\packages\BundleTransformer.Less.1.6.19\lib\net40\BundleTransformer.Less.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="BundleTransformer.Less, Version=1.6.25.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BundleTransformer.Less.1.6.25\lib\net40\BundleTransformer.Less.dll</HintPath>
     </Reference>
     <Reference Include="dotless.Core, Version=1.3.1.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,7 +101,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -196,13 +196,13 @@
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
     <Compile Include="Controllers\Api\CmsWebApiControllerBase.cs" />
-    <Compile Include="Controllers\Api\ClientApiAuthController.cs" />
     <Compile Include="Controllers\Api\GridElementApiController.cs" />
     <Compile Include="Controllers\Api\GdataPhotosController.cs" />
     <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaWrapper.cs" />
     <Compile Include="Controllers\Api\PhotoDecorator.cs" />
+    <Compile Include="Controllers\Api\PicasaServiceProvider.cs" />
     <Compile Include="Controllers\Api\WebApiControllerBase.cs" />
     <Compile Include="Controllers\Api\WebApiPicasaControllerBase.cs" />
     <Compile Include="Controllers\Api\WebImage.cs" />
@@ -609,10 +609,6 @@
     <Folder Include="tests\config\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Users\vladimir\Downloads\OAuth2\Zip\Source\OAuth2.Mvc\OAuth2.Mvc.csproj">
-      <Project>{f4e72da8-129e-4872-b6ac-4d9cfcdf91a8}</Project>
-      <Name>OAuth2.Mvc</Name>
-    </ProjectReference>
     <ProjectReference Include="..\cms.data\cms.data.csproj">
       <Project>{815F85FC-179F-4817-9634-8CE3C1FF5CE2}</Project>
       <Name>cms.data</Name>
@@ -620,6 +616,10 @@
     <ProjectReference Include="..\cms.shared\cms.shared.csproj">
       <Project>{D1A23BEB-46D6-47A9-AE9D-D369A5134050}</Project>
       <Name>cms.shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OAuth2.Mvc\OAuth2.Mvc.csproj">
+      <Project>{f4e72da8-129e-4872-b6ac-4d9cfcdf91a8}</Project>
+      <Name>OAuth2.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

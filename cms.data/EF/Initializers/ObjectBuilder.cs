@@ -63,7 +63,7 @@ namespace cms.data.EF.Initializers
 			{
 				Id = id,
 				ApplicationSettings = application,
-				Authorize = true
+				Authorize = authorize
 			};
 			return grid;
 		}

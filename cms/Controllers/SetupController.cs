@@ -45,7 +45,7 @@ namespace cms.Controllers
 		{
 			using (var a = new EfContext())
 			{
-				Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext, data.Migrations.Configuration>());
+				//Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext, data.Migrations.Configuration>());
 				Response.Write(a.ApplicationSettings.ToList());
 			}
 			return View();

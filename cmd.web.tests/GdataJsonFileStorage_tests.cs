@@ -15,6 +15,7 @@ namespace cms.web.tests
 		[Test]
 		public void shouldThrowException_NoAccessToken()
 		{
+	
 			var appId = Guid.NewGuid();
 			//var x = new GdataJsonFileStorage(appId);
 

@@ -6,10 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using System.Web.Mvc;
-using Google.GData.Client;
 using Google.Picasa;
-using Microsoft.Ajax.Utilities;
 using OAuth2.Mvc;
 using WebMatrix.WebData;
 using cms.Code.LinkAccounts.Picasa;
@@ -19,14 +16,13 @@ using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
 using cms.data.Shared;
 
-
 namespace cms.Controllers.Api
 {
 	public class ClientApiController : CmsWebApiControllerBase
 	{
 		private static OAuthServiceBase x = new OAuthServiceCms();
-		private PicasaWrapper Picasa { get; set; }
 		public SessionProvider SessionFactory { get; set; }
+		public PicasaServiceProvider PicasaProvider { get; set; }
 
 		public ClientApiController()
 		{
@@ -38,9 +34,9 @@ namespace cms.Controllers.Api
 			base.Initialize(requestContext);
 			SecurityProvider.EnsureInitialized();
 			SessionFactory = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
-			//Picasa = new PicasaWrapper(SessionFactory);
-			Picasa = null;
+			PicasaProvider = new PicasaServiceProvider(() => new PicasaWrapper(SessionFactory));
 		}
+
 
 		public GridPageDto GetPage(string id)
 		{
@@ -87,21 +83,18 @@ namespace cms.Controllers.Api
 
 		public IEnumerable<Album> GetAlbums()
 		{
-			return Picasa.GetAlbums();
+			return PicasaProvider.Session.GetAlbums();
 		}
 
 		public AlbumDecorator GetAlbum(string id)
 		{
-			return Picasa.GetAlbum(id);
+			return PicasaProvider.Session.GetAlbum(id);
 		}
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
-			return Picasa.GetAlbumPhotos(id);
+			return PicasaProvider.Session.GetAlbumPhotos(id);
 		}
-
-
-
 	}
 
 	public class OAuthServiceCms : OAuthServiceBase
@@ -129,6 +122,11 @@ namespace cms.Controllers.Api
 				RequireSsl = false,
 				Success = true
 			};
+		}
+
+		public override OAuthResponse AccessToken(string requestToken, string grantType, string userName, string password, bool persistent)
+		{
+			throw new NotImplementedException();
 		}
 
 		public override OAuthResponse AccessToken(OAuthRequest rq)

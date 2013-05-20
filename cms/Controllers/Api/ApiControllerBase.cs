@@ -3,9 +3,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using WebMatrix.WebData;
 using cms.data.EF;
-using cms.data.EF.DataProviderImplementation;
 using cms.data.EF.Initializers;
-using cms.data.Shared;
 
 namespace cms.Controllers.Api
 {
