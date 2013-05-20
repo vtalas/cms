@@ -11,6 +11,7 @@ namespace cms.data.Dtos
 		public string Category { get; set; }
 		public string Link { get; set; }
 		public IEnumerable<GridElementDto> GridElements{get; set; }
+		public bool Authorize { get; set; }
 	}
 
 }

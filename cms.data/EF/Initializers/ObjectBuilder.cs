@@ -57,12 +57,13 @@ namespace cms.data.EF.Initializers
 				       };
 		}
 
-		protected Grid AGrid(Guid id, ApplicationSetting application)
+		protected Grid AGrid(Guid id, ApplicationSetting application, bool authorize =false)
 		{
 			var grid = new Grid
 			{
 				Id = id,
 				ApplicationSettings = application,
+				Authorize = true
 			};
 			return grid;
 		}

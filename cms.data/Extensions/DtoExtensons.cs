@@ -172,7 +172,8 @@ namespace cms.data.Extensions
 				Id = source.Id,
 				Link = source.Resources.GetValueByKey(SpecialResourceEnum.Link, null),
 				Name = source.Resources.GetValueByKey("name", _currentCulture),
-				Category = source.Category
+				Category = source.Category,
+				Authorize = source.Authorize
 			};
 
 		}

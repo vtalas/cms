@@ -24,13 +24,13 @@ namespace cms.Controllers.Api
 {
 	public class ClientApiController : CmsWebApiControllerBase
 	{
-		private OAuthServiceBase x;
+		private static OAuthServiceBase x = new OAuthServiceCms();
 		private PicasaWrapper Picasa { get; set; }
 		public SessionProvider SessionFactory { get; set; }
 
 		public ClientApiController()
 		{
-			x = new OAuthServiceCms();
+			OAuthServiceBase.Instance = x;
 		}
 
 		protected override void Initialize(HttpControllerContext requestContext)
@@ -38,19 +38,17 @@ namespace cms.Controllers.Api
 			base.Initialize(requestContext);
 			SecurityProvider.EnsureInitialized();
 			SessionFactory = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
-			Picasa = new PicasaWrapper(SessionFactory);
+			//Picasa = new PicasaWrapper(SessionFactory);
+			Picasa = null;
 		}
 
-		
 		public GridPageDto GetPage(string id)
 		{
-			const bool auth = true;
-
 			using (var repo = SessionFactory.CreateSession())
 			{
 				var page = repo.Session.Page.Get(id);
 
-				if (auth && !Auth())
+				if (page.Authorize && !Auth())
 				{
 					throw new HttpResponseException(HttpStatusCode.Unauthorized); 
 				}
@@ -60,10 +58,11 @@ namespace cms.Controllers.Api
 
 		private bool Auth()
 		{
+			
 			var cookies = ControllerContext.Request.Headers.GetCookies();
 			var token = cookies.Count > 0 ? cookies[0].Cookies.First(x => x.Name == "oauth_token").Value : null;
-
-			return token == "aaa";
+			var a = OAuthServiceCms.Tokens.FirstOrDefault(x => x.AccessToken == token && !x.IsAccessExpired);
+			return a != null;
 		}
 
 		public IEnumerable<GridPageDto> GetPages()

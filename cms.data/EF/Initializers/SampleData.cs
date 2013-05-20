@@ -46,7 +46,7 @@ namespace cms.data.EF.Initializers
 			Context.TemplateTypes.Add(new TemplateType { Name = "text" });
 			Context.TemplateTypes.Add(new TemplateType { Name = "reference" });
 
-//			GenerateMenus(application);
+			//			GenerateMenus(application);
 
 			string defualtjsondata = ConfigurationManager.AppSettings.Get("DefaultJsonBootstrap");
 			//TODO pridat log4net
@@ -79,8 +79,13 @@ namespace cms.data.EF.Initializers
 										.WithResource("name", "Test Page", CultureEn)
 								);
 
+			Context.Grids.Add(AGrid(new Guid("bb8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application, true)
+										.WithResource(SpecialResourceEnum.Link, "aaa")
+										.WithResource("name", "grid Bez elementu AUTH", CultureCs)
+										.WithResource("name", "Without Any Element", CultureEn)
+								);
 			Context.Grids.Add(AGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource(SpecialResourceEnum.Link, "bezelementu")
+										.WithResource(SpecialResourceEnum.Link, "pub")
 										.WithResource("name", "grid Bez elementu", CultureCs)
 										.WithResource("name", "Without Any Element", CultureEn)
 								);
@@ -113,7 +118,7 @@ namespace cms.data.EF.Initializers
 		private void GenerateMenus(ApplicationSetting application)
 		{
 			var rootitem = AGridElement("menutext", application, position: 2);
-			
+
 			var items = new List<GridElement>
 				            {
 								AGridElement("menutext", application, position: 0),
