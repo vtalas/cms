@@ -1,7 +1,6 @@
 ﻿using Google.GData.Client;
 using Newtonsoft.Json;
 using cms.data.EF;
-using cms.shared;
 
 namespace cms.Code.LinkAccounts
 {
@@ -10,7 +9,6 @@ namespace cms.Code.LinkAccounts
 		public SessionProvider StorageProvider { get; set; }
 
 		public OAuth2ParametersStorageEfContext(SessionProvider storageProvider)
-			: base()
 		{
 			StorageProvider = storageProvider;
 		}

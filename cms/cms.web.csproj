@@ -201,6 +201,7 @@
     <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaWrapper.cs" />
+    <Compile Include="Controllers\Api\OAuthServiceCms.cs" />
     <Compile Include="Controllers\Api\PhotoDecorator.cs" />
     <Compile Include="Controllers\Api\PicasaServiceProvider.cs" />
     <Compile Include="Controllers\Api\WebApiControllerBase.cs" />

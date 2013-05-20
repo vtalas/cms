@@ -10,7 +10,8 @@ namespace OAuth2.Mvc
 		public string UserName { get; set; }
 		public string Password { get; set; }
 		public bool Persistent { get; set; }
-			
+		public string RequestToken { get; set; }
+		public string ReturnUrl { get; set; }
 	}
 
 
