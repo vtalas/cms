@@ -74,6 +74,7 @@ namespace cms.data.EF.DataProviderImplementation
 			var resName = grid.Resources.GetByKey("name", CurrentCulture) ?? CreateNewResource(grid, "name");
 
 			grid.Home = item.Home;
+			grid.Authorize = item.Authorize;
 			resLink.Value = item.Link;
 			resName.Value = item.Name;
 

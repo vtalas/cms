@@ -1,21 +1,22 @@
 var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', function ($scope, $http, $rootScope, appSettings, GridApi) {
 
-	$scope.data = {};
-
 	function loadData() {
-		$scope.data = GridApi.grids({ applicationId: appSettings.Id });
+		GridApi.grids(function (parameters) {
+			$scope.data = parameters;
+		});
 	}
 
 	$scope.$on("setCultureEvent", function () {
+		$scope.data = null;
 		loadData();
 	});
 
 	loadData();
 
-	$scope.aaa = function(item) {
-		return  "/clientApi/" + appSettings.Id + "/getpage/" + item.Link
+	$scope.aaa = function (item) {
+		return "/clientApi/" + appSettings.Id + "/getpage/" + item.Link
 	};
-	
+
 	$scope.getLink = function (item) {
 		switch (item.Category) {
 			case "Page":
@@ -43,7 +44,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	$scope.save = function (item) {
 		item.Edit = 0;
 		GridApi.updateGrid(item, function (ok) {
-			console.log(ok);
+		//	console.log(ok);
 		});
 	};
 
@@ -88,4 +89,8 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 		newItemReset();
 		$scope.newItemEdit = false;
 	});
+
+	$scope.authColor = function(grid) {
+		return grid.Authorize ? "red" : "none";
+	};
 }];

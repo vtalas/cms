@@ -9,5 +9,6 @@ namespace cms.data.Dtos
 		public string Link { get; set; }
 		public bool Home { get; set; }
 		public string Category { get; set; }
+		public bool Authorize { get; set; }
 	}
 }

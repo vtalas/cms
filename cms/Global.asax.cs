@@ -49,14 +49,14 @@ namespace cms
 
 		protected void Application_Start()
 		{
+			data.Migrations.Configuration.MigrateToLatestVersion();
+			
 			var transforms = new IBundleTransform[] { new JsMinify() };
-
 			var testbundle = new Bundle("~/Scripts/libs", transforms)
 				.Include("~/Scripts/angular.js")
 				.Include("~/Scripts/angular-ui.js")
 				.IncludeDirectory("~/Scripts/", "*.js");
 			//.IncludeDirectory("~/Scripts/", "*.ts");
-
 
 			var adminBundle = new Bundle("~/Scripts/admin_scripts", transforms)
 				.IncludeDirectory("~/Scripts/Admin", "*.js")

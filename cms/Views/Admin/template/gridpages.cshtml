@@ -10,13 +10,22 @@
 		<div class="span3 hider">
 		</div>
 	</div>
-
 	<div ng-show="data.length == 0">
 		<h3 class="text-error">nemáte žádné stránky, vytvořte novou.</h3>
 	</div>
+	<div ng-show="!data">
+		<h3>
+			<img src="/Content/loader16.gif" /></h3>
+	</div>
 	<div class="row row-gridpages color" ng-repeat="grid in data" ngc-hover="">
 		<div class="span5">
+			<div style="width: 5px;background-color: {{authColor(grid)}};height:47px;float: left">&nbsp;</div>
 			<span style="width: 2em" class="font-icon  {{grid.Category}}"></span>
+
+			<input  ng-show="grid.Edit" type="checkbox" ng-model="grid.Authorize"
+				tooltip-popup-delay='600'
+				tooltip-html-unsafe="<div style='text-align:left'><b>Autorizace</b><div> <div style='text-align:left'>pokud je zaškrtnuto tak je obsah zobrazen jen po přihlášení</div>" />
+
 			<a ng-hide="grid.Edit" href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{grid.Name}}</a>
 			<span ng-show="grid.Edit" class="gridpage-input">
 				<input ng-model="grid.Name" required />
@@ -47,17 +56,17 @@
 		<form>
 			<div class="span5">
 				<div style="margin-left: 4em; margin-top: 10px;" ngc-click-edit="newitem.Name"
-				     template-preview="#preview"
-				     template-edit="#edit"
-				     placeholder="jméno stránky">
+					template-preview="#preview"
+					template-edit="#edit"
+					placeholder="jméno stránky">
 				</div>
 			</div>
 			<div class="span4">
 				<div ngc-click-edit="newitem.Link"
-				     template-preview="#preview"
-				     template-edit="#edit"
-				     style="margin-top: 10px;"
-				     placeholder="odkaz">
+					template-preview="#preview"
+					template-edit="#edit"
+					style="margin-top: 10px;"
+					placeholder="odkaz">
 				</div>
 			</div>
 			<div class="span2">
@@ -66,7 +75,7 @@
 		</form>
 	</div>
 </div>
-  
+
 <script id="preview" type="text/ng-template">
 	<span ng-click="showEdit()" class="ngc-click-edit-preview" ng-hide="$parent.newItemEdit" ng-bind="ngcClickEdit"></span>
 </script>

@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace cms.data.Migrations
 {
 	using System.Data.Entity.Migrations;
@@ -8,6 +10,20 @@ namespace cms.data.Migrations
 		{
 			AutomaticMigrationsEnabled = true;
 		}
+
+		public static void MigrateToLatestVersion()
+		{
+			var configuration = new Configuration();
+			var migrator = new DbMigrator(configuration);
+
+			var pending = migrator.GetPendingMigrations();
+
+			if (pending.Any())
+			{
+				migrator.Update();
+			}
+		}
+
 
 		protected override void Seed(EF.EfContext context)
 		{

@@ -44,8 +44,6 @@ namespace cms.Controllers
 			return RedirectToAction("Index");
 		}
 
-
-
 		public ActionResult MigrateDatabaseToLatestVersion()
 		{
 			var configuration = new Configuration();
@@ -58,7 +56,6 @@ namespace cms.Controllers
 				Response.Write("Updated");
 				migrator.Update();
 			}
-
 
 //			using (var a = new EfContext())
 //			{

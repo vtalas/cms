@@ -80,6 +80,7 @@ namespace cms.data.EF.DataProviderImplementation
 					Link = dto.Resources.GetValueByKey(SpecialResourceEnum.Link, null),
 					Name = dto.Resources.GetValueByKey("name", CurrentCulture),
 					Home = dto.Home,
+					Authorize = dto.Authorize
 				});
 			return a.ToList();
 

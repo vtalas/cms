@@ -1,4 +1,5 @@
 using System.Data.Entity;
+
 using cms.data.Shared.Models;
 
 namespace cms.data.EF
@@ -22,5 +23,6 @@ namespace cms.data.EF
 			//modelBuilder.Entity<Bootstrapgenerator>().Property(p => p.StatusData).HasColumnName("sm");
 			//modelBuilder.Entity<Bootstrapgenerator>().Ignore(p => p.Status);
 		}
+
 	}
 }
