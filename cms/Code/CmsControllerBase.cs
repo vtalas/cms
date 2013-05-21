@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using cms.data.EF;
+using cms.data.EF.Initializers;
 
 namespace cms.Code
 {
