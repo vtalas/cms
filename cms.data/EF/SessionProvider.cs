@@ -2,6 +2,7 @@ using System;
 using System.Data.Entity;
 using cms.data.DataProvider;
 using cms.data.EF.DataProviderImplementation;
+using cms.data.EF.Initializers;
 using cms.data.Repository;
 using cms.data.Shared;
 using cms.shared;
@@ -19,18 +20,14 @@ namespace cms.data.EF
 		{
 			_applicationId = applicationId;
 			_currentUserId = currentUserId;
+			//Database.SetInitializer(new MigrateInitalizer());
 			_dataProviderConstruct = () => new DataEfAuthorized(_applicationId, Repo, _currentUserId);
 		}
 
 		public SessionProvider(Func<DataProviderAbstract> fnc ) 
 		{
+			//Database.SetInitializer(new MigrateInitalizer());
 			_dataProviderConstruct = fnc;
-		}
-
-		public SessionProvider(Guid applicationId, int currentUserId, IDatabaseInitializer<EfContext> initializer)
-			: this(applicationId, currentUserId)
-		{
-			Database.SetInitializer(initializer);
 		}
 
 		public DataProviderAbstract Session

@@ -1,14 +1,18 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations.Infrastructure;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using cms.data.EF;
 using System.Linq;
 using cms.data.EF.Initializers;
+using cms.data.Migrations;
 
 namespace cms.Controllers
 {
-    public class SetupController : Controller
-    {
+	public class SetupController : Controller
+	{
 		public ActionResult DropAndCreateTables()
 		{
 			Database.SetInitializer(new DropAndCreateTables());
@@ -24,7 +28,7 @@ namespace cms.Controllers
 		public ActionResult DropAndCreateAlwaysForce()
 		{
 			Database.SetInitializer(new DropAndCreateAlwaysForce());
-//			Database.Delete("")
+			//			Database.Delete("")
 
 			using (var a = new EfContext())
 			{
@@ -39,20 +43,34 @@ namespace cms.Controllers
 			}
 			return RedirectToAction("Index");
 		}
-		 
-		 
-		 public ActionResult MigrateDatabaseToLatestVersion()
+
+
+
+		public ActionResult MigrateDatabaseToLatestVersion()
 		{
-			using (var a = new EfContext())
+			var configuration = new Configuration();
+			var migrator = new DbMigrator(configuration);
+
+			var pending = migrator.GetPendingMigrations();
+			
+			if (pending.Any())
 			{
-				//Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext, data.Migrations.Configuration>());
-				Response.Write(a.ApplicationSettings.ToList());
+				Response.Write("Updated");
+				migrator.Update();
 			}
+
+
+//			using (var a = new EfContext())
+//			{
+//				//Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext, data.Migrations.Configuration>());
+//				Response.Write(a.ApplicationSettings.ToList());
+//			}
 			return View();
 		}
-    	public ActionResult Index()
-        {
+
+		public ActionResult Index()
+		{
 			return View();
-        }
-    }
+		}
+	}
 }
