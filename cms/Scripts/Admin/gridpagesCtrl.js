@@ -75,7 +75,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 				$scope.newItemEdit = false;
 			})
 			.error(function (data, status, headers, config) {
-				console.error("Erorrrr", data)
+			    console.error("Erorrrr", data);
 			});
 		$scope.newName = '';
 	};
@@ -92,5 +92,9 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 
 	$scope.authColor = function(grid) {
 		return grid.Authorize ? "red" : "none";
+	};
+
+	$scope.authTooltip = function (grid) {
+		return grid.Authorize ? "Autorizováno - Viditelné po přihlášení" : "Veřejné - Viditelné pro všechny";
 	};
 }];

@@ -4,15 +4,12 @@ namespace cms.Code.MvcOauth
 {
     public class DemoToken
     {
-        public DemoToken(string name)
+        public DemoToken()
         {
             AccessToken = Guid.NewGuid().ToString("N");
             Expire = DateTime.Now.AddMinutes(5);
-            Name = name;
             RefreshToken = Guid.NewGuid().ToString("N");
         }
-
-        public string Name { get; set; }
 
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }

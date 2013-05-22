@@ -180,10 +180,7 @@
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\GdataPhotosSettings.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaServiceFactory.cs" />
-    <Compile Include="Code\MvcOauth\DemoIdentity.cs" />
     <Compile Include="Code\MvcOauth\DemoPrincipal.cs" />
-    <Compile Include="Code\MvcOauth\DemoProvider.cs" />
-    <Compile Include="Code\MvcOauth\DemoService.cs" />
     <Compile Include="Code\MvcOauth\DemoToken.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\AssetTypeExtened.cs" />

@@ -38,7 +38,7 @@ namespace cms.Code.MvcOauth
             var hash = (requestToken + userName).ToSHA1();
             
             if (hash.Equals(password, StringComparison.OrdinalIgnoreCase))
-                return CreateAccessToken(userName);
+                return CreateAccessToken();
 
             return new OAuthResponse
                    {
@@ -70,12 +70,12 @@ namespace cms.Code.MvcOauth
                        };
 
             Tokens.Remove(token);
-            return CreateAccessToken(token.Name);
+            return CreateAccessToken();
         }
 
-        private OAuthResponse CreateAccessToken(string name)
+        private OAuthResponse CreateAccessToken()
         {
-            var token = new DemoToken(name);
+            var token = new DemoToken();
             Tokens.Add(token);
 
             return new OAuthResponse

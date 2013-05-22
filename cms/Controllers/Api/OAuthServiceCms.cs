@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Security.Cryptography;
+using System.Text;
 using OAuth2.Mvc;
 using WebMatrix.WebData;
 using cms.Code.MvcOauth;
@@ -46,7 +48,7 @@ namespace cms.Controllers.Api
 		{
 			if (WebSecurity.Login(rq.UserName, rq.Password, rq.Persistent))
 			{
-				return CreateAccessToken(rq.UserName);
+				return CreateAccessToken();
 			}
 			return new OAuthResponse
 			{
@@ -54,9 +56,9 @@ namespace cms.Controllers.Api
 			};
 		}
 
-		private OAuthResponse CreateAccessToken(string name)
+		private OAuthResponse CreateAccessToken()
 		{
-			var token = new DemoToken(name);
+			var token = new DemoToken();
 			Tokens.Add(token);
 
 			return new OAuthResponse

@@ -19,7 +19,6 @@ namespace cms.Code.MvcOauth
                 return;
 
             IsAuthenticated = true;
-            Name = token.Name;
         }
     }
 }

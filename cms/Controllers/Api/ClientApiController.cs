@@ -10,7 +10,6 @@ using cms.Code.LinkAccounts.Picasa;
 using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
-using cms.data.EF.Initializers;
 using cms.data.Shared;
 
 namespace cms.Controllers.Api
