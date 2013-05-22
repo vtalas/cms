@@ -60,11 +60,11 @@ namespace cms.Controllers.Api
 		{
 			var token = new DemoToken();
 			Tokens.Add(token);
-
+			
 			return new OAuthResponse
 			{
 				AccessToken = token.AccessToken,
-				Expires = token.ExpireSeconds,
+				Expires = token.Expire,
 				RefreshToken = token.RefreshToken,
 				RequireSsl = false,
 				Success = true

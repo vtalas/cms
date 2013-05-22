@@ -28,9 +28,9 @@ namespace OAuth2.Mvc
         public string AccessToken { get; set; }
 
         [DefaultValue(0)]
-        [DataMember(Name = "expires_in")]
-        [JsonProperty("expires_in", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public int Expires { get; set; }
+        [DataMember(Name = "expires")]
+        [JsonProperty("expires", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public long Expires { get; set; }
 
         [DataMember(Name = "refresh_token")]
         [JsonProperty("refresh_token", NullValueHandling = NullValueHandling.Ignore)]
