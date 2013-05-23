@@ -55,6 +55,14 @@ namespace cms.Controllers.Api
 			return a != null;
 		}
 
+		private void Authorize()
+		{
+			if (!Auth())
+			{
+				throw new HttpResponseException(HttpStatusCode.Unauthorized);
+			}
+		}
+
 		public IEnumerable<GridPageDto> GetPages()
 		{
 			using (var repo = SessionFactory.CreateSession())
@@ -81,6 +89,14 @@ namespace cms.Controllers.Api
 			}
 
 			return accessResponse;
+		}
+
+		public string PutUserData([FromBody]string userData)
+		{
+			//Authorize();
+			var x = userData;
+			return x;
+
 		}
 
 		public IEnumerable<Album> GetAlbums()
