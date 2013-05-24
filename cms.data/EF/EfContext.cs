@@ -17,6 +17,7 @@ namespace cms.data.EF
 		public virtual IDbSet<TemplateType> TemplateTypes { get; set; }
 		public virtual IDbSet<Resource> Resources { get; set; }
 		public virtual IDbSet<UserProfile> UserProfile { get; set; }
+		public virtual IDbSet<OAuthCms> OAuthCms { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -25,4 +26,5 @@ namespace cms.data.EF
 		}
 
 	}
+
 }

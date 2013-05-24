@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Web.Security;
 using WebMatrix.WebData;
 using cms.data.Extensions;
 using cms.data.Shared.Models;
@@ -113,6 +114,11 @@ namespace cms.data.EF.Initializers
 			WebSecurity.CreateUserAndAccount("admin", "a");
 			WebSecurity.CreateUserAndAccount("lades", "a");
 			WebSecurity.CreateUserAndAccount("pepa", "a");
+
+			Roles.CreateRole("admin");
+			Roles.CreateRole("applicationUser");
+			Roles.AddUserToRole("admin", "admin");
+
 		}
 
 		private void GenerateMenus(ApplicationSetting application)

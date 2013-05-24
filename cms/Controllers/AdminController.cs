@@ -7,7 +7,7 @@ using cms.data.Extensions;
 
 namespace cms.Controllers
 {
-	[Authorize]
+	[Authorize(Roles = "admin")]
 	public class AdminController : CmsControllerBase
 	{
 		private IList<ApplicationSettingDto> ApplicationSettings()

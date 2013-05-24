@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -9,13 +8,11 @@ using Newtonsoft.Json.Linq;
 using WebMatrix.WebData;
 using cms.Code.UserResources;
 using cms.data.Dtos;
-using cms.data.Extensions;
 using cms.data.Shared.Models;
 
 namespace cms.Controllers.Api
 {
-	//AJAX akce
-	[System.Web.Mvc.Authorize]
+	[System.Web.Mvc.Authorize(Roles = "admin")]
 	public class AdminApiController : WebApiControllerBase
 	{ 
 		[System.Web.Mvc.HttpPost]
@@ -54,7 +51,7 @@ namespace cms.Controllers.Api
 			}
 		}
 
-/// ////////////////////////////////////////////////////////////////////////////////////
+		/// ////////////////////////////////////////////////////////////////////////////////////
 		//TODO: PRESUNOUT DO SAMOSTATNYHO CONTROLu
 
 		[System.Web.Mvc.HttpPost]
@@ -66,7 +63,6 @@ namespace cms.Controllers.Api
 				return newgrid;
 			}
 		}
-
 
 		public void DeleteGrid([FromBody]Guid id)
 		{
