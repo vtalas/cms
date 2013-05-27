@@ -5,14 +5,16 @@ using System.Web.Security;
 using WebMatrix.WebData;
 using cms.Controllers.Attributes;
 
+
+
 namespace MvcApplication1.Controllers
 {
+
+	
 	[Authorize]
 	[InitializeSimpleMembership]
 	public class AccountController : Controller
 	{
-		//
-		// GET: /Account/Login
 		[AllowAnonymous]
 		public ActionResult Login(string returnUrl)
 		{
@@ -20,8 +22,6 @@ namespace MvcApplication1.Controllers
 			return View();
 		}
 
-		//
-		// POST: /Account/Login
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
@@ -37,26 +37,17 @@ namespace MvcApplication1.Controllers
 			return View(model);
 		}
 
-		//
-		// POST: /Account/LogOff
-
 		public ActionResult LogOff()
 		{
 			WebSecurity.Logout();
 			return RedirectToAction("Index", "Home");
 		}
 
-		//
-		// GET: /Account/Register
-
 		[AllowAnonymous]
 		public ActionResult Register()
 		{
 			return View();
 		}
-
-		//
-		// POST: /Account/Register
 
 		[HttpPost]
 		[AllowAnonymous]
@@ -69,7 +60,6 @@ namespace MvcApplication1.Controllers
 				try
 				{
 					WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-
 					WebSecurity.Login(model.UserName, model.Password);
 					return RedirectToAction("Index", "Home");
 				}
@@ -82,11 +72,6 @@ namespace MvcApplication1.Controllers
 			// If we got this far, something failed, redisplay form
 			return View(model);
 		}
-
-
-
-		//
-		// POST: /Account/Disassociate
 
 		////[HttpPost]
 		////[ValidateAntiForgeryToken]

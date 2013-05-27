@@ -17,12 +17,15 @@ namespace cms.data.EF
 		public virtual IDbSet<TemplateType> TemplateTypes { get; set; }
 		public virtual IDbSet<Resource> Resources { get; set; }
 		public virtual IDbSet<UserProfile> UserProfile { get; set; }
+		public virtual IDbSet<UserData> UserData { get; set; }
 		public virtual IDbSet<OAuthCms> OAuthCms { get; set; }
-
+	
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			//modelBuilder.Entity<Bootstrapgenerator>().Property(p => p.StatusData).HasColumnName("sm");
-			//modelBuilder.Entity<Bootstrapgenerator>().Ignore(p => p.Status);
+			modelBuilder.Entity<UserProfile>().Ignore(x => x.IsApplicationUser);
+			modelBuilder.Entity<OAuthCms>().Ignore(x => x.IsAccessExpired);
+
+			base.OnModelCreating(modelBuilder);
 		}
 
 	}

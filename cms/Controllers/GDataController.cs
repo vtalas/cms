@@ -6,7 +6,7 @@ using cms.Code.LinkAccounts;
 
 namespace cms.Controllers
 {
-	[Authorize]
+	[Authorize(Roles = "admin")]
 	public class GDataController : CmsControllerBase
 	{
 		private Func<GoogleDataOAuth2Service> _gdataAuthFnc;
@@ -37,12 +37,6 @@ namespace cms.Controllers
 		public ActionResult Index()
 		{
 			return View(_gdataAuthFnc.Invoke());
-		}
-
-		public ActionResult aaa()
-		{
-			TempData["message"] = "Úspěšně připojeno na Google Picasa.";
-			return RedirectToAction("Index");
 		}
 
 		[HttpPost]

@@ -12,7 +12,4 @@ namespace cms.data.Shared.Models
 		public string Value { get; set; }
 		public Guid Owner { get; set; }
 	}
-
-
-
 }

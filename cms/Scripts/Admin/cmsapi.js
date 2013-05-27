@@ -61,6 +61,7 @@
 		);
 		return project;
 	}])
+
 	.factory('apimenu', ['$resource', 'appSettings', function ($resource, appSettings) {
 
 		return $resource('/api/:applicationId/:controller/:action/:Id',
@@ -68,6 +69,16 @@
 			{
 				list: { method: 'GET', isArray: true, params: { action: "list" } },
 				get: { method: 'GET', isArray: false, params: { action: "get" } }
+			}
+		);
+	}])
+
+	.factory('apiUserProfile', ['$resource', 'appSettings', function ($resource, appSettings) {
+		return $resource('/api/:applicationId/:controller/:action/:Id',
+			{ applicationId: appSettings.Id, controller: "cmsUserApi" },
+			{
+				getUsers: { method: 'GET', isArray: true, params: { action: "GetUsers" } },
+				addUser: { method: 'PUT', isArray: false, params: { action: "PostUser" } }
 			}
 		);
 	}]);

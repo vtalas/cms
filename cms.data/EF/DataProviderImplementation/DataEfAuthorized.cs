@@ -12,6 +12,7 @@ using cms.shared;
 
 namespace cms.data.EF.DataProviderImplementation
 {
+
 	public class DataEfAuthorized : DataProviderAbstract
 	{
 		public IRepository Repository { get; set; }
@@ -111,5 +112,4 @@ namespace cms.data.EF.DataProviderImplementation
 			return newitem;
 		}
 	}
-
 }

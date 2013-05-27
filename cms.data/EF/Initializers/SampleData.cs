@@ -19,6 +19,7 @@ namespace cms.data.EF.Initializers
 		public SampleData(EfContext context)
 		{
 			Context = context;
+			SecurityProvider.EnsureInitialized(true);
 		}
 
 
@@ -33,13 +34,12 @@ namespace cms.data.EF.Initializers
 						"{\"ClientId\":\"568637062174-4s9b1pohf5p0hkk8o4frvesnhj8na7ug.apps.googleusercontent.com\",\"ClientSecret\":\"YxM0MTKCTSBV5vGlU05Yj63h\",\"RedirectUri\":\"http://localhost:62728/render/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/Gdata/Authenticate\",\"AccessType\":\"offline\",\"ResponseType\":\"code\",\"ApprovalPrompt\":\"auto\",\"State\":null,\"Scope\":\"https://picasaweb.google.com/data\",\"TokenUri\":\"https://accounts.google.com/o/oauth2/token\",\"AuthUri\":\"https://accounts.google.com/o/oauth2/auth\",\"AccessCode\":\"4/QLbO_XmRyWhrLhCQZfeFBw_tOEO-.YjhDDUv4vvASOl05ti8ZT3aR9rZ2ewI\",\"AccessToken\":\"ya29.AHES6ZRHtQgmJdwI83C1ZGLfXcFT1UpO8KFaQoxewvZslPo\",\"TokenType\":\"Bearer\",\"RefreshToken\":\"1/JjvMzAvTWDI1jQ3SJ-tL-W2xfMGgKCNpfnPFC7YLXZQ\",\"TokenExpiry\":\"2013-03-30T14:50:52.0350746+01:00\"}"
 				};
 
-			GenerateUsers();
+			GenerateUsers(application);
+			WebSecurity.CreateUserAndAccount("lades", "a");
+			WebSecurity.CreateUserAndAccount("pepa", "a");
 
 			Context.ApplicationSettings.Add(application);
 			Context.ApplicationSettingStorage.Add(gdataSettings);
-			var userid = WebSecurity.GetUserId("admin");
-			var user = Context.UserProfile.Single(x => x.Id == userid);
-			application.Users.Add(user);
 
 			GenerateGridPages(application);
 
@@ -108,17 +108,33 @@ namespace cms.data.EF.Initializers
 								);
 		}
 
-		private void GenerateUsers()
+		private void GenerateUsers(ApplicationSetting application)
 		{
-			SecurityProvider.EnsureInitialized(true);
-			WebSecurity.CreateUserAndAccount("admin", "a");
-			WebSecurity.CreateUserAndAccount("lades", "a");
-			WebSecurity.CreateUserAndAccount("pepa", "a");
-
 			Roles.CreateRole("admin");
 			Roles.CreateRole("applicationUser");
-			Roles.AddUserToRole("admin", "admin");
+			
+			GenerateUser(application, "admin", "a", "admin");
+			GenerateApplicationUser(application, "pepa", "a");
+		}
 
+		private void GenerateUser(ApplicationSetting application, string username, string passsword, string role)
+		{
+			WebSecurity.CreateUserAndAccount(username, passsword);
+			var userid = WebSecurity.GetUserId(username);
+			var user = Context.UserProfile.Single(x => x.Id == userid);
+			application.Users.Add(user);
+			
+
+			Roles.AddUserToRole(username, role);
+		}
+
+		private void GenerateApplicationUser(ApplicationSetting application, string username, string password)
+		{
+			WebSecurityApplication.CreateUserAndAccount(application.Id, username, password);
+			var userid = WebSecurityApplication.GetUserId(application.Id, username);
+			var user = Context.UserProfile.Single(x => x.Id == userid);
+			user.ApplicationUser = 1;
+			application.Users.Add(user);
 		}
 
 		private void GenerateMenus(ApplicationSetting application)

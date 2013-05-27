@@ -193,6 +193,7 @@
     <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
     <Compile Include="Controllers\Api\CmsWebApiControllerBase.cs" />
+    <Compile Include="Controllers\Api\CmsUsersApiController.cs" />
     <Compile Include="Controllers\Api\GridElementApiController.cs" />
     <Compile Include="Controllers\Api\GdataPhotosController.cs" />
     <Compile Include="Controllers\Api\MenuController.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Controllers\Api\WebApiPicasaControllerBase.cs" />
     <Compile Include="Controllers\Api\WebImage.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Controllers\CmsUsersController.cs" />
     <Compile Include="Controllers\GDataAuthController.cs" />
     <Compile Include="Controllers\GDataController.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageFactory.cs" />
@@ -542,6 +544,8 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\SiteMapTemplate.cshtml" />
     <Content Include="Views\GData\Index_ReAuthorize.cshtml" />
+    <Content Include="Views\CmsUsers\Index.cshtml" />
+    <Content Include="Views\CmsUsers\List.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

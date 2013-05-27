@@ -21,7 +21,6 @@ namespace cms.Controllers
 
 		public ActionResult Index()
 		{
-
 			var applications = ApplicationSettings();
 
 			if (applications.Count() == 1)
@@ -49,7 +48,6 @@ namespace cms.Controllers
 		public ActionResult Dashboard()
 		{
 			return View();
-
 		}
 
 		public ActionResult DataContent()

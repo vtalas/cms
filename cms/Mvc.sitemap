@@ -8,6 +8,7 @@
 		<mvcSiteMapNode title="dashboard" controller="Admin" action="Dashboard" key="xxx" >
 			<mvcSiteMapNode title="obsah" controller="Admin" action="Grids" />
 			<mvcSiteMapNode title="nastavení" controller="Gdata" action="Index"/>
+			<mvcSiteMapNode title="uživatelé" controller="CmsUsers" action="Index"/>
 		</mvcSiteMapNode>
 	</mvcSiteMapNode>
 </mvcSiteMap>
