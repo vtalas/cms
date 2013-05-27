@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Configuration.Provider;
+using cms.data.Shared.Models;
 
 namespace OAuth2.Mvc
 {
@@ -31,5 +32,7 @@ namespace OAuth2.Mvc
         public abstract OAuthResponse RefreshToken(string refreshToken);
 
         public abstract bool UnauthorizeToken(string token);
+
+	    public abstract OAuthCms GetAcccesToken(string token);
     }
 }

@@ -11,7 +11,6 @@ namespace cms.data.Shared.Models
 			Start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 			Expire = (long)DateTime.UtcNow.AddMinutes(2).Subtract(Start).TotalSeconds;
 			RefreshToken = Guid.NewGuid().ToString("N");
-
 		}
 
 		private DateTime Start { get; set; }

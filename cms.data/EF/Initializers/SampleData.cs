@@ -108,6 +108,7 @@ namespace cms.data.EF.Initializers
 								);
 		}
 
+
 		private void GenerateUsers(ApplicationSetting application)
 		{
 			Roles.CreateRole("admin");

@@ -1,6 +1,3 @@
-
-using System;
-
 namespace cms.data.Shared.Models
 {
 	public class ApplicationSettingStorage

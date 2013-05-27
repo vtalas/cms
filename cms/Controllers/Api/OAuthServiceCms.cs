@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using OAuth2.Mvc;
-using cms.Code.MvcOauth;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -19,18 +18,8 @@ namespace cms.Controllers.Api
 		public OAuthServiceCms(Guid applicationId)
 		{
 			ApplicationId = applicationId;
-			Tokens = new List<DemoToken>();
 			RequestTokens = new Dictionary<string, DateTime>();
 		}
-
-		public List<DemoToken> Tokens { get
-		{
-			using (var repo = new EfRepositoryApplication(ApplicationId))
-			{
-				return repo.OAuthCms;
-			}
-
-		} set; }
 
 		public static Dictionary<String, DateTime> RequestTokens { get; set; }
 
@@ -103,6 +92,15 @@ namespace cms.Controllers.Api
 		{
 			throw new System.NotImplementedException();
 		}
+
+		public override OAuthCms GetAcccesToken(string token)
+		{
+			using (var repo = new EfRepositoryApplication(ApplicationId))
+			{
+				return repo.OAuthCms.FirstOrDefault(x => x.AccessToken == token && !x.IsAccessExpired);
+			}
+		}
+
 
 	}
 }

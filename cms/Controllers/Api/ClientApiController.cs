@@ -16,14 +16,10 @@ namespace cms.Controllers.Api
 {
 	public class ClientApiController : CmsWebApiControllerBase
 	{
-		private OAuthServiceBase x { get; set; } 
+		private OAuthServiceBase oauthservice { get; set; } 
 		public SessionProvider SessionFactory { get; set; }
 		public PicasaServiceProvider PicasaProvider { get; set; }
 
-		public ClientApiController()
-		{
-			OAuthServiceBase.Instance = x;
-		}
 
 		protected override void Initialize(HttpControllerContext requestContext)
 		{
@@ -31,7 +27,7 @@ namespace cms.Controllers.Api
 			SecurityProvider.EnsureInitialized();
 			SessionFactory = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
 			PicasaProvider = new PicasaServiceProvider(() => new PicasaWrapper(SessionFactory));
-			x = new OAuthServiceCms(ApplicationId);
+			oauthservice = new OAuthServiceCms(ApplicationId);
 
 		}
 
@@ -49,11 +45,12 @@ namespace cms.Controllers.Api
 			}
 		}
 
+
 		private bool Auth()
 		{
 			var cookies = ControllerContext.Request.Headers.GetCookies();
 			var token = cookies.Count > 0 ? cookies[0].Cookies.First(x => x.Name == "oauth_token").Value : null;
-			var a = OAuthServiceCms.Tokens.FirstOrDefault(x => x.AccessToken == token && !x.IsAccessExpired);
+			var a = oauthservice.GetAcccesToken(token);
 			return a != null;
 		}
 
@@ -75,7 +72,7 @@ namespace cms.Controllers.Api
 
 		public OAuthRequest GetLogin()
 		{
-			var response = x.RequestToken();
+			var response = oauthservice.RequestToken();
 			return new OAuthRequest
 			{
 				RequestToken = response.RequestToken
@@ -84,7 +81,7 @@ namespace cms.Controllers.Api
 
 		public OAuthResponse PostLogin(OAuthRequest data)
 		{
-			var accessResponse = x.AccessToken(data, ApplicationId);
+			var accessResponse = oauthservice.AccessToken(data, ApplicationId);
 			if (!accessResponse.Success)
 			{
 				throw new HttpResponseException(HttpStatusCode.Unauthorized);
