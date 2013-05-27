@@ -34,6 +34,14 @@ namespace cms.data.DataProvider
 		public abstract IEnumerable<ApplicationSetting> Applications();
 	}
 
+	public class CmsUsers
+	{
+		public CmsUsers(DataProviderAbstract datasource)
+		{
+		
+		}
+	}
+
 	public abstract class PageAbstract : DataProviderBase
 	{
 		protected PageAbstract(ApplicationSetting application, IRepository repo) : base(application, repo) { }

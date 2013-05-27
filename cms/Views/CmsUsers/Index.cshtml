@@ -1,0 +1,16 @@
+﻿@using cms.shared
+@{
+	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
+    ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
+}
+
+<div ng-app="gridsmodule"
+	 data-application-name="@ViewBag.ApplicationName"
+	 data-application-id="@ViewBag.ApplicationId"
+	 data-application-culture="@SharedLayer.Culture"
+	 class="gridsmodule"
+	>
+
+	<div ng-view>
+	</div>
+</div>

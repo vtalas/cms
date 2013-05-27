@@ -6,7 +6,6 @@ namespace cms.Controllers.Api
 	[System.Web.Mvc.Authorize]
 	public class GridElementApiController : WebApiControllerBase
 	{ 
-
 		public GridElementDto PostToGrid(GridElementDto gridElementDto, Guid gridId)
 		{
 			using (var db = SessionProvider.CreateSession())

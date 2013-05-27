@@ -24,10 +24,10 @@ namespace cms.data.Migrations
 			}
 		}
 
-
 		protected override void Seed(EF.EfContext context)
 		{
-			var x = "asdkjbsadk";
+			//context.Database.ExecuteSqlCommand("ALTER TABLE UserProfile ADD CONSTRAINT DB_ApplicationUser DEFAULT 0 FOR ApplicationUser");
+
 			//  This method will be called after migrating to the latest version.
 
 			//  You can use the DbSet<T>.AddOrUpdate() helper extension method 

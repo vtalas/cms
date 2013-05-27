@@ -16,7 +16,7 @@ namespace cms.Controllers.Api
 {
 	public class ClientApiController : CmsWebApiControllerBase
 	{
-		private static OAuthServiceBase x = new OAuthServiceCms();
+		private OAuthServiceBase x { get; set; } 
 		public SessionProvider SessionFactory { get; set; }
 		public PicasaServiceProvider PicasaProvider { get; set; }
 
@@ -31,6 +31,8 @@ namespace cms.Controllers.Api
 			SecurityProvider.EnsureInitialized();
 			SessionFactory = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
 			PicasaProvider = new PicasaServiceProvider(() => new PicasaWrapper(SessionFactory));
+			x = new OAuthServiceCms(ApplicationId);
+
 		}
 
 		public GridPageDto GetPage(string id)
@@ -82,7 +84,7 @@ namespace cms.Controllers.Api
 
 		public OAuthResponse PostLogin(OAuthRequest data)
 		{
-			var accessResponse = x.AccessToken(data);
+			var accessResponse = x.AccessToken(data, ApplicationId);
 			if (!accessResponse.Success)
 			{
 				throw new HttpResponseException(HttpStatusCode.Unauthorized);

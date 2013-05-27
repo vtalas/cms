@@ -3,12 +3,14 @@
     Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
 }
 
-
 <ul>
     <li>
         @Html.ActionLink("stránky", "Grids", "Admin")
     </li>
     <li>
         @Html.ActionLink("nastavení", "Index", "Gdata")
+    </li>
+    <li>
+        @Html.ActionLink("uživatelé", "Index", "CmsUsers")
     </li>
 </ul>

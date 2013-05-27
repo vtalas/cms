@@ -201,5 +201,15 @@ namespace cms.data.Extensions
 			gridElement.Grid = grid;
 			return gridElement;
 		}
+
+		public static UserProfileDto ToDto(this UserProfile user)
+		{
+			return new UserProfileDto
+			{
+				Id = user.Id,
+				UserName = user.UserName,
+				ApplicationUser = user.ApplicationUser.HasValue && user.ApplicationUser.Value > 0
+			};
+		}
 	}
 }

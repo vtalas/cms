@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.Configuration.Provider;
 
 namespace OAuth2.Mvc
@@ -7,7 +8,7 @@ namespace OAuth2.Mvc
     {
         OAuthResponse RequestToken();
         OAuthResponse AccessToken(string requestToken, string grantType, string userName, string password, bool persistent);
-		OAuthResponse AccessToken(OAuthRequest rq);
+		OAuthResponse AccessToken(OAuthRequest rq, Guid applicationId);
 
 		OAuthResponse RefreshToken(string refreshToken);
         bool UnauthorizeToken(string token);
@@ -23,8 +24,9 @@ namespace OAuth2.Mvc
 
         public abstract OAuthResponse RequestToken();
 
-        public abstract OAuthResponse AccessToken(string requestToken, string grantType, string userName, string password, bool persistent);
-        public abstract OAuthResponse AccessToken(OAuthRequest rq);
+	    public abstract OAuthResponse AccessToken(string requestToken, string grantType, string userName, string password, bool persistent);
+	
+		public abstract OAuthResponse AccessToken(OAuthRequest rq, Guid applicationId);
 
         public abstract OAuthResponse RefreshToken(string refreshToken);
 

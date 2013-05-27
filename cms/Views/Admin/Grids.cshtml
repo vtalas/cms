@@ -5,17 +5,15 @@
     var applicationName = ViewBag.Application;
     var applicationId = ViewBag.ApplicationId;
 }
+
 <div ng-app="gridsmodule"
 	 data-application-name="@applicationName"
 	 data-application-id="@applicationId"
 	 data-application-culture="@SharedLayer.Culture"
 	 class="gridsmodule"
-	 class="gridsmodule"
 	>
 
 	@UserResources.RenderHtmlTemplates(Html, applicationId)
-    
-    
     <div ng-controller="cultureCtrl">
 		<div class="btn-group" >
 			<button class="btn" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>
