@@ -33,6 +33,6 @@ namespace OAuth2.Mvc
 
         public abstract bool UnauthorizeToken(string token);
 
-	    public abstract OAuthCms GetAcccesToken(string token);
+	    public abstract UserProfile GetAcccesToken(string token);
     }
 }

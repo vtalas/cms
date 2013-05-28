@@ -26,7 +26,6 @@ namespace cms.data.EF.RepositoryImplementation
 		public virtual IQueryable<ApplicationSetting> ApplicationSettings { get { return db.ApplicationSettings.Where(x=>x.Id == ApplictionId);} }
 		public IQueryable<ApplicationSettingStorage> ApplicationSettingStorage { get { return db.ApplicationSettingStorage.Where(x=>x.AppliceSetting.Id == ApplictionId); } }
 		public IQueryable<GridElement> GridElements { get { return db.GridElements.Where(x=>x.AppliceSetting.Id == ApplictionId); } }
-		public IQueryable<OAuthCms> OAuthCms { get { return db.OAuthCms.Where(x => x.User.Applications.Any(app => app.Id == ApplictionId)); } }
 		public virtual IQueryable<UserProfile> UserProfile { get { return db.UserProfile.Where(x=>x.Applications.Any(app=>app.Id == ApplictionId)); } }
 		public virtual IQueryable<UserData> UserData { get { return db.UserData.Where(x=>x.User.Applications.Any(app=>app.Id == ApplictionId)); } }
 
@@ -43,11 +42,6 @@ namespace cms.data.EF.RepositoryImplementation
 		public UserData Add(UserData item)
 		{
 			throw new System.NotImplementedException();
-		}
-
-		public OAuthCms Add(OAuthCms item)
-		{
-			return db.OAuthCms.Add(item);
 		}
 
 		public GridElement Add(GridElement item)
@@ -88,11 +82,6 @@ namespace cms.data.EF.RepositoryImplementation
 		public void Remove(Grid item)
 		{
 			db.Grids.Remove(item);
-		}
-
-		public void Remove(OAuthCms item)
-		{
-			throw new NotImplementedException();
 		}
 
 		public void SaveChanges()

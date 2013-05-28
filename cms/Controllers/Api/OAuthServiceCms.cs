@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using OAuth2.Mvc;
+using cms.Code.MvcOauth;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -58,24 +59,27 @@ namespace cms.Controllers.Api
 
 		private OAuthResponse CreateAccessToken(Guid applicationId, string username)
 		{
-			var token = new OAuthCms();
-
+			var token = new DemoToken();
 			using (var repo = new EfRepositoryApplication(applicationId))
 			{
 				var userId = WebSecurityApplication.GetUserId(applicationId, username);
-				token.User = repo.UserProfile.Single(x => x.Id == userId);
-				repo.Add(token);
+				var user = repo.UserProfile.Single(x => x.Id == userId);
+
+				user.AccessToken = token.AccessToken;
+				user.RefreshToken = token.RefreshToken;
+				user.Expire = token.Expire;
+
 				repo.SaveChanges();
-			}
 			
-			return new OAuthResponse
-			{
-				AccessToken = token.AccessToken,
-				Expires = token.Expire,
-				RefreshToken = token.RefreshToken,
-				RequireSsl = false,
-				Success = true
-			};
+				return new OAuthResponse
+				{
+					AccessToken = token.AccessToken,
+					Expires = token.Expire,
+					RefreshToken = user.RefreshToken,
+					RequireSsl = false,
+					Success = true
+				};
+			}
 		}
 
 		public override OAuthResponse RefreshToken(string refreshToken)
@@ -93,11 +97,11 @@ namespace cms.Controllers.Api
 			throw new System.NotImplementedException();
 		}
 
-		public override OAuthCms GetAcccesToken(string token)
+		public override UserProfile GetAcccesToken(string token)
 		{
 			using (var repo = new EfRepositoryApplication(ApplicationId))
 			{
-				return repo.OAuthCms.FirstOrDefault(x => x.AccessToken == token && !x.IsAccessExpired);
+				return repo.UserProfile.FirstOrDefault(x => x.AccessToken == token && !x.IsAccessTokenExpired);
 			}
 		}
 

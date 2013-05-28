@@ -18,12 +18,11 @@ namespace cms.data.EF
 		public virtual IDbSet<Resource> Resources { get; set; }
 		public virtual IDbSet<UserProfile> UserProfile { get; set; }
 		public virtual IDbSet<UserData> UserData { get; set; }
-		public virtual IDbSet<OAuthCms> OAuthCms { get; set; }
 	
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<UserProfile>().Ignore(x => x.IsApplicationUser);
-			modelBuilder.Entity<OAuthCms>().Ignore(x => x.IsAccessExpired);
+			modelBuilder.Entity<UserProfile>().Ignore(x => x.IsAccessTokenExpired);
 
 			base.OnModelCreating(modelBuilder);
 		}

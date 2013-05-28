@@ -108,14 +108,13 @@ namespace cms.data.EF.Initializers
 								);
 		}
 
-
 		private void GenerateUsers(ApplicationSetting application)
 		{
 			Roles.CreateRole("admin");
 			Roles.CreateRole("applicationUser");
 			
 			GenerateUser(application, "admin", "a", "admin");
-			GenerateApplicationUser(application, "pepa", "a");
+			GenerateApplicationUser(application, "pepa", "b");
 		}
 
 		private void GenerateUser(ApplicationSetting application, string username, string passsword, string role)

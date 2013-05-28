@@ -23,7 +23,6 @@ namespace cms.data.EF.RepositoryImplementation
 		public virtual IQueryable<ApplicationSetting> ApplicationSettings { get { return db.ApplicationSettings;} }
 		public IQueryable<ApplicationSettingStorage> ApplicationSettingStorage { get { return db.ApplicationSettingStorage; } }
 		public IQueryable<GridElement> GridElements { get { return db.GridElements; } }
-		public IQueryable<OAuthCms> OAuthCms { get; private set; }
 		public virtual IQueryable<UserProfile> UserProfile { get { return db.UserProfile; } }
 		public virtual IQueryable<UserData> UserData { get { return db.UserData; } }
 
@@ -38,11 +37,6 @@ namespace cms.data.EF.RepositoryImplementation
 		}
 
 		public UserData Add(UserData item)
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public OAuthCms Add(OAuthCms item)
 		{
 			throw new System.NotImplementedException();
 		}
@@ -85,11 +79,6 @@ namespace cms.data.EF.RepositoryImplementation
 		public void Remove(Grid item)
 		{
 			db.Grids.Remove(item);
-		}
-
-		public void Remove(OAuthCms item)
-		{
-			throw new System.NotImplementedException();
 		}
 
 		public void SaveChanges()

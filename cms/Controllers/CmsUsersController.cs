@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using cms.Code;
+using cms.data.EF.RepositoryImplementation;
 
 namespace cms.Controllers
 {
@@ -10,6 +12,16 @@ namespace cms.Controllers
 		public ActionResult Index()
 		{
 			return View();
+		}
+
+		public ActionResult GetUsers()
+		{
+			using (var repo = new EfRepositoryApplication(ApplicationId))
+			{
+				var u = repo.UserProfile.Where(x => x.ApplicationUser.HasValue && x.ApplicationUser.Value > 0);
+				return View(u.ToList());
+			}
+
 		}
 	}
 }
