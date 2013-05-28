@@ -40,11 +40,6 @@ namespace cms.Controllers.Api
 			};
 		}
 
-		public override OAuthResponse AccessToken(string requestToken, string grantType, string userName, string password, bool persistent)
-		{
-			throw new NotImplementedException();
-		}
-
 		public override OAuthResponse AccessToken(OAuthRequest rq, Guid applicationId)
 		{
 			if (WebSecurityApplication.Login(applicationId, rq.UserName, rq.Password, rq.Persistent))
@@ -68,7 +63,6 @@ namespace cms.Controllers.Api
 				user.AccessToken = token.AccessToken;
 				user.RefreshToken = token.RefreshToken;
 				user.Expire = token.Expire;
-
 				repo.SaveChanges();
 			
 				return new OAuthResponse
@@ -101,7 +95,8 @@ namespace cms.Controllers.Api
 		{
 			using (var repo = new EfRepositoryApplication(ApplicationId))
 			{
-				return repo.UserProfile.FirstOrDefault(x => x.AccessToken == token && !x.IsAccessTokenExpired);
+				var userprofile =  repo.UserProfile.FirstOrDefault(x => x.AccessToken == token);
+				return userprofile != null && !userprofile.IsAccessTokenExpired ? userprofile : null;
 			}
 		}
 

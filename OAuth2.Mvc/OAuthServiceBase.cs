@@ -8,7 +8,6 @@ namespace OAuth2.Mvc
     public interface IOAuthService 
     {
         OAuthResponse RequestToken();
-        OAuthResponse AccessToken(string requestToken, string grantType, string userName, string password, bool persistent);
 		OAuthResponse AccessToken(OAuthRequest rq, Guid applicationId);
 
 		OAuthResponse RefreshToken(string refreshToken);
@@ -25,8 +24,6 @@ namespace OAuth2.Mvc
 
         public abstract OAuthResponse RequestToken();
 
-	    public abstract OAuthResponse AccessToken(string requestToken, string grantType, string userName, string password, bool persistent);
-	
 		public abstract OAuthResponse AccessToken(OAuthRequest rq, Guid applicationId);
 
         public abstract OAuthResponse RefreshToken(string refreshToken);

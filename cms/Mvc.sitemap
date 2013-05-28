@@ -9,6 +9,7 @@
 			<mvcSiteMapNode title="obsah" controller="Admin" action="Grids" />
 			<mvcSiteMapNode title="nastavení" controller="Gdata" action="Index"/>
 			<mvcSiteMapNode title="uživatelé" controller="CmsUsers" action="Index"/>
+			<mvcSiteMapNode title="uživatelé list " controller="CmsUsers" action="GetUsers"/>
 		</mvcSiteMapNode>
 	</mvcSiteMapNode>
 </mvcSiteMap>

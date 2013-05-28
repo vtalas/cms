@@ -66,10 +66,14 @@ namespace cms
 				.IncludeDirectory("~/Scripts/Controllers", "*.js")
 				.IncludeDirectory("~/Scripts/Controllers", "*.coffee");
 
+			var modules = new Bundle("~/Scripts/modules_scripts", transforms)
+				.IncludeDirectory("~/Scripts/modules", "*.js");
+
 
 			BundleTable.Bundles.Add(testbundle);
 			BundleTable.Bundles.Add(adminBundle);
 			BundleTable.Bundles.Add(controllers);
+			BundleTable.Bundles.Add(modules);
 
 			AreaRegistration.RegisterAllAreas();
 			RegisterGlobalFilters(GlobalFilters.Filters);

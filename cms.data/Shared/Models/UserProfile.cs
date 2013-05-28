@@ -21,7 +21,7 @@ namespace cms.data.Shared.Models
 			Applications = new Collection<ApplicationSetting>();
 			ApplicationUser = 0;
 			AccessToken = Guid.NewGuid().ToString("N");
-			Expire = (long)DateTime.UtcNow.AddMinutes(2).Subtract(Start).TotalSeconds;
+			Expire = (long)DateTime.UtcNow.AddMinutes(20).Subtract(Start).TotalSeconds;
 			RefreshToken = Guid.NewGuid().ToString("N");
 
 		}
@@ -44,7 +44,7 @@ namespace cms.data.Shared.Models
 		{
 			get
 			{
-				var valid = Expire.HasValue && DateTime.UtcNow.Subtract(Start).TotalSeconds > Expire.Value;
+				var valid = Expire.HasValue && DateTime.UtcNow.Subtract(Start).TotalSeconds < Expire.Value;
 				return !valid;
 			}
 		}

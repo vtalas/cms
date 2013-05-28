@@ -432,9 +432,12 @@
     <Content Include="Scripts\Admin\angular-ui-ext-dndClass.ts" />
     <Content Include="Scripts\Admin\controller.gDataPhotos.js" />
     <Content Include="Scripts\Admin\controller.gdataPhotosSettings.js" />
+    <Content Include="Scripts\modules\module.appSettings.js" />
+    <Content Include="Scripts\modules\module.cmsUsers.js" />
+    <Content Include="Scripts\Controllers\controller.cmsUsersList.js" />
     <Content Include="Scripts\Admin\directive.ngcClickEdit.js" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
-    <Content Include="Scripts\Admin\module.admin-index.js" />
+    <Content Include="Scripts\modules\module.admin-index.js" />
     <Content Include="Scripts\angular-ui-ext.js" />
     <Content Include="Scripts\angular-ui.js" />
     <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
@@ -449,7 +452,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Scripts\Admin\cmsapi.js" />
+    <Content Include="Scripts\modules\module.cmsapi.js" />
     <Content Include="Scripts\Admin\gridpagesCtrl.js" />
     <Content Include="Scripts\Admin\pageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
