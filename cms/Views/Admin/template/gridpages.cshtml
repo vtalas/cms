@@ -18,11 +18,11 @@
 			<img src="/Content/loader16.gif" /></h3>
 	</div>
 	<div class="row row-gridpages color" ng-repeat="grid in data" ngc-hover="">
-		<div class="span5" >
-			<div style="width: 5px;background-color: {{authColor(grid)}};height:47px;float: left">&nbsp;</div>
+		<div class="span5">
+			<div style="width: 5px; background-color: {{authColor(grid)}}; height: 47px; float: left">&nbsp;</div>
 			<span style="width: 2em" class="font-icon  {{grid.Category}}" tooltip="{{authTooltip(grid)}}" tooltip-popup-delay='300'></span>
 
-			<input  ng-show="grid.Edit" type="checkbox" ng-model="grid.Authorize"
+			<input ng-show="grid.Edit" type="checkbox" ng-model="grid.Authorize"
 				tooltip-popup-delay='600'
 				tooltip-html-unsafe="<div style='text-align:left'><b>Autorizace</b><div> <div style='text-align:left'>pokud je zaškrtnuto tak je obsah zobrazen jen po přihlášení</div>" />
 

@@ -79,7 +79,7 @@
             { applicationId: appSettings.Id, controller: "CmsUsersApi" },
             {
                 getUsers: { method: 'GET', isArray: true, params: { action: "GetUsers" } },
-                addUser: { method: 'PUT', isArray: false, params: { action: "PostUser" } }
+                postUser: { method: 'POST', isArray: false, params: { action: "PostUser" } }
             }
         );
     }]);

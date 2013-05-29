@@ -1,8 +1,6 @@
 ﻿using System.Web.Http.Controllers;
 using WebMatrix.WebData;
 using cms.data.EF;
-using cms.data.EF.DataProviderImplementation;
-using cms.data.EF.Initializers;
 
 namespace cms.Controllers.Api
 {

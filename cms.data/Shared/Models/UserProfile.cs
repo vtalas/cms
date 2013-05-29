@@ -8,7 +8,7 @@ namespace cms.data.Shared.Models
 	[Table("UserProfile")]
 	public class UserProfile
 	{
-		public DateTime Start
+		private DateTime Start
 		{
 			get
 			{

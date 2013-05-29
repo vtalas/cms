@@ -38,5 +38,11 @@ namespace cms.shared
 			var appUserName = ApplicationUserName(id, username);
 			return WebSecurity.UserExists(appUserName);
 		}
+
+		public static bool ChangePassword(Guid applicationId, string userName, string currentPassword, string newPassword)
+		{
+			var appUserName = ApplicationUserName(applicationId, userName);
+			return WebSecurity.ChangePassword(appUserName, currentPassword, newPassword);
+		}
 	}
 }
