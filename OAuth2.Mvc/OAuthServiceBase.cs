@@ -29,7 +29,5 @@ namespace OAuth2.Mvc
         public abstract OAuthResponse RefreshToken(string refreshToken);
 
         public abstract bool UnauthorizeToken(string token);
-
-	    public abstract UserProfile GetAcccesToken(string token);
     }
 }

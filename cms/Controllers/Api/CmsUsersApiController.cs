@@ -5,6 +5,7 @@ using System.Web.Http;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
+using cms.data.Shared;
 using cms.shared;
 
 namespace cms.Controllers.Api

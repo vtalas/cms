@@ -41,7 +41,7 @@ namespace cms.data.EF.RepositoryImplementation
 
 		public UserData Add(UserData item)
 		{
-			throw new System.NotImplementedException();
+			return db.UserData.Add(item);
 		}
 
 		public GridElement Add(GridElement item)

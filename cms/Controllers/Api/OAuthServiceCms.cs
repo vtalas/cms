@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using OAuth2.Mvc;
+using WebMatrix.WebData;
 using cms.Code.MvcOauth;
 using cms.data.EF.RepositoryImplementation;
+using cms.data.Shared;
 using cms.data.Shared.Models;
 using cms.shared;
 
@@ -90,16 +92,5 @@ namespace cms.Controllers.Api
 		{
 			throw new System.NotImplementedException();
 		}
-
-		public override UserProfile GetAcccesToken(string token)
-		{
-			using (var repo = new EfRepositoryApplication(ApplicationId))
-			{
-				var userprofile =  repo.UserProfile.FirstOrDefault(x => x.AccessToken == token);
-				return userprofile != null && !userprofile.IsAccessTokenExpired ? userprofile : null;
-			}
-		}
-
-
 	}
 }

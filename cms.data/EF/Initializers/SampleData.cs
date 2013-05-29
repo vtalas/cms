@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Web.Security;
 using WebMatrix.WebData;
 using cms.data.Extensions;
+using cms.data.Shared;
 using cms.data.Shared.Models;
 using cms.shared;
 using System.Linq;

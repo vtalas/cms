@@ -7,11 +7,16 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using Google.Picasa;
 using OAuth2.Mvc;
+using WebMatrix.WebData;
 using cms.Code.LinkAccounts.Picasa;
 using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
+using cms.data.EF.RepositoryImplementation;
+using cms.data.Extensions;
 using cms.data.Shared;
+using cms.data.Shared.Models;
+using cms.shared;
 
 namespace cms.Controllers.Api
 {
@@ -40,7 +45,6 @@ namespace cms.Controllers.Api
 
 				if (page.Authorize && !Auth())
 				{
-					Thread.Sleep(2000);
 					throw new HttpResponseException(HttpStatusCode.Unauthorized); 
 				}
 				return page;
@@ -52,7 +56,7 @@ namespace cms.Controllers.Api
 		{
 			var cookies = ControllerContext.Request.Headers.GetCookies();
 			var token = cookies.Count > 0 ? cookies[0].Cookies.First(x => x.Name == "oauth_token").Value : null;
-			var a = oauthservice.GetAcccesToken(token);
+			var a = WebSecurityApplication.GetUserProfile(ApplicationId, token);
 			return a != null;
 		}
 
@@ -96,10 +100,27 @@ namespace cms.Controllers.Api
 
 		public string PutUserData([FromBody]string userData)
 		{
-			//Authorize();
-			var x = userData;
-			return x;
+			Authorize();
+			var data = new UserData
+			{
+				Key = "xxx",
+				Value = userData
+			};
 
+
+			using (var repo = new EfRepositoryApplication(ApplicationId))
+			{
+				var user = WebSecurityApplication.CurrentUser();
+				if (user == null)
+				{
+					throw new HttpResponseException(HttpStatusCode.Unauthorized);
+				}
+				data.User = user;
+				repo.Add(data);
+				repo.SaveChanges();
+			}
+	
+			return userData;
 		}
 
 		public IEnumerable<Album> GetAlbums()
