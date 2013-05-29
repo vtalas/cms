@@ -68,7 +68,7 @@
     <Compile Include="DataProvider\Settings.cs" />
     <Compile Include="Dtos\UserProfileDto.cs" />
     <Compile Include="EF\DataProviderImplementation\DataEfPublic.cs" />
-    <Compile Include="EF\RepositoryImplementation\Copy of EfRepository.cs" />
+    <Compile Include="EF\RepositoryImplementation\EfRepositoryApplication.cs" />
     <Compile Include="Repository\ApplicationsRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Shared\Models\ApplicationSettingStorage.cs" />

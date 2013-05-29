@@ -98,13 +98,14 @@ namespace cms.Controllers.Api
 			return accessResponse;
 		}
 
-		public string PutUserData([FromBody]string userData)
+		public string PutUserData([FromBody]string data, string id)
 		{
 			Authorize();
-			var data = new UserData
+
+			var userData = new UserData
 			{
-				Key = "xxx",
-				Value = userData
+				Key = string.IsNullOrEmpty(id) ? "default" : id,
+				Value = data
 			};
 
 			using (var repo = new EfRepositoryApplication(ApplicationId))
@@ -114,12 +115,12 @@ namespace cms.Controllers.Api
 				{
 					throw new HttpResponseException(HttpStatusCode.Unauthorized);
 				}
-				data.User = user;
-				repo.Add(data);
+				userData.User = user;
+				repo.Add(userData);
 				repo.SaveChanges();
 			}
 	
-			return userData;
+			return data;
 		}
 
 		public IEnumerable<Album> GetAlbums()
