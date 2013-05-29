@@ -1,7 +1,7 @@
 ﻿@using cms.shared
 @{
-	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
-	ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
+    Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
+    ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
 }
 
 <div ng-app="cmsusers"
@@ -11,68 +11,74 @@
 	 class="gridsmodule"
 	>
 
-	<div ng-controller="cmsUsersList" id="admin-cmsUsers">
-		<div ng-show="data.length == 0">
-			<h3 class="text-error">nemáte žádné uživatele, vytvořte nového.</h3>
-		</div>
+    <div ng-controller="cmsUsersList" id="admin-cmsUsers">
+        <div ng-show="data.length == 0">
+            <h3 class="text-error">nemáte žádné uživatele, vytvořte nového.</h3>
+        </div>
 
-		<div ng-show="!data">
-			<h3>
-				<img src="/Content/loader16.gif" /></h3>
-		</div>
+        <div ng-show="!data">
+            <h3>
+                <img src="/Content/loader16.gif" /></h3>
+        </div>
 
-		<div class="row row-gridpages color" ng-repeat="user in data" ngc-hover="">
-			<div class="span5">
-				<a href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{user.UserName}}</a>
-			</div>
-			<div class="span5">
-				<div ng-show="user.Edit" class="gridpage-input">
-					<input ng-model="user.Password" required placeholder="nové heslo"/>
-				</div>
+        <div class="row row-gridpages color" ng-repeat="user in data" ngc-hover="">
+            <div class="span5">
+                <a href="#" class="btn btn-link align-left">{{user.UserName}}</a>
+            </div>
+            <div class="span5">
+                <div ng-show="user.Edit" class="gridpage-input">
+                    <input ng-model="user.Password" required placeholder="nové heslo" />
+                </div>
 
-			</div>
-			<div class="span2">
-				<button class="btn" ng-hide="user.Edit" ng-click="edit(user)" tooltip-popup-delay='500' tooltip="editace">
-					<i class="icon-pencil"></i>
-				</button>
-				<button class="btn btn-success" ng-show="user.Edit" ng-click="save(user)">
-					<i class="icon-ok"></i>
-				</button>
-				<button class="btn" ng-show="user.Edit" ng-click="cancelEdit(user)" tooltip-popup-delay='500' tooltip="zrušit editaci">
-					<i class="icon-remove"></i>
-				</button>
+            </div>
+            <div class="span2">
+                <button class="btn" ng-hide="user.Edit" ng-click="edit(user)" tooltip-popup-delay='500' tooltip="editace">
+                    <i class="icon-pencil"></i>
+                </button>
+                <button class="btn btn-success" ng-show="user.Edit" ng-click="save(user)">
+                    <i class="icon-ok"></i>
+                </button>
+                <button class="btn" ng-show="user.Edit" ng-click="cancelEdit(user)" tooltip-popup-delay='500' tooltip="zrušit editaci">
+                    <i class="icon-remove"></i>
+                </button>
 
-				@*				<button class="btn" ng-click="delete(user)" tooltip-popup-delay='500' tooltip="smazat">
+                @*				<button class="btn" ng-click="delete(user)" tooltip-popup-delay='500' tooltip="smazat">
 					<i class="icon-trash"></i>
 				</button>*@
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<div class="row row-gridpages newitem" style="padding-top: 5px; padding-bottom: 5px;">
-			<form>
-				<div class="span4">
-					<div style="margin-left: 4em; margin-top: 10px;" ngc-click-edit="newitem.UserName"
-						template-preview="#preview"
-						template-edit="#edit"
-						placeholder="uživatelské jméno">
-					</div>
-				</div>
-				<div class="span4">
-					<div ngc-click-edit="newitem.Password"
-						template-preview="#preview"
-						template-edit="#edit"
-						style="margin-top: 10px;"
-						placeholder="heslo">
-					</div>
-				</div>
-				<div class="span2">
-					<button class="btn btn-success " type="submit" ng-click="newItemAdd()">přidat</button>
-				</div>
-			</form>
-		</div>
+        <div class="row row-gridpages newitem" style="padding-top: 5px; padding-bottom: 5px;">
+            <form>
+                <div class="span4">
+                    <div style="margin-left: 4em; margin-top: 10px;" ngc-click-edit="newitem.UserName"
+                        template-preview="#preview"
+                        template-edit="#edit"
+                        placeholder="uživatelské jméno">
+                    </div>
+                </div>
+                <div class="span4">
+                    <div ngc-click-edit="newitem.Password"
+                        template-preview="#preview"
+                        template-edit="#edit"
+                        style="margin-top: 10px;"
+                        placeholder="heslo">
+                    </div>
+                </div>
+                <div class="span2">
+                    <button class="btn btn-success " type="submit" ng-click="newItemAdd()">přidat</button>
+                </div>
+            </form>
+        </div>
+        <div class="alert alert-error" ng-show="message" style="margin-bottom: 3px;margin-top: 3px">
+            <b>Chyba:</b>
+            {{message}}
+        </div>
 
 
-	</div>
+
+
+    </div>
 </div>
 
 

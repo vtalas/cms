@@ -10,34 +10,39 @@ var cmsUsersList = ['$scope', 'cmsUsersApi', function ($scope, cmsUsersApi) {
 
 	$scope.save = function(user) {
 		user.Edit = false;
-		console.log("save");
+		cmsUsersApi.putUser(user, function () {
+		    user.Password = "";
+		});
 	};
 	$scope.edit = function(user) {
 		user.Edit = true;
-		console.log("edit");
 	};
-	$scope.delete = function(parameters) {
+	$scope.delete = function() {
 		console.log("delete");
 	};
 	$scope.cancelEdit = function (user) {
 		user.Edit = false;
-		console.log("cancel");
 	};
 
-
 	$scope.newItemAdd = function () {
-		console.log($scope.newitem);
-		cmsUsersApi.postUser($scope.newitem, function (data) {
+		cmsUsersApi.postUser($scope.newitem, function () {
 			loadUsers();
-			newItemReset();
+			reset();
 		}, function (err) {
-			console.log(err);
+		    switch (err.status) {
+		        case 409:
+		            $scope.message = " uživatel '" +$scope.newitem.UserName+ "' uz existuje.";
+		            break;
+		        default:
+		            $scope.message = "nesprávně vyplněné údaje.";
+		    }
 		});
 	};
 
-	var newItemReset = function () {
+	var reset = function () {
 		$scope.newitem.UserName = "";
 		$scope.newitem.Password = "";
+	    $scope.message = null;
 	};
 
 	$scope.$on("ngcClickEdit.showEdit", function () {
@@ -45,7 +50,7 @@ var cmsUsersList = ['$scope', 'cmsUsersApi', function ($scope, cmsUsersApi) {
 	});
 	
 	$scope.$on("ngcClickEdit.showPreview", function () {
-		newItemReset();
+		reset();
 		$scope.newItemEdit = false;
 	});
 

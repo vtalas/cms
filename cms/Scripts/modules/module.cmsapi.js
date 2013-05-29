@@ -79,7 +79,8 @@
             { applicationId: appSettings.Id, controller: "CmsUsersApi" },
             {
                 getUsers: { method: 'GET', isArray: true, params: { action: "GetUsers" } },
-                postUser: { method: 'POST', isArray: false, params: { action: "PostUser" } }
+                postUser: { method: 'POST', isArray: false, params: { action: "PostUser" } },
+                putUser: { method: 'PUT', isArray: false, params: { action: "PutUser" } }
             }
         );
     }]);

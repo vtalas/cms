@@ -4,10 +4,8 @@ using System.Web.Security;
 
 namespace cms.shared
 {
-
 	public class WebSecurityApplication
 	{
-	
 		public static bool Login(Guid id, string username, string password, bool persisetent)
 		{
 			var appUserName = ApplicationUserName(id, username);
@@ -43,6 +41,13 @@ namespace cms.shared
 		{
 			var appUserName = ApplicationUserName(applicationId, userName);
 			return WebSecurity.ChangePassword(appUserName, currentPassword, newPassword);
+		}
+
+		public static bool SetPassword(Guid applicationId, string userName,string newPassword)
+		{
+			var appUserName = ApplicationUserName(applicationId, userName);
+			var token = WebSecurity.GeneratePasswordResetToken(appUserName);
+			return WebSecurity.ResetPassword(token, newPassword);
 		}
 	}
 }

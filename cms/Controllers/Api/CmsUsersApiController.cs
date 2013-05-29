@@ -2,10 +2,9 @@
 using System.Linq;
 using System.Net;
 using System.Web.Http;
-using WebMatrix.WebData;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
-using cms.data.Shared.Models;
+using cms.data.Extensions;
 using cms.shared;
 
 namespace cms.Controllers.Api
@@ -13,12 +12,12 @@ namespace cms.Controllers.Api
 	[System.Web.Mvc.Authorize(Roles = "admin")]
 	public class CmsUsersApiController : CmsWebApiControllerBase
 	{
-		public IList<UserProfile> GetUsers()
+		public IList<UserProfileDto> GetUsers()
 		{
 			using (var repo = new EfRepositoryApplication(ApplicationId))
 			{
 				var u = repo.UserProfile.Where(x => x.ApplicationUser.HasValue && x.ApplicationUser.Value > 0);
-				return u.ToList();
+				return u.ToDtos();
 			}
 		}
 
@@ -54,22 +53,9 @@ namespace cms.Controllers.Api
 				throw new HttpResponseException(HttpStatusCode.BadRequest);
 			}
 
-			using (var repo = new EfRepository())
-			{
-				var userId = WebSecurityApplication.GetUserId(ApplicationId, user.UserName);
-				
-				WebSecurityApplication.ChangePassword(ApplicationId, user.UserName, TODO, TODO);
-				
+			WebSecurityApplication.SetPassword(ApplicationId, user.UserName, user.Password);
 
-				WebSecurity.ResetPassword()
-				var u = repo.UserProfile.SingleOrDefault(x => x.Id == userId);
-				u.ApplicationUser = 1;
-				u.Applications.Add(repo.ApplicationSettings.Single(x=>x.Id == ApplicationId));
-				repo.SaveChanges();
-
-			}
-
-			return HttpStatusCode.Created;
+			return HttpStatusCode.OK;
 		}
 	}
 

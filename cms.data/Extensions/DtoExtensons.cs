@@ -207,9 +207,14 @@ namespace cms.data.Extensions
 			return new UserProfileDto
 			{
 				Id = user.Id,
-				UserName = user.UserName,
+				UserName = user.UserName.Split('_')[1],
 				ApplicationUser = user.ApplicationUser.HasValue && user.ApplicationUser.Value > 0
 			};
+		}
+
+		public static IList<UserProfileDto> ToDtos(this IEnumerable<UserProfile> users)
+		{
+			return users.Select(x => ToDto(x)).ToList();	
 		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using Google.Picasa;
@@ -39,6 +40,7 @@ namespace cms.Controllers.Api
 
 				if (page.Authorize && !Auth())
 				{
+					Thread.Sleep(2000);
 					throw new HttpResponseException(HttpStatusCode.Unauthorized); 
 				}
 				return page;
@@ -58,6 +60,7 @@ namespace cms.Controllers.Api
 		{
 			if (!Auth())
 			{
+				Thread.Sleep(2000);
 				throw new HttpResponseException(HttpStatusCode.Unauthorized);
 			}
 		}
@@ -84,6 +87,7 @@ namespace cms.Controllers.Api
 			var accessResponse = oauthservice.AccessToken(data, ApplicationId);
 			if (!accessResponse.Success)
 			{
+				Thread.Sleep(2000);
 				throw new HttpResponseException(HttpStatusCode.Unauthorized);
 			}
 
