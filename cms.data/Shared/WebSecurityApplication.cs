@@ -60,11 +60,13 @@ namespace cms.data.Shared
 			using (var repo = new EfRepositoryApplication(applicationId))
 			{
 				var userprofile =  repo.UserProfile.FirstOrDefault(x => x.AccessToken == token);
-				if (userprofile != null && !userprofile.IsAccessTokenExpired)
+				if (userprofile != null && userprofile.IsAccessTokenExpired)
 				{
-					AccessToken = token;
-					ApplicationId = applicationId;
+					return null;
 				}
+
+				AccessToken = token;
+				ApplicationId = applicationId;
 				return userprofile;
 			}
 		}

@@ -107,10 +107,9 @@ namespace cms.Controllers.Api
 				Value = userData
 			};
 
-
 			using (var repo = new EfRepositoryApplication(ApplicationId))
 			{
-				var user = WebSecurityApplication.CurrentUser();
+				var user = repo.UserProfile.FirstOrDefault(x => x.AccessToken == WebSecurityApplication.AccessToken);
 				if (user == null)
 				{
 					throw new HttpResponseException(HttpStatusCode.Unauthorized);
