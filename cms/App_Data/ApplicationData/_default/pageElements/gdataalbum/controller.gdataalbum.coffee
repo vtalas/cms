@@ -18,7 +18,6 @@ gdataalbum = ($scope, gdataPhotos, appSettings) ->
 	gridelement = $scope.$parent.gridelement;
 	$scope.showGdataAlbumsValue = false;
 
-
 	$scope.applicationId = appSettings.Id;
 
 	gdataPhotos.getAlbums((data) ->

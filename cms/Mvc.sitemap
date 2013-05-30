@@ -6,7 +6,7 @@
 
 	<mvcSiteMapNode title="aplikace" controller="Admin" action="Applications">
 		<mvcSiteMapNode title="dashboard" controller="Admin" action="Dashboard" key="xxx" >
-			<mvcSiteMapNode title="obsah" controller="Admin" action="Grids" />
+			<mvcSiteMapNode title="stránky" controller="Admin" action="Grids" />
 			<mvcSiteMapNode title="nastavení" controller="Gdata" action="Index"/>
 			<mvcSiteMapNode title="uživatelé" controller="CmsUsers" action="Index"/>
 			<mvcSiteMapNode title="uživatelé list " controller="CmsUsers" action="GetUsers"/>

@@ -238,6 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\clientspecific\clientspecific.js" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
       <SubType>Designer</SubType>
@@ -256,6 +257,9 @@
     </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\text\controller.text.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\clientspecific\clientspecific.thtml">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <Content Include="App_Data\bootstrap\less\variables.css">
@@ -518,7 +522,6 @@
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\_AdminTemplates\_Layout_Appllication.cshtml" />
     <Content Include="Views\client\test1\Index.cshtml" />
-    <Content Include="Content\Apps\test1\StaticContent.html" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />

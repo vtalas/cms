@@ -32,15 +32,22 @@
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li title="neformátovaná text"><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">text </a>
+				<li tooltip="neformátovaný text">
+					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">text </a>
 				</li>
-@*				<li><a href="#"
+				@*				<li><a href="#"
 					ng-click="addWithType(newItem, data.Id, data.GridElements, 'novinka', $event )">novinka </a></li>*@
-				<li title="formátovaný text - markdown" ><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'simplehtml', $event )">Markdown</a></li>
-@*				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'reference', $event )">Reference </a>
+				<li tooltip="formátovaný text - markdown">
+					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'simplehtml', $event )">Markdown</a>
+				</li>
+				@*				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'reference', $event )">Reference </a>
 				</li>*@
-				<li title="Album z připojeného Google úložiště"><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'gdataalbum', $event )">Google
-					    Album</a></li>
+				<li tooltip="album z připojeného Google úložiště">
+					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'gdataalbum', $event )">Google Album</a>
+				</li>
+				<li tooltip="obsah definován HTML šablonou na klientovi">
+					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'clientspecific', $event )">Klientská šablona</a>
+				</li>
 			</ul>
 		</div>
 	</div>

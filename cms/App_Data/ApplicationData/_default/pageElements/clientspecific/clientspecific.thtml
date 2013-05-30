@@ -1,0 +1,45 @@
+﻿<style>
+	.gdataAlbum {
+	display: inline-block;
+	margin: 5px;
+	}
+
+	.gdataThumb {
+	display: inline-block;
+	}
+
+	.gdataThumb:hover {
+	cursor: pointer;
+	}
+
+	.gdataDetail {
+	display: inline-block;
+	}
+
+	.gdata-album-placeholder {
+	width: 160px;
+	height: 160px;
+	border: 1px dashed #d5d5d5;
+	}
+
+	.gdata-album-preview {
+	width: 160px;
+	height: 160px;
+	border: 1px solid #d5d5d5;
+	}
+
+</style>
+
+<div ng-controller="clientspecific" class="row">
+	<div class="gridelement-content" style="float:left;min-width:50%;">
+		
+		<div ng-controller="text"  class="row">
+			<div class="span{{gridelement.Width}}">
+				<div class="gridelement-content">
+					<span ngc-click-edit="gridelement.Skin" type="input" placeholder="šablona"></span>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>

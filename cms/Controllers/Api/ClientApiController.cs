@@ -64,7 +64,6 @@ namespace cms.Controllers.Api
 		{
 			if (!Auth())
 			{
-				Thread.Sleep(2000);
 				throw new HttpResponseException(HttpStatusCode.Unauthorized);
 			}
 		}
