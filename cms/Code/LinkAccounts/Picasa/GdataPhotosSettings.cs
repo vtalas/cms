@@ -8,13 +8,6 @@
 		public int MediumHeight { get; set; }
 		public int LargeWidth { get; set; }
 		public int LargeHeight { get; set; }
-
-		private int Crap = 123123123;
-		public GdataPhotosSettings()
-		{
-		
-		}
-
 	}
 
 }

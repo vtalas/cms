@@ -7,25 +7,21 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using Google.Picasa;
 using OAuth2.Mvc;
-using WebMatrix.WebData;
 using cms.Code.LinkAccounts.Picasa;
 using cms.data.Dtos;
 using cms.data.EF;
 using cms.data.EF.DataProviderImplementation;
 using cms.data.EF.RepositoryImplementation;
-using cms.data.Extensions;
 using cms.data.Shared;
 using cms.data.Shared.Models;
-using cms.shared;
 
 namespace cms.Controllers.Api
 {
 	public class ClientApiController : CmsWebApiControllerBase
 	{
-		private OAuthServiceBase oauthservice { get; set; } 
+		private OAuthServiceBase Oauthservice { get; set; } 
 		public SessionProvider SessionFactory { get; set; }
 		public PicasaServiceProvider PicasaProvider { get; set; }
-
 
 		protected override void Initialize(HttpControllerContext requestContext)
 		{
@@ -33,8 +29,7 @@ namespace cms.Controllers.Api
 			SecurityProvider.EnsureInitialized();
 			SessionFactory = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
 			PicasaProvider = new PicasaServiceProvider(() => new PicasaWrapper(SessionFactory));
-			oauthservice = new OAuthServiceCms(ApplicationId);
-
+			Oauthservice = new OAuthServiceCms(ApplicationId);
 		}
 
 		public GridPageDto GetPage(string id)
@@ -78,7 +73,7 @@ namespace cms.Controllers.Api
 
 		public OAuthRequest GetLogin()
 		{
-			var response = oauthservice.RequestToken();
+			var response = Oauthservice.RequestToken();
 			return new OAuthRequest
 			{
 				RequestToken = response.RequestToken
@@ -87,7 +82,7 @@ namespace cms.Controllers.Api
 
 		public OAuthResponse PostLogin(OAuthRequest data)
 		{
-			var accessResponse = oauthservice.AccessToken(data, ApplicationId);
+			var accessResponse = Oauthservice.AccessToken(data, ApplicationId);
 			if (!accessResponse.Success)
 			{
 				Thread.Sleep(2000);
@@ -100,7 +95,6 @@ namespace cms.Controllers.Api
 		public string PutUserData([FromBody]string data, string id)
 		{
 			Authorize();
-
 			var userData = new UserData
 			{
 				Key = string.IsNullOrEmpty(id) ? "default" : id,

@@ -23,9 +23,7 @@ namespace cms.data.Shared.Models
 			AccessToken = Guid.NewGuid().ToString("N");
 			Expire = (long)DateTime.UtcNow.AddMinutes(20).Subtract(Start).TotalSeconds;
 			RefreshToken = Guid.NewGuid().ToString("N");
-
 		}
-
 
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
@@ -48,6 +46,7 @@ namespace cms.data.Shared.Models
 				return !valid;
 			}
 		}
+
 //		public DateTime ExpireDate
 //		{
 //			get
