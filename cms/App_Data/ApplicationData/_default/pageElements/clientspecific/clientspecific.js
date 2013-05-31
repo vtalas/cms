@@ -9,5 +9,4 @@ var clientspecific  = function($scope) {
 //		$scope.$emit("gridelement-save", gridelement);
 	});
 
-
 }

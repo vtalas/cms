@@ -92,7 +92,7 @@ namespace cms.Controllers.Api
 			return accessResponse;
 		}
 
-		public string PutUserData([FromBody]string data, string id)
+		public string PostUserData([FromBody]string data, string id)
 		{
 			Authorize();
 			var userData = new UserData
