@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using cms.data.DataProvider;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -12,7 +11,7 @@ namespace cms.data.Extensions
 	public static class DtoExtensons
 	{
 		//TODO: tohle je nahovno
-		static string _currentCulture{ get {return SharedLayer.Culture; } }
+		static string _currentCulture { get { return SharedLayer.Culture; } }
 
 		public static bool IsEmpty(this Guid s)
 		{
@@ -41,7 +40,7 @@ namespace cms.data.Extensions
 
 		public static IList<ApplicationSettingDto> ToDtos(this IEnumerable<ApplicationSetting> source)
 		{
-			return source.Select(item => ToDto((ApplicationSetting) item)).ToList();
+			return source.Select(item => ToDto((ApplicationSetting)item)).ToList();
 		}
 
 		public static IList<GridElementDto> ToDtos(this ICollection<GridElement> source)
@@ -66,7 +65,7 @@ namespace cms.data.Extensions
 		public static Resource ToResource(this ResourceDtoLoc s, string key, Guid owner, string culture)
 		{
 			var cultureUpadated = JsonDataEfHelpers.CorrectCulture(key, culture);
-	
+
 			return new Resource
 					{
 						Id = s.Id,
@@ -82,7 +81,7 @@ namespace cms.data.Extensions
 			var children = new List<MenuItemDto>();
 			if (source.Any(x => x.Parent != null && x.Parent.Id == item.Id))
 			{
-				children = source.Where(x => x.Parent != null && x.Parent.Id == item.Id).Select(x => x.ToMenuItemDto(source)).OrderBy(a=>a.Position).ToList();
+				children = source.Where(x => x.Parent != null && x.Parent.Id == item.Id).Select(x => x.ToMenuItemDto(source)).OrderBy(a => a.Position).ToList();
 			}
 
 			return children;
@@ -103,7 +102,7 @@ namespace cms.data.Extensions
 			a.Children = getchildren(source, allElements);
 			return a;
 		}
-		
+
 		public static GridElementDto ToDto(this GridElement source)
 		{
 			return new GridElementDto
@@ -202,6 +201,17 @@ namespace cms.data.Extensions
 			return gridElement;
 		}
 
+		public static UserDataDto ToDto(this UserData data)
+		{
+			return new UserDataDto
+			{
+				Id = data.Id,
+				UserName = data.User.UserName.Split('_')[1],
+				Key = data.Key,
+				Created = data.Created.ToLocalTime(),
+				Value = data.Value
+			};
+		}
 		public static UserProfileDto ToDto(this UserProfile user)
 		{
 			return new UserProfileDto
@@ -214,7 +224,12 @@ namespace cms.data.Extensions
 
 		public static IList<UserProfileDto> ToDtos(this IEnumerable<UserProfile> users)
 		{
-			return users.Select(x => ToDto(x)).ToList();	
+			return users.Select(ToDto).ToList();
 		}
+
+		public static IList<UserDataDto> ToDtos(this ICollection<UserData> data) 
+		{
+			return data.Select(ToDto).ToList();
+		} 
 	}
 }

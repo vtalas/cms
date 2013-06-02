@@ -26,26 +26,26 @@
 	</div>
 
 	<div>
-		<div class="btn-group" title="vložit šablonu podle typu">
+		<div class="btn-group" tooltip="vložit šablonu podle typu" tooltip-placement="left" tooltip-popup-delay="500">
 			<button ng-click="addToEnd(newItem, data.Id, data.GridElements)" class="btn">{{newItem.Type}}</button>
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li tooltip="neformátovaný text">
+				<li>
 					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">text </a>
 				</li>
 				@*				<li><a href="#"
 					ng-click="addWithType(newItem, data.Id, data.GridElements, 'novinka', $event )">novinka </a></li>*@
-				<li tooltip="formátovaný text - markdown">
+				<li>
 					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'simplehtml', $event )">Markdown</a>
 				</li>
 				@*				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'reference', $event )">Reference </a>
 				</li>*@
-				<li tooltip="album z připojeného Google úložiště">
+				<li>
 					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'gdataalbum', $event )">Google Album</a>
 				</li>
-				<li tooltip="obsah definován HTML šablonou na klientovi">
+				<li >
 					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'clientspecific', $event )">Klientská šablona</a>
 				</li>
 			</ul>

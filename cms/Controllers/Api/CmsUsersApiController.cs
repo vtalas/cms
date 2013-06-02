@@ -1,11 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
 using cms.data.Shared;
+using cms.data.Shared.Models;
 using cms.shared;
 
 namespace cms.Controllers.Api
@@ -39,7 +45,7 @@ namespace cms.Controllers.Api
 				var userId = WebSecurityApplication.GetUserId(ApplicationId, user.UserName);
 				var u = repo.UserProfile.SingleOrDefault(x => x.Id == userId);
 				u.ApplicationUser = 1;
-				u.Applications.Add(repo.ApplicationSettings.Single(x=>x.Id == ApplicationId));
+				u.Applications.Add(repo.ApplicationSettings.Single(x => x.Id == ApplicationId));
 				repo.SaveChanges();
 
 			}
@@ -57,6 +63,28 @@ namespace cms.Controllers.Api
 			WebSecurityApplication.SetPassword(ApplicationId, user.UserName, user.Password);
 
 			return HttpStatusCode.OK;
+		}
+
+		public IList<UserDataDto> GetUserData()
+		{
+			using (var repo = new EfRepositoryApplication(ApplicationId))
+			{
+
+				return repo.UserData.ToList().ToDtos();
+			}
+		}
+		public HttpResponseMessage GetUserDataJSON()
+		{
+			using (var repo = new EfRepositoryApplication(ApplicationId))
+			{
+				var resp = new HttpResponseMessage
+				{
+					Content = new ObjectContent<IList<UserDataDto>>(repo.UserData.ToList().ToDtos(), new JsonMediaTypeFormatter())
+				};
+
+				resp.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+				return resp;
+			}
 		}
 	}
 

@@ -1,15 +1,7 @@
-﻿<div id="admin-gridpages">
-	<div class="row row-gridpages header">
-		<div class="span5">
-			<span class="font-icon">&nbsp;</span>
-			<a href="#" class="btn btn-link align-left">Jméno</a>
-		</div>
-		<div class="span4 btn-block">
-			<a href="#" class="btn btn-link align-left" style="padding-left: 0px">Link</a>
-		</div>
-		<div class="span3 hider">
-		</div>
-	</div>
+﻿<p>&nbsp;</p>
+
+<div id="admin-gridpages">
+
 	<div ng-show="data.length == 0">
 		<h3 class="text-error">nemáte žádné stránky, vytvořte novou.</h3>
 	</div>
@@ -32,7 +24,9 @@
 			</span>
 		</div>
 		<div class="span4">
-			<div ng-hide="grid.Edit" class="gridpage-text">{{grid.Link}}</div>
+			<div ng-hide="grid.Edit" class="gridpage-text">
+				{{grid.Link}}
+			</div>
 			<div ng-show="grid.Edit" class="gridpage-input">
 				<input ng-model="grid.Link" required />
 			</div>

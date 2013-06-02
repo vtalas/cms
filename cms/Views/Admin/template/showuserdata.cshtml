@@ -1,0 +1,18 @@
+﻿<p>&nbsp;</p>
+
+
+Stáhnout vše: 
+<a href="/api/@ViewBag.ApplicationId/CmsUsersApi/GetUserData" target="_blank">XML</a> |
+<a href="/api/@ViewBag.ApplicationId/CmsUsersApi/GetUserDataJSON" target="_blank">JSON</a>
+
+<div ng-show="!data">
+	<h3>
+		<img src="/Content/loader16.gif" /></h3>
+</div>
+
+<div ng-repeat="item in data">
+	<i>{{item.Created}}</i>
+	<b>{{item.UserName}}</b>
+	{{item.Key}}
+	{{item.Value}}
+</div>

@@ -206,7 +206,6 @@
     <Compile Include="Controllers\Api\WebApiPicasaControllerBase.cs" />
     <Compile Include="Controllers\Api\WebImage.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
-    <Compile Include="Controllers\CmsUsersController.cs" />
     <Compile Include="Controllers\GDataAuthController.cs" />
     <Compile Include="Controllers\GDataController.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageFactory.cs" />
@@ -434,11 +433,13 @@
     <Content Include="Content\admin.less" />
     <Content Include="Scripts\Admin\angular-templates-ext.js" />
     <Content Include="Scripts\Admin\angular-ui-ext-dndClass.ts" />
-    <Content Include="Scripts\Admin\controller.gDataPhotos.js" />
-    <Content Include="Scripts\Admin\controller.gdataPhotosSettings.js" />
+    <Content Include="Scripts\Controllers\controller.gDataPhotos.js" />
+    <Content Include="Scripts\Controllers\controller.gdataPhotosSettings.js" />
+    <Content Include="Scripts\Controllers\controller.showuserdata.js" />
+    <Content Include="Scripts\Controllers\controller.dashboard.js" />
     <Content Include="Scripts\modules\module.appSettings.js" />
     <Content Include="Scripts\modules\module.cmsUsers.js" />
-    <Content Include="Scripts\Controllers\controller.cmsUsersList.js" />
+    <Content Include="Scripts\Controllers\controller.applicationusers.js" />
     <Content Include="Scripts\Admin\directive.ngcClickEdit.js" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
     <Content Include="Scripts\modules\module.admin-index.js" />
@@ -551,8 +552,8 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\SiteMapTemplate.cshtml" />
     <Content Include="Views\GData\Index_ReAuthorize.cshtml" />
-    <Content Include="Views\CmsUsers\Index.cshtml" />
-    <Content Include="Views\CmsUsers\GetUsers.cshtml" />
+    <Content Include="Views\Admin\template\showuserdata.cshtml" />
+    <Content Include="Views\Admin\template\applicationusers.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -573,9 +574,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Admin\Grids.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\template\gridpages.cshtml" />

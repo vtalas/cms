@@ -1,18 +1,17 @@
 ﻿<style type="text/css">
     .xxx
     {
-        float: left;
-    }
+	    padding-bottom: 0px;
+	}
 </style>
 
 <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
+    <div class="navbar-inner xxx">
         <ul class="nav">
             <li class=""><a class="" href="@Url.Action("Dashboard", "Admin")">@ViewBag.ApplicationName</a></li>
-            @*<li><a href="#">Link</a></li>*@
         </ul>
         <ul class="nav pull-right">
-            <li>@WebSecurity.CurrentUserName  <span class="divider-vertical"> |  @Html.ActionLink("odhlásit", "LogOff", "Account")</span></li>
+			<li>@WebSecurity.CurrentUserName  <span class="divider-vertical"> | @Html.ActionLink("nastavení", "Index", "Gdata") |  @Html.ActionLink("odhlásit", "LogOff", "Account")</span></li>
         </ul>
     </div>
 </div>

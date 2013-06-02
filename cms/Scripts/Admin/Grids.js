@@ -142,13 +142,15 @@ module.config(['$routeProvider', '$provide', function ($routeProvider, $provide)
 	});
 	$routeProvider
 		.when('/gridpages', {controller: gridpagesCtrl, templateUrl: 'template/gridpages'})
+		.when('/showuserdata', { controller: showuserdataCtrl, templateUrl: 'template/showuserdata' })
+		.when('/applicationusers', { controller: applicationusersCtrl, templateUrl: 'template/applicationusers' })
 		.when('/menu/:Id', {controller: menuCtrl, templateUrl: 'template/menu'})
 		.when('/menu2/:Id', {controller: menu2Ctrl, templateUrl: 'template/menu2'})
 		.when('/page/:Id', {controller: pageCtrl, templateUrl: 'template/gridpage'})
-		.otherwise({redirectTo: '/gridpages'});
+		.otherwise({ redirectTo: '/gridpages' });
 }]);
 
-module.controller("cultureCtrl", ["$scope", "appSettings", "GridApi", function ($scope, appSettings, GridApi) {
+module.controller("cultureCtrl", ["$scope", "appSettings", "GridApi", "$location", function ($scope, appSettings, GridApi, $location) {
 	$scope.currentCulture = appSettings.Culture;
 	$scope.setCulture = function (culture) {
 
@@ -159,6 +161,16 @@ module.controller("cultureCtrl", ["$scope", "appSettings", "GridApi", function (
 				$scope.$parent.$root.$broadcast("setCultureEvent");
 			});
 		}
+	};
+}]);
+
+module.controller("chuj", ["$scope", "appSettings", "GridApi", "$location", function ($scope, appSettings, GridApi, $location) {
+	$scope.section = "#" +$location.$$url;
+	$scope.set = function (e) {
+		$scope.section = e.srcElement.hash;
+	};
+	$scope.isActive = function (section) {
+		return section === $scope.section ? "active" : "";
 	};
 }]);
 

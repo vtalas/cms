@@ -66,6 +66,7 @@
     <Compile Include="DataProvider\DataProviderBase.cs" />
     <Compile Include="DataProvider\GridElementHandler.cs" />
     <Compile Include="DataProvider\Settings.cs" />
+    <Compile Include="Dtos\UserDataDto.cs" />
     <Compile Include="Dtos\UserProfileDto.cs" />
     <Compile Include="EF\DataProviderImplementation\DataEfPublic.cs" />
     <Compile Include="EF\RepositoryImplementation\EfRepositoryApplication.cs" />

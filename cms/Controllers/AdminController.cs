@@ -40,17 +40,7 @@ namespace cms.Controllers
 			return View();
 		}
 
-		public ActionResult Grids()
-		{
-			return View();
-		}
-
 		public ActionResult Dashboard()
-		{
-			return View();
-		}
-
-		public ActionResult DataContent()
 		{
 			return View();
 		}
