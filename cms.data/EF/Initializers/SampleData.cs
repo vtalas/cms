@@ -22,25 +22,22 @@ namespace cms.data.EF.Initializers
 			Context = context;
 			SecurityProvider.EnsureInitialized(true);
 		}
-
+		
+		public ApplicationSetting CreateApplication(string name, Guid id)
+		{
+			var application = new ApplicationSetting { Name = name, Id = id };
+			return application;
+		}
 
 		public void Generate()
 		{
-			var application = new ApplicationSetting { Name = "test1", Id = new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643") };
-			var gdataSettings = new ApplicationSettingStorage()
-				{
-					AppliceSetting = application,
-					Key = "GdataPicasa.json",
-					Value =
-						"{\"ClientId\":\"568637062174-4s9b1pohf5p0hkk8o4frvesnhj8na7ug.apps.googleusercontent.com\",\"ClientSecret\":\"YxM0MTKCTSBV5vGlU05Yj63h\",\"RedirectUri\":\"http://localhost:62728/render/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/Gdata/Authenticate\",\"AccessType\":\"offline\",\"ResponseType\":\"code\",\"ApprovalPrompt\":\"auto\",\"State\":null,\"Scope\":\"https://picasaweb.google.com/data\",\"TokenUri\":\"https://accounts.google.com/o/oauth2/token\",\"AuthUri\":\"https://accounts.google.com/o/oauth2/auth\",\"AccessCode\":\"4/QLbO_XmRyWhrLhCQZfeFBw_tOEO-.YjhDDUv4vvASOl05ti8ZT3aR9rZ2ewI\",\"AccessToken\":\"ya29.AHES6ZRHtQgmJdwI83C1ZGLfXcFT1UpO8KFaQoxewvZslPo\",\"TokenType\":\"Bearer\",\"RefreshToken\":\"1/JjvMzAvTWDI1jQ3SJ-tL-W2xfMGgKCNpfnPFC7YLXZQ\",\"TokenExpiry\":\"2013-03-30T14:50:52.0350746+01:00\"}"
-				};
+			var application = CreateApplication( "test1", new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"));
 
 			GenerateUsers(application);
 			WebSecurity.CreateUserAndAccount("lades", "a");
 			WebSecurity.CreateUserAndAccount("pepa", "a");
 
 			Context.ApplicationSettings.Add(application);
-			Context.ApplicationSettingStorage.Add(gdataSettings);
 
 			GenerateGridPages(application);
 
@@ -68,13 +65,24 @@ namespace cms.data.EF.Initializers
 			Context.SaveChanges();
 		}
 
+
 		private void GenerateGridPages(ApplicationSetting application)
 		{
+			var markdowntext = "# nadpis H1 \n## nadpis H2\n### nadpis H3\n###### nadpis H6\n" +
+							   "tohle je **tučně**, tohle  *kurzíva*.  Jde to i takto: __tučně__, _kurzíva_ \n" +
+			                   " a **jde to i _kombinovat_**\n" +
+			                   "\n" +
+			                   "mnoho dalšího na [zde](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) \n";
 			Context.Grids.Add(AGrid(new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithGridElement(
+											AGridElement("simplehtml", application)
+												.WithResource("text", markdowntext)
+												.WithResource("text", markdowntext, CultureEn)
+												)
+										.WithGridElement(
 											AGridElement("text", application)
-												.WithResource("text", "český text")
-												.WithResource("text", "english text", CultureEn)
+												.WithResource("text", "český text bez formatování")
+												.WithResource("text", "english text without formating", CultureEn)
 												)
 										.WithResource(SpecialResourceEnum.Link, "testPage_link")
 										.WithResource("name", "testovaci stranka", CultureCs)
@@ -83,29 +91,23 @@ namespace cms.data.EF.Initializers
 
 			Context.Grids.Add(AGrid(new Guid("bb8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application, true)
 										.WithResource(SpecialResourceEnum.Link, "aaa")
-										.WithResource("name", "grid Bez elementu AUTH", CultureCs)
-										.WithResource("name", "Without Any Element", CultureEn)
-								);
-			Context.Grids.Add(AGrid(new Guid("aa8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource(SpecialResourceEnum.Link, "pub")
-										.WithResource("name", "grid Bez elementu", CultureCs)
-										.WithResource("name", "Without Any Element", CultureEn)
+										.WithResource("name", "Uživatelská část", CultureCs)
+										.WithResource("name", "User profile", CultureEn)
+										.WithGridElement(
+											AGridElement("clientspecific", application).WithSkin("postdataform")
+											)
+										.WithGridElement(
+											AGridElement("simplehtml", application)
+												.WithResource("text", "### tuto stránku vidí jenom příhlášení uživatelé")
+												.WithResource("text", "### this page is visible only for authenticated users", CultureEn)
+												)
+
 								);
 
 			Context.Grids.Add(AGrid(new Guid("ab8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
 										.WithResource(SpecialResourceEnum.Link, "gallery_1")
 										.WithResource("name", "galerie 1", CultureCs)
 										.WithResource("name", "gallery 1", CultureEn)
-								);
-
-			Context.Grids.Add(AGrid(new Guid("ac8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource(SpecialResourceEnum.Link, "gallery_1_sub_1", CultureCs)
-										.WithResource("name", "subgalerie galerie 1", CultureCs)
-								);
-
-			Context.Grids.Add(AGrid(new Guid("bc8ee05e-1115-480b-9ab7-a3ab3c0f6643"), application)
-										.WithResource(SpecialResourceEnum.Link, "gallery_1_2", CultureCs)
-										.WithResource("name", "gallery 1 sub 2 ", CultureCs)
 								);
 		}
 
@@ -114,7 +116,7 @@ namespace cms.data.EF.Initializers
 			Roles.CreateRole("admin");
 			Roles.CreateRole("applicationUser");
 			
-			GenerateUser(application, "admin", "a", "admin");
+			GenerateUser(application, "admin", "Peklo123", "admin");
 			GenerateApplicationUser(application, "pepa", "b");
 		}
 

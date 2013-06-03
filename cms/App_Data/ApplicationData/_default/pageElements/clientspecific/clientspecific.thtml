@@ -32,7 +32,16 @@
 
 <div ng-controller="clientspecific" class="row">
 	<div class="gridelement-content" style="float:left;min-width:50%;">
-		
+		<div class="gridelement-content" ng-show="gridelement.help">
+			<blockquote>
+			na klientovi se  pro vykreslení použije HTML šablona definovaná takto:
+			<code >
+				&lt;script id="clientspecific<b>{{gridelement.Skin}}</b>.thtml" type="text/ng-template">
+				---HTML content ----
+				&lt;/script>
+			</code>
+			</blockquote>
+		</div>
 		<div ng-controller="text"  class="row">
 			<div class="span{{gridelement.Width}}">
 				<div class="gridelement-content">
@@ -40,6 +49,6 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 </div>

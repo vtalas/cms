@@ -29,6 +29,11 @@ namespace cms.data.Extensions
 			source.Content = content;
 			return source;
 		}
+		public static GridElement WithSkin(this GridElement source, string skin)
+		{
+			source.Skin = skin;
+			return source;
+		}
 
 		public static GridElement IsPropertyOf(this GridElement source, Grid owner)
 		{

@@ -49,9 +49,19 @@
 			<div class="gdata-album-placeholder"></div>
 		</div>
 		<button ng-click="showGdataAlbums()" class="btn btn-small">Vybrat Album</button>
+
+
+	</div>
+	<div class="clearfix"></div>
+	<div class="gridelement-content">
+		<div ng-show="haserror" class="alert alert-error">
+			<h4>chyba připojení </h4>
+			<div>
+				ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
+			</div>
+		</div>
 	</div>
 
-	<div class="clearfix"></div>
 	<div ng-show="showGdataAlbumsValue" class="gridelement-content" >
 		<h3>Google Alba</h3>
 

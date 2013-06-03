@@ -2,29 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\Settings\GdataPicasa.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\angular-templates-ext.coffee" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\angular-templates-ext.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\angular-templates-ext.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\angular-ui-ext-dndClass.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\angular-ui-ext-dndClass.ts" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\jquery.unobtrusive-ajax.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\jquery.validate-vsdoc.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\jquery.validate.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\Weby\cms\cms\Scripts\jquery.validate.unobtrusive.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Global.asax.cs" afterPath="$PROJECT_DIR$/Global.asax.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/Grids.js" afterPath="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee" afterPath="$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee" />
+      <change type="DELETED" beforePath="C:\lades\web\cms\cms\App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cms.data/EF/Initializers/SampleData.cs" afterPath="$PROJECT_DIR$/../cms.data/EF/Initializers/SampleData.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/admin.less" afterPath="$PROJECT_DIR$/Content/admin.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.web.csproj" afterPath="$PROJECT_DIR$/cms.web.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" afterPath="$PROJECT_DIR$/Scripts/Admin/cmsapi.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/controller.gDataPhotos.js" afterPath="$PROJECT_DIR$/Scripts/Admin/controller.gDataPhotos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/controller.gdataPhotosSettings.js" afterPath="$PROJECT_DIR$/Scripts/Admin/controller.gdataPhotosSettings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" afterPath="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" afterPath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/menuCtrl.js" afterPath="$PROJECT_DIR$/Scripts/Admin/menuCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" afterPath="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference.coffee" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.coffee" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/metro-bootstrap.css" afterPath="$PROJECT_DIR$/Content/metro-bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/less/metro-bootstrap-source/sprites.less" afterPath="$PROJECT_DIR$/Content/less/metro-bootstrap-source/sprites.less" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
@@ -52,7 +40,7 @@
     <file path="/text.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327068892" ignored="false" />
     <file path="/controller.text.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327049734" ignored="false" />
     <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1369057661004" ignored="false" />
-    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1369056146095" ignored="false" />
+    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370230408567" ignored="false" />
     <file path="/_navbar.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366223152236" ignored="false" />
     <file path="/directive.ngcClickEdit.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366446262377" ignored="false" />
     <file path="/module.admin-index.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366316116716" ignored="false" />
@@ -91,10 +79,8 @@
       <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="50" selection-start="5744" selection-end="5744" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="206" column="50" selection-start="6319" selection-end="6319" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,15 +98,6 @@
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/menuCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="106" column="0" selection-start="3153" selection-end="3153" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller.gdataalbum.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -153,10 +130,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pageCtrl.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
+      <file leaf-file-name="reference_admin.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="771" selection-end="771" vertical-scroll-proportion="0.5645161">
+            <state line="12" column="4" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -165,16 +142,16 @@
       <file leaf-file-name="reference.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="134" selection-end="192" vertical-scroll-proportion="0.0">
+            <state line="8" column="0" selection-start="134" selection-end="180" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reference_admin.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.coffee">
+      <file leaf-file-name="pageCtrl.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="4" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
+            <state line="20" column="57" selection-start="529" selection-end="529" vertical-scroll-proportion="0.39175257">
               <folding />
             </state>
           </provider>
@@ -223,10 +200,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1170" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -321,7 +298,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -332,160 +309,19 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Scripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="App_Data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="less" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="App_Data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ApplicationData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fa5a1a20-2fde-4966-b999-6d600caf43f6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="App_Data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ApplicationData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.sourceCode.CoffeeScript" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="recentsLimit" value="5" />
     <property name="last_opened_file_path" value="C:/wamp/www/masp/maspNew/ClientPHP" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="false" />
-  </component>
-  <component name="PublishConfig">
-    <servers>
-      <server id="fd7b2b01-2bdc-4b05-b31a-aec5221a3654">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </server>
-    </servers>
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -622,12 +458,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31630647" sideWeight="0.48655772" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25039536" sideWeight="0.6836935" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -639,6 +474,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31630647" sideWeight="0.48655772" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956672" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -671,7 +507,7 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
     <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
@@ -720,52 +556,33 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="522" selection-end="522" vertical-scroll-proportion="0.47761193">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/cmsapi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="20" selection-start="1373" selection-end="1373" vertical-scroll-proportion="0.52537316">
-          <folding />
-        </state>
+        <state line="20" column="0" selection-start="522" selection-end="522" vertical-scroll-proportion="0.47761193" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Apps/defaults/clientmodule.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="39" selection-start="129" selection-end="129" vertical-scroll-proportion="0.030241935">
-          <folding />
-        </state>
+        <state line="6" column="39" selection-start="129" selection-end="129" vertical-scroll-proportion="0.030241935" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="5" selection-start="950" selection-end="950" vertical-scroll-proportion="0.4032258">
-          <folding />
-        </state>
+        <state line="25" column="5" selection-start="950" selection-end="950" vertical-scroll-proportion="0.4032258" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/angular-resource.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="210" column="20" selection-start="9009" selection-end="9009" vertical-scroll-proportion="0.24193548">
-          <folding />
-        </state>
+        <state line="210" column="20" selection-start="9009" selection-end="9009" vertical-scroll-proportion="0.24193548" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="41" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="23" column="41" selection-start="592" selection-end="592" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="50" selection-start="5744" selection-end="5744" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state line="206" column="50" selection-start="6319" selection-end="6319" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -783,23 +600,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="207" selection-end="207" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="134" selection-end="192" vertical-scroll-proportion="0.0">
+        <state line="8" column="0" selection-start="134" selection-end="180" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference_admin.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="4" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0">
+        <state line="12" column="4" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -827,7 +637,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="771" selection-end="771" vertical-scroll-proportion="0.5645161">
+        <state line="20" column="57" selection-start="529" selection-end="529" vertical-scroll-proportion="0.39175257">
           <folding />
         </state>
       </provider>

@@ -46,4 +46,9 @@ var gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEe
 
 		gridEelementApi.put(copy);
 	};
+
+	$scope.showHelp = function(gridelement) {
+		var help = gridelement.help || false;
+		gridelement.help = !help;
+	};
 }];

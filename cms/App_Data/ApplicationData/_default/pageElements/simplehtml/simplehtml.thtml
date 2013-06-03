@@ -1,7 +1,11 @@
 ﻿<div ng-controller="simplehtml"  class="row">
 	<div class="span{{gridelement.Width}}">
 		<div class="gridelement-content">
-			<div ng-bind-html-unsafe="ContentToHtml()"></div>
+				<blockquote ng-show="gridelement.help">
+					Formátovaný text Markdown. Info na <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" >https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a>
+				</blockquote>
+
+			<div ng-bind-html-unsafe="ContentToHtml()" ></div>
 			<span ngc-click-edit="gridelement.Resources.text.Value"
 					type="textarea"
 					placeholder="text"> </span>
