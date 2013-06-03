@@ -29,20 +29,22 @@ var applicationusersCtrl = ['$scope', 'cmsUsersApi', function ($scope, cmsUsersA
 			loadUsers();
 			reset();
 		}, function (err) {
+		    var message;
 		    switch (err.status) {
 		        case 409:
-		            $scope.message = " uživatel '" +$scope.newitem.UserName+ "' uz existuje.";
+		            message = " uživatel '" +$scope.newitem.UserName+ "' uz existuje.";
 		            break;
 		        default:
-		            $scope.message = "nesprávně vyplněné údaje.";
+		            message = "nesprávně vyplněné údaje.";
 		    }
+		    $scope.$emit("set-message", {message:message});
 		});
 	};
 
 	var reset = function () {
 		$scope.newitem.UserName = "";
 		$scope.newitem.Password = "";
-	    $scope.message = null;
+		$scope.$emit("reset-message");
 	};
 
 	$scope.$on("ngcClickEdit.showEdit", function () {

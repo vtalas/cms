@@ -30,7 +30,6 @@
 			<div ng-show="grid.Edit" class="gridpage-input">
 				<input ng-model="grid.Link" required />
 			</div>
-
 		</div>
 		<div class="span3" ng-class="editModeClass(grid)">
 			<div class="btn-group">
@@ -47,7 +46,7 @@
 	</div>
 
 	<div class="row row-gridpages newitem" style="padding-top: 5px; padding-bottom: 5px;">
-		<form>
+		<form name="form" ng-submit="newItemAdd()">
 			<div class="span5">
 				<div style="margin-left: 4em; margin-top: 10px;" ngc-click-edit="newitem.Name"
 					template-preview="#preview"
@@ -64,7 +63,7 @@
 				</div>
 			</div>
 			<div class="span2">
-				<button class="btn btn-success " type="submit" ng-click="newItemAdd()">přidat</button>
+				<button ng-disabled="form.$invalid" class="btn btn-success " type="submit">přidat</button>
 			</div>
 		</form>
 	</div>

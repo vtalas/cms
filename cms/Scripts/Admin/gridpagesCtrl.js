@@ -15,7 +15,7 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi',
 	loadData();
 
 	$scope.aaa = function (item) {
-		return "/clientApi/" + appSettings.Id + "/getpage/" + item.Link
+	    return "/clientApi/" + appSettings.Id + "/getpage/" + item.Link;
 	};
 
 	$scope.getLink = function (item) {
@@ -76,11 +76,14 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi',
 				$scope.newItemEdit = false;
 			})
 			.error(function (data, status, headers, config) {
-			    console.error("Erorrrr", data);
+			    var error = {
+			        message: data.ExceptionMessage,
+			        type: "error"
+			    };
+			    $scope.$emit("set-message", error);
 			});
 		$scope.newName = '';
 	};
-
 
 	$scope.$on("ngcClickEdit.showEdit", function () {
 		$scope.newItemEdit = true;

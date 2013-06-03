@@ -1,35 +1,41 @@
 ﻿@using cms.shared
 @{
-	ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
-	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
-	var applicationName = ViewBag.Application;
-	var applicationId = ViewBag.ApplicationId;
+    ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
+    Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
+    var applicationName = ViewBag.Application;
+    var applicationId = ViewBag.ApplicationId;
 }
 
 
 <div ng-app="gridsmodule"
-	 data-application-name="@applicationName"
-	 data-application-id="@applicationId"
-	 data-application-culture="@SharedLayer.Culture"
+     data-application-name="@applicationName"
+     data-application-id="@applicationId"
+     data-application-culture="@SharedLayer.Culture"
      class="gridsmodule"
 	
-	>
-	@UserResources.RenderHtmlTemplates(Html, applicationId)
+    >
+    <div ng-controller="infomessages">
+        <div class="alert {{messagetype()}}" ng-show="message" style="margin-bottom: 3px; margin-top: 3px">
+            {{message}}
+        </div>
 
-	<div class="btn-group" ng-controller="chuj">
-		<a class="btn btn-small btn-primary" href="#/gridpages"
-			ng-class="isActive('#/gridpages')" ng-click="set($event)">stránky</a>
-		<a class="btn btn-small btn-primary" href="#/applicationusers"
-			ng-class="isActive('#/applicationusers')" ng-click="set($event)">aplikační uživatelé</a>
-		<a class="btn btn-small btn-primary" href="#/showuserdata"
-			ng-class="isActive('#/showuserdata')" ng-click="set($event)">sezbíraná data</a>
-	</div>
-	<div class="btn-group" ng-controller="cultureCtrl">
-		<button class="btn btn-small" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>
-		<button class="btn btn-small" ng-class="{ active:currentCulture  == 'en' }" href="#" ng-click="setCulture('en')">en</button>
-	</div>
+        @UserResources.RenderHtmlTemplates(Html, applicationId)
 
+        <div class="btn-group" ng-controller="chuj">
+            <a class="btn btn-small btn-primary" href="#/gridpages"
+                ng-class="isActive('#/gridpages')" ng-click="set($event)">stránky</a>
+            <a class="btn btn-small btn-primary" href="#/applicationusers"
+                ng-class="isActive('#/applicationusers')" ng-click="set($event)">aplikační uživatelé</a>
+            <a class="btn btn-small btn-primary" href="#/showuserdata"
+                ng-class="isActive('#/showuserdata')" ng-click="set($event)">sezbíraná data</a>
+        </div>
+        <div class="btn-group" ng-controller="cultureCtrl">
+            <button class="btn btn-small" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>
+            <button class="btn btn-small" ng-class="{ active:currentCulture  == 'en' }" href="#" ng-click="setCulture('en')">en</button>
+        </div>
 
-	<div ng-view>
-	</div>
+        <div ng-view>
+        </div>
+
+    </div>
 </div>

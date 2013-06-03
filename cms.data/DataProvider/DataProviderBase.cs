@@ -80,11 +80,9 @@ namespace cms.data.DataProvider
 
 		protected void ValidateLink(GridPageDto item )
 		{
-			var linkValue = item.Link;
-
 			if (LinkExist(item))
 			{
-				throw new Exception(string.Format("item with link '{0}' allready Exists", linkValue));
+				throw new InvalidOperationException("link_exist");
 			}
 		}
 
