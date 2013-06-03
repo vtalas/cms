@@ -52,7 +52,7 @@ namespace cms
 			data.Migrations.Configuration.MigrateToLatestVersion();
 			
 			var transforms = new IBundleTransform[] { new JsMinify() };
-			var testbundle = new Bundle("~/Scripts/libs", transforms)
+			var libs = new Bundle("~/Scripts/libs", transforms)
 				.Include("~/Scripts/angular.js")
 				.Include("~/Scripts/angular-ui.js")
 				.IncludeDirectory("~/Scripts/", "*.js");
@@ -60,20 +60,14 @@ namespace cms
 
 			var adminBundle = new Bundle("~/Scripts/admin_scripts", transforms)
 				.IncludeDirectory("~/Scripts/Admin", "*.js")
-				.IncludeDirectory("~/Scripts/Admin", "*.coffee");
-
-			var controllers = new Bundle("~/Scripts/controllers_scripts", transforms)
+				.IncludeDirectory("~/Scripts/Admin", "*.coffee")
 				.IncludeDirectory("~/Scripts/Controllers", "*.js")
-				.IncludeDirectory("~/Scripts/Controllers", "*.coffee");
-
-			var modules = new Bundle("~/Scripts/modules_scripts", transforms)
+				.IncludeDirectory("~/Scripts/Controllers", "*.coffee")
 				.IncludeDirectory("~/Scripts/modules", "*.js");
 
 
-			BundleTable.Bundles.Add(testbundle);
+			BundleTable.Bundles.Add(libs);
 			BundleTable.Bundles.Add(adminBundle);
-			BundleTable.Bundles.Add(controllers);
-			BundleTable.Bundles.Add(modules);
 
 			AreaRegistration.RegisterAllAreas();
 			RegisterGlobalFilters(GlobalFilters.Filters);

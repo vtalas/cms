@@ -188,6 +188,7 @@
     <Compile Include="Code\UserResources\UserResourceManager.cs" />
     <Compile Include="Code\UserResources\UserResourcesManagerProvider.cs" />
     <Compile Include="Code\UserResources\ViewModeType.cs" />
+    <Compile Include="Code\Utils\FastDirectoryEnumerator.cs" />
     <Compile Include="Controllers\Api\AlbumDecorator.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
     <Compile Include="Code\JObjectExt.cs" />
