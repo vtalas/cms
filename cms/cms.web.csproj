@@ -437,6 +437,7 @@
     <Content Include="Scripts\Controllers\controller.gdataPhotosSettings.js" />
     <Content Include="Scripts\Controllers\controller.showuserdata.js" />
     <Content Include="Scripts\Controllers\controller.dashboard.js" />
+    <Content Include="Scripts\Controllers\controller.infomessage.js" />
     <Content Include="Scripts\modules\module.appSettings.js" />
     <Content Include="Scripts\modules\module.cmsUsers.js" />
     <Content Include="Scripts\Controllers\controller.applicationusers.js" />
