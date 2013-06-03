@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.Threading;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
@@ -32,8 +33,8 @@ namespace MvcApplication1.Controllers
 				return RedirectToLocal(returnUrl);
 			}
 
-			// If we got this far, something failed, redisplay form
-			ModelState.AddModelError("", "The user name or password provided is incorrect.");
+			Thread.Sleep(2000);
+			ModelState.AddModelError("", "Nesprávný login nebo heslo.");
 			return View(model);
 		}
 
@@ -416,16 +417,16 @@ namespace MvcApplication1.Controllers
 
 	public class LoginModel
 	{
-		[Required]
-		[Display(Name = "User name")]
+		[Required(ErrorMessage = "Pole nesmí být prázdné")]
+		[Display(Name = "Login")]
 		public string UserName { get; set; }
 
-		[Required]
+		[Required(ErrorMessage = "Pole nesmí být prázdné")]
 		[DataType(DataType.Password)]
-		[Display(Name = "Password")]
+		[Display(Name = "Heslo")]
 		public string Password { get; set; }
 
-		[Display(Name = "Remember me?")]
+		[Display(Name = "Zapamatovat?")]
 		public bool RememberMe { get; set; }
 	}
 

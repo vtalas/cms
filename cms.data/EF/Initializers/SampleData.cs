@@ -34,17 +34,20 @@ namespace cms.data.EF.Initializers
 			var application = CreateApplication( "test1", new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"));
 
 			GenerateUsers(application);
+			GenerateUser(application, "admin", "Peklo123", "admin");
+			GenerateUser(application, "dalik", "Peklo123", "admin");
+
 			WebSecurity.CreateUserAndAccount("lades", "a");
 			WebSecurity.CreateUserAndAccount("pepa", "a");
 
 			Context.ApplicationSettings.Add(application);
+
 
 			GenerateGridPages(application);
 
 			Context.TemplateTypes.Add(new TemplateType { Name = "novinka" });
 			Context.TemplateTypes.Add(new TemplateType { Name = "text" });
 			Context.TemplateTypes.Add(new TemplateType { Name = "reference" });
-
 			//			GenerateMenus(application);
 
 			string defualtjsondata = ConfigurationManager.AppSettings.Get("DefaultJsonBootstrap");
@@ -116,7 +119,6 @@ namespace cms.data.EF.Initializers
 			Roles.CreateRole("admin");
 			Roles.CreateRole("applicationUser");
 			
-			GenerateUser(application, "admin", "Peklo123", "admin");
 			GenerateApplicationUser(application, "pepa", "b");
 		}
 

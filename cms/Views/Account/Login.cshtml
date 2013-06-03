@@ -2,53 +2,83 @@
 @model LoginModel
 
 @{
-	ViewBag.Title = "Log in";
+    ViewBag.Title = "Log in";
 }
 
-<hgroup class="title">
-	<h1>@ViewBag.Title.</h1>
-</hgroup>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="/Content/metro-bootstrap.css" rel="stylesheet">
+    <style>
+        body
+        {
+            padding-top: 60px; /* 60px to make the container go all the way  to the bottom of the topbar */
+        }
 
-<section id="loginForm">
-	<h2>Use a local account to log in.</h2>
+        .validation-summary-errors ul li
+        {
+            list-style: none;
+            color: red;
+        }
 
-	@WebSecurity.CurrentUserId
-	@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
- {
-		@Html.AntiForgeryToken()
-		@Html.ValidationSummary(true)
+        .field-validation-error
+        {
+            color: red;
+        }
 
-		<fieldset>
-			<legend>Log in Form</legend>
-			<ol>
-				<li>
-					@Html.LabelFor(m => m.UserName)
-					@Html.TextBoxFor(m => m.UserName)
-					@Html.ValidationMessageFor(m => m.UserName)
-				</li>
-				<li>
-					@Html.LabelFor(m => m.Password)
-					@Html.PasswordFor(m => m.Password)
-					@Html.ValidationMessageFor(m => m.Password)
-				</li>
-				<li>
-					@Html.CheckBoxFor(m => m.RememberMe)
-					@Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-				</li>
-			</ol>
-			<input type="submit" value="Log in" />
-		</fieldset>
-		<p>
-			@Html.ActionLink("Register", "Register") if you don't have an account.
-		</p>
- }
-</section>
+        .validation-summary-errors ul
+        {
+            margin: 0px;
+            margin-bottom: 10px;
+        }
+        .remember {
+            float: left;
+            margin-top: 6px 0px 0px 0px ;
+        }
+    </style>
+</head>
+<body>
 
-<section class="social" id="socialLoginForm">
-	<h2>Use another service to log in.</h2>
-	Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
+    <section id="loginForm" class="container">
+        @using (Html.BeginForm("login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <div class="controls">
+                <h2>Administrace</h2>
+                @Html.ValidationSummary(true)
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="control-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "control-label" })
+                <div class="controls">
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                <div class="controls">
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    @Html.CheckBoxFor(m => m.RememberMe, new {@class = "remember"})
+                    @Html.LabelFor(m => m.RememberMe, new {@class = "checkbox"})
+                </div>
+                <div class="controls">
+                    <button type="submit" class="btn">Přihlásit</button>
+                </div>
+            </div>
+            
+        }
+    </section>
 
-@section Scripts {
-	@Scripts.Render("~/bundles/jqueryval")
-}
+</body>
+</html>
+
