@@ -8,8 +8,6 @@ using cms.Code.LinkAccounts.Picasa;
 
 namespace cms.web.tests
 {
-
-
 	[TestFixture]
 	public class GdataTests
 	{

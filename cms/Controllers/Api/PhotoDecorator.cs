@@ -17,11 +17,9 @@ namespace cms.Controllers.Api
 
 			LoadDefaultUri(photo);
 
-			var defaultThumbs = GetDefaultThumbs(photo);
-
-			Small = GetWebImage(95, 95);
-			Medium = GetWebImage(defaultThumbs[1]);
-			Large = GetWebImage(200, 200);
+			Small = GetWebImage(480);
+			Medium = GetWebImage(767);
+			Large = GetWebImage(1200);
 			FullSize = GetWebImage(photo.Width, photo.Height);
 		}
 
@@ -29,7 +27,6 @@ namespace cms.Controllers.Api
 		public WebImage Small { get; set; }
 		public WebImage Medium { get; set; }
 		public WebImage Large { get; set; }
-
 
 		private void LoadDefaultUri(Photo photo)
 		{
@@ -46,6 +43,12 @@ namespace cms.Controllers.Api
 		{
 			var url = GetCorrectUrl(width, height);
 			return new WebImage(width, height, url);
+		}
+
+		private WebImage GetWebImage(int maxsize)
+		{
+			var url = GetCorrectUrl(maxsize, 0);
+			return new WebImage(maxsize, 0, url);
 		}
 
 		private string GetCorrectUrl(int width, int height)

@@ -89,6 +89,7 @@
     <Compile Include="GdataJsonFileStorage_tests.cs" />
     <Compile Include="CreatingNewApplicationResources.cs" />
     <Compile Include="GdataTests.cs" />
+    <Compile Include="PhotoDecoratorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserResourceManagerIntegration.cs" />
     <Compile Include="Code\UserResourceManagerTestBase.cs" />
