@@ -10,23 +10,22 @@ namespace cms.Controllers.Api
 	{
 		private readonly GdataPhotosSettings _settings;
 		private Uri _defaultUri;
-		public Photo Photo { get; set; }
 
 		public PhotoDecorator(Photo photo, GdataPhotosSettings gdataPhotosSettings)
 		{
 			_settings = gdataPhotosSettings;
 
-			Photo = photo;
-			LoadDefaultUri(Photo);
+			LoadDefaultUri(photo);
 
 			var defaultThumbs = GetDefaultThumbs(photo);
 
 			Small = GetWebImage(95, 95);
 			Medium = GetWebImage(defaultThumbs[1]);
 			Large = GetWebImage(200, 200);
-
+			FullSize = GetWebImage(photo.Width, photo.Height);
 		}
 
+		public WebImage FullSize { get; set; }
 		public WebImage Small { get; set; }
 		public WebImage Medium { get; set; }
 		public WebImage Large { get; set; }
@@ -67,8 +66,8 @@ namespace cms.Controllers.Api
 			{
 				return "s" + width + "-c";
 			}
-	
-			throw new NotImplementedException();
+
+			return "w" + width;
 		}
 
 		private ExtensionCollection<MediaThumbnail> GetDefaultThumbs(Photo photo)

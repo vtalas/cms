@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\lades\web\cms\cms\App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Home/Index.cshtml" afterPath="$PROJECT_DIR$/Views/Home/Index.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cms.data/EF/Initializers/SampleData.cs" afterPath="$PROJECT_DIR$/../cms.data/EF/Initializers/SampleData.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/admin.less" afterPath="$PROJECT_DIR$/Content/admin.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.web.csproj" afterPath="$PROJECT_DIR$/cms.web.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" afterPath="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/metro-bootstrap.css" afterPath="$PROJECT_DIR$/Content/metro-bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/less/metro-bootstrap-source/sprites.less" afterPath="$PROJECT_DIR$/Content/less/metro-bootstrap-source/sprites.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,7 +29,7 @@
     <file path="/text.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327068892" ignored="false" />
     <file path="/controller.text.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1365327049734" ignored="false" />
     <file path="/a.dummy" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1369057661004" ignored="false" />
-    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370230408567" ignored="false" />
+    <file path="/Dummy.txt" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370367228595" ignored="false" />
     <file path="/_navbar.cshtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366223152236" ignored="false" />
     <file path="/directive.ngcClickEdit.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366446262377" ignored="false" />
     <file path="/module.admin-index.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1366316116716" ignored="false" />
@@ -57,6 +46,13 @@
     <file path="/angular-templates-ext.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1369056865235" ignored="false" />
     <file path="/clientmodule.coffee" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1369057013810" ignored="false" />
     <file path="/menuCtrl.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1369058243498" ignored="false" />
+    <file path="C:/wamp/www/ClientPhp/template.page.html" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370367111081" ignored="false" />
+    <file path="C:/wamp/www/ClientPhp/index.html" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370367111081" ignored="false" />
+    <file path="C:/wamp/www/cmsJarda/Scripts/module.apiModule.js" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370367313696" ignored="false" />
+    <file path="C:/wamp/www/cmsJarda/index.html" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370367565145" ignored="false" />
+    <file path="/index.html" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370367559037" ignored="false" />
+    <file path="/template.page.html" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370367840171" ignored="false" />
+    <file path="C:/wamp/www/cmsJarda/template.page.html" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1370368523702" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +147,7 @@
       <file leaf-file-name="pageCtrl.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="57" selection-start="529" selection-end="529" vertical-scroll-proportion="0.39175257">
+            <state line="13" column="74" selection-start="416" selection-end="416" vertical-scroll-proportion="0.25463918">
               <folding />
             </state>
           </provider>
@@ -314,14 +310,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.sourceCode.CoffeeScript" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="C:/wamp/www/masp/maspNew/ClientPHP" />
+    <property name="options.lastSelected" value="preferences.sourceCode.CoffeeScript" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="last_opened_file_path" value="C:/wamp/www/masp/maspNew" />
     <property name="FullScreen" value="false" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -459,7 +455,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -554,6 +550,20 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/reference/reference.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="134" selection-end="180" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="57" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="522" selection-end="522" vertical-scroll-proportion="0.47761193" />
@@ -637,7 +647,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="57" selection-start="529" selection-end="529" vertical-scroll-proportion="0.39175257">
+        <state line="13" column="74" selection-start="416" selection-end="416" vertical-scroll-proportion="0.25463918">
           <folding />
         </state>
       </provider>

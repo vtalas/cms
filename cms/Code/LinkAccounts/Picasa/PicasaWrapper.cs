@@ -48,10 +48,6 @@ namespace cms.Code.LinkAccounts.Picasa
 		{
 			var a = new GdataPhotosSettings();
 
-			//using (var db = _sessionProvider.CreateKeyValueSession)
-			//{
-			//	//db.SettingsStorage()
-			//}
 			a.SmallHeight = 400;
 
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
