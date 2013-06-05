@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 using Google.GData.Extensions;
 using Google.GData.Extensions.MediaRss;
 using Google.Picasa;
@@ -10,23 +12,52 @@ namespace cms.Controllers.Api
 	{
 		private readonly GdataPhotosSettings _settings;
 		private Uri _defaultUri;
+		private double Ratio { get; set; }
+		private Orientation Orientation { get; set; }
+		private int Height { get; set; }
+		private int Width { get; set; }
 
-		public PhotoDecorator(Photo photo, GdataPhotosSettings gdataPhotosSettings)
-		{
-			_settings = gdataPhotosSettings;
-
-			LoadDefaultUri(photo);
-
-			Small = GetWebImage(480);
-			Medium = GetWebImage(767);
-			Large = GetWebImage(1200);
-			FullSize = GetWebImage(photo.Width, photo.Height);
-		}
-
+		public IList<WebImage> Thumbnails { get; set; }
 		public WebImage FullSize { get; set; }
 		public WebImage Small { get; set; }
 		public WebImage Medium { get; set; }
 		public WebImage Large { get; set; }
+
+		public PhotoDecorator(Photo photo, GdataPhotosSettings gdataPhotosSettings)
+		{
+			_settings = gdataPhotosSettings;
+			
+			Orientation = photo.Width > photo.Height ?  Orientation.Horizontal : Orientation.Vertical;
+			Ratio = (double)photo.Width / photo.Height;
+			Width = photo.Width;
+			Height = photo.Height;
+
+			LoadDefaultUri(photo);
+
+			Thumbnails = new List<WebImage>(3)
+			{
+				 GetWebImage(95, 95),
+				 GetWebImage(200, 200),
+				 GetWebImage(350, 350)
+			};
+
+			Small = GetWebImageWithMaxSize(480, 300);
+			Medium = GetWebImageWithMaxSize(768, 480);
+			Large = GetWebImageWithMaxSize(1200, 768);
+			FullSize = GetWebImage(photo.Width, photo.Height);
+		}
+			
+
+
+		private WebImage GetWebImageWithMaxSize(int width, int height)
+		{
+			if (Orientation == Orientation.Horizontal)
+			{
+				return GetWebImage((int)(height * Ratio), height);
+			}
+			return GetWebImage(width, (int)(width * Ratio));
+		}
+
 
 		private void LoadDefaultUri(Photo photo)
 		{
