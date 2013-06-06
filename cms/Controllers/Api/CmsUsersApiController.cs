@@ -1,24 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using Newtonsoft.Json.Serialization;
 using cms.data.Dtos;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Extensions;
 using cms.data.Shared;
-using cms.data.Shared.Models;
-using cms.shared;
 
 namespace cms.Controllers.Api
 {
+	/// <summary>
+	/// asdasd
+	/// </summary>
 	[System.Web.Mvc.Authorize(Roles = "admin")]
 	public class CmsUsersApiController : CmsWebApiControllerBase
 	{
+		/// <summary>
+		///  idghasjdasgdj get users 
+		/// </summary>
+		/// <returns></returns>
 		public IList<UserProfileDto> GetUsers()
 		{
 			using (var repo = new EfRepositoryApplication(ApplicationId))
@@ -28,6 +31,12 @@ namespace cms.Controllers.Api
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="user"></param>
+		/// <returns></returns>
+		/// <exception cref="HttpResponseException"></exception>
 		public HttpStatusCode PostUser(UserProfileDto user)
 		{
 			if (string.IsNullOrEmpty(user.Password) || string.IsNullOrEmpty(user.UserName))
@@ -53,6 +62,12 @@ namespace cms.Controllers.Api
 			return HttpStatusCode.Created;
 		}
 
+		/// <summary>
+		/// asdasd
+		/// </summary>
+		/// <param name="user"></param>
+		/// <returns></returns>
+		/// <exception cref="HttpResponseException"></exception>
 		public HttpStatusCode PutUser(UserProfileDto user)
 		{
 			if (string.IsNullOrEmpty(user.Password) || string.IsNullOrEmpty(user.UserName))
@@ -65,6 +80,10 @@ namespace cms.Controllers.Api
 			return HttpStatusCode.OK;
 		}
 
+		/// <summary>
+		/// asdasdsd
+		/// </summary>
+		/// <returns></returns>
 		public IList<UserDataDto> GetUserData()
 		{
 			using (var repo = new EfRepositoryApplication(ApplicationId))
@@ -73,6 +92,10 @@ namespace cms.Controllers.Api
 				return repo.UserData.ToList().ToDtos();
 			}
 		}
+		/// <summary>
+		/// asdasd
+		/// </summary>
+		/// <returns></returns>
 		public HttpResponseMessage GetUserDataJSON()
 		{
 			using (var repo = new EfRepositoryApplication(ApplicationId))

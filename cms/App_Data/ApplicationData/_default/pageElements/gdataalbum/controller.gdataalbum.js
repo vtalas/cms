@@ -1,27 +1,30 @@
 var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 	var getCurrentAlbum, gridelement;
 	gdataalbum.$inject = ["$scope", "gdataPhotos", "appSettings"];
+
 	getCurrentAlbum = function (item) {
-		var currentAlbum, data;
+		var data;
+
 		if (item.Content !== null) {
 			data = JSON.parse(item.Content);
-			if ($scope.albums) {
-				currentAlbum = $scope.albums[data.gdataAlbumId];
-			}
+			gdataPhotos.getAlbum({id: data.gdataAlbumId }, function (data) {
+				$scope.currentAlbum = data;
+			});
 		}
-		return currentAlbum;
 	};
+
 	gridelement = $scope.$parent.gridelement;
+	getCurrentAlbum(gridelement);
 
 	$scope.showGdataAlbumsValue = false;
 	$scope.applicationId = appSettings.Id;
 	
-	gdataPhotos.getAlbums(function (data) {
-		$scope.albums = data;
-		return $scope.currentAlbum = getCurrentAlbum(gridelement);
-	}, function (errr) {
-		return $scope.haserror = true;
-	});
+//	gdataPhotos.getAlbums(function (data) {
+//		$scope.albums = data;
+//		return $scope.currentAlbum = getCurrentAlbum(gridelement);
+//	}, function (errr) {
+//		return $scope.haserror = true;
+//	});
 	
 	$scope.$on("ngcClickEdit.showPreview", function (e, data) {
 		return $scope.$emit("gridelement-save", gridelement);

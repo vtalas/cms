@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cms.shared", "cms.shared\cm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2.Mvc", "OAuth2.Mvc\OAuth2.Mvc.csproj", "{F4E72DA8-129E-4872-B6AC-4D9CFCDF91A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swagger.Net", "Swagger.Net-master\Swagger.Net\Swagger.Net.csproj", "{23F318E4-D42F-484E-9C5A-41B652145CF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,12 @@ Global
 		{F4E72DA8-129E-4872-B6AC-4D9CFCDF91A8}.ladesoAsponeDebug|Any CPU.Build.0 = Debug|Any CPU
 		{F4E72DA8-129E-4872-B6AC-4D9CFCDF91A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4E72DA8-129E-4872-B6AC-4D9CFCDF91A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23F318E4-D42F-484E-9C5A-41B652145CF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F318E4-D42F-484E-9C5A-41B652145CF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23F318E4-D42F-484E-9C5A-41B652145CF0}.ladesoAsponeDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23F318E4-D42F-484E-9C5A-41B652145CF0}.ladesoAsponeDebug|Any CPU.Build.0 = Debug|Any CPU
+		{23F318E4-D42F-484E-9C5A-41B652145CF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23F318E4-D42F-484E-9C5A-41B652145CF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

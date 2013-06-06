@@ -16,7 +16,7 @@ namespace cms.Code.LinkAccounts.Picasa
 	{
 		private PicasaService Service { get; set; }
 		private PicasaRequest PicasaRequest { get; set; }
-		
+		private static readonly ObjectCache Cache = MemoryCache.Default;
 
 		public PicasaWrapper(SessionProvider sessionProvider)
 		{
@@ -27,10 +27,6 @@ namespace cms.Code.LinkAccounts.Picasa
 			Service = picasaFactory.GetService();
 
 			PicasaRequest = new PicasaRequest(new RequestSettings("x", gdataAuth.GetValidOAuth2Parameters()));
-
-			ObjectCache cache = MemoryCache.Default;
-//			var x = cache.Add();
-//			cache.Get()
 		}
 
 		public IEnumerable<Album> GetAlbums()
@@ -41,20 +37,36 @@ namespace cms.Code.LinkAccounts.Picasa
 
 		public AlbumDecorator GetAlbum(string id)
 		{
+			if (Cache.Contains(id + "album"))
+			{
+				return (AlbumDecorator)Cache.Get(id + "album");
+			}
+			
 			var albums = PicasaRequest.GetAlbums();
-			var xx = albums.Entries.SingleOrDefault(x => x.Id == id);
-			return new AlbumDecorator(xx);
+			var albumobject = albums.Entries.SingleOrDefault(x => x.Id == id);
+			var decorate = new AlbumDecorator(albumobject);
+			Cache.Add(id + "album", decorate, new DateTimeOffset(new DateTime(2020, 1, 1)));
+			return decorate;
 		}
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
+			if (Cache.Contains(id +  "albumphotos"))
+			{
+				return (IEnumerable<PhotoDecorator>)Cache.Get(id + "albumphotos");
+			}
+
 			var a = new GdataPhotosSettings();
+
 
 			a.SmallHeight = 400;
 
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
+			var response = photos.Entries.Select(x => new PhotoDecorator(x, a));
+			
+			Cache.Add(id + "albumphotos", response,new DateTimeOffset(new DateTime(2020, 1,1)));
 
-			return photos.Entries.Select(x => new PhotoDecorator(x, a));
+			return response;
 
 		}
 	}

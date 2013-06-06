@@ -18,31 +18,31 @@ namespace cms
 
 		public static void RegisterRoutes(RouteCollection routes)
 		{
-			
+
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
 			routes.MapRoute(
 				"applicationAdmin",
-				"render/{applicationId}/{controller}/{action}/{id}", 
-				new { controller = "admin", action = "Index", id = UrlParameter.Optional } 
+				"render/{applicationId}/{controller}/{action}/{id}",
+				new { controller = "admin", action = "Index", id = UrlParameter.Optional }
 			);
 
 			routes.MapHttpRoute(
-				"clientApi", 
+				"clientApi",
 				"clientapi/{applicationId}/{action}/{id}",
 				new { controller = "ClientApi", action = "Index", id = RouteParameter.Optional, enableMvcOAuth = true }
 			);
 
 			routes.MapHttpRoute(
 				"DefaultApi",
-				"api/{applicationId}/{controller}/{action}/{id}", 
+				"api/{applicationId}/{controller}/{action}/{id}",
 				new { controller = "adminapi", action = "index", id = RouteParameter.Optional }
 			);
 
 			routes.MapRoute(
-				"Default", 
+				"Default",
 				"{controller}/{action}/{id}",
-				new { controller = "Home", action = "Index", id = UrlParameter.Optional } 
+				new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			);
 
 		}
@@ -50,7 +50,7 @@ namespace cms
 		protected void Application_Start()
 		{
 			data.Migrations.Configuration.MigrateToLatestVersion();
-			
+
 			var transforms = new IBundleTransform[] { new JsMinify() };
 			var libs = new Bundle("~/Scripts/libs", transforms)
 				.Include("~/Scripts/angular.js")

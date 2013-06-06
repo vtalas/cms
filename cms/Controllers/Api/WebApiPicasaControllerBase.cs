@@ -8,13 +8,14 @@ namespace cms.Controllers.Api
 {
 	public class WebApiPicasaControllerBase : CmsWebApiControllerBase
 	{
-		protected PicasaWrapper Picasa { get; set; }
+		protected PicasaServiceProvider PicasaProvider { get; set; }
 
 		protected override void Initialize(HttpControllerContext requestContext)
 		{
 			base.Initialize(requestContext);
 			var sess = new SessionProvider(() => new DataEfPublic(ApplicationId, new RepositoryFactory().Create, 0));
-			Picasa = new PicasaWrapper(sess);
+			PicasaProvider = new PicasaServiceProvider(() => new PicasaWrapper(sess));
 		}
+
 	}
 }

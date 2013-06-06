@@ -46,7 +46,6 @@ namespace cms.Controllers.Api
 			}
 		}
 
-
 		private bool Auth()
 		{
 			var cookies = ControllerContext.Request.Headers.GetCookies();

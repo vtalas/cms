@@ -59,6 +59,7 @@
             },
             {
             	getAlbums: { method: 'GET', isArray: false, params: { action: "getAlbums" } },
+				getAlbum: { method: 'GET', isArray: false, params: {action: "getAlbum"} }
             }
         );
     	return project;

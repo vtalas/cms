@@ -8,18 +8,18 @@ namespace cms.Controllers.Api
 	{
 		public IDictionary<string, AlbumDecorator> GetAlbums()
 		{
-			var albums = Picasa.GetAlbums().Select(x => new AlbumDecorator(x));
+			var albums = PicasaProvider.Session.GetAlbums().Select(x => new AlbumDecorator(x));
 			return albums.ToDictionary(key => key.Id);
 		}
 
 		public AlbumDecorator GetAlbum(string id)
 		{
-			return Picasa.GetAlbum(id);
+			return PicasaProvider.Session.GetAlbum(id);
 		}
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
-			return Picasa.GetAlbumPhotos(id);
+			return PicasaProvider.Session.GetAlbumPhotos(id);
 		}
 
 		// POST api/gdataphotos
