@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Xml.Serialization;
 using Google.GData.Client;
 using Google.GData.Photos;
 using Google.Picasa;
 using cms.Controllers.Api;
-using cms.data.DataProvider;
 using cms.data.EF;
-using cms.data.Shared;
 
 namespace cms.Code.LinkAccounts.Picasa
 {
@@ -17,6 +16,7 @@ namespace cms.Code.LinkAccounts.Picasa
 	{
 		private PicasaService Service { get; set; }
 		private PicasaRequest PicasaRequest { get; set; }
+		
 
 		public PicasaWrapper(SessionProvider sessionProvider)
 		{
@@ -27,8 +27,10 @@ namespace cms.Code.LinkAccounts.Picasa
 			Service = picasaFactory.GetService();
 
 			PicasaRequest = new PicasaRequest(new RequestSettings("x", gdataAuth.GetValidOAuth2Parameters()));
-			var x = PicasaRequest.Settings.OAuthUser;
 
+			ObjectCache cache = MemoryCache.Default;
+//			var x = cache.Add();
+//			cache.Get()
 		}
 
 		public IEnumerable<Album> GetAlbums()
