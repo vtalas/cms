@@ -1,4 +1,5 @@
-﻿using Google.GData.Photos;
+﻿using Google.GData.Extensions.MediaRss;
+using Google.GData.Photos;
 using Google.Picasa;
 using Moq;
 using NUnit.Framework;
@@ -10,6 +11,14 @@ namespace cms.web.tests
 	[TestFixture]
 	public class PhotoDecoratorTest
 	{
+		  public class Photox : PicasaEntity
+		  {
+			  protected override void EnsureInnerObject()
+			  {
+				  throw new System.NotImplementedException();
+			  }
+		  }
+
 		[Test]
 		public void sdkhskd()
 		{
@@ -19,11 +28,17 @@ namespace cms.web.tests
 				Width = 1200,
 				Height = 1600,
 			};
-			var mock = new Mock<PicasaEntry>();
-//			mock.Setup(x => x.Media.);
-
-			var x = new PhotoDecorator(photo, settings);
-
+//			var mockThumb = new Mock<MediaThumbnail>();
+//			//mockThumb.Setup(x => x.Url).Returns("https://lh4.googleusercontent.com:443/sd/jbjsb/AM/3VY/w1024/029.jpg");
+//		
+//			var mock = new Mock<PicasaEntry>();
+//			mock.Setup(x => x.Media).Returns(null);
+//				
+//			var mockxx = new Mock<Photo>();
+//				mockxx.Setup(x => x.PicasaEntry).Returns(mock.Object);
+//
+//			var ax = new PhotoDecorator(mockxx.Object, settings);
+//
 
 
 		}

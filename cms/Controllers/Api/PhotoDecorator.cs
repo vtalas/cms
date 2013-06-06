@@ -47,15 +47,13 @@ namespace cms.Controllers.Api
 			FullSize = GetWebImage(photo.Width, photo.Height);
 		}
 			
-
-
 		private WebImage GetWebImageWithMaxSize(int width, int height)
 		{
 			if (Orientation == Orientation.Horizontal)
 			{
-				return GetWebImage((int)(height * Ratio), height);
+				return GetWebImage(width, (int)(width / Ratio));
 			}
-			return GetWebImage(width, (int)(width * Ratio));
+			return GetWebImage((int)(height * Ratio), height);
 		}
 
 
