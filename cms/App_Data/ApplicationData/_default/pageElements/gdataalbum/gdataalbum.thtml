@@ -42,7 +42,12 @@
 		</div>
 	</div>
 	<div class="gridelement-content" style="float:left;">
+		<div ngc-gdata-gallery="gridelement.Content">
+			{{currentAlbum.Id}}
+		</div>
+
 		<div ng-show="hasAlbum()" class="gdata-album-preview">
+
 			<img ngc-lazy-image="currentAlbum.Thumbnail.PhotoUri"/>
 		</div>
 		<div ng-hide="hasAlbum()">

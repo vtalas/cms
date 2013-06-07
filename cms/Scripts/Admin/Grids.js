@@ -177,9 +177,14 @@ module.controller("chuj", ["$scope", "appSettings", "GridApi", "$location", func
 
 module.directive("gridelement", ["$compile", "GridApi", "appSettings", "gridtemplate", function ($compile, GridApi, appSettings, gridtemplate) {
 
-	var directiveObj = {
+	return {
 		scope: { grid: "=", gridelement: "=" },
 		link: function (scope, iElement, tAttrs, controller) {
+			scope.getGridElement = function (){
+				scope.gridelement.Content =  JSON.parse(scope.gridelement.Content);
+				return scope.gridelement;
+			};
+
 			scope.gui = { edit: 0 };
 
 			var template = gridtemplate(scope.gridelement.Type + ".thtml"),
@@ -187,7 +192,6 @@ module.directive("gridelement", ["$compile", "GridApi", "appSettings", "gridtemp
 			iElement.html(compiled);
 		}
 	};
-	return directiveObj;
 }]);
 
 
@@ -205,6 +209,7 @@ module.directive("ngcHover", function () {
 });
 
 module.directive("ngcClickEdit", ngcClickEditDirective);
+module.directive("ngcGdataGallery", ngcGDataGallery);
 module.directive("ngcLoader", ngcLoader);
 module.directive("ngcLazyImage", function () {
 	var loader = "/Content/loader16.gif";

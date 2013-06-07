@@ -8,7 +8,7 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 		var data;
 
 		if (item.Content !== null) {
-			data = JSON.parse(item.Content);
+			data = item.Content;
 			gdataPhotos.getAlbum({id: data.gdataAlbumId }, function (data) {
 				$scope.currentAlbum = data;
 			});
@@ -24,7 +24,7 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 
 	};
 
-	gridelement = $scope.$parent.gridelement;
+	gridelement = $scope.getGridElement();
 	getCurrentAlbum(gridelement);
 
 	$scope.showGdataAlbumsValue = false;

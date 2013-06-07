@@ -14,14 +14,6 @@
             }
         );
 
-    	project.prototype.save = function (cb) {
-    		return project.save({ id: this._id.$oid },
-                angular.extend({}, this, { _id: undefined }), cb);
-    	};
-    	project.prototype.getGrid = function (cb) {
-    		return project.getGrid({ id: this._id.$oid },
-                angular.extend({}, this, { _id: undefined }), cb);
-    	};
     	return project;
     }])
     .factory("gridEelementApi", ['$resource', 'appSettings', function ($resource, appSettings) {

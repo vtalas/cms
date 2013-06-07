@@ -12,9 +12,9 @@ namespace cms.Controllers.Api
 			return albums.ToDictionary(key => key.Id);
 		}
 
-		public AlbumDecorator GetAlbum(string id)
+		public AlbumDecorator GetAlbum(string id, bool refreshCache = false)
 		{
-			return PicasaProvider.Session.GetAlbum(id);
+			return PicasaProvider.Session.GetAlbum(id, refreshCache);
 		}
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)

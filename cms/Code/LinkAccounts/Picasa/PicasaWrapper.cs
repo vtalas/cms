@@ -35,9 +35,9 @@ namespace cms.Code.LinkAccounts.Picasa
 			return albums.Entries;
 		}
 
-		public AlbumDecorator GetAlbum(string id)
+		public AlbumDecorator GetAlbum(string id, bool refreshCache = false)
 		{
-			if (Cache.Contains(id + "album"))
+			if (Cache.Contains(id + "album") && !refreshCache)
 			{
 				return (AlbumDecorator)Cache.Get(id + "album");
 			}
@@ -49,16 +49,14 @@ namespace cms.Code.LinkAccounts.Picasa
 			return decorate;
 		}
 
-		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
+		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache = false)
 		{
-			if (Cache.Contains(id +  "albumphotos"))
+			if (Cache.Contains(id + "albumphotos") && !refreshCache)
 			{
 				return (IEnumerable<PhotoDecorator>)Cache.Get(id + "albumphotos");
 			}
 
 			var a = new GdataPhotosSettings();
-
-
 			a.SmallHeight = 400;
 
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
@@ -68,18 +66,6 @@ namespace cms.Code.LinkAccounts.Picasa
 
 			return response;
 
-		}
-	}
-
-	public static class ccc
-	{
-		public static string SerializeObject<T>(this T toSerialize)
-		{
-			var xmlSerializer = new XmlSerializer(toSerialize.GetType());
-			var textWriter = new StringWriter();
-
-			xmlSerializer.Serialize(textWriter, toSerialize);
-			return textWriter.ToString();
 		}
 	}
 }

@@ -15,8 +15,6 @@ namespace cms.Controllers.Api
 			Thumbnail = new WebImage(xxx.Width, xxx.Height, xxx.Url);
 			ThumbnailXXX = xxx;
 		}
-
-
 		public string Link { get { return Album.Title; } }
 		public string Id { get { return Album.Id; } }
 		public DateTime Updated { get { return Album.Updated; } }	
