@@ -48,7 +48,7 @@
 		<div ng-hide="hasAlbum()">
 			<div class="gdata-album-placeholder"></div>
 		</div>
-		<button ng-click="showGdataAlbums()" class="btn btn-small">Vybrat Album</button>
+		<button ng-click="toggleGdataAlbums()" class="btn btn-small">Vybrat Album</button>
 
 
 	</div>
@@ -68,7 +68,7 @@
 		<div ng-show="albums.length == 0">
 			<H4 class="text-error">nenalezena žádná alba</H4>
 		</div>
-		<div ng-show="albums == null" class="alert alert-error">
+		<div ng-show="albums == null && hasserror" class="alert alert-error">
 			<h4>chyba připojení </h4>
 			<div>
 				ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>

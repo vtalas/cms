@@ -205,9 +205,9 @@ module.directive("ngcHover", function () {
 });
 
 module.directive("ngcClickEdit", ngcClickEditDirective);
+module.directive("ngcLoader", ngcLoader);
 module.directive("ngcLazyImage", function () {
 	var loader = "/Content/loader16.gif";
-
 	return {
 		scope: {
 			ngcLazyImage: "="
