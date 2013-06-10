@@ -1,31 +1,36 @@
 ﻿<style>
 	.gdataAlbum {
-	display: inline-block;
-	margin: 5px;
+		display: inline-block;
+		margin: 5px;
 	}
 
 	.gdataThumb {
-	display: inline-block;
+		display: inline-block;
 	}
 
 	.gdataThumb:hover {
-	cursor: pointer;
+		cursor: pointer;
 	}
 
 	.gdataDetail {
-	display: inline-block;
+		display: inline-block;
 	}
 
 	.gdata-album-placeholder {
-	width: 160px;
-	height: 160px;
-	border: 1px dashed #d5d5d5;
+		width: 160px;
+		height: 160px;
+		border: 1px dashed #d5d5d5;
 	}
 
 	.gdata-album-preview {
-	width: 160px;
-	height: 160px;
-	border: 1px solid #d5d5d5;
+		width: 160px;
+		height: 160px;
+		border: 1px solid #d5d5d5;
+	}
+
+	.image-small {
+		display: inline-block;
+		padding: 0 10px 10px 0;
 	}
 
 </style>
@@ -41,19 +46,21 @@
 			<div ngc-click-edit="gridelement.Resources.text.Value" type="textarea" placeholder="Text"></div>
 		</div>
 	</div>
-	<div class="gridelement-content" style="float:left;">
-		<div ngc-gdata-gallery="gridelement.Content">
-			{{currentAlbum.Id}}
+	<div class="clearfix">.</div>
+	<div class="gridelement-content">
+
+		<div ngc-gdata-gallery="gridelement.Content" data-items-count="5">
+			<div class="grid_9">
+				<div ng-repeat="photo in albumPhotosAll" class="image-small" ng-hide="$index > itemsCount && !showAllValue">
+					<img ngc-lazy-image="photo.Thumbnails[0].PhotoUri" alt="image"/>
+				</div>
+				<button  class="btn btn-primary btn-small" ng-show="length > itemsCount && !showAllValue"  ng-click="showAll()" >zobrazit vše</button>
+				<button  class="btn btn-primary btn-small" ng-show="length > itemsCount && showAllValue"  ng-click="hide()">schovat</button>
+			</div>
 		</div>
 
-		<div ng-show="hasAlbum()" class="gdata-album-preview">
-
-			<img ngc-lazy-image="currentAlbum.Thumbnail.PhotoUri"/>
-		</div>
-		<div ng-hide="hasAlbum()">
-			<div class="gdata-album-placeholder"></div>
-		</div>
-		<button ng-click="toggleGdataAlbums()" class="btn btn-small">Vybrat Album</button>
+		<button ng-click="toggleGdataAlbums()" class="btn btn-small btn-success">Vybrat Album</button>
+		<span >{{updated}}<a ng-click="toggleGdataAlbums()" class=""><i class="icon-repeat"></i></a></span>
 
 
 	</div>
@@ -67,14 +74,18 @@
 		</div>
 	</div>
 
-	<div ng-show="showGdataAlbumsValue" class="gridelement-content" >
-		<h3>Google Alba</h3>
+	<div ng-show="showGdataAlbumsValue" class="gridelement-content">
+		<h3>Alba</h3>
 
 		<div ng-show="albums.length == 0">
 			<H4 class="text-error">nenalezena žádná alba</H4>
 		</div>
+		<div ng-show="albums == null">
+			<img ngc-loader />
+		</div>
 		<div ng-show="albums == null && hasserror" class="alert alert-error">
 			<h4>chyba připojení </h4>
+
 			<div>
 				ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
 			</div>

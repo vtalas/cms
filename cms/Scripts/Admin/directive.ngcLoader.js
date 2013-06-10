@@ -1,11 +1,12 @@
 var ngcLoader = function () {
-	var loader = "/Content/loader16.gif";
 	return {
+		template: '<img src="/Content/loader16.gif" alt="loader" />',
+		replace: true,
 		scope: {
 			ngcLoader: "="
 		},
 		link: function (scope) {
-			console.log("kjabsdkj");
+
 		}
 	};
 };
