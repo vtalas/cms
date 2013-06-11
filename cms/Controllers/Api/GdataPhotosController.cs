@@ -17,9 +17,9 @@ namespace cms.Controllers.Api
 			return PicasaProvider.Session.GetAlbum(id, refreshCache);
 		}
 
-		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
+		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache = false)
 		{
-			return PicasaProvider.Session.GetAlbumPhotos(id);
+			return PicasaProvider.Session.GetAlbumPhotos(id, refreshCache);
 		}
 
 		// POST api/gdataphotos

@@ -29,8 +29,9 @@ var gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEe
 			});
 	};
 
-	$scope.$on("gridelement-save", function (e, gridelemnt) {
-		$scope.save(gridelemnt);
+	$scope.$on("gridelement-save", function (e, gridelement) {
+		console.log("xxx", gridelement);
+		$scope.save(gridelement);
 	});
 
 	$scope.$on("gridname.showPreview", function (e, gridelemnt) {

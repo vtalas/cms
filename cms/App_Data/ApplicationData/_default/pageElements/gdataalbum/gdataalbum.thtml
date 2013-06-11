@@ -33,6 +33,14 @@
 		padding: 0 10px 10px 0;
 	}
 
+	.image-small-loader {
+		width: 93px;
+		height: 93px;
+		border: 1px dashed red;
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+
 </style>
 
 <div ng-controller="gdataalbum" class="row">
@@ -50,17 +58,32 @@
 	<div class="gridelement-content">
 
 		<div ngc-gdata-gallery="gridelement.Content" data-items-count="5">
-			<div class="grid_9">
-				<div ng-repeat="photo in albumPhotosAll" class="image-small" ng-hide="$index > itemsCount && !showAllValue">
+			<div ng-show="!albumPhotosAll" class="image-small-loader">
+				<img ngc-loader/>
+			</div>
+
+			<div class="grid_9" ng-show="albumPhotosAll.length > 0" tooltip-html-unsafe="{{albumInfo}}">
+
+				<div ng-repeat="photo in albumPhotosAll" class="image-small"
+					 ng-hide="$index > itemsCount && !showAllValue">
 					<img ngc-lazy-image="photo.Thumbnails[0].PhotoUri" alt="image"/>
 				</div>
-				<button  class="btn btn-primary btn-small" ng-show="length > itemsCount && !showAllValue"  ng-click="showAll()" >zobrazit vše</button>
-				<button  class="btn btn-primary btn-small" ng-show="length > itemsCount && showAllValue"  ng-click="hide()">schovat</button>
+				<button class="btn btn-primary btn-small" ng-show="length > itemsCount && !showAllValue"
+						ng-click="showAll()">zobrazit vše
+				</button>
+				<button class="btn btn-primary btn-small" ng-show="length > itemsCount && showAllValue"
+						ng-click="hide()">schovat
+				</button>
 			</div>
-		</div>
 
-		<button ng-click="toggleGdataAlbums()" class="btn btn-small btn-success">Vybrat Album</button>
-		<span >{{updated}}<a ng-click="toggleGdataAlbums()" class=""><i class="icon-repeat"></i></a></span>
+			<span>
+				<button ng-click="toggleGdataAlbums()" class="btn btn-small btn-success">Vybrat Album</button>
+				<span ng-show="albumPhotosAll.length > 0" tooltip-html-unsafe="Aktualizovat" tooltip-popup-delay='300'
+					  tooltip-placement="right">
+					<a ng-click="refreshAlbums()" class="">
+					<span class="icon-repeat"></span></a></span>
+			</span>
+		</div>
 
 
 	</div>
@@ -68,6 +91,7 @@
 	<div class="gridelement-content">
 		<div ng-show="haserror" class="alert alert-error">
 			<h4>chyba připojení </h4>
+
 			<div>
 				ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
 			</div>
@@ -81,7 +105,7 @@
 			<H4 class="text-error">nenalezena žádná alba</H4>
 		</div>
 		<div ng-show="albums == null">
-			<img ngc-loader />
+			<img ngc-loader/>
 		</div>
 		<div ng-show="albums == null && hasserror" class="alert alert-error">
 			<h4>chyba připojení </h4>

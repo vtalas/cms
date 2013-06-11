@@ -2,8 +2,8 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi',
 	function ($scope, $http, $rootScope, appSettings, GridApi) {
 
 	function loadData() {
-		GridApi.grids(function (parameters) {
-			$scope.data = parameters;
+		GridApi.grids(function (data) {
+			$scope.data = data;
 		});
 	}
 

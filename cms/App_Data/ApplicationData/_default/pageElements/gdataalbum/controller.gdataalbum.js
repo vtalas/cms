@@ -17,17 +17,13 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 	$scope.showGdataAlbumsValue = false;
 	$scope.applicationId = appSettings.Id;
 
-	$scope.$on("ngcClickEdit.showPreview", function (e, data) {
-		return $scope.$emit("gridelement-save", gridelement);
-	});
-
 	$scope.addAlbum = function (id) {
 		gridelement.Content = {
 			gdataAlbumId: id,
 			updated: new Date().getTime()
 		};
 		$scope.showGdataAlbumsValue = $scope.hideGdataAlbums();
-		$scope.$broadcast("gridelement-save", gridelement.Content);
+		$scope.$broadcast("gdata-gallery-save", gridelement.Content);
 		gridelement.Content = JSON.stringify(gridelement.Content);
 		$scope.$emit("gridelement-save", gridelement);
 	};
@@ -55,5 +51,14 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 	$scope.isShowGdataAlbums = function () {
 		return !!gridelement.Edit && $scope.showGdataAlbumsValue;
 	};
-	return 1;
+
+
+	$scope.$on("ngcClickEdit.showPreview", function (e, data) {
+		return $scope.$emit("gridelement-save", gridelement);
+	});
+
+	$scope.$on("gdataalbum-refresh", function (e, data) {
+		gridelement.Content = JSON.stringify(data);
+		$scope.$emit("gridelement-save", gridelement);
+	});
 };
