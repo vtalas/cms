@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/Grids.js" afterPath="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/applicationusers.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/applicationusers.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Controllers/controller.applicationusers.js" afterPath="$PROJECT_DIR$/Scripts/Controllers/controller.applicationusers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js" afterPath="$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="" />
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/gdataalbum_admin.thtml" changelist="fde62753-6246-4681-bf3f-f01d038168d9" time="1364982542786" ignored="false" />

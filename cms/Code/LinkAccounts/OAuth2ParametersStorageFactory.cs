@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Configuration;
 using Google.GData.Client;
 using cms.Code.UserResources;
 using cms.data.EF;
-using cms.shared;
 
 namespace cms.Code.LinkAccounts
 {
 	public class OAuth2ParametersStorageFactory
 	{
-		private const string ClientId = "568637062174-4s9b1pohf5p0hkk8o4frvesnhj8na7ug.apps.googleusercontent.com";
-		private const string ClientSecret = "YxM0MTKCTSBV5vGlU05Yj63h";
+		private static readonly string ClientId = ConfigurationManager.AppSettings["Gdata_ClientId"];
+		private static readonly string ClientSecret = ConfigurationManager.AppSettings["Gdata_ClientSecret"];
 
 		private static OAuth2Parameters GetDefaults()
 		{
