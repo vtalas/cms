@@ -22,12 +22,6 @@ namespace cms.Controllers.Api
 			}
 		}
 
-		public GridElementDto Get(Guid id)
-		{
-			var x =  new GridElementDto {Id = id, Content = "lknasljkdnasjkld"};
-			return x;
-		}
-
 		public void Delete(Guid id )
 		{
 			using (var db = SessionProvider.CreateSession())
@@ -42,13 +36,6 @@ namespace cms.Controllers.Api
 			{
 				return db.Session.Page.Update(data);
 			}
-		}
-
-		public GridElementDto Putxxx(string xxx )
-		{
-			var x = new GridElementDto {Content = xxx};
-			return x;
-
 		}
 
 	}

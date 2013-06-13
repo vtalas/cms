@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using cms.data.Dtos;
 using cms.data.Shared.Models;
 using cms.shared;
@@ -108,7 +110,7 @@ namespace cms.data.Extensions
 			return new GridElementDto
 					{
 						Id = source.Id,
-						Content = source.Content,
+						Content =  source.Content != null ? (JObject)JsonConvert.DeserializeObject(source.Content) : null, 
 						Position = source.Position,
 						Skin = source.Skin,
 						Type = source.Type,
@@ -181,7 +183,7 @@ namespace cms.data.Extensions
 		{
 			var a = new GridElement
 			{
-				Content = source.Content,
+				Content = JsonConvert.SerializeObject(source.Content),
 				Id = source.Id.IsEmpty() ? Guid.NewGuid() : source.Id,
 				Parent = parent,
 				Position = source.Position,

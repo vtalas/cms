@@ -29,8 +29,15 @@ var gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEe
 			});
 	};
 
+	var broadcastTime = function() {
+		$scope.$broadcast("gridpage-tick", new Date() );
+		timeout();
+	};
+	var timeout = function () {	setTimeout(broadcastTime, 60000 );};
+	timeout();
+
+
 	$scope.$on("gridelement-save", function (e, gridelement) {
-		console.log("xxx", gridelement);
 		$scope.save(gridelement);
 	});
 
@@ -40,10 +47,6 @@ var gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEe
 
 	$scope.save = function (item) {
 		var copy = jQuery.extend(true, {}, item);
-
-		if (angular.isObject(copy.Content)) {
-			copy.Content = JSON.stringify(copy.Content);
-		}
 
 		gridEelementApi.put(copy);
 	};

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using Newtonsoft.Json;
 using cms.data.Dtos;
 using cms.data.Extensions;
 using cms.data.Repository;
@@ -132,7 +133,7 @@ namespace cms.data.DataProvider
 
 			itemDb.RefreshPositions(item, newParent);
 			itemDb.UpdateResourceList(item.Resources, CurrentCulture, Repository);
-			itemDb.Content = item.Content;
+			itemDb.Content = JsonConvert.SerializeObject(item.Content);
 			itemDb.Parent = newParent;
 			itemDb.Skin = item.Skin;
 			Repository.SaveChanges();

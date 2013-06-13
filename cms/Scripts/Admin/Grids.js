@@ -181,7 +181,6 @@ module.directive("gridelement", ["$compile", "GridApi", "appSettings", "gridtemp
 		scope: { grid: "=", gridelement: "=" },
 		link: function (scope, iElement, tAttrs, controller) {
 			scope.getGridElement = function (){
-				scope.gridelement.Content =  JSON.parse(scope.gridelement.Content);
 				return scope.gridelement;
 			};
 

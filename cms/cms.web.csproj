@@ -198,7 +198,6 @@
     <Compile Include="Code\Utils\FastDirectoryEnumerator.cs" />
     <Compile Include="Controllers\Api\AlbumDecorator.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
-    <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
     <Compile Include="Controllers\Api\CmsUsersApiController.cs">
       <SubType>Code</SubType>
@@ -447,6 +446,8 @@
     <Content Include="Content\admin.less" />
     <Content Include="Scripts\Admin\angular-templates-ext.js" />
     <Content Include="Scripts\Admin\angular-ui-ext-dndClass.ts" />
+    <Content Include="Scripts\Admin\directive.ngcGdataGallery.js" />
+    <Content Include="Scripts\Admin\directive.ngcLoader.js" />
     <Content Include="Scripts\Controllers\controller.gDataPhotos.js" />
     <Content Include="Scripts\Controllers\controller.gdataPhotosSettings.js" />
     <Content Include="Scripts\Controllers\controller.showuserdata.js" />

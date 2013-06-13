@@ -1,44 +1,78 @@
 function ngcGDataGallery(gdataPhotos) {
 	function dateReadable(date) {
-		var current = new Date();
-		console.log(current - date);
-		if (current - date < 60000 ) {
-			return "pod minutu";
+		var current = new Date(),
+			spanMinutes = (current - date) / 1000 / 60,
+			spanHours = 0;
+
+		if (spanMinutes < 1 ) {
+			return "před chvilkou";
 		}
-		if (current - date < 1200000 ) {
-			return (current - date) / 1000 / 60 + " min";
+
+		if (spanMinutes < 60 ) {
+			return Math.ceil(spanMinutes) + " min.";
 		}
-		var curr_date = date.getDate();
-		var curr_month = date.getMonth() + 1; //Months are zero based
-		var curr_year = date.getFullYear();
-		return (curr_date + "-" + curr_month + "-" + curr_year);
+
+		spanHours = spanMinutes / 60;
+
+		if (spanHours < 24 ) {
+			return Math.ceil(spanHours) + " hodin.";
+		}
+
+		if (spanHours < 48 ) {
+			return Math.ceil(spanHours) + " den.";
+		}
+
+		if (spanHours < 144 ) {
+			return Math.ceil(spanHours) + " dny.";
+		}
+
+		if (spanHours < 168 ) {
+			return Math.ceil(spanHours) + " dní.";
+		}
+
+		if (spanHours > 168 ) {
+			return "více než týden."
+		}
+		return current;
 	}
 
+	function GdataGallery(data) {
+		this.gdataAlbumId = data.gdataAlbumId || null;
+		this.name = data.name || "";
+		this.updated = data.updated || null;
+	}
 	return {
 		scope: {
 			ngcGdataGallery: "=",
 			itemsCount: "="
 		},
+		
 		link: function (scope, element, attr) {
-			var g = scope.ngcGdataGallery || {},
-				id = g.gdataAlbumId || null,
-				updated = g.updated || null;
+			scope.loading = false;
+			scope.gallery = new GdataGallery(scope.ngcGdataGallery || {});
 
-			scope.showAllValue = false;
+			scope.$watch("ngcGdataGallery", function (newValue) {
+				scope.gallery = new GdataGallery(newValue || {});
+		    });
+		    scope.showAllValue = false;
 
-			var getCurrentAlbum = function (id, clearCache, callback) {
-				if (id !== null) {
-					gdataPhotos.getAlbumPhotos({id: id, refreshCache: clearCache }, function (data) {
-						var d = dateReadable(new Date(updated));
-						scope.albumInfo = '<div style="text-align:left"><div><b>Polsko</b></div><div>aktualizováno: '+ d +'</div><div>fotek: '+ data.length+'</div></div>';
-						scope.albumPhotosAll = data.slice();
+			var getCurrentAlbum = function (albumId, clearCache, callback) {
+				if (albumId !== null) {
+					scope.loading = true;
+					gdataPhotos.getAlbumPhotos({ id: albumId, refreshCache: clearCache }, function (data) {
+				        scope.albumInfo = '<div style="text-align:left"><div><b>' + scope.gallery.name + '</b></div><div>fotek: ' + data.length + '</div></div>';
+
+				        scope.length = data.length;
+				        scope.albumPhotosAll = data.slice();
 						scope.firstPhoto = data.splice(0, 1)[0];
 						scope.albumPhotos = data;
-						scope.updated = updated;
-						scope.length = data.length;
+						scope.updated = scope.gallery.updated;
+						scope.updatedTimeSpan = dateReadable(new Date(scope.gallery.updated));
+
 						if (typeof callback === "function") {
 							callback();
 						}
+						scope.loading = false;
 					});
 				} else {
 					scope.albumPhotosAll = [];
@@ -55,28 +89,30 @@ function ngcGDataGallery(gdataPhotos) {
 
 			scope.refreshAlbums = function () {
 				scope.albumPhotosAll = null;
-				var updated = new Date().getTime(),
-					content = {
-						gdataAlbumId: id,
-						updated: updated
-					};
-				scope.$emit("gdataalbum-refresh", content);
-				getCurrentAlbum(id, true, function () {
-					scope.updated = updated;
+				var updatedDate = new Date().getTime();
+
+				scope.gallery.updated = updatedDate;
+				scope.$emit("gdataalbum-refresh", JSON.stringify(scope.gallery));
+				getCurrentAlbum(scope.gallery.gdataAlbumId, true, function () {
+					scope.updated = updatedDate;
 				});
 			};
 
 			scope.toggleGdataAlbums = function () {
-				scope.$parent.toggleGdataAlbums();
+			    scope.$parent.toggleGdataAlbums();
 			};
 
-			setTimeout(function () {
-				getCurrentAlbum(id, false);
-			}, 1000);
+			getCurrentAlbum(scope.gallery.gdataAlbumId, false);
 
 			scope.$on("gdata-gallery-save", function (e, data) {
 				getCurrentAlbum(data.gdataAlbumId);
 			});
+
+			scope.$on("gridpage-tick", function () {
+				scope.updatedTimeSpan = dateReadable(new Date(scope.gallery.updated));
+				scope.$digest();
+			});
+
 		}
 	};
 }

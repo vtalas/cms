@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace cms.data.Dtos
 {
@@ -8,7 +9,7 @@ namespace cms.data.Dtos
 		public Guid Id { get; set; }
 		public int Position { get; set; }
 
-		public string Content { get; set; }
+		public JObject Content { get; set; }
 		public string Type { get; set; }
 		public string Skin { get; set; }
 	
