@@ -17,7 +17,7 @@ var applicationusersCtrl = ['$scope', 'cmsUsersApi', function ($scope, cmsUsersA
 	$scope.edit = function(user) {
 		user.Edit = true;
 	};
-	$scope.delete = function() {
+	$scope.remove = function() {
 		console.log("delete");
 	};
 	$scope.cancelEdit = function (user) {

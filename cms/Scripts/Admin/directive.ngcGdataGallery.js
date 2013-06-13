@@ -1,4 +1,5 @@
 function ngcGDataGallery(gdataPhotos) {
+
 	function dateReadable(date) {
 		var current = new Date(),
 			spanMinutes = (current - date) / 1000 / 60,
@@ -7,29 +8,30 @@ function ngcGDataGallery(gdataPhotos) {
 		if (spanMinutes < 1 ) {
 			return "před chvilkou";
 		}
-
 		if (spanMinutes < 60 ) {
-			return Math.ceil(spanMinutes) + " min.";
+			return Math.floor(spanMinutes) + " min.";
 		}
 
 		spanHours = spanMinutes / 60;
 
+		if (spanHours < 2 ) {
+			return Math.floor(spanHours) + " hodina";
+		}
+		if (spanHours < 6 ) {
+			return Math.floor(spanHours) + " hodiny";
+		}
 		if (spanHours < 24 ) {
-			return Math.ceil(spanHours) + " hodin.";
+			return Math.floor(spanHours) + " hodin";
 		}
-
 		if (spanHours < 48 ) {
-			return Math.ceil(spanHours) + " den.";
+			return Math.floor(spanHours / 24) + " den";
 		}
-
 		if (spanHours < 144 ) {
-			return Math.ceil(spanHours) + " dny.";
+			return Math.floor(spanHours / 24) + " dny";
 		}
-
 		if (spanHours < 168 ) {
-			return Math.ceil(spanHours) + " dní.";
+			return Math.floor(spanHours / 24) + " dní";
 		}
-
 		if (spanHours > 168 ) {
 			return "více než týden."
 		}
