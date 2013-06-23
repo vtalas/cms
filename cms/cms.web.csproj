@@ -219,6 +219,7 @@
     </Compile>
     <Compile Include="Controllers\Api\WebImage.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Controllers\SuperUserController.cs" />
     <Compile Include="Controllers\GDataAuthController.cs" />
     <Compile Include="Controllers\GDataController.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageFactory.cs" />
@@ -559,7 +560,7 @@
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\SuperUser\Register.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
@@ -585,6 +586,7 @@
     <Content Include="Views\GData\Index_ReAuthorize.cshtml" />
     <Content Include="Views\Admin\template\showuserdata.cshtml" />
     <Content Include="Views\Admin\template\applicationusers.cshtml" />
+    <Content Include="Views\SuperUser\Index.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

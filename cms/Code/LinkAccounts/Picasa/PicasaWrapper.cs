@@ -45,7 +45,7 @@ namespace cms.Code.LinkAccounts.Picasa
 			var albums = PicasaRequest.GetAlbums();
 			var albumobject = albums.Entries.SingleOrDefault(x => x.Id == id);
 			var decorate = new AlbumDecorator(albumobject);
-			Cache.Add(id + "album", decorate, new DateTimeOffset(new DateTime(2020, 1, 1)));
+			Cache.Set(id + "album", decorate, new DateTimeOffset(new DateTime(2020, 1, 1)));
 			return decorate;
 		}
 
@@ -62,7 +62,7 @@ namespace cms.Code.LinkAccounts.Picasa
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
 			var response = photos.Entries.Select(x => new PhotoDecorator(x, a));
 			
-			Cache.Add(id + "albumphotos", response,new DateTimeOffset(new DateTime(2020, 1,1)));
+			Cache.Set(id + "albumphotos", response, new DateTimeOffset(new DateTime(2020, 1,1)));
 
 			return response;
 

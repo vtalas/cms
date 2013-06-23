@@ -16,7 +16,8 @@
 	<appSettings>
 		<add key="ClientValidationEnabled" value="true" />
 		<add key="UnobtrusiveJavaScriptEnabled" value="true" />
-		<add key="DefaultJsonBootstrap" value="default_bootstrap.json" />
+		<add key="Gdata_ClientId"  value="568637062174-4s9b1pohf5p0hkk8o4frvesnhj8na7ug.apps.googleusercontent.com" />
+		<add key="Gdata_ClientSecret" value="YxM0MTKCTSBV5vGlU05Yj63h" />
 	</appSettings>
 	<connectionStrings>
 		<!--<add name="EfContext" connectionString="Data Source=.\SQLEXPRESS2008;Initial Catalog=ladesopeklo;Integrated Security=True" providerName="System.Data.SqlClient" />-->

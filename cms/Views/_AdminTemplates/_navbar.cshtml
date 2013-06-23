@@ -1,27 +1,38 @@
 ﻿<style type="text/css">
-    .xxx
-    {
-	    padding-bottom: 0px;
+	.xxx
+	{
+		padding-bottom: 0px;
 	}
 </style>
 
 <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner xxx">
-        <ul class="nav">
-            <li class=""><a class="" href="@Url.Action("Dashboard", "Admin")">@ViewBag.ApplicationName</a></li>
-        </ul>
-        <ul class="nav pull-right">
-			<li>@WebSecurity.CurrentUserName  <span class="divider-vertical"> | @Html.ActionLink("nastavení", "Index", "Gdata") |  @Html.ActionLink("odhlásit", "LogOff", "Account")</span></li>
-        </ul>
-    </div>
+	<div class="navbar-inner xxx">
+		<ul class="nav">
+			<li class=""><a class="" href="@Url.Action("Dashboard", "Admin")">@ViewBag.ApplicationName</a></li>
+		</ul>
+		<ul class="nav pull-right">
+			<li>@WebSecurity.CurrentUserName
+				<span class="divider-vertical">
+					| @Html.ActionLink("nastavení", "Index", "Gdata") 
+					| @Html.ActionLink("odhlásit", "LogOff", "Account")
+					@if (Roles.IsUserInRole("superuser"))
+					{
+						<text>|</text>
+						@Html.ActionLink("superuser", "Index", "SuperUser")
+					}
+
+
+				</span></li>
+		</ul>
+	</div>
 </div>
 
 <div class="navbar navbar-fixed-top navbar-inverse" style="display: none">
-    <div class="navbar-inner">
-        <div class="container">
-            <div class="nav-collapse">
-                <ul class="nav">
-                    @*					<li class="btn-group">
+	<div class="navbar-inner">
+		<div class="container">
+			<div class="nav-collapse">
+				<ul class="nav">
+					@*					<li class="btn-group">
 							<button class="btn" >@ViewBag.ApplicationName</button>
 							<button class="btn dropdown-toggle" data-toggle="dropdown">
 								<span class="caret"></span>
@@ -31,20 +42,20 @@
 								<li><a href="#" >app2 </a></li>
 							</ul>
 					</li>*@
-                    <li>
-                        <a  href="@Url.Action("Grids", "Admin")">@ViewBag.ApplicationName</a>
-                    </li>
-                    <li>
-                        @Html.ActionLink("logout", "LogOff", "Account")
-                    </li>
-                    <li>
-                        @Html.ActionLink("nastaveni", "Index", "Gdata")
-                    </li>
-                    <li>
-                        <a href="/admin">@WebSecurity.CurrentUserName</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+					<li>
+						<a  href="@Url.Action("Grids", "Admin")">@ViewBag.ApplicationName</a>
+					</li>
+					<li>
+						@Html.ActionLink("logout", "LogOff", "Account")
+					</li>
+					<li>
+						@Html.ActionLink("nastaveni", "Index", "Gdata")
+					</li>
+					<li>
+						<a href="/admin">@WebSecurity.CurrentUserName</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>

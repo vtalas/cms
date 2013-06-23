@@ -34,7 +34,9 @@ namespace cms.data.EF.Initializers
 			var application = CreateApplication( "test1", new Guid("c78ee05e-1115-480b-9ab7-a3ab3c0f6643"));
 
 			GenerateUsers(application);
-			GenerateUser(application, "admin", "Peklo123", "admin");
+			GenerateUser(application, "admin", "Peklo123", "superuser");
+			Roles.AddUserToRole("admin", "admin");
+
 			GenerateUser(application, "dalik", "Peklo123", "admin");
 
 			WebSecurity.CreateUserAndAccount("lades", "a");
@@ -117,6 +119,7 @@ namespace cms.data.EF.Initializers
 		private void GenerateUsers(ApplicationSetting application)
 		{
 			Roles.CreateRole("admin");
+			Roles.CreateRole("superuser");
 			Roles.CreateRole("applicationUser");
 			
 			GenerateApplicationUser(application, "pepa", "b");

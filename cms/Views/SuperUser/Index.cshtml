@@ -1,0 +1,9 @@
+﻿@using cms.shared
+@{
+	ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
+	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
+	var applicationName = ViewBag.Application;
+	var applicationId = ViewBag.ApplicationId;
+}
+
+@Html.ActionLink("Register", "Register")
