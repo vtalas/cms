@@ -6,11 +6,13 @@ using cms.data.Dtos;
 using cms.data.Repository;
 using cms.data.Shared.Models;
 using cms.shared;
+using log4net;
 
 namespace cms.data.Extensions
 {
 	public static class JsonDataEfHelpers
 	{
+		static readonly ILog Log = LogManager.GetLogger(typeof(JsonDataEfHelpers));
 		public static Resource GetResource(string key, string value, Guid parentId, string culture, int id)
 		{
 			var cultureupdated = CorrectCulture(key, culture);
@@ -19,7 +21,12 @@ namespace cms.data.Extensions
 
 		public static Resource GetByKey(this IEnumerable<Resource> resources, string key, string culture)
 		{
-			return resources.SingleOrDefault(a => a.Key == key && a.Culture == culture);
+			var resource = resources.FirstOrDefault(a => a.Key == key && a.Culture == culture);
+			if (resources != null && resources.Count(a => a.Key == key && a.Culture == culture) > 1)
+			{
+				Log.ErrorFormat("more then one key: {0} culture: {1} id: {2}", key, culture, resource != null ?  resource.Id.ToString() : "???");
+			}
+			return resource;
 		}
 
 		public static string CorrectCulture(string key, string culture)

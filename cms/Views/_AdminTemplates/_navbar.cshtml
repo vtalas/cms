@@ -1,39 +1,44 @@
 ﻿<style type="text/css">
-    .xxx
-    {
-        padding-bottom: 0px;
-    }
+	.xxx
+	{
+		padding-bottom: 0px;
+	}
+
+	.navbar-fixed-top .navbar-button-group
+	{
+		margin-top: 0px;
+	}
 </style>
 
 <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner xxx">
-        <div class="btn-group">
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="@Url.Action("Dashboard", "Admin")">
-                @ViewBag.ApplicationName
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <a href="@Url.Action("Applications", "Admin")" tooltip="kjasbdjkasb"><span class="icon icon-plus-sign"></span>pridat novou</a>
+	<div class="navbar-inner xxx">
+		<div class="btn-group navbar-button-group">
+			<a class="btn" href="@Url.Action("Dashboard", "Admin")">@ViewBag.ApplicationName</a>
+			<button class="btn dropdown-toggle" data-toggle="dropdown">
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<a href="@Url.Action("Applications", "Admin")" tooltip="kjasbdjkasb"><b class="icon icon-plus-sign"></b>pridat novou aplikaci</a>
 
-                <!-- dropdown menu links -->
-            </ul>
-        </div>
-        <ul class="nav">
-            <li class=""></li>
-        </ul>
+				<!-- dropdown menu links -->
+			</ul>
+		</div>
+		<ul class="nav">
+			<li class=""></li>
+		</ul>
 
-        <ul class="nav pull-right">
-            <li>@WebSecurity.CurrentUserName
-                <span class="divider-vertical">| @Html.ActionLink("nastavení", "Index", "Gdata")
-                    | @Html.ActionLink("odhlásit", "LogOff", "Account")
-                    @if (Roles.IsUserInRole("superuser"))
-                    {
-                        <text>|</text>
-                        @Html.ActionLink("superuser", "Index", "SuperUser")
-                    }
+		<ul class="nav pull-right">
+			<li>@WebSecurity.CurrentUserName
+				<span class="divider-vertical">| @Html.ActionLink("nastavení", "Index", "Gdata")
+					| @Html.ActionLink("odhlásit", "LogOff", "Account")
+					@if (Roles.IsUserInRole("superuser"))
+	 {
+						<text>|</text>
+						@Html.ActionLink("superuser", "Index", "SuperUser")
+	 }
 
 
-                </span></li>
-        </ul>
-    </div>
+				</span></li>
+		</ul>
+	</div>
 </div>

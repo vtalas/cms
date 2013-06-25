@@ -447,6 +447,7 @@
     <Content Include="Content\admin.less" />
     <Content Include="Scripts\Admin\angular-templates-ext.js" />
     <Content Include="Scripts\Admin\angular-ui-ext-dndClass.ts" />
+    <Content Include="Scripts\Admin\controller.index.js" />
     <Content Include="Scripts\Admin\directive.ngcGdataGallery.js" />
     <Content Include="Scripts\Admin\directive.ngcLoader.js" />
     <Content Include="Scripts\Controllers\controller.gDataPhotos.js" />
@@ -487,7 +488,6 @@
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Admin\Grids.js" />
-    <Content Include="Scripts\Admin\Index.js" />
     <Content Include="Scripts\showdown.js" />
     <Content Include="Content\SwaggerUI\css\screen.css" />
     <Content Include="Content\SwaggerUI\images\pet_store_api.png" />

@@ -60,7 +60,7 @@ namespace cms.data.Extensions
 			if (source == null)
 				return new Dictionary<string, ResourceDtoLoc>();
 
-			return source.Where(x => (x.Culture == culture || x.Culture == null) && x.Key != null)
+			return source.Where(x => (x.Culture == culture || x.Culture == null) && x.Key != null )
 				.ToDictionary(x => x.Key, v => v.ToDto());
 		}
 
