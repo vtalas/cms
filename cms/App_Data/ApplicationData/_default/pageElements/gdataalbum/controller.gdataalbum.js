@@ -63,6 +63,7 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 	});
 
 	$scope.$on("gdataalbum-refresh", function (e, data) {
-		$scope.$emit("gridelement-save", gridelement);
+	    gridelement.Content = data;
+	    $scope.$emit("gridelement-save", gridelement);
 	});
 };

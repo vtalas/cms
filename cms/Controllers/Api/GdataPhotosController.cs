@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 
 namespace cms.Controllers.Api
@@ -11,6 +12,8 @@ namespace cms.Controllers.Api
 			var albums = PicasaProvider.Session.GetAlbums().Select(x => new AlbumDecorator(x));
 			return albums.ToDictionary(key => key.Id);
 		}
+
+
 
 		public AlbumDecorator GetAlbum(string id, bool refreshCache = false)
 		{

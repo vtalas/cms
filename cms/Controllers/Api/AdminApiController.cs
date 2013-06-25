@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using WebMatrix.WebData;
 using cms.Code.UserResources;
 using cms.data.Dtos;
+using cms.data.Extensions;
 using cms.data.Shared.Models;
 
 namespace cms.Controllers.Api
@@ -16,13 +17,13 @@ namespace cms.Controllers.Api
 	public class AdminApiController : WebApiControllerBase
 	{ 
 		[System.Web.Mvc.HttpPost]
-		public ApplicationSetting AddApplication(ApplicationSetting data)
+		public ApplicationSettingDto AddApplication(ApplicationSetting data)
 		{
 			using (var db = SessionProvider.CreateSession())
 			{
 				var a = db.Session.Add(data, WebSecurity.CurrentUserId);
 				UserResourcesManagerProvider.CreateApplication(a.Id);
-				return a;
+				return a.ToDto();
 			}
 		}
 		

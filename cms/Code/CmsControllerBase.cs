@@ -55,15 +55,15 @@ namespace cms.Code
 
 			if (RouteData.Values.TryGetValue("applicationId", out x))
 			{
-				Guid aaa;
-				if (Guid.TryParse(x as string, out aaa))
+				Guid applicationId;
+				if (Guid.TryParse(x as string, out applicationId))
 				{
-					ApplicationId = aaa;
+					ApplicationId = applicationId;
 				}
 			}
 			else
 			{
-				ApplicationId = new Guid("00000000-0000-0000-0000-000000000000");
+				HttpNotFound();
 			}
 
 			SessionProvider = new SessionProvider(ApplicationId, WebSecurity.CurrentUserId);

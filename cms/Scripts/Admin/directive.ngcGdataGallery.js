@@ -92,9 +92,10 @@ function ngcGDataGallery(gdataPhotos) {
 			scope.refreshAlbums = function () {
 				scope.albumPhotosAll = null;
 				var updatedDate = new Date().getTime();
-
 				scope.gallery.updated = updatedDate;
-				scope.$emit("gdataalbum-refresh", JSON.stringify(scope.gallery));
+				console.log(scope.gallery)
+
+				scope.$emit("gdataalbum-refresh", scope.gallery);
 				getCurrentAlbum(scope.gallery.gdataAlbumId, true, function () {
 					scope.updated = updatedDate;
 				});

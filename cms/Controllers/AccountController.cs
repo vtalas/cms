@@ -36,7 +36,7 @@ namespace MvcApplication1.Controllers
 		public ActionResult LogOff()
 		{
 			WebSecurity.Logout();
-			return RedirectToAction("Index", "Home");
+			return RedirectToLocal("/");
 		}
 		////[HttpPost]
 		////[ValidateAntiForgeryToken]

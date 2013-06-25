@@ -16,10 +16,12 @@ namespace cms.Code.LinkAccounts.Picasa
 	{
 		private PicasaService Service { get; set; }
 		private PicasaRequest PicasaRequest { get; set; }
-		private static readonly ObjectCache Cache = MemoryCache.Default;
+		private ObjectCache Cache { get; set; }
 
 		public PicasaWrapper(SessionProvider sessionProvider)
 		{
+			Cache = MvcApplication.Cache;
+			
 			var oauth2ParametersStorage = OAuth2ParametersStorageFactory.StorageDatabase(sessionProvider);
 			//var gdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageJsonFile(ApplicationId));
 			var gdataAuth = new GoogleDataOAuth2Service(oauth2ParametersStorage);
@@ -48,6 +50,7 @@ namespace cms.Code.LinkAccounts.Picasa
 			Cache.Set(id + "album", decorate, new DateTimeOffset(new DateTime(2020, 1, 1)));
 			return decorate;
 		}
+
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache = false)
 		{

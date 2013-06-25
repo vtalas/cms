@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using WebMatrix.WebData;
 using cms.data.EF;
-using cms.data.EF.Initializers;
 
 namespace cms.Controllers.Api
 {
@@ -16,8 +15,9 @@ namespace cms.Controllers.Api
 		protected override void Initialize(System.Web.Routing.RequestContext requestContext)
 		{
 			base.Initialize(requestContext);
-			
-			ApplicationId = new Guid( RouteData.Values["applicationId"].ToString());
+
+			ApplicationId = new Guid(RouteData.Values["applicationId"].ToString());
+
 			SecurityProvider.EnsureInitialized();
 			//SessionProvider = new SessionProvider(() => new DataEfAuthorized(ApplicationId,  new RepositoryFactory().Create, WebSecurity.CurrentUserId), new MigrateInitalizer());
 			SessionProvider = new SessionProvider(ApplicationId, WebSecurity.CurrentUserId);
