@@ -57,11 +57,23 @@ namespace cms.data.Extensions
 
 		public static IDictionary<string, ResourceDtoLoc> ToDtos(this ICollection<Resource> source, string culture)
 		{
+			var dictionary = new Dictionary<string, ResourceDtoLoc>();
 			if (source == null)
-				return new Dictionary<string, ResourceDtoLoc>();
+				return dictionary;
 
-			return source.Where(x => (x.Culture == culture || x.Culture == null) && x.Key != null )
-				.ToDictionary(x => x.Key, v => v.ToDto());
+			var list = source.Where(x => (x.Culture == culture || x.Culture == null) && x.Key != null);
+			foreach (var item in list)
+			{
+				if (dictionary.ContainsKey(item.Key))
+				{
+					dictionary[item.Key] = item.ToDto();
+				}
+				else
+				{
+					dictionary.Add(item.Key, item.ToDto());
+				}
+			}
+			return dictionary;
 		}
 
 		public static Resource ToResource(this ResourceDtoLoc s, string key, Guid owner, string culture)

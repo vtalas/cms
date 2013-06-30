@@ -131,5 +131,9 @@ namespace cms.Controllers.Api
 		{
 			return PicasaProvider.Session.GetAlbumPhotos(id);
 		}
+		public IEnumerable<PhotoDecorator> GetPhotos()
+		{
+			return PicasaProvider.Session.GetPhotos();
+		}
 	}
 }

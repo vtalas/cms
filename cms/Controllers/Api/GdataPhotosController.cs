@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
+using Google.Picasa;
 
 namespace cms.Controllers.Api
 {
@@ -9,11 +9,9 @@ namespace cms.Controllers.Api
 	{
 		public IDictionary<string, AlbumDecorator> GetAlbums()
 		{
-			var albums = PicasaProvider.Session.GetAlbums().Select(x => new AlbumDecorator(x));
+			var albums = Enumerable.Select<Album, AlbumDecorator>(PicasaProvider.Session.GetAlbums(), x => new AlbumDecorator(x));
 			return albums.ToDictionary(key => key.Id);
 		}
-
-
 
 		public AlbumDecorator GetAlbum(string id, bool refreshCache = false)
 		{
@@ -23,6 +21,11 @@ namespace cms.Controllers.Api
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache = false)
 		{
 			return PicasaProvider.Session.GetAlbumPhotos(id, refreshCache);
+		}
+
+		public IEnumerable<AlbumPhoto> GetPhotos(bool refreshCache = false)
+		{
+			return PicasaProvider.Session.GetPhotos(refreshCache);
 		}
 
 		// POST api/gdataphotos

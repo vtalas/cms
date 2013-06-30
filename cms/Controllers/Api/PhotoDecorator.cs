@@ -8,6 +8,15 @@ using cms.Code.LinkAccounts.Picasa;
 
 namespace cms.Controllers.Api
 {
+	public class AlbumPhoto : PhotoDecorator
+	{
+		public string AlbumId { get; set; }
+		
+		public AlbumPhoto(Photo photo, GdataPhotosSettings gdataPhotosSettings) : base(photo, gdataPhotosSettings)
+		{
+			AlbumId = photo.AlbumId;
+		}
+	}
 	public class PhotoDecorator
 	{
 		private readonly GdataPhotosSettings _settings;
@@ -37,7 +46,7 @@ namespace cms.Controllers.Api
 			Thumbnails = new List<WebImage>(3)
 			{
 				 GetWebImage(95, 95),
-				 GetWebImage(200, 200),
+				 GetWebImage(230, 230),
 				 GetWebImage(350, 350)
 			};
 

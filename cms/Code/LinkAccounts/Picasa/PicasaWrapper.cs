@@ -51,7 +51,6 @@ namespace cms.Code.LinkAccounts.Picasa
 			return decorate;
 		}
 
-
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache = false)
 		{
 			if (Cache.Contains(id + "albumphotos") && !refreshCache)
@@ -59,16 +58,20 @@ namespace cms.Code.LinkAccounts.Picasa
 				return (IEnumerable<PhotoDecorator>)Cache.Get(id + "albumphotos");
 			}
 
-			var a = new GdataPhotosSettings();
-			a.SmallHeight = 400;
+			var settings = new GdataPhotosSettings { SmallHeight = 400 };
 
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
-			var response = photos.Entries.Select(x => new PhotoDecorator(x, a));
+			var response = photos.Entries.Select(x => new PhotoDecorator(x, settings));
 			
 			Cache.Set(id + "albumphotos", response, new DateTimeOffset(new DateTime(2020, 1,1)));
-
 			return response;
+		}
 
+		public IEnumerable<AlbumPhoto> GetPhotos(bool refreshCache = false)
+		{
+			var settings = new GdataPhotosSettings { SmallHeight = 400 };
+			var response = PicasaRequest.GetPhotos().Entries.Select(x => new AlbumPhoto(x, settings));
+			return response;
 		}
 	}
 }
