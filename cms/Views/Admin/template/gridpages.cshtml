@@ -17,7 +17,7 @@
 				tooltip-popup-delay='600'
 				tooltip-html-unsafe="<div style='text-align:left'><b>Autorizace</b><div> <div style='text-align:left'>pokud je zaškrtnuto tak je obsah zobrazen jen po přihlášení</div>" />
 
-			<a ng-hide="grid.Edit" href="#/{{getLink(grid)}}" class="btn btn-link align-left">{{grid.Name}}</a>
+			<a ng-hide="grid.Edit" href="#/{{getLink(grid)}}" class="btn btn-link align-left" style="max-width:290px">{{grid.Name}}</a>
 			<span ng-show="grid.Edit" class="gridpage-input">
 				<input ng-model="grid.Name" required />
 			</span>

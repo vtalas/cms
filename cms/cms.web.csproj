@@ -587,6 +587,7 @@
     <Content Include="Views\Admin\template\showuserdata.cshtml" />
     <Content Include="Views\Admin\template\applicationusers.cshtml" />
     <Content Include="Views\SuperUser\Index.cshtml" />
+    <Content Include="Views\SuperUser\ListUsers.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

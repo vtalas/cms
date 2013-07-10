@@ -1,11 +1,8 @@
 using System;
-using System.Data.Entity;
 using cms.data.DataProvider;
 using cms.data.EF.DataProviderImplementation;
-using cms.data.EF.Initializers;
 using cms.data.Repository;
 using cms.data.Shared;
-using cms.shared;
 
 namespace cms.data.EF
 {

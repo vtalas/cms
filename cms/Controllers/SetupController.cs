@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using System.Data.Entity.Migrations.Infrastructure;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebMatrix.WebData;
 using cms.data.EF;
 using System.Linq;
@@ -57,12 +57,29 @@ namespace cms.Controllers
 				migrator.Update();
 			}
 
+			Change1();
+
+
 //			using (var a = new EfContext())
 //			{
 //				//Database.SetInitializer(new MigrateDatabaseToLatestVersion<EfContext, data.Migrations.Configuration>());
 //				Response.Write(a.ApplicationSettings.ToList());
 //			}
 			return View();
+		}
+
+		void Change1()
+		{
+			SecurityProvider.EnsureInitialized();
+			if (!Roles.RoleExists("superuser")){}
+			{
+				Roles.CreateRole("superuser");
+			}
+			if (!Roles.IsUserInRole("admin", "superuser"))
+			{
+				Roles.AddUserToRole("admin", "superuser");
+			}
+	
 		}
 
 		public ActionResult Index()

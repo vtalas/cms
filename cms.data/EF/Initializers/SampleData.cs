@@ -37,6 +37,7 @@ namespace cms.data.EF.Initializers
 			GenerateUser(application, "admin", "Peklo123", "superuser");
 			Roles.AddUserToRole("admin", "admin");
 
+
 			GenerateUser(application, "dalik", "Peklo123", "admin");
 
 			WebSecurity.CreateUserAndAccount("lades", "a");

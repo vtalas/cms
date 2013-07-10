@@ -13,6 +13,11 @@ namespace cms.Controllers
 			return View();
 		}
 
+		public ActionResult ListUsers()
+		{
+			return View();
+		}
+
 		public ActionResult Register()
 		{
 			return View();
@@ -76,7 +81,6 @@ namespace cms.Controllers
 					return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
 			}
 		}
-
 
 	}
 }
