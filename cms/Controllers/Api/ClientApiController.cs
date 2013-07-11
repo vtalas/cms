@@ -31,21 +31,7 @@ namespace cms.Controllers.Api
 			PicasaProvider = new PicasaServiceProvider(() => new PicasaWrapper(SessionFactory));
 			Oauthservice = new OAuthServiceCms(ApplicationId);
 		}
-
-		public GridPageDto GetPage(string id)
-		{
-			using (var repo = SessionFactory.CreateSession())
-			{
-				var page = repo.Session.Page.Get(id);
-
-				if (page.Authorize && !Auth())
-				{
-					throw new HttpResponseException(HttpStatusCode.Unauthorized); 
-				}
-				return page;
-			}
-		}
-
+		
 		private bool Auth()
 		{
 			var cookies = ControllerContext.Request.Headers.GetCookies();
@@ -59,6 +45,20 @@ namespace cms.Controllers.Api
 			if (!Auth())
 			{
 				throw new HttpResponseException(HttpStatusCode.Unauthorized);
+			}
+		}
+
+		public GridPageDto GetPage(string id)
+		{
+			using (var repo = SessionFactory.CreateSession())
+			{
+				var page = repo.Session.Page.Get(id);
+
+				if (page.Authorize && !Auth())
+				{
+					throw new HttpResponseException(HttpStatusCode.Unauthorized); 
+				}
+				return page;
 			}
 		}
 
@@ -131,6 +131,7 @@ namespace cms.Controllers.Api
 		{
 			return PicasaProvider.Session.GetAlbumPhotos(id);
 		}
+		
 		public IEnumerable<PhotoDecorator> GetPhotos()
 		{
 			return PicasaProvider.Session.GetPhotos();
