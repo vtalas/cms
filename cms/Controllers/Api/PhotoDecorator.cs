@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
+using cms.Code.Graphic;
 using Google.GData.Extensions;
 using Google.GData.Extensions.MediaRss;
 using Google.Picasa;
@@ -21,10 +22,7 @@ namespace cms.Controllers.Api
 	{
 		private readonly GdataPhotosSettings _settings;
 		private Uri _defaultUri;
-		private double Ratio { get; set; }
-		private Orientation Orientation { get; set; }
-		private int Height { get; set; }
-		private int Width { get; set; }
+		private ImageStringConvert Convertor { get; set; }
 
 		public IList<WebImage> Thumbnails { get; set; }
 		public WebImage FullSize { get; set; }
@@ -35,36 +33,30 @@ namespace cms.Controllers.Api
 		public PhotoDecorator(Photo photo, GdataPhotosSettings gdataPhotosSettings)
 		{
 			_settings = gdataPhotosSettings;
-			
-			Orientation = photo.Width > photo.Height ?  Orientation.Horizontal : Orientation.Vertical;
-			Ratio = (double)photo.Width / photo.Height;
-			Width = photo.Width;
-			Height = photo.Height;
+			Convertor = ImageStringConvert.Init(photo.Width, photo.Height);
 
 			LoadDefaultUri(photo);
 
 			Thumbnails = new List<WebImage>(3)
 			{
-				 GetWebImage(95, 95),
-				 GetWebImage(230, 230),
-				 GetWebImage(350, 350)
+				GetWebImage(Convertor.Convert(ImageSizeType.MaxSize, 95, true)),
+				GetWebImage(Convertor.Convert(ImageSizeType.MaxSize, 230, true)),
+				GetWebImage(Convertor.Convert(ImageSizeType.MaxHeight, 720, false))
 			};
 
 			Small = GetWebImageWithMaxSize(480, 300);
 			Medium = GetWebImageWithMaxSize(768, 480);
 			Large = GetWebImageWithMaxSize(1200, 768);
-			FullSize = GetWebImage(photo.Width, photo.Height);
-		}
 			
-		private WebImage GetWebImageWithMaxSize(int width, int height)
-		{
-			if (Orientation == Orientation.Horizontal)
-			{
-				return GetWebImage(width, (int)(width / Ratio));
-			}
-			return GetWebImage((int)(height * Ratio), height);
+			FullSize = GetWebImage(Convertor.Convert(ImageSizeType.MaxWidth, photo.Width));
 		}
 
+
+		private WebImage GetWebImageWithMaxSize(int width, int height)
+		{
+			var isHorizontal = Convertor.Orientation == Orientation.Horizontal;
+			return GetWebImage(isHorizontal ? Convertor.Convert(ImageSizeType.MaxWidth, width) : Convertor.Convert(ImageSizeType.MaxHeight, height));
+		}
 
 		private void LoadDefaultUri(Photo photo)
 		{
@@ -72,26 +64,14 @@ namespace cms.Controllers.Api
 			_defaultUri = new Uri(x.Url);
 		}
 
-		private WebImage GetWebImage(MediaThumbnail thumb)
+		private WebImage GetWebImage(ImageStringConvert x)
 		{
-			return new WebImage(thumb.Width, thumb.Height, thumb.Url);
-		}
-		
-		private WebImage GetWebImage(int width, int height)
-		{
-			var url = GetCorrectUrl(width, height);
-			return new WebImage(width, height, url);
+			var url = ReplaceSizeDefinition(x.DimensionString);
+			return new WebImage(x.Width, x.Height, url);
 		}
 
-		private WebImage GetWebImage(int maxsize)
+		private string ReplaceSizeDefinition(string sizestring)
 		{
-			var url = GetCorrectUrl(maxsize, 0);
-			return new WebImage(maxsize, 0, url);
-		}
-
-		private string GetCorrectUrl(int width, int height)
-		{
-			var sizestring = SizeString(width, height);
 			var b = new UriBuilder(_defaultUri);
 			var parts = b.Path.Split('/');
 
@@ -99,16 +79,6 @@ namespace cms.Controllers.Api
 			b.Path = String.Join("/", parts);
 
 			return b.ToString();
-		}
-
-		private string SizeString(int width, int height)
-		{
-			if (width == height)
-			{
-				return "s" + width + "-c";
-			}
-
-			return "w" + width;
 		}
 
 		private ExtensionCollection<MediaThumbnail> GetDefaultThumbs(Photo photo)

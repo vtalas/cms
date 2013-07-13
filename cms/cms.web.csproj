@@ -180,6 +180,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code\Graphic\ImageSizeType.cs" />
+    <Compile Include="Code\Graphic\ImageSizeTypeExtension.cs" />
+    <Compile Include="Code\Graphic\ImageStringConvert.cs" />
     <Compile Include="App_Start\SwaggerNet.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageEfContext.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageJson.cs" />
