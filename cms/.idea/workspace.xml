@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scripts/modules/module.settings.js" />
-      <change type="DELETED" beforePath="C:\lades\web\cms\cmd.web.tests\GdataTests.cs" afterPath="" />
-      <change type="DELETED" beforePath="C:\lades\web\cms\cmd.web.tests\PhotoDecoratorTest.cs" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/LinkAccounts/Picasa/GdataPhotosSettings.cs" afterPath="$PROJECT_DIR$/Code/LinkAccounts/Picasa/GdataPhotosSettings.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/Graphic/ImageSizeType.cs" afterPath="$PROJECT_DIR$/Code/Graphic/ImageSizeType.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/Graphic/ImageStringConvert.cs" afterPath="$PROJECT_DIR$/Code/Graphic/ImageStringConvert.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/GData/Index.cshtml" afterPath="$PROJECT_DIR$/Views/GData/Index.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/GDataAuth/Index.cshtml" afterPath="$PROJECT_DIR$/Views/GDataAuth/Index.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/Api/PhotoDecorator.cs" afterPath="$PROJECT_DIR$/Controllers/Api/PhotoDecorator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Code/LinkAccounts/Picasa/PicasaWrapper.cs" afterPath="$PROJECT_DIR$/Code/LinkAccounts/Picasa/PicasaWrapper.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.web.csproj" afterPath="$PROJECT_DIR$/cms.web.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cmd.web.tests/cms.web.tests.csproj" afterPath="$PROJECT_DIR$/../cmd.web.tests/cms.web.tests.csproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/modules/module.appSettings.js" afterPath="$PROJECT_DIR$/Scripts/modules/module.appSettings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/modules/module.cmsapi.js" afterPath="$PROJECT_DIR$/Scripts/modules/module.cmsapi.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Settings/Index.cshtml" afterPath="$PROJECT_DIR$/Views/Settings/Index.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js" afterPath="$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
@@ -40,19 +27,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Index.cshtml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Index.cshtml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Views/Settings/Index.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="52" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1000">
+            <state line="22" column="16" selection-start="685" selection-end="685" vertical-scroll-proportion="0.45360824" vertical-offset="0" max-vertical-offset="1000">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="controller.photosSettings.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="controller.photosSettings.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="29" selection-start="528" selection-end="528" vertical-scroll-proportion="0.57731956" vertical-offset="0" max-vertical-offset="970">
+            <state line="19" column="10" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
               <folding />
             </state>
           </provider>
@@ -103,9 +90,9 @@
         <option value="$PROJECT_DIR$/Scripts/modules/module.appSettings.js" />
         <option value="$PROJECT_DIR$/Scripts/modules/module.settingsApi.js" />
         <option value="$PROJECT_DIR$/Scripts/modules/module.settings.js" />
-        <option value="$PROJECT_DIR$/Views/Settings/Index.cshtml" />
-        <option value="$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js" />
         <option value="$PROJECT_DIR$/Scripts/modules/module.cmsapi.js" />
+        <option value="$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js" />
+        <option value="$PROJECT_DIR$/Views/Settings/Index.cshtml" />
       </list>
     </option>
   </component>
@@ -553,16 +540,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Settings/Index.cshtml">
+    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="52" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1000">
+        <state line="19" column="10" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js">
+    <entry file="file://$PROJECT_DIR$/Views/Settings/Index.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="29" selection-start="528" selection-end="528" vertical-scroll-proportion="0.57731956" vertical-offset="0" max-vertical-offset="970">
+        <state line="22" column="16" selection-start="685" selection-end="685" vertical-scroll-proportion="0.45360824" vertical-offset="0" max-vertical-offset="1000">
           <folding />
         </state>
       </provider>

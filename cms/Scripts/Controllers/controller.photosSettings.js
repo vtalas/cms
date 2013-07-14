@@ -3,17 +3,17 @@ var photoSettings = ["$scope", "$location", "settingsApi", function ($scope, $lo
 	var getDefaults = function () {
 		return [
 			{
-				ImageSizeType: 0,
+				Type: 0,
 				Value: 100,
 				IsSquare: false
 			},
 			{
-				ImageSizeType: 0,
+				Type: 1,
 				Value: 300,
 				IsSquare: false
 			},
 			{
-				ImageSizeType: 0,
+				Type: 2,
 				Value: 400,
 				IsSquare: true
 			}
@@ -26,6 +26,7 @@ var photoSettings = ["$scope", "$location", "settingsApi", function ($scope, $lo
 
 
 	$scope.save = function () {
+$scope.data[0].Type = 2;
 		settingsApi.putPhotosSettings($scope.data, function() {
 			console.log("aksjbdkj")
 		});
