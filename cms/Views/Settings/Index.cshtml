@@ -1,0 +1,44 @@
+﻿@using cms.shared
+
+@{
+	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
+    ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
+
+    var applicationName = ViewBag.Application;
+    var applicationId = ViewBag.ApplicationId;
+}
+
+
+<div ng-app="settingsModule" data-application-name="@applicationName"
+	 data-application-id="@applicationId"
+	 data-application-culture="@SharedLayer.Culture"
+	 class="gridsmodule">
+
+	<h3>Nastavení velikostí náhledů</h3>
+
+	<div ng-controller="photoSettings">
+		<label class="radio">
+			<input type="radio" name="optionsRadios" ng-model="data[0].ImageSizeType" value="0" >
+			Option one is this and that—be sure to include why it's great
+		</label>
+		<label class="radio">
+			<input type="radio" name="optionsRadios" ng-model="data[0].ImageSizeType" value="1">
+			Option one is this and that—be sure to include why it's great
+		</label>
+		<label class="radio">
+			<input type="radio" name="optionsRadios" ng-model="data[0].ImageSizeType" value="2">
+			Option one is this and that—be sure to include why it's great
+		</label>
+
+		<label for="value1">hodnota</label>
+		<input id="value1" type="text" ng-model="data[0].Value">
+
+		<label for="square1">oříznout na čtverec</label>
+		<input id="square1" type="checkbox" ng-model="data[0].IsSquare" >
+		<button class="btn" ng-click="save()"> Uložit</button>
+
+	</div>
+
+</div>
+
+

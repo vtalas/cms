@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI.WebControls;
 using cms.Code.Graphic;
 using Google.GData.Extensions;
@@ -13,14 +14,13 @@ namespace cms.Controllers.Api
 	{
 		public string AlbumId { get; set; }
 		
-		public AlbumPhoto(Photo photo, GdataPhotosSettings gdataPhotosSettings) : base(photo, gdataPhotosSettings)
+		public AlbumPhoto(Photo photo, List<GdataPhotosSettings> gdataPhotosSettings) : base(photo, gdataPhotosSettings)
 		{
 			AlbumId = photo.AlbumId;
 		}
 	}
 	public class PhotoDecorator
 	{
-		private readonly GdataPhotosSettings _settings;
 		private Uri _defaultUri;
 		private ImageStringConvert Convertor { get; set; }
 
@@ -30,18 +30,22 @@ namespace cms.Controllers.Api
 		public WebImage Medium { get; set; }
 		public WebImage Large { get; set; }
 
-		public PhotoDecorator(Photo photo, GdataPhotosSettings gdataPhotosSettings)
+		public PhotoDecorator(Photo photo, List<GdataPhotosSettings> gdataPhotosSettings)
 		{
-			_settings = gdataPhotosSettings;
+			var settings = gdataPhotosSettings ?? new List<GdataPhotosSettings>();
 			Convertor = ImageStringConvert.Init(photo.Width, photo.Height);
 
 			LoadDefaultUri(photo);
 
+			var s1 = settings.ElementAtOrDefault(0) != null ? settings[0] : new GdataPhotosSettings(ImageSizeType.MaxSize, 95, true);
+			var s2 = settings.ElementAtOrDefault(1) != null ? settings[1] : new GdataPhotosSettings(ImageSizeType.MaxSize, 230, true);
+			var s3 = settings.ElementAtOrDefault(2) != null ? settings[2] : new GdataPhotosSettings(ImageSizeType.MaxHeight, 480, true);
+
 			Thumbnails = new List<WebImage>(3)
 			{
-				GetWebImage(Convertor.Convert(ImageSizeType.MaxSize, 95, true)),
-				GetWebImage(Convertor.Convert(ImageSizeType.MaxSize, 230, true)),
-				GetWebImage(Convertor.Convert(ImageSizeType.MaxHeight, 720, false))
+				GetWebImage(Convertor.Convert(s1)),
+				GetWebImage(Convertor.Convert(s2)),
+				GetWebImage(Convertor.Convert(s3))
 			};
 
 			Small = GetWebImageWithMaxSize(480, 300);

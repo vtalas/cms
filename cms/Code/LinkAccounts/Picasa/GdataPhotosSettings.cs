@@ -1,13 +1,19 @@
-﻿namespace cms.Code.LinkAccounts.Picasa
+﻿using cms.Code.Graphic;
+
+namespace cms.Code.LinkAccounts.Picasa
 {
 	public class GdataPhotosSettings
 	{
-		public int SmallWidth { get; set; }
-		public int SmallHeight { get; set; }
-		public int MediumWidth { get; set; }
-		public int MediumHeight { get; set; }
-		public int LargeWidth { get; set; }
-		public int LargeHeight { get; set; }
+		public GdataPhotosSettings(ImageSizeType type, int value, bool isSquare)
+		{
+			Type = type;
+			Value = value;
+			IsSquare = isSquare;
+		}
+
+		public ImageSizeType Type { get; set; }
+		public int Value { get; set; }
+		public bool IsSquare { get; set; }
 	}
 
 }

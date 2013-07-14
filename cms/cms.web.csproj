@@ -190,6 +190,7 @@
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\GdataPhotosSettings.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaServiceFactory.cs" />
+    <Compile Include="Code\LinkAccounts\SettingsLoader.cs" />
     <Compile Include="Code\MvcOauth\DemoPrincipal.cs" />
     <Compile Include="Code\MvcOauth\DemoToken.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
@@ -206,6 +207,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\Api\CmsWebApiControllerBase.cs" />
+    <Compile Include="Controllers\Api\SettingApiController.cs" />
     <Compile Include="Controllers\Api\GdataPhotosController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -222,6 +224,7 @@
     </Compile>
     <Compile Include="Controllers\Api\WebImage.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\SuperUserController.cs" />
     <Compile Include="Controllers\GDataAuthController.cs" />
     <Compile Include="Controllers\GDataController.cs" />
@@ -591,6 +594,7 @@
     <Content Include="Views\Admin\template\applicationusers.cshtml" />
     <Content Include="Views\SuperUser\Index.cshtml" />
     <Content Include="Views\SuperUser\ListUsers.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Runtime.Caching;
-using System.Xml.Serialization;
 using Google.GData.Client;
 using Google.GData.Photos;
 using Google.Picasa;
@@ -17,6 +15,7 @@ namespace cms.Code.LinkAccounts.Picasa
 		private PicasaService Service { get; set; }
 		private PicasaRequest PicasaRequest { get; set; }
 		private ObjectCache Cache { get; set; }
+		private List<GdataPhotosSettings> Settings { get; set; }
 
 		public PicasaWrapper(SessionProvider sessionProvider)
 		{
@@ -27,6 +26,8 @@ namespace cms.Code.LinkAccounts.Picasa
 			var gdataAuth = new GoogleDataOAuth2Service(oauth2ParametersStorage);
 			var picasaFactory = new PicasaServiceFactory(gdataAuth.GetRequestDataFactoryInstance("https://picasaweb.google.com/data"));
 			Service = picasaFactory.GetService();
+
+			Settings = new SettingsLoader<List<GdataPhotosSettings>>(sessionProvider, "GdataPhotosSettings_List.json").Get();
 
 			PicasaRequest = new PicasaRequest(new RequestSettings("x", gdataAuth.GetValidOAuth2Parameters()));
 		}
@@ -58,19 +59,17 @@ namespace cms.Code.LinkAccounts.Picasa
 				return (IEnumerable<PhotoDecorator>)Cache.Get(id + "albumphotos");
 			}
 
-			var settings = new GdataPhotosSettings { SmallHeight = 400 };
-
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
-			var response = photos.Entries.Select(x => new PhotoDecorator(x, settings));
+			var response = photos.Entries.Select(x => new PhotoDecorator(x, Settings));
 			
 			Cache.Set(id + "albumphotos", response, new DateTimeOffset(new DateTime(2020, 1,1)));
 			return response;
 		}
 
+
 		public IEnumerable<AlbumPhoto> GetPhotos(bool refreshCache = false)
 		{
-			var settings = new GdataPhotosSettings { SmallHeight = 400 };
-			var response = PicasaRequest.GetPhotos().Entries.Select(x => new AlbumPhoto(x, settings));
+			var response = PicasaRequest.GetPhotos().Entries.Select(x => new AlbumPhoto(x, Settings));
 			return response;
 		}
 	}

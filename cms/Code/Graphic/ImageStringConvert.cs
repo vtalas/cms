@@ -1,4 +1,5 @@
 ﻿using System.Web.UI.WebControls;
+using cms.Code.LinkAccounts.Picasa;
 
 namespace cms.Code.Graphic
 {
@@ -90,5 +91,9 @@ namespace cms.Code.Graphic
 			}
 		}
 
+		public ImageStringConvert Convert(GdataPhotosSettings settings)
+		{
+			return Convert(settings.Type, settings.Value, settings.IsSquare);
+		}
 	}
 }

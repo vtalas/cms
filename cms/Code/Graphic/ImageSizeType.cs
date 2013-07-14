@@ -2,8 +2,8 @@ namespace cms.Code.Graphic
 {
 	public enum ImageSizeType
 	{
-		MaxWidth,
-		MaxHeight,
-		MaxSize
+		MaxWidth = 0,
+		MaxHeight = 1,
+		MaxSize = 2
 	}
 }
