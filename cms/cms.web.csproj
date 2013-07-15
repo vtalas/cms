@@ -458,6 +458,7 @@
     <Content Include="Scripts\Admin\directive.ngcLoader.js" />
     <Content Include="Scripts\Controllers\controller.gDataPhotos.js" />
     <Content Include="Scripts\Controllers\controller.gdataPhotosSettings.js" />
+    <Content Include="Scripts\Controllers\controller.photosSettings.js" />
     <Content Include="Scripts\Controllers\controller.showuserdata.js" />
     <Content Include="Scripts\Controllers\controller.dashboard.js" />
     <Content Include="Scripts\Controllers\controller.infomessage.js" />
@@ -489,6 +490,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\Controllers\controller.gridPage.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\modules\module.settings.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.3.0.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />

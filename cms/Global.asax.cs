@@ -11,7 +11,7 @@ namespace cms
 {
 	public class MvcApplication : HttpApplication
 	{
-		public static readonly ObjectCache Cache = MemoryCache.Default;
+		public static MemoryCache Cache = MemoryCache.Default;
 
 		public static void RegisterGlobalFilters(GlobalFilterCollection filters)
 		{

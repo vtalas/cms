@@ -1,5 +1,7 @@
-var photoSettings = ["$scope", "$location", "settingsApi", function ($scope, $location, settingsApi){
+var photoSettings = ["$scope", "$location", "settingsApi", function ($scope, $location, settingsApi) {
 
+	$scope.data = [];
+	
 	var getDefaults = function () {
 		return [
 			{
@@ -21,13 +23,14 @@ var photoSettings = ["$scope", "$location", "settingsApi", function ($scope, $lo
 	};
 
 	settingsApi.getPhotosSettings(function (data) {
-		$scope.data = data.length === 0 ? getDefaults() : data;
+		var defaults = getDefaults();
+		$scope.data[0] = data[0] ? data[0] : defaults[0];
+		$scope.data[1] = data[1] ? data[1] : defaults[1];
+		$scope.data[2] = data[2] ? data[2] : defaults[2];
 	});
 
-
 	$scope.save = function () {
-$scope.data[0].Type = 2;
-		settingsApi.putPhotosSettings($scope.data, function() {
+		settingsApi.putPhotosSettings($scope.data, function () {
 			console.log("aksjbdkj")
 		});
 	};

@@ -2,43 +2,78 @@
 
 @{
 	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
-    ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
+	ViewBag.Title = ViewBag.ApplicationName + " - administrace ";
 
-    var applicationName = ViewBag.Application;
-    var applicationId = ViewBag.ApplicationId;
+	var applicationName = ViewBag.Application;
+	var applicationId = ViewBag.ApplicationId;
+}
+@helper aa(int index, string header)
+{
+	<fieldset>
+		<legend>@header</legend>
+
+		<div class="control-group">
+			<label class="control-label" for="appendedtext">Rozměr</label>
+			<div class="controls">
+				<div class="input-append">
+					<input id="appendedtext" name="appendedtext" class="input-xlarge" placeholder="rozměr" type="text" ng-model="data[@index].Value">
+					<span class="add-on">px</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="radios_@index">Omezit</label>
+			<div class="controls">
+				<label class="radio inline" for="radios-0-@index">
+					<input type="radio" name="radios_@index" id="radios-0-@index" ng-model="data[@index].Type" value="0">
+					šířku
+				</label>
+				<label class="radio inline" for="radios-1-@index">
+					<input type="radio" name="radios_@index" id="radios-1-@index" ng-model="data[@index].Type" value="1">
+					výšku
+				</label>
+				<label class="radio inline" for="radios-2-@index">
+					<input type="radio" name="radios_@index" id="radios-2-@index" ng-model="data[@index].Type" value="2">
+					šířku i výšku
+				</label>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="checkboxes-0-@index">Oříznout na čtverec</label>
+			<div class="controls">
+				<label class="checkbox inline" >
+					<input type="checkbox" name="checkboxes-0-@index" id="checkboxes-0-@index" ng-model="data[@index].IsSquare" >
+				</label>
+			</div>
+		</div>
+
+	</fieldset>
 }
 
-
 <div ng-app="settingsModule" data-application-name="@applicationName"
-	 data-application-id="@applicationId"
-	 data-application-culture="@SharedLayer.Culture"
-	 class="gridsmodule">
+     data-application-id="@applicationId"
+     data-application-culture="@SharedLayer.Culture"
+     class="gridsmodule ">
+	<div class="photo-settings-page">
 
-	<h3>Nastavení velikostí náhledů</h3>
+		<h3>Nastavení velikostí náhledů</h3>
+		<div ng-controller="photoSettings">
+			<form class="form-horizontal" ng-submit="save()">
+				@aa(0, "Náhled č.1 (nejmenší)")
+				@aa(1, "Náhled č.2 (střední)")
+				@aa(2, "Náhled č.3 (největší)")
+				<hr />
+				<button class="btn btn-success" type="submit"> Uložit</button>
 
-	<div ng-controller="photoSettings">
-		<label class="radio">
-			<input type="radio" name="optionsRadios" ng-model="data[0].Type" value="0" >
-			Option one is this and that—be sure to include why it's great
-		</label>
-		<label class="radio">
-			<input type="radio" name="optionsRadios" ng-model="data[0].Type" value="1">
-			Option one is this and that—be sure to include why it's great
-		</label>
-		<label class="radio">
-			<input type="radio" name="optionsRadios" ng-model="data[0].Type" value="2">
-			Option one is this and that—be sure to include why it's great
-		</label>
+			</form>
 
-		<label for="value1">hodnota</label>
-		<input id="value1" type="text" ng-model="data[0].Value">
 
-		<label for="square1">oříznout na čtverec</label>
-		<input id="square1" type="checkbox" ng-model="data[0].IsSquare" >
-		<button class="btn" ng-click="save()"> Uložit</button>
+		</div>
 
 	</div>
-
 </div>
+
+
 
 

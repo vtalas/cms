@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Runtime.Caching;
 using cms.Code.LinkAccounts;
 using cms.Code.LinkAccounts.Picasa;
 
@@ -15,6 +15,9 @@ namespace cms.Controllers.Api
 		}
 		public void PutPhotosSettings(List<GdataPhotosSettings> data)
 		{
+			MvcApplication.Cache.Dispose();
+			MvcApplication.Cache = MemoryCache.Default;
+
 			new SettingsLoader<List<GdataPhotosSettings>>(SessionProvider, "GdataPhotosSettings_List.json").Set(data);
 		}
 	}
