@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Caching;
 using Google.GData.Client;
 using Google.GData.Photos;
 using Google.Picasa;
@@ -14,13 +13,10 @@ namespace cms.Code.LinkAccounts.Picasa
 	{
 		private PicasaService Service { get; set; }
 		private PicasaRequest PicasaRequest { get; set; }
-		private ObjectCache Cache { get; set; }
 		private List<GdataPhotosSettings> Settings { get; set; }
 
 		public PicasaWrapper(SessionProvider sessionProvider)
 		{
-			Cache = MvcApplication.Cache;
-			
 			var oauth2ParametersStorage = OAuth2ParametersStorageFactory.StorageDatabase(sessionProvider);
 			//var gdataAuth = new GoogleDataOAuth2Service(OAuth2ParametersStorageFactory.StorageJsonFile(ApplicationId));
 			var gdataAuth = new GoogleDataOAuth2Service(oauth2ParametersStorage);
@@ -38,34 +34,23 @@ namespace cms.Code.LinkAccounts.Picasa
 			return albums.Entries;
 		}
 
+
+
 		public AlbumDecorator GetAlbum(string id, bool refreshCache = false)
 		{
-			if (Cache.Contains(id + "album") && !refreshCache)
-			{
-				return (AlbumDecorator)Cache.Get(id + "album");
-			}
-			
 			var albums = PicasaRequest.GetAlbums();
 			var albumobject = albums.Entries.SingleOrDefault(x => x.Id == id);
 			var decorate = new AlbumDecorator(albumobject);
-			Cache.Set(id + "album", decorate, new DateTimeOffset(new DateTime(2020, 1, 1)));
 			return decorate;
 		}
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache = false)
 		{
-			if (Cache.Contains(id + "albumphotos") && !refreshCache)
-			{
-				return (IEnumerable<PhotoDecorator>)Cache.Get(id + "albumphotos");
-			}
-
 			var photos = PicasaRequest.GetPhotosInAlbum(id);
 			var response = photos.Entries.Select(x => new PhotoDecorator(x, Settings));
 			
-			Cache.Set(id + "albumphotos", response, new DateTimeOffset(new DateTime(2020, 1,1)));
 			return response;
 		}
-
 
 		public IEnumerable<AlbumPhoto> GetPhotos(bool refreshCache = false)
 		{

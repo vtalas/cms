@@ -14,6 +14,7 @@ using cms.data.EF.DataProviderImplementation;
 using cms.data.EF.RepositoryImplementation;
 using cms.data.Shared;
 using cms.data.Shared.Models;
+using WebAPI.OutputCache;
 
 namespace cms.Controllers.Api
 {
@@ -48,6 +49,7 @@ namespace cms.Controllers.Api
 			}
 		}
 
+		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
 		public GridPageDto GetPage(string id)
 		{
 			using (var repo = SessionFactory.CreateSession())
@@ -62,6 +64,7 @@ namespace cms.Controllers.Api
 			}
 		}
 
+		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
 		public IEnumerable<GridPageDto> GetPages()
 		{
 			using (var repo = SessionFactory.CreateSession())
@@ -117,24 +120,29 @@ namespace cms.Controllers.Api
 			return data;
 		}
 
+		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
 		public IEnumerable<Album> GetAlbums()
 		{
 			return PicasaProvider.Session.GetAlbums();
 		}
 
+		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
 		public AlbumDecorator GetAlbum(string id)
 		{
 			return PicasaProvider.Session.GetAlbum(id);
 		}
 
+		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id)
 		{
 			return PicasaProvider.Session.GetAlbumPhotos(id);
 		}
-		
+
+		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
 		public IEnumerable<PhotoDecorator> GetPhotos()
 		{
 			return PicasaProvider.Session.GetPhotos();
 		}
+
 	}
 }

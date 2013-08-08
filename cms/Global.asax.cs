@@ -53,6 +53,7 @@ namespace cms
 		{
 			data.Migrations.Configuration.MigrateToLatestVersion();
 
+		//	Cache = MemoryCache.Default;
 
 			var transforms = new IBundleTransform[] { new JsMinify() };
 			var libs = new Bundle("~/Scripts/libs", transforms)
