@@ -1,11 +1,14 @@
 ﻿using System;
+using cms.Controllers.Api.Server.Attributes;
 using cms.data.Dtos;
 
-namespace cms.Controllers.Api
+
+namespace cms.Controllers.Api.Server
 {
 	[System.Web.Mvc.Authorize]
 	public class GridElementApiController : WebApiControllerBase
-	{ 
+	{
+		[InvalidateCacheOutputClientApiController]
 		public GridElementDto PostToGrid(GridElementDto gridElementDto, Guid gridId)
 		{
 			using (var db = SessionProvider.CreateSession())
@@ -14,6 +17,7 @@ namespace cms.Controllers.Api
 			}
 		}
 
+		[InvalidateCacheOutputClientApiController]
 		public GridElementDto Post(GridElementDto gridElementDto)
 		{
 			using (var db = SessionProvider.CreateSession())
@@ -22,7 +26,8 @@ namespace cms.Controllers.Api
 			}
 		}
 
-		public void Delete(Guid id )
+		[InvalidateCacheOutputClientApiController]
+		public void Delete(Guid id)
 		{
 			using (var db = SessionProvider.CreateSession())
 			{
@@ -30,6 +35,7 @@ namespace cms.Controllers.Api
 			}
 		}
 
+		[InvalidateCacheOutputClientApiController]
 		public GridElementDto Put(GridElementDto data)
 		{
 			using (var db = SessionProvider.CreateSession())
@@ -39,5 +45,4 @@ namespace cms.Controllers.Api
 		}
 
 	}
-
 }

@@ -36,7 +36,7 @@ namespace cms.Controllers.Api
 		public void RefreshAlbum(string id)
 		{
 			var cache = Configuration.CacheOutputConfiguration().GetCacheOutputProvider(Request);
-
+			
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((GdataPhotosController b) => b.GetAlbum(id, true)));
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((GdataPhotosController b) => b.GetAlbums()));
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((GdataPhotosController b) => b.GetAlbumPhotos(id, true)));
@@ -47,7 +47,6 @@ namespace cms.Controllers.Api
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((ClientApiController b) => b.GetAlbumPhotos(id)));
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((ClientApiController b) => b.GetPhotos()));
 		}
-
 
 		// POST api/gdataphotos
 		public void Post([FromBody]string value)
