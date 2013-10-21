@@ -4,7 +4,7 @@ using System.Web.Http;
 using Google.Picasa;
 using WebAPI.OutputCache;
 
-namespace cms.Controllers.Api
+namespace cms.Controllers.Api.Server
 {
 	public class GdataPhotosController : WebApiPicasaControllerBase
 	{
