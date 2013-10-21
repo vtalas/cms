@@ -1,23 +1,23 @@
 ﻿using System;
-using Google.GData.Extensions.MediaRss;
+using System.Collections.Generic;
+using cms.Code.LinkAccounts.Picasa;
 using Google.Picasa;
 
 namespace cms.Controllers.Api
 {
 	public class AlbumDecorator
 	{
-		public MediaThumbnail ThumbnailXXX { get; set; }
 		public Album Album { get; set; }
-		public AlbumDecorator(Album album)
+		public AlbumDecorator(Album album, List<GdataPhotosSettings> settings)
 		{
 			Album = album;
-			var xxx = Album.PicasaEntry.Media.Thumbnails[0];
-			Thumbnail = new WebImage(xxx.Width, xxx.Height, xxx.Url);
-			ThumbnailXXX = xxx;
+			var image = Album.PicasaEntry.Media.Thumbnails[0];
+			Thumbnail = new PhotoDecorator(new WebImage(image.Width, image.Height, image.Url), settings);
 		}
+		public string Title { get { return Album.Title; } }
 		public string Link { get { return Album.Title; } }
 		public string Id { get { return Album.Id; } }
 		public DateTime Updated { get { return Album.Updated; } }	
-		public WebImage Thumbnail { get; set; }
+		public PhotoDecorator Thumbnail { get; set; }
 	}
 }

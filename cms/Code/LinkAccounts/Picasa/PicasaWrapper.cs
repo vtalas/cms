@@ -34,27 +34,29 @@ namespace cms.Code.LinkAccounts.Picasa
 			return albums.Entries;
 		}
 
-
-
 		public AlbumDecorator GetAlbum(string id, bool refreshCache = false)
 		{
 			var albums = PicasaRequest.GetAlbums();
 			var albumobject = albums.Entries.SingleOrDefault(x => x.Id == id);
-			var decorate = new AlbumDecorator(albumobject);
+			var decorate = new AlbumDecorator(albumobject, Settings);
 			return decorate;
 		}
 
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache = false)
 		{
-			var photos = PicasaRequest.GetPhotosInAlbum(id);
-			var response = photos.Entries.Select(x => new PhotoDecorator(x, Settings));
-			
-			return response;
+			return GetAlbumPhotos(id, refreshCache, Settings);
 		}
 
 		public IEnumerable<AlbumPhoto> GetPhotos(bool refreshCache = false)
 		{
-			var response = PicasaRequest.GetPhotos().Entries.Select(x => new AlbumPhoto(x, Settings));
+			var response = PicasaRequest.GetPhotos().Entries.Select(x => new AlbumPhoto(new WebImage(x), Settings, x.AlbumId));
+			return response;
+		}
+
+		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache, List<GdataPhotosSettings> photoSettings)
+		{
+			var photos = PicasaRequest.GetPhotosInAlbum(id);
+			var response = photos.Entries.Select(x => new PhotoDecorator(new WebImage(x), photoSettings));
 			return response;
 		}
 	}

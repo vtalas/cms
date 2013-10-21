@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web.UI.WebControls;
 using cms.Code.Graphic;
@@ -10,15 +11,6 @@ using cms.Code.LinkAccounts.Picasa;
 
 namespace cms.Controllers.Api
 {
-	public class AlbumPhoto : PhotoDecorator
-	{
-		public string AlbumId { get; set; }
-		
-		public AlbumPhoto(Photo photo, List<GdataPhotosSettings> gdataPhotosSettings) : base(photo, gdataPhotosSettings)
-		{
-			AlbumId = photo.AlbumId;
-		}
-	}
 	public class PhotoDecorator
 	{
 		private Uri _defaultUri;
@@ -30,7 +22,7 @@ namespace cms.Controllers.Api
 		public WebImage Medium { get; set; }
 		public WebImage Large { get; set; }
 
-		public PhotoDecorator(Photo photo, List<GdataPhotosSettings> gdataPhotosSettings)
+		public PhotoDecorator(IPhoto photo, List<GdataPhotosSettings> gdataPhotosSettings)
 		{
 			var settings = gdataPhotosSettings ?? new List<GdataPhotosSettings>();
 			Convertor = ImageStringConvert.Init(photo.Width, photo.Height);
@@ -62,10 +54,10 @@ namespace cms.Controllers.Api
 			return GetWebImage(isHorizontal ? Convertor.Convert(ImageSizeType.MaxWidth, width) : Convertor.Convert(ImageSizeType.MaxHeight, height));
 		}
 
-		private void LoadDefaultUri(Photo photo)
+		private void LoadDefaultUri(IPhoto photo)
 		{
-			var x = photo.PicasaEntry.Media.Thumbnails[0];
-			_defaultUri = new Uri(x.Url);
+			//var x = photo.PicasaEntry.Media.Thumbnails[0];
+			_defaultUri = new Uri(photo.PhotoUri);
 		}
 
 		private WebImage GetWebImage(ImageStringConvert x)
