@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Web.Http.Filters;
 
 namespace cms.Controllers.Api
 {
@@ -16,5 +17,6 @@ namespace cms.Controllers.Api
 			base.Initialize(requestContext);
 			ApplicationId = new Guid(requestContext.RouteData.Values["applicationId"].ToString());
 		}
+
 	}
 }

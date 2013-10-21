@@ -184,6 +184,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Api\Filters\ExceptionFilterAttribute.cs" />
     <Compile Include="Controllers\Api\Server\AdminApiController.cs" />
     <Compile Include="Code\Graphic\ImageSizeType.cs" />
     <Compile Include="Code\Graphic\ImageSizeTypeExtension.cs" />
@@ -214,7 +215,7 @@
     </Compile>
     <Compile Include="Controllers\Api\CmsWebApiControllerBase.cs" />
     <Compile Include="Controllers\Api\Server\SettingApiController.cs" />
-    <Compile Include="Controllers\Api\GdataPhotosController.cs">
+    <Compile Include="Controllers\Api\Server\GdataPhotosController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\Api\Server\GridElementApiController.cs" />

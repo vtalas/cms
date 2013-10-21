@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using System.Web.Mvc;
+using cms.Controllers.Api.Filters;
 using Google.Picasa;
 using OAuth2.Mvc;
 using cms.Code.LinkAccounts.Picasa;
@@ -19,6 +19,7 @@ using WebAPI.OutputCache;
 
 namespace cms.Controllers.Api
 {
+	[ExceptionFilter]
 	public class ClientApiController : CmsWebApiControllerBase
 	{
 		private OAuthServiceBase Oauthservice { get; set; } 
@@ -33,7 +34,7 @@ namespace cms.Controllers.Api
 			PicasaProvider = new PicasaServiceProvider(() => new PicasaWrapper(SessionFactory));
 			Oauthservice = new OAuthServiceCms(ApplicationId);
 		}
-		
+
 		private bool Auth()
 		{
 			var cookies = ControllerContext.Request.Headers.GetCookies();
@@ -59,6 +60,7 @@ namespace cms.Controllers.Api
 
 				if (page.Authorize && !Auth())
 				{
+					//throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.NotFound, "this item does not exist");
 					throw new HttpResponseException(HttpStatusCode.Unauthorized); 
 				}
 				return page;

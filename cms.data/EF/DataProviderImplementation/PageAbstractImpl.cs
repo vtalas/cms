@@ -42,6 +42,10 @@ namespace cms.data.EF.DataProviderImplementation
 		public override GridPageDto Get(string linkValue)
 		{
 			var a = GetGrid(linkValue);
+			if (a == null)
+			{
+				throw new ObjectNotFoundException("not_found");
+			}
 			a.GridElements = a.GridElements.OrderBy(x => x.Position).ToList();
 
 			if (a == null || a.Category != CategoryEnum.Page)
