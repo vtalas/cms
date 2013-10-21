@@ -70,7 +70,6 @@ function ngcGDataGallery(gdataPhotos) {
 						scope.albumPhotos = data;
 						scope.updated = scope.gallery.updated;
 						scope.updatedTimeSpan = dateReadable(new Date(scope.gallery.updated));
-
 						if (typeof callback === "function") {
 							callback();
 						}

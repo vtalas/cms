@@ -122,8 +122,9 @@
 			</div>
 		</div>
 		<div ng-repeat="item in albums" class="gdataAlbum">
-			<div class="gdataThumb" ng-click="addAlbum(item.Id, item.Link)">
-				<img ngc-lazy-image="item.Thumbnail.PhotoUri"/>
+			
+			<div class="gdataThumb" ng-click="addAlbum(item.Id, item.Link)" title="{{item.Title}} ({{item.Album.NumPhotos}})">
+				<img ngc-lazy-image="item.Thumbnail.Thumbnails[0].PhotoUri" />
 			</div>
 		</div>
 		<div class="clearfix"></div>

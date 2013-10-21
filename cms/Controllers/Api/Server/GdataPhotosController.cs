@@ -1,17 +1,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using Google.Picasa;
+using cms.Code.Graphic;
+using cms.Code.LinkAccounts.Picasa;
 using WebAPI.OutputCache;
 
 namespace cms.Controllers.Api.Server
 {
 	public class GdataPhotosController : WebApiPicasaControllerBase
 	{
+		public List<GdataPhotosSettings> AdminPhotoSettings { get; set; }
+
+		public GdataPhotosController()
+		{
+			AdminPhotoSettings = new List<GdataPhotosSettings>
+			{
+				new GdataPhotosSettings(ImageSizeType.MaxSize, 95, true),
+			};
+		}
+
+
 		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
 		public IDictionary<string, AlbumDecorator> GetAlbums()
 		{
-			var albums = Enumerable.Select<Album, AlbumDecorator>(PicasaProvider.Session.GetAlbums(), x => new AlbumDecorator(x));
+			var albums = PicasaProvider.Session.GetAlbums().Select(x => new AlbumDecorator(x, AdminPhotoSettings));
 			return albums.ToDictionary(key => key.Id);
 		}
 
@@ -24,7 +36,7 @@ namespace cms.Controllers.Api.Server
 		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
 		public IEnumerable<PhotoDecorator> GetAlbumPhotos(string id, bool refreshCache = false)
 		{
-			return PicasaProvider.Session.GetAlbumPhotos(id, refreshCache);
+			return PicasaProvider.Session.GetAlbumPhotos(id, refreshCache, AdminPhotoSettings);
 		}
 
 		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]

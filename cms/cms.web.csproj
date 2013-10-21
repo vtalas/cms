@@ -184,7 +184,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Api\AlbumPhoto.cs" />
     <Compile Include="Controllers\Api\Filters\ExceptionFilterAttribute.cs" />
+    <Compile Include="Controllers\Api\IPhoto.cs" />
     <Compile Include="Controllers\Api\Server\AdminApiController.cs" />
     <Compile Include="Code\Graphic\ImageSizeType.cs" />
     <Compile Include="Code\Graphic\ImageSizeTypeExtension.cs" />
