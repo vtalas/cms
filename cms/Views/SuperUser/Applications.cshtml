@@ -1,10 +1,10 @@
-﻿@model List<UserProfile>
+﻿@model List<ApplicationSetting>
 @{
 	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
 	ViewBag.Title = "Register";
- 
 }
+
 @foreach (var item in @Model)
 {
-	<div>@item.Id @item.UserName</div>
+	<div><a href="/render/@item.Id/Admin/Dashboard">@item.Name</a></div>
 }
