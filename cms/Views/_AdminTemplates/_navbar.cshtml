@@ -14,14 +14,15 @@
 	<div class="navbar-inner xxx">
 		<div class="btn-group navbar-button-group">
 			<a class="btn" href="@Url.Action("Dashboard", "Admin")">@ViewBag.ApplicationName</a>
-			<button class="btn dropdown-toggle" data-toggle="dropdown">
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu">
-				<a href="@Url.Action("Applications", "Admin")" tooltip="kjasbdjkasb"><b class="icon icon-plus-sign"></b>pridat novou aplikaci</a>
-
-				<!-- dropdown menu links -->
-			</ul>
+								@if (Roles.IsUserInRole("superuser"))
+								{
+									<button class="btn dropdown-toggle" data-toggle="dropdown">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<a href="@Url.Action("Applications", "Admin")" tooltip="kjasbdjkasb"><b class="icon icon-plus-sign"></b>pridat novou aplikaci</a>
+									</ul>
+								}
 		</div>
 		<ul class="nav">
 			<li class=""></li>

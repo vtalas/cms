@@ -6,4 +6,14 @@
 	var applicationId = ViewBag.ApplicationId;
 }
 
-@Html.ActionLink("Register", "Register")
+<div>
+	@Html.ActionLink("Register new user", "Register")
+</div>
+<div>
+	<h2>aplications</h2>
+	@Html.Action("Applications")
+</div>
+<div>
+	<h2>users</h2>
+	@Html.Action("ListUsers")
+</div>

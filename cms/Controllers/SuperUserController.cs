@@ -1,5 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using System.Web.Security;
+using cms.data.Shared;
 using WebMatrix.WebData;
 using cms.Code;
 
@@ -13,9 +15,20 @@ namespace cms.Controllers
 			return View();
 		}
 
+		public ActionResult Applications()
+		{
+			using (var repository = new RepositoryFactory())
+			{
+				return View(repository.Create.ApplicationSettings.ToList());
+			}
+		}
+
 		public ActionResult ListUsers()
 		{
-			return View();
+			using (var repository = new RepositoryFactory())
+			{
+				return View(repository.Create.UserProfile.ToList());
+			}
 		}
 
 		public ActionResult Register()

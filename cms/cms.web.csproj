@@ -605,6 +605,7 @@
     <Content Include="Views\SuperUser\Index.cshtml" />
     <Content Include="Views\SuperUser\ListUsers.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\SuperUser\Applications.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
