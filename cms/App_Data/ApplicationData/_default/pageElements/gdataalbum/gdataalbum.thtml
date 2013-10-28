@@ -82,7 +82,9 @@
 
 			<span>
 				<button ng-click="toggleGdataAlbums()" class="btn btn-small btn-success">Vybrat Album</button>
-				<span ng-show="albumPhotosAll.length > 0" tooltip-html-unsafe="{{updated | date:'MM.dd.yyyy HH:mm:ss'}}" tooltip-popup-delay='300'
+				<span ng-show="albumPhotosAll.length > 0" 
+					  tooltip-html-unsafe="{{updated | date:'MM.dd.yyyy HH:mm:ss'}}" 
+					  tooltip-popup-delay='300'
 					  tooltip-placement="right">
 
 					<span ng-click="refreshAlbums()" class="clickable">
@@ -122,7 +124,6 @@
 			</div>
 		</div>
 		<div ng-repeat="item in albums" class="gdataAlbum">
-			
 			<div class="gdataThumb" ng-click="addAlbum(item.Id, item.Link)" title="{{item.Title}} ({{item.Album.NumPhotos}})">
 				<img ngc-lazy-image="item.Thumbnail.Thumbnails[0].PhotoUri" />
 			</div>

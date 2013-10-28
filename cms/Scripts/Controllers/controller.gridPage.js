@@ -1,5 +1,15 @@
 var gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEelementApi, GridApi) {
 
+
+	$scope.availableTemplates = [
+		{ value: "text", name: "Text" },
+		{ value: "album", name: "Album" },
+		{ value: "simplehtml", name: "Markdown" },
+		{ value: "gdataalbum", name: "Google Album" },
+		{ value: "clientspecific", name: "Klientská šablona" }
+	];
+
+	
 	$scope.addWithType = function (item, gridid, elements, newtype, event) {
 		event.preventDefault();
 		item.Type = newtype;
@@ -47,7 +57,6 @@ var gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEe
 
 	$scope.save = function (item) {
 		var copy = jQuery.extend(true, {}, item);
-
 		gridEelementApi.put(copy);
 	};
 

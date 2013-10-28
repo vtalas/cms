@@ -6,5 +6,18 @@
 
 @foreach (var item in @Model)
 {
-	<div><a href="/render/@item.Id/Admin/Dashboard">@item.Name</a></div>
+	<div><a href="/render/@item.Id/Admin/Dashboard">@item.Name</a>
+	
+	@foreach (var x in item.Users)
+	{
+	  if (!x.IsApplicationUser)
+	  {
+		  <div><b>&nbsp;@x.UserName</b></div>
+	  }
+	  else
+	  {
+		<div>&nbsp;@x.UserName</div>
+		}
+	}
+	</div>
 }

@@ -24,7 +24,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div>
 		<div class="btn-group" tooltip="vložit šablonu podle typu" tooltip-placement="left" tooltip-popup-delay="500">
 			<button ng-click="addToEnd(newItem, data.Id, data.GridElements)" class="btn">{{newItem.Type}}</button>
@@ -32,25 +31,10 @@
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
-				<li>
-					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'text', $event )">text </a>
-				</li>
-				@*				<li><a href="#"
-					ng-click="addWithType(newItem, data.Id, data.GridElements, 'novinka', $event )">novinka </a></li>*@
-				<li>
-					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'simplehtml', $event )">Markdown</a>
-				</li>
-				@*				<li><a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'reference', $event )">Reference </a>
-				</li>*@
-				<li>
-					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'gdataalbum', $event )">Google Album</a>
-				</li>
-				<li >
-					<a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, 'clientspecific', $event )">Klientská šablona</a>
+				<li ng-repeat="templateItem in availableTemplates">
+					<a a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, templateItem.value, $event )">{{templateItem.name}} </a>
 				</li>
 			</ul>
 		</div>
 	</div>
-
-
 </div>

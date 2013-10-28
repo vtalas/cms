@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using cms.data.Shared;
@@ -19,7 +20,7 @@ namespace cms.Controllers
 		{
 			using (var repository = new RepositoryFactory())
 			{
-				return View(repository.Create.ApplicationSettings.ToList());
+				return View(repository.Create.ApplicationSettings.Include(x=>x.Users).ToList());
 			}
 		}
 

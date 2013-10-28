@@ -3,9 +3,9 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 		gridelement;
 	gdataalbum.$inject = ["$scope", "gdataPhotos", "appSettings"];
 
-
 	getAlbums = function () {
 		gdataPhotos.getAlbums(function (data) {
+			$scope.albums = data;
 		}, function (error) {
 			return $scope.haserror = true;
 		});
