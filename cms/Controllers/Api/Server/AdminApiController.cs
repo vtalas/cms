@@ -54,10 +54,10 @@ namespace cms.Controllers.Api.Server
 		}
 
 
-		public List<string> AvailableTemplates()
-		{
-			
-		}
+//		public List<string> AvailableTemplates()
+//		{
+//			
+//		}
 
 			/// ////////////////////////////////////////////////////////////////////////////////////
 		//TODO: PRESUNOUT DO SAMOSTATNYHO CONTROLu

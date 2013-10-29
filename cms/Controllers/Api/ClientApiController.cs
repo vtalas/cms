@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using cms.Code.Graphic;
 using cms.Controllers.Api.Filters;
 using Google.Picasa;
 using OAuth2.Mvc;
@@ -22,7 +23,7 @@ namespace cms.Controllers.Api
 	[ExceptionFilter]
 	public class ClientApiController : CmsWebApiControllerBase
 	{
-		private OAuthServiceBase Oauthservice { get; set; } 
+		private OAuthServiceBase Oauthservice { get; set; }
 		public SessionProvider SessionFactory { get; set; }
 		public PicasaServiceProvider PicasaProvider { get; set; }
 
@@ -61,7 +62,7 @@ namespace cms.Controllers.Api
 				if (page.Authorize && !Auth())
 				{
 					//throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.NotFound, "this item does not exist");
-					throw new HttpResponseException(HttpStatusCode.Unauthorized); 
+					throw new HttpResponseException(HttpStatusCode.Unauthorized);
 				}
 				return page;
 			}
@@ -119,7 +120,7 @@ namespace cms.Controllers.Api
 				repo.Add(userData);
 				repo.SaveChanges();
 			}
-	
+
 			return data;
 		}
 
@@ -130,8 +131,16 @@ namespace cms.Controllers.Api
 		}
 
 		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
-		public AlbumDecorator GetAlbum(string id)
+		public AlbumDecorator GetAlbum(string id, int? size = null, bool isSquare = true, ImageSizeType x = ImageSizeType.MaxWidth)
 		{
+			if (size.HasValue)
+			{
+				var settings = new List<GdataPhotosSettings>()
+				{
+					new GdataPhotosSettings(x, size.Value, isSquare)
+				};
+				return PicasaProvider.Session.GetAlbum(id, settings);
+			}
 			return PicasaProvider.Session.GetAlbum(id);
 		}
 

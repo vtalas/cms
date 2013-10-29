@@ -36,9 +36,14 @@ namespace cms.Code.LinkAccounts.Picasa
 
 		public AlbumDecorator GetAlbum(string id, bool refreshCache = false)
 		{
+			return GetAlbum(id, Settings, refreshCache);
+		}
+
+		public AlbumDecorator GetAlbum(string id, List<GdataPhotosSettings> settings, bool refreshCache = false)
+		{
 			var albums = PicasaRequest.GetAlbums();
 			var albumobject = albums.Entries.SingleOrDefault(x => x.Id == id);
-			var decorate = new AlbumDecorator(albumobject, Settings);
+			var decorate = new AlbumDecorator(albumobject, settings);
 			return decorate;
 		}
 
