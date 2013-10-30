@@ -28,6 +28,7 @@ namespace cms.data.EF.RepositoryImplementation
 		public IQueryable<GridElement> GridElements { get { return db.GridElements.Where(x=>x.AppliceSetting.Id == ApplictionId); } }
 		public virtual IQueryable<UserProfile> UserProfile { get { return db.UserProfile.Where(x=>x.Applications.Any(app=>app.Id == ApplictionId)); } }
 		public virtual IQueryable<UserData> UserData { get { return db.UserData.Where(x=>x.User.Applications.Any(app=>app.Id == ApplictionId)); } }
+		public IQueryable<GridElementGroup> GridElementGroup { get { return db.GridElementGroup;}}
 
 		public virtual ApplicationSettingStorage Add(ApplicationSettingStorage item)
 		{

@@ -25,6 +25,7 @@ namespace cms.data.EF.RepositoryImplementation
 		public IQueryable<GridElement> GridElements { get { return db.GridElements; } }
 		public virtual IQueryable<UserProfile> UserProfile { get { return db.UserProfile; } }
 		public virtual IQueryable<UserData> UserData { get { return db.UserData; } }
+		public IQueryable<GridElementGroup> GridElementGroup { get; private set; }
 
 		public ApplicationSettingStorage Add(ApplicationSettingStorage item)
 		{

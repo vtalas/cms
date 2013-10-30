@@ -17,6 +17,7 @@ namespace cms.data.Repository
 
 		public virtual IQueryable<ApplicationSetting> ApplicationSettings { get { return Repository.ApplicationSettings.Where(x => x.Users.Any(user => user.Id == UserId)); } }
 		public virtual IQueryable<UserData> UserData { get { return Repository.UserData.Where(x => x.User.Id == UserId); } }
+		public IQueryable<GridElementGroup> GridElementGroup { get; private set; }
 		public virtual IQueryable<UserProfile> UserProfile { get { return Repository.UserProfile.Where(x => x.Id == UserId); } }
 	
 		public IQueryable<Resource> Resources { get; private set; }

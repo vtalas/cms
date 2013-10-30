@@ -18,6 +18,7 @@ namespace cms.data.EF
 		public virtual IDbSet<Resource> Resources { get; set; }
 		public virtual IDbSet<UserProfile> UserProfile { get; set; }
 		public virtual IDbSet<UserData> UserData { get; set; }
+		public virtual IDbSet<GridElementGroup> GridElementGroup { get; set; }
 	
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

@@ -49,6 +49,7 @@ namespace cms.Controllers
 			var configuration = new Configuration();
 			var migrator = new DbMigrator(configuration);
 
+			
 			var pending = migrator.GetPendingMigrations();
 			
 			if (pending.Any())
@@ -71,7 +72,7 @@ namespace cms.Controllers
 		void Change1()
 		{
 			SecurityProvider.EnsureInitialized();
-			if (!Roles.RoleExists("superuser")){}
+			if (!Roles.RoleExists("superuser"))
 			{
 				Roles.CreateRole("superuser");
 			}
