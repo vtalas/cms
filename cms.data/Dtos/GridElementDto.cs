@@ -17,5 +17,6 @@ namespace cms.data.Dtos
 		public IDictionary<string, ResourceDtoLoc> Resources { get; set; }
 
 		public int Width { get; set; }
+		public IList<GridElementGroupDto> Group { get; set; }
 	}
 }

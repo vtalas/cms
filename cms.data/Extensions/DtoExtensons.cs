@@ -117,6 +117,15 @@ namespace cms.data.Extensions
 			return a;
 		}
 
+		public static GridElementGroupDto ToDto(this GridElementGroup source)
+		{
+			return new GridElementGroupDto();
+		}
+		public static IList<GridElementGroupDto> ToDtos(this IEnumerable<GridElementGroup> source)
+		{
+			return source.Select(x => x.ToDto()).ToList();
+		}
+
 		public static GridElementDto ToDto(this GridElement source)
 		{
 			return new GridElementDto
@@ -128,7 +137,8 @@ namespace cms.data.Extensions
 						Type = source.Type,
 						Width = source.Width,
 						ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
-						Resources = source.Resources.ToDtos()
+						Resources = source.Resources.ToDtos(),
+						Group = source.Group.ToDtos()
 					};
 		}
 
@@ -186,7 +196,7 @@ namespace cms.data.Extensions
 				Link = source.Resources.GetValueByKey(SpecialResourceEnum.Link, null),
 				Name = source.Resources.GetValueByKey("name", _currentCulture),
 				Category = source.Category,
-				Authorize = source.Authorize
+				Authorize = source.Authorize, 
 			};
 
 		}
