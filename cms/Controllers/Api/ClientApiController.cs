@@ -131,13 +131,13 @@ namespace cms.Controllers.Api
 		}
 
 		[CacheOutput(ClientTimeSpan = 3600, ServerTimeSpan = 3600)]
-		public AlbumDecorator GetAlbum(string id, int? size = null, bool isSquare = true, ImageSizeType x = ImageSizeType.MaxWidth)
+		public AlbumDecorator GetAlbum(string id, int? size = null, bool isSquare = true, ImageSizeType type = ImageSizeType.MaxWidth)
 		{
 			if (size.HasValue)
 			{
 				var settings = new List<GdataPhotosSettings>()
 				{
-					new GdataPhotosSettings(x, size.Value, isSquare)
+					new GdataPhotosSettings(type, size.Value, isSquare)
 				};
 				return PicasaProvider.Session.GetAlbum(id, settings);
 			}

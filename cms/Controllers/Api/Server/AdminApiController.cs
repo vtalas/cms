@@ -60,7 +60,7 @@ namespace cms.Controllers.Api.Server
 //		}
 
 			/// ////////////////////////////////////////////////////////////////////////////////////
-		//TODO: PRESUNOUT DO SAMOSTATNYHO CONTROLu
+		//TODO: PRESUNOUT DO SAMOSTATNYHO C	ONTROLu
 
 		[System.Web.Mvc.HttpPost]
 		[InvalidateCacheOutputClientApiController]

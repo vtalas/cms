@@ -54,7 +54,7 @@ namespace cms.Controllers.Api.Server
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((GdataPhotosController b) => b.GetAlbumPhotos(id, true)));
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((GdataPhotosController b) => b.GetPhotos(true)));
 
-			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((ClientApiController b) => b.GetAlbum(id)));
+			//cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((ClientApiController b) => b.GetAlbum(id)));
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((ClientApiController b) => b.GetAlbums()));
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((ClientApiController b) => b.GetAlbumPhotos(id)));
 			cache.RemoveStartsWith(Configuration.CacheOutputConfiguration().MakeBaseCachekey((ClientApiController b) => b.GetPhotos()));
