@@ -9,7 +9,7 @@ namespace cms.data.Shared.Models
 		{
 			Id = Guid.NewGuid();
 			Resources = new List<Resource>();
-			Group = new List<GridElementGroup>();
+			Groups = new List<GridElementGroup>();
 			Type = "text";
 		}
 
@@ -25,7 +25,7 @@ namespace cms.data.Shared.Models
 		public virtual GridElement Parent { get; set; }
 		public virtual Grid Grid { get; set; }
 		public virtual ICollection<Resource> Resources { get; set; }
-		public virtual ICollection<GridElementGroup> Group { get; set; }
+		public virtual ICollection<GridElementGroup> Groups { get; set; }
 
 		public static bool EqualsById(GridElement g1, GridElement g2)
 		{

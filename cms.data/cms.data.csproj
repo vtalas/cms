@@ -75,6 +75,10 @@
     <Compile Include="Dtos\UserProfileDto.cs" />
     <Compile Include="EF\DataProviderImplementation\DataEfPublic.cs" />
     <Compile Include="EF\RepositoryImplementation\EfRepositoryApplication.cs" />
+    <Compile Include="Migrations\201310302006518_AddGridElementGroupTable.cs" />
+    <Compile Include="Migrations\201310302006518_AddGridElementGroupTable.Designer.cs">
+      <DependentUpon>201310302006518_AddGridElementGroupTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\ApplicationsRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Shared\Models\ApplicationSettingStorage.cs" />
@@ -130,6 +134,11 @@
       <Project>{D1A23BEB-46D6-47A9-AE9D-D369A5134050}</Project>
       <Name>cms.shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201310302006518_AddGridElementGroupTable.resx">
+      <DependentUpon>201310302006518_AddGridElementGroupTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

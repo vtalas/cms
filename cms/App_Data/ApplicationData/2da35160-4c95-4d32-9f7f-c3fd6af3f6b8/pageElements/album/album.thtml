@@ -52,23 +52,23 @@
 		<div class="container">
 			<div class="span6" style="margin-left:0px">
 				<div class="control-group">
-					<h3>
-						<span ngc-click-edit="gridelement.Resources.name.Value" type="input" placeholder="Jméno"></span>
+					<h3 tooltip="Jméno" tooltip-placement="left">
+						<span ngc-click-edit="gridelement.Resources.name.Value" type="input" placeholder="Jméno"  ></span>
 					</h3>
 				</div>
-				<div class="control-group">
-					<div ngc-click-edit="gridelement.Resources.type.Value" type="input" placeholder="Typ"></div>
+				<div class="control-group" tooltip="Typ" tooltip-placement="left">
+					<div ngc-click-edit="gridelement.Resources.type.Value" type="input" placeholder="Typ" ></div>
 				</div>
-				<div class="control-group">
+				<div class="control-group" tooltip="Služby" tooltip-placement="left">
 					<div ngc-click-edit="gridelement.Resources.services.Value" type="input" placeholder="Služby"></div>
 				</div>
-				<div class="control-group">
+				<div class="control-group" tooltip="Rozsah" tooltip-placement="left">
 					<div ngc-click-edit="gridelement.Resources.size.Value" type="input" placeholder="Rozsah"></div>
 				</div>
-				<div class="control-group">
+				<div class="control-group" tooltip="Rok" tooltip-placement="left">
 					<div ngc-click-edit="gridelement.Resources.year.Value" type="input" placeholder="Rok"></div>
 				</div>
-				<div class="control-group">
+				<div class="control-group" tooltip="Text" tooltip-placement="left">
 					<div ngc-click-edit="gridelement.Resources.text.Value" type="textarea" placeholder="Text"></div>
 				</div>
 			</div>
@@ -99,14 +99,13 @@
 
 					<span>
 						<button ng-click="toggleGdataAlbums()" class="btn btn-small btn-success">Vybrat Album</button>
-						<span ng-show="albumPhotosAll.length > 0"
-							  tooltip-html-unsafe="{{updated | date:'MM.dd.yyyy HH:mm:ss'}}"
-							  tooltip-popup-delay='300'
-							  tooltip-placement="right">
-
+						<span ng-show="albumPhotosAll.length > 0">
 							<span ng-click="refreshAlbums()" class="clickable">
-								<span class="icon-repeat"></span>
-								{{updatedTimeSpan}}
+								<span class="icon-repeat" tooltip="Aktualizovat"></span>
+								<span 
+									tooltip-html-unsafe="Aktualizováno: {{updated | date:'MM.dd.yyyy HH:mm:ss'}}"
+									tooltip-popup-delay='300'
+									tooltip-placement="right">{{updatedTimeSpan}}</span>
 							</span>
 						</span>
 					</span>
@@ -126,8 +125,7 @@
 	</div>
 
 	<div ng-show="showGdataAlbumsValue" class="gridelement-content">
-		<h3>Alba</h3>
-
+		<h3 style="float:left">Alba</h3>
 		<div ng-show="albums.length == 0">
 			<H4 class="text-error">nenalezena žádná alba</H4>
 		</div>
@@ -136,7 +134,6 @@
 		</div>
 		<div ng-show="albums == null && hasserror" class="alert alert-error">
 			<h4>chyba připojení </h4>
-
 			<div>
 				ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
 			</div>

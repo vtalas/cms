@@ -138,7 +138,7 @@ namespace cms.data.Extensions
 						Width = source.Width,
 						ParentId = source.Parent == null ? string.Empty : source.Parent.Id.ToString(),
 						Resources = source.Resources.ToDtos(),
-						Group = source.Group.ToDtos()
+						Group = source.Groups.ToDtos()
 					};
 		}
 

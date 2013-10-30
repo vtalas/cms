@@ -82,14 +82,14 @@
 
 			<span>
 				<button ng-click="toggleGdataAlbums()" class="btn btn-small btn-success">Vybrat Album</button>
-				<span ng-show="albumPhotosAll.length > 0" 
-					  tooltip-html-unsafe="{{updated | date:'MM.dd.yyyy HH:mm:ss'}}" 
-					  tooltip-popup-delay='300'
-					  tooltip-placement="right">
-
+				<span ng-show="albumPhotosAll.length > 0">
 					<span ng-click="refreshAlbums()" class="clickable">
-						<span class="icon-repeat"></span>
-						{{updatedTimeSpan}}</span>
+						<span class="icon-repeat" tooltip="Aktualizovat"></span>
+						<span
+							tooltip-html-unsafe="Aktualizováno: {{updated | date:'MM.dd.yyyy HH:mm:ss'}}"
+							tooltip-popup-delay='300'
+							tooltip-placement="right">{{updatedTimeSpan}}</span>
+					</span>
 				</span>
 			</span>
 		</div>
