@@ -35,6 +35,9 @@
     <DocumentationFile>bin\Release\Swagger.Net.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'wapi.cz release|AnyCPU'">
+    <OutputPath>bin\wapi.cz release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
