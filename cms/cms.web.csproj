@@ -266,7 +266,6 @@
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
     <Content Include="App_Data\ApplicationData\2da35160-4c95-4d32-9f7f-c3fd6af3f6b8\pageElements\album\controller.album.js" />
-    <Content Include="App_Data\ApplicationData\e32765d7-c23c-4f1b-bd1e-26a8caa4cc97\pageElements\album\controller.album.js" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\clientspecific\clientspecific.js" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
@@ -289,7 +288,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.js" />
-    <Content Include="App_Data\ApplicationData\e32765d7-c23c-4f1b-bd1e-26a8caa4cc97\pageElements\album\album.thtml" />
     <Content Include="App_Data\ApplicationData\2da35160-4c95-4d32-9f7f-c3fd6af3f6b8\pageElements\album\album.thtml" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
