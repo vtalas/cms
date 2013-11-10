@@ -1,0 +1,32 @@
+﻿@model ApplicationSetting
+@{
+	Layout = "../_AdminTemplates/_Layout_Appllication.cshtml";
+	ViewBag.Title = "Application Detail";
+}
+
+<h2>@Model.Name</h2>
+<b>@Model.Id</b>
+
+
+@using (Html.BeginForm("ApplicationActions", "SuperUser", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+		<div>
+		@foreach (var user in Model.Users)
+  {
+	  if (!user.IsApplicationUser)
+	  {
+				<div><b>&nbsp;@user.UserName</b></div> 
+	  }
+	  else
+	  {
+				<div>&nbsp;@user.UserName</div>
+	  }
+  }
+	</div>
+	
+	@Html.HiddenFor(m => m.Id)
+	@Html.DropDownList("username", new SelectList(ViewBag.Users as List<UserProfile>, "UserName", "UserName"))
+	 
+	<button type="submit" name="command" class="btn btn-primary" value="add">Attach User</button>
+	<button type="submit" name="command" class="btn btn-primary" value="remove">Remove User</button>
+}

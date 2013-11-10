@@ -1,7 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using cms.data.EF;
 using cms.data.Shared;
 using WebMatrix.WebData;
 using cms.Code;
@@ -20,7 +22,72 @@ namespace cms.Controllers
 		{
 			using (var repository = new RepositoryFactory())
 			{
-				return View(repository.Create.ApplicationSettings.Include(x=>x.Users).ToList());
+				return View(repository.Create.ApplicationSettings.ToList());
+			}
+		}
+
+		[HttpPost]
+		public ActionResult ApplicationActions(string username, Guid id, string command)
+		{
+			switch (command)
+			{
+				case "add":
+					ActionAddUserToApp(username, id);
+					break;
+				case "remove":
+					ActionRemoveUserFromApp(username, id);
+					break;
+			}
+			return RedirectToAction("ApplicationDetail", new {id = id});
+		}
+
+		private void ActionAddUserToApp(string username, Guid id)
+		{
+			using (var repository = new RepositoryFactory())
+			{
+				var db = repository.Create;
+
+				var app = db.ApplicationSettings.SingleOrDefault(x => x.Id == id);
+				var user = db.UserProfile.SingleOrDefault(x => x.UserName == username);
+				app.Users.Add(user);
+				db.SaveChanges();
+			}
+		}
+		private void ActionRemoveUserFromApp(string username, Guid id)
+		{
+			using (var repository = new RepositoryFactory())
+			{
+				var db = repository.Create;
+
+				var app = db.ApplicationSettings.SingleOrDefault(x => x.Id == id);
+				var user = db.UserProfile.SingleOrDefault(x => x.UserName == username);
+				app.Users.Remove(user);
+				db.SaveChanges();
+			}
+		}
+
+		[HttpPost]
+		public ActionResult RemoveUserFromApplication(string username, Guid id)
+		{
+			using (var repository = new RepositoryFactory())
+			{
+				var db = repository.Create;
+
+				var app = db.ApplicationSettings.SingleOrDefault(x => x.Id == id);
+				var user = db.UserProfile.SingleOrDefault(x => x.UserName == username);
+				app.Users.Remove(user);
+				db.SaveChanges();
+			}
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult ApplicationDetail(Guid id)
+		{
+			using (var repository = new RepositoryFactory())
+			{
+				ViewBag.Users = repository.Create.UserProfile.ToList();
+				var app = repository.Create.ApplicationSettings.Include(x => x.Users).ToList().SingleOrDefault(x => x.Id == id);
+				return View(app);
 			}
 		}
 

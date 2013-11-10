@@ -488,6 +488,7 @@
     <None Include="Properties\PublishProfiles\ladesopeklo - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ladesopeklo - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\localTest.pubxml" />
+    <None Include="Properties\PublishProfiles\wapi.cz ftp.pubxml" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
@@ -610,6 +611,7 @@
     <Content Include="Views\SuperUser\ListUsers.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\SuperUser\Applications.cshtml" />
+    <Content Include="Views\SuperUser\ApplicationDetail.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

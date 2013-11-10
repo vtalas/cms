@@ -1,12 +1,12 @@
-var gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEelementApi, GridApi) {
+Ôªøvar gridPage = ["$scope", "gridEelementApi", "GridApi" ,function ($scope, gridEelementApi, GridApi) {
 
 
 	$scope.availableTemplates = [
 		{ value: "text", name: "Text" },
 		{ value: "album", name: "Album" },
 		{ value: "simplehtml", name: "Markdown" },
-		{ value: "gdataalbum", name: "Google Album" },
-		{ value: "clientspecific", name: "Klientsk· öablona" }
+		//{ value: "gdataalbum", name: "Google Album" },
+		{ value: "clientspecific", name: "Klientsk√° ≈°ablona" }
 	];
 
 	

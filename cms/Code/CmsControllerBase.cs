@@ -51,6 +51,7 @@ namespace cms.Code
 			base.Initialize(requestContext);
 			object x = null;
 
+
 			SecurityProvider.EnsureInitialized();
 
 			if (RouteData.Values.TryGetValue("applicationId", out x))

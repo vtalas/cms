@@ -37,6 +37,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -55,17 +57,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="BundleTransformer.CoffeeScript, Version=1.6.24.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+    <Reference Include="BundleTransformer.CoffeeScript, Version=1.6.25.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\BundleTransformer.CoffeeScript.1.6.24\lib\net40\BundleTransformer.CoffeeScript.dll</HintPath>
+      <HintPath>..\packages\BundleTransformer.CoffeeScript.1.6.25\lib\net40\BundleTransformer.CoffeeScript.dll</HintPath>
     </Reference>
-    <Reference Include="BundleTransformer.Core, Version=1.6.24.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+    <Reference Include="BundleTransformer.Core, Version=1.6.25.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\BundleTransformer.Core.1.6.24\lib\net40\BundleTransformer.Core.dll</HintPath>
+      <HintPath>..\packages\BundleTransformer.Core.1.6.25\lib\net40\BundleTransformer.Core.dll</HintPath>
     </Reference>
-    <Reference Include="BundleTransformer.Less">
-      <HintPath>..\packages\BundleTransformer.Less.1.6.19\lib\net40\BundleTransformer.Less.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="BundleTransformer.Less, Version=1.6.25.0, Culture=neutral, PublicKeyToken=973c344c93aac60d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\BundleTransformer.Less.1.6.25\lib\net40\BundleTransformer.Less.dll</HintPath>
     </Reference>
     <Reference Include="dotless.Core, Version=1.3.1.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -95,19 +97,26 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MsieJavaScriptEngine.1.1.1\lib\net40\MsieJavaScriptEngine.dll</HintPath>
     </Reference>
+    <Reference Include="MvcSiteMapProvider, Version=3.3.6.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvcSiteMapProvider.3.3.6.0\lib\net40\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
@@ -123,7 +132,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
@@ -157,6 +166,12 @@
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml.Serialization" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebAPI.OutputCache">
+      <HintPath>..\packages\Strathweb.CacheOutput.0.4.3\lib\net40\WebAPI.OutputCache.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
@@ -169,28 +184,58 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Api\AlbumPhoto.cs" />
+    <Compile Include="Controllers\Api\Filters\ExceptionFilterAttribute.cs" />
+    <Compile Include="Controllers\Api\IPhoto.cs" />
+    <Compile Include="Controllers\Api\Server\AdminApiController.cs" />
+    <Compile Include="Code\Graphic\ImageSizeType.cs" />
+    <Compile Include="Code\Graphic\ImageSizeTypeExtension.cs" />
+    <Compile Include="Code\Graphic\ImageStringConvert.cs" />
+    <Compile Include="App_Start\SwaggerNet.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageEfContext.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageJson.cs" />
-    <Compile Include="Code\LinkAccounts\GoogleDataOAuth2.cs" />
+    <Compile Include="Code\LinkAccounts\GoogleDataOAuth2Service.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageAbstract.cs" />
+    <Compile Include="Code\LinkAccounts\Picasa\GdataPhotosSettings.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaServiceFactory.cs" />
+    <Compile Include="Code\LinkAccounts\SettingsLoader.cs" />
+    <Compile Include="Code\MvcOauth\DemoPrincipal.cs" />
+    <Compile Include="Code\MvcOauth\DemoToken.cs" />
     <Compile Include="Code\UserResources\AssetDecorator.cs" />
     <Compile Include="Code\UserResources\AssetTypeExtened.cs" />
     <Compile Include="Code\UserResources\IAssetExt.cs" />
     <Compile Include="Code\UserResources\UserResourceManager.cs" />
     <Compile Include="Code\UserResources\UserResourcesManagerProvider.cs" />
     <Compile Include="Code\UserResources\ViewModeType.cs" />
+    <Compile Include="Code\Utils\FastDirectoryEnumerator.cs" />
+    <Compile Include="Controllers\Api\AlbumDecorator.cs" />
     <Compile Include="Controllers\Api\ApiControllerBase.cs" />
-    <Compile Include="Code\JObjectExt.cs" />
     <Compile Include="Code\JSONNetResult.cs" />
-    <Compile Include="Controllers\Api\GridElementApiController.cs" />
-    <Compile Include="Controllers\Api\GdataPhotosController.cs" />
+    <Compile Include="Controllers\Api\Server\Attributes\InvalidateCacheOutputClientApiControllerAttribute.cs" />
+    <Compile Include="Controllers\Api\Server\CmsUsersApiController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\Api\CmsWebApiControllerBase.cs" />
+    <Compile Include="Controllers\Api\Server\SettingApiController.cs" />
+    <Compile Include="Controllers\Api\Server\GdataPhotosController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\Api\Server\GridElementApiController.cs" />
     <Compile Include="Controllers\Api\MenuController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Code\LinkAccounts\Picasa\PicasaWrapper.cs" />
+    <Compile Include="Controllers\Api\OAuthServiceCms.cs" />
+    <Compile Include="Controllers\Api\PhotoDecorator.cs" />
+    <Compile Include="Controllers\Api\PicasaServiceProvider.cs" />
     <Compile Include="Controllers\Api\WebApiControllerBase.cs" />
-    <Compile Include="Controllers\Api\WebApiPicasaControllerBase.cs" />
+    <Compile Include="Controllers\Api\WebApiPicasaControllerBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\Api\WebImage.cs" />
     <Compile Include="Controllers\Attributes\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\SuperUserController.cs" />
+    <Compile Include="Controllers\GDataAuthController.cs" />
     <Compile Include="Controllers\GDataController.cs" />
     <Compile Include="Code\LinkAccounts\OAuth2ParametersStorageFactory.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
@@ -209,8 +254,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Code\CmsControllerBase.cs" />
     <Compile Include="Controllers\Api\ClientApiController.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\Api\AdminApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -222,48 +265,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
+    <Content Include="App_Data\ApplicationData\2da35160-4c95-4d32-9f7f-c3fd6af3f6b8\pageElements\album\controller.album.js" />
+<<<<<<< HEAD
+=======
+    <Content Include="App_Data\ApplicationData\4817757d-fcef-4ad4-8228-8be65b0cae33\pageElements\album\controller.album.js" />
+>>>>>>> origin/master
+    <Content Include="App_Data\ApplicationData\_default\pageElements\clientspecific\clientspecific.js" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
       <SubType>Designer</SubType>
-<<<<<<< HEAD
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.coffee">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.thtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.coffee">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.thtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-=======
     </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference_admin.thtml" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\simplehtml\simplehtml.thtml" />
->>>>>>> origin/trunk
     <Content Include="App_Data\ApplicationData\_default\pageElements\text\text.thtml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\ApplicationData\_default\menuElements\menutext\menutext.thtml" />
     <Content Include="App_Data\ApplicationData\_default\menuElements\menutext\menutext_admin.thtml" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\gdataalbum.thtml">
       <SubType>Designer</SubType>
-<<<<<<< HEAD
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-=======
->>>>>>> origin/trunk
+    <Content Include="App_Data\ApplicationData\_default\pageElements\text\controller.text.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\clientspecific\clientspecific.thtml">
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.coffee" />
+    <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.js" />
+    <Content Include="App_Data\ApplicationData\2da35160-4c95-4d32-9f7f-c3fd6af3f6b8\pageElements\album\album.thtml" />
+    <Content Include="App_Data\ApplicationData\4817757d-fcef-4ad4-8228-8be65b0cae33\pageElements\album\album.thtml" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <Content Include="App_Data\bootstrap\less\variables.css">
@@ -271,6 +301,12 @@
     </Content>
     <Content Include="App_Data\bootstrap\less\variables.min.css">
       <DependentUpon>variables.less</DependentUpon>
+    </Content>
+    <Content Include="Content\admin.css">
+      <DependentUpon>admin.less</DependentUpon>
+    </Content>
+    <Content Include="Content\admin.min.css">
+      <DependentUpon>admin.less</DependentUpon>
     </Content>
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
@@ -287,11 +323,22 @@
     <Content Include="Content\htmlDragAndDrop\libs\angular.js" />
     <Content Include="Content\htmlDragAndDrop\libs\jquery-1.7.2.js" />
     <Content Include="Content\htmlDragAndDrop\sortableCtrl.js" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\picasa.png" />
+    <Content Include="Content\images\picasa_big.png" />
+    <Content Include="Content\images\picasa_logo.png" />
     <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\metro-bootstrap.css">
       <DependentUpon>metro-bootstrap.less</DependentUpon>
     </Content>
     <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\metro-bootstrap.min.css">
       <DependentUpon>metro-bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\variables.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\metro-bootstrap-source\metro-bootstrap\variables.min.css">
+      <DependentUpon>variables.less</DependentUpon>
     </Content>
     <Content Include="Content\less\metro-bootstrap-source\variables.css">
       <DependentUpon>variables.less</DependentUpon>
@@ -412,27 +459,30 @@
     <Content Include="Content\less\metro-bootstrap-source\utilities.less" />
     <Content Include="Content\less\metro-bootstrap-source\variables.less" />
     <Content Include="Content\less\metro-bootstrap-source\wells.less" />
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\DataSources\cms.data.Dtos.GridPageDto.datasource" />
     <None Include="Properties\DataSources\cms.data.GridPage.datasource" />
     <Content Include="Content\admin.less" />
-    <Content Include="Scripts\Admin\controller.gDataPhotos.js" />
+    <Content Include="Scripts\Admin\angular-templates-ext.js" />
+    <Content Include="Scripts\Admin\angular-ui-ext-dndClass.ts" />
+    <Content Include="Scripts\Admin\controller.index.js" />
+    <Content Include="Scripts\Admin\directive.ngcGdataGallery.js" />
+    <Content Include="Scripts\Admin\directive.ngcLoader.js" />
+    <Content Include="Scripts\Controllers\controller.gDataPhotos.js" />
+    <Content Include="Scripts\Controllers\controller.gdataPhotosSettings.js" />
+    <Content Include="Scripts\Controllers\controller.photosSettings.js" />
+    <Content Include="Scripts\Controllers\controller.showuserdata.js" />
+    <Content Include="Scripts\Controllers\controller.dashboard.js" />
+    <Content Include="Scripts\Controllers\controller.infomessage.js" />
+    <Content Include="Scripts\modules\module.appSettings.js" />
+    <Content Include="Scripts\modules\module.cmsUsers.js" />
+    <Content Include="Scripts\Controllers\controller.applicationusers.js" />
+    <Content Include="Scripts\Admin\directive.ngcClickEdit.js" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
-    <Content Include="Scripts\angular-templates-ext.coffee">
-      <Compile>True</Compile>
-      <Minify>True</Minify>
-      <Bare>False</Bare>
-      <Iced>False</Iced>
-    </Content>
-    <Content Include="Scripts\angular-templates-ext.js">
-      <DependentUpon>angular-templates-ext.coffee</DependentUpon>
-    </Content>
-    <Content Include="Scripts\angular-templates-ext.min.js">
-      <DependentUpon>angular-templates-ext.coffee</DependentUpon>
-    </Content>
-    <Content Include="Scripts\angular-ui-ext-dndClass.js">
-      <DependentUpon>angular-ui-ext-dndClass.ts</DependentUpon>
-    </Content>
-    <Content Include="Scripts\angular-ui-ext-dndClass.ts" />
+    <Content Include="Scripts\modules\module.admin-index.js" />
     <Content Include="Scripts\angular-ui-ext.js" />
     <Content Include="Scripts\angular-ui.js" />
     <Content Include="Scripts\Apps\defaults\clientmodule.coffee" />
@@ -440,6 +490,7 @@
     <None Include="Properties\PublishProfiles\ladeso.aspone.cz.pubxml" />
     <None Include="Properties\PublishProfiles\ladesopeklo - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ladesopeklo - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\localTest.pubxml" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
@@ -447,19 +498,34 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Scripts\Admin\cmsapi.js" />
+    <Content Include="Scripts\modules\module.cmsapi.js" />
     <Content Include="Scripts\Admin\gridpagesCtrl.js" />
     <Content Include="Scripts\Admin\pageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\Controllers\controller.gridPage.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\modules\module.settings.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-0.3.0.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Admin\Grids.js" />
-    <Content Include="Scripts\Admin\Index.js" />
     <Content Include="Scripts\showdown.js" />
+    <Content Include="Content\SwaggerUI\css\screen.css" />
+    <Content Include="Content\SwaggerUI\images\pet_store_api.png" />
+    <Content Include="Content\SwaggerUI\images\wordnik_api.png" />
+    <Content Include="Content\SwaggerUI\index.html" />
+    <Content Include="Content\SwaggerUI\lib\backbone-min.js" />
+    <Content Include="Content\SwaggerUI\lib\handlebars.runtime-1.0.0.beta.6.js" />
+    <Content Include="Content\SwaggerUI\lib\jquery.ba-bbq.min.js" />
+    <Content Include="Content\SwaggerUI\lib\jquery.min.js" />
+    <Content Include="Content\SwaggerUI\lib\jquery.slideto.min.js" />
+    <Content Include="Content\SwaggerUI\lib\jquery.wiggle.min.js" />
+    <Content Include="Content\SwaggerUI\lib\swagger.js" />
+    <Content Include="Content\SwaggerUI\lib\underscore-min.js" />
+    <Content Include="Content\SwaggerUI\swagger-ui.js" />
+    <Content Include="Content\SwaggerUI\swagger-ui.min.js" />
     <Content Include="tests\scripts\web-server.js" />
     <Content Include="tests\test\e2e\runner.html" />
     <Content Include="tests\test\e2e\scenarios.js" />
@@ -485,16 +551,12 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\setup\index.cshtml" />
+    <Content Include="Content\SwaggerUI\lib\.DS_Store" />
     <None Include="tests\scripts\e2e-test-server.bat" />
     <None Include="tests\scripts\e2e-test-server.sh" />
     <None Include="tests\scripts\e2e-test.bat" />
@@ -517,12 +579,11 @@
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\_AdminTemplates\_Layout_Appllication.cshtml" />
     <Content Include="Views\client\test1\Index.cshtml" />
-    <Content Include="Content\Apps\test1\StaticContent.html" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\SuperUser\Register.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
@@ -533,7 +594,29 @@
     <Content Include="Views\GData\Index_NotAuthorized.cshtml" />
     <Content Include="Views\Admin\DataContent.cshtml" />
     <Content Include="Web.config.default" />
+    <Content Include="Views\GData\GdataPhotosSettins.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Shared\CustomError.cshtml" />
+    <Content Include="Views\GDataAuth\Index.cshtml" />
+    <Content Include="Views\Admin\Applications.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\SiteMapTemplate.cshtml" />
+    <Content Include="Views\GData\Index_ReAuthorize.cshtml" />
+    <Content Include="Views\Admin\template\showuserdata.cshtml" />
+    <Content Include="Views\Admin\template\applicationusers.cshtml" />
+    <Content Include="Views\SuperUser\Index.cshtml" />
+    <Content Include="Views\SuperUser\ListUsers.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\SuperUser\Applications.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.wapi.cz release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
@@ -555,9 +638,6 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Grids.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Admin\template\gridpages.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -574,7 +654,8 @@
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Start\" />
+    <Folder Include="App_Data\ApplicationData\2da35160-4c95-4d32-9f7f-c3fd6af3f6b8\Settings\" />
+    <Folder Include="App_Data\ApplicationData\4817757d-fcef-4ad4-8228-8be65b0cae33\Settings\" />
     <Folder Include="App_Themes\" />
     <Folder Include="Content\metroBootstrapSource\" />
     <Folder Include="tests\config\" />
@@ -588,6 +669,14 @@
       <Project>{D1A23BEB-46D6-47A9-AE9D-D369A5134050}</Project>
       <Name>cms.shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OAuth2.Mvc\OAuth2.Mvc.csproj">
+      <Project>{f4e72da8-129e-4872-b6ac-4d9cfcdf91a8}</Project>
+      <Name>OAuth2.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Swagger.Net-master\Swagger.Net\Swagger.Net.csproj">
+      <Project>{23f318e4-d42f-484e-9c5a-41b652145cf0}</Project>
+      <Name>Swagger.Net</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -596,11 +685,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ladesoAsponeDebug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'wapi.cz release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
