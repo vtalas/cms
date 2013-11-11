@@ -28,7 +28,8 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', fun
 
 	$scope.getGrid = function () {
 		GridApi.getGrid(params, function (data) {
-			$scope.data = data;
+		console.log(JSON.stringify(data));
+		$scope.data = data;
 		});
 	};
 

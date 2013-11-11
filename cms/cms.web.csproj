@@ -614,6 +614,7 @@
     <Content Include="Views\SuperUser\ApplicationDetail.cshtml" />
     <None Include="Web.ladesoAsponeDebug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.wapi.cz release.config">
       <DependentUpon>Web.config</DependentUpon>
