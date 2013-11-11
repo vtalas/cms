@@ -1,10 +1,8 @@
-var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi',
-	function ($scope, $http, $rootScope, appSettings, GridApi) {
+var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi',  "$json",
+	function ($scope, $http, $rootScope, appSettings, GridApi, $json) {
 
 	function loadData() {
-
 		GridApi.grids(function (data) {
-console.log(data)
 			$scope.data = data;
 		});
 	}
@@ -17,7 +15,7 @@ console.log(data)
 	loadData();
 
 	$scope.aaa = function (item) {
-	    return "/clientApi/" + appSettings.Id + "/getpage/" + item.Link;
+		return "/clientApi/" + appSettings.Id + "/getpage/" + item.Link;
 	};
 
 	$scope.getLink = function (item) {
@@ -30,18 +28,7 @@ console.log(data)
 	};
 
 	$scope.remove = function (item) {
-		$http({
-			method: 'DELETE',
-			url: '/api/' + appSettings.Id + '/adminApi/DeleteGrid',
-			headers: { 'Content-Type': 'application/json;charset=utf-8' },
-			data: JSON.stringify(item.Id)
-		})
-			.success(function (data, status, headers, config) {
-				var index = $scope.data.indexOf(item);
-				if (index !== -1) $scope.data.splice(index, 1);
-			})
-			.error(function (data, status, headers, config) {
-			});
+		GridApi.deleteGrid($scope.data.indexOf(item));
 	};
 
 	$scope.save = function (item) {
@@ -71,7 +58,12 @@ console.log(data)
 	$scope.newItemAdd = function () {
 		var newitem = $scope.newitem;
 
-		$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/AddGrid', data: newitem })
+		GridApi.addGrid(newitem, function (data) {
+			$scope.newitem = { Category: newitem.Category };
+			$scope.newItemEdit = false;
+		});
+
+		/*$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/AddGrid', data: newitem })
 			.success(function (data, status, headers, config) {
 				$scope.data.push(data);
 				$scope.newitem = { Category: newitem.Category };
@@ -83,7 +75,7 @@ console.log(data)
 			        type: "error"
 			    };
 			    $scope.$emit("set-message", error);
-			});
+			});*/
 		$scope.newName = '';
 	};
 

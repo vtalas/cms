@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -15,7 +19,7 @@ using WebMatrix.WebData;
 
 namespace cms.Controllers.Api.Server
 {
-	[System.Web.Mvc.Authorize(Roles = "admin")]
+	[System.Web.Http.Authorize(Roles = "admin")]
 	public class AdminApiController : WebApiControllerBase
 	{ 
 		[System.Web.Mvc.HttpPost]
@@ -36,14 +40,26 @@ namespace cms.Controllers.Api.Server
 			return culture;
 		}
 
-		public async void PutData(string id)
+
+		[System.Web.Http.HttpPut]
+		public async void SaveJson([FromBody]object id)
 		{
 			var path = Path.Combine(HttpContext.Current.Server.MapPath("~/"), "App_Data\\ApplicationData", ApplicationId.ToString(),  "chuj.json");
-			
-			using (var outfile = new StreamWriter(@path, true))
+			using (var outfile = new StreamWriter(@path, false, new UTF8Encoding()))
 			{
-				await outfile.WriteAsync(json);
+				await outfile.WriteAsync(id.ToString());
 			}
+		}
+
+		[System.Web.Http.HttpGet]
+		public HttpResponseMessage GetJson()
+		{
+			var path = Path.Combine(HttpContext.Current.Server.MapPath("~/"), "App_Data\\ApplicationData", ApplicationId.ToString(), "chuj.json");
+			var result = new HttpResponseMessage(HttpStatusCode.OK);
+			var stream = new FileStream(path, FileMode.Open);
+			result.Content = new StreamContent(stream);
+			result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+			return result;
 		}
 
 

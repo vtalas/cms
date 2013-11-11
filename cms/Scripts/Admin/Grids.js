@@ -129,6 +129,25 @@ module.value('ui.config', {
 	}
 });
 
+module.factory("$json", ["$q", "$http", function ($q, $http) {
+	var element = angular.element(".gridsmodule"),
+		id = element.data("application-id"),
+		data,
+		culture = element.data("application-culture");
+	return {
+		get: function (force) {
+			if (!data || force) {
+				data = $http({method: 'GET', url: '/api/'+id+'/adminapi/getJson'});
+			}
+			return data;
+		},
+		set: function (data) {
+			$http({method: 'PUT', url: '/api/'+id+'/adminapi/saveJson', data : data});
+		}
+	};
+}]);
+
+
 module.config(['$routeProvider', '$provide', function ($routeProvider, $provide) {
 	$provide.factory('appSettings', function () {
 		//var e = angular.element(".gridsmodule"),

@@ -1,0 +1,35 @@
+[
+  {
+    "Id": "5c3cd2c4-d914-479b-824b-7b8df6e2a1ff",
+    "Name": "sdfsd",
+    "Link": "sss",
+    "Home": false,
+    "Category": "Page",
+    "Authorize": false
+  },
+  {
+    "Id": "ab8ee05e-1115-480b-9ab7-a3ab3c0f6643",
+    "Name": "galerie 1",
+    "Link": "gallery_1",
+    "Home": false,
+    "Category": "Page",
+    "Authorize": false
+  },
+  {
+    "Id": "bb8ee05e-1115-480b-9ab7-a3ab3c0f6643",
+    "Name": "Uživatelská část",
+    "Link": "aaa",
+    "Home": false,
+    "Category": "Page",
+    "Authorize": true
+  },
+  {
+    "Id": "c78ee05e-1115-480b-9ab7-a3ab3c0f6643",
+    "Name": "testovaci strankaxxx",
+    "Link": "testPage_linkxxxx",
+    "Home": false,
+    "Category": "Page",
+    "Authorize": false,
+    "Edit": 0
+  }
+]
