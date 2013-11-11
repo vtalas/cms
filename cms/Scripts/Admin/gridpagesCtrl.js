@@ -2,7 +2,9 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi',
 	function ($scope, $http, $rootScope, appSettings, GridApi) {
 
 	function loadData() {
+
 		GridApi.grids(function (data) {
+console.log(data)
 			$scope.data = data;
 		});
 	}

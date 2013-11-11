@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using cms.Code.UserResources;
@@ -35,6 +36,17 @@ namespace cms.Controllers.Api.Server
 			return culture;
 		}
 
+		public async void PutData(string id)
+		{
+			var path = Path.Combine(HttpContext.Current.Server.MapPath("~/"), "App_Data\\ApplicationData", ApplicationId.ToString(),  "chuj.json");
+			
+			using (var outfile = new StreamWriter(@path, true))
+			{
+				await outfile.WriteAsync(json);
+			}
+		}
+
+
 		public class JObjectFilter : ActionFilterAttribute
 		{
 			public string Param { get; set; }
@@ -52,6 +64,8 @@ namespace cms.Controllers.Api.Server
 				}
 			}
 		}
+
+
 
 
 //		public List<string> AvailableTemplates()
