@@ -1,10 +1,25 @@
 ﻿var Picus = (function(){
 
-	function Picus(jsonData) {
+	function Picus(jsonData, repository) {
 		this.data = jsonData;
-		console.log("contruct picus");
+		this.repo = repository;
 	}
 
+	Picus.prototype.addGrid  = function (newitem) {
+		newitem.id = "grid_" + (this.data.length + 1);
+		this.data.push(newitem);
+		this.repo.set(this.data);
+	};
+	Picus.prototype.update  = function (item) {
+		var index = this.data.indexOf(item);
+		this.data[index] = item;
+		this.repo.set(this.data);
+	};
+
+	Picus.prototype.remove  = function (item) {
+		this.data.splice(this.data.indexOf(item), 1);
+		this.repo.set(this.data);
+	};
 
 	return Picus;
 }());
@@ -38,14 +53,6 @@ angular.module('cmsapi', ['ngResource', 'appSettingsModule'])
 				if (typeof success === "function") {
 					success();
 				}
-			});
-		};
-
-		project.addGrid = function (grid, success) {
-			return $json.get().success(function (data) {
-				data.push(grid);
-				$json.set(data);
-				success(grid);
 			});
 		};
 

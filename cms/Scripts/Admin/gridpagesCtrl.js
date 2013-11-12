@@ -1,9 +1,13 @@
 var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi',  "$json",
 	function ($scope, $http, $rootScope, appSettings, GridApi, $json) {
 
+	var x;
+
+
 	function loadData() {
 		GridApi.load().success(function (data) {
-			$scope.data = data || [];
+			x = new Picus(data, $json);
+			$scope.data = x.data;
 		});
 	}
 	function saveChanges(callback) {
@@ -24,24 +28,19 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	$scope.getLink = function (item) {
 		switch (item.Category) {
 			case "Page":
-				return "page/" + item.Id;
+				return "page/" + item.id;
 			case "Menu":
-				return "menu/" + item.Id;
+				return "menu/" + item.id;
 		}
 	};
 
 	$scope.remove = function (item) {
-		$scope.data.splice($scope.data.indexOf(item), 1);
-		saveChanges();
+		x.remove(item);
 	};
-
-
 
 	$scope.save = function (item) {
 		item.Edit = 0;
-		var index = $scope.data.indexOf(item);
-		$scope.data[index] = item;
-		saveChanges();
+		x.update(item);
 	};
 
 	$scope.edit = function (item) {
@@ -64,10 +63,10 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	$scope.newItemAdd = function () {
 		var newitem = $scope.newitem;
 
-		$scope.data.push(newitem);
+
+		x.addGrid(newitem);
 		$scope.newitem = { Category: newitem.Category };
 		$scope.newItemEdit = false;
-		GridApi.save($scope.data);
 
 		/*$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/AddGrid', data: newitem })
 			.success(function (data, status, headers, config) {

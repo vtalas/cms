@@ -1,38 +1,45 @@
 [
   {
-    "Id": "5c3cd2c4-d914-479b-824b-7b8df6e2a1ff",
-    "Name": "sdfsd",
-    "Link": "sss",
-    "Home": false,
     "Category": "Page",
-    "Authorize": false
-  },
-  {
-    "Id": "ab8ee05e-1115-480b-9ab7-a3ab3c0f6643",
-    "Name": "galerie 1",
-    "Link": "gallery_1",
-    "Home": false,
-    "Category": "Page",
-    "Authorize": false
-  },
-  {
-    "Id": "bb8ee05e-1115-480b-9ab7-a3ab3c0f6643",
-    "Name": "Uživatelská část",
-    "Link": "aaa",
-    "Home": false,
-    "Category": "Page",
-    "Authorize": true
-  },
-  {
-    "Category": "Page",
-    "Name": "xxx",
-    "Link": "xxxxxxa",
-    "Edit": 0
+    "Name": "asdsad",
+    "Link": "asdasd",
+    "id": "grid_11"
   },
   {
     "Category": "Page",
     "Name": "asdsad",
-    "Link": "xxxaxxx",
+    "Link": "asdasd",
+    "id": "grid_11"
+  },
+  {
+    "Category": "Page",
+    "Name": "sdaf",
+    "Link": "xx",
+    "id": "grid_3"
+  },
+  {
+    "Category": "Page",
+    "Name": "asd",
+    "Link": "xxx",
+    "id": "grid_4"
+  },
+  {
+    "Category": "Page",
+    "Name": "sd",
+    "Link": "xx",
+    "id": "gsadsdrid_5"
+  },
+  {
+    "Category": "Page",
+    "Name": "sdsd",
+    "Link": "xxx",
+    "id": "grid6"
+  },
+  {
+    "Category": "Page",
+    "Name": "aa",
+    "Link": "xaaaa",
+    "id": "grid7",
     "Edit": 0
   }
 ]

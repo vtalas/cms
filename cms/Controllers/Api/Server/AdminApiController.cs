@@ -56,6 +56,11 @@ namespace cms.Controllers.Api.Server
 		{
 			var path = Path.Combine(HttpContext.Current.Server.MapPath("~/"), "App_Data\\ApplicationData", ApplicationId.ToString(), "chuj.json");
 			var result = new HttpResponseMessage(HttpStatusCode.OK);
+			if (!File.Exists(path))
+			{
+				return result;
+			}
+	
 			var stream = new FileStream(path, FileMode.Open);
 			result.Content = new StreamContent(stream);
 			result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
