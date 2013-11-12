@@ -142,7 +142,7 @@ module.factory("$json", ["$q", "$http", function ($q, $http) {
 			return data;
 		},
 		set: function (data) {
-			$http({method: 'PUT', url: '/api/'+id+'/adminapi/saveJson', data : data});
+			return $http({method: 'PUT', url: '/api/'+id+'/adminapi/saveJson', data : data});
 		}
 	};
 }]);

@@ -2,9 +2,12 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	function ($scope, $http, $rootScope, appSettings, GridApi, $json) {
 
 	function loadData() {
-		GridApi.grids(function (data) {
-			$scope.data = data;
+		GridApi.load().success(function (data) {
+			$scope.data = data || [];
 		});
+	}
+	function saveChanges(callback) {
+		GridApi.save($scope.data, callback);
 	}
 
 	$scope.$on("setCultureEvent", function () {
@@ -28,14 +31,17 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	};
 
 	$scope.remove = function (item) {
-		GridApi.deleteGrid($scope.data.indexOf(item));
+		$scope.data.splice($scope.data.indexOf(item), 1);
+		saveChanges();
 	};
+
+
 
 	$scope.save = function (item) {
 		item.Edit = 0;
-		GridApi.updateGrid(item, function (ok) {
-		//	console.log(ok);
-		});
+		var index = $scope.data.indexOf(item);
+		$scope.data[index] = item;
+		saveChanges();
 	};
 
 	$scope.edit = function (item) {
@@ -58,10 +64,10 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 	$scope.newItemAdd = function () {
 		var newitem = $scope.newitem;
 
-		GridApi.addGrid(newitem, function (data) {
-			$scope.newitem = { Category: newitem.Category };
-			$scope.newItemEdit = false;
-		});
+		$scope.data.push(newitem);
+		$scope.newitem = { Category: newitem.Category };
+		$scope.newItemEdit = false;
+		GridApi.save($scope.data);
 
 		/*$http({ method: 'POST', url: '/api/' + appSettings.Id + '/adminApi/AddGrid', data: newitem })
 			.success(function (data, status, headers, config) {

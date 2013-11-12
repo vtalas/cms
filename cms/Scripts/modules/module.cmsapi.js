@@ -28,15 +28,17 @@ angular.module('cmsapi', ['ngResource', 'appSettingsModule'])
 		return project;
 	}])
 	.factory('GridApi', ['$resource', 'appSettings', "$json" , function ($resource, appSettings, $json) {
-		var project = {},
-			repoPromise;
+		var project = {};
 
-		repoPromise = $json.get().success(function (data) {
-			return new Picus(data);
-		});
-
-		project.grids = function (success) {
-			return repoPromise.success(success);
+		project.load = function () {
+			return $json.get();
+		};
+		project.save = function (data, success) {
+			$json.set(data).success(function () {
+				if (typeof success === "function") {
+					success();
+				}
+			});
 		};
 
 		project.addGrid = function (grid, success) {
@@ -44,23 +46,6 @@ angular.module('cmsapi', ['ngResource', 'appSettingsModule'])
 				data.push(grid);
 				$json.set(data);
 				success(grid);
-			});
-		};
-
-		project.deleteGrid = function (index, success) {
-			return $json.get().success(function (data) {
-				data.splice(index, 1);
-				$json.set(data);
-				success();
-			});
-		};
-
-		project.updateGrid = function (item, success) {
-			return $json.get().success(function (data) {
-				var index = data.indexOf(item);
-				data[index] = item;
-				$json.set(data);
-				success();
 			});
 		};
 

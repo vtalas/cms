@@ -24,12 +24,15 @@
     "Authorize": true
   },
   {
-    "Id": "c78ee05e-1115-480b-9ab7-a3ab3c0f6643",
-    "Name": "testovaci strankaxxx",
-    "Link": "testPage_linkxxxx",
-    "Home": false,
     "Category": "Page",
-    "Authorize": false,
+    "Name": "xxx",
+    "Link": "xxxxxxa",
+    "Edit": 0
+  },
+  {
+    "Category": "Page",
+    "Name": "asdsad",
+    "Link": "xxxaxxx",
     "Edit": 0
   }
 ]

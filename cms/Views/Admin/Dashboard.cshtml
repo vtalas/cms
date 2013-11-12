@@ -30,8 +30,8 @@
                 ng-class="isActive('#/showuserdata')" ng-click="set($event)">sezbíraná data</a>
         </div>
         <div class="btn-group" ng-controller="cultureCtrl">
-            <button class="btn btn-small" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>
-            <button class="btn btn-small" ng-class="{ active:currentCulture  == 'en' }" href="#" ng-click="setCulture('en')">en</button>
+            <button  class="btn btn-small" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>
+            <button disabled class="btn btn-small" ng-class="{ active:currentCulture  == 'en' }" href="#" ng-click="setCulture('en')">en</button>
         </div>
 
         <div ng-view>
