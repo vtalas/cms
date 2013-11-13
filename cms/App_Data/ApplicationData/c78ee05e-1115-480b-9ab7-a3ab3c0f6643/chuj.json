@@ -3,37 +3,86 @@
     "Category": "Page",
     "Name": "asdsad",
     "Link": "asdasd",
-    "id": "grid_11"
-  },
-  {
-    "Category": "Page",
-    "Name": "asdsad",
-    "Link": "asdasd",
-    "id": "grid_11"
-  },
-  {
-    "Category": "Page",
-    "Name": "sdaf",
-    "Link": "xx",
-    "id": "grid_3"
-  },
-  {
-    "Category": "Page",
-    "Name": "asd",
-    "Link": "xxx",
-    "id": "grid_4"
-  },
-  {
-    "Category": "Page",
-    "Name": "sd",
-    "Link": "xx",
-    "id": "gsadsdrid_5"
-  },
-  {
-    "Category": "Page",
-    "Name": "sdsd",
-    "Link": "xxx",
-    "id": "grid6"
+    "id": "grid_11",
+    "GridElements": [
+      {
+        "Id": "el_1",
+        "Type": "text",
+        "Edit": 0,
+        "Width": 12,
+        "Resources": {
+          "text": {
+            "Value": "sdsd"
+          }
+        }
+      },
+      {
+        "Id": "el_4",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Resources": {
+          "name": {
+            "Value": "111aasdas das"
+          },
+          "text": {
+            "Value": "xxxasdasdsd"
+          },
+          "group": {
+            "Value": "sdsadas"
+          },
+          "type": {
+            "Value": "112"
+          },
+          "services": {
+            "Value": "wqsad"
+          }
+        },
+        "Content": {
+          "gdataAlbumId": "5886301844473776033",
+          "name": "dalov",
+          "updated": 1384343083114
+        }
+      },
+      {
+        "Id": "el_4",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Resources": {
+          "name": {
+            "Value": "222"
+          }
+        }
+      },
+      {
+        "Id": "el_4",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Resources": {
+          "name": {
+            "Value": "xx33"
+          }
+        }
+      },
+      {
+        "Id": "el_5",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Content": {
+          "gdataAlbumId": "5886301844473776033",
+          "name": "dalov",
+          "updated": 1384343011631
+        },
+        "Resources": {
+          "name": {
+            "Value": "aaa44"
+          }
+        }
+      }
+    ]
   },
   {
     "Category": "Page",

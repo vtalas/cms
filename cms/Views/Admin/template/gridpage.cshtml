@@ -1,38 +1,37 @@
-﻿<div class="gridpage" ng-controller="gridPage">
+﻿<div class="gridpage" ngx-controller="gridPage">
 	<h2 ngc-click-edit="data.Name"
 		namespace="gridname"
 		type="input"
 		placeholder="text"></h2>
 
-	<div ng-show="data.GridElements.length == 0">
+	<div ng-show="grid.GridElements.length == 0">
 		<h3 class="text-error">bez obsahu.</h3>
 	</div>
 	<div class="row">
-		<div ng-repeat="gridelement in data.GridElements"
+		<div ng-repeat="gridelement in grid.GridElements"
 			class="span{{gridelement.Width}}"
-			ng-class="{contentitem: gridelement.Id != 0}"
+			ng-class="{contentitem: gridelement.Id}"
 			>
-
-			<div ng-show="gridelement.Id">
+			<div ng-show="gridelement.Id ">
 				<div class="gridelement-controls">
 					<i class="clickable icon-question-sign" ng-click="showHelp(gridelement)">&nbsp;</i>
 					<i title="{{gridelement.Type}}">{{gridelement.Type}}&nbsp;</i>
 					<button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete" />
 				</div>
 				<div class="clearfix"></div>
-				<div gridelement="gridelement" grid="data"></div>
+				<div gridelement="gridelement" grid="grid"></div>
 			</div>
 		</div>
 	</div>
 	<div>
 		<div class="btn-group" tooltip="vložit šablonu podle typu" tooltip-placement="left" tooltip-popup-delay="500">
-			<button ng-click="addToEnd(newItem, data.Id, data.GridElements)" class="btn">{{newItem.Type}}</button>
+			<button ng-click="addToEnd(newItem, grid.Id)" class="btn">{{newItem.Type}}</button>
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
 				<li ng-repeat="templateItem in availableTemplates">
-					<a a href="#" ng-click="addWithType(newItem, data.Id, data.GridElements, templateItem.value, $event )">{{templateItem.name}} </a>
+					<a a href="#" ng-click="addWithType(newItem, grid.id, templateItem.value, $event )">{{templateItem.name}} </a>
 				</li>
 			</ul>
 		</div>
