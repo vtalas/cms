@@ -10,9 +10,6 @@ var gridpagesCtrl = ['$scope', '$http', '$rootScope', 'appSettings', 'GridApi', 
 			$scope.data = x.data;
 		});
 	}
-	function saveChanges(callback) {
-		GridApi.save($scope.data, callback);
-	}
 
 	$scope.$on("setCultureEvent", function () {
 		$scope.data = null;
