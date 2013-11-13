@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\lades\web\cms\cms\App_Data\ApplicationData\de837eae-9d62-4714-b5e4-356335c771c6\pageElements\album\album.thtml" afterPath="" />
+      <change type="DELETED" beforePath="C:\lades\web\cms\cms\App_Data\ApplicationData\de837eae-9d62-4714-b5e4-356335c771c6\pageElements\album\controller.album.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\lades\web\cms\cms\Scripts\Controllers\controller.gridPage.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/Api/ClientApiController.cs" afterPath="$PROJECT_DIR$/Controllers/Api/ClientApiController.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" afterPath="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.web.csproj" afterPath="$PROJECT_DIR$/cms.web.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js" afterPath="$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/modules/module.cmsapi.js" afterPath="$PROJECT_DIR$/Scripts/modules/module.cmsapi.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" afterPath="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
@@ -31,66 +40,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+      <file leaf-file-name="chuj.json" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="167" column="40" selection-start="5094" selection-end="5094" vertical-scroll-proportion="0.0" vertical-offset="2281" max-vertical-offset="3870">
+            <state line="32" column="20" selection-start="680" selection-end="680" vertical-scroll-proportion="0.35051546" vertical-offset="300" max-vertical-offset="1380">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gridpagesCtrl.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="33" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gridpages.cshtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="64" selection-start="705" selection-end="705" vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="1305">
-              <folding>
-                <marker date="1384337472243" expanded="true" signature="2939:3050" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dashboard.cshtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Views/Admin/Dashboard.cshtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="705">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="module.cmsapi.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/modules/module.cmsapi.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="9" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2475">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pageCtrl.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="pageCtrl.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="40" selection-start="406" selection-end="406" vertical-scroll-proportion="0.2670623" vertical-offset="0" max-vertical-offset="1605">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller.gridPage.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="53" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1095">
+            <state line="47" column="28" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="940" max-vertical-offset="2040">
               <folding />
             </state>
           </provider>
@@ -99,7 +61,16 @@
       <file leaf-file-name="gridpage.cshtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="10" selection-start="243" selection-end="243" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="675">
+            <state line="8" column="10" selection-start="217" selection-end="217" vertical-scroll-proportion="-5.5172415" vertical-offset="0" max-vertical-offset="900">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="module.cmsapi.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/modules/module.cmsapi.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="6" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3300">
               <folding />
             </state>
           </provider>
@@ -128,30 +99,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.js" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js" />
-        <option value="$PROJECT_DIR$/Scripts/modules/module.appSettings.js" />
-        <option value="$PROJECT_DIR$/Scripts/modules/module.settingsApi.js" />
-        <option value="$PROJECT_DIR$/Scripts/modules/module.settings.js" />
-        <option value="$PROJECT_DIR$/Scripts/Controllers/controller.photosSettings.js" />
         <option value="$PROJECT_DIR$/Views/Settings/Index.cshtml" />
         <option value="$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml" />
         <option value="$PROJECT_DIR$/Views/Admin/Dashboard.cshtml" />
         <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js" />
         <option value="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" />
         <option value="$PROJECT_DIR$/Scripts/modules/module.cmsapi.js" />
         <option value="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1170" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -266,14 +237,14 @@
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="options.splitter.main.proportions" value="0.30000004" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.fileTypes" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="C:/wamp/www/ClientPhp" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="last_opened_file_path" value="C:/TrunkPhoenix/web" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToClass.includeJavaFiles" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -288,6 +259,14 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Testacular server">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -298,24 +277,16 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="$PROJECT_DIR$/tests/config/jsTestDriver.conf" />
       <setting name="serverType" value="EXTERNAL" />
       <setting name="serverAddress" value="http://localhost:9876" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="NodeunitConfigurationType" factoryName="Nodeunit">
@@ -426,15 +397,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31506848" sideWeight="0.52398527" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25039536" sideWeight="0.6836935" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17864583" sideWeight="0.6836935" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32708585" sideWeight="0.54545456" order="7" side_tool="true" content_ui="tabs" />
@@ -443,11 +413,12 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31506848" sideWeight="0.52398527" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956672" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3156863" sideWeight="0.47601476" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998997" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3156863" sideWeight="0.47601476" order="7" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -477,102 +448,92 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Scripts/modules/module.appSettings.js">
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="4" selection-start="386" selection-end="386" vertical-scroll-proportion="0.24024025" vertical-offset="0" max-vertical-offset="999" />
+        <state line="17" column="64" selection-start="705" selection-end="705" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1740" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Home/Index.cshtml">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="999" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/controller.index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="61" selection-start="479" selection-end="479" vertical-scroll-proportion="0.32592592" vertical-offset="0" max-vertical-offset="675">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.showuserdata.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="35" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/htmlDragAndDrop/sortableCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="8" selection-start="1628" selection-end="1628" vertical-scroll-proportion="0.33333334" vertical-offset="815" max-vertical-offset="2720" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/modules/aaa.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="22" selection-start="266" selection-end="266" vertical-scroll-proportion="0.4024768" vertical-offset="0" max-vertical-offset="960" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Controllers/Api/Server/AdminApiController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="27" selection-start="2789" selection-end="2789" vertical-scroll-proportion="0.33333334" vertical-offset="1695" max-vertical-offset="3100" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/htmlDragAndDrop/angular-ui-ext-dndClass.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.2962963" vertical-offset="0" max-vertical-offset="2580" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Admin/Dashboard.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="705">
+        <state line="6" column="25" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="2100">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="167" column="40" selection-start="5094" selection-end="5094" vertical-scroll-proportion="0.0" vertical-offset="2281" max-vertical-offset="3870">
-          <folding />
-        </state>
+        <state line="193" column="4" selection-start="6006" selection-end="6006" vertical-scroll-proportion="0.0" vertical-offset="3147" max-vertical-offset="4960" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="64" selection-start="705" selection-end="705" vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="1305">
-          <folding>
-            <marker date="1384337472243" expanded="true" signature="2939:3050" placeholder="..." />
-          </folding>
+        <state line="12" column="0" selection-start="281" selection-end="281" vertical-scroll-proportion="0.24024025" vertical-offset="0" max-vertical-offset="999" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.2371134" vertical-offset="230" max-vertical-offset="1200" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="71" selection-start="744" selection-end="744" vertical-scroll-proportion="0.37077427" vertical-offset="640" max-vertical-offset="2820" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.12539186" vertical-offset="0" max-vertical-offset="957" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="60" selection-start="168" selection-end="168" vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="970" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/controller.text.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="0" selection-start="182" selection-end="182" vertical-scroll-proportion="0.2002002" vertical-offset="0" max-vertical-offset="999" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="43" selection-start="419" selection-end="419" vertical-scroll-proportion="0.36036035" vertical-offset="0" max-vertical-offset="999" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="78" selection-start="938" selection-end="938" vertical-scroll-proportion="0.29598308" vertical-offset="840" max-vertical-offset="3220" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="382" selection-end="382" vertical-scroll-proportion="0.2802803" vertical-offset="0" max-vertical-offset="1540" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="28" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="641" max-vertical-offset="2040">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/modules/module.cmsapi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="9" selection-start="842" selection-end="842" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2475">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="33" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="53" selection-start="1231" selection-end="1231" vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="1095">
+        <state line="15" column="6" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3300">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="10" selection-start="243" selection-end="243" vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="675">
+        <state line="8" column="10" selection-start="217" selection-end="217" vertical-scroll-proportion="-5.5172415" vertical-offset="0" max-vertical-offset="900">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="40" selection-start="406" selection-end="406" vertical-scroll-proportion="0.2670623" vertical-offset="0" max-vertical-offset="1605">
+        <state line="32" column="20" selection-start="680" selection-end="680" vertical-scroll-proportion="0.35051546" vertical-offset="300" max-vertical-offset="1380">
           <folding />
         </state>
       </provider>

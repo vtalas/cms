@@ -19,7 +19,7 @@ simplehtml = ($scope, $http) ->
 		converter.makeHtml markdown if markdown
 
 	$scope.ContentToHtml = ->
-		text = (if gridelement.Resources.text then gridelement.Resources.text.Value else "")
+		text = (if gridelement.resources then gridelement.resources.text else "")
 		toHtml text
 1
 

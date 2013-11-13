@@ -11,7 +11,6 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 
 	var getGrid = function () {
 		$scope.grid = x.getGrid(gridId);
-		console.log($scope.grid);
 	};
 
 	GridApi.load().success(function (data) {
@@ -23,16 +22,14 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 		Id: 0,
 		Type: "text",
 		Edit: 0,
-		Width:12
+		Width: 12
 	};
 
 	$scope.$on("refreshgrid", function () {
-		console.log("refreshgrid ");
 		getGrid();
 	});
 
 	$scope.$on("setCultureEvent", function () {
-		console.log("pageCtrl set culture");
 		getGrid();
 	});
 
@@ -56,35 +53,34 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 		$scope.add(item, gridId);
 	};
 
-	$scope.add = function (item, gridId) {
+	$scope.add = function (item) {
 		item.Id = "el_" + ($scope.grid.GridElements.length + 1);
 		$scope.grid.GridElements.push(item);
 		x.save();
 	};
 
 	$scope.remove = function (item) {
-//		gridEelementApi.remove({ id: item.Id },
-//			function () {
-//				item.Id = 0;
-//				item.Content = "";
-//				//refresh - preopocitani poradi radku
-//				$scope.$emit("refreshgrid");
-//			});
+		var index = $scope.grid.GridElements.indexOf(item);
+		$scope.grid.GridElements.splice(index, 1);
+		item.Id = 0;
+		item.Content = "";
+		x.save();
 	};
 
-	var broadcastTime = function() {
-		$scope.$broadcast("gridpage-tick", new Date() );
+	var broadcastTime = function () {
+		$scope.$broadcast("gridpage-tick", new Date());
 		timeout();
+	},
+	timeout = function () {
+		setTimeout(broadcastTime, 60000);
 	};
-	var timeout = function () {	setTimeout(broadcastTime, 60000 );};
 	timeout();
 
-
-	$scope.$on("gridelement-save", function (e, gridelement) {
+	$scope.$on("gridelement-save", function () {
 		x.save();
 	});
 
-	$scope.$on("gridname.showPreview", function (e, gridelemnt) {
+	$scope.$on("gridname.showPreview", function () {
 		x.save();
 	});
 
@@ -92,11 +88,10 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 		x.save();
 	};
 
-	$scope.showHelp = function(gridelement) {
+	$scope.showHelp = function (gridelement) {
 		var help = gridelement.help || false;
 		gridelement.help = !help;
 	};
-
 
 
 }];

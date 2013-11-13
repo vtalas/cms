@@ -3,10 +3,10 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 		gridelement;
 	gdataalbum.$inject = ["$scope", "gdataPhotos", "appSettings"];
 
-
 	$scope.groups = ["aaa", "bb", "ccc"]
 	getAlbums = function () {
 		gdataPhotos.getAlbums(function (data) {
+			console.log("xxxx")
 			$scope.albums = data;
 		}, function (error) {
 			return $scope.haserror = true;
@@ -14,6 +14,7 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 	};
 
 	gridelement = $scope.getGridElement();
+
 
 	$scope.showGdataAlbumsValue = false;
 	$scope.applicationId = appSettings.Id;

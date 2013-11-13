@@ -1,94 +1,64 @@
 [
   {
     "Category": "Page",
-    "Name": "asdsad",
-    "Link": "asdasd",
-    "id": "grid_11",
+    "Name": "aaa",
+    "Link": "projekty",
+    "id": "grid_1",
+    "Edit": 0,
     "GridElements": [
       {
-        "Id": "el_1",
-        "Type": "text",
-        "Edit": 0,
-        "Width": 12,
-        "Resources": {
-          "text": {
-            "Value": "sdsd"
-          }
-        }
-      },
-      {
-        "Id": "el_4",
+        "Id": "el_2",
         "Type": "album",
         "Edit": 0,
         "Width": 12,
-        "Resources": {
-          "name": {
-            "Value": "111aasdas das"
-          },
-          "text": {
-            "Value": "xxxasdasdsd"
-          },
-          "group": {
-            "Value": "sdsadas"
-          },
-          "type": {
-            "Value": "112"
-          },
-          "services": {
-            "Value": "wqsad"
-          }
+        "resources": {
+          "name": "asdasxxx sjkbdakbdkjas",
+          "group": "a"
         },
         "Content": {
-          "gdataAlbumId": "5886301844473776033",
-          "name": "dalov",
-          "updated": 1384343083114
+          "gdataAlbumId": "5857023433865510369",
+          "name": "polsko",
+          "updated": 1384378621104
         }
       },
       {
-        "Id": "el_4",
+        "Id": "el_2",
         "Type": "album",
         "Edit": 0,
         "Width": 12,
-        "Resources": {
-          "name": {
-            "Value": "222"
-          }
-        }
-      },
-      {
-        "Id": "el_4",
-        "Type": "album",
-        "Edit": 0,
-        "Width": 12,
-        "Resources": {
-          "name": {
-            "Value": "xx33"
-          }
-        }
-      },
-      {
-        "Id": "el_5",
-        "Type": "album",
-        "Edit": 0,
-        "Width": 12,
-        "Content": {
-          "gdataAlbumId": "5886301844473776033",
-          "name": "dalov",
-          "updated": 1384343011631
+        "resources": {
+          "name": "asdasxxx",
+          "group": "b"
         },
-        "Resources": {
-          "name": {
-            "Value": "aaa44"
-          }
+        "Content": {
+          "gdataAlbumId": "5854398682938619601",
+          "name": "Pictures",
+          "updated": 1384379053640
         }
       }
     ]
   },
   {
     "Category": "Page",
-    "Name": "aa",
-    "Link": "xaaaa",
-    "id": "grid7",
-    "Edit": 0
+    "Name": "historie",
+    "Link": "historie",
+    "id": "grid_2",
+    "GridElements": [
+      {
+        "Id": "el_1",
+        "Type": "text",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "text": "asdasd"
+        }
+      }
+    ]
+  },
+  {
+    "Category": "Page",
+    "Name": "kontakt",
+    "Link": "kontakt",
+    "id": "grid_3"
   }
 ]

@@ -47,33 +47,34 @@
 </style>
 
 <div ng-controller="gdataalbum" class="row">
-	
+
+
 	<div class="gridelement-content" style="">
 		<div class="container">
 			<div class="span6" style="margin-left:0px">
 				<div class="control-group">
 					<h3 tooltip="Jméno" tooltip-placement="left">
-						<span ngc-click-edit="gridelement.Resources.name.Value" type="input" placeholder="Jméno"  ></span>
+						<span ngc-click-edit="gridelement.resources.name" type="input" placeholder="Jméno"  ></span>
 					</h3>
 				</div>
 				<div class="control-group" tooltip="Typ" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.Resources.type.Value" type="input" placeholder="Typ" ></div>
+					<div ngc-click-edit="gridelement.resources.type" type="input" placeholder="Typ" ></div>
 				</div>
 				<div class="control-group" tooltip="Služby" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.Resources.services.Value" type="input" placeholder="Služby"></div>
+					<div ngc-click-edit="gridelement.resources.services" type="input" placeholder="Služby"></div>
 				</div>
 				<div class="control-group" tooltip="Rozsah" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.Resources.size.Value" type="input" placeholder="Rozsah"></div>
+					<div ngc-click-edit="gridelement.resources.size" type="input" placeholder="Rozsah"></div>
 				</div>
 				<div class="control-group" tooltip="Rok" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.Resources.year.Value" type="input" placeholder="Rok"></div>
+					<div ngc-click-edit="gridelement.resources.year" type="input" placeholder="Rok"></div>
 				</div>
 				<div class="control-group" tooltip="Text" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.Resources.text.Value" type="textarea" placeholder="Text"></div>
+					<div ngc-click-edit="gridelement.resources.text" type="textarea" placeholder="Text"></div>
 				</div>
 
 				<div class="control-group" tooltip="Skupina" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.Resources.group.Value" type="input" placeholder="Skupina"></div>
+					<div ngc-click-edit="gridelement.resources.group" type="input" placeholder="Skupina"></div>
 				</div>
 			</div>
 			<div class="span6" style="margin-left:0px">

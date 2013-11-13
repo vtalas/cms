@@ -1,7 +1,7 @@
 ﻿var Picus = (function(){
 
 	function Picus(jsonData, repository) {
-		this.data = jsonData;
+		this.data = jsonData || [];
 		this.repo = repository;
 	}
 

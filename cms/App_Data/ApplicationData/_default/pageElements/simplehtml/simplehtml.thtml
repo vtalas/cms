@@ -6,7 +6,7 @@
 				</blockquote>
 
 			<div ng-bind-html-unsafe="ContentToHtml()" ></div>
-			<span ngc-click-edit="gridelement.Resources.text.Value"
+			<span ngc-click-edit="gridelement.resources.text"
 					type="textarea"
 					placeholder="text"> </span>
 		</div>

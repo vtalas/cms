@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using cms.Code.Graphic;
@@ -155,6 +158,23 @@ namespace cms.Controllers.Api
 		{
 			return PicasaProvider.Session.GetPhotos();
 		}
+
+		[System.Web.Http.HttpGet]
+		public HttpResponseMessage GetJson()
+		{
+			var path = Path.Combine(HttpContext.Current.Server.MapPath("~/"), "App_Data\\ApplicationData", ApplicationId.ToString(), "chuj.json");
+			var result = new HttpResponseMessage(HttpStatusCode.OK);
+			if (!File.Exists(path))
+			{
+				return result;
+			}
+
+			var stream = new FileStream(path, FileMode.Open);
+			result.Content = new StreamContent(stream);
+			result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+			return result;
+		}
+
 
 	}
 }

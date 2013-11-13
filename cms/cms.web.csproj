@@ -265,8 +265,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
-    <Content Include="App_Data\ApplicationData\2da35160-4c95-4d32-9f7f-c3fd6af3f6b8\pageElements\album\controller.album.js" />
-    <Content Include="App_Data\ApplicationData\4817757d-fcef-4ad4-8228-8be65b0cae33\pageElements\album\controller.album.js" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\clientspecific\clientspecific.js" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
@@ -289,8 +287,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.js" />
-    <Content Include="App_Data\ApplicationData\2da35160-4c95-4d32-9f7f-c3fd6af3f6b8\pageElements\album\album.thtml" />
-    <Content Include="App_Data\ApplicationData\4817757d-fcef-4ad4-8228-8be65b0cae33\pageElements\album\album.thtml" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <Content Include="App_Data\bootstrap\less\variables.css">
@@ -501,7 +497,6 @@
     <Content Include="Scripts\Admin\pageCtrl.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\Controllers\controller.gridPage.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\modules\module.settings.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.3.0.js" />
@@ -524,22 +519,6 @@
     <Content Include="Content\SwaggerUI\lib\underscore-min.js" />
     <Content Include="Content\SwaggerUI\swagger-ui.js" />
     <Content Include="Content\SwaggerUI\swagger-ui.min.js" />
-    <Content Include="tests\scripts\web-server.js" />
-    <Content Include="tests\test\e2e\runner.html" />
-    <Content Include="tests\test\e2e\scenarios.js" />
-    <Content Include="tests\test\lib\angular\angular-mocks.js" />
-    <Content Include="tests\test\lib\angular\angular-scenario.js" />
-    <Content Include="tests\test\lib\angular\jstd-scenario-adapter.js" />
-    <Content Include="tests\test\lib\angular\version.txt" />
-    <Content Include="tests\test\lib\jasmine-jstd-adapter\JasmineAdapter.js" />
-    <Content Include="tests\test\lib\jasmine-jstd-adapter\version.txt" />
-    <Content Include="tests\test\lib\jasmine\jasmine-html.js" />
-    <Content Include="tests\test\lib\jasmine\jasmine.css" />
-    <Content Include="tests\test\lib\jasmine\jasmine.js" />
-    <Content Include="tests\test\lib\jasmine\jasmine_favicon.png" />
-    <Content Include="tests\test\lib\jstestdriver\JsTestDriver.jar" />
-    <Content Include="tests\test\lib\jstestdriver\version.txt" />
-    <Content Include="tests\test\unit\cmsapiTests.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -555,24 +534,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\setup\index.cshtml" />
     <Content Include="Content\SwaggerUI\lib\.DS_Store" />
-    <None Include="tests\scripts\e2e-test-server.bat" />
-    <None Include="tests\scripts\e2e-test-server.sh" />
-    <None Include="tests\scripts\e2e-test.bat" />
-    <None Include="tests\scripts\e2e-test.sh" />
-    <None Include="tests\scripts\private\format-json.sh" />
-    <None Include="tests\scripts\private\goto_step.bat" />
-    <None Include="tests\scripts\private\goto_step.sh" />
-    <None Include="tests\scripts\private\push-to-github.sh" />
-    <None Include="tests\scripts\private\retag.sh" />
-    <None Include="tests\scripts\private\snapshot-web.sh" />
-    <None Include="tests\scripts\private\snapshot.sh" />
-    <None Include="tests\scripts\test-server.bat" />
-    <None Include="tests\scripts\test-server.sh" />
-    <None Include="tests\scripts\test.bat" />
-    <None Include="tests\scripts\test.sh" />
-    <None Include="tests\scripts\update-repo.sh" />
-    <None Include="tests\scripts\watchr.rb" />
-    <None Include="tests\test\lib\jasmine\MIT.LICENSE" />
     <Content Include="Views\setup\MigrateDatabaseToLatestVersion.cshtml" />
     <Content Include="Views\setup\DropAndCreateTables.cshtml" />
     <Content Include="Views\_AdminTemplates\_Layout_Appllication.cshtml" />
@@ -654,11 +615,9 @@
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\ApplicationData\2da35160-4c95-4d32-9f7f-c3fd6af3f6b8\Settings\" />
-    <Folder Include="App_Data\ApplicationData\4817757d-fcef-4ad4-8228-8be65b0cae33\Settings\" />
     <Folder Include="App_Themes\" />
     <Folder Include="Content\metroBootstrapSource\" />
-    <Folder Include="tests\config\" />
+    <Folder Include="tests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cms.data\cms.data.csproj">

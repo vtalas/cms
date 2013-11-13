@@ -1,7 +1,7 @@
 ﻿<div ng-controller="text"  class="row">
 	<div class="span{{gridelement.Width}}">
 		<div class="gridelement-content">
-			<span ngc-click-edit="gridelement.Resources.text.Value" type="textarea" placeholder="text"></span>
+			<span ngc-click-edit="gridelement.resources.text" type="textarea" placeholder="text"></span>
 		</div>
 	</div>
 </div>
