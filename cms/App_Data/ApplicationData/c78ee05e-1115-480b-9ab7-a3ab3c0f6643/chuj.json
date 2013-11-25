@@ -7,13 +7,18 @@
     "Edit": 0,
     "GridElements": [
       {
-        "Id": "el_2",
+        "Id": "el_22",
         "Type": "album",
         "Edit": 0,
         "Width": 12,
         "resources": {
           "name": "asdasxxx sjkbdakbdkjas",
-          "group": "a"
+          "group": "a",
+          "type": "typ",
+          "services": "slyzby",
+          "size": "rozsah",
+          "year": "1999",
+          "text": "asdasdasdsadsdsads\ntextkjbasd asdb kjasbd \naskdjbaskjd asd\n==="
         },
         "Content": {
           "gdataAlbumId": "5857023433865510369",
@@ -28,12 +33,36 @@
         "Width": 12,
         "resources": {
           "name": "asdasxxx",
-          "group": "b"
+          "group": "b",
+          "type": "ksajbkj",
+          "services": "asda",
+          "size": "asda",
+          "year": "2010",
+          "text": "asdkj baskj bkjabdkjb kjabdkjaksbk baksbkj bkasbkj bkjabskjdbkjabskdb kasbdkj bkjabskjb kjbaskjdb kjbaskjbd kjbaskjdbk jaskjdkj akjsbdkj kajsdkjb kjabskjb kabskdb akjsbkdjbakjb skdas asd jkabsdkjbkjasb kb\n--"
         },
         "Content": {
           "gdataAlbumId": "5854398682938619601",
           "name": "Pictures",
           "updated": 1384379053640
+        }
+      },
+      {
+        "Id": "el_3",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "name": "xxasd",
+          "text": "laknsdjbasd\n--\nadsk jbaskdjb akskdjbask jbbsdabfjhsadjfb kjbsdkajfb kbsadkfk bskdfkbk sbkbskjdb kbskdjbfk skdfk bskjdbfksafbpiewb kjbweiufb kjsabfi bsadfkjb kjsadbfkjebkjfbiasdbfiusdbfile kfjbsaidu bkjsdfb ibsadjkf jskdfb kjbskjfkjsbad ksdf f s",
+          "type": "sfs",
+          "services": "sdf",
+          "size": "sdf",
+          "year": "sdafsadf afasdf s"
+        },
+        "Content": {
+          "gdataAlbumId": "5857343418831655265",
+          "name": "home",
+          "updated": 1384725942947
         }
       }
     ]
@@ -59,6 +88,17 @@
     "Category": "Page",
     "Name": "kontakt",
     "Link": "kontakt",
-    "id": "grid_3"
+    "id": "grid_3",
+    "GridElements": [
+      {
+        "Id": "el_1xx",
+        "Type": "text",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "text": "xxx"
+        }
+      }
+    ]
   }
 ]

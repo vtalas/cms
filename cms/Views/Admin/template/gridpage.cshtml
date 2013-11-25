@@ -1,5 +1,9 @@
 ﻿<div class="gridpage">
-	<h2 ngc-click-edit="data.Name"
+
+	<!--<ngc-groups>-->
+	<!--</ngc-groups>-->
+
+	<h2 ngc-click-edit="grid.Name"
 		namespace="gridname"
 		type="input"
 		placeholder="text"></h2>
@@ -9,14 +13,14 @@
 	</div>
 	<div class="row">
 		<div ng-repeat="gridelement in grid.GridElements"
-			class="span{{gridelement.Width}}"
-			ng-class="{contentitem: gridelement.Id}"
-			>
+			 class="span{{gridelement.Width}}"
+			 ng-class="{contentitem: gridelement.Id}"
+				>
 			<div ng-show="gridelement.Id ">
 				<div class="gridelement-controls">
 					<i class="clickable icon-question-sign" ng-click="showHelp(gridelement)">&nbsp;</i>
 					<i title="{{gridelement.Type}}">{{gridelement.Type}}&nbsp;</i>
-					<button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete" />
+					<button ng-click="remove(gridelement)" class="btn btn-mini font-icon delete"/>
 				</div>
 				<div class="clearfix"></div>
 				<div gridelement="gridelement" grid="grid"></div>

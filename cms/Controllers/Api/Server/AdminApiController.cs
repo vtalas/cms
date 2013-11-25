@@ -51,10 +51,33 @@ namespace cms.Controllers.Api.Server
 			}
 		}
 
+		[System.Web.Http.HttpPut]
+		public async void SaveJsonSettings([FromBody]object id)
+		{
+			var path = Path.Combine(HttpContext.Current.Server.MapPath("~/"), "App_Data\\ApplicationData", ApplicationId.ToString(),  "settings.json");
+			using (var outfile = new StreamWriter(@path, false, new UTF8Encoding()))
+			{
+				await outfile.WriteAsync(id.ToString());
+			}
+		}
+
 		[System.Web.Http.HttpGet]
 		public HttpResponseMessage GetJson()
 		{
 			var path = Path.Combine(HttpContext.Current.Server.MapPath("~/"), "App_Data\\ApplicationData", ApplicationId.ToString(), "chuj.json");
+			return GetJsonFile(path);
+		}
+
+		[System.Web.Http.HttpGet]
+		public HttpResponseMessage GetJsonSettings()
+		{
+			var path = Path.Combine(HttpContext.Current.Server.MapPath("~/"), "App_Data\\ApplicationData", ApplicationId.ToString(), "settings.json");
+			return GetJsonFile(path);
+		}
+
+
+		private static HttpResponseMessage GetJsonFile(string path)
+		{
 			var result = new HttpResponseMessage(HttpStatusCode.OK);
 			if (!File.Exists(path))
 			{
@@ -66,7 +89,6 @@ namespace cms.Controllers.Api.Server
 			result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
 			return result;
 		}
-
 
 		public class JObjectFilter : ActionFilterAttribute
 		{

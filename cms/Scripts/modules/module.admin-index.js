@@ -1,4 +1,15 @@
-var module = angular.module("admin-index", ['ui']);
+/*global Showdown, angular*/
+var stringUtils = angular.module("stringutils", []);
 
-module.directive("ngcClickEdit", ngcClickEditDirective);
+stringUtils.factory("$markdown", function () {
+	var converter = new Showdown.converter();
 
+	return {
+		toHtml: function (markdownText) {
+			if (markdownText) {
+				return converter.makeHtml(markdownText);
+			}
+			return "";
+		}
+	};
+});

@@ -46,7 +46,7 @@
 
 </style>
 
-<div ng-controller="gdataalbum" class="row">
+<div ng-controller="gdataalbum2" class="row">
 
 
 	<div class="gridelement-content" style="">
@@ -69,8 +69,11 @@
 				<div class="control-group" tooltip="Rok" tooltip-placement="left">
 					<div ngc-click-edit="gridelement.resources.year" type="input" placeholder="Rok"></div>
 				</div>
-				<div class="control-group" tooltip="Text" tooltip-placement="left">
+				<div tooltip="Text" tooltip-placement="left" style="border: 1px dotted yellowgreen; padding:6px;margin-bottom:10px">
+				<div ng-bind-html-unsafe="toHtml(gridelement.resources.text)"></div>
+				<div class="control-group" >
 					<div ngc-click-edit="gridelement.resources.text" type="textarea" placeholder="Text"></div>
+				</div>
 				</div>
 
 				<div class="control-group" tooltip="Skupina" tooltip-placement="left">

@@ -1,12 +1,11 @@
-var gdataalbum = function ($scope, gdataPhotos, appSettings) {
+var gdataalbum2 = function ($scope, gdataPhotos, appSettings, $markdown) {
 	var getAlbums,
 		gridelement;
-	gdataalbum.$inject = ["$scope", "gdataPhotos", "appSettings"];
+	gdataalbum.$inject = ["$scope", "gdataPhotos", "appSettings", "$markdown"];
 
-	$scope.groups = ["aaa", "bb", "ccc"]
+	$scope.groups = ["aaa", "bb", "ccc"];
 	getAlbums = function () {
 		gdataPhotos.getAlbums(function (data) {
-			console.log("xxxx")
 			$scope.albums = data;
 		}, function (error) {
 			return $scope.haserror = true;
@@ -15,7 +14,9 @@ var gdataalbum = function ($scope, gdataPhotos, appSettings) {
 
 	gridelement = $scope.getGridElement();
 
-
+	$scope.toHtml = function(value) {
+		return $markdown.toHtml(value);
+	};
 	$scope.showGdataAlbumsValue = false;
 	$scope.applicationId = appSettings.Id;
 

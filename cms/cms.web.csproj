@@ -265,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Code\UserResources.cshtml" />
+    <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\album\controller.album.js" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\clientspecific\clientspecific.js" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.coffee" />
     <Content Include="App_Data\ApplicationData\_default\pageElements\reference\reference.thtml">
@@ -287,6 +288,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Data\ApplicationData\_default\pageElements\gdataalbum\controller.gdataalbum.js" />
+    <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\chuj.json" />
+    <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\album\album.thtml" />
+    <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\novinka\novinka.coffee" />
+    <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\novinka\novinka.thtml" />
+    <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\novinka\novinka_admin.thtml" />
+    <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\npm-debug.log" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <Content Include="App_Data\bootstrap\less\variables.css">
@@ -470,6 +477,7 @@
     <Content Include="Scripts\Controllers\controller.showuserdata.js" />
     <Content Include="Scripts\Controllers\controller.dashboard.js" />
     <Content Include="Scripts\Controllers\controller.infomessage.js" />
+    <Content Include="Scripts\modules\module.stringutils.js" />
     <Content Include="Scripts\modules\module.appSettings.js" />
     <Content Include="Scripts\modules\module.cmsUsers.js" />
     <Content Include="Scripts\Controllers\controller.applicationusers.js" />
