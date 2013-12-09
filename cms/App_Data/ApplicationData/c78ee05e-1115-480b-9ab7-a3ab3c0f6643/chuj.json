@@ -1,10 +1,19 @@
 [
   {
     "Category": "Page",
-    "Name": "aaa",
+    "Name": "projekty",
     "Link": "projekty",
     "id": "grid_1",
     "Edit": 0,
+    "groups": {
+      "groupName": "Typy Projektů",
+      "items": [
+        "prdel",
+        "xxx",
+        "jkasbdas",
+        "xaassd"
+      ]
+    },
     "GridElements": [
       {
         "Id": "el_22",
@@ -12,18 +21,20 @@
         "Edit": 0,
         "Width": 12,
         "resources": {
-          "name": "asdasxxx sjkbdakbdkjas",
-          "group": "a",
+          "name": "xxsdfs",
           "type": "typ",
-          "services": "slyzby",
+          "services": "slyzbyx",
           "size": "rozsah",
           "year": "1999",
-          "text": "asdasdasdsadsdsads\ntextkjbasd asdb kjasbd \naskdjbaskjd asd\n==="
+          "text": "asdasdasdsadsdsads\ntextkjbasd asdb kjasbd \naskdjbaskjd asd\n===",
+          "group": "prdel"
         },
         "Content": {
-          "gdataAlbumId": "5857023433865510369",
-          "name": "polsko",
-          "updated": 1384378621104
+          "gdataAlbumId": "5856635321710909729",
+          "name": "dalov",
+          "updated": 1386625813410,
+          "thumbnail": "https://lh6.googleusercontent.com:443/-UahgMOUNyw0/UUbyy5mVmSE/AAAAAAAAARc/V8o3VahEf9s/s95-c/Dalov.jpg",
+          "ratio": "ratio16_9"
         }
       },
       {
@@ -32,18 +43,20 @@
         "Edit": 0,
         "Width": 12,
         "resources": {
-          "name": "asdasxxx",
-          "group": "b",
+          "name": "xxx",
           "type": "ksajbkj",
           "services": "asda",
           "size": "asda",
           "year": "2010",
-          "text": "asdkj baskj bkjabdkjb kjabdkjaksbk baksbkj bkasbkj bkjabskjdbkjabskdb kasbdkj bkjabskjb kjbaskjdb kjbaskjbd kjbaskjdbk jaskjdkj akjsbdkj kajsdkjb kjabskjb kabskdb akjsbkdjbakjb skdas asd jkabsdkjbkjasb kb\n--"
+          "text": "asdkj \n--\nlaknfsklnaf",
+          "group": "xxx"
         },
         "Content": {
-          "gdataAlbumId": "5854398682938619601",
-          "name": "Pictures",
-          "updated": 1384379053640
+          "gdataAlbumId": "5856635321710909729",
+          "name": "dalov",
+          "ratio": "ratio16_9",
+          "updated": 1386623854671,
+          "thumbnail": "https://lh6.googleusercontent.com:443/-UahgMOUNyw0/UUbyy5mVmSE/AAAAAAAAARc/V8o3VahEf9s/s95-c/Dalov.jpg"
         }
       },
       {
@@ -53,16 +66,108 @@
         "Width": 12,
         "resources": {
           "name": "xxasd",
-          "text": "laknsdjbasd\n--\nadsk jbaskdjb akskdjbask jbbsdabfjhsadjfb kjbsdkajfb kbsadkfk bskdfkbk sbkbskjdb kbskdjbfk skdfk bskjdbfksafbpiewb kjbweiufb kjsabfi bsadfkjb kjsadbfkjebkjfbiasdbfiusdbfile kfjbsaidu bkjsdfb ibsadjkf jskdfb kjbskjfkjsbad ksdf f s",
+          "text": "laknsdjbasd\n--\n\nadsk jbaskdjb akskdjbask jbbsdabfjhsadjfb kjbsdkajfb kbsadkfk bskdfkbk sbkbskjdb kbskdjbfk skdfk bskjdbfksafbpiewb kjbweiufb kjsabfi bsadfkjb kjsadbfkjebkjfbiasdbfiusdbfile kfjbsaidu bkjsdfb ibsadjkf jskdfb kjbskjfkjsbad ksdf f ssd",
           "type": "sfs",
           "services": "sdf",
           "size": "sdf",
-          "year": "sdafsadf afasdf s"
+          "year": "sdafsadf afasdf s",
+          "group": "prdel"
         },
         "Content": {
           "gdataAlbumId": "5857343418831655265",
           "name": "home",
-          "updated": 1384725942947
+          "updated": 1386462392149,
+          "ratio": "ratio16_9"
+        }
+      },
+      {
+        "Id": "el_7",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Content": {
+          "gdataAlbumId": "5869199268849865201",
+          "name": "Schránka",
+          "updated": 1386194548117,
+          "ratio": "ratio16_9"
+        },
+        "resources": {
+          "group": "xxx",
+          "name": "asds"
+        }
+      },
+      {
+        "Id": "el_7",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Content": {
+          "gdataAlbumId": "5869199268849865201",
+          "name": "Schránka",
+          "updated": 1386194548117,
+          "ratio": "ratio3_4"
+        },
+        "resources": {
+          "group": "jkasbdas",
+          "name": "asd"
+        }
+      },
+      {
+        "Id": "el_7",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Content": {
+          "gdataAlbumId": "5869199268849865201",
+          "name": "Schránka",
+          "updated": 1386194548117,
+          "ratio": "ratio3_4"
+        },
+        "resources": {
+          "group": "xxx",
+          "name": "asd"
+        }
+      },
+      {
+        "Id": "el_7",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Content": {
+          "gdataAlbumId": "5856635321710909729",
+          "name": "dalov",
+          "updated": 1386459752080,
+          "ratio": "ratio3_4"
+        },
+        "resources": {
+          "group": "jkasbdas",
+          "name": "asd"
+        }
+      },
+      {
+        "Id": "el_8",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Content": {
+          "ratio": "ratio3_4",
+          "gdataAlbumId": "5854398682938619601",
+          "name": "Pictures",
+          "thumbnail": "https://lh6.googleusercontent.com:443/-ZV0s23gJdHw/UT8AlY4SNtE/AAAAAAAAArI/zyrpsFVexME/s95-c/Pictures.jpg",
+          "updated": 1386625603944
+        }
+      },
+      {
+        "Id": "el_9",
+        "Type": "album",
+        "Edit": 0,
+        "Width": 12,
+        "Content": {
+          "ratio": "ratio3_4",
+          "gdataAlbumId": "5857023433865510369",
+          "name": "polsko",
+          "thumbnail": "https://lh5.googleusercontent.com:443/-J6BiWYEv6tw/UUhTyACxPeE/AAAAAAAAAwM/1kgQXLpQNXM/s95-c/Polsko.jpg",
+          "updated": 1386625460811
         }
       }
     ]
@@ -74,12 +179,58 @@
     "id": "grid_2",
     "GridElements": [
       {
-        "Id": "el_1",
-        "Type": "text",
+        "Id": "el_2",
+        "Type": "simplehtml",
         "Edit": 0,
         "Width": 12,
         "resources": {
-          "text": "asdasd"
+          "text": "1990 Založení akciové společnosti BOOS, a.s\n--\n  \n- projekční činnost\n- inženýrská činnost\n- generální dodávky staveb a interiérů\n- realitní činnost\n- dodávky a montáže bankovních technologií"
+        }
+      },
+      {
+        "Id": "el_3",
+        "Type": "simplehtml",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "text": "1990 - 1999\n--\n- vytvoření samostatných kanceláří pro oblast Praha a Zlín"
+        }
+      },
+      {
+        "Id": "el_3",
+        "Type": "simplehtml",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "text": "1999 založení společnosti BOOS Trade, s.r.o. \n--\n- společnost plně přebírá aktivity v oblasti dodávek a montáži bankovních technologií"
+        }
+      },
+      {
+        "Id": "el_5",
+        "Type": "simplehtml",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "text": "2004 vytvoření samostatné sekce pro developerské projekty\n--"
+        }
+      },
+      {
+        "Id": "el_5",
+        "Type": "simplehtml",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "text": "2009 vybudování samostatné pobočky v Uničově \n--\n  - **BOOS, a.s. – atelier Severní Morava**"
+        }
+      },
+      {
+        "Id": "el_6",
+        "Type": "simplehtml",
+        "Edit": 0,
+        "Width": 12,
+        "Content": "",
+        "resources": {
+          "text": "2013 vytvoření nové organizační struktury\t\n--\n  - **BOOS plan, a.s.**"
         }
       }
     ]
@@ -97,6 +248,25 @@
         "Width": 12,
         "resources": {
           "text": "xxx"
+        }
+      }
+    ],
+    "Edit": 0
+  },
+  {
+    "Category": "Page",
+    "Name": "cinnost",
+    "Link": "cinnost",
+    "id": "grid_4",
+    "Edit": 0,
+    "GridElements": [
+      {
+        "Id": "el_1",
+        "Type": "simplehtml",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "text": "Náš projekční tým lze vystihnout těmito slovy: maximální nasazení, **zkušenosti, flexibilita, slušnost, odpovědnost**.\n\nProjekty naší společnosti se vyznačují perfektním zvládnutím prostoru, citem pro architektonický detail. Veškerá dokumentace je vždy vyhotovena podle platné legislativy, popř. podrobněji na přání investora. Disponujeme celou řadou odborníků ze všech odvětví projekční činnosti. Spolupracujeme s experty a nezávislými subjekty \nz oboru stavebního zkušebnictví, stavebních, geologických a jiných průzkumů.\n\nNabízíme veškeré služby spojené s projekční činností a **všemi etapami projektu:**\n\n  - studie záměru vč. posouzení investiční náročnosti\n  - architektonický návrh a funkční řešení objektu \n    - předprojektová příprava zahrnující průzkum lokality a stanovení rizik\n    - vizualizace a jiné formy prezentace projektu\n    - vypracování projektové dokumentace pro územní řízení\n    - inženýrská činnost pro všechna vyžadovaná řízení\n    - vypracování projektové dokumentace pro stavební řízení\n    - vypracování projektové dokuemntace pro výběr zhotovitele\n    - realizační projektová dokumentace\n  - spolupráce při realizaci stavby\n  - výkon autorského dozoru, popř. technického dozoru investora\n  - projektová dokumentace skutečného provedení stavby\n  - inženýrská činnost potřebná pro uvedení stavby do provozu\n\nREFERENCE\n---\n  - mnohaleté zkušenosti s projekční činností v tuzemsku i mimo území ČR \n  - stovky realizovaných staveb nejrůznějších objemů a charakteru\n  - reference od nadnárodních koncernů i drobných investorů – viz. seznam klientů"
         }
       }
     ]

@@ -76,8 +76,10 @@
 				</div>
 				</div>
 
-				<div class="control-group" tooltip="Skupina" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.resources.group" type="input" placeholder="Skupina"></div>
+				<div class="control-group" tooltip="{{groups.groupName}}" tooltip-placement="left">
+					<select ng-model="gridelement.resources.group" ng-options="c for c in groups.items" ng-change="saveGridElement()" >
+						<option value="">---</option>
+					</select>
 				</div>
 			</div>
 			<div class="span6" style="margin-left:0px">
@@ -85,7 +87,11 @@
 					<div ng-show="loading" class="image-small-loader">
 						<img ngc-loader=""/>
 					</div>
-
+					<div>
+						<label>formát náhledu</label>
+						<select ng-model="$parent.gridelement.Content.ratio" ng-options="c.val as c.name for c in $parent.thumbnailRatios" ng-change="saveGridElement()" >
+						</select>
+					</div>
 					<div ng-show="!loading && albumPhotosAll" class="grid_9"
 						 tooltip-html-unsafe="{{albumInfo}}"
 						 tooltip-placement="left"
@@ -147,7 +153,7 @@
 			</div>
 		</div>
 		<div ng-repeat="item in albums" class="gdataAlbum">
-			<div class="gdataThumb" ng-click="addAlbum(item.Id, item.Link)" title="{{item.Title}} ({{item.Album.NumPhotos}})">
+			<div class="gdataThumb" ng-click="addAlbum(item)" title="{{item.Title}} ({{item.Album.NumPhotos}})">
 				<img ngc-lazy-image="item.Thumbnail.Thumbnails[0].PhotoUri" />
 			</div>
 		</div>
