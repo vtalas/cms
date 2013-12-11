@@ -293,7 +293,6 @@
     <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\novinka\novinka.coffee" />
     <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\novinka\novinka.thtml" />
     <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\novinka\novinka_admin.thtml" />
-    <Content Include="App_Data\ApplicationData\c78ee05e-1115-480b-9ab7-a3ab3c0f6643\pageElements\npm-debug.log" />
     <None Include="App_Data\bootstrap\less\bootstrap.less" />
     <None Include="App_Data\bootstrap\less\variables.less" />
     <Content Include="App_Data\bootstrap\less\variables.css">

@@ -77,6 +77,7 @@
     <Compile Include="Dtos\UserDataDto.cs" />
     <Compile Include="Dtos\UserProfileDto.cs" />
     <Compile Include="EF\DataProviderImplementation\DataEfPublic.cs" />
+    <Compile Include="EF\EfContext.Views.cs" />
     <Compile Include="EF\RepositoryImplementation\EfRepositoryApplication.cs" />
     <Compile Include="Migrations\201310302006518_AddGridElementGroupTable.cs" />
     <Compile Include="Migrations\201310302006518_AddGridElementGroupTable.Designer.cs">
