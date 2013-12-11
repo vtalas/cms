@@ -3,7 +3,12 @@ var gdataalbum2 = function ($scope, gdataPhotos, appSettings, $markdown) {
 		gridelement;
 	gdataalbum.$inject = ["$scope", "gdataPhotos", "appSettings", "$markdown"];
 
-	$scope.groups = ["aaa", "bb", "ccc"];
+	$scope.groups = [];
+	$scope.thumbnailRatios = [
+		{ name: "3:4", val: "ratio3_4"  },
+		{ name: "16:9", val: "ratio16_9" }
+	];
+
 	getAlbums = function () {
 		gdataPhotos.getAlbums(function (data) {
 			$scope.albums = data;
@@ -11,21 +16,32 @@ var gdataalbum2 = function ($scope, gdataPhotos, appSettings, $markdown) {
 			return $scope.haserror = true;
 		});
 	};
-
 	gridelement = $scope.getGridElement();
+	gridelement.Content.ratio = gridelement.Content.ratio || $scope.thumbnailRatios[0].val;
 
-	$scope.toHtml = function(value) {
+	$scope.toHtml = function (value) {
 		return $markdown.toHtml(value);
 	};
 	$scope.showGdataAlbumsValue = false;
 	$scope.applicationId = appSettings.Id;
+	$scope.groups = $scope.getGroups();
 
-	$scope.addAlbum = function (id, name) {
-		gridelement.Content = {
+	$scope.saveGridElement = function() {
+		$scope.$emit("gridelement-save", gridelement);
+	};
+
+	$scope.addAlbum = function (item) {
+		var id = item.Id,
+			name = item.Link,
+			thumbnail = item.Thumbnail.Thumbnails[2].PhotoUri;
+
+		var album = {
 			gdataAlbumId: id,
 			name: name,
+			thumbnail: thumbnail,
 			updated: new Date().getTime()
 		};
+		angular.extend(gridelement.Content, album);
 		$scope.showGdataAlbumsValue = $scope.hideGdataAlbums();
 		$scope.$broadcast("gdata-gallery-save", gridelement.Content);
 		$scope.$emit("gridelement-save", gridelement);
@@ -66,7 +82,7 @@ var gdataalbum2 = function ($scope, gdataPhotos, appSettings, $markdown) {
 	});
 
 	$scope.$on("gdataalbum-refresh", function (e, data) {
-	    gridelement.Content = data;
+		angular.extend(gridelement.Content, data);
 	    $scope.$emit("gridelement-save", gridelement);
 	});
 };

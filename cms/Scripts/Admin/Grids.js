@@ -199,8 +199,13 @@ module.directive("gridelement", ["$compile", "GridApi", "appSettings", "gridtemp
 	return {
 		scope: { grid: "=", gridelement: "=" },
 		link: function (scope, iElement, tAttrs, controller) {
-			scope.getGridElement = function (){
+			scope.getGridElement = function () {
+				scope.gridelement.Content = scope.gridelement.Content || {};
 				return scope.gridelement;
+			};
+
+			scope.getGroups = function () {
+				return scope.grid.groups;
 			};
 
 			scope.gui = { edit: 0 };

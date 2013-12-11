@@ -48,7 +48,6 @@ function ngcGDataGallery(gdataPhotos) {
 			ngcGdataGallery: "=",
 			itemsCount: "="
 		},
-		
 		link: function (scope, element, attr) {
 			scope.loading = false;
 			scope.gallery = new GdataGallery(scope.ngcGdataGallery || {});
@@ -92,7 +91,6 @@ function ngcGDataGallery(gdataPhotos) {
 				scope.albumPhotosAll = null;
 				var updatedDate = new Date().getTime();
 				scope.gallery.updated = updatedDate;
-				console.log(scope.gallery)
 
 				scope.$emit("gdataalbum-refresh", scope.gallery);
 				getCurrentAlbum(scope.gallery.gdataAlbumId, true, function () {
