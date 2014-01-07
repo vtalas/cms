@@ -1,0 +1,35 @@
+﻿<style>
+	.gridelement-content div{
+		margin-bottom:4px;
+	}
+</style>
+<div ng-controller="kontaktCtrl" class="row">
+	<div class="gridelement-content" style="float:left;min-width:50%;">
+<!--		<div class="gridelement-content" ng-show="gridelement.help">-->
+<!--			<blockquote>-->
+<!--					-->
+<!--			<code >-->
+<!--				?-->
+<!--			</code>-->
+<!--			</blockquote>-->
+<!--		</div>-->
+		<div ng-controller="text"  class="row">
+			<div class="span{{gridelement.Width}}">
+				<div class="gridelement-content">
+					<div ngc-click-edit="gridelement.resources.header" type="input" placeholder="nadpis" ></div>
+					<div ngc-click-edit="gridelement.resources.subheader" type="input" placeholder="pod-nadpis"></div>
+					<div ngc-click-edit="gridelement.resources.valuea" type="input" placeholder="hodnota"></div>
+					<div ngc-click-edit="gridelement.resources.valueb" type="input" placeholder="hodnota"></div>
+					<div ngc-click-edit="gridelement.resources.valuec" type="input" placeholder="hodnota"></div>
+					<div ngc-click-edit="gridelement.resources.valued" type="input" placeholder="hodnota"></div>
+					<div ngc-click-edit="gridelement.resources.valuee" type="input" placeholder="hodnota"></div>
+					<div ngc-click-edit="gridelement.resources.valuef" type="input" placeholder="hodnota"></div>
+					<label>mapa:</label>
+					<div ngc-click-edit="gridelement.resources.map.lat" type="input" placeholder="lat"></div>
+					<div ngc-click-edit="gridelement.resources.map.lnt" type="input" placeholder="lng"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

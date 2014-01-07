@@ -76,6 +76,10 @@
 				</div>
 				</div>
 
+				<label>mapa:</label>
+				<div class="control-group" ngc-click-edit="gridelement.resources.map.lat" type="input" placeholder="lat"></div>
+				<div class="control-group" ngc-click-edit="gridelement.resources.map.lnt" type="input" placeholder="lng"></div>
+
 				<div class="control-group" tooltip="{{groups.groupName}}" tooltip-placement="left">
 					<select ng-model="gridelement.resources.group" ng-options="c for c in groups.items" ng-change="saveGridElement()" >
 						<option value="">---</option>

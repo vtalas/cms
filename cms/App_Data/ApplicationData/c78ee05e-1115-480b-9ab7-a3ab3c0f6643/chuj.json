@@ -26,8 +26,12 @@
           "services": "slyzbyx",
           "size": "rozsah",
           "year": "1999",
-          "text": "asdasdasdsadsdsads\ntextkjbasd asdb kjasbd \naskdjbaskjd asd\n===",
-          "group": "prdel"
+          "text": "asdasdasdsadsdsads\ntextkjbasd asdb kjasbd \naskdjbaskjd asd\n===\nlkasndlkans lknlknaslkn lknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslknd xvxbvxxxxx nxbnxxxxx",
+          "group": "prdel",
+          "map": {
+            "lat": "49.214807",
+            "lnt": "16.28238"
+          }
         },
         "Content": {
           "gdataAlbumId": "5856635321710909729",
@@ -242,12 +246,93 @@
     "id": "grid_3",
     "GridElements": [
       {
-        "Id": "el_1xx",
-        "Type": "text",
+        "Id": "c2e3d403-ca57-eddb-ea57-629ea272b4db",
+        "Type": "kontakt",
+        "Name": "Kontakt",
         "Edit": 0,
         "Width": 12,
         "resources": {
-          "text": "xxx"
+          "header": "HHheader11",
+          "subheader": "Ssub header hsh hav jhvasjdhv jhvajv jhvasjdhvjhavsd ads",
+          "valuea": "tel.: 6266253 982932",
+          "valueb": "tel: 020802 09029",
+          "valuec": "email: kjbasdkjbas@sbks.xz",
+          "valued": "ggg",
+          "valuee": "hhh",
+          "valuef": "sssjjj",
+          "map": {
+            "lat": "49.214807",
+            "lnt": "16.570445"
+          }
+        },
+        "help": true
+      },
+      {
+        "Id": "c2e3d403-ca57-eddb-ea57-sd",
+        "Type": "kontakt",
+        "Name": "Kontakt",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "header": "HHheader22",
+          "subheader": "Ssub header",
+          "valuea": "tel.: 6266253 982932",
+          "valueb": "tel: 020802 09029",
+          "valuec": "email: kjbasdkjbas@sbks.xz",
+          "valued": "ggg",
+          "valuee": "hhh",
+          "valuef": "sssjjj"
+        },
+        "help": true
+      },
+      {
+        "Id": "c2e3d403-ca57-eddb-ea57-23sd",
+        "Type": "kontakt",
+        "Name": "Kontakt",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "header": "",
+          "subheader": "Ssub header33",
+          "valuea": "tel.: 6266253 982932",
+          "valueb": "tel: 020802 09029",
+          "valuec": "email: kjbasdkjbas@sbks.xz",
+          "valued": "",
+          "valuee": "",
+          "valuef": "sssjjj"
+        },
+        "help": true
+      },
+      {
+        "Id": "c2e3d403-ca57-eddb-ea57-343xxx",
+        "Type": "kontakt",
+        "Name": "Kontakt",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "header": "",
+          "subheader": "Ssub header44",
+          "valuea": "tel.: 6266253 982932",
+          "valueb": "tel: 020802 09029",
+          "valuec": "email: kjbasdkjbas@sbks.xz",
+          "valued": "ggg",
+          "valuee": "hhh",
+          "valuef": "sssjjj"
+        },
+        "help": true
+      },
+      {
+        "Id": "e94eb269-209d-ad2b-cc02-03aa573af5d9",
+        "Type": "kontakt",
+        "Name": "Kontakt",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "header": "havsdhvjds",
+          "subheader": "adasd55",
+          "valuea": "tel: 028028302080",
+          "valueb": "tel: 9829389232",
+          "valuec": "email: jbsdjf@jjs.cz"
         }
       }
     ],
@@ -267,6 +352,23 @@
         "Width": 12,
         "resources": {
           "text": "Náš projekční tým lze vystihnout těmito slovy: maximální nasazení, **zkušenosti, flexibilita, slušnost, odpovědnost**.\n\nProjekty naší společnosti se vyznačují perfektním zvládnutím prostoru, citem pro architektonický detail. Veškerá dokumentace je vždy vyhotovena podle platné legislativy, popř. podrobněji na přání investora. Disponujeme celou řadou odborníků ze všech odvětví projekční činnosti. Spolupracujeme s experty a nezávislými subjekty \nz oboru stavebního zkušebnictví, stavebních, geologických a jiných průzkumů.\n\nNabízíme veškeré služby spojené s projekční činností a **všemi etapami projektu:**\n\n  - studie záměru vč. posouzení investiční náročnosti\n  - architektonický návrh a funkční řešení objektu \n    - předprojektová příprava zahrnující průzkum lokality a stanovení rizik\n    - vizualizace a jiné formy prezentace projektu\n    - vypracování projektové dokumentace pro územní řízení\n    - inženýrská činnost pro všechna vyžadovaná řízení\n    - vypracování projektové dokumentace pro stavební řízení\n    - vypracování projektové dokuemntace pro výběr zhotovitele\n    - realizační projektová dokumentace\n  - spolupráce při realizaci stavby\n  - výkon autorského dozoru, popř. technického dozoru investora\n  - projektová dokumentace skutečného provedení stavby\n  - inženýrská činnost potřebná pro uvedení stavby do provozu\n\nREFERENCE\n---\n  - mnohaleté zkušenosti s projekční činností v tuzemsku i mimo území ČR \n  - stovky realizovaných staveb nejrůznějších objemů a charakteru\n  - reference od nadnárodních koncernů i drobných investorů – viz. seznam klientů"
+        }
+      }
+    ]
+  },
+  {
+    "Category": "Page",
+    "Name": "aaa",
+    "Link": "galerie",
+    "id": "grid_5",
+    "GridElements": [
+      {
+        "Id": "el_1",
+        "Type": "text",
+        "Edit": 0,
+        "Width": 12,
+        "resources": {
+          "text": "sadasd"
         }
       }
     ]

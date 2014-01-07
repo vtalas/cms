@@ -29,13 +29,13 @@
 	</div>
 	<div>
 		<div class="btn-group" tooltip="vložit šablonu podle typu" tooltip-placement="left" tooltip-popup-delay="500">
-			<button ng-click="addToEnd(newItem, grid.Id)" class="btn">{{newItem.Type}}</button>
+			<button ng-click="addToEnd(newItem, grid.Id)" class="btn">{{newItem.Name}}</button>
 			<button class="btn dropdown-toggle" data-toggle="dropdown">
 				<span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu">
 				<li ng-repeat="templateItem in availableTemplates">
-					<a a href="#" ng-click="addWithType(newItem, grid.id, templateItem.value, $event )">{{templateItem.name}} </a>
+					<a href="#" ng-click="addWithType(newItem, grid.id, templateItem, $event )">{{templateItem.name}}</a>
 				</li>
 			</ul>
 		</div>
