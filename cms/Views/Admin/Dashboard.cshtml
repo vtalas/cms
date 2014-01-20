@@ -11,7 +11,7 @@
      data-application-name="@applicationName"
      data-application-id="@applicationId"
      data-application-culture="@SharedLayer.Culture"
-     class="gridsmodule"
+     class="gridsmodule dashboard"
 	
     >
     <div ng-controller="infomessages">
@@ -21,7 +21,8 @@
 
         @UserResources.RenderHtmlTemplates(Html, applicationId)
 
-        <div class="btn-group" ng-controller="chuj">
+		<div class="info-panel">
+        <div class="btn-group " ng-controller="chuj" >
             <a class="btn btn-small btn-primary" href="#/gridpages"
                 ng-class="isActive('#/gridpages')" ng-click="set($event)">stránky</a>
             <a class="btn btn-small btn-primary" href="#/applicationusers"
@@ -29,11 +30,12 @@
             <a class="btn btn-small btn-primary" href="#/showuserdata"
                 ng-class="isActive('#/showuserdata')" ng-click="set($event)">sezbíraná data</a>
         </div>
+
         <div class="btn-group" ng-controller="cultureCtrl">
             <button  class="btn btn-small" ng-class="{ active:currentCulture  == 'cs' }" href="#" ng-click="setCulture('cs')">cs</button>
             <button disabled class="btn btn-small" ng-class="{ active:currentCulture  == 'en' }" href="#" ng-click="setCulture('en')">en</button>
         </div>
-
+		</div>
         <div ng-view>
         </div>
 

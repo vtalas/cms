@@ -49,8 +49,13 @@ function ngcGDataGallery(gdataPhotos) {
 			itemsCount: "="
 		},
 		link: function (scope, element, attr) {
+			scope.getRatios = scope.$parent.thumbnailRatios;
+			scope.gridelement = scope.$parent.gridelement;
+
 			scope.loading = false;
 			scope.gallery = new GdataGallery(scope.ngcGdataGallery || {});
+
+
 
 			scope.$watch("ngcGdataGallery", function (newValue) {
 				scope.gallery = new GdataGallery(newValue || {});

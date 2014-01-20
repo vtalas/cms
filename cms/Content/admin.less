@@ -147,6 +147,8 @@
 }
 
 .gridpage {
+	padding-top:50px;
+	padding-bottom: 200px;
   .contentitem {
 	border-bottom: 2px solid greenyellow;
 	background-color: #f5f5f5;
@@ -287,11 +289,9 @@ a.color:hover {
 
 
 #admin-cmsUsers {
-
   .gridpage-input {
 	padding: 7px;
   }
-
 }
 
 .photo-settings-page {
@@ -302,4 +302,51 @@ a.color:hover {
 		margin-top: 5px;
 	}
 }
+
+.dashboard {
+	.info-panel {
+		position: fixed;
+		z-index: 1050;
+		top:5px
+	}
+}
+
+.section-info-panel {
+	position:fixed;top:51px;z-index: 1050;left:3px;
+	padding: 10px;
+	border:1px solid #eee;
+	width:300px;
+	.content-groups{
+		max-height: 300px;
+		overflow: auto;
+	}
+	.fa-small{
+		opacity: 0.3;
+	}
+	.fa-action {
+		opacity: 0.1;
+		color:red;
+		cursor:pointer;
+	}
+	.group-item-content {
+
+	}
+	.group-item {
+		&:hover{
+			background-color: #F8F8F8;
+			.fa-action{
+				opacity: 1;
+			}
+		}
+
+	}
+
+}
+
+.elipsies {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
 

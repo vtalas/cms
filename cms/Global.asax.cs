@@ -58,6 +58,7 @@ namespace cms
 			var transforms = new IBundleTransform[] { new JsMinify() };
 			var libs = new Bundle("~/Scripts/libs", transforms)
 				.Include("~/Scripts/angular.js")
+				.Include("~/Scripts/angular-route.js")
 				.Include("~/Scripts/angular-ui.js")
 				.IncludeDirectory("~/Scripts/", "*.js");
 			//.IncludeDirectory("~/Scripts/", "*.ts");

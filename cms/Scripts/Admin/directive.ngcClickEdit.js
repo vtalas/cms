@@ -1,75 +1,39 @@
 function ngcClickEditDirective() {
-	var previewTemplate = '<span ng-click="showEdit()" class="ngc-click-edit-preview" ng-hide="edit" ng-bind="ngcClickEdit" ></span>',
-		editTemplateInput = "<input ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-input small' ng-show='edit' ng-model=\"ngcClickEdit\"></input>",
-		editTemplateTextArea = "<textarea ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-textarea' ng-show=\"edit\" ng-model=\"ngcClickEdit\" rows='15'></textarea>";
-	function getEditTemplate(iAttrs) {
-		var type = iAttrs.type,
-			templateEdit = iAttrs.templateEdit,
-			template;
-
-		if (templateEdit) {
-			return $($(templateEdit).html());
-		}
-
-		switch (type) {
-			case "input":
-				template = angular.element(editTemplateInput);
-				break;
-			case "textarea":
-				template = angular.element(editTemplateTextArea);
-				break;
-			default :
-				template = angular.element(editTemplateInput);
-		}
-
-		return template;
-	}
+	var previewTemplate = '<span ng-click="showEdit()" class="ngc-click-edit-preview" ng-hide="edit" ng-bind="ngcClickEdit" >{{ngcClickEdit}}</span>',
+		editTemplate = "<input ui-event=\"{ blur : 'showPreview()' }\" class='ngc-click-edit-input small' ng-show='edit' ng-model=\"ngcClickEdit\"></input>";
 
 	return {
 		scope: { ngcClickEdit: "=" },
-		compile: function (iElement, iAttrs, transclude) {
-			var	templatePreview = iAttrs.templatePreview,
-				preview =  templatePreview ? $(templatePreview).html() : angular.element(previewTemplate),
-				template;
+		template:previewTemplate + editTemplate,
+		link: function (scope, element, attrs) {
 
-			iElement.html(preview);
+			scope.edit = false;
+			element.addClass("ngc-click-edit");
 
-			template = getEditTemplate(iAttrs);
+			scope.$watch("edit", function (newValue, b) {
+				element.find("input").focus();
+			});
 
-			template.attr("placeholder", iAttrs.placeholder);
-			iElement.append(template);
+			scope.$watch("ngcClickEdit", function (newvalue, b) {
+				var input = element.find("span");
+				if (!newvalue) {
+					input.text(attrs.placeholder);
+					input.addClass("empty");
+				}
+				else {
+					input.removeClass("empty");
+				}
+			});
 
-			return function (scope, element, attrs) {
+			var namespace = attrs.namespace || "ngcClickEdit";
+			scope.showEdit = function () {
+				scope.$emit(namespace + ".showEdit");
+				scope.edit = true;
+			};
 
+			scope.showPreview = function () {
+				scope.$emit(namespace + ".showPreview");
 				scope.edit = false;
-				element.addClass("ngc-click-edit");
-
-
-				scope.$watch("edit", function (newValue, b) {
-					template.focus();
-				});
-
-				scope.$watch("ngcClickEdit", function (newvalue, b) {
-					var input = element.find("span");
-					if (!newvalue) {
-						input.text(attrs.placeholder);
-						input.addClass("empty");
-					}
-					else {
-						input.removeClass("empty");
-					}
-				});
-
-				var namespace = attrs.namespace || "ngcClickEdit";
-				scope.showEdit = function () {
-					scope.$emit(namespace + ".showEdit");
-					scope.edit = true;
-				};
-
-				scope.showPreview = function () {
-					scope.$emit(namespace + ".showPreview");
-					scope.edit = false;
-				};
 			};
 		}
 	};

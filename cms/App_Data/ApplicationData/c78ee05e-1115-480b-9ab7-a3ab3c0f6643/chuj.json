@@ -8,10 +8,26 @@
     "groups": {
       "groupName": "Typy Projektů",
       "items": [
-        "prdel",
-        "xxx",
-        "jkasbdas",
-        "xaassd"
+        {
+          "id": 0,
+          "name": "prdel"
+        },
+        {
+          "id": 1,
+          "name": "aaa"
+        },
+        {
+          "id": 3,
+          "name": "cccc"
+        },
+        {
+          "id": 4,
+          "name": "aax"
+        },
+        {
+          "id": 5,
+          "name": "kabd baksjbd kjabsdjkb absdkjabskjdkjab kjdbakjsbk dbakjbdk jabbdkjabdkasd asd"
+        }
       ]
     },
     "GridElements": [
@@ -21,17 +37,17 @@
         "Edit": 0,
         "Width": 12,
         "resources": {
-          "name": "xxsdfs",
-          "type": "typ",
-          "services": "slyzbyx",
+          "name": "xxsdfs jbsdjkksd f",
+          "type": "typ jhbasdhhadsj xxxasdas",
+          "services": "slyzbyx sadasd",
           "size": "rozsah",
           "year": "1999",
           "text": "asdasdasdsadsdsads\ntextkjbasd asdb kjasbd \naskdjbaskjd asd\n===\nlkasndlkans lknlknaslkn lknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslkndknaslkd klanlksnd lknasld nlknaslkn dlkaslknd lknlskanl knaslkndl knaslknd xvxbvxxxxx nxbnxxxxx",
-          "group": "prdel",
           "map": {
             "lat": "49.214807",
             "lnt": "16.28238"
-          }
+          },
+          "group": 1
         },
         "Content": {
           "gdataAlbumId": "5856635321710909729",
@@ -42,137 +58,159 @@
         }
       },
       {
-        "Id": "el_2",
-        "Type": "album",
-        "Edit": 0,
         "Width": 12,
-        "resources": {
-          "name": "xxx",
-          "type": "ksajbkj",
-          "services": "asda",
-          "size": "asda",
-          "year": "2010",
-          "text": "asdkj \n--\nlaknfsklnaf",
-          "group": "xxx"
-        },
+        "Id": "fc3fdc23-27b1-40ef-5567-65e9ccb8c09b",
         "Content": {
-          "gdataAlbumId": "5856635321710909729",
-          "name": "dalov",
-          "ratio": "ratio16_9",
-          "updated": 1386623854671,
-          "thumbnail": "https://lh6.googleusercontent.com:443/-UahgMOUNyw0/UUbyy5mVmSE/AAAAAAAAARc/V8o3VahEf9s/s95-c/Dalov.jpg"
-        }
-      },
-      {
-        "Id": "el_3",
-        "Type": "album",
-        "Edit": 0,
-        "Width": 12,
-        "resources": {
-          "name": "xxasd",
-          "text": "laknsdjbasd\n--\n\nadsk jbaskdjb akskdjbask jbbsdabfjhsadjfb kjbsdkajfb kbsadkfk bskdfkbk sbkbskjdb kbskdjbfk skdfk bskjdbfksafbpiewb kjbweiufb kjsabfi bsadfkjb kjsadbfkjebkjfbiasdbfiusdbfile kfjbsaidu bkjsdfb ibsadjkf jskdfb kjbskjfkjsbad ksdf f ssd",
-          "type": "sfs",
-          "services": "sdf",
-          "size": "sdf",
-          "year": "sdafsadf afasdf s",
-          "group": "prdel"
-        },
-        "Content": {
-          "gdataAlbumId": "5857343418831655265",
-          "name": "home",
-          "updated": 1386462392149,
-          "ratio": "ratio16_9"
-        }
-      },
-      {
-        "Id": "el_7",
-        "Type": "album",
-        "Edit": 0,
-        "Width": 12,
-        "Content": {
-          "gdataAlbumId": "5869199268849865201",
-          "name": "Schránka",
-          "updated": 1386194548117,
-          "ratio": "ratio16_9"
-        },
-        "resources": {
-          "group": "xxx",
-          "name": "asds"
-        }
-      },
-      {
-        "Id": "el_7",
-        "Type": "album",
-        "Edit": 0,
-        "Width": 12,
-        "Content": {
-          "gdataAlbumId": "5869199268849865201",
-          "name": "Schránka",
-          "updated": 1386194548117,
           "ratio": "ratio3_4"
         },
         "resources": {
-          "group": "jkasbdas",
-          "name": "asd"
-        }
+          "name": "asdasd",
+          "group": 0
+        },
+        "Name": "",
+        "Type": "album"
       },
       {
-        "Id": "el_7",
-        "Type": "album",
-        "Edit": 0,
         "Width": 12,
+        "Id": "be5f6c68-991b-fac6-b91f-7801dcdca9c0",
         "Content": {
-          "gdataAlbumId": "5869199268849865201",
-          "name": "Schránka",
-          "updated": 1386194548117,
           "ratio": "ratio3_4"
         },
         "resources": {
-          "group": "xxx",
-          "name": "asd"
-        }
+          "group": 1
+        },
+        "Name": "",
+        "Type": "album"
       },
       {
-        "Id": "el_7",
-        "Type": "album",
-        "Edit": 0,
         "Width": 12,
+        "Id": "f61e08e0-32be-9541-3acd-abb1388e3b62",
         "Content": {
-          "gdataAlbumId": "5856635321710909729",
-          "name": "dalov",
-          "updated": 1386459752080,
           "ratio": "ratio3_4"
         },
-        "resources": {
-          "group": "jkasbdas",
-          "name": "asd"
-        }
+        "resources": {},
+        "Name": "",
+        "Type": "album"
       },
       {
-        "Id": "el_8",
-        "Type": "album",
-        "Edit": 0,
         "Width": 12,
+        "Id": "ac0e9205-0da5-e1b5-5bca-2be027082649",
         "Content": {
-          "ratio": "ratio3_4",
-          "gdataAlbumId": "5854398682938619601",
-          "name": "Pictures",
-          "thumbnail": "https://lh6.googleusercontent.com:443/-ZV0s23gJdHw/UT8AlY4SNtE/AAAAAAAAArI/zyrpsFVexME/s95-c/Pictures.jpg",
-          "updated": 1386625603944
-        }
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
       },
       {
-        "Id": "el_9",
-        "Type": "album",
-        "Edit": 0,
         "Width": 12,
+        "Id": "72518087-236f-83c2-20b3-c280ecdff235",
         "Content": {
-          "ratio": "ratio3_4",
-          "gdataAlbumId": "5857023433865510369",
-          "name": "polsko",
-          "thumbnail": "https://lh5.googleusercontent.com:443/-J6BiWYEv6tw/UUhTyACxPeE/AAAAAAAAAwM/1kgQXLpQNXM/s95-c/Polsko.jpg",
-          "updated": 1386625460811
-        }
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "e94a74bf-00e2-dcd1-1e28-b7107f577dde",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "02ee2f6f-7b80-d158-1cc8-1d400725716a",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "21298069-8bbd-cbe4-fc62-3c50c1ed2d68",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "13207956-753c-3f20-4b38-03b0bbe88f07",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "12c370ca-0adb-c3e4-dc1b-362bec5f381b",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "2b0148ce-e372-c745-dc2f-95265fb84827",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "a942e69e-dec6-eb5b-a764-6d9c9d46eda4",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "5263793d-6ab6-4ddd-afad-39484e82322c",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "52bd3960-629a-9af8-1b77-17644755c023",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "ee2c597b-f52b-078e-29f1-99becc3e954d",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
       }
     ]
   },

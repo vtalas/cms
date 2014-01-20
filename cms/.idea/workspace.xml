@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Controllers/Api/Server/AdminApiController.cs" afterPath="$PROJECT_DIR$/Controllers/Api/Server/AdminApiController.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scripts/Admin/class.gridElement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEditTextarea.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scripts/modules/module.ui-common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/Dashboard.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/Dashboard.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Global.asax.cs" afterPath="$PROJECT_DIR$/Global.asax.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/Grids.js" afterPath="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Shared/_AdminLayout.cshtml" afterPath="$PROJECT_DIR$/Views/Shared/_AdminLayout.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/admin.less" afterPath="$PROJECT_DIR$/Content/admin.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/angular-resource.js" afterPath="$PROJECT_DIR$/Scripts/angular-resource.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/angular.js" afterPath="$PROJECT_DIR$/Scripts/angular.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" afterPath="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js" afterPath="$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/modules/module.stringutils.js" afterPath="$PROJECT_DIR$/Scripts/modules/module.stringutils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" afterPath="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
@@ -28,7 +41,100 @@
     <favorites_list name="cms" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="module.cmsapi.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/modules/module.cmsapi.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="10" selection-start="1635" selection-end="1635" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="3300">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="album.thtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="104" column="49" selection-start="3266" selection-end="3266" vertical-scroll-proportion="-30.724138" vertical-offset="1189" max-vertical-offset="3560">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="directive.ngcGdataGallery.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="60" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0" vertical-offset="574" max-vertical-offset="2580">
+              <folding>
+                <marker date="1390252889943" expanded="false" signature="1773:1788" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="controller.album.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="0" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0" vertical-offset="400" max-vertical-offset="1880">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clientspecific.thtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="36" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0" vertical-offset="549" max-vertical-offset="1200">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="directive.ngcClickEdit.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="44" selection-start="801" selection-end="801" vertical-scroll-proportion="0.0" vertical-offset="400" max-vertical-offset="900">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="directive.ngcClickEditTextarea.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEditTextarea.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="50" selection-start="836" selection-end="836" vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="900">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="module.ui-common.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/modules/module.ui-common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="24" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="20" max-vertical-offset="440">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pageCtrl.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="86" column="0" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.0" vertical-offset="1416" max-vertical-offset="2480">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.less" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Content/admin.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="328" column="23" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.68421054" vertical-offset="5910" max-vertical-offset="7160">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -51,22 +157,29 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Views/Admin/Dashboard.cshtml" />
         <option value="$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js" />
         <option value="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" />
         <option value="$PROJECT_DIR$/Scripts/modules/module.cmsapi.js" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcGroups.js" />
         <option value="$PROJECT_DIR$/Views/Admin/template/aaa.cshtml" />
+        <option value="$PROJECT_DIR$/Views/Admin/Dashboard.cshtml" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/class.gridElement.js" />
+        <option value="$PROJECT_DIR$/Scripts/modules/module.ui-common.js" />
+        <option value="$PROJECT_DIR$/Content/admin.less" />
         <option value="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEditTextarea.js" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" />
       </list>
     </option>
   </component>
@@ -172,7 +285,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -183,7 +296,171 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c78ee05e-1115-480b-9ab7-a3ab3c0f6643" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c78ee05e-1115-480b-9ab7-a3ab3c0f6643" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pageElements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="c78ee05e-1115-480b-9ab7-a3ab3c0f6643" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pageElements" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="album" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App_Data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ApplicationData" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -197,6 +474,8 @@
     <property name="GoToClass.includeJavaFiles" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+    <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -211,14 +490,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Testacular server">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -229,16 +500,24 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="$PROJECT_DIR$/tests/config/jsTestDriver.conf" />
       <setting name="serverType" value="EXTERNAL" />
       <setting name="serverAddress" value="http://localhost:9876" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="NodeunitConfigurationType" factoryName="Nodeunit">
@@ -353,10 +632,10 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32945737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17864583" sideWeight="0.6836935" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.178515" sideWeight="0.6836935" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32708585" sideWeight="0.54545456" order="7" side_tool="true" content_ui="tabs" />
@@ -365,13 +644,18 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3145083" sideWeight="0.52398527" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3139535" sideWeight="0.52398527" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956672" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998997" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3156863" sideWeight="0.47601476" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998997" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USERS">
+      <collection />
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -400,6 +684,118 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/class.gridElement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="5" selection-start="337" selection-end="337" vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="600" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/htmlDragAndDrop/angular-ui-ext-dndClass.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="0" selection-start="4481" selection-end="4481" vertical-scroll-proportion="0.0" vertical-offset="2460" max-vertical-offset="2580" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="19" selection-start="233" selection-end="233" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="11680" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="19" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1740" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/Dashboard.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="32" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="313" column="1" selection-start="3725" selection-end="3725" vertical-scroll-proportion="0.0" vertical-offset="5834" max-vertical-offset="6500">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="53" selection-start="1318" selection-end="1329" vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="7" selection-start="1363" selection-end="1363" vertical-scroll-proportion="0.0" vertical-offset="980" max-vertical-offset="2180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="19" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1740" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/Dashboard.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="32" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="16" selection-start="1822" selection-end="1822" vertical-scroll-proportion="0.0" vertical-offset="2872" max-vertical-offset="6460">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="53" selection-start="1318" selection-end="1329" vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="9" selection-start="1691" selection-end="1691" vertical-scroll-proportion="0.0" vertical-offset="1280" max-vertical-offset="2220">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="19" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1740" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/Dashboard.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="32" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="5" max-vertical-offset="980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="16" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6460">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="10" selection-start="262" selection-end="262" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="26" selection-start="41" selection-end="41" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1740" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/Dashboard.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="32" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="169" max-vertical-offset="980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="310" column="0" selection-start="3678" selection-end="3678" vertical-scroll-proportion="0.0" vertical-offset="5694" max-vertical-offset="6340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="60" selection-start="168" selection-end="168" vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="970" />
@@ -415,43 +811,9 @@
         <state line="18" column="43" selection-start="419" selection-end="419" vertical-scroll-proportion="0.36036035" vertical-offset="0" max-vertical-offset="999" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="78" selection-start="938" selection-end="938" vertical-scroll-proportion="0.29598308" vertical-offset="840" max-vertical-offset="3220" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="382" selection-end="382" vertical-scroll-proportion="0.2802803" vertical-offset="0" max-vertical-offset="1540" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/modules/module.cmsapi.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="6" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3300" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1380" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="28" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="641" max-vertical-offset="2040" />
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/standardSchemas/xhtml1-transitional.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1012" column="2" selection-start="29944" selection-end="29944" vertical-scroll-proportion="0.2932933" vertical-offset="19947" max-vertical-offset="55820">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="22" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
-          <folding />
-        </state>
+        <state line="1012" column="2" selection-start="29944" selection-end="29944" vertical-scroll-proportion="0.2932933" vertical-offset="19947" max-vertical-offset="55820" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcLoader.js">
@@ -459,35 +821,158 @@
         <state line="5" column="26" selection-start="149" selection-end="149" vertical-scroll-proportion="0.1001001" vertical-offset="0" max-vertical-offset="999" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="77" selection-start="4869" selection-end="4869" vertical-scroll-proportion="0.65088755" vertical-offset="2840" max-vertical-offset="5180" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Admin/template/aaa.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="970">
+        <state line="3" column="0" selection-start="56" selection-end="56" vertical-scroll-proportion="0.06185567" vertical-offset="0" max-vertical-offset="970" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="6" selection-start="727" selection-end="727" vertical-scroll-proportion="0.5805806" vertical-offset="120" max-vertical-offset="2100" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcGroups.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="18" selection-start="118" selection-end="118" vertical-scroll-proportion="0.1001001" vertical-offset="0" max-vertical-offset="999" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cms.web.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="606" column="49" selection-start="37337" selection-end="37337" vertical-scroll-proportion="0.15588236" vertical-offset="12014" max-vertical-offset="14200" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/htmlDragAndDrop/angular-ui-ext-dndClass.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="123" column="0" selection-start="4481" selection-end="4481" vertical-scroll-proportion="0.0" vertical-offset="1900" max-vertical-offset="2580" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="19" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1740" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/Dashboard.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="32" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/class.gridElement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="83" selection-start="523" selection-end="523" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/htmlDragAndDrop/angular-ui-ext.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="61" selection-end="61" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5420" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/modules/module.stringutils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="45" selection-start="98" selection-end="98" vertical-scroll-proportion="0.03984064" vertical-offset="0" max-vertical-offset="1004" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/modules/module.cmsUsers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1004" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/modules/module.appSettings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1004" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/modules/module.ui-common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="24" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="440">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/modules/module.cmsapi.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="10" selection-start="1635" selection-end="1635" vertical-scroll-proportion="0.0" vertical-offset="900" max-vertical-offset="3300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/31b3407c-2262-40bc-9dc0-343de3276262/chuj.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1280" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEdit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="44" selection-start="801" selection-end="801" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEditTextarea.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="50" selection-start="836" selection-end="836" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="214" column="36" selection-start="6669" selection-end="6669" vertical-scroll-proportion="0.0" vertical-offset="4016" max-vertical-offset="5280">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="36" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0" vertical-offset="549" max-vertical-offset="1200">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="603" selection-end="603" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1880">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="20" selection-start="137" selection-end="137" vertical-scroll-proportion="0.14432989" vertical-offset="0" max-vertical-offset="980">
+        <state line="57" column="110" selection-start="1956" selection-end="1956" vertical-scroll-proportion="-11.034483" vertical-offset="820" max-vertical-offset="1600" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="60" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0" vertical-offset="574" max-vertical-offset="2580">
+          <folding>
+            <marker date="1390252889943" expanded="false" signature="1773:1788" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="49" selection-start="3266" selection-end="3266" vertical-scroll-proportion="-30.724138" vertical-offset="1189" max-vertical-offset="3560">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js">
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="6" selection-start="727" selection-end="727" vertical-scroll-proportion="0.5805806" vertical-offset="120" max-vertical-offset="2100">
+        <state line="25" column="10" selection-start="440" selection-end="440" vertical-scroll-proportion="-13.793103" vertical-offset="100" max-vertical-offset="8380">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/directive.ngcGroups.js">
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="18" selection-start="118" selection-end="118" vertical-scroll-proportion="0.1001001" vertical-offset="0" max-vertical-offset="999">
+        <state line="86" column="0" selection-start="2087" selection-end="2087" vertical-scroll-proportion="0.0" vertical-offset="1416" max-vertical-offset="2480">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="328" column="23" selection-start="4001" selection-end="4001" vertical-scroll-proportion="0.68421054" vertical-offset="5910" max-vertical-offset="7160">
           <folding />
         </state>
       </provider>

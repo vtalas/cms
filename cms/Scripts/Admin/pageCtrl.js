@@ -2,29 +2,21 @@
 //	var newitem = { Id: 0, Width: 12, Type: "text", Position: position, Edit: 0 };
 //	return newitem;
 //}
-var generateUid = function (separator) {
-	var delim = separator || "-";
-
-	function S4() {
-		return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-	}
-
-	return (S4() + S4() + delim + S4() + delim + S4() + delim + S4() + delim + S4() + S4() + S4());
-};
-var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$json", function ($scope, $http, $routeParams, appSettings, GridApi, $json) {
+var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$json","$window", function ($scope, $http, $routeParams, appSettings, GridApi, $json, $window) {
 	var gridId = $routeParams.Id,
-		x;
+		gridObject;
 
 	$scope.grid = {};
 
 	var getGrid = function () {
-		$scope.grid = x.getGrid(gridId);
+		$scope.grid = gridObject.getGrid(gridId);
 	};
 
 	GridApi.load().success(function (data) {
-		x = new Picus(data, $json);
+		gridObject = new Picus(data, $json);
 		getGrid();
 	});
+
 	$scope.availableTemplates = [
 		{ value: "text", name: "Text" },
 		{ value: "album", name: "Album" },
@@ -50,21 +42,22 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 	});
 
 
-	$scope.addWithType = function (item, gridid, templateItem, event) {
+	$scope.addWithType = function (item, templateItem, event) {
 		event.preventDefault();
 		item.Type = templateItem.value;
 		item.Name= templateItem.name;
-		$scope.addToEnd(item, gridid);
+		$scope.addToEnd(item);
 	};
 
-	$scope.addToEnd = function (item, gridId) {
-		$scope.add(item, gridId);
+	$scope.addToEnd = function (item) {
+		$scope.add(item);
+		$(window).scrollTop($(document).height());
 	};
 
 	$scope.add = function (item) {
-		item.Id = generateUid("");
-		$scope.grid.GridElements.push(item);
-		x.save();
+		var elem = new GridElement({type: item.Type});
+		$scope.grid.GridElements.push(elem);
+		gridObject.save();
 	};
 
 	$scope.remove = function (item) {
@@ -72,7 +65,7 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 		$scope.grid.GridElements.splice(index, 1);
 		item.Id = 0;
 		item.Content = "";
-		x.save();
+		gridObject.save();
 	};
 
 	var broadcastTime = function () {
@@ -85,21 +78,45 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 	timeout();
 
 	$scope.$on("gridelement-save", function () {
-		x.save();
+		gridObject.save();
 	});
 
 	$scope.$on("gridname.showPreview", function () {
-		x.save();
+		gridObject.save();
 	});
 
 	$scope.save = function () {
-		x.save();
+		gridObject.save();
 	};
-
+3
 	$scope.showHelp = function (gridelement) {
 		var help = gridelement.help || false;
 		gridelement.help = !help;
 	};
 
+	$scope.newGroupName = "";
+	$scope.addNewGroup = function () {
+		var groups = $scope.grid.groups.items,
+			id = 0;
 
+		for (var i = 0; i < groups.length; i++) {
+			id = Math.max(id, groups[i].id);
+		}
+		id++;
+		groups.push({id: id, name: $scope.newGroupName});
+		gridObject.save();
+		$scope.newGroupName = "";
+	};
+
+	$scope.deleteGroup = function (id) {
+		var groups = $scope.grid.groups.items;
+
+		for (var i = 0; i < groups.length; i++) {
+			if (id === groups[i].id){
+				groups.splice(i,1);
+				gridObject.save();
+				return ;
+			}
+		}
+	};
 }];

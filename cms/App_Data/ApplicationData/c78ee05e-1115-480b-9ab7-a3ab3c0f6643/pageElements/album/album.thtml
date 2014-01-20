@@ -72,7 +72,7 @@
 				<div tooltip="Text" tooltip-placement="left" style="border: 1px dotted yellowgreen; padding:6px;margin-bottom:10px">
 				<div ng-bind-html-unsafe="toHtml(gridelement.resources.text)"></div>
 				<div class="control-group" >
-					<div ngc-click-edit="gridelement.resources.text" type="textarea" placeholder="Text"></div>
+					<div ngc-click-edit-textarea="gridelement.resources.text" placeholder="Text"></div>
 				</div>
 				</div>
 
@@ -81,7 +81,7 @@
 				<div class="control-group" ngc-click-edit="gridelement.resources.map.lnt" type="input" placeholder="lng"></div>
 
 				<div class="control-group" tooltip="{{groups.groupName}}" tooltip-placement="left">
-					<select ng-model="gridelement.resources.group" ng-options="c for c in groups.items" ng-change="saveGridElement()" >
+					<select ng-model="gridelement.resources.group" ng-options="c.id as c.name for c in groups.items" ng-change="saveGridElement()" >
 						<option value="">---</option>
 					</select>
 				</div>
@@ -93,7 +93,11 @@
 					</div>
 					<div>
 						<label>formát náhledu</label>
-						<select ng-model="$parent.gridelement.Content.ratio" ng-options="c.val as c.name for c in $parent.thumbnailRatios" ng-change="saveGridElement()" >
+						{{gridelement.Content.ratio}}..
+						-={{getRatios[0]}}--
+						<select ng-model="gridelement.Content.ratio"
+								ng-options="c.val as c.name for c in getRatios"
+								ng-change="saveGridElement()" >
 						</select>
 					</div>
 					<div ng-show="!loading && albumPhotosAll" class="grid_9"

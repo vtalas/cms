@@ -1,5 +1,5 @@
 /*global & */
-var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui", "ui.bootstrap", "stringutils"]);
+var module = angular.module("gridsmodule", ["cmsapi", "templateExt", "ui", "ui.bootstrap", "stringutils", "ngRoute"]);
 
 function removeFromArray(item, collection) {
 	var index;
@@ -232,6 +232,7 @@ module.directive("ngcHover", function () {
 });
 
 module.directive("ngcClickEdit", ngcClickEditDirective);
+module.directive("ngcClickEditTextarea", ngcClickEditTextAreaDirective);
 module.directive("ngcGdataGallery", ["gdataPhotos", ngcGDataGallery]);
 //module.directive("ngcGdataGallery", ["g	dataPhotos",  ngcGDataGallery ]);
 module.directive("ngcLoader", ngcLoader);
