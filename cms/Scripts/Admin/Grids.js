@@ -233,7 +233,6 @@ module.directive("ngcHover", function () {
 
 module.directive("ngcClickEdit", ngcClickEditDirective);
 module.directive("ngcClickEditTextarea", ngcClickEditTextAreaDirective);
-module.directive("ngcGdataGallery", ["gdataPhotos", ngcGDataGallery]);
 //module.directive("ngcGdataGallery", ["g	dataPhotos",  ngcGDataGallery ]);
 module.directive("ngcLoader", ngcLoader);
 module.directive("ngcLazyImage", function () {

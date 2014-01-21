@@ -87,16 +87,16 @@
 				</div>
 			</div>
 			<div class="span6" style="margin-left:0px">
-				<div ngc-gdata-gallery="gridelement.Content" data-items-count="1" style="padding-left:20px">
+
+				<div ng-controller="ngcGDataGalleryCtrl" style="padding-left:20px">
 					<div ng-show="loading" class="image-small-loader">
 						<img ngc-loader=""/>
 					</div>
 					<div>
 						<label>formát náhledu</label>
-						{{gridelement.Content.ratio}}..
-						-={{getRatios[0]}}--
+						{{itemsCount}}
 						<select ng-model="gridelement.Content.ratio"
-								ng-options="c.val as c.name for c in getRatios"
+								ng-options="c.val as c.name for c in thumbnailRatios"
 								ng-change="saveGridElement()" >
 						</select>
 					</div>

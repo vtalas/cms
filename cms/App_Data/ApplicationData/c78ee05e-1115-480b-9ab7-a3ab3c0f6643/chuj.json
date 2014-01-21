@@ -1,7 +1,7 @@
 [
   {
     "Category": "Page",
-    "Name": "projekty",
+    "Name": "Projekty",
     "Link": "projekty",
     "id": "grid_1",
     "Edit": 0,
@@ -27,6 +27,10 @@
         {
           "id": 5,
           "name": "kabd baksjbd kjabsdjkb absdkjabskjdkjab kjdbakjsbk dbakjbdk jabbdkjabdkasd asd"
+        },
+        {
+          "id": 6,
+          "name": "asdasd"
         }
       ]
     },
@@ -37,7 +41,7 @@
         "Edit": 0,
         "Width": 12,
         "resources": {
-          "name": "xxsdfs jbsdjkksd f",
+          "name": "xxsdfs jbsdjkksd fkjabsdkjha",
           "type": "typ jhbasdhhadsj xxxasdas",
           "services": "slyzbyx sadasd",
           "size": "rozsah",
@@ -47,13 +51,13 @@
             "lat": "49.214807",
             "lnt": "16.28238"
           },
-          "group": 1
+          "group": 3
         },
         "Content": {
-          "gdataAlbumId": "5856635321710909729",
-          "name": "dalov",
-          "updated": 1386625813410,
-          "thumbnail": "https://lh6.googleusercontent.com:443/-UahgMOUNyw0/UUbyy5mVmSE/AAAAAAAAARc/V8o3VahEf9s/s95-c/Dalov.jpg",
+          "gdataAlbumId": "5574024902156833169",
+          "name": "Album bez názvu",
+          "updated": 1390254451221,
+          "thumbnail": "https://lh4.googleusercontent.com:443/-leg5TNjjeeU/TVrqHbY9UZE/AAAAAAAAAqc/Ve3NgZA9rW0/h480-c/AlbumBezNazvu.jpg",
           "ratio": "ratio16_9"
         }
       },
@@ -65,7 +69,11 @@
         },
         "resources": {
           "name": "asdasd",
-          "group": 0
+          "group": 1,
+          "type": "kasbd",
+          "services": "asdasd",
+          "year": "asdasd",
+          "size": "asdasd"
         },
         "Name": "",
         "Type": "album"

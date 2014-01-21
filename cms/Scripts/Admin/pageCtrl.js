@@ -88,7 +88,6 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 	$scope.save = function () {
 		gridObject.save();
 	};
-3
 	$scope.showHelp = function (gridelement) {
 		var help = gridelement.help || false;
 		gridelement.help = !help;
