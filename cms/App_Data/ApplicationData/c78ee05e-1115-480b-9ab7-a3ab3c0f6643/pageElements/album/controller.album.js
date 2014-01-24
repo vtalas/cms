@@ -66,6 +66,7 @@ var gdataalbum2 = function ($scope, gdataPhotos, appSettings, $markdown) {
 		if ($scope.albums === undefined && !$scope.showGdataAlbumsValue) {
 			getAlbums();
 		}
+
 		return $scope.showGdataAlbumsValue = !$scope.showGdataAlbumsValue;
 	};
 

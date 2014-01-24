@@ -40,6 +40,7 @@
 		margin-right: 10px;
 		margin-bottom: 10px;
 	}
+
 	.clickable {
 		cursor: pointer;
 	}
@@ -47,126 +48,145 @@
 </style>
 
 <div ng-controller="gdataalbum2" class="row">
+	<div class="span12">
+		<div class="gridelement-content" style="">
+			<h3 tooltip="Jméno" tooltip-placement="left">
+				<span ngc-click-edit="gridelement.resources.name" type="input" placeholder="Jméno"></span>
+			</h3>
 
-
-	<div class="gridelement-content" style="">
-		<div class="container">
-			<div class="span6" style="margin-left:0px">
-				<div class="control-group">
-					<h3 tooltip="Jméno" tooltip-placement="left">
-						<span ngc-click-edit="gridelement.resources.name" type="input" placeholder="Jméno"  ></span>
-					</h3>
+			<div ng-controller="ngcGDataGalleryCtrl"
+				 style="border: 1px dotted yellowgreen; padding:6px;margin-bottom:10px">
+				<div ng-show="loading" class="image-small-loader">
+					<img ngc-loader=""/>
 				</div>
-				<div class="control-group" tooltip="Typ" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.resources.type" type="input" placeholder="Typ" ></div>
-				</div>
-				<div class="control-group" tooltip="Služby" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.resources.services" type="input" placeholder="Služby"></div>
-				</div>
-				<div class="control-group" tooltip="Rozsah" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.resources.size" type="input" placeholder="Rozsah"></div>
-				</div>
-				<div class="control-group" tooltip="Rok" tooltip-placement="left">
-					<div ngc-click-edit="gridelement.resources.year" type="input" placeholder="Rok"></div>
-				</div>
-				<div tooltip="Text" tooltip-placement="left" style="border: 1px dotted yellowgreen; padding:6px;margin-bottom:10px">
-				<div ng-bind-html-unsafe="toHtml(gridelement.resources.text)"></div>
-				<div class="control-group" >
-					<div ngc-click-edit-textarea="gridelement.resources.text" placeholder="Text"></div>
-				</div>
-				</div>
-
-				<label>mapa:</label>
-				<div class="control-group" ngc-click-edit="gridelement.resources.map.lat" type="input" placeholder="lat"></div>
-				<div class="control-group" ngc-click-edit="gridelement.resources.map.lnt" type="input" placeholder="lng"></div>
-
-				<div class="control-group" tooltip="{{groups.groupName}}" tooltip-placement="left">
-					<select ng-model="gridelement.resources.group" ng-options="c.id as c.name for c in groups.items" ng-change="saveGridElement()" >
-						<option value="">---</option>
+				<div>
+					<label>formát náhledu {{itemsCount}}</label>
+					<select ng-model="gridelement.Content.ratio"
+							ng-options="c.val as c.name for c in thumbnailRatios"
+							ng-change="saveGridElement()">
 					</select>
 				</div>
-			</div>
-			<div class="span6" style="margin-left:0px">
+				<div ng-show="!loading && albumPhotosAll" class="grid_9"
+					 tooltip-html-unsafe="{{albumInfo}}"
+					 tooltip-placement="left"
+					 tooltip-popup-delay="300">
 
-				<div ng-controller="ngcGDataGalleryCtrl" style="padding-left:20px">
-					<div ng-show="loading" class="image-small-loader">
-						<img ngc-loader=""/>
+					<div ng-repeat="photo in albumPhotosAll" class="image-small"
+						 ng-hide="$index + 1 > itemsCount && !showAllValue">
+						<img ng-src="{{photo.Thumbnails[0].PhotoUri}}" src="" alt="image"/>
 					</div>
-					<div>
-						<label>formát náhledu</label>
-						{{itemsCount}}
-						<select ng-model="gridelement.Content.ratio"
-								ng-options="c.val as c.name for c in thumbnailRatios"
-								ng-change="saveGridElement()" >
-						</select>
-					</div>
-					<div ng-show="!loading && albumPhotosAll" class="grid_9"
-						 tooltip-html-unsafe="{{albumInfo}}"
-						 tooltip-placement="left"
-						 tooltip-popup-delay="300">
-
-						<div ng-repeat="photo in albumPhotosAll" class="image-small"
-							 ng-hide="$index + 1 > itemsCount && !showAllValue">
-							<img ngc-lazy-image="photo.Thumbnails[0].PhotoUri" alt="image"/>
-						</div>
 						<span ng-show="length > itemsCount && !showAllValue">
 							<button class="btn btn-primary btn-small" ng-click="showAll()">zobrazit vše</button>
 							<i>+{{length - itemsCount}}</i>
 						</span>
-						<button class="btn btn-primary btn-small" ng-show="length > itemsCount && showAllValue"
-								ng-click="hide()">
-							schovat
-						</button>
-					</div>
+					<button class="btn btn-primary btn-small" ng-show="length > itemsCount && showAllValue"
+							ng-click="hide()">
+						schovat
+					</button>
+				</div>
 
 					<span>
 						<button ng-click="toggleGdataAlbums()" class="btn btn-small btn-success">Vybrat Album</button>
 						<span ng-show="albumPhotosAll.length > 0">
 							<span ng-click="refreshAlbums()" class="clickable">
 								<span class="icon-repeat" tooltip="Aktualizovat"></span>
-								<span 
-									tooltip-html-unsafe="Aktualizováno: {{updated | date:'MM.dd.yyyy HH:mm:ss'}}"
-									tooltip-popup-delay='300'
-									tooltip-placement="right">{{updatedTimeSpan}}</span>
+								<span
+										tooltip-html-unsafe="Aktualizováno: {{updated | date:'MM.dd.yyyy HH:mm:ss'}}"
+										tooltip-popup-delay='300'
+										tooltip-placement="right">{{updatedTimeSpan}}</span>
 							</span>
 						</span>
 					</span>
+
+				<div class="clearfix"></div>
+				<div class="gridelement-content">
+					<div ng-show="haserror" class="alert alert-error">
+						<h4>chyba připojení </h4>
+
+						<div>
+							ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
+						</div>
+					</div>
 				</div>
+
+				<div ng-show="showGdataAlbumsValue" class="gridelement-content">
+					<h3 style="float:left">Alba</h3>
+
+					<div ng-show="albums.length == 0">
+						<H4 class="text-error">nenalezena žádná alba</H4>
+					</div>
+					<div ng-show="albums == null">
+						<img ngc-loader/>
+					</div>
+					<div ng-show="albums == null && hasserror" class="alert alert-error">
+						<h4>chyba připojení </h4>
+
+						<div>
+							ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
+						</div>
+					</div>
+					<div ng-repeat="item in albums" class="gdataAlbum">
+						<div class="gdataThumb" ng-click="addAlbum(item)" title="{{item.Title}} ({{item.Album.NumPhotos}})">
+							<img ng-src="{{item.Thumbnail.Thumbnails[0].PhotoUri}}"/>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
 			</div>
+
+			<table style="width:100%">
+				<tr>
+					<td>
+						<div class="control-group" tooltip="{{groups.groupName}}" tooltip-placement="left">
+							<select ng-model="gridelement.resources.group"
+									ng-options="c.id as c.name for c in groups.items"
+									ng-change="saveGridElement()">
+								<option value="">---</option>
+							</select>
+						</div>
+						<!--<div class="control-group" tooltip="Typ" tooltip-placement="left">-->
+
+						<!--<div ngc-click-edit="gridelement.resources.type" type="input" placeholder="Typ"></div>-->
+						<!--</div>-->
+					</td>
+					<td>
+						<div class="control-group" tooltip="Služby" tooltip-placement="left">
+							<div ngc-click-edit="gridelement.resources.services" type="input"
+								 placeholder="Služby"></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="control-group" tooltip="Rozsah" tooltip-placement="left">
+							<div ngc-click-edit="gridelement.resources.size" type="input"
+								 placeholder="Rozsah"></div>
+						</div>
+					</td>
+					<td>
+						<div class="control-group" tooltip="Rok" tooltip-placement="left">
+							<div ngc-click-edit="gridelement.resources.year" type="input" placeholder="Rok"></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div tooltip="Text" tooltip-placement="left"
+				 style="border: 1px dotted yellowgreen; padding:6px;margin-bottom:10px">
+				<div ng-bind-html-unsafe="toHtml(gridelement.resources.text)"></div>
+				<div ngc-click-edit-textarea="gridelement.resources.text" placeholder="Text"></div>
+			</div>
+
+			<label>mapa:</label>
+
+			<div class="control-group" ngc-click-edit="gridelement.resources.map.lat" type="input"
+				 placeholder="lat"></div>
+			<div class="control-group" ngc-click-edit="gridelement.resources.map.lnt" type="input"
+				 placeholder="lng"></div>
+
+
 		</div>
 	</div>
-	
-	<div class="clearfix"></div>
-	<div class="gridelement-content">
-		<div ng-show="haserror" class="alert alert-error">
-			<h4>chyba připojení </h4>
-			<div>
-				ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
-			</div>
-		</div>
-	</div>
-
-	<div ng-show="showGdataAlbumsValue" class="gridelement-content">
-		<h3 style="float:left">Alba</h3>
-		<div ng-show="albums.length == 0">
-			<H4 class="text-error">nenalezena žádná alba</H4>
-		</div>
-		<div ng-show="albums == null">
-			<img ngc-loader/>
-		</div>
-		<div ng-show="albums == null && hasserror" class="alert alert-error">
-			<h4>chyba připojení </h4>
-			<div>
-				ověřte <a href="/render/{{applicationId}}/Gdata"> propojení s google účtem</a>
-			</div>
-		</div>
-		<div ng-repeat="item in albums" class="gdataAlbum">
-			<div class="gdataThumb" ng-click="addAlbum(item)" title="{{item.Title}} ({{item.Album.NumPhotos}})">
-				<img ngc-lazy-image="item.Thumbnail.Thumbnails[0].PhotoUri" />
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
-
-
 </div>
+
+

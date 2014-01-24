@@ -42,7 +42,7 @@
         "Width": 12,
         "resources": {
           "name": "xxsdfs jbsdjkksd fkjabsdkjha",
-          "type": "typ jhbasdhhadsj xxxasdas",
+          "type": "",
           "services": "slyzbyx sadasd",
           "size": "rozsah",
           "year": "1999",
@@ -54,10 +54,10 @@
           "group": 3
         },
         "Content": {
-          "gdataAlbumId": "5574024902156833169",
-          "name": "Album bez názvu",
-          "updated": 1390254451221,
-          "thumbnail": "https://lh4.googleusercontent.com:443/-leg5TNjjeeU/TVrqHbY9UZE/AAAAAAAAAqc/Ve3NgZA9rW0/h480-c/AlbumBezNazvu.jpg",
+          "gdataAlbumId": "5853999490774678289",
+          "name": "07 - GMC - Strelba",
+          "updated": 1390557805625,
+          "thumbnail": "https://lh3.googleusercontent.com:443/-D6YSFVdINcU/UT2VhWLxOxE/AAAAAAAAAtE/Xw2h04wwWLw/h480-c/07GMCStrelba.jpg",
           "ratio": "ratio16_9"
         }
       },
@@ -213,6 +213,24 @@
       {
         "Width": 12,
         "Id": "ee2c597b-f52b-078e-29f1-99becc3e954d",
+        "Content": {
+          "ratio": "ratio3_4"
+        },
+        "resources": {},
+        "Name": "",
+        "Type": "album"
+      },
+      {
+        "Width": 12,
+        "Id": "ae83e2e1-bd12-e42d-8ea5-4def82cd5fcf",
+        "Content": {},
+        "resources": {},
+        "Name": "",
+        "Type": "text"
+      },
+      {
+        "Width": 12,
+        "Id": "c1cf37e3-93c2-5a19-258b-2d58479774a5",
         "Content": {
           "ratio": "ratio3_4"
         },
