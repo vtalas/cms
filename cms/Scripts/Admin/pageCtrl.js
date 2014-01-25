@@ -23,7 +23,7 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 		{ value: "simplehtml", name: "Markdown" },
 		{ value: "kontakt", name: "Kontakt" },
 		//{ value: "gdataalbum", name: "Google Album" },
-		{ value: "clientspecific", name: "Klientská šablona" }
+		{ value: "clientspecific", name: "Klientsk� �ablona" }
 	];
 	$scope.newItem = {
 		Id: 0,
@@ -80,6 +80,9 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 	$scope.$on("gridelement-save", function () {
 		gridObject.save();
 	});
+	$scope.$on("trigger-save", function () {
+		gridObject.save();
+	});
 
 	$scope.$on("gridname.showPreview", function () {
 		gridObject.save();
@@ -93,29 +96,4 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 		gridelement.help = !help;
 	};
 
-	$scope.newGroupName = "";
-	$scope.addNewGroup = function () {
-		var groups = $scope.grid.groups.items,
-			id = 0;
-
-		for (var i = 0; i < groups.length; i++) {
-			id = Math.max(id, groups[i].id);
-		}
-		id++;
-		groups.push({id: id, name: $scope.newGroupName});
-		gridObject.save();
-		$scope.newGroupName = "";
-	};
-
-	$scope.deleteGroup = function (id) {
-		var groups = $scope.grid.groups.items;
-
-		for (var i = 0; i < groups.length; i++) {
-			if (id === groups[i].id){
-				groups.splice(i,1);
-				gridObject.save();
-				return ;
-			}
-		}
-	};
 }];

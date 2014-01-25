@@ -231,9 +231,6 @@ module.directive("ngcHover", function () {
 	};
 });
 
-module.directive("ngcClickEdit", ngcClickEditDirective);
-module.directive("ngcClickEditTextarea", ngcClickEditTextAreaDirective);
-//module.directive("ngcGdataGallery", ["g	dataPhotos",  ngcGDataGallery ]);
 module.directive("ngcLoader", ngcLoader);
 module.directive("ngcLazyImage", function () {
 	var loader = "/Content/loader16.gif";

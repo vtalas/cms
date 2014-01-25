@@ -101,7 +101,4 @@ function GDataGalleryCtrl($scope, gdataPhotos) {
 		$scope.updatedTimeSpan = dateReadable(new Date($scope.gallery.updated));
 		$scope.$digest();
 	});
-
-
-
 }
