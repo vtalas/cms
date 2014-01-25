@@ -1,3 +1,4 @@
+<<<<<<< json
 <<<<<<< HEAD
 <div class="gridpage">
 
@@ -9,6 +10,17 @@
 <div class="gridpage" ng-controller="gridPage">
 	<h2 ngc-click-edit="data.Name"
 >>>>>>> d73856d... merge
+=======
+﻿<div class="gridpage">
+<<<<<<< 2533ce49e5014f0cc006b2688a3bd6d567a906c8
+
+	<!--<ngc-groups>-->
+	<!--</ngc-groups>-->
+=======
+>>>>>>> local
+
+	<h2 ngc-click-edit="grid.Name"
+>>>>>>> local
 		namespace="gridname"
 		type="input"
 		placeholder="text"></h2>
@@ -50,6 +62,7 @@
 			<h3>{{grid.groups.groupName}}</h3>
 		</div>
 
+<<<<<<< json
 		<div class="content-groups">
 			<form ng-submit="addNewGroup()">
 				<table>
@@ -75,5 +88,8 @@
 				<!--</ul>-->
 			</form>
 		</div>
+=======
+		<div class="content-groups" ngc-editable-list="grid.groups.items"></div>
+>>>>>>> local
 	</div>
 </div>

@@ -1,8 +1,5 @@
 <div class="gridpage">
 
-	<!--<ngc-groups>-->
-	<!--</ngc-groups>-->
-
 	<h2 ngc-click-edit="grid.Name"
 		namespace="gridname"
 		type="input"
@@ -45,30 +42,6 @@
 			<h3>{{grid.groups.groupName}}</h3>
 		</div>
 
-		<div class="content-groups">
-			<form ng-submit="addNewGroup()">
-				<table>
-					<tr class="group-item" ng-repeat="group in grid.groups.items">
-						<td valign="top"><i class="fa fa-minus fa-small"></i></td>
-						<td>&nbsp;{{group.name}}</td>
-						<td valign="top"><i ng-click="deleteGroup(group.id)" class="fa fa-times fa-action"></i></td>
-					</tr>
-					<tr >
-						<td valign="top"></td>
-						<td colspan="2"><input ng-model="newGroupName" type="text" placeholder="přidat další"/></td>
-					</tr>
-				</table>
-				<!--<ul>-->
-					<!--<li class="group-item" >-->
-						<!--<div class="group-item-content " title="{{group.name}}">{{group.name}}</div>-->
-						<!--<span style="display: inline-block"><i class="fa fa-times fa-action"></i></span>-->
-					<!--</li>-->
-					<!--<li><input ng-model="newGroupName" type="text"/>-->
-						<!--<button class="btn" id="submit" value="submit" type="submit">ok</button>-->
-					<!--</li>-->
-
-				<!--</ul>-->
-			</form>
-		</div>
+		<div class="content-groups" ngc-editable-list="grid.groups.items"></div>
 	</div>
 </div>
