@@ -9,24 +9,8 @@
       "groupName": "Typy Projektů",
       "items": [
         {
-          "id": 0,
-          "name": "prdel"
-        },
-        {
-          "id": 1,
-          "name": "aaa"
-        },
-        {
-          "id": 3,
-          "name": "cccc"
-        },
-        {
           "id": 4,
           "name": "aax"
-        },
-        {
-          "id": 5,
-          "name": "kabd baksjbd kjabsdjkb absdkjabskjdkjab kjdbakjsbk dbakjbdk jabbdkjabdkasd asd"
         },
         {
           "id": 6,
@@ -34,11 +18,11 @@
         },
         {
           "id": 7,
-          "name": "ASDJBASDJLKASD"
+          "name": "ASDJBASDJLKASDasds"
         },
         {
           "id": 8,
-          "name": "JABSDKJABSJKD ASD"
+          "name": "xxx"
         }
       ]
     },
@@ -59,7 +43,7 @@
             "lat": "49.214807",
             "lnt": "16.28238"
           },
-          "group": 0
+          "group": 1
         },
         "Content": {
           "gdataAlbumId": "5853999490774678289",
