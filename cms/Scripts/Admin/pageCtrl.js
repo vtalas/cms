@@ -1,4 +1,4 @@
-﻿//function _newitem(position) {
+//function _newitem(position) {
 //	var newitem = { Id: 0, Width: 12, Type: "text", Position: position, Edit: 0 };
 //	return newitem;
 //}
