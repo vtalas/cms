@@ -65,6 +65,7 @@ namespace cms
 
 			var adminBundle = new Bundle("~/Scripts/admin_scripts", transforms)
 				.IncludeDirectory("~/Scripts/Admin", "*.js")
+				.IncludeDirectory("~/Content/application/groups", "*.js")
 				.IncludeDirectory("~/Scripts/Admin", "*.coffee")
 				.IncludeDirectory("~/Scripts/Controllers", "*.js")
 				.IncludeDirectory("~/Scripts/Controllers", "*.coffee")

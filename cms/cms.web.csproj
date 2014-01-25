@@ -311,9 +311,14 @@
     <Content Include="Content\admin.min.css">
       <DependentUpon>admin.less</DependentUpon>
     </Content>
+    <Content Include="Content\application\groups\module.editableElements.js" />
+    <Content Include="Content\application\groups\template.groups.html" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings-white.png" />
     <Content Include="Content\bootstrapdefault\img\glyphicons-halflings.png" />
     <Content Include="Content\fluid_grid.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\htmlDragAndDrop\angular-ui-ext-dndClass.js">
       <DependentUpon>angular-ui-ext-dndClass.ts</DependentUpon>
     </Content>
@@ -358,6 +363,7 @@
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Content\application\groups\groups.less" />
     <None Include="Content\bootstrapdefault\less\accordion.less" />
     <None Include="Content\bootstrapdefault\less\alerts.less" />
     <None Include="Content\bootstrapdefault\less\bootstrap.less" />
@@ -463,6 +469,36 @@
     <Content Include="Content\less\metro-bootstrap-source\variables.less" />
     <Content Include="Content\less\metro-bootstrap-source\wells.less" />
     <Content Include="Mvc.sitemap" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\font-awesome\less\core.less" />
+    <Content Include="Content\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\font-awesome\less\icons.less" />
+    <Content Include="Content\font-awesome\less\larger.less" />
+    <Content Include="Content\font-awesome\less\list.less" />
+    <Content Include="Content\font-awesome\less\mixins.less" />
+    <Content Include="Content\font-awesome\less\path.less" />
+    <Content Include="Content\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\font-awesome\less\spinning.less" />
+    <Content Include="Content\font-awesome\less\stacked.less" />
+    <Content Include="Content\font-awesome\less\variables.less" />
+    <Content Include="Content\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\font-awesome\scss\_core.scss" />
+    <Content Include="Content\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\font-awesome\scss\_list.scss" />
+    <Content Include="Content\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\font-awesome\scss\_path.scss" />
+    <Content Include="Content\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\font-awesome\scss\_spinning.scss" />
+    <Content Include="Content\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\font-awesome\scss\_variables.scss" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -471,9 +507,13 @@
     <Content Include="Content\admin.less" />
     <Content Include="Scripts\Admin\angular-templates-ext.js" />
     <Content Include="Scripts\Admin\angular-ui-ext-dndClass.ts" />
+    <Content Include="Scripts\Admin\class.gridElement.js" />
+    <Content Include="Scripts\Admin\controller.gdataGallery.js" />
     <Content Include="Scripts\Admin\controller.index.js" />
-    <Content Include="Scripts\Admin\directive.ngcGdataGallery.js" />
+    <Content Include="Scripts\Admin\directive.ngcClickEditTextarea.js" />
     <Content Include="Scripts\Admin\directive.ngcLoader.js" />
+    <Content Include="Scripts\angular-loader.js" />
+    <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\Controllers\controller.gDataPhotos.js" />
     <Content Include="Scripts\Controllers\controller.gdataPhotosSettings.js" />
     <Content Include="Scripts\Controllers\controller.photosSettings.js" />
@@ -510,6 +550,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\modules\module.settings.js" />
+    <Content Include="Scripts\modules\module.ui-common.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.3.0.js" />
     <Content Include="Service\Client.svc" />
     <Content Include="Content\grid.css" />
