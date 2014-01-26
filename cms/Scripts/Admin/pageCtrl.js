@@ -1,7 +1,3 @@
-//function _newitem(position) {
-//	var newitem = { Id: 0, Width: 12, Type: "text", Position: position, Edit: 0 };
-//	return newitem;
-//}
 var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$json","$window", function ($scope, $http, $routeParams, appSettings, GridApi, $json, $window) {
 	var gridId = $routeParams.Id,
 		gridObject;
@@ -23,7 +19,7 @@ var pageCtrl = ['$scope', '$http', '$routeParams', 'appSettings', 'GridApi', "$j
 		{ value: "simplehtml", name: "Markdown" },
 		{ value: "kontakt", name: "Kontakt" },
 		//{ value: "gdataalbum", name: "Google Album" },
-		{ value: "clientspecific", name: "Klientsk� �ablona" }
+		{ value: "clientspecific", name: "Klientská šablona" }
 	];
 	$scope.newItem = {
 		Id: 0,

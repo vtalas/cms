@@ -115,7 +115,7 @@
 					<h3>Alba</h3>
 
 					<div ng-show="albums.length == 0">
-						<H4 class="text-error">nenalezena žádná alba</H4>
+						<h4 class="text-error">nenalezena žádná alba</h4>
 					</div>
 					<div ng-show="albums == null">
 						<img ngc-loader/>

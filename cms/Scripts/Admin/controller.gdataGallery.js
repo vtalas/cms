@@ -54,6 +54,7 @@ function GDataGalleryCtrl($scope, gdataPhotos) {
 	var getCurrentAlbum = function (albumId, clearCache, callback) {
 		if (albumId !== null) {
 			$scope.loading = true;
+			$scope.galleryId = albumId;
 			gdataPhotos.getAlbumPhotos({ id: albumId, refreshCache: clearCache }, function (data) {
 				$scope.albumInfo = '<div style="text-align:left"><div><b>' + $scope.gallery.name + '</b></div><div>fotek: ' + data.length + '</div></div>';
 
@@ -86,7 +87,8 @@ function GDataGalleryCtrl($scope, gdataPhotos) {
 		var updatedDate = new Date().getTime();
 		$scope.gallery.updated = updatedDate;
 		$scope.$emit("gdataalbum-refresh", $scope.gallery);
-		getCurrentAlbum($scope.gallery.gdataAlbumId, true, function () {
+
+		getCurrentAlbum($scope.galleryId, true, function () {
 			$scope.updated = updatedDate;
 		});
 	};
