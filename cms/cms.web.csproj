@@ -510,7 +510,6 @@
     <Content Include="Scripts\Admin\class.gridElement.js" />
     <Content Include="Scripts\Admin\controller.gdataGallery.js" />
     <Content Include="Scripts\Admin\controller.index.js" />
-    <Content Include="Scripts\Admin\directive.ngcClickEditTextarea.js" />
     <Content Include="Scripts\Admin\directive.ngcLoader.js" />
     <Content Include="Scripts\angular-loader.js" />
     <Content Include="Scripts\angular-route.js" />
@@ -524,7 +523,6 @@
     <Content Include="Scripts\modules\module.appSettings.js" />
     <Content Include="Scripts\modules\module.cmsUsers.js" />
     <Content Include="Scripts\Controllers\controller.applicationusers.js" />
-    <Content Include="Scripts\Admin\directive.ngcClickEdit.js" />
     <Content Include="Scripts\Admin\menuCtrl.js" />
     <Content Include="Scripts\modules\module.admin-index.js" />
     <Content Include="Scripts\angular-ui-ext.js" />

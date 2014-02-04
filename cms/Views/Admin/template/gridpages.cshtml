@@ -12,13 +12,16 @@
 		<div class="span5">
 			<div style="width: 5px; background-color: {{authColor(grid)}}; height: 47px; float: left">&nbsp;</div>
 			<span style="width: 2em" class="font-icon  {{grid.Category}}" tooltip="{{authTooltip(grid)}}" tooltip-popup-delay='300'></span>
+			<input type="checkbox" ng-model="grid.visible" ng-change="save(grid)"
+				   tooltip-popup-delay='600'
+				   tooltip-html-unsafe="<div style='text-align:left'><b>Viditelnost</b><div> <div style='text-align:left'>pokud je zaškrtnuto tak je stránka zobrazena v menu</div>" />
 
 			<input ng-show="grid.Edit" type="checkbox" ng-model="grid.Authorize"
 				tooltip-popup-delay='600'
 				tooltip-html-unsafe="<div style='text-align:left'><b>Autorizace</b><div> <div style='text-align:left'>pokud je zaškrtnuto tak je obsah zobrazen jen po přihlášení</div>" />
 
 			<a ng-hide="grid.Edit" href="#/{{getLink(grid)}}" class="btn btn-link align-left" style="max-width:290px">{{grid.Name}}</a>
-			<span ng-show="grid.Edit" class="gridpage-input">cultureCtrl
+			<span ng-show="grid.Edit" class="gridpage-input">
 				<input ng-model="grid.Name" required />
 			</span>
 		</div>
@@ -29,6 +32,7 @@
 			<div ng-show="grid.Edit" class="gridpage-input">
 				<input ng-model="grid.Link" required />
 			</div>
+
 		</div>
 		<div class="span3" ng-class="editModeClass(grid)">
 			<div class="btn-group">
@@ -41,6 +45,8 @@
 				<a class="btn" href="#" ng-click="remove(grid)" tooltip-popup-delay='500' tooltip="delete"><i class="icon-trash"></i></a>
 			</div>
 			<a class="btn" href="{{aaa(grid)}}" target="_blank" tooltip-placement="top" tooltip="data preview - XML"><i class="icon-align-justify"></i></a>
+
+
 		</div>
 	</div>
 

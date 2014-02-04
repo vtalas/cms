@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/admin.less" afterPath="$PROJECT_DIR$/Content/admin.less" />
+    <list default="true" id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="vytvoreni content/application - rozhozeni js podle&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cms.data/Repository/IRepository.cs" afterPath="$PROJECT_DIR$/../cms.data/Repository/IRepository.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Web.wapi.cz release.config" afterPath="$PROJECT_DIR$/Web.wapi.cz release.config" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Content/application/groups/template.groups.html" afterPath="$PROJECT_DIR$/Content/application/groups/template.groups.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cms.web.csproj" afterPath="$PROJECT_DIR$/cms.web.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml" afterPath="$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" afterPath="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" />
+    </list>
+    <list id="6c4aca24-1699-498a-974e-e9b77b4c326d" name="New changelist" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cms.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +35,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="simplehtml.thtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="0" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0" vertical-offset="280" max-vertical-offset="400">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="chuj.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="9060">
+            <state line="479" column="19" selection-start="13234" selection-end="13234" vertical-scroll-proportion="-20.37931" vertical-offset="8989" max-vertical-offset="10400">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gridpages.cshtml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="80" selection-start="900" selection-end="900" vertical-scroll-proportion="-0.092307694" vertical-offset="420" max-vertical-offset="1860">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+                <marker date="1391548257513" expanded="true" signature="3209:3320" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -39,83 +68,7 @@
       <file leaf-file-name="album.thtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="1" selection-start="2726" selection-end="2726" vertical-scroll-proportion="-12.24138" vertical-offset="1725" max-vertical-offset="4060">
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="template.groups.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/application/groups/template.groups.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="589" selection-end="589" vertical-scroll-proportion="-10.344828" vertical-offset="0" max-vertical-offset="420">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.less" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Content/admin.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="157" column="11" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.29836065" vertical-offset="2958" max-vertical-offset="7180">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grids.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="1" selection-start="3107" selection-end="3107" vertical-scroll-proportion="0.0" vertical-offset="2060" max-vertical-offset="5200">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="groups.less" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/application/groups/groups.less">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="24" selection-start="116" selection-end="116" vertical-scroll-proportion="-2.9629629" vertical-offset="0" max-vertical-offset="420">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="module.editableElements.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Content/application/groups/module.editableElements.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="3860">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pageCtrl.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="1" selection-start="2328" selection-end="2328" vertical-scroll-proportion="0.0" vertical-offset="1049" max-vertical-offset="2020">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller.gdataGallery.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Admin/controller.gdataGallery.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="1" selection-start="2712" selection-end="2712" vertical-scroll-proportion="0.0" vertical-offset="1516" max-vertical-offset="2180">
-              <folding>
-                <marker date="1390693244196" expanded="false" signature="1431:1446" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="controller.album.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="8" selection-start="1779" selection-end="1779" vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1900">
+            <state line="171" column="66" selection-start="4980" selection-end="4980" vertical-scroll-proportion="0.0" vertical-offset="3058" max-vertical-offset="4060">
               <folding />
             </state>
           </provider>
@@ -147,7 +100,6 @@
         <option value="$PROJECT_DIR$/Scripts/Admin/gridpagesCtrl.js" />
         <option value="$PROJECT_DIR$/Scripts/Controllers/controller.gridPage.js" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/text/text.thtml" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.coffee" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/gdataalbum.thtml" />
         <option value="$PROJECT_DIR$/Scripts/modules/module.cmsapi.js" />
@@ -160,16 +112,19 @@
         <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcClickEditTextarea.js" />
         <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/clientspecific/clientspecific.thtml" />
         <option value="$PROJECT_DIR$/Scripts/Admin/directive.ngcGdataGallery.js" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js" />
         <option value="$PROJECT_DIR$/Content/application/groups/module.editableElements.js" />
-        <option value="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
+        <option value="$PROJECT_DIR$/Content/admin.less" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.js" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/controller.gdataGallery.js" />
         <option value="$PROJECT_DIR$/Scripts/Admin/pageCtrl.js" />
-        <option value="$PROJECT_DIR$/Scripts/Admin/Grids.js" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml" />
-        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" />
         <option value="$PROJECT_DIR$/Content/application/groups/template.groups.html" />
-        <option value="$PROJECT_DIR$/Content/admin.less" />
+        <option value="$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml" />
+        <option value="$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json" />
+        <option value="$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml" />
       </list>
     </option>
   </component>
@@ -303,6 +258,60 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="template" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -516,14 +525,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.Testacular server">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -534,16 +535,24 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="$PROJECT_DIR$/tests/config/jsTestDriver.conf" />
       <setting name="serverType" value="EXTERNAL" />
       <setting name="serverAddress" value="http://localhost:9876" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="NodeunitConfigurationType" factoryName="Nodeunit">
@@ -628,9 +637,15 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="fde62753-6246-4681-bf3f-f01d038168d9" name="Default" comment="" />
+      <changelist id="6c4aca24-1699-498a-974e-e9b77b4c326d" name="New changelist" comment="" />
       <created>1336996476883</created>
       <updated>1336996476883</updated>
     </task>
+    <task id="LOCAL-00001" summary="encoding fix &#10;">
+      <created>1390763591914</created>
+      <updated>1390763591914</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -654,15 +669,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1170" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32945737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33009708" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32945737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32857144" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3139535" sideWeight="0.52398527" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31359223" sideWeight="0.52398527" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.178515" sideWeight="0.6836935" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.178515" sideWeight="0.6836935" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39919758" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32708585" sideWeight="0.54545456" order="7" side_tool="true" content_ui="tabs" />
@@ -671,11 +686,12 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24956672" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998997" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="true" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3156863" sideWeight="0.47601476" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998997" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -691,6 +707,8 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="false" />
+    <MESSAGE value="encoding fix &#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="encoding fix &#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -710,6 +728,11 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="8" selection-start="1779" selection-end="1779" vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1900" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="19" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1740" />
@@ -835,11 +858,6 @@
         <state line="123" column="0" selection-start="4481" selection-end="4481" vertical-scroll-proportion="0.0" vertical-offset="1900" max-vertical-offset="2580" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="19" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1740" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Views/Admin/Dashboard.cshtml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="32" selection-start="736" selection-end="736" vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="980" />
@@ -892,94 +910,87 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/standardSchemas/xhtml1-transitional.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1014" column="2" selection-start="29961" selection-end="29961" vertical-scroll-proportion="0.33266932" vertical-offset="19946" max-vertical-offset="55820">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="11" selection-start="1060" selection-end="1060" vertical-scroll-proportion="0.33235294" vertical-offset="654" max-vertical-offset="1480" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="13" selection-start="1417" selection-end="1417" vertical-scroll-proportion="-13.931034" vertical-offset="456" max-vertical-offset="1120">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="8" selection-start="1779" selection-end="1779" vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1900">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/controller.gdataGallery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="1" selection-start="2712" selection-end="2712" vertical-scroll-proportion="0.0" vertical-offset="1516" max-vertical-offset="2180">
-          <folding>
-            <marker date="1390693244196" expanded="false" signature="1431:1446" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="1" selection-start="2328" selection-end="2328" vertical-scroll-proportion="0.0" vertical-offset="1049" max-vertical-offset="2020">
-          <folding />
-        </state>
+        <state line="1014" column="2" selection-start="29961" selection-end="29961" vertical-scroll-proportion="0.33266932" vertical-offset="19946" max-vertical-offset="55820" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Content/application/groups/module.editableElements.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="3860">
-          <folding />
-        </state>
+        <state line="53" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.7679283" vertical-offset="289" max-vertical-offset="3860" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/Admin/Grids.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="1" selection-start="3107" selection-end="3107" vertical-scroll-proportion="0.0" vertical-offset="2060" max-vertical-offset="5200">
-          <folding />
-        </state>
+        <state line="104" column="1" selection-start="3107" selection-end="3107" vertical-scroll-proportion="0.01992032" vertical-offset="2060" max-vertical-offset="5200" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/application/groups/groups.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="116" selection-end="116" vertical-scroll-proportion="0.16410257" vertical-offset="0" max-vertical-offset="975" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/admin.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.10526316" vertical-offset="0" max-vertical-offset="7180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/pageCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="46" selection-start="607" selection-end="607" vertical-scroll-proportion="0.3707317" vertical-offset="0" max-vertical-offset="2000" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/gdataalbum/controller.gdataalbum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="41" selection-start="577" selection-end="577" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1480" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/controller.album.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="12" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.2204878" vertical-offset="514" max-vertical-offset="1900" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Content/application/groups/template.groups.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="589" selection-end="589" vertical-scroll-proportion="0.30832475" vertical-offset="0" max-vertical-offset="973" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpage.cshtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="10" selection-start="217" selection-end="217" vertical-scroll-proportion="0.095580675" vertical-offset="67" max-vertical-offset="1040" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Admin/controller.gdataGallery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="0" selection-start="2280" selection-end="2280" vertical-scroll-proportion="0.5409182" vertical-offset="1218" max-vertical-offset="2220" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/pageElements/album/album.thtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="1" selection-start="2726" selection-end="2726" vertical-scroll-proportion="-12.24138" vertical-offset="1725" max-vertical-offset="4060">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="171" column="66" selection-start="4980" selection-end="4980" vertical-scroll-proportion="0.0" vertical-offset="3058" max-vertical-offset="4060">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/_default/pageElements/simplehtml/simplehtml.thtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0" vertical-offset="280" max-vertical-offset="400">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App_Data/ApplicationData/c78ee05e-1115-480b-9ab7-a3ab3c0f6643/chuj.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="120">
+        <state line="479" column="19" selection-start="13234" selection-end="13234" vertical-scroll-proportion="-20.37931" vertical-offset="8989" max-vertical-offset="10400">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Content/application/groups/groups.less">
+    <entry file="file://$PROJECT_DIR$/Views/Admin/template/gridpages.cshtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="116" selection-end="116" vertical-scroll-proportion="-2.9629629" vertical-offset="0" max-vertical-offset="420">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/application/groups/template.groups.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="589" selection-end="589" vertical-scroll-proportion="-10.344828" vertical-offset="0" max-vertical-offset="420">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Content/admin.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="157" column="11" selection-start="1897" selection-end="1897" vertical-scroll-proportion="0.29836065" vertical-offset="2958" max-vertical-offset="7180">
-          <folding />
+        <state line="18" column="80" selection-start="900" selection-end="900" vertical-scroll-proportion="-0.092307694" vertical-offset="420" max-vertical-offset="1860">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <marker date="1391548257513" expanded="true" signature="3209:3320" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

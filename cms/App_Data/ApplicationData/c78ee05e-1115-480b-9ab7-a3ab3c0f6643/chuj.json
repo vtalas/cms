@@ -51,7 +51,7 @@
             "lat": "49.214807",
             "lnt": "16.28238"
           },
-          "group": 1
+          "group": 4
         },
         "Content": {
           "gdataAlbumId": "5857023433865510369",
@@ -66,14 +66,14 @@
         "Id": "fc3fdc23-27b1-40ef-5567-65e9ccb8c09b",
         "Content": {
           "ratio": "ratio3_4",
-          "gdataAlbumId": "5853992972375325889",
-          "name": "DOWNLOADs",
-          "thumbnail": "https://lh4.googleusercontent.com:443/-xN6hoVCvrs4/UT2Pl7QQfME/AAAAAAAAAFs/EUSNpih7Zl8/h480-c/DOWNLOADs.jpg",
-          "updated": 1390760160366
+          "gdataAlbumId": "5857023433865510369",
+          "name": "polsko",
+          "thumbnail": "https://lh5.googleusercontent.com:443/-J6BiWYEv6tw/UUhTyACxPeE/AAAAAAAAAwM/1kgQXLpQNXM/h480-c/Polsko.jpg",
+          "updated": 1390852442133
         },
         "resources": {
           "name": "asdasd12212",
-          "group": 1,
+          "group": 6,
           "type": "kasbd",
           "services": "asdasd",
           "year": "asdasd",
@@ -93,7 +93,7 @@
           "updated": 1390760571850
         },
         "resources": {
-          "group": 1,
+          "group": 4,
           "name": "xxx s3333"
         },
         "Name": "",
@@ -103,9 +103,15 @@
         "Width": 12,
         "Id": "f61e08e0-32be-9541-3acd-abb1388e3b62",
         "Content": {
-          "ratio": "ratio3_4"
+          "ratio": "ratio16_9",
+          "gdataAlbumId": "5574024902156833169",
+          "name": "Album bez názvu",
+          "thumbnail": "https://lh4.googleusercontent.com:443/-leg5TNjjeeU/TVrqHbY9UZE/AAAAAAAAAqc/Ve3NgZA9rW0/h480-c/AlbumBezNazvu.jpg",
+          "updated": 1390852431166
         },
-        "resources": {},
+        "resources": {
+          "group": 6
+        },
         "Name": "",
         "Type": "album"
       },
@@ -120,7 +126,8 @@
           "updated": 1390760439108
         },
         "resources": {
-          "name": "uuu u"
+          "name": "uuu u",
+          "group": 4
         },
         "Name": "",
         "Type": "album"
@@ -133,9 +140,12 @@
           "gdataAlbumId": "5857023433865510369",
           "name": "polsko",
           "thumbnail": "https://lh5.googleusercontent.com:443/-J6BiWYEv6tw/UUhTyACxPeE/AAAAAAAAAwM/1kgQXLpQNXM/h480-c/Polsko.jpg",
-          "updated": 1390760449192
+          "updated": 1391547404243
         },
-        "resources": {},
+        "resources": {
+          "group": 4,
+          "name": "asdxxx"
+        },
         "Name": "",
         "Type": "album"
       },
@@ -145,7 +155,9 @@
         "Content": {
           "ratio": "ratio3_4"
         },
-        "resources": {},
+        "resources": {
+          "group": 8
+        },
         "Name": "",
         "Type": "album"
       },
@@ -155,7 +167,9 @@
         "Content": {
           "ratio": "ratio3_4"
         },
-        "resources": {},
+        "resources": {
+          "group": 6
+        },
         "Name": "",
         "Type": "album"
       },
@@ -165,7 +179,9 @@
         "Content": {
           "ratio": "ratio3_4"
         },
-        "resources": {},
+        "resources": {
+          "group": 4
+        },
         "Name": "",
         "Type": "album"
       },
@@ -175,7 +191,9 @@
         "Content": {
           "ratio": "ratio3_4"
         },
-        "resources": {},
+        "resources": {
+          "group": 4
+        },
         "Name": "",
         "Type": "album"
       },
@@ -185,7 +203,9 @@
         "Content": {
           "ratio": "ratio3_4"
         },
-        "resources": {},
+        "resources": {
+          "group": 7
+        },
         "Name": "",
         "Type": "album"
       },
@@ -285,11 +305,12 @@
         "Name": "",
         "Type": "album"
       }
-    ]
+    ],
+    "visible": true
   },
   {
     "Category": "Page",
-    "Name": "historie",
+    "Name": "Představení společnost",
     "Link": "historie",
     "id": "grid_2",
     "GridElements": [
@@ -348,7 +369,9 @@
           "text": "2013 vytvoření nové organizační struktury\t\n--\n  - **BOOS plan, a.s.**"
         }
       }
-    ]
+    ],
+    "Edit": 0,
+    "visible": true
   },
   {
     "Category": "Page",
@@ -447,7 +470,8 @@
         }
       }
     ],
-    "Edit": 0
+    "Edit": 0,
+    "visible": true
   },
   {
     "Category": "Page",
@@ -465,28 +489,27 @@
           "text": "Náš projekční tým lze vystihnout těmito slovy: maximální nasazení, **zkušenosti, flexibilita, slušnost, odpovědnost**.\n\nProjekty naší společnosti se vyznačují perfektním zvládnutím prostoru, citem pro architektonický detail. Veškerá dokumentace je vždy vyhotovena podle platné legislativy, popř. podrobněji na přání investora. Disponujeme celou řadou odborníků ze všech odvětví projekční činnosti. Spolupracujeme s experty a nezávislými subjekty \nz oboru stavebního zkušebnictví, stavebních, geologických a jiných průzkumů.\n\nNabízíme veškeré služby spojené s projekční činností a **všemi etapami projektu:**\n\n  - studie záměru vč. posouzení investiční náročnosti\n  - architektonický návrh a funkční řešení objektu \n    - předprojektová příprava zahrnující průzkum lokality a stanovení rizik\n    - vizualizace a jiné formy prezentace projektu\n    - vypracování projektové dokumentace pro územní řízení\n    - inženýrská činnost pro všechna vyžadovaná řízení\n    - vypracování projektové dokumentace pro stavební řízení\n    - vypracování projektové dokuemntace pro výběr zhotovitele\n    - realizační projektová dokumentace\n  - spolupráce při realizaci stavby\n  - výkon autorského dozoru, popř. technického dozoru investora\n  - projektová dokumentace skutečného provedení stavby\n  - inženýrská činnost potřebná pro uvedení stavby do provozu\n\nREFERENCE\n---\n  - mnohaleté zkušenosti s projekční činností v tuzemsku i mimo území ČR \n  - stovky realizovaných staveb nejrůznějších objemů a charakteru\n  - reference od nadnárodních koncernů i drobných investorů – viz. seznam klientů"
         }
       }
-    ]
+    ],
+    "visible": true
   },
   {
     "Category": "Page",
-    "Name": "aaa",
+    "Name": "aaaxx",
     "Link": "galerie",
     "id": "grid_5",
     "GridElements": [
       {
         "Width": 12,
-        "Id": "65c85095-f38e-0773-5ae1-74a463cda43a",
-        "Content": {
-          "ratio": "ratio3_4",
-          "gdataAlbumId": "5574024902156833169",
-          "name": "Album bez názvu",
-          "thumbnail": "https://lh4.googleusercontent.com:443/-leg5TNjjeeU/TVrqHbY9UZE/AAAAAAAAAqc/Ve3NgZA9rW0/h480-c/AlbumBezNazvu.jpg",
-          "updated": 1390760512054
+        "Id": "2f451bfc-444b-e679-5fc0-527ba98c7385",
+        "Content": {},
+        "resources": {
+          "text": "asdasd"
         },
-        "resources": {},
         "Name": "",
-        "Type": "album"
+        "Type": "text"
       }
-    ]
+    ],
+    "Edit": 0,
+    "visible": false
   }
 ]
