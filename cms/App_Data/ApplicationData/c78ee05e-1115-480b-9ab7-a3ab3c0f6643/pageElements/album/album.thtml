@@ -186,7 +186,7 @@
 
 			<div class="control-group" ngc-click-edit="gridelement.resources.map.lat" type="input"
 				 placeholder="lat"></div>
-			<div class="control-group" ngc-click-edit="gridelement.resources.map.lnt" type="input"
+			<div class="control-group" ngc-click-edit="gridelement.resources.map.lng" type="input"
 				 placeholder="lng"></div>
 
 
